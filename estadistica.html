@@ -347,21 +347,25 @@
 
     let instanciasGraficas = {};
 
-    async function cargarDatosSheets() {
+   async function cargarDatosSheets() {
       try {
-        // Cargar ambas pestañas
+        // TRUCO ANTI-CACHÉ: Agregamos la hora actual al final de la URL 
+        // para obligar al navegador a descargar siempre el archivo fresco.
+        const antiCache = `&t=${new Date().getTime()}`;
+        
+        // Cargar ambas pestañas con el truco anti-caché
         const [resInicial, resFinal] = await Promise.all([
-          fetch(URL_SHEET_INICIAL_CSV),
-          fetch(URL_SHEET_FINAL_CSV)
+          fetch(URL_SHEET_INICIAL_CSV + antiCache),
+          fetch(URL_SHEET_FINAL_CSV + antiCache)
         ]);
 
         const textoInicial = await resInicial.text();
         const textoFinal = await resFinal.text();
 
-        const filasInicial = parsearCSV(textoInicial).slice(1); // Post-test + Satisfacción
+        const filasInicial = parsearCSV(textoInicial).slice(1); // Post-test
         const filasFinal = parsearCSV(textoFinal).slice(1);     // Pre-test
 
-        // 1. PROCESAR DATOS DE SATISFACCIÓN Y COMENTARIOS (Pestaña Post-Test / Inicial)
+        // 1. PROCESAR DATOS DE SATISFACCIÓN Y COMENTARIOS
         let calificaciones = [];
         let aprendioSi = 0;
         let recomiendaSi = 0;
@@ -369,20 +373,20 @@
 
         filasInicial.forEach(fila => {
           if (fila.length > 5) {
-            // Columna K (10) -> Calificación
+            // Verifica que estos índices sigan siendo correctos en tu Excel Post-test:
+            // Col K (10)=Calificación, Col P (15)=Recomienda, Col Q (16)=Aprendió, Col S (18)=Comentarios
             if (fila[10] && !isNaN(parseFloat(fila[10]))) calificaciones.push(parseFloat(fila[10]));
-            // Columna P (15) -> Recomienda
             if (fila[15] && fila[15].toLowerCase().includes('sí')) recomiendaSi++;
-            // Columna Q (16) -> Aprendió
             if (fila[16] && fila[16].toLowerCase().includes('sí')) aprendioSi++;
-            // Columna S (18) -> Comentarios
+            
+            // Aquí extraemos los comentarios (Columna S = índice 18)
             if (fila[18] && fila[18].trim().length > 2) {
               comentarios.push(fila[18]);
             }
           }
         });
 
-        // Actualizar KPIs de la parte superior
+        // Actualizar KPIs superiores
         const totalRespuestasInicial = filasInicial.length || 1;
         document.getElementById('kpiCalificacion').innerText = (calcularPromedio(calificaciones) || '5.0') + '/5';
         document.getElementById('kpiAprendio').innerText = Math.round((aprendioSi / totalRespuestasInicial) * 100) + '%';
@@ -393,8 +397,9 @@
         contenedorComentarios.innerHTML = '';
 
         if (comentarios.length === 0) {
-          contenedorComentarios.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">No hay comentarios registrados aún.</p>';
+          contenedorComentarios.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: var(--texto-suave);">No hay comentarios registrados aún.</p>';
         } else {
+          // Muestra los últimos 5 comentarios recibidos
           comentarios.slice(-5).forEach(comentario => {
             const card = document.createElement('div');
             card.className = 'comment-card';
@@ -407,8 +412,7 @@
         let preTrauma = [], preAnti = [], preRutas = [], preSalud = [], preComp = [];
         let postTrauma = [], postAnti = [], postRutas = [], postSalud = [], postComp = [];
 
-        // DATOS PRE-TEST (Pestaña Final / gid=338468623)
-        // Columnas F, G, H, I, J correspondientes a los índices 5, 6, 7, 8, 9
+        // DATOS PRE-TEST (Las preguntas empiezan en la Columna F -> Índice 5)
         filasFinal.forEach(fila => {
           if (fila[5] && !isNaN(parseFloat(fila[5]))) preTrauma.push(parseFloat(fila[5]));
           if (fila[6] && !isNaN(parseFloat(fila[6]))) preAnti.push(parseFloat(fila[6]));
@@ -417,14 +421,13 @@
           if (fila[9] && !isNaN(parseFloat(fila[9]))) preComp.push(parseFloat(fila[9]));
         });
 
-        // DATOS POST-TEST (Pestaña Inicial)
-        // Las preguntas evaluación Post-test también se responden en las Columnas F, G, H, I, J (índices 5, 6, 7, 8, 9)
+        // DATOS POST-TEST (Las preguntas empiezan en la Columna D -> Índice 3) - ¡Corregido!
         filasInicial.forEach(fila => {
-          if (fila[5] && !isNaN(parseFloat(fila[5]))) postTrauma.push(parseFloat(fila[5]));
-          if (fila[6] && !isNaN(parseFloat(fila[6]))) postAnti.push(parseFloat(fila[6]));
-          if (fila[7] && !isNaN(parseFloat(fila[7]))) postRutas.push(parseFloat(fila[7]));
-          if (fila[8] && !isNaN(parseFloat(fila[8]))) postSalud.push(parseFloat(fila[8]));
-          if (fila[9] && !isNaN(parseFloat(fila[9]))) postComp.push(parseFloat(fila[9]));
+          if (fila[3] && !isNaN(parseFloat(fila[3]))) postTrauma.push(parseFloat(fila[3]));
+          if (fila[4] && !isNaN(parseFloat(fila[4]))) postAnti.push(parseFloat(fila[4]));
+          if (fila[5] && !isNaN(parseFloat(fila[5]))) postRutas.push(parseFloat(fila[5]));
+          if (fila[6] && !isNaN(parseFloat(fila[6]))) postSalud.push(parseFloat(fila[6]));
+          if (fila[7] && !isNaN(parseFloat(fila[7]))) postComp.push(parseFloat(fila[7]));
         });
 
         // 3. DIBUJAR LAS 5 GRÁFICAS
