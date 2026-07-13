@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluación del Impacto - Conecta Contigo</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --azul-principal: #1E88E5;
+      --azul-claro: #E3F2FD;
+      --blanco: #FFFFFF;
+      --gris-fondo: #F5F7FA;
+      --verde-exito: #66BB6A;
+      --texto-oscuro: #2C3E50;
+      --texto-suave: #607D8B;
+      --sombra: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+    body { background-color: var(--blanco); color: var(--texto-oscuro); line-height: 1.6; }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 1. HERO SECTION */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(180deg, var(--azul-claro) 0%, var(--blanco) 100%);
+    }
+
+    .hero h1 {
+      color: var(--azul-principal);
+      font-size: 2.4em;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: var(--texto-suave);
+      font-size: 1.1em;
+    }
+
+    .hero-img {
+      max-width: 180px;
+      opacity: 0.85;
+    }
+
+    /* 2. DISEÑO DE LA EVALUACIÓN (METODOLOGÍA CORTA) */
+    .evaluacion-info {
+      background: var(--azul-claro);
+      border-radius: 16px;
+      padding: 35px;
+      margin: 40px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .diagrama-flujo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    .paso-flujo {
+      background: var(--blanco);
+      padding: 10px;
+      border-radius: 8px;
+      color: var(--azul-principal);
+      box-shadow: var(--sombra);
+    }
+
+    .flecha {
+      color: var(--azul-principal);
+    }
+
+    /* 3. TARJETAS DE RESULTADOS GENERALES */
+    .seccion-titulo {
+      text-align: center;
+      color: var(--azul-principal);
+      margin: 50px 0 20px;
+      font-size: 1.8em;
+    }
+
+    .subtitulo {
+      text-align: center;
+      color: var(--texto-suave);
+      margin-bottom: 30px;
+    }
+    
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px; }
+    .kpi-card { background: var(--blanco); border: 2px solid var(--azul-claro); border-radius: 12px; padding: 25px; text-align: center; box-shadow: var(--sombra); }
+    .kpi-valor { font-size: 2.5em; font-weight: bold; color: var(--verde-exito); }
+    .kpi-label { color: var(--texto-suave); font-weight: 500; }
+
+    .grid-preguntas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
+    .card-pregunta { background: var(--blanco); border-radius: 12px; padding: 20px; border: 1px solid #E0E0E0; box-shadow: var(--sombra); }
+    .card-pregunta h4 { color: var(--azul-principal); margin-bottom: 15px; font-size: 1em; text-align: center; }
+    .metricas-comparativa { display: flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--gris-fondo); font-size: 0.85em; }
+    .badge-incremento { background-color: #E8F5E9; color: var(--verde-exito); padding: 2px 8px; border-radius: 12px; font-weight: bold; }
+
+    .comments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 50px; }
+    .comment-card { background: var(--gris-fondo); padding: 20px; border-radius: 12px; font-style: italic; color: var(--texto-oscuro); border-left: 4px solid var(--azul-principal); }
+    
+    /* 7. INFORMACIÓN METODOLÓGICA Y PIE */
+    .metodologia-box {
+      background: var(--gris-fondo);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .metodologia-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .metodologia-item strong {
+      color: var(--azul-principal);
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.85em;
+      color: var(--texto-suave);
+      border-top: 1px solid var(--gris-fondo);
+    }
+
+    /* Adaptación a pantallas pequeñas */
+    @media (max-width: 768px) {
+      .evaluacion-info, .grid-dos-columnas {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="container">
+      <h1>Evaluación del impacto de Conecta Contigo</h1>
+      <p>Conoce cómo esta herramienta fue evaluada mediante cuestionarios aplicados antes y después de su uso, con el objetivo de analizar su aporte al conocimiento sobre los traumas infantiles, los rasgos antisociales y la promoción de la salud mental.</p>
+      <!-- SVG decorativo de análisis -->
+      <svg class="hero-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="50" width="15" height="40" rx="4" fill="#1E88E5"/>
+        <rect x="35" y="30" width="15" height="60" rx="4" fill="#66BB6A"/>
+        <rect x="60" y="10" width="15" height="80" rx="4" fill="#1E88E5"/>
+        <path d="M12 45 L37 25 L62 5" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- ¿CÓMO SE REALIZÓ LA EVALUACIÓN? -->
+    <section class="evaluacion-info">
+      <div>
+        <h3 style="color: var(--azul-principal); margin-bottom: 10px;">Diseño de la evaluación</h3>
+        <p>Para evaluar la efectividad de <strong>Conecta Contigo</strong> se aplicó un diseño de medidas repetidas (Pre-test y Post-test). Cada participante respondió un cuestionario antes de utilizar la página y otro al finalizar su recorrido.</p>
+        <br>
+        <p>Ambos formularios fueron vinculados mediante un código anónimo, permitiendo comparar el aprendizaje del mismo estudiante sin comprometer su identidad.</p>
+      </div>
+
+      <div class="diagrama-flujo">
+        <div class="paso-flujo">Formulario Inicial</div>
+        <div class="flecha">↓</div>
+        <div class="paso-flujo">Uso de la página</div>
+        <div class="flecha">↓</div>
+        <div class="paso-flujo">Formulario Final</div>
+        <div class="flecha">↓</div>
+        <div class="paso-flujo" style="background: var(--azul-principal); color: white;">Resultados y Comparación</div>
+      </div>
+    </section>
+
+  
+  <div class="container">
+
+    <!-- RESULTADOS GENERALES -->
+    <h2 class="seccion-titulo">Resultados generales</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-valor" id="kpiCalificacion">0.0/5</div>
+        <div class="kpi-label">Calificación promedio</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-valor" id="kpiAprendio">0%</div>
+        <div class="kpi-label">Afirma haber aprendido</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-valor" id="kpiRecomienda">0%</div>
+        <div class="kpi-label">Recomienda la plataforma</div>
+      </div>
+    </div>
+
+    <!-- COMPARACIÓN ANTES VS DESPUÉS -->
+    <h2 class="seccion-titulo">Comparación Antes vs. Después</h2>
+    <p class="subtitulo">Medias obtenidas antes (Pre-test) y después (Post-test) de explorar la plataforma.</p>
+
+    <div class="grid-preguntas">
+      <div class="card-pregunta">
+        <h4>1. Conocimiento sobre trauma infantil</h4>
+        <canvas id="chartTrauma"></canvas>
+        <div class="metricas-comparativa">
+          <span>Media Pre: <strong id="preTrauma">0</strong></span>
+          <span>Media Post: <strong id="postTrauma">0</strong></span>
+          <span class="badge-incremento" id="incTrauma">+0%</span>
+        </div>
+      </div>
+      <div class="card-pregunta">
+        <h4>2. Conocimiento sobre rasgos antisociales</h4>
+        <canvas id="chartAntisociales"></canvas>
+        <div class="metricas-comparativa">
+          <span>Media Pre: <strong id="preAntisociales">0</strong></span>
+          <span>Media Post: <strong id="postAntisociales">0</strong></span>
+          <span class="badge-incremento" id="incAntisociales">+0%</span>
+        </div>
+      </div>
+      <div class="card-pregunta">
+        <h4>3. Conocimiento sobre rutas de ayuda</h4>
+        <canvas id="chartRutas"></canvas>
+        <div class="metricas-comparativa">
+          <span>Media Pre: <strong id="preRutas">0</strong></span>
+          <span>Media Post: <strong id="postRutas">0</strong></span>
+          <span class="badge-incremento" id="incRutas">+0%</span>
+        </div>
+      </div>
+      <div class="card-pregunta">
+        <h4>4. Importancia de la salud mental</h4>
+        <canvas id="chartSaludMental"></canvas>
+        <div class="metricas-comparativa">
+          <span>Media Pre: <strong id="preSaludMental">0</strong></span>
+          <span>Media Post: <strong id="postSaludMental">0</strong></span>
+          <span class="badge-incremento" id="incSaludMental">+0%</span>
+        </div>
+      </div>
+      <div class="card-pregunta">
+        <h4>5. Comprensión general</h4>
+        <canvas id="chartComprension"></canvas>
+        <div class="metricas-comparativa">
+          <span>Media Pre: <strong id="preComprension">0</strong></span>
+          <span>Media Post: <strong id="postComprension">0</strong></span>
+          <span class="badge-incremento" id="incComprension">+0%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMENTARIOS DE PARTICIPANTES -->
+    <h2 class="seccion-titulo">Comentarios de los participantes</h2>
+    <div class="comments-grid" id="contenedorComentarios">
+      <p style="text-align:center; grid-column: 1/-1; color: var(--texto-suave);">Cargando comentarios...</p>
+    </div>
+
+  </div>
+
+  <!-- INFORMACIÓN METODOLÓGICA -->
+    <section class="metodologia-box">
+      <h3 style="color: var(--azul-principal);">Metodología de investigación</h3>
+      <div class="metodologia-grid">
+        <div class="metodologia-item">
+          <strong>Diseño</strong>
+          Pre-test / Post-test (Medidas repetidas)
+        </div>
+        <div class="metodologia-item">
+          <strong>Instrumento</strong>
+          Formularios digitales de Google Forms
+        </div>
+        <div class="metodologia-item">
+          <strong>Población</strong>
+          Estudiantes de secundaria (Colegio Jerusalem)
+        </div>
+        <div class="metodologia-item">
+          <strong>Análisis</strong>
+          Comparación de medias y frecuencias
+        </div>
+        <div class="metodologia-item">
+          <strong>Anonimato</strong>
+          Código de identificación personal sin nombres
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Los resultados presentados corresponden exclusivamente a la presente investigación académica y son leídos en tiempo real.</p>
+  </footer>
+
+  <script>
+    // -------------------------------------------------------------
+    // 
+    // -------------------------------------------------------------
+    const URL_SHEET_FINAL_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJktpVPDBSCbiLerfxEL3SDQ2Hg_voVFqfQyYxNhkc_oYmRFtWAlVcpke_VVTrdZMiDnS1ooKUR63O/pub?gid=338468623&single=true&output=csv';
+    const URL_SHEET_INICIAL_CSV   = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJktpVPDBSCbiLerfxEL3SDQ2Hg_voVFqfQyYxNhkc_oYmRFtWAlVcpke_VVTrdZMiDnS1ooKUR63O/pub?gid=1555379758&single=true&output=csv';
+
+    // Parser seguro de CSV para manejar comas dentro de textos entre comillas
+    function parsearCSV(texto) {
+      const lineas = texto.split(/\r\n|\n/);
+      return lineas.map(linea => {
+        const valores = [];
+        let dentroDeComillas = false;
+        let valorActual = '';
+        for (let i = 0; i < linea.length; i++) {
+          const char = linea[i];
+          if (char === '"') {
+            dentroDeComillas = !dentroDeComillas;
+          } else if (char === ',' && !dentroDeComillas) {
+            valores.push(valorActual.trim().replace(/^"|"$/g, ''));
+            valorActual = '';
+          } else {
+            valorActual += char;
+          }
+        }
+        valores.push(valorActual.trim().replace(/^"|"$/g, ''));
+        return valores;
+      }).filter(fila => fila.some(campo => campo !== ''));
+    }
+
+    const calcularPromedio = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1) : 0;
+
+    let instanciasGraficas = {};
+
+    async function cargarDatosSheets() {
+      try {
+        // Cargar ambas pestañas
+        const [resInicial, resFinal] = await Promise.all([
+          fetch(URL_SHEET_INICIAL_CSV),
+          fetch(URL_SHEET_FINAL_CSV)
+        ]);
+
+        const textoInicial = await resInicial.text();
+        const textoFinal = await resFinal.text();
+
+        const filasInicial = parsearCSV(textoInicial).slice(1); // Post-test + Satisfacción
+        const filasFinal = parsearCSV(textoFinal).slice(1);     // Pre-test
+
+        // 1. PROCESAR DATOS DE SATISFACCIÓN Y COMENTARIOS (Pestaña Post-Test / Inicial)
+        let calificaciones = [];
+        let aprendioSi = 0;
+        let recomiendaSi = 0;
+        let comentarios = [];
+
+        filasInicial.forEach(fila => {
+          if (fila.length > 5) {
+            // Columna K (10) -> Calificación
+            if (fila[10] && !isNaN(parseFloat(fila[10]))) calificaciones.push(parseFloat(fila[10]));
+            // Columna P (15) -> Recomienda
+            if (fila[15] && fila[15].toLowerCase().includes('sí')) recomiendaSi++;
+            // Columna Q (16) -> Aprendió
+            if (fila[16] && fila[16].toLowerCase().includes('sí')) aprendioSi++;
+            // Columna S (18) -> Comentarios
+            if (fila[18] && fila[18].trim().length > 2) {
+              comentarios.push(fila[18]);
+            }
+          }
+        });
+
+        // Actualizar KPIs de la parte superior
+        const totalRespuestasInicial = filasInicial.length || 1;
+        document.getElementById('kpiCalificacion').innerText = (calcularPromedio(calificaciones) || '5.0') + '/5';
+        document.getElementById('kpiAprendio').innerText = Math.round((aprendioSi / totalRespuestasInicial) * 100) + '%';
+        document.getElementById('kpiRecomienda').innerText = Math.round((recomiendaSi / totalRespuestasInicial) * 100) + '%';
+
+        // Renderizar Comentarios
+        const contenedorComentarios = document.getElementById('contenedorComentarios');
+        contenedorComentarios.innerHTML = '';
+
+        if (comentarios.length === 0) {
+          contenedorComentarios.innerHTML = '<p style="text-align:center; grid-column: 1/-1;">No hay comentarios registrados aún.</p>';
+        } else {
+          comentarios.slice(-5).forEach(comentario => {
+            const card = document.createElement('div');
+            card.className = 'comment-card';
+            card.innerText = `💬 "${comentario}"`;
+            contenedorComentarios.appendChild(card);
+          });
+        }
+
+        // 2. PROCESAR PREGUNTAS PRE Y POST
+        let preTrauma = [], preAnti = [], preRutas = [], preSalud = [], preComp = [];
+        let postTrauma = [], postAnti = [], postRutas = [], postSalud = [], postComp = [];
+
+        // DATOS PRE-TEST (Pestaña Final / gid=338468623)
+        // Columnas F, G, H, I, J correspondientes a los índices 5, 6, 7, 8, 9
+        filasFinal.forEach(fila => {
+          if (fila[5] && !isNaN(parseFloat(fila[5]))) preTrauma.push(parseFloat(fila[5]));
+          if (fila[6] && !isNaN(parseFloat(fila[6]))) preAnti.push(parseFloat(fila[6]));
+          if (fila[7] && !isNaN(parseFloat(fila[7]))) preRutas.push(parseFloat(fila[7]));
+          if (fila[8] && !isNaN(parseFloat(fila[8]))) preSalud.push(parseFloat(fila[8]));
+          if (fila[9] && !isNaN(parseFloat(fila[9]))) preComp.push(parseFloat(fila[9]));
+        });
+
+        // DATOS POST-TEST (Pestaña Inicial)
+        // Las preguntas evaluación Post-test también se responden en las Columnas F, G, H, I, J (índices 5, 6, 7, 8, 9)
+        filasInicial.forEach(fila => {
+          if (fila[5] && !isNaN(parseFloat(fila[5]))) postTrauma.push(parseFloat(fila[5]));
+          if (fila[6] && !isNaN(parseFloat(fila[6]))) postAnti.push(parseFloat(fila[6]));
+          if (fila[7] && !isNaN(parseFloat(fila[7]))) postRutas.push(parseFloat(fila[7]));
+          if (fila[8] && !isNaN(parseFloat(fila[8]))) postSalud.push(parseFloat(fila[8]));
+          if (fila[9] && !isNaN(parseFloat(fila[9]))) postComp.push(parseFloat(fila[9]));
+        });
+
+        // 3. DIBUJAR LAS 5 GRÁFICAS
+        dibujarGrafica('chartTrauma', calcularPromedio(preTrauma), calcularPromedio(postTrauma), 'preTrauma', 'postTrauma', 'incTrauma');
+        dibujarGrafica('chartAntisociales', calcularPromedio(preAnti), calcularPromedio(postAnti), 'preAntisociales', 'postAntisociales', 'incAntisociales');
+        dibujarGrafica('chartRutas', calcularPromedio(preRutas), calcularPromedio(postRutas), 'preRutas', 'postRutas', 'incRutas');
+        dibujarGrafica('chartSaludMental', calcularPromedio(preSalud), calcularPromedio(postSalud), 'preSaludMental', 'postSaludMental', 'incSaludMental');
+        dibujarGrafica('chartComprension', calcularPromedio(preComp), calcularPromedio(postComp), 'preComprension', 'postComprension', 'incComprension');
+
+      } catch (error) {
+        console.error('Error al sincronizar con Google Sheets:', error);
+      }
+    }
+
+    function dibujarGrafica(idCanvas, valPre, valPost, elPre, elPost, elInc) {
+      document.getElementById(elPre).innerText = valPre;
+      document.getElementById(elPost).innerText = valPost;
+
+      const numPre = parseFloat(valPre);
+      const numPost = parseFloat(valPost);
+      const incremento = numPre > 0 ? (((numPost - numPre) / numPre) * 100).toFixed(0) : 0;
+      
+      document.getElementById(elInc).innerText = `${incremento >= 0 ? '+' : ''}${incremento}%`;
+
+      if (instanciasGraficas[idCanvas]) {
+        instanciasGraficas[idCanvas].destroy();
+      }
+
+      const ctx = document.getElementById(idCanvas).getContext('2d');
+      instanciasGraficas[idCanvas] = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Antes', 'Después'],
+          datasets: [{
+            data: [numPre, numPost],
+            backgroundColor: ['#90CAF9', '#66BB6A'],
+            borderRadius: 6
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, max: 5 } }
+        }
+      });
+    }
+
+    window.onload = cargarDatosSheets;
+    setInterval(cargarDatosSheets, 30000);
+  </script>
+</body>
+</html>
