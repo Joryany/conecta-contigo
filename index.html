@@ -1,348 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conecta Contigo - Inicio</title>
-    <style>
-        /* --- VARIABLES DE COLOR (Basadas en el Logo) --- */
-        :root {
-            --azul-marino: #1e416b;
-            --azul-claro: #0962bb;
-            --verde-agua: #69B2AE;
-            --verde-hoja: #95C883;
-            --fondo-suave: #F2F7FA;
-            --blanco: #FFFFFF;
-            --sombra: rgba(17, 46, 81, 0.1);
-        }
-
-        /* --- ESTILOS GENERALES --- */
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--fondo-suave);
-            color: var(--azul-marino);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1, h2, h3, h4, h5 {
-            color: var(--azul-marino);
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* --- ENCABEZADO Y NAVEGACIÓN --- */
-                img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* --- ENCABEZADO Y NAVEGACIÓN --- */
-        header {
-            background-color: var(--blanco);
-            padding: 20px 5%;
-            text-align: center;
-            box-shadow: 0 2px 10px var(--sombra);
-            border-bottom: 4px solid var(--verde-agua);
-        }
-
-        /* Nuevo contenedor para poner el logo y el menú en la misma línea */
-        .top-nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* Logo a un lado, botones al otro */
-            flex-wrap: wrap; /* Permite que bajen si la pantalla del celular es muy pequeña */
-            max-width: 1200px;
-            margin: 0 auto 20px auto;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--fondo-suave); /* Línea divisoria sutil */
-        }
-
-        .top-nav-container img {
-            margin-bottom: 0; /* Quitamos el margen para que se alinee perfecto con los botones */
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 10px 0;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--azul-marino);
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            background-color: var(--fondo-suave);
-        }
-
-        nav a:hover {
-            background-color: var(--azul-claro);
-            color: var(--blanco);
-        }
-
-        header p {
-            max-width: 800px;
-            margin: 15px auto;
-            font-size: 1.1rem;
-            color: #334a66;
-        }
-
-        nav a:hover {
-            background-color: var(--fondo-suave);
-            color: var(--azul-claro);
-        }
-
-        /* --- SECCIÓN HERO (Banner Principal) --- */
-        .hero {
-            position: relative;
-            text-align: center;
-            overflow: hidden;
-            padding: 80px 20px;
-            margin-bottom: 40px;
-            background-color: var(--fondo-suave);
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 0.8;
-            /* Crea un degradado para que se mezcle con el fondo de la página */
-            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .hero h3 {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--azul-claro);
-            font-weight: 500;
-        }
-
-        /* --- CONTENEDORES PRINCIPALES --- */
-        main {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- SECCIÓN MISIÓN Y VISIÓN (Dos columnas) --- */
-        .mission-vision {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .mission-vision .card {
-            flex: 1;
-            min-width: 300px;
-            background-color: var(--blanco);
-            border-radius: 12px;
-            padding: 35px;
-            box-shadow: 0 4px 15px var(--sombra);
-            transition: transform 0.2s ease;
-        }
-
-        .mission-vision .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .mission-vision h3 {
-            border-bottom: 2px solid var(--fondo-suave);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            color: var(--azul-marino);
-        }
-
-        .mission-vision p {
-            color: #4a5d73;
-            text-align: justify;
-        }
-
-        /* --- SECCIÓN HERRAMIENTAS (Grid) --- */
-        .tools-section {
-            margin-bottom: 60px;
-        }
-
-        .tools-section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-        }
-
-        .grid-tarjetas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-        }
-
-        .Tarjeta {
-            background-color: var(--blanco);
-            border-radius: 12px;
-            padding: 25px 20px;
-            box-shadow: 0 4px 15px var(--sombra);
-            border-top: 5px solid var(--azul-claro);
-            transition: transform 0.2s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .Tarjeta:hover {
-            transform: translateY(-5px);
-        }
-
-        .Tarjeta h3 {
-            color: var(--azul-marino);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        .Tarjeta p {
-            font-size: 0.95rem;
-            color: #4a5d73;
-            margin-bottom: 0;
-            flex-grow: 1;
-        }
-
-        /* Color especial para Contactos de Emergencia */
-        .Tarjeta.emergencia {
-            border-top: 5px solid var(--verde-agua);
-        }
-
-/* --- PIE DE PÁGINA --- */
-        footer {
-            background-color: var(--azul-marino);
-            color: var(--fondo-suave);
-            text-align: justify;
-            padding: 40px 20px;
-            margin-top: 60px;
-            border-top: 5px solid var(--verde-hoja);
-        }
-
-        footer p {
-            max-width: 800px;
-            margin: 10px auto;
-            opacity: 0.9;
-        }
-
-        footer p strong {
-            color: var(--verde-agua);
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="top-nav-container">
-            <img width="100px" src="Assest/Logo_sin_texto.png" alt="Logo de la Página">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Conecta Contigo - Inicio</title>
     
-            <nav>
-                <a href="index.html">Inicio</a>
-                <a href="contactos.html">Contactos</a>
-                <a href="monografia.html">Conoce</a>
-                <a href="diario.html">Emocional</a>
-                <a href="chatbot.html">Soter</a>
-            </nav>
-        </div>
-    </header>
-    
-    <section class="hero">
-        <img src="assest/Fondo2.png" alt="Nubes" class="hero-bg">
-        <div class="hero-content">
-            <h1>Conecta Contigo</h1> 
-            <h3>💙 Comprende, Sana y Crece 💙</h3>
-        </div>
-    </section>
-
-    <main> 
-        <section class="mission-vision">
-            <div class="card">
-                <h3>Misión</h3>
-                <p>
-                    Conecta Contigo tiene como misión sensibilizar e informar a los adolescentes sobre los efectos que las experiencias adversas en la infancia pueden tener en el desarrollo emocional, social y conductual, incluyendo la comprensión de los rasgos asociados al trastorno de personalidad antisocial. A través de información basada en evidencia, herramientas de autorreflexión como el registro emocional y el diario personal, un chatbot educativo y el acceso a recursos gratuitos de atención en salud mental, buscamos promover el autoconocimiento, la regulación emocional y la búsqueda oportuna de ayuda profesional. La plataforma actúa como un complemento de apoyo y orientación, sin reemplazar la evaluación ni el acompañamiento psicológico o psiquiátrico.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3>Visión</h3>
-                <p>
-                    Ser una plataforma digital de referencia en sensibilización y promoción de la salud mental para adolescentes, reconocida por facilitar el acceso a información confiable, fomentar el bienestar emocional y fortalecer la prevención mediante herramientas digitales accesibles, contribuyendo a que los jóvenes desarrollen una mayor comprensión de sus emociones, identifiquen factores de riesgo y conozcan las rutas de apoyo disponibles para construir proyectos de vida más saludables y seguros.
-                </p>
-            </div>
-        </section>
-
-        <section class="tools-section">
-            <h2>Descubre las herramientas, recursos e información que te proporcionamos.</h2>
-            
-            <div class="grid-tarjetas">
-                <div class="Tarjeta">
-                    <h3>Conoce</h3>
-                    <p>Aprende sobre <strong>los traumas infantiles, el trastorno de personalidad antisocial</strong> (sociopatía), sus características, factores de riesgo, mitos, formas de prevención y la importancia de buscar apoyo profesional. La información presentada tiene fines educativos y de sensibilización.</p>
-                </div>
-                
-                <div class="Tarjeta emergencia">
-                    <h3>Contactos de Emergencia</h3>
-                    <p>Encuentra acceso rápido a <strong>servicios gratuitos de atención en salud mental</strong> del Estado, que te conectan con psicólogos y profesionales capacitados. Si necesitas orientación, apoyo emocional o atraviesas una situación de emergencia, aquí podrás buscar ayuda cuando más lo necesites.</p>
-                </div>
-                
-                <div class="Tarjeta">
-                    <h3>Registro Emocional</h3>
-                    <p>Registra cómo te sientes cada día y observa la evolución de tus emociones. Con el tiempo podrás identificar cambios, reconocer posibles detonantes y <strong>comprender mejor tu estado emocional.</strong></p>
-                </div>
-                
-                <div class="Tarjeta">
-                    <h3>Diario</h3>
-                    <p>Escribe libremente sobre tus pensamientos, experiencias y emociones. Este espacio te ayudará a <strong>identificar detonantes, reconocer patrones en tu comportamiento y reflexionar</strong> sobre las situaciones que influyen en tu bienestar emocional.</p>
-                </div>
-                
-                <div class="Tarjeta">
-                    <h3>Soter</h3>
-                    <p><strong>Soter es el asistente virtual de Conecta Contigo.</strong> Está diseñado para responder preguntas, ofrecer información confiable y orientarte hacia recursos de apoyo cuando los necesites.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/index.css">
+    </head>
+    <body>
+        <header>
+            <div class="top-nav-container">
+                <img width="100px" src="assets/img/index/logo-sin-texto.png" alt="Logo de la Página, un lazo azul">
         
-        <p><strong>Aviso importante:</strong> Conecta Contigo es una herramienta educativa y de acompañamiento. La información proporcionada no sustituye el diagnóstico, tratamiento ni la atención de un profesional de la salud mental.</p>
+                <nav>
+                    <a href="index.html">Inicio</a>
+                    <a href="contacto.html">Contactos</a>
+                    <a href="conoce.html">Conoce</a>
+                    <a href="diario.html">Emocional</a>
+                </nav>
+            </div>
+        </header>
+        
+        <main> 
+            <section class="hero">
+                <img class="hero-bg" src="assets/img/index/hero.png" alt="fondo de muelle, con ramas asomandose.">
+                <div class="hero-content">
+                    <h1>Conecta Contigo</h1> 
+                    <h2>💙 Comprende, Sana y Crece 💙</h2>
+                </div>
+            </section>
+            <section class="mission-vision container">
+                <div class="card">
+                    
+                    <h2>Misión</h2>
+                    <p>
+                        Conecta Contigo tiene como misión sensibilizar e informar a los adolescentes sobre los efectos que las experiencias adversas en la infancia pueden tener en el desarrollo emocional, social y conductual, incluyendo la comprensión de los rasgos asociados al trastorno de personalidad antisocial. A través de información basada en evidencia, herramientas de autorreflexión como el registro emocional y el diario personal, un chatbot educativo y el acceso a recursos gratuitos de atención en salud mental, buscamos promover el autoconocimiento, la regulación emocional y la búsqueda oportuna de ayuda profesional. La plataforma actúa como un complemento de apoyo y orientación, sin reemplazar la evaluación ni el acompañamiento psicológico o psiquiátrico.
+                    </p>
+                </div>
 
-        <p><strong>Desarrollado para:</strong> Proyecto académico desarrollado como propuesta de sensibilización sobre la influencia de los traumas infantiles en el desarrollo de rasgos antisociales y conductas delictivas en adolescentes.</p>
+                <div class="card">
+                    <h2>Visión</h2>
+                    <p>
+                        Ser una plataforma digital de referencia en sensibilización y promoción de la salud mental para adolescentes, reconocida por facilitar el acceso a información confiable, fomentar el bienestar emocional y fortalecer la prevención mediante herramientas digitales accesibles, contribuyendo a que los jóvenes desarrollen una mayor comprensión de sus emociones, identifiquen factores de riesgo y conozcan las rutas de apoyo disponibles para construir proyectos de vida más saludables y seguros.
+                    </p>
+                </div>
+            </section>
 
-        <p><strong>Desarrollado por:</strong> Joryany Sofia Hormiga Muñoz.</p>
+            <section class="tools-section">
 
-        <p class="copyright">© 2026 Conecta Contigo. Todos los derechos reservados.</p>
-    </footer>
-</body>
+                <h2>Descubre las herramientas, recursos e información que te proporcionamos.</h2>
+                
+                <div class="grid-tarjetas text-center">
+                    <div class="tarjeta">
+                        <article>
+                            <h3>Conoce</h3>
+                            <p>Aprende sobre <strong>los traumas infantiles, el trastorno de personalidad antisocial</strong> (sociopatía), sus características, factores de riesgo, mitos, formas de prevención y la importancia de buscar apoyo profesional. La información presentada tiene fines educativos y de sensibilización.</p>
+                        </article>
+                    </div>
+                    
+                    <div class="tarjeta emergencia">
+                        <article>
+                            <h3>Contactos de Emergencia</h3>
+                            <p>Encuentra acceso rápido a <strong>servicios gratuitos de atención en salud mental</strong> del Estado, que te conectan con psicólogos y profesionales capacitados. Si necesitas orientación, apoyo emocional o atraviesas una situación de emergencia, aquí podrás buscar ayuda cuando más lo necesites.</p>
+                        </article>
+                    </div>
+                    
+                    <div class="tarjeta">
+                        <article>
+                            <h3>Registro Emocional</h3>
+                            <p>Registra cómo te sientes cada día y observa la evolución de tus emociones. Con el tiempo podrás identificar cambios, reconocer posibles detonantes y <strong>comprender mejor tu estado emocional.</strong></p>
+                        </article>
+                    </div>
+                    
+                    <div class="tarjeta">
+                        <article>
+                            <h3>Diario</h3>
+                            <p>Escribe libremente sobre tus pensamientos, experiencias y emociones. Este espacio te ayudará a <strong>identificar detonantes, reconocer patrones en tu comportamiento y reflexionar</strong> sobre las situaciones que influyen en tu bienestar emocional.</p>
+                        </article>
+                    </div>
+                    
+                    <div class="tarjeta">
+                        <article>
+                            <h3>Soter</h3>
+                            <p><strong>Soter es el asistente virtual de Conecta Contigo.</strong> Está diseñado para responder preguntas, ofrecer información confiable y orientarte hacia recursos de apoyo cuando los necesites.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            
+            <p><strong>Aviso importante:</strong> Conecta Contigo es una herramienta educativa y de acompañamiento. La información proporcionada no sustituye el diagnóstico, tratamiento ni la atención de un profesional de la salud mental.</p>
+
+            <p><strong>Desarrollado para:</strong> Proyecto académico desarrollado como propuesta de sensibilización sobre la influencia de los traumas infantiles en el desarrollo de rasgos antisociales y conductas delictivas en adolescentes.</p>
+
+            <p><strong>Desarrollado por:</strong> Joryany Hormiga.</p>
+
+            <p>© 2026 Conecta Contigo. Todos los derechos reservados.</p>
+        </footer>
+    </body>
 </html>

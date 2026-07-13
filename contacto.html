@@ -1,515 +1,184 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto De Emergencia</title>
-    <style>
-        /* --- VARIABLES DE COLOR (Basadas en el Logo) --- */
-        :root {
-            --azul-marino: #112E51;
-            --azul-claro: #6A93BD;
-            --verde-agua: #69B2AE;
-            --verde-hoja: #95C883;
-            --fondo-suave: #F2F7FA;
-            --blanco: #FFFFFF;
-            --sombra: rgba(17, 46, 81, 0.1);
-        }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contacto De Emergencia</title>
 
-        /* --- ESTILOS GENERALES --- */
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--fondo-suave);
-            color: var(--azul-marino);
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/contacto.css">
+    </head>
 
-        h1, h2, h3, h4 {
-            color: var(--azul-marino);
-            margin-bottom: 0.5rem;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /* --- ENCABEZADO Y NAVEGACIÓN --- */
-        header {
-            background-color: var(--blanco);
-            padding: 20px 5%;
-            text-align: center;
-            box-shadow: 0 2px 10px var(--sombra);
-            border-bottom: 4px solid var(--verde-agua);
-        }
-
-        /* Nuevo contenedor para poner el logo y el menú en la misma línea */
-        .top-nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* Logo a un lado, botones al otro */
-            flex-wrap: wrap; /* Permite que bajen si la pantalla del celular es muy pequeña */
-            max-width: 1200px;
-            margin: 0 auto 20px auto;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--fondo-suave); /* Línea divisoria sutil */
-        }
-
-        .top-nav-container img {
-            margin-bottom: 0; /* Quitamos el margen para que se alinee perfecto con los botones */
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 10px 0;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--azul-marino);
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: all 0.3s ease;
-            background-color: var(--fondo-suave);
-        }
-
-        nav a:hover {
-            background-color: var(--azul-claro);
-            color: var(--blanco);
-        }
-
-        header p {
-            max-width: 800px;
-            margin: 15px auto;
-            font-size: 1.1rem;
-            color: #334a66;
-        }
-
-        .hero{
-            position: relative;
-            height: 260px;
-            border-radius: 25px;
-            overflow: hidden;
-            margin-top: 25px;
-            box-shadow: 0 18px 40px rgba(17,46,81,.18);
-        }   
-
-        .hero h1{
-            font-size: 2.3rem;
-            font-weight: 700;
-            color: #183453;
-            margin-bottom: 18px;
-            line-height: 1.15;
-        }
-
-        .hero h1{
-            font-size: clamp(2rem, 4vw, 2.8rem);
-        }
-
-        .hero img{
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .hero::before{
-
-            content: "";
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-
-            background:
-                linear-gradient(
-                    to bottom,
-                    rgba(255,255,255,.55) 0%,
-                    rgba(255,255,255,.20) 50%,
-                    rgba(255,255,255,.55) 100%
-                );
-
-            backdrop-filter: blur(4px);
-        }
-
-        .hero-texto{
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            max-width: 700px;
-            margin: auto;
-
-            padding: 40px;
-        }
-        
-
-        .hero p{
-            max-width: 780px;
-            font-size: 1.15rem;
-            color: #183453;
-        }
-
-        /* --- CONTENIDO PRINCIPAL --- */
-        main {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-top: 40px;
-            margin-bottom: 25px;
-            position: relative;
-        }
-
-        /* Sección de Tarjetas (Grid) */
+    <body>
     
-   .grid-tarjetas{
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-        gap:25px;
-        margin:35px 0;
-     }
-
-
-        /* --- DISEÑO DE TARJETAS --- */
-        .Tarjeta{
-            background: var(--blanco);
-            border-radius:16px;
-            padding:28px;
-            box-shadow:0 8px 25px rgba(17,46,81,.10);
-            border-top:5px solid var(--azul-claro);
-
-            transition:.30s;
-
-            display:flex;
-            flex-direction:column;
 
     
-        }
-
-        .Tarjeta p{
-             flex:1;
-        }
-        
-
-        .Tarjeta:hover {
-            transform: translateY(-5px);
-        }
-
-        .Tarjeta h3 {
-            color: var(--azul-marino);
-            border-bottom: 2px solid var(--fondo-suave);
-            padding-bottom: 10px;
-        }
-
-        #Emergencia {
-            border-top: 5px solid #e74c3c;
-            background-color: #fff9f9;
-        }
-
-        .Tarjeta a, article > a {
-            display: inline-block;
-            text-decoration: none;
-            background-color: var(--verde-hoja);
-            color: var(--azul-marino);
-            font-weight: bold;
-            padding: 10px 20px;
-            border-radius: 8px;
-            margin-right: 10px;
-            margin-top: 15px;
-            transition: background-color 0.3s;
-        }
-
-        .Tarjeta a:hover, article > a:hover {
-            background-color: var(--verde-agua);
-            color: var(--blanco);
-        }
-
-        #Emergencia a {
-            background-color: #e74c3c;
-            color: var(--blanco);
-        }
-
-        #Emergencia a:hover {
-            background-color: #c0392b;
-        }
-
-        .botones{
-            display:flex;
-            gap:10px;
-            margin-top:auto;
-            flex-wrap:wrap;
-        }
-         
-        .Tarjeta p{
-            margin-bottom:auto;
-        }
-
-        /* --- SECCIÓN DE INFORMACIÓN --- */
-       h2#Información ~ article{
-
-            background:white;
-
-            border-radius:18px;
-
-            padding:35px;
-
-            margin-bottom:35px;
-
-            border-left:6px solid var(--verde-agua);
-
-            box-shadow:0 12px 35px rgba(17,46,81,.10);
-
-            transition:.35s;
-        }
-        
-        h2#Información ~ article:hover{
-
-            transform:translateY(-6px);
-
-            box-shadow:0 20px 40px rgba(17,46,81,.16);
-
-        }
-
-        h2#Información ~ article img {
-
-            width:170px;
-
-            padding:18px;
-
-            background:white;
-
-            border-radius:18px;
-
-            border:1px solid rgba(17,46,81,.08);
-
-            box-shadow:
-            0 10px 25px rgba(17,46,81,.12);
-
-            margin:20px auto;
-
-            display:block;
-
-            transition:.35s;
-        }
-
-        h2#Información article:hover img{
-
-            transform:scale(1.05);
-
-            box-shadow:
-            0 18px 35px rgba(17,46,81,.18);
-
-        }
-
-        h2#Información ~ article h4 {
-            color: var(--azul-claro);
-            margin-top: 20px;
-        }
-
-       
-            
-
-        /* --- PIE DE PÁGINA --- */
-        footer {
-            background-color: var(--azul-marino);
-            color: var(--fondo-suave);
-            text-align: justify;
-            padding: 40px 20px;
-            margin-top: 60px;
-            border-top: 5px solid var(--verde-hoja);
-        }
-
-        footer p {
-            max-width: 800px;
-            margin: 10px auto;
-            opacity: 0.9;
-        }
-
-        footer p strong {
-            color: var(--verde-agua);
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <!-- CONTENEDOR NUEVO: Pone el logo y los botones en la misma fila -->
-        <div class="top-nav-container">
-            <img width="100px" src="Assest/Logo_sin_texto.png" alt="Logo de la Página">
-            <nav> 
-                <a href="index.html">Inicio</a>
-                <a href="contactos.html">Contactos</a>
-                <a href="monografia.html">Conoce</a>
-                <a href="diario.html">Emocional</a>
-                <a href="chatbot.html">Soter</a>
-            </nav>
-        </div>
-        
-        <div class="hero">
-
-            <img src="Assest/Fondo.png" alt="Fondo">
-
-            <div class="hero-texto">
-
-                <h1>¿Necesitas ayuda?</h1>
-
-                <p>
-                    <strong>No estás solo.</strong>
-                    Si estás pasando por una situación difícil...
-                </p>
-
+    <!-- Aquí sigue tu código original intacto -->
+        <header>
+            <div class="top-nav-container">
+                <img width="100px" src="assets/img/index/logo-sin-texto.png" alt="Logo de la Página, un lazo azul">
+                <nav> 
+                    <a href="index.html">Inicio</a>
+                    <a href="contacto.html">Contactos</a>
+                    <a href="conoce.html">Conoce</a>
+                    <a href="diario.html">Emocional</a>
+                </nav>
             </div>
 
-        </div>
-        <!-- Navegación secundaria (enlaces ancla) se queda centrada abajo del texto -->
-        <nav>
-            <a href="#Tarjetas">Tarjeta de Contacto</a>
-            <a href="#Información">Información</a>
-            <a href="#Emergencia">Emergencia</a>
-        </nav>
-    </header>
 
-    <main>
-        
-        <h2 id="Tarjetas">Tarjetas de Contactos</h2>
+        </header>
 
-        <div class="grid-tarjetas">
-            <article class="Tarjeta">
-                <h3>El Poder de Ser Escuchado</h3>
+        <main>
 
-               <p>
-                📍 Atención psicológica gratuita. <br>
-                🕐 Disponible según la ciudad. <br>
-                💬 Chat y teléfono. <br>
-                ☎️ 106 - 300 754 8933 <br>
-               </p> 
-
-               <div class="botones">
-                <a href="tel:106">Llamar</a> 
-                <a href="https://wa.me/573007548933">Chatear</a>
+            <section class="hero">
+                <img src="assets/img/index/hero.png" alt="fondo de muelle, con ramas asomandose.">
+                <div class="hero-texto">
+                    <h1>¿Necesitas ayuda?</h1>
+                    <p>
+                        <strong>No estás solo.</strong>
+                        Si estás pasando por una situación difícil...
+                    </p>
                 </div>
-               
-            </article>
+            </section>
 
-             <article class="Tarjeta">
-                <h3>Chatlemos - Chat de apoyo emocional</h3>
+            <div class="nav-banner">
+                <nav >
+                    <a href="#tarjetas">Tarjeta de Contacto</a>
+                    <a href="#Información">Información</a>
+                    <a href="#emergencia">Emergencia</a>
+                </nav>
+            </div>
 
-               <p>
-                📍 Barranquilla. <br>
-                💬 Atención por chat o videollamada. <br>
-                👨‍⚕️ Psicólogos profesionales. <br>
-                🆓 Gratuito. <br>
-               </p> 
-               <div class="botones">
-                    <a href="https://wa.me/573188044000">Chatear</a>
-                </div>
-               
-            </article>
-
-             <article class="Tarjeta" id="Emergencia">
-                <h3>Línea 123, Emergencias</h3>
-
-               <p>
-                🚨 Si en este momento:<br>
-                • Piensas hacerte daño.<br>
-                • Piensas hacer daño a otra persona.<br>
-                • Sientes que has perdido el control.<br>
-                • Tu vida o la de alguien está en peligro.<br><br>
-                Llama inmediatamente al 123 o acude al servicio de urgencias más cercano.<br>
-                ☎️ 123 <br>
-               </p> 
-               <div class="botones">
-                    <a href="tel:123">Llamar</a>
-                 </div>
-               
-            </article>
-        </div>
-                
-        <h2 id="Información">Información respecto a los contactos</h2>
-
-        <article>
-            <h3> El poder de ser escuchado - Secretaría Distrital de Salud</h3> 
             
-            <img width=150px src="assest/linea106.png" alt="Logo de línea 106">
+           
+            <section id="tarjetas" class="contacto" >    
+                <h2>Tarjetas de Contactos</h2>
+                <div class="grid-tarjetas">
+                    <article class="tarjeta">
+                        <h3>El Poder de Ser Escuchado</h3>
 
-            <p>La Línea 106 o WhatsApp "300 754 8933" es un servicio de orientación en salud mental que <strong>brinda información, apoyo inicial y acompañamiento </strong>frente a situaciones que pueden afectar el bienestar emocional.</p>
+                        <p>
+                            📍 Atención psicológica gratuita. <br>
+                            🕐 Disponible según la ciudad. <br>
+                            💬 Chat y teléfono. <br>
+                            ☎️ 106 - 300 754 8933 <br>
+                        </p> 
 
-            <h4>¿Cuándo llamar?</h4>
+                        <div class="botones">
+                            <a href="tel:106">Llamar</a> 
+                            <a href="https://wa.me/573007548933">Chatear</a>
+                        </div>
+                    
+                    </article>
 
-            <p>Llama a la 106 o escríbete al WhatsApp siempre que necesites apoyo emocional, <strong>estés en crisis, te sientas en riesgo o simplemente necesites hablar</strong> con un profesional de salud mental.<br>
-            Es gratuita, confidencial y funciona 24/7.</p>
+                    <article class="tarjeta">
+                        <h3>Chatlemos - Chat de apoyo emocional</h3>
 
-            <h4>Vía: Telefónica, WhatsApp o Correo.</h4>
+                        <p>
+                            📍 Barranquilla. <br>
+                            💬 Atención por chat o videollamada. <br>
+                            👨‍⚕️ Psicólogos profesionales. <br>
+                            🆓 Gratuito. <br>
+                        </p> 
+                        <div class="botones">
+                            <a href="https://wa.me/573188044000">Chatear</a>
+                        </div>
+                        
+                    </article>
 
-            <a href="https://www.minsalud.gov.co/salud/publica/salud-mental/Paginas/linea-106.aspx"><strong>Más información - Ministerio de Salud</strong></a>
- 
-        </article>
+                    <article class="tarjeta" id="emergencia">
+                        
+                        <h3>Línea 123, Emergencias</h3>
 
-        <article>
-            <h3> Chatlemos - Distrito de Barranquilla</h3>
-            <img width=150px src="assest/Chatlemos.png" alt="Logo de Chatlemos">
+                        <p>
+                            🚨 Si en este momento:<br>
+                            • Piensas hacerte daño.<br>
+                            • Piensas hacer daño a otra persona.<br>
+                            • Sientes que has perdido el control.<br>
+                            • Tu vida o la de alguien está en peligro.<br><br>
+                            Llama inmediatamente al 123 o acude al servicio de urgencias más cercano.<br>
+                            ☎️ 123 <br>
+                        </p> 
+                        <div class="botones">
+                            <a href="tel:123">Llamar</a>
+                        </div>
 
-            <p>ChatLemos es la estrategia de salud mental implementada por la Alcaldía de Barranquilla, liderada por el alcalde Alejandro Char, que <strong>brinda atención psicológica gratuita</strong> a través de WhatsApp y videollamadas</p>
+                    </article>
+                </div>
+            </section>
 
-            <h4>¿Cuándo llamar?</h4>
+            <section class="text-center">
+                    
+                <h2 id="Información">Información de los contactos</h2>
 
-            <p>Atiende casos de<strong> ansiedad, depresión, ideación suicida y conflictos familiares,</strong> con un enfoque especial en jóvenes de 12 a 22 años.
-            </p>
+                <article>
+                    <h3> El poder de ser escuchado - Secretaría Distrital de Salud</h3> 
+                    
+                    <img width=150px src="assets/img/contactos/Linea106.png" alt="Logo oficial de línea 106, caras humanitarias.">
 
-            <h4>Vía: WhatsApp - Chat o Videollamada.</h4>
+                    <p>La Línea 106 o WhatsApp "300 754 8933" es un servicio de orientación en salud mental que <strong>brinda información, apoyo inicial y acompañamiento </strong>frente a situaciones que pueden afectar el bienestar emocional.</p>
 
-            <a href="https://barranquilla.gov.co/salud/salud-mental-chatlemos-trescientos-mil-ciudadanos-beneficiarios-2024"> <strong>Más información - Alcaldía</strong></a>
+                    <h4>¿Cuándo llamar?</h4>
 
-        </article>
+                    <p>Llama a la 106 o escríbete al WhatsApp siempre que necesites apoyo emocional, <strong>estés en crisis, te sientas en riesgo o simplemente necesites hablar</strong> con un profesional de salud mental.<br>
+                    Es gratuita, confidencial y funciona 24/7.</p>
 
-        <article>
-            <h3> Línea 123 - Emergencias</h3>
-            <img width=150px src="assest/123.png" alt="Logo de línea 123">
+                    <h4>Vía: Telefónica, WhatsApp o Correo.</h4>
 
-            <p>El 123 es la línea única de emergencias Nacional, que permite que en un sólo número los colombianos pueden acceder a todos <strong>los servicios de emergencia y seguridad</strong> que ofrece el Estado gratuitamente las 24 horas del día todos los días del año.</p>
-
-            <h4>¿Cuándo llamar?</h4>
-
-            <p>Para atender <strong>situaciones que pongan en riesgo la vida o la integridad física de las personas.</strong>
-            </p>
-
-            <h4>Vía: Telefónica</h4>
-
-            <a href="https://www1.funcionpublica.gov.co/preguntas-frecuentes/-/asset_publisher/sqxafjubsrEu/content/linea-unica-de-emergencias-nacional-123/28585938"> <strong>Más información - Función Pública</strong></a>
-
-        </article>
+                    <a href="https://www.minsalud.gov.co/salud/publica/salud-mental/Paginas/linea-106.aspx"><strong>Más información - Ministerio de Salud</strong></a>
         
-    </main>
-    
-    <footer>
-        <p><strong>Pedir ayuda es un acto de valentía.</strong> Conecta Contigo está aquí para orientarte, acompañarte y recordarte que no tienes que enfrentar tus emociones en soledad.</p>
+                </article>
 
-        <p><strong>Importante: </strong>Si tú o alguien cercano presenta una crisis emocional, pensamientos de hacerse daño o de lastimar a otras personas, <strong>busca ayuda inmediatamente</strong> a través de estos servicios o acude al centro de salud más cercano.</p>
+                <article>
+                    <h3> Chatlemos - Distrito de Barranquilla</h3>
+                    <img width=150px src="assets/img/contactos/Chatlemos.png" alt=", un globo de whatsApp y el nombre">
 
-        <p>⚠️ Esta plataforma complementa, pero no sustituye,
-        la atención de un profesional de la salud mental.</p>
+                    <p>ChatLemos es la estrategia de salud mental implementada por la Alcaldía de Barranquilla, liderada por el alcalde Alejandro Char, que <strong>brinda atención psicológica gratuita</strong> a través de WhatsApp y videollamadas</p>
 
-        <p>© 2026 Conecta Contigo. Todos los derechos reservados.</p>
-    </footer>
-</body>
+                    <h4>¿Cuándo llamar?</h4>
+
+                    <p>Atiende casos de<strong> ansiedad, depresión, ideación suicida y conflictos familiares,</strong> con un enfoque especial en jóvenes de 12 a 22 años.
+                    </p>
+
+                    <h4>Vía: WhatsApp - Chat o Videollamada.</h4>
+
+                    <a href="https://barranquilla.gov.co/salud/salud-mental-chatlemos-trescientos-mil-ciudadanos-beneficiarios-2024"> <strong>Más información - Alcaldía</strong></a>
+
+                </article>
+
+                <article>
+                    <h3> Línea 123 - Emergencias</h3>
+                    <img width=150px src="assets/img/contactos/123.png" alt="Logo de línea 123, número en grande con colores rojo y amarillo.">
+
+                    <p>El 123 es la línea única de emergencias Nacional, que permite que en un sólo número los colombianos pueden acceder a todos <strong>los servicios de emergencia y seguridad</strong> que ofrece el Estado gratuitamente las 24 horas del día todos los días del año.</p>
+
+                    <h4>¿Cuándo llamar?</h4>
+
+                    <p>Para atender <strong>situaciones que pongan en riesgo la vida o la integridad física de las personas.</strong>
+                    </p>
+
+                    <h4>Vía: Telefónica</h4>
+
+                    <a href="https://www1.funcionpublica.gov.co/preguntas-frecuentes/-/asset_publisher/sqxafjubsrEu/content/linea-unica-de-emergencias-nacional-123/28585938"> <strong>Más información - Función Pública</strong></a>
+
+                </article>
+            </section>
+            
+        </main>
+        
+        <footer>
+            <p><strong>Pedir ayuda es un acto de valentía.</strong> Conecta Contigo está aquí para orientarte, acompañarte y recordarte que no tienes que enfrentar tus emociones en soledad.</p>
+
+            <p><strong>Importante: </strong>Si tú o alguien cercano presenta una crisis emocional, pensamientos de hacerse daño o de lastimar a otras personas, <strong>busca ayuda inmediatamente</strong> a través de estos servicios o acude al centro de salud más cercano.</p>
+            
+            <aside>
+                <p>⚠️ Esta plataforma complementa, pero no sustituye,
+                la atención de un profesional de la salud mental.</p>
+            </aside>
+
+            <p>© 2026 Conecta Contigo. Todos los derechos reservados.</p>
+        </footer>
+    </body>
 
 </html>

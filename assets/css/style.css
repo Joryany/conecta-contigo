@@ -1,0 +1,218 @@
+/* --- VARIABLES DE COLOR --- */
+:root {
+    --azul-marino: #1e416b;
+    --azul-claro: #0962bb;
+    --verde-agua: #69B2AE;
+    --verde-hoja: #95C883;
+    --fondo-suave: #F2F7FA;
+    --blanco: #FFFFFF;
+    --sombra: rgba(17, 46, 81, 0.1);
+    --resalte: #F27D72;
+}
+
+/* --- CONTENEDOR GLOBAL --- */
+.container {
+    max-width: 1000px;
+    /* Limita el ancho máximo para que no se sienta estirado */
+    margin: 0 auto;
+    /* Centra el bloque en la pantalla */
+    padding: 0 20px;
+    /* Deja un respiro (margen) a los lados en pantallas pequeñas */
+}
+
+/* --- ESTILOS GENERALES --- */
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--fondo-suave);
+    color: var(--azul-marino);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--azul-marino);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;          /* Títulos más grandes que el texto */
+    color: var(--azul-marino);  /* Mantenemos tu color principal */
+    font-weight: 700;           /* Negrita para impacto */
+    text-align: center;         /* Centrado, como querías */
+    position: relative;         /* Para poder poner una línea decorativa */
+}
+
+/* Un toque profesional: una pequeña línea de color debajo del título */
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;                /* La línea es pequeña, no atraviesa toda la pantalla */
+    height: 4px;
+    
+    margin: 15px auto 0 auto;    /* Centrada y con espacio arriba */
+    border-radius: 2px;
+}
+
+/* Espaciado para todos los títulos */
+h2 {
+    margin-top: 60px;    /* Mucho espacio arriba para separar secciones */
+    margin-bottom: 25px; /* Espacio para que el texto debajo no se asfixie */
+    line-height: 1.2;    /* Títulos compactos pero claros */
+}
+
+/* Espaciado específico para secciones */
+main section, main .grid-tarjetas {
+    margin-bottom: 40px; /* Asegura que cada bloque tenga margen abajo */
+}
+
+.text-center h3, h2 {
+    text-align: center;
+}
+
+
+
+
+/* --- ENCABEZADO Y NAVEGACIÓN --- */
+header {
+    background-color: var(--blanco);
+    padding: 10px 5%;
+    /* Antes era 20px, ahora 10px */
+    text-align: center;
+    box-shadow: 0 2px 10px var(--sombra);
+    border-bottom: 4px solid var(--verde-agua);
+}
+
+.top-nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Esto asegura que el logo nunca sea demasiado grande */
+.top-nav-container img {
+    max-width: 80px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+}
+
+nav {
+    display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--azul-marino);
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    background-color: var(--fondo-suave);
+}
+
+nav a:hover {
+    background-color: var(--azul-claro);
+    color: var(--blanco);
+}
+
+header p {
+            max-width: 800px;
+            margin: 15px auto;
+            font-size: 1.1rem;
+            color: #334a66;
+        }
+
+/* Diseño para la navegación interna */
+
+/* --- NAVEGACIÓN TIPO BANNER --- */
+.nav-banner {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Más espacio para que respire */
+    padding: 25px 0;
+    margin: 40px 0;
+    
+    /* El "look" de banner */
+    background-color: rgba(255, 255, 255, 0.3); /* Un toque sutil de fondo */
+    border-top: 1px solid var(--azul-claro);
+    border-bottom: 1px solid var(--azul-claro);
+}
+
+.nav-banner a {
+     text-decoration: none;
+    color: var(--azul-marino);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent; /* Línea invisible por defecto */
+    transition: all 0.3s ease;
+}
+
+.nav-banner a:hover {
+     color: var(--blanco); /* Color al pasar el mouse */
+}
+
+
+
+
+/* --- COMPONENTES REUTILIZABLES --- */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 40px;
+}   
+
+
+
+.card {
+    background-color: var(--blanco);
+    border-radius: 12px;
+    padding: 35px;
+    box-shadow: 0 4px 15px var(--sombra);
+}
+
+
+/* --- PIE DE PÁGINA --- */
+footer {
+    background-color: var(--azul-marino);
+    color: var(--fondo-suave);
+    text-align: justify;
+    padding: 40px 20px;
+    margin-top: 60px;
+    border-top: 5px solid var(--verde-hoja);
+}
+
+
+footer p {
+    max-width: 800px;
+    margin: 10px auto;
+    opacity: 0.9;
+}
+
+footer p strong {
+    color: var(--verde-agua);
+}
