@@ -248,7 +248,7 @@ header{
 
      background: var(--blanco);
 
-    padding: 10px 5%;
+    padding: 22px 5%;
 
     border-bottom: 4px solid var(--verde-agua);
 
@@ -277,7 +277,7 @@ header{
 
 .top-nav-container img{
 
-    width:60px;
+    width:75px;
 
     max-width:100%;
 
@@ -380,7 +380,7 @@ header p{
 
     padding:0 0 6px;
 
-    border-radius:0;
+    border-radius:50px;
 
     border-bottom:2px solid transparent;
 
@@ -430,15 +430,18 @@ footer{
 
 footer p{
 
-    max-width:850px;
+    max-width:980px;
 
-    margin:10px auto;
+    margin:12px auto;
 
-    color:var(--blanco);
+    color:rgba(255,255,255,.95);
 
-    opacity:.95;
+    text-align:justify;
 
-    text-align:center;
+    text-align-last:left;
+
+    line-height:1.8;
+
 
 }
 
@@ -453,6 +456,8 @@ footer .copyright{
     margin-top:15px;
 
     opacity:.75;
+
+    text-align:center;
 
 }
 
