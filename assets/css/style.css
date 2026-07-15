@@ -48,14 +48,14 @@
 --texto: 1rem;
 --texto-grande: 1.1rem;
 
---titulo-1: clamp(2.4rem,4vw,3.2rem);
---titulo-2: 2rem;
+--titulo-1: clamp(2.8rem,4vw,3.5rem);
+--titulo-2: 2.2rem;
 --titulo-3: 1.45rem;
 
 /* Componentes */
 
 --padding-card:24px;
---padding-seccion:35px;
+--padding-seccion:30px;
 
 --boton-y:11px;
 --boton-x:22px;
