@@ -686,6 +686,15 @@ function actualizarEvaluacion(datos){
 
     }
 
+    const impactoAprendio = document.getElementById("kpiImpactoAprendio");
+if(impactoAprendio){ impactoAprendio.innerText = datos.aprendio; }
+
+const impactoContribuye = document.getElementById("kpiImpactoContribuye");
+if(impactoContribuye){ impactoContribuye.innerText = datos.contribuye; }
+
+const impactoRecomienda = document.getElementById("kpiImpactoRecomienda");
+if(impactoRecomienda){ impactoRecomienda.innerText = datos.recomienda; }
+
 }
 
 
