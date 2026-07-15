@@ -1,0 +1,138 @@
+:root {
+      --azul-principal: #1E88E5;
+      --azul-claro: #E3F2FD;
+      --blanco: #FFFFFF;
+      --gris-fondo: #F5F7FA;
+      --verde-exito: #66BB6A;
+      --texto-oscuro: #2C3E50;
+      --texto-suave: #607D8B;
+      --sombra: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+    body { background-color: var(--blanco); color: var(--texto-oscuro); line-height: 1.6; }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 1. HERO SECTION */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(180deg, var(--azul-claro) 0%, var(--blanco) 100%);
+    }
+
+    .hero h1 {
+      color: var(--azul-principal);
+      font-size: 2.4em;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      color: var(--texto-suave);
+      font-size: 1.1em;
+    }
+
+    .hero-img {
+      max-width: 180px;
+      opacity: 0.85;
+    }
+
+    /* 2. DISEÑO DE LA EVALUACIÓN (METODOLOGÍA CORTA) */
+    .evaluacion-info {
+      background: var(--azul-claro);
+      border-radius: 16px;
+      padding: 35px;
+      margin: 40px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .diagrama-flujo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.9em;
+    }
+
+    .paso-flujo {
+      background: var(--blanco);
+      padding: 10px;
+      border-radius: 8px;
+      color: var(--azul-principal);
+      box-shadow: var(--sombra);
+    }
+
+    .flecha {
+      color: var(--azul-principal);
+    }
+
+    /* 3. TARJETAS DE RESULTADOS GENERALES */
+    .seccion-titulo {
+      text-align: center;
+      color: var(--azul-principal);
+      margin: 50px 0 20px;
+      font-size: 1.8em;
+    }
+
+    .subtitulo {
+      text-align: center;
+      color: var(--texto-suave);
+      margin-bottom: 30px;
+    }
+    
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px; }
+    .kpi-card { background: var(--blanco); border: 2px solid var(--azul-claro); border-radius: 12px; padding: 25px; text-align: center; box-shadow: var(--sombra); }
+    .kpi-valor { font-size: 2.5em; font-weight: bold; color: var(--verde-exito); }
+    .kpi-label { color: var(--texto-suave); font-weight: 500; }
+
+    .grid-preguntas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
+    .card-pregunta { background: var(--blanco); border-radius: 12px; padding: 20px; border: 1px solid #E0E0E0; box-shadow: var(--sombra); }
+    .card-pregunta h4 { color: var(--azul-principal); margin-bottom: 15px; font-size: 1em; text-align: center; }
+    .metricas-comparativa { display: flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--gris-fondo); font-size: 0.85em; }
+    .badge-incremento { background-color: #E8F5E9; color: var(--verde-exito); padding: 2px 8px; border-radius: 12px; font-weight: bold; }
+
+    .comments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 50px; }
+    .comment-card { background: var(--gris-fondo); padding: 20px; border-radius: 12px; font-style: italic; color: var(--texto-oscuro); border-left: 4px solid var(--azul-principal); }
+    
+    /* 7. INFORMACIÓN METODOLÓGICA Y PIE */
+    .metodologia-box {
+      background: var(--gris-fondo);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .metodologia-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .metodologia-item strong {
+      color: var(--azul-principal);
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.85em;
+      color: var(--texto-suave);
+      border-top: 1px solid var(--gris-fondo);
+    }
+
+    /* Adaptación a pantallas pequeñas */
+    @media (max-width: 768px) {
+      .evaluacion-info, .grid-dos-columnas {
+        grid-template-columns: 1fr;
+      }
+    }

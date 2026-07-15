@@ -1,481 +1,1181 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Evaluación del Impacto - Conecta Contigo</title>
+
+  <title>Evaluación del impacto | Conecta Contigo</title>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/index.css">
-  <style>
-    :root {
-      --azul-principal: #1E88E5;
-      --azul-claro: #E3F2FD;
-      --blanco: #FFFFFF;
-      --gris-fondo: #F5F7FA;
-      --verde-exito: #66BB6A;
-      --texto-oscuro: #2C3E50;
-      --texto-suave: #607D8B;
-      --sombra: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-    body { background-color: var(--blanco); color: var(--texto-oscuro); line-height: 1.6; }
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
+  <link rel="stylesheet" href="assets/css/estadistica.css">
 
-    /* 1. HERO SECTION */
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(180deg, var(--azul-claro) 0%, var(--blanco) 100%);
-    }
+  <script src="assets/js/estadistica.js" defer></script>
 
-    .hero h1 {
-      color: var(--azul-principal);
-      font-size: 2.4em;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      max-width: 800px;
-      margin: 0 auto 30px;
-      color: var(--texto-suave);
-      font-size: 1.1em;
-    }
-
-    .hero-img {
-      max-width: 180px;
-      opacity: 0.85;
-    }
-
-    /* 2. DISEÑO DE LA EVALUACIÓN (METODOLOGÍA CORTA) */
-    .evaluacion-info {
-      background: var(--azul-claro);
-      border-radius: 16px;
-      padding: 35px;
-      margin: 40px 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .diagrama-flujo {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      text-align: center;
-      font-weight: 600;
-      font-size: 0.9em;
-    }
-
-    .paso-flujo {
-      background: var(--blanco);
-      padding: 10px;
-      border-radius: 8px;
-      color: var(--azul-principal);
-      box-shadow: var(--sombra);
-    }
-
-    .flecha {
-      color: var(--azul-principal);
-    }
-
-    /* 3. TARJETAS DE RESULTADOS GENERALES */
-    .seccion-titulo {
-      text-align: center;
-      color: var(--azul-principal);
-      margin: 50px 0 20px;
-      font-size: 1.8em;
-    }
-
-    .subtitulo {
-      text-align: center;
-      color: var(--texto-suave);
-      margin-bottom: 30px;
-    }
-    
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px; }
-    .kpi-card { background: var(--blanco); border: 2px solid var(--azul-claro); border-radius: 12px; padding: 25px; text-align: center; box-shadow: var(--sombra); }
-    .kpi-valor { font-size: 2.5em; font-weight: bold; color: var(--verde-exito); }
-    .kpi-label { color: var(--texto-suave); font-weight: 500; }
-
-    .grid-preguntas { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
-    .card-pregunta { background: var(--blanco); border-radius: 12px; padding: 20px; border: 1px solid #E0E0E0; box-shadow: var(--sombra); }
-    .card-pregunta h4 { color: var(--azul-principal); margin-bottom: 15px; font-size: 1em; text-align: center; }
-    .metricas-comparativa { display: flex; justify-content: space-around; margin-top: 15px; padding-top: 15px; border-top: 1px solid var(--gris-fondo); font-size: 0.85em; }
-    .badge-incremento { background-color: #E8F5E9; color: var(--verde-exito); padding: 2px 8px; border-radius: 12px; font-weight: bold; }
-
-    .comments-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 50px; }
-    .comment-card { background: var(--gris-fondo); padding: 20px; border-radius: 12px; font-style: italic; color: var(--texto-oscuro); border-left: 4px solid var(--azul-principal); }
-    
-    /* 7. INFORMACIÓN METODOLÓGICA Y PIE */
-    .metodologia-box {
-      background: var(--gris-fondo);
-      border-radius: 12px;
-      padding: 30px;
-      margin-bottom: 40px;
-    }
-
-    .metodologia-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin-top: 15px;
-    }
-
-    .metodologia-item strong {
-      color: var(--azul-principal);
-      display: block;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      font-size: 0.85em;
-      color: var(--texto-suave);
-      border-top: 1px solid var(--gris-fondo);
-    }
-
-    /* Adaptación a pantallas pequeñas */
-    @media (max-width: 768px) {
-      .evaluacion-info, .grid-dos-columnas {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
+
 <body>
 
-   <header>
-            <div class="top-nav-container">
-                <img width="100px" src="assets/img/index/logo-sin-texto.png" alt="Logo de la Página, un lazo azul">
-        
-                <nav>
-                    <a href="index.html">Inicio</a>
-                    <a href="contacto.html">Contactos</a>
-                    <a href="conoce.html">Conoce</a>
-                    <a href="diario.html">Emocional</a>
-                </nav>
-            </div>
+  <header class="hero">
+
+    <section class="hero__contenido">
+
+      <p class="hero__categoria">
+        Investigación documental • Evaluación de resultados
+      </p>
+
+      <h1>
+        Evaluación del impacto de Conecta Contigo
+      </h1>
+
+      <p class="hero__descripcion">
+        Esta sección presenta los resultados obtenidos durante la evaluación de
+        <strong>Conecta Contigo</strong>, una estrategia digital desarrollada para
+        sensibilizar e informar a adolescentes sobre los traumas infantiles,
+        los rasgos antisociales y la promoción de la salud mental.
+      </p>
+
+      <p class="hero__descripcion">
+        Los resultados fueron obtenidos mediante la comparación de un cuestionario
+        aplicado antes y después de utilizar la plataforma, permitiendo analizar
+        los cambios en el conocimiento y la percepción de los participantes.
+      </p>
+
+      <nav aria-label="Acceso rápido a los resultados">
+
+        <a href="#resultados-generales" class="btn-principal">
+          📊 Ver resultados de la investigación
+        </a>
+
+      </nav>
+
+    </section>
+
+    <figure class="hero__grafico">
+
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-labelledby="tituloGraficoHero">
+
+        <title id="tituloGraficoHero">
+          Representación del análisis estadístico
+        </title>
+
+        <rect x="10" y="50" width="15" height="40" rx="4"></rect>
+        <rect x="35" y="30" width="15" height="60" rx="4"></rect>
+        <rect x="60" y="10" width="15" height="80" rx="4"></rect>
+
+        <path d="M12 45 L37 25 L62 5" stroke-width="3" stroke-linecap="round">
+        </path>
+
+      </svg>
+
+      <figcaption>
+        Comparación estadística de los resultados obtenidos durante la evaluación.
+      </figcaption>
+
+    </figure>
+
+  </header>
+
+  <main>
+
+    <!-- ===================================================== -->
+    <!-- INTRODUCCIÓN -->
+    <!-- ===================================================== -->
+
+    <section class="introduccion" aria-labelledby="titulo-introduccion">
+
+      <header>
+
+        <h2 id="titulo-introduccion">
+          Introducción
+        </h2>
+
+      </header>
+
+      <article>
+
+        <p>
+          La presente evaluación forma parte de la investigación
+          <strong>Influencia de los traumas infantiles en el desarrollo de rasgos antisociales y conductas delictivas en
+            adolescentes del Colegio Jerusalem</strong>.
+        </p>
+
+        <p>
+          Como resultado de esta investigación se diseñó la plataforma
+          <strong>Conecta Contigo</strong>, una estrategia digital orientada a la
+          sensibilización, la promoción de la salud mental y la difusión de
+          información basada en evidencia científica.
+        </p>
+
+        <p>
+          Con el propósito de evaluar el impacto de la plataforma, se aplicó un
+          formulario antes y otro después de su utilización, permitiendo comparar
+          el nivel de conocimiento de los participantes y conocer su percepción
+          sobre la utilidad de la estrategia desarrollada.
+        </p>
+
+      </article>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- ¿CÓMO INTERPRETAR? -->
+    <!-- ===================================================== -->
+
+    <section class="interpretacion" aria-labelledby="titulo-interpretacion">
+
+      <header>
+
+        <h2 id="titulo-interpretacion">
+          ¿Cómo interpretar estos resultados?
+        </h2>
+
+      </header>
+
+      <article>
+
+        <h3>🟦 Antes</h3>
+
+        <p>
+          Representa las respuestas obtenidas antes de explorar la plataforma,
+          permitiendo conocer el nivel inicial de conocimientos de los participantes.
+        </p>
+
+      </article>
+
+      <article>
+
+        <h3>🟩 Después</h3>
+
+        <p>
+          Corresponde a las respuestas registradas luego de utilizar Conecta Contigo
+          y recorrer sus recursos educativos.
+        </p>
+
+      </article>
+
+      <article>
+
+        <h3>📈 Impacto</h3>
+
+        <p>
+          Muestra la diferencia entre ambos momentos de evaluación, permitiendo
+          identificar posibles cambios en el conocimiento y la sensibilización.
+        </p>
+
+      </article>
+
+      <article>
+
+        <h3>📊 Promedios</h3>
+
+        <p>
+          Las puntuaciones corresponden a medias calculadas a partir de las
+          respuestas registradas en los formularios de evaluación.
+        </p>
+
+      </article>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- CONSIDERACIÓN METODOLÓGICA -->
+    <!-- ===================================================== -->
+
+    <aside class="nota-metodologica">
+
+      <h2>
+        Consideración metodológica
+      </h2>
+
+      <p>
+        Esta evaluación tiene un propósito exclusivamente académico y no constituye
+        un diagnóstico psicológico o psiquiátrico. Su finalidad consiste en valorar
+        el impacto educativo de la estrategia digital mediante la comparación de los
+        conocimientos de los participantes antes y después de utilizar la plataforma.
+      </p>
+
+      <p>
+        Para garantizar la confidencialidad de la información, ambos cuestionarios
+        fueron vinculados mediante un código personal anónimo, evitando registrar
+        nombres o datos que permitieran identificar a los participantes.
+      </p>
+
+    </aside>
+
+    <!-- ===================================================== -->
+    <!-- RESUMEN METODOLÓGICO -->
+    <!-- ===================================================== -->
+
+    <section class="metodologia" aria-labelledby="titulo-metodologia">
+
+      <header>
+
+        <h2 id="titulo-metodologia">
+          Resumen metodológico de la evaluación
+        </h2>
+
+        <p>
+          La evaluación del impacto de <strong>Conecta Contigo</strong> se desarrolló
+          mediante un diseño pretest y postest, permitiendo comparar el nivel de
+          conocimiento de los participantes antes y después de utilizar la plataforma.
+        </p>
+
+      </header>
+
+      <dl>
+
+        <dt>Enfoque</dt>
+        <dd>Cuantitativo.</dd>
+
+        <dt>Tipo de investigación</dt>
+        <dd>Investigación documental con evaluación de una estrategia digital educativa.</dd>
+
+        <dt>Diseño de evaluación</dt>
+        <dd>Pretest y postest con un mismo grupo de participantes.</dd>
+
+        <dt>Instrumentos</dt>
+        <dd>Dos cuestionarios digitales elaborados en Google Forms.</dd>
+
+        <dt>Población</dt>
+        <dd>Estudiantes de secundaria del Colegio Jerusalem.</dd>
+
+        <dt>Análisis estadístico</dt>
+        <dd>Estadística descriptiva mediante comparación de medias, porcentajes y frecuencias.</dd>
+
+        <dt>Confidencialidad</dt>
+        <dd>Identificación mediante código personal anónimo.</dd>
+
+      </dl>
+
+    </section>
+
+
+
+    <!-- ===================================================== -->
+    <!-- VARIABLES DEL ESTUDIO -->
+    <!-- ===================================================== -->
+
+    <section class="variables" aria-labelledby="titulo-variables">
+
+      <header>
+
+        <h2 id="titulo-variables">
+          Variables analizadas
+        </h2>
+
+      </header>
+
+      <article>
+
+        <h3>Variable independiente</h3>
+
+        <p>
+          Traumas infantiles.
+        </p>
+
+      </article>
+
+      <article>
+
+        <h3>Variable dependiente</h3>
+
+        <p>
+          Desarrollo de rasgos antisociales y conductas delictivas durante la adolescencia.
+        </p>
+
+      </article>
+
+    </section>
+
+
+
+    <!-- ===================================================== -->
+    <!-- PROCESO DE EVALUACIÓN -->
+    <!-- ===================================================== -->
+
+    <section class="proceso" aria-labelledby="titulo-proceso">
+
+      <header>
+
+        <h2 id="titulo-proceso">
+          Proceso de evaluación
+        </h2>
+
+        <p>
+          La evaluación se desarrolló siguiendo una secuencia que permitió analizar
+          el impacto de la plataforma sobre los conocimientos de los participantes.
+        </p>
+
+      </header>
+
+      <article>
+
+        <h3>1. Aplicación del formulario inicial</h3>
+
+        <p>
+          Se identificó el nivel de conocimiento previo sobre traumas infantiles,
+          rasgos antisociales, salud mental y rutas de ayuda.
+        </p>
+
+      </article>
+
+      <article>
+
+        <h3>2. Exploración de Conecta Contigo</h3>
+
+        <p>
+          Los estudiantes navegaron por los contenidos, herramientas y recursos
+          educativos disponibles en la plataforma.
+        </p>
+
+      </article>
+
+      <article>
+
+        <h3>3. Aplicación del formulario final</h3>
+
+        <p>
+          Se evaluó nuevamente el nivel de conocimiento y la percepción de los
+          participantes después de utilizar la plataforma.
+        </p>
+
+      </article>
+
+      <article>
+
+        <h3>4. Análisis de resultados</h3>
+
+        <p>
+          Las respuestas obtenidas fueron comparadas para identificar cambios en
+          los conocimientos y en la percepción de los estudiantes.
+        </p>
+
+      </article>
+
+    </section>
+
+
+
+    <!-- ===================================================== -->
+    <!-- INDICADORES PRINCIPALES -->
+    <!-- ===================================================== -->
+
+    <section class="kpis" id="resultados-generales" aria-labelledby="titulo-kpis">
+
+      <header>
+
+        <h2 id="titulo-kpis">
+          Indicadores principales de la evaluación
+        </h2>
+
+        <p>
+          Los siguientes indicadores resumen la percepción general de los
+          participantes sobre la plataforma Conecta Contigo.
+        </p>
+
+      </header>
+
+      <article class="kpi">
+
+        <h3>Participantes</h3>
+
+        <p id="kpiParticipantes">
+          --
+        </p>
+
+        <small>Estudiantes que participaron en la evaluación.</small>
+
+      </article>
+
+      <article class="kpi">
+
+        <h3>Calificación promedio</h3>
+
+        <p id="kpiCalificacion">
+          0.0 / 5
+        </p>
+
+        <small>Valoración general de la plataforma.</small>
+
+      </article>
+
+      <article class="kpi">
+
+        <h3>Aprendizaje percibido</h3>
+
+        <p id="kpiAprendio">
+          0%
+        </p>
+
+        <small>Participantes que afirmaron haber aprendido.</small>
+
+      </article>
+
+      <article class="kpi">
+
+        <h3>Recomendación</h3>
+
+        <p id="kpiRecomienda">
+          0%
+        </p>
+
+        <small>Participantes que recomendarían la plataforma.</small>
+
+      </article>
+
+      <article class="kpi">
+
+        <h3>Contribución a la prevención</h3>
+
+        <p id="kpiContribuye">
+          --
+        </p>
+
+        <small>
+          Consideran que la plataforma contribuye a la promoción de la salud mental.
+        </small>
+
+      </article>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- COMPARACIÓN PRETEST VS POSTEST -->
+    <!-- ===================================================== -->
+
+    <section class="comparacion" aria-labelledby="titulo-comparacion">
+
+      <header>
+
+        <h2 id="titulo-comparacion">
+          Comparación entre el pretest y el postest
+        </h2>
+
+        <p>
+          En esta sección se comparan las medias obtenidas antes y después de utilizar
+          <strong>Conecta Contigo</strong>. Cada resultado corresponde a una dimensión
+          evaluada mediante los formularios de investigación.
+        </p>
+
+      </header>
+
+      <!-- ================= CONOCIMIENTOS ================= -->
+
+      <section class="dimension" aria-labelledby="dimension-conocimientos">
+
+        <header>
+
+          <h3 id="dimension-conocimientos">
+            Conocimientos sobre la temática
+          </h3>
+
         </header>
 
-    <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="container">
-      <h1>Evaluación del impacto de Conecta Contigo</h1>
-      <p>Conoce cómo esta herramienta fue evaluada mediante cuestionarios aplicados antes y después de su uso, con el objetivo de analizar su aporte al conocimiento sobre los traumas infantiles, los rasgos antisociales y la promoción de la salud mental.</p>
-      <!-- SVG decorativo de análisis -->
-      <svg class="hero-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="50" width="15" height="40" rx="4" fill="#1E88E5"/>
-        <rect x="35" y="30" width="15" height="60" rx="4" fill="#66BB6A"/>
-        <rect x="60" y="10" width="15" height="80" rx="4" fill="#1E88E5"/>
-        <path d="M12 45 L37 25 L62 5" stroke="#2C3E50" stroke-width="3" stroke-linecap="round"/>
-      </svg>
-    </div>
-  </section>
+        <!-- Trauma -->
 
-  <div class="container">
+        <article class="resultado">
 
-    <!-- ¿CÓMO SE REALIZÓ LA EVALUACIÓN? -->
-    <section class="evaluacion-info">
-      <div>
-        <h3 style="color: var(--azul-principal); margin-bottom: 10px;">Diseño de la evaluación</h3>
-        <p>Para evaluar la efectividad de <strong>Conecta Contigo</strong> se aplicó un diseño de medidas repetidas (Pre-test y Post-test). Cada participante respondió un cuestionario antes de utilizar la página y otro al finalizar su recorrido.</p>
-        <br>
-        <p>Ambos formularios fueron vinculados mediante un código anónimo, permitiendo comparar el aprendizaje del mismo estudiante sin comprometer su identidad.</p>
-      </div>
+          <header>
 
-      <div class="diagrama-flujo">
-        <div class="paso-flujo">Formulario Inicial</div>
-        <div class="flecha">↓</div>
-        <div class="paso-flujo">Uso de la página</div>
-        <div class="flecha">↓</div>
-        <div class="paso-flujo">Formulario Final</div>
-        <div class="flecha">↓</div>
-        <div class="paso-flujo" style="background: var(--azul-principal); color: white;">Resultados y Comparación</div>
-      </div>
+            <h4>Traumas infantiles</h4>
+
+          </header>
+
+          <figure>
+
+            <canvas id="chartTrauma"></canvas>
+
+            <figcaption>
+              Comparación de medias antes y después de la intervención.
+            </figcaption>
+
+          </figure>
+
+          <dl>
+
+            <dt>Media inicial</dt>
+            <dd id="preTrauma">0</dd>
+
+            <dt>Media final</dt>
+            <dd id="postTrauma">0</dd>
+
+            <dt>Incremento</dt>
+            <dd id="incTrauma">0%</dd>
+
+          </dl>
+
+          <aside>
+
+            <p>
+              Evalúa el conocimiento de los participantes sobre los traumas
+              infantiles y sus posibles consecuencias durante la adolescencia.
+            </p>
+
+          </aside>
+
+        </article>
+
+        <!-- Rasgos -->
+
+        <article class="resultado">
+
+          <header>
+
+            <h4>Rasgos antisociales</h4>
+
+          </header>
+
+          <figure>
+
+            <canvas id="chartAntisociales"></canvas>
+
+            <figcaption>
+              Comparación de medias antes y después de la intervención.
+            </figcaption>
+
+          </figure>
+
+          <dl>
+
+            <dt>Media inicial</dt>
+            <dd id="preAntisociales">0</dd>
+
+            <dt>Media final</dt>
+            <dd id="postAntisociales">0</dd>
+
+            <dt>Incremento</dt>
+            <dd id="incAntisociales">0%</dd>
+
+          </dl>
+
+          <aside>
+
+            <p>
+              Evalúa el conocimiento acerca de los rasgos antisociales y su
+              relación con experiencias adversas durante la infancia.
+            </p>
+
+          </aside>
+
+        </article>
+
+        <!-- Comprensión -->
+
+        <article class="resultado">
+
+          <header>
+
+            <h4>Comprensión general</h4>
+
+          </header>
+
+          <figure>
+
+            <canvas id="chartComprension"></canvas>
+
+            <figcaption>
+              Comparación de medias antes y después de la intervención.
+            </figcaption>
+
+          </figure>
+
+          <dl>
+
+            <dt>Media inicial</dt>
+            <dd id="preComprension">0</dd>
+
+            <dt>Media final</dt>
+            <dd id="postComprension">0</dd>
+
+            <dt>Incremento</dt>
+            <dd id="incComprension">0%</dd>
+
+          </dl>
+
+          <aside>
+
+            <p>
+              Mide la comprensión sobre cómo las experiencias de la infancia
+              pueden influir en las emociones y conductas durante la adolescencia.
+            </p>
+
+          </aside>
+
+        </article>
+
+      </section>
+
+
+
+      <!-- ================= PROMOCIÓN DE LA SALUD ================= -->
+
+      <section class="dimension" aria-labelledby="dimension-salud">
+
+        <header>
+
+          <h3 id="dimension-salud">
+            Promoción de la salud mental
+          </h3>
+
+        </header>
+
+        <!-- Rutas -->
+
+        <article class="resultado">
+
+          <header>
+
+            <h4>Rutas de ayuda</h4>
+
+          </header>
+
+          <figure>
+
+            <canvas id="chartRutas"></canvas>
+
+            <figcaption>
+              Comparación de medias antes y después de la intervención.
+            </figcaption>
+
+          </figure>
+
+          <dl>
+
+            <dt>Media inicial</dt>
+            <dd id="preRutas">0</dd>
+
+            <dt>Media final</dt>
+            <dd id="postRutas">0</dd>
+
+            <dt>Incremento</dt>
+            <dd id="incRutas">0%</dd>
+
+          </dl>
+
+          <aside>
+
+            <p>
+              Evalúa el conocimiento sobre las rutas disponibles para buscar
+              apoyo profesional en salud mental.
+            </p>
+
+          </aside>
+
+        </article>
+
+        <!-- Salud mental -->
+
+        <article class="resultado">
+
+          <header>
+
+            <h4>Importancia de la salud mental</h4>
+
+          </header>
+
+          <figure>
+
+            <canvas id="chartSaludMental"></canvas>
+
+            <figcaption>
+              Comparación de medias antes y después de la intervención.
+            </figcaption>
+
+          </figure>
+
+          <dl>
+
+            <dt>Media inicial</dt>
+            <dd id="preSaludMental">0</dd>
+
+            <dt>Media final</dt>
+            <dd id="postSaludMental">0</dd>
+
+            <dt>Incremento</dt>
+            <dd id="incSaludMental">0%</dd>
+
+          </dl>
+
+          <aside>
+
+            <p>
+              Refleja la percepción de los participantes sobre la importancia
+              del cuidado de la salud mental durante la adolescencia.
+            </p>
+
+          </aside>
+
+        </article>
+
+        <!-- Señales de alerta -->
+
+        <article class="resultado">
+
+          <header>
+
+            <h4>Identificación de señales de alerta</h4>
+
+          </header>
+
+          <figure>
+
+            <canvas id="chartSenales"></canvas>
+
+            <figcaption>
+              Comparación de medias antes y después de la intervención.
+            </figcaption>
+
+          </figure>
+
+          <dl>
+
+            <dt>Media inicial</dt>
+            <dd id="preSenales">0</dd>
+
+            <dt>Media final</dt>
+            <dd id="postSenales">0</dd>
+
+            <dt>Incremento</dt>
+            <dd id="incSenales">0%</dd>
+
+          </dl>
+
+          <aside>
+
+            <p>
+              Evalúa la capacidad percibida para reconocer señales de alerta
+              relacionadas con la salud mental en sí mismo o en otras personas.
+            </p>
+
+          </aside>
+
+        </article>
+
+        <!-- Búsqueda de ayuda -->
+
+        <article class="resultado">
+
+          <header>
+
+            <h4>Disposición para buscar ayuda profesional</h4>
+
+          </header>
+
+          <figure>
+
+            <canvas id="chartAyuda"></canvas>
+
+            <figcaption>
+              Comparación de medias antes y después de la intervención.
+            </figcaption>
+
+          </figure>
+
+          <dl>
+
+            <dt>Media inicial</dt>
+            <dd id="preAyuda">0</dd>
+
+            <dt>Media final</dt>
+            <dd id="postAyuda">0</dd>
+
+            <dt>Incremento</dt>
+            <dd id="incAyuda">0%</dd>
+
+          </dl>
+
+          <aside>
+
+            <p>
+              Evalúa el nivel de seguridad percibido por los participantes
+              para buscar ayuda profesional en caso de necesitar apoyo emocional.
+            </p>
+
+          </aside>
+
+        </article>
+
+      </section>
+
     </section>
 
-  
-  <div class="container">
+    <!-- ===================================================== -->
+    <!-- EVALUACIÓN DE LA PLATAFORMA -->
+    <!-- ===================================================== -->
 
-    <!-- RESULTADOS GENERALES -->
-    <h2 class="seccion-titulo">Resultados generales</h2>
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="kpi-valor" id="kpiCalificacion">0.0/5</div>
-        <div class="kpi-label">Calificación promedio</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-valor" id="kpiAprendio">0%</div>
-        <div class="kpi-label">Afirma haber aprendido</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-valor" id="kpiRecomienda">0%</div>
-        <div class="kpi-label">Recomienda la plataforma</div>
-      </div>
-    </div>
+    <section class="evaluacion" aria-labelledby="titulo-evaluacion">
 
-    <!-- COMPARACIÓN ANTES VS DESPUÉS -->
-    <h2 class="seccion-titulo">Comparación Antes vs. Después</h2>
-    <p class="subtitulo">Medias obtenidas antes (Pre-test) y después (Post-test) de explorar la plataforma.</p>
+      <header>
 
-    <div class="grid-preguntas">
-      <div class="card-pregunta">
-        <h4>1. Conocimiento sobre trauma infantil</h4>
-        <canvas id="chartTrauma"></canvas>
-        <div class="metricas-comparativa">
-          <span>Media Pre: <strong id="preTrauma">0</strong></span>
-          <span>Media Post: <strong id="postTrauma">0</strong></span>
-          <span class="badge-incremento" id="incTrauma">+0%</span>
-        </div>
-      </div>
-      <div class="card-pregunta">
-        <h4>2. Conocimiento sobre rasgos antisociales</h4>
-        <canvas id="chartAntisociales"></canvas>
-        <div class="metricas-comparativa">
-          <span>Media Pre: <strong id="preAntisociales">0</strong></span>
-          <span>Media Post: <strong id="postAntisociales">0</strong></span>
-          <span class="badge-incremento" id="incAntisociales">+0%</span>
-        </div>
-      </div>
-      <div class="card-pregunta">
-        <h4>3. Conocimiento sobre rutas de ayuda</h4>
-        <canvas id="chartRutas"></canvas>
-        <div class="metricas-comparativa">
-          <span>Media Pre: <strong id="preRutas">0</strong></span>
-          <span>Media Post: <strong id="postRutas">0</strong></span>
-          <span class="badge-incremento" id="incRutas">+0%</span>
-        </div>
-      </div>
-      <div class="card-pregunta">
-        <h4>4. Importancia de la salud mental</h4>
-        <canvas id="chartSaludMental"></canvas>
-        <div class="metricas-comparativa">
-          <span>Media Pre: <strong id="preSaludMental">0</strong></span>
-          <span>Media Post: <strong id="postSaludMental">0</strong></span>
-          <span class="badge-incremento" id="incSaludMental">+0%</span>
-        </div>
-      </div>
-      <div class="card-pregunta">
-        <h4>5. Comprensión general</h4>
-        <canvas id="chartComprension"></canvas>
-        <div class="metricas-comparativa">
-          <span>Media Pre: <strong id="preComprension">0</strong></span>
-          <span>Media Post: <strong id="postComprension">0</strong></span>
-          <span class="badge-incremento" id="incComprension">+0%</span>
-        </div>
-      </div>
-    </div>
+        <h2 id="titulo-evaluacion">
+          Evaluación de la plataforma Conecta Contigo
+        </h2>
 
-    <!-- COMENTARIOS DE PARTICIPANTES -->
-    <h2 class="seccion-titulo">Comentarios de los participantes</h2>
-    <div class="comments-grid" id="contenedorComentarios">
-      <p style="text-align:center; grid-column: 1/-1; color: var(--texto-suave);">Cargando comentarios...</p>
-    </div>
+        <p>
+          El formulario posterior permitió conocer la percepción de los
+          participantes sobre la experiencia de uso, la calidad de la
+          información y la utilidad de la plataforma como estrategia de
+          sensibilización y promoción de la salud mental.
+        </p>
 
-  </div>
+      </header>
 
-  <!-- INFORMACIÓN METODOLÓGICA -->
-    <section class="metodologia-box">
-      <h3 style="color: var(--azul-principal);">Metodología de investigación</h3>
-      <div class="metodologia-grid">
-        <div class="metodologia-item">
-          <strong>Diseño</strong>
-          Pre-test / Post-test (Medidas repetidas)
-        </div>
-        <div class="metodologia-item">
-          <strong>Instrumento</strong>
-          Formularios digitales de Google Forms
-        </div>
-        <div class="metodologia-item">
-          <strong>Población</strong>
-          Estudiantes de secundaria (Colegio Jerusalem)
-        </div>
-        <div class="metodologia-item">
-          <strong>Análisis</strong>
-          Comparación de medias y frecuencias
-        </div>
-        <div class="metodologia-item">
-          <strong>Anonimato</strong>
-          Código de identificación personal sin nombres
-        </div>
-      </div>
+
+
+      <!-- ============================================= -->
+      <!-- EXPERIENCIA DE USO -->
+      <!-- ============================================= -->
+
+      <section class="subseccion-evaluacion" aria-labelledby="titulo-experiencia">
+
+        <header>
+
+          <h3 id="titulo-experiencia">
+            Experiencia de uso
+          </h3>
+
+        </header>
+
+        <article>
+
+          <h4>Calificación general</h4>
+
+          <p id="kpiCalificacion">
+            0.0 / 5
+          </p>
+
+          <small>
+            Valoración promedio otorgada por los participantes.
+          </small>
+
+        </article>
+
+        <article>
+
+          <h4>Facilidad de navegación</h4>
+
+          <p id="kpiNavegacion">
+            --
+          </p>
+
+          <small>
+            Percepción sobre la facilidad para recorrer la plataforma.
+          </small>
+
+        </article>
+
+      </section>
+
+
+
+      <!-- ============================================= -->
+      <!-- CALIDAD DEL CONTENIDO -->
+      <!-- ============================================= -->
+
+      <section class="subseccion-evaluacion" aria-labelledby="titulo-contenido">
+
+        <header>
+
+          <h3 id="titulo-contenido">
+            Calidad del contenido
+          </h3>
+
+        </header>
+
+        <article>
+
+          <h4>Información clara</h4>
+
+          <p id="kpiClaridad">
+            --
+          </p>
+
+          <small>
+            Participantes que consideraron clara la información presentada.
+          </small>
+
+        </article>
+
+        <article>
+
+          <h4>Información confiable</h4>
+
+          <p id="kpiConfiabilidad">
+            --
+          </p>
+
+          <small>
+            Participantes que percibieron la información como confiable y basada en evidencia científica.
+          </small>
+
+        </article>
+
+      </section>
+
+
+
+      <!-- ============================================= -->
+      <!-- IMPACTO PERCIBIDO -->
+      <!-- ============================================= -->
+
+      <section class="subseccion-evaluacion" aria-labelledby="titulo-impacto">
+
+        <header>
+
+          <h3 id="titulo-impacto">
+            Impacto percibido
+          </h3>
+
+        </header>
+
+        <article>
+
+          <h4>Aprendizaje adquirido</h4>
+
+          <p id="kpiAprendio">
+            0%
+          </p>
+
+          <small>
+            Participantes que afirmaron haber aprendido información nueva.
+          </small>
+
+        </article>
+
+        <article>
+
+          <h4>Contribución a la prevención</h4>
+
+          <p id="kpiContribuye">
+            --
+          </p>
+
+          <small>
+            Participantes que consideran que Conecta Contigo contribuye a la promoción de la salud mental.
+          </small>
+
+        </article>
+
+        <article>
+
+          <h4>Recomendación</h4>
+
+          <p id="kpiRecomienda">
+            0%
+          </p>
+
+          <small>
+            Participantes que recomendarían la plataforma a otros estudiantes.
+          </small>
+
+        </article>
+
+      </section>
+
     </section>
 
-  </div>
+
+
+
+
+    <!-- ===================================================== -->
+    <!-- HERRAMIENTA CONSIDERADA MÁS ÚTIL -->
+    <!-- ===================================================== -->
+
+    <section class="herramientas" aria-labelledby="titulo-herramientas">
+
+      <header>
+
+        <h2 id="titulo-herramientas">
+          Herramienta considerada más útil
+        </h2>
+
+        <p>
+          Los participantes seleccionaron la herramienta que consideraron
+          más útil durante su recorrido por la plataforma.
+        </p>
+
+      </header>
+
+      <figure>
+
+        <canvas id="chartHerramientas"></canvas>
+
+        <figcaption>
+          Distribución de la herramienta considerada más útil por los participantes.
+        </figcaption>
+
+      </figure>
+
+    </section>
+
+
+
+
+
+    <!-- ===================================================== -->
+    <!-- COMENTARIOS DE LOS PARTICIPANTES -->
+    <!-- ===================================================== -->
+
+    <section class="comentarios" aria-labelledby="titulo-comentarios">
+
+      <header>
+
+        <h2 id="titulo-comentarios">
+          Retroalimentación de los participantes
+        </h2>
+
+        <p>
+          Las respuestas abiertas permiten complementar el análisis
+          cuantitativo con la percepción y experiencia de los estudiantes.
+        </p>
+
+      </header>
+
+
+
+      <!-- Comentarios positivos -->
+
+      <article>
+
+        <header>
+
+          <h3>
+            Aspectos más valorados
+          </h3>
+
+        </header>
+
+        <section id="contenedorComentarios" aria-label="Comentarios positivos">
+
+          <p>
+            Cargando comentarios...
+          </p>
+
+        </section>
+
+      </article>
+
+
+
+      <!-- Sugerencias -->
+
+      <article>
+
+        <header>
+
+          <h3>
+            Aspectos por mejorar
+          </h3>
+
+        </header>
+
+        <section id="contenedorSugerencias" aria-label="Sugerencias de mejora">
+
+          <p>
+            Cargando sugerencias...
+          </p>
+
+        </section>
+
+      </article>
+
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- CONCLUSIONES -->
+    <!-- ===================================================== -->
+
+    <section class="conclusiones" aria-labelledby="titulo-conclusiones">
+
+      <header>
+
+        <h2 id="titulo-conclusiones">
+          Conclusiones generales
+        </h2>
+
+      </header>
+
+      <article>
+
+        <p>
+          Los resultados obtenidos evidencian un incremento en el nivel de
+          conocimiento de los participantes después de explorar
+          <strong>Conecta Contigo</strong>, especialmente en aspectos relacionados
+          con los traumas infantiles, los rasgos antisociales, las rutas de ayuda
+          y la comprensión de la importancia de la salud mental.
+        </p>
+
+        <p>
+          Asimismo, la evaluación de la plataforma muestra una percepción positiva
+          respecto a la claridad de los contenidos, la facilidad de navegación y
+          la utilidad de las herramientas disponibles para promover la reflexión,
+          el aprendizaje y la búsqueda de apoyo profesional cuando sea necesario.
+        </p>
+
+        <p>
+          En conjunto, los hallazgos respaldan el cumplimiento del propósito de la
+          estrategia digital como una propuesta educativa orientada a la
+          sensibilización y la promoción de la salud mental en adolescentes,
+          constituyendo un aporte al desarrollo de iniciativas preventivas dentro
+          del contexto escolar.
+        </p>
+
+      </article>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- ===================================================== -->
+  <!-- PIE DE PÁGINA -->
+  <!-- ===================================================== -->
 
   <footer>
-    <p>Los resultados presentados corresponden exclusivamente a la presente investigación académica y son leídos en tiempo real.</p>
+
+    <section aria-labelledby="titulo-footer">
+
+      <header>
+
+        <h2 id="titulo-footer">
+          Conecta Contigo
+        </h2>
+
+      </header>
+
+      <p>
+        Estrategia digital desarrollada como producto de una investigación
+        documental sobre la influencia de los traumas infantiles en el desarrollo
+        de rasgos antisociales y conductas delictivas en adolescentes, orientada a
+        la sensibilización, la prevención y la promoción de la salud mental.
+      </p>
+
+      <dl>
+
+        <dt>Proyecto académico</dt>
+        <dd>Monografía de investigación.</dd>
+
+        <dt>Institución educativa</dt>
+        <dd>Colegio Jerusalem.</dd>
+
+        <dt>Ubicación</dt>
+        <dd>Barranquilla, Colombia.</dd>
+
+        <dt>Año de desarrollo</dt>
+        <dd>2026.</dd>
+
+      </dl>
+
+    </section>
+
   </footer>
 
-  <script>
-    // -------------------------------------------------------------
-    // 
-    // -------------------------------------------------------------
-    const URL_SHEET_FINAL_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJktpVPDBSCbiLerfxEL3SDQ2Hg_voVFqfQyYxNhkc_oYmRFtWAlVcpke_VVTrdZMiDnS1ooKUR63O/pub?gid=338468623&single=true&output=csv';
-    const URL_SHEET_INICIAL_CSV   = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJktpVPDBSCbiLerfxEL3SDQ2Hg_voVFqfQyYxNhkc_oYmRFtWAlVcpke_VVTrdZMiDnS1ooKUR63O/pub?gid=1555379758&single=true&output=csv';
-
-    // Parser seguro de CSV para manejar comas dentro de textos entre comillas
-    function parsearCSV(texto) {
-      const lineas = texto.split(/\r\n|\n/);
-      return lineas.map(linea => {
-        const valores = [];
-        let dentroDeComillas = false;
-        let valorActual = '';
-        for (let i = 0; i < linea.length; i++) {
-          const char = linea[i];
-          if (char === '"') {
-            dentroDeComillas = !dentroDeComillas;
-          } else if (char === ',' && !dentroDeComillas) {
-            valores.push(valorActual.trim().replace(/^"|"$/g, ''));
-            valorActual = '';
-          } else {
-            valorActual += char;
-          }
-        }
-        valores.push(valorActual.trim().replace(/^"|"$/g, ''));
-        return valores;
-      }).filter(fila => fila.some(campo => campo !== ''));
-    }
-
-    const calcularPromedio = arr => arr.length ? (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(1) : 0;
-
-    let instanciasGraficas = {};
-
-   async function cargarDatosSheets() {
-      try {
-        // TRUCO ANTI-CACHÉ: Agregamos la hora actual al final de la URL 
-        // para obligar al navegador a descargar siempre el archivo fresco.
-        const antiCache = `&t=${new Date().getTime()}`;
-        
-        // Cargar ambas pestañas con el truco anti-caché
-        const [resInicial, resFinal] = await Promise.all([
-          fetch(URL_SHEET_INICIAL_CSV + antiCache),
-          fetch(URL_SHEET_FINAL_CSV + antiCache)
-        ]);
-
-        const textoInicial = await resInicial.text();
-        const textoFinal = await resFinal.text();
-
-        const filasInicial = parsearCSV(textoInicial).slice(1); // Post-test
-        const filasFinal = parsearCSV(textoFinal).slice(1);     // Pre-test
-
-        // 1. PROCESAR DATOS DE SATISFACCIÓN Y COMENTARIOS
-        let calificaciones = [];
-        let aprendioSi = 0;
-        let recomiendaSi = 0;
-        let comentarios = [];
-
-        filasInicial.forEach(fila => {
-          if (fila.length > 5) {
-            // Verifica que estos índices sigan siendo correctos en tu Excel Post-test:
-            // Col K (10)=Calificación, Col P (15)=Recomienda, Col Q (16)=Aprendió, Col S (18)=Comentarios
-            if (fila[10] && !isNaN(parseFloat(fila[10]))) calificaciones.push(parseFloat(fila[10]));
-            if (fila[15] && fila[15].toLowerCase().includes('sí')) recomiendaSi++;
-            if (fila[16] && fila[16].toLowerCase().includes('sí')) aprendioSi++;
-            
-            // Aquí extraemos los comentarios (Columna S = índice 18)
-            if (fila[18] && fila[18].trim().length > 2) {
-              comentarios.push(fila[18]);
-            }
-          }
-        });
-
-        // Actualizar KPIs superiores
-        const totalRespuestasInicial = filasInicial.length || 1;
-        document.getElementById('kpiCalificacion').innerText = (calcularPromedio(calificaciones) || '5.0') + '/5';
-        document.getElementById('kpiAprendio').innerText = Math.round((aprendioSi / totalRespuestasInicial) * 100) + '%';
-        document.getElementById('kpiRecomienda').innerText = Math.round((recomiendaSi / totalRespuestasInicial) * 100) + '%';
-
-        // Renderizar Comentarios
-        const contenedorComentarios = document.getElementById('contenedorComentarios');
-        contenedorComentarios.innerHTML = '';
-
-        if (comentarios.length === 0) {
-          contenedorComentarios.innerHTML = '<p style="text-align:center; grid-column: 1/-1; color: var(--texto-suave);">No hay comentarios registrados aún.</p>';
-        } else {
-          // Muestra los últimos 5 comentarios recibidos
-          comentarios.slice(-5).forEach(comentario => {
-            const card = document.createElement('div');
-            card.className = 'comment-card';
-            card.innerText = `💬 "${comentario}"`;
-            contenedorComentarios.appendChild(card);
-          });
-        }
-
-        // 2. PROCESAR PREGUNTAS PRE Y POST
-        let preTrauma = [], preAnti = [], preRutas = [], preSalud = [], preComp = [];
-        let postTrauma = [], postAnti = [], postRutas = [], postSalud = [], postComp = [];
-
-        // DATOS PRE-TEST (Las preguntas empiezan en la Columna F -> Índice 5)
-        filasFinal.forEach(fila => {
-          if (fila[5] && !isNaN(parseFloat(fila[5]))) preTrauma.push(parseFloat(fila[5]));
-          if (fila[6] && !isNaN(parseFloat(fila[6]))) preAnti.push(parseFloat(fila[6]));
-          if (fila[7] && !isNaN(parseFloat(fila[7]))) preRutas.push(parseFloat(fila[7]));
-          if (fila[8] && !isNaN(parseFloat(fila[8]))) preSalud.push(parseFloat(fila[8]));
-          if (fila[9] && !isNaN(parseFloat(fila[9]))) preComp.push(parseFloat(fila[9]));
-        });
-
-        // DATOS POST-TEST (Las preguntas empiezan en la Columna D -> Índice 3) - ¡Corregido!
-        filasInicial.forEach(fila => {
-          if (fila[3] && !isNaN(parseFloat(fila[3]))) postTrauma.push(parseFloat(fila[3]));
-          if (fila[4] && !isNaN(parseFloat(fila[4]))) postAnti.push(parseFloat(fila[4]));
-          if (fila[5] && !isNaN(parseFloat(fila[5]))) postRutas.push(parseFloat(fila[5]));
-          if (fila[6] && !isNaN(parseFloat(fila[6]))) postSalud.push(parseFloat(fila[6]));
-          if (fila[7] && !isNaN(parseFloat(fila[7]))) postComp.push(parseFloat(fila[7]));
-        });
-
-        // 3. DIBUJAR LAS 5 GRÁFICAS
-        dibujarGrafica('chartTrauma', calcularPromedio(preTrauma), calcularPromedio(postTrauma), 'preTrauma', 'postTrauma', 'incTrauma');
-        dibujarGrafica('chartAntisociales', calcularPromedio(preAnti), calcularPromedio(postAnti), 'preAntisociales', 'postAntisociales', 'incAntisociales');
-        dibujarGrafica('chartRutas', calcularPromedio(preRutas), calcularPromedio(postRutas), 'preRutas', 'postRutas', 'incRutas');
-        dibujarGrafica('chartSaludMental', calcularPromedio(preSalud), calcularPromedio(postSalud), 'preSaludMental', 'postSaludMental', 'incSaludMental');
-        dibujarGrafica('chartComprension', calcularPromedio(preComp), calcularPromedio(postComp), 'preComprension', 'postComprension', 'incComprension');
-
-      } catch (error) {
-        console.error('Error al sincronizar con Google Sheets:', error);
-      }
-    }
-
-    function dibujarGrafica(idCanvas, valPre, valPost, elPre, elPost, elInc) {
-      document.getElementById(elPre).innerText = valPre;
-      document.getElementById(elPost).innerText = valPost;
-
-      const numPre = parseFloat(valPre);
-      const numPost = parseFloat(valPost);
-      const incremento = numPre > 0 ? (((numPost - numPre) / numPre) * 100).toFixed(0) : 0;
-      
-      document.getElementById(elInc).innerText = `${incremento >= 0 ? '+' : ''}${incremento}%`;
-
-      if (instanciasGraficas[idCanvas]) {
-        instanciasGraficas[idCanvas].destroy();
-      }
-
-      const ctx = document.getElementById(idCanvas).getContext('2d');
-      instanciasGraficas[idCanvas] = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ['Antes', 'Después'],
-          datasets: [{
-            data: [numPre, numPost],
-            backgroundColor: ['#90CAF9', '#66BB6A'],
-            borderRadius: 6
-          }]
-        },
-        options: {
-          plugins: { legend: { display: false } },
-          scales: { y: { beginAtZero: true, max: 5 } }
-        }
-      });
-    }
-
-    window.onload = cargarDatosSheets;
-    setInterval(cargarDatosSheets, 30000);
-  </script>
 </body>
+
 </html>
