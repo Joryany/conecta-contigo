@@ -9,12 +9,12 @@
 ==================================================*/
 
 
-const URL_SHEET_PRETEST = 
-'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJktpVPDBSCbiLerfxEL3SDQ2Hg_voVFqfQyYxNhkc_oYmRFtWAlVcpke_VVTrdZMiDnS1ooKUR63O/pub?gid=338468623&single=true&output=csv';
+const URL_SHEET_PRETEST =
+    'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJktpVPDBSCbiLerfxEL3SDQ2Hg_voVFqfQyYxNhkc_oYmRFtWAlVcpke_VVTrdZMiDnS1ooKUR63O/pub?gid=338468623&single=true&output=csv';
 
 
-const URL_SHEET_POSTEST = 
-'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJktpVPDBSCbiLerfxEL3SDQ2Hg_voVFqfQyYxNhkc_oYmRFtWAlVcpke_VVTrdZMiDnS1ooKUR63O/pub?gid=1555379758&single=true&output=csv';
+const URL_SHEET_POSTEST =
+    'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJktpVPDBSCbiLerfxEL3SDQ2Hg_voVFqfQyYxNhkc_oYmRFtWAlVcpke_VVTrdZMiDnS1ooKUR63O/pub?gid=1555379758&single=true&output=csv';
 
 
 
@@ -36,12 +36,12 @@ let datosPostest = [];
 ==================================================*/
 
 
-function parsearCSV(texto){
+function parsearCSV(texto) {
 
     const filas = texto.split(/\r?\n/);
 
 
-    return filas.map(fila=>{
+    return filas.map(fila => {
 
         let columnas = [];
 
@@ -50,26 +50,26 @@ function parsearCSV(texto){
         let comillas = false;
 
 
-        for(let i=0;i<fila.length;i++){
+        for (let i = 0; i < fila.length; i++) {
 
             const caracter = fila[i];
 
 
-            if(caracter === '"'){
+            if (caracter === '"') {
 
                 comillas = !comillas;
 
             }
 
-            else if(caracter === "," && !comillas){
+            else if (caracter === "," && !comillas) {
 
                 columnas.push(valor.trim());
 
-                valor="";
+                valor = "";
 
             }
 
-            else{
+            else {
 
                 valor += caracter;
 
@@ -81,15 +81,15 @@ function parsearCSV(texto){
         columnas.push(valor.trim());
 
 
-        return columnas.map(dato=>
-            dato.replace(/^"|"$/g,"")
+        return columnas.map(dato =>
+            dato.replace(/^"|"$/g, "")
         );
 
 
     })
-    .filter(fila=>
-        fila.some(valor=>valor!=="")
-    );
+        .filter(fila =>
+            fila.some(valor => valor !== "")
+        );
 
 }
 
@@ -100,7 +100,7 @@ function parsearCSV(texto){
 ==================================================*/
 
 
-function numero(valor){
+function numero(valor) {
 
     const n = parseFloat(valor);
 
@@ -111,9 +111,9 @@ function numero(valor){
 
 
 
-function promedio(lista){
+function promedio(lista) {
 
-    if(lista.length===0){
+    if (lista.length === 0) {
 
         return 0;
 
@@ -121,25 +121,25 @@ function promedio(lista){
 
 
     const suma =
-    lista.reduce(
-        (total,numero)=>
-        total+numero,
-        0
-    );
+        lista.reduce(
+            (total, numero) =>
+                total + numero,
+            0
+        );
 
 
     return Number(
-        (suma/lista.length)
-        .toFixed(1)
+        (suma / lista.length)
+            .toFixed(1)
     );
 
 }
 
 
 
-function porcentaje(parte,total){
+function porcentaje(parte, total) {
 
-    if(total===0){
+    if (total === 0) {
 
         return "0%";
 
@@ -147,8 +147,8 @@ function porcentaje(parte,total){
 
 
     return Math.round(
-        (parte/total)*100
-    )+"%";
+        (parte / total) * 100
+    ) + "%";
 
 }
 
@@ -157,10 +157,10 @@ function porcentaje(parte,total){
 ==================================================*/
 
 
-async function cargarDatosSheets(){
+async function cargarDatosSheets() {
 
 
-    try{
+    try {
 
 
         const [respuestaPre, respuestaPost] = await Promise.all([
@@ -173,10 +173,12 @@ async function cargarDatosSheets(){
 
 
 
-        const textoPre = await respuestaPre.text();
 
+        const textoPre = await respuestaPre.text();
         const textoPost = await respuestaPost.text();
 
+        console.log("Estado PRETEST:", respuestaPre.status, respuestaPre.url);
+        console.log("TEXTO CRUDO PRETEST:", textoPre);
 
 
         // Eliminamos encabezados
@@ -186,10 +188,10 @@ async function cargarDatosSheets(){
         datosPostest = parsearCSV(textoPost).slice(1);
 
         datosPretest = parsearCSV(textoPre).slice(1);
-datosPostest = parsearCSV(textoPost).slice(1);
+        datosPostest = parsearCSV(textoPost).slice(1);
 
-console.log("PRETEST fila 0:", datosPretest[0]);
-console.log("POSTEST fila 0:", datosPostest[0]);
+        console.log("PRETEST fila 0:", datosPretest[0]);
+        console.log("POSTEST fila 0:", datosPostest[0]);
 
 
 
@@ -199,7 +201,7 @@ console.log("POSTEST fila 0:", datosPostest[0]);
 
     }
 
-    catch(error){
+    catch (error) {
 
 
         console.error(
@@ -221,12 +223,12 @@ console.log("POSTEST fila 0:", datosPostest[0]);
 ==================================================*/
 
 
-function procesarDatos(){
+function procesarDatos() {
 
 
 
     const participantes =
-    datosPostest.length;
+        datosPostest.length;
 
 
 
@@ -256,28 +258,28 @@ function procesarDatos(){
 ==================================================*/
 
 
-function procesarEvaluacionPlataforma(){
+function procesarEvaluacionPlataforma() {
 
 
 
-    let calificaciones=[];
+    let calificaciones = [];
 
-    let navegacion=[];
+    let navegacion = [];
 
-    let claridad=[];
+    let claridad = [];
 
-    let confiabilidad=[];
-
-
-    let recomienda=0;
-
-    let aprendio=0;
-
-    let contribuye=0;
+    let confiabilidad = [];
 
 
+    let recomienda = 0;
 
-    datosPostest.forEach(fila=>{
+    let aprendio = 0;
+
+    let contribuye = 0;
+
+
+
+    datosPostest.forEach(fila => {
 
 
         /*
@@ -324,7 +326,7 @@ function procesarEvaluacionPlataforma(){
 
 
 
-        if(numero(fila[8])!==null){
+        if (numero(fila[8]) !== null) {
 
             calificaciones.push(
                 numero(fila[8])
@@ -334,7 +336,7 @@ function procesarEvaluacionPlataforma(){
 
 
 
-        if(numero(fila[10])!==null){
+        if (numero(fila[10]) !== null) {
 
             navegacion.push(
                 numero(fila[10])
@@ -344,11 +346,11 @@ function procesarEvaluacionPlataforma(){
 
 
 
-        if(
+        if (
             fila[11] &&
             fila[11].toLowerCase()
-            .includes("sí")
-        ){
+                .includes("sí")
+        ) {
 
             claridad.push(1);
 
@@ -356,11 +358,11 @@ function procesarEvaluacionPlataforma(){
 
 
 
-        if(
+        if (
             fila[12] &&
             fila[12].toLowerCase()
-            .includes("sí")
-        ){
+                .includes("sí")
+        ) {
 
             confiabilidad.push(1);
 
@@ -368,11 +370,11 @@ function procesarEvaluacionPlataforma(){
 
 
 
-        if(
+        if (
             fila[13] &&
             fila[13].toLowerCase()
-            .includes("sí")
-        ){
+                .includes("sí")
+        ) {
 
             recomienda++;
 
@@ -380,11 +382,11 @@ function procesarEvaluacionPlataforma(){
 
 
 
-        if(
+        if (
             fila[14] &&
             fila[14].toLowerCase()
-            .includes("sí")
-        ){
+                .includes("sí")
+        ) {
 
             aprendio++;
 
@@ -392,11 +394,11 @@ function procesarEvaluacionPlataforma(){
 
 
 
-        if(
+        if (
             fila[15] &&
             fila[15].toLowerCase()
-            .includes("sí")
-        ){
+                .includes("sí")
+        ) {
 
             contribuye++;
 
@@ -409,7 +411,7 @@ function procesarEvaluacionPlataforma(){
 
 
     const total =
-    datosPostest.length;
+        datosPostest.length;
 
 
 
@@ -417,46 +419,46 @@ function procesarEvaluacionPlataforma(){
 
 
         calificacion:
-        promedio(calificaciones),
+            promedio(calificaciones),
 
 
         navegacion:
-        promedio(navegacion),
+            promedio(navegacion),
 
 
         claridad:
-        porcentaje(
-            claridad.length,
-            total
-        ),
+            porcentaje(
+                claridad.length,
+                total
+            ),
 
 
         confiabilidad:
-        porcentaje(
-            confiabilidad.length,
-            total
-        ),
+            porcentaje(
+                confiabilidad.length,
+                total
+            ),
 
 
         recomienda:
-        porcentaje(
-            recomienda,
-            total
-        ),
+            porcentaje(
+                recomienda,
+                total
+            ),
 
 
         aprendio:
-        porcentaje(
-            aprendio,
-            total
-        ),
+            porcentaje(
+                aprendio,
+                total
+            ),
 
 
         contribuye:
-        porcentaje(
-            contribuye,
-            total
-        )
+            porcentaje(
+                contribuye,
+                total
+            )
 
 
     });
@@ -470,16 +472,16 @@ function procesarEvaluacionPlataforma(){
 ==================================================*/
 
 
-function actualizarParticipantes(total){
+function actualizarParticipantes(total) {
 
 
     const elemento =
-    document.getElementById(
-        "kpiParticipantes"
-    );
+        document.getElementById(
+            "kpiParticipantes"
+        );
 
 
-    if(elemento){
+    if (elemento) {
 
         elemento.innerText = total;
 
@@ -497,22 +499,22 @@ function actualizarParticipantes(total){
 ==================================================*/
 
 
-function actualizarEvaluacion(datos){
+function actualizarEvaluacion(datos) {
 
 
 
     // Calificación general
 
     const calificacion =
-    document.getElementById(
-        "kpiCalificacion"
-    );
+        document.getElementById(
+            "kpiCalificacion"
+        );
 
 
-    if(calificacion){
+    if (calificacion) {
 
         calificacion.innerText =
-        datos.calificacion + " / 5";
+            datos.calificacion + " / 5";
 
     }
 
@@ -522,15 +524,15 @@ function actualizarEvaluacion(datos){
     // Aprendizaje
 
     const aprendio =
-    document.getElementById(
-        "kpiAprendio"
-    );
+        document.getElementById(
+            "kpiAprendio"
+        );
 
 
-    if(aprendio){
+    if (aprendio) {
 
         aprendio.innerText =
-        datos.aprendio;
+            datos.aprendio;
 
     }
 
@@ -541,15 +543,15 @@ function actualizarEvaluacion(datos){
     // Recomendación
 
     const recomienda =
-    document.getElementById(
-        "kpiRecomienda"
-    );
+        document.getElementById(
+            "kpiRecomienda"
+        );
 
 
-    if(recomienda){
+    if (recomienda) {
 
         recomienda.innerText =
-        datos.recomienda;
+            datos.recomienda;
 
     }
 
@@ -560,15 +562,15 @@ function actualizarEvaluacion(datos){
     // Contribución prevención
 
     const contribuye =
-    document.getElementById(
-        "kpiContribuye"
-    );
+        document.getElementById(
+            "kpiContribuye"
+        );
 
 
-    if(contribuye){
+    if (contribuye) {
 
         contribuye.innerText =
-        datos.contribuye;
+            datos.contribuye;
 
     }
 
@@ -579,15 +581,15 @@ function actualizarEvaluacion(datos){
     // Navegación
 
     const navegacion =
-    document.getElementById(
-        "kpiNavegacion"
-    );
+        document.getElementById(
+            "kpiNavegacion"
+        );
 
 
-    if(navegacion){
+    if (navegacion) {
 
         navegacion.innerText =
-        datos.navegacion + " / 5";
+            datos.navegacion + " / 5";
 
     }
 
@@ -598,15 +600,15 @@ function actualizarEvaluacion(datos){
     // Claridad
 
     const claridad =
-    document.getElementById(
-        "kpiClaridad"
-    );
+        document.getElementById(
+            "kpiClaridad"
+        );
 
 
-    if(claridad){
+    if (claridad) {
 
         claridad.innerText =
-        datos.claridad;
+            datos.claridad;
 
     }
 
@@ -617,89 +619,89 @@ function actualizarEvaluacion(datos){
     // Confiabilidad
 
     const confiabilidad =
-    document.getElementById(
-        "kpiConfiabilidad"
-    );
+        document.getElementById(
+            "kpiConfiabilidad"
+        );
 
 
-    if(confiabilidad){
+    if (confiabilidad) {
 
         confiabilidad.innerText =
-        datos.confiabilidad;
+            datos.confiabilidad;
 
     }
 
-        //==============================================
+    //==============================================
     // KPIs SEGUNDA SECCIÓN: EVALUACIÓN PLATAFORMA
     //==============================================
 
 
     const evaluacionCalificacion =
-    document.getElementById(
-        "kpiEvaluacionCalificacion"
-    );
+        document.getElementById(
+            "kpiEvaluacionCalificacion"
+        );
 
 
-    if(evaluacionCalificacion){
+    if (evaluacionCalificacion) {
 
         evaluacionCalificacion.innerText =
-        datos.calificacion + " / 5";
+            datos.calificacion + " / 5";
 
     }
 
 
 
     const evaluacionAprendio =
-    document.getElementById(
-        "kpiEvaluacionAprendio"
-    );
+        document.getElementById(
+            "kpiEvaluacionAprendio"
+        );
 
 
-    if(evaluacionAprendio){
+    if (evaluacionAprendio) {
 
         evaluacionAprendio.innerText =
-        datos.aprendio;
+            datos.aprendio;
 
     }
 
 
 
     const evaluacionContribuye =
-    document.getElementById(
-        "kpiEvaluacionContribuye"
-    );
+        document.getElementById(
+            "kpiEvaluacionContribuye"
+        );
 
 
-    if(evaluacionContribuye){
+    if (evaluacionContribuye) {
 
         evaluacionContribuye.innerText =
-        datos.contribuye;
+            datos.contribuye;
 
     }
 
 
 
     const evaluacionRecomienda =
-    document.getElementById(
-        "kpiEvaluacionRecomienda"
-    );
+        document.getElementById(
+            "kpiEvaluacionRecomienda"
+        );
 
 
-    if(evaluacionRecomienda){
+    if (evaluacionRecomienda) {
 
         evaluacionRecomienda.innerText =
-        datos.recomienda;
+            datos.recomienda;
 
     }
 
     const impactoAprendio = document.getElementById("kpiImpactoAprendio");
-if(impactoAprendio){ impactoAprendio.innerText = datos.aprendio; }
+    if (impactoAprendio) { impactoAprendio.innerText = datos.aprendio; }
 
-const impactoContribuye = document.getElementById("kpiImpactoContribuye");
-if(impactoContribuye){ impactoContribuye.innerText = datos.contribuye; }
+    const impactoContribuye = document.getElementById("kpiImpactoContribuye");
+    if (impactoContribuye) { impactoContribuye.innerText = datos.contribuye; }
 
-const impactoRecomienda = document.getElementById("kpiImpactoRecomienda");
-if(impactoRecomienda){ impactoRecomienda.innerText = datos.recomienda; }
+    const impactoRecomienda = document.getElementById("kpiImpactoRecomienda");
+    if (impactoRecomienda) { impactoRecomienda.innerText = datos.recomienda; }
 
 }
 
@@ -712,25 +714,25 @@ if(impactoRecomienda){ impactoRecomienda.innerText = datos.recomienda; }
 ==================================================*/
 
 
-function procesarComentarios(){
+function procesarComentarios() {
 
 
 
-    const comentarios=[];
+    const comentarios = [];
 
-    const sugerencias=[];
+    const sugerencias = [];
 
 
 
-    datosPostest.forEach(fila=>{
+    datosPostest.forEach(fila => {
 
 
         // Comentario positivo
 
-        if(
+        if (
             fila[16] &&
-            fila[16].trim().length>2
-        ){
+            fila[16].trim().length > 2
+        ) {
 
             comentarios.push(
                 fila[16]
@@ -743,10 +745,10 @@ function procesarComentarios(){
 
         // Mejoras
 
-        if(
+        if (
             fila[17] &&
-            fila[17].trim().length>2
-        ){
+            fila[17].trim().length > 2
+        ) {
 
             sugerencias.push(
                 fila[17]
@@ -793,16 +795,16 @@ function procesarComentarios(){
 
 
 
-function mostrarLista(id,lista,icono){
+function mostrarLista(id, lista, icono) {
 
 
 
     const contenedor =
-    document.getElementById(id);
+        document.getElementById(id);
 
 
 
-    if(!contenedor){
+    if (!contenedor) {
 
         return;
 
@@ -811,17 +813,17 @@ function mostrarLista(id,lista,icono){
 
 
 
-    contenedor.innerHTML="";
+    contenedor.innerHTML = "";
 
 
 
 
 
-    if(lista.length===0){
+    if (lista.length === 0) {
 
 
         contenedor.innerHTML =
-        "<p>No hay respuestas registradas aún.</p>";
+            "<p>No hay respuestas registradas aún.</p>";
 
 
         return;
@@ -833,32 +835,32 @@ function mostrarLista(id,lista,icono){
 
 
 
-    lista.slice(0,5)
-    .forEach(texto=>{
+    lista.slice(0, 5)
+        .forEach(texto => {
 
 
-        const tarjeta =
-        document.createElement("div");
-
-
-
-        tarjeta.className =
-        "comment-card";
+            const tarjeta =
+                document.createElement("div");
 
 
 
-        tarjeta.innerText =
-        `${icono} "${texto}"`;
+            tarjeta.className =
+                "comment-card";
 
 
 
-        contenedor.appendChild(
-            tarjeta
-        );
+            tarjeta.innerText =
+                `${icono} "${texto}"`;
 
 
 
-    });
+            contenedor.appendChild(
+                tarjeta
+            );
+
+
+
+        });
 
 
 
@@ -869,22 +871,22 @@ function mostrarLista(id,lista,icono){
 ==================================================*/
 
 
-function procesarComparacion(){
+function procesarComparacion() {
 
 
 
     const dimensiones = {
 
 
-        trauma:{
+        trauma: {
 
-            pre:0,
+            pre: 0,
 
-            post:1,
+            post: 1,
 
-            canvas:"chartTrauma",
+            canvas: "chartTrauma",
 
-            ids:[
+            ids: [
 
                 "preTrauma",
 
@@ -897,15 +899,15 @@ function procesarComparacion(){
         },
 
 
-        antisociales:{
+        antisociales: {
 
-            pre:1,
+            pre: 1,
 
-            post:2,
+            post: 2,
 
-            canvas:"chartAntisociales",
+            canvas: "chartAntisociales",
 
-            ids:[
+            ids: [
 
                 "preAntisociales",
 
@@ -918,15 +920,15 @@ function procesarComparacion(){
         },
 
 
-        rutas:{
+        rutas: {
 
-            pre:2,
+            pre: 2,
 
-            post:3,
+            post: 3,
 
-            canvas:"chartRutas",
+            canvas: "chartRutas",
 
-            ids:[
+            ids: [
 
                 "preRutas",
 
@@ -939,15 +941,15 @@ function procesarComparacion(){
         },
 
 
-        saludMental:{
+        saludMental: {
 
-            pre:3,
+            pre: 3,
 
-            post:4,
+            post: 4,
 
-            canvas:"chartSaludMental",
+            canvas: "chartSaludMental",
 
-            ids:[
+            ids: [
 
                 "preSaludMental",
 
@@ -960,15 +962,15 @@ function procesarComparacion(){
         },
 
 
-        comprension:{
+        comprension: {
 
-            pre:4,
+            pre: 4,
 
-            post:5,
+            post: 5,
 
-            canvas:"chartComprension",
+            canvas: "chartComprension",
 
-            ids:[
+            ids: [
 
                 "preComprension",
 
@@ -981,15 +983,15 @@ function procesarComparacion(){
         },
 
 
-        senales:{
+        senales: {
 
-            pre:5,
+            pre: 5,
 
-            post:6,
+            post: 6,
 
-            canvas:"chartSenales",
+            canvas: "chartSenales",
 
-            ids:[
+            ids: [
 
                 "preSenales",
 
@@ -1002,15 +1004,15 @@ function procesarComparacion(){
         },
 
 
-        ayuda:{
+        ayuda: {
 
-            pre:6,
+            pre: 6,
 
-            post:7,
+            post: 7,
 
-            canvas:"chartAyuda",
+            canvas: "chartAyuda",
 
-            ids:[
+            ids: [
 
                 "preAyuda",
 
@@ -1030,110 +1032,110 @@ function procesarComparacion(){
 
 
     Object.values(dimensiones)
-    .forEach(dimension=>{
+        .forEach(dimension => {
 
 
 
-        const valoresPre=[];
+            const valoresPre = [];
 
-        const valoresPost=[];
-
-
+            const valoresPost = [];
 
 
 
-        // PRETEST
-
-        datosPretest.forEach(fila=>{
 
 
-            const valor =
-            numero(
-                fila[dimension.pre]
+            // PRETEST
+
+            datosPretest.forEach(fila => {
+
+
+                const valor =
+                    numero(
+                        fila[dimension.pre]
+                    );
+
+
+                if (valor !== null) {
+
+                    valoresPre.push(valor);
+
+                }
+
+
+            });
+
+
+
+
+
+            // POSTEST
+
+            datosPostest.forEach(fila => {
+
+
+                const valor =
+                    numero(
+                        fila[dimension.post]
+                    );
+
+
+                if (valor !== null) {
+
+                    valoresPost.push(valor);
+
+                }
+
+
+            });
+
+
+
+
+
+            const mediaPre =
+                promedio(valoresPre);
+
+
+
+            const mediaPost =
+                promedio(valoresPost);
+
+
+
+
+
+            actualizarResultado(
+
+                dimension.ids[0],
+
+                dimension.ids[1],
+
+                dimension.ids[2],
+
+                mediaPre,
+
+                mediaPost
+
             );
 
 
-            if(valor!==null){
-
-                valoresPre.push(valor);
-
-            }
-
-
-        });
 
 
 
+            crearGrafica(
 
+                dimension.canvas,
 
-        // POSTEST
+                mediaPre,
 
-        datosPostest.forEach(fila=>{
+                mediaPost
 
-
-            const valor =
-            numero(
-                fila[dimension.post]
             );
 
 
-            if(valor!==null){
-
-                valoresPost.push(valor);
-
-            }
 
 
         });
-
-
-
-
-
-        const mediaPre =
-        promedio(valoresPre);
-
-
-
-        const mediaPost =
-        promedio(valoresPost);
-
-
-
-
-
-        actualizarResultado(
-
-            dimension.ids[0],
-
-            dimension.ids[1],
-
-            dimension.ids[2],
-
-            mediaPre,
-
-            mediaPost
-
-        );
-
-
-
-
-
-        crearGrafica(
-
-            dimension.canvas,
-
-            mediaPre,
-
-            mediaPost
-
-        );
-
-
-
-
-    });
 
 
 
@@ -1162,40 +1164,40 @@ function actualizarResultado(
 
     post
 
-){
+) {
 
 
 
     const elementoPre =
-    document.getElementById(idPre);
+        document.getElementById(idPre);
 
 
 
     const elementoPost =
-    document.getElementById(idPost);
+        document.getElementById(idPost);
 
 
 
     const elementoIncremento =
-    document.getElementById(idIncremento);
+        document.getElementById(idIncremento);
 
 
 
 
 
-    if(elementoPre){
+    if (elementoPre) {
 
         elementoPre.innerText =
-        pre;
+            pre;
 
     }
 
 
 
-    if(elementoPost){
+    if (elementoPost) {
 
         elementoPost.innerText =
-        post;
+            post;
 
     }
 
@@ -1203,26 +1205,26 @@ function actualizarResultado(
 
 
 
-    if(elementoIncremento){
+    if (elementoIncremento) {
 
 
 
-        let aumento=0;
+        let aumento = 0;
 
 
 
-        if(pre>0){
+        if (pre > 0) {
 
             aumento =
-            (((post-pre)/pre)*100)
-            .toFixed(0);
+                (((post - pre) / pre) * 100)
+                    .toFixed(0);
 
         }
 
 
 
         elementoIncremento.innerText =
-        `${aumento>=0?"+":""}${aumento}%`;
+            `${aumento >= 0 ? "+" : ""}${aumento}%`;
 
     }
 
@@ -1243,18 +1245,18 @@ function crearGrafica(
 
     valorPost
 
-){
+) {
 
 
 
     const canvas =
-    document.getElementById(idCanvas);
+        document.getElementById(idCanvas);
 
 
 
     // Si el canvas no existe, evita errores
 
-    if(!canvas){
+    if (!canvas) {
 
         return;
 
@@ -1266,7 +1268,7 @@ function crearGrafica(
 
     // Eliminar gráfica anterior
 
-    if(graficos[idCanvas]){
+    if (graficos[idCanvas]) {
 
         graficos[idCanvas].destroy();
 
@@ -1277,7 +1279,7 @@ function crearGrafica(
 
 
     const contexto =
-    canvas.getContext("2d");
+        canvas.getContext("2d");
 
 
 
@@ -1290,13 +1292,13 @@ function crearGrafica(
         {
 
 
-            type:"bar",
+            type: "bar",
 
 
-            data:{
+            data: {
 
 
-                labels:[
+                labels: [
 
                     "Antes",
 
@@ -1306,12 +1308,12 @@ function crearGrafica(
 
 
 
-                datasets:[{
+                datasets: [{
 
 
-                    label:"Promedio",
+                    label: "Promedio",
 
-                    data:[
+                    data: [
 
                         valorPre,
 
@@ -1321,7 +1323,7 @@ function crearGrafica(
 
 
 
-                    backgroundColor:[
+                    backgroundColor: [
 
                         "#90CAF9",
 
@@ -1331,7 +1333,7 @@ function crearGrafica(
 
 
 
-                    borderRadius:8
+                    borderRadius: 8
 
 
                 }]
@@ -1341,23 +1343,23 @@ function crearGrafica(
 
 
 
-            options:{
+            options: {
 
 
-                responsive:true,
+                responsive: true,
 
 
-                maintainAspectRatio:true,
+                maintainAspectRatio: true,
 
 
 
-                plugins:{
+                plugins: {
 
 
-                    legend:{
+                    legend: {
 
 
-                        display:false
+                        display: false
 
 
                     }
@@ -1367,22 +1369,22 @@ function crearGrafica(
 
 
 
-                scales:{
+                scales: {
 
 
-                    y:{
+                    y: {
 
 
-                        beginAtZero:true,
+                        beginAtZero: true,
 
 
-                        max:5,
+                        max: 5,
 
 
-                        ticks:{
+                        ticks: {
 
 
-                            stepSize:1
+                            stepSize: 1
 
 
                         }
@@ -1420,7 +1422,7 @@ document.addEventListener(
 
     "DOMContentLoaded",
 
-    ()=>{
+    () => {
 
 
         cargarDatosSheets();
@@ -1442,7 +1444,7 @@ document.addEventListener(
 
 setInterval(
 
-    ()=>{
+    () => {
 
 
         cargarDatosSheets();
