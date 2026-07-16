@@ -36,50 +36,50 @@ let datosPostest = [];
 ==================================================*/
 
 
-function parsearCSV(texto){
+function parsearCSV(texto) {
 
     const filas = [];
     let fila = [];
     let valor = "";
     let comillas = false;
 
-    for(let i=0; i<texto.length; i++){
+    for (let i = 0; i < texto.length; i++) {
 
         const caracter = texto[i];
-        const siguiente = texto[i+1];
+        const siguiente = texto[i + 1];
 
-        if(caracter === '"'){
-            if(comillas && siguiente === '"'){
+        if (caracter === '"') {
+            if (comillas && siguiente === '"') {
                 valor += '"';
                 i++;
             } else {
                 comillas = !comillas;
             }
         }
-        else if(caracter === "," && !comillas){
+        else if (caracter === "," && !comillas) {
             fila.push(valor.trim());
             valor = "";
         }
-        else if((caracter === "\n" || caracter === "\r") && !comillas){
-            if(caracter === "\r" && siguiente === "\n") i++;
+        else if ((caracter === "\n" || caracter === "\r") && !comillas) {
+            if (caracter === "\r" && siguiente === "\n") i++;
             fila.push(valor.trim());
             filas.push(fila);
             fila = [];
             valor = "";
         }
-        else{
+        else {
             valor += caracter;
         }
 
     }
 
-    if(valor !== "" || fila.length > 0){
+    if (valor !== "" || fila.length > 0) {
         fila.push(valor.trim());
         filas.push(fila);
     }
 
     return filas
-        .map(f => f.map(dato => dato.replace(/^"|"$/g,"")))
+        .map(f => f.map(dato => dato.replace(/^"|"$/g, "")))
         .filter(f => f.some(v => v !== ""));
 
 }
@@ -171,17 +171,18 @@ async function cargarDatosSheets() {
         console.log("TEXTO CRUDO PRETEST:", textoPre);
 
 
+        const textoPost = await respuestaPost.text();
+
+        console.log("TEXTO CRUDO POSTEST:", textoPost);
+
+
+
         // Eliminamos encabezados
 
         datosPretest = parsearCSV(textoPre).slice(1);
 
         datosPostest = parsearCSV(textoPost).slice(1);
 
-        datosPretest = parsearCSV(textoPre).slice(1);
-        datosPostest = parsearCSV(textoPost).slice(1);
-
-        console.log("PRETEST fila 0:", datosPretest[0]);
-        console.log("POSTEST fila 0:", datosPostest[0]);
 
 
 
