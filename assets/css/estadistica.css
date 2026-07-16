@@ -200,7 +200,7 @@ main section header h2 {
 
   margin: 0 0 15px;
 
-  text-align: left;
+  text-align: center;
 
 }
 
@@ -213,6 +213,108 @@ main section header p {
 }
 
 
+/*==================================================
+=             NAVEGADOR INTERNO                    =
+==================================================*/
+
+.indice {
+
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+
+  margin: 0 0 40px;
+  padding: 18px;
+
+  background: var(--blanco);
+
+  border-radius: var(--radio-grande);
+
+  box-shadow: var(--sombra-media);
+
+  border: 1px solid rgba(9, 98, 187, .08);
+}
+
+.indice a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 12px 20px;
+
+  text-decoration: none;
+  color: var(--azul-marino);
+
+  font-weight: 600;
+  font-size: .95rem;
+
+  background: var(--fondo-suave);
+
+  border-radius: var(--radio-pill);
+
+  transition: all var(--transicion);
+}
+
+.indice a:hover {
+  background: var(--gradiente);
+  color: var(--blanco);
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 10px 20px rgba(17, 46, 81, .12);
+}
+
+.indice a:focus-visible {
+  outline: 3px solid rgba(9, 98, 187, .25);
+  outline-offset: 2px;
+}
+
+/* Enlace activo (si luego lo manejas con JS) */
+
+.indice a.activo {
+  background: var(--gradiente);
+  color: var(--blanco);
+  box-shadow: 0 10px 22px rgba(17, 46, 81, .18);
+}
+
+/*==================================================
+=                 RESPONSIVE                       =
+==================================================*/
+
+@media(max-width:768px) {
+
+  .indice {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+
+    padding: 14px;
+  }
+
+  .indice::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .indice::-webkit-scrollbar-thumb {
+    background: rgba(9, 98, 187, .25);
+    border-radius: 999px;
+  }
+
+  .indice a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    font-size: .9rem;
+    padding: 11px 18px;
+  }
+
+}
 
 /*==================================================
 =                INTRODUCCIÓN                      =
@@ -314,7 +416,7 @@ main section header p {
 
 .nota-metodologica h2 {
 
-  text-align: left;
+  text-align: center;
 
   margin-bottom: 18px;
 
@@ -735,11 +837,14 @@ main section header p {
 
 .dimension>header h3 {
 
+
   color: var(--azul-claro);
 
   padding-bottom: 12px;
 
   border-bottom: 2px solid var(--gris-claro);
+
+  text-align: center;
 
 }
 
@@ -1241,7 +1346,7 @@ footer dl {
 
   gap: 12px;
 
-  text-align: left;
+  text-align: center;
 
 }
 
