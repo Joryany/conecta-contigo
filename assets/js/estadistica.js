@@ -872,7 +872,7 @@ function procesarComparacion() {
 
             pre: 5,
 
-            post: 1,
+            post: 3,
 
             canvas: "chartTrauma",
 
@@ -893,7 +893,7 @@ function procesarComparacion() {
 
             pre: 6,
 
-            post: 2,
+            post: 4,
 
             canvas: "chartAntisociales",
 
@@ -914,7 +914,7 @@ function procesarComparacion() {
 
             pre: 7,
 
-            post: 3,
+            post: 5,
 
             canvas: "chartRutas",
 
@@ -935,7 +935,7 @@ function procesarComparacion() {
 
             pre: 8,
 
-            post: 4,
+            post: 6,
 
             canvas: "chartSaludMental",
 
@@ -956,7 +956,7 @@ function procesarComparacion() {
 
             pre: 9,
 
-            post: 5,
+            post: 7,
 
             canvas: "chartComprension",
 
@@ -977,7 +977,7 @@ function procesarComparacion() {
 
             pre: 10,
 
-            post: 6,
+            post: 8,
 
             canvas: "chartSenales",
 
@@ -998,7 +998,7 @@ function procesarComparacion() {
 
             pre: 11,
 
-            post: 7,
+            post: 9,
 
             canvas: "chartAyuda",
 
