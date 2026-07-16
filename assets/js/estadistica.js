@@ -185,6 +185,12 @@ async function cargarDatosSheets(){
 
         datosPostest = parsearCSV(textoPost).slice(1);
 
+        datosPretest = parsearCSV(textoPre).slice(1);
+datosPostest = parsearCSV(textoPost).slice(1);
+
+console.log("PRETEST fila 0:", datosPretest[0]);
+console.log("POSTEST fila 0:", datosPostest[0]);
+
 
 
         procesarDatos();
