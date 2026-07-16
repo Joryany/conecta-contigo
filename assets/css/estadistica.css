@@ -384,6 +384,8 @@ main section header p {
 
   margin-bottom: 10px;
 
+  text-align: center;
+
 }
 
 .interpretacion p {
@@ -1047,6 +1049,8 @@ main section header p {
   color: var(--azul-claro);
 
   font-size: 1.4rem;
+  
+  text-align: center;
 
 }
 
