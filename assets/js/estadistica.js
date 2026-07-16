@@ -36,63 +36,53 @@ let datosPostest = [];
 ==================================================*/
 
 
-function parsearCSV(texto) {
+function parsearCSV(texto){
 
-    const filas = texto.split(/\r?\n/);
+    const filas = [];
+    let fila = [];
+    let valor = "";
+    let comillas = false;
 
+    for(let i=0; i<texto.length; i++){
 
-    return filas.map(fila => {
+        const caracter = texto[i];
+        const siguiente = texto[i+1];
 
-        let columnas = [];
-
-        let valor = "";
-
-        let comillas = false;
-
-
-        for (let i = 0; i < fila.length; i++) {
-
-            const caracter = fila[i];
-
-
-            if (caracter === '"') {
-
+        if(caracter === '"'){
+            if(comillas && siguiente === '"'){
+                valor += '"';
+                i++;
+            } else {
                 comillas = !comillas;
-
             }
-
-            else if (caracter === "," && !comillas) {
-
-                columnas.push(valor.trim());
-
-                valor = "";
-
-            }
-
-            else {
-
-                valor += caracter;
-
-            }
-
+        }
+        else if(caracter === "," && !comillas){
+            fila.push(valor.trim());
+            valor = "";
+        }
+        else if((caracter === "\n" || caracter === "\r") && !comillas){
+            if(caracter === "\r" && siguiente === "\n") i++;
+            fila.push(valor.trim());
+            filas.push(fila);
+            fila = [];
+            valor = "";
+        }
+        else{
+            valor += caracter;
         }
 
+    }
 
-        columnas.push(valor.trim());
+    if(valor !== "" || fila.length > 0){
+        fila.push(valor.trim());
+        filas.push(fila);
+    }
 
-
-        return columnas.map(dato =>
-            dato.replace(/^"|"$/g, "")
-        );
-
-
-    })
-        .filter(fila =>
-            fila.some(valor => valor !== "")
-        );
+    return filas
+        .map(f => f.map(dato => dato.replace(/^"|"$/g,"")))
+        .filter(f => f.some(v => v !== ""));
 
 }
-
 
 
 /*==================================================
@@ -880,7 +870,7 @@ function procesarComparacion() {
 
         trauma: {
 
-            pre: 0,
+            pre: 5,
 
             post: 1,
 
@@ -901,7 +891,7 @@ function procesarComparacion() {
 
         antisociales: {
 
-            pre: 1,
+            pre: 6,
 
             post: 2,
 
@@ -922,7 +912,7 @@ function procesarComparacion() {
 
         rutas: {
 
-            pre: 2,
+            pre: 7,
 
             post: 3,
 
@@ -943,7 +933,7 @@ function procesarComparacion() {
 
         saludMental: {
 
-            pre: 3,
+            pre: 8,
 
             post: 4,
 
@@ -964,7 +954,7 @@ function procesarComparacion() {
 
         comprension: {
 
-            pre: 4,
+            pre: 9,
 
             post: 5,
 
@@ -985,7 +975,7 @@ function procesarComparacion() {
 
         senales: {
 
-            pre: 5,
+            pre: 10,
 
             post: 6,
 
@@ -1006,7 +996,7 @@ function procesarComparacion() {
 
         ayuda: {
 
-            pre: 6,
+            pre: 11,
 
             post: 7,
 
