@@ -427,6 +427,10 @@ footer{
 
 }
 
+footer h3{
+    color:var(--verde-agua)
+}
+
 footer p{
 
     max-width:980px;

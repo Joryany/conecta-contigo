@@ -1,4 +1,14 @@
+/*======================================================
+=  ESTILO "CONOCE" — sección informativa                =
+=  Depende de style.css (cargar SIEMPRE style.css        =
+=  primero en el <head>, y este archivo después).        =
+=  Aquí NO se repiten variables, header, nav, footer,     =
+=  botones, scrollbar ni la animación @keyframes:         =
+=  ya viven en style.css y se heredan por cascada.        =
+======================================================*/
 
+/* Pequeños tokens exclusivos de esta sección
+   (no compiten con los de style.css) */
 :root {
     --resalte-infografia: rgba(17, 46, 81, .18);
 }
@@ -443,24 +453,26 @@ hr {
 ======================================*/
 
 table {
-    width: 100%;
-    margin: 35px 0;
+    width: min(95%, 800px);
+    margin: 50px auto;
     border-collapse: collapse;
     overflow: hidden;
     border-radius: var(--radio-grande);
-    box-shadow: var(--sombra-grande);
+    box-shadow: 0 12px 35px rgba(17, 46, 81, .15);
     background: var(--blanco);
     transition: var(--transicion);
 }
 
 table:hover {
-    transform: scale(1.01);
+    box-shadow: 0 18px 45px rgba(17, 46, 81, .22);
 }
 
 caption {
     caption-side: top;
-    margin-bottom: 15px;
-    font-weight: bold;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--azul-marino);
 }
 
 thead {
@@ -469,29 +481,35 @@ thead {
 }
 
 thead th {
-    padding: 18px;
+    padding: 22px 20px;
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
 }
 
 tbody td,
 tfoot td {
-    padding: 16px;
-    border-bottom: 1px solid #dde8ef;
+    padding: 22px 20px;
+    border-bottom: 1px solid #e8eef5;
     text-align: center;
+    font-size: 1rem;
+    color: var(--gris);
 }
 
 tbody tr:nth-child(even) {
-    background: #f7fbfd;
+    background: #f9fbfd;
 }
 
 tbody tr:hover {
-    background: #edf7fb;
+    background: #eff8fb;
+    transition: background-color var(--transicion);
 }
 
 tfoot {
-    background: #eef7f5;
+    background: #f0f8f6;
     font-weight: 600;
+    color: var(--azul-marino);
 }
 
 /*======================================
@@ -543,23 +561,11 @@ img[src*="Infografia"]:hover {
     transform: scale(1.02);
 }
 
-/* --- Lightbox ---
-   Se activa con JS agregando la clase "activo" (ver script al
-   final del HTML). Se usa una clase en vez de un ancla #id
-   porque el truco de :target hacía que el navegador saltara
-   al inicio de la página al no encontrar el elemento visible
-   todavía, y además ensuciaba el historial de navegación.
-
-   HTML necesario alrededor de la infografía:
-
-   <figure>
-     <img src="Infografia....png" alt="..." class="lightbox-trigger">
-   </figure>
-
-   <div class="lightbox" id="lightbox-infografia">
-     <button type="button" class="lightbox-close" aria-label="Cerrar imagen ampliada">✕</button>
-     <img src="Infografia....png" alt="Infografía completa">
-   </div>
+/* --- Lightbox Modal ---
+   Se activa con JS agregando la clase "activo". La imagen
+   aparece en una ventana flotante en el centro, NO ocupa toda
+   la pantalla. El fondo es oscuro pero la imagen es una "caja"
+   dentro, como un modal.
 */
 
 img.lightbox-trigger {
@@ -573,12 +579,12 @@ img.lightbox-trigger {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px;
-    background: rgba(10, 22, 40, .88);
+    padding: 40px 20px;
+    background: rgba(10, 22, 40, .92);
     cursor: zoom-out;
     opacity: 0;
     visibility: hidden;
-    transition: opacity .25s ease, visibility .25s ease;
+    transition: opacity .3s ease, visibility .3s ease;
 }
 
 .lightbox.activo {
@@ -588,35 +594,37 @@ img.lightbox-trigger {
 
 .lightbox img {
     width: auto;
-    max-width: min(95vw, 1100px);
-    max-height: 90vh;
+    max-width: min(90vw, 950px);
+    max-height: 85vh;
     margin: 0;
-    border-radius: 12px;
-    box-shadow: 0 15px 45px rgba(0, 0, 0, .45);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .6);
     cursor: default;
+    object-fit: contain;
 }
 
 .lightbox-close {
     position: absolute;
-    top: 22px;
+    top: 30px;
     right: 30px;
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
+    border: 2px solid rgba(255, 255, 255, .4);
     color: var(--blanco);
-    font-size: 1.4rem;
-    background: rgba(255, 255, 255, .15);
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, .1);
     border-radius: 50%;
     cursor: pointer;
-    transition: var(--transicion);
+    transition: all var(--transicion);
 }
 
 .lightbox-close:hover {
-    background: rgba(255, 255, 255, .3);
-    color: var(--blanco);
+    background: rgba(255, 255, 255, .25);
+    border-color: rgba(255, 255, 255, .7);
+    transform: scale(1.1);
 }
 
 /*======================================
@@ -725,11 +733,98 @@ li figure img {
     }
 }
 
+/*======================================
+=   MEJORAS CAPÍTULO III — COLOMBIA     =
+======================================*/
+
+/* Las secciones de contexto (La adolescencia en Colombia, 
+   La realidad de Barranquilla, etc.) merecen más destaque */
+
+article:nth-of-type(3) h4 {
+    padding: 15px 0;
+    border-bottom: 3px solid var(--verde-agua);
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+article:nth-of-type(3) h5 {
+    background: linear-gradient(90deg, 
+        var(--azul-claro), 
+        var(--verde-agua));
+    color: var(--blanco);
+    padding: 10px 16px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+article:nth-of-type(3) ol {
+    background: var(--fondo-suave);
+    padding: 25px 25px 25px 50px;
+    border-radius: var(--radio);
+    border-left: 5px solid var(--verde-agua);
+    margin: 20px 0 30px;
+}
+
+article:nth-of-type(3) ol li {
+    margin-bottom: 14px;
+    font-weight: 500;
+    color: var(--azul-marino);
+    line-height: 1.6;
+}
+
+
+
+/* separación de li */
+
+.li {
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    gap: 12px; margin: 20px 0; padding-left: 0; 
+    list-style: none;
+}
+.li li {
+    background: rgba(9, 98, 187, .08); 
+    border-left: 4px solid var(--azul-claro); 
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    border-radius: 6px; 
+    color: var(--gris); 
+    font-weight: 500;
+
+    
+    
+}
+/*======================================
+=      RESPONSIVE — Tablas Mejoradas   =
+======================================*/
+
+@media(max-width:900px) {
+    table {
+        width: min(100%, 750px);
+        margin: 40px auto;
+    }
+
+    thead th {
+        padding: 18px 15px;
+        font-size: 1rem;
+    }
+
+    tbody td,
+    tfoot td {
+        padding: 18px 15px;
+        font-size: 0.95rem;
+    }
+}
+
 @media(max-width:768px) {
     table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
+        width: 100%;
+        margin: 40px 0;
     }
 
     #objetivos ol {
