@@ -56,6 +56,12 @@ footer section {
     border-top: 1px solid rgba(255, 255, 255, .1);
 }
 
+footer p {
+    text-align: justify;
+    margin: 0px 50px;
+
+}
+
 @media (max-width: 768px) {
     footer {
         padding: 40px 15px 30px;
