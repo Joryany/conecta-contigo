@@ -140,3 +140,27 @@ footer a:hover{
     }
 
 }
+
+/*------------------------------------
+    Ajuste para alinear los datos legales
+------------------------------------*/
+
+.legal-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* Separación horizontal entre el texto y el enlace */
+    flex-wrap: wrap;
+}
+
+/*------------------------------------
+    Ajuste extra para tu Responsive
+------------------------------------*/
+
+@media(max-width:768px){
+    /* Agrega esto dentro de tu media query existente */
+    .legal-flex {
+        flex-direction: column;
+        gap: 15px; /* Separación vertical en celulares */
+    }
+}
