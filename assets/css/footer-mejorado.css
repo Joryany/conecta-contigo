@@ -1,73 +1,142 @@
 /*======================================
-=          FOOTER MEJORADO              =
+=              FOOTER                  =
 ======================================*/
 
-footer {
-    margin-top: 100px;
-    padding: 60px 20px 40px;
-    background: linear-gradient(
+footer{
+
+    margin-top:80px;
+    padding:55px 25px 35px;
+
+    background:linear-gradient(
         135deg,
         var(--azul-marino),
-        #0f2a4a);
-    color: var(--blanco);
-    text-align: center;
-    border-top: 5px solid var(--verde-hoja);
+        #173a67,
+        #0f2a4a
+    );
+
+    border-top:4px solid var(--verde-hoja);
+
+    text-align:center;
 }
 
-footer h3 {
-    font-size: 1.3rem;
-    color: var(--verde-agua);
-    margin: 30px 0 20px;
-    text-align: center;
+/*------------------------------------
+        Contenedor principal
+------------------------------------*/
+
+.footer-links{
+
+    max-width:900px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:45px;
 }
 
-footer p {
-    max-width: 900px;
-    margin: 12px auto;
-    color: rgba(255, 255, 255, .95);
-    text-align: center;
-    line-height: 1.8;
-    font-size: 0.95rem;
+/*------------------------------------
+           Cada bloque
+------------------------------------*/
+
+.footer-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:12px;
 }
 
-footer .copyright {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, .1);
-    opacity: .85;
-    font-size: 0.9rem;
+/*------------------------------------
+            Títulos
+------------------------------------*/
+
+footer h3{
+
+    margin:0;
+
+    color:white;
+
+    font-size:1.55rem;
+
+    font-weight:700;
 }
 
-footer a {
-    color: var(--verde-agua);
-    font-weight: 600;
-    transition: var(--transicion);
-    text-decoration: underline;
+/*------------------------------------
+            Enlaces
+------------------------------------*/
+
+footer a{
+
+    color:var(--verde-agua);
+
+    text-decoration:none;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    transition:.25s;
 }
 
-footer a:hover {
-    color: var(--verde-hoja);
-    text-decoration: none;
+footer a:hover{
+
+    color:var(--verde-hoja);
+
+    text-decoration:underline;
 }
 
-footer section {
-    margin-top: 30px;
-    padding: 20px 0;
-    border-top: 1px solid rgba(255, 255, 255, .1);
+/*------------------------------------
+          Copyright
+------------------------------------*/
+
+.copyright{
+
+    margin:45px auto 0;
+
+    max-width:900px;
+
+    width:100%;
+
+    text-align:center;
+
+    padding-top:30px;
+
+    border-top:1px solid rgba(255,255,255,.12);
+
+    color:rgba(255,255,255,.7);
+
+    font-size:.9rem;
 }
 
-footer p {
-    text-align: justify;
-    margin: 0px 50px;
+/*------------------------------------
+           Responsive
+------------------------------------*/
 
-}
+@media(max-width:768px){
 
-@media (max-width: 768px) {
-    footer {
-        padding: 40px 15px 30px;
+    footer{
+
+        padding:45px 20px 25px;
     }
 
-    footer p {
-        font-size: 0.9rem;
+    .footer-links{
+
+        gap:35px;
     }
+
+    footer h3{
+
+        font-size:1.3rem;
+    }
+
+    footer a{
+
+        font-size:.95rem;
+    }
+
 }
