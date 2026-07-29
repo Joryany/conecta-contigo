@@ -3,16 +3,15 @@
 /* --- SECCIÓN HERO (Banner Principal) --- */
 .hero {
     position: relative;
-    min-height: 86vh;
+    text-align: left; /* Alineado a la izquierda para el diseño de banner moderno */
+    overflow: hidden;
+    padding: clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px);
+    margin-bottom: 40px;
+    background-color: var(--fondo-suave);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    padding: clamp(50px, 7vw, 80px) 20px clamp(80px, 9vw, 100px);
-    margin-bottom: 12px;
-    background-color: var(--azul-marino);
+    min-height: 85vh; /* Asegura un tamaño de hero real y profesional */
 }
 
 .hero-bg {
@@ -22,262 +21,165 @@
     height: 100%;
     object-fit: cover;
     z-index: 1;
+    opacity: .75; /* Ligeramente más oscuro para que resalte el texto */
+
+    /* Degradado para fundir la imagen suavemente hacia abajo */
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 }
 
-/* Overlay suave: mejora la legibilidad del texto sin ocultar la imagen */
-.hero-overlay {
-    position: absolute;
-    inset: 0;
+/* --- ASIDE: Pequeño distintivo superior estilo "badge" --- */
+.hero aside {
+    position: relative;
     z-index: 2;
-    background: linear-gradient(
-        180deg,
-        rgba(20, 67, 126, .60) 0%,
-        rgba(20, 67, 126, .40) 45%,
-        rgba(20, 67, 126, .68) 100%
-    );
+    align-self: flex-start;
+    background-color: rgba(40, 167, 69, 0.15); /* Tono verdoso sutil */
+    border: 1px solid rgba(40, 167, 69, 0.3);
+    color: #1e7e34; /* Texto verde corporativo/saludable */
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .hero-content {
     position: relative;
-    z-index: 3;
-    max-width: 760px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: aparecer .8s ease both;
+    z-index: 2;
+    max-width: 650px; /* Limita el ancho del texto para una lectura cómoda */
+    margin-bottom: 30px;
 }
 
 .hero h1 {
-    color: var(--blanco);
-    font-size: clamp(2.3rem, 5vw, 3.6rem);
-    margin-bottom: 6px;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 12px;
     letter-spacing: .5px;
+    color: var(--azul-marino);
+    line-height: 1.1;
 }
 
-.hero-tagline {
-    color: var(--verde-hoja);
-    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+.hero h2 {
+    padding-top: 0;
+    margin: 0 0 16px;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    color: var(--azul-claro);
     font-weight: 600;
-    letter-spacing: .5px;
-    margin-bottom: 22px;
+    line-height: 1.35;
 }
 
-.hero-tagline span {
-    color: rgba(255, 255, 255, .55);
-    margin: 0 8px;
+.hero .hero-content p {
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 0;
+    text-align: left;
 }
 
-.hero-intro {
-    color: rgba(255, 255, 255, .92);
-    font-size: clamp(1rem, 1.6vw, 1.15rem);
-    line-height: 1.65;
-    max-width: 600px;
-    margin: 0 auto 32px;
-}
-
-/* --- Botones CTA --- */
-.hero-cta {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 18px;
-    margin-bottom: 34px;
-}
-
-.btn {
+/* --- BOTONES PRINCIPALES (Lado Izquierdo) --- */
+/* Agrupamos los dos primeros botones en línea */
+.hero .btn:nth-of-type(1),
+.hero .btn:nth-of-type(2) {
+    position: relative;
+    z-index: 2;
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 14px 30px;
-    border-radius: var(--radio-pill);
+    padding: 12px 24px;
+    border-radius: 8px;
     font-weight: 600;
-    font-size: 1rem;
-    box-shadow: var(--sombra-media);
-    transition:
-        transform var(--transicion),
-        box-shadow var(--transicion),
-        background-color var(--transicion);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-right: 12px;
+    margin-bottom: 40px; /* Espacio antes del botón inferior */
 }
 
-.btn-primario {
-    background: var(--azul-claro);
-    color: var(--blanco);
-}
-
-.btn-primario:hover {
-    background: var(--verde-agua);
-    transform: translateY(-3px);
-    box-shadow: var(--sombra-grande);
-}
-
-.btn-secundario {
-    background: var(--verde-hoja);
+/* Primer botón: Blanco */
+.hero .btn:nth-of-type(1) {
+    background-color: #ffffff;
     color: var(--azul-marino);
+    border: 1px solid rgba(17,46,81,0.15);
 }
 
-.btn-secundario:hover {
-    background: var(--blanco);
-    color: var(--azul-marino);
-    transform: translateY(-3px);
-    box-shadow: var(--sombra-grande);
+.hero .btn:nth-of-type(1):hover {
+    background-color: #f8fafc;
+    transform: translateY(-2px);
 }
 
-.btn:focus-visible {
-    outline: 3px solid var(--resalte);
-    outline-offset: 3px;
+/* Segundo botón: Azul */
+.hero .btn:nth-of-type(2) {
+    background-color: var(--azul-marino, #112e51);
+    color: #ffffff;
 }
 
-.btn-icono {
-    font-size: 1.05rem;
+.hero .btn:nth-of-type(2):hover {
+    background-color: #0b1e36;
+    transform: translateY(-2px);
 }
 
-/* --- Indicadores rápidos --- */
-.hero-indicadores {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px 20px;
-    margin-bottom: 30px;
-    padding: 0;
+/* Flechita decorativa automática para los botones principales */
+.hero .btn:nth-of-type(1)::after {
+    content: "→";
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+}
+.hero .btn:nth-of-type(1):hover::after {
+    transform: translateX(4px);
 }
 
-.hero-indicadores li {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--blanco);
-    font-size: .88rem;
-    font-weight: 500;
-    background: rgba(255, 255, 255, .12);
-    border: 1px solid rgba(255, 255, 255, .28);
-    padding: 8px 16px;
-    border-radius: var(--radio-pill);
-    backdrop-filter: blur(4px);
+.hero .btn:nth-of-type(2):::after,
+.hero .btn:nth-of-type(2):after {
+    content: "→";
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+}
+.hero .btn:nth-of-type(2):hover::after {
+    transform: translateX(4px);
 }
 
-.indicador-icono {
-    font-size: 1rem;
-}
 
-/* --- Mini diagrama de flujo (Trauma -> Prevención) --- */
-.hero-flujo {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 6px 12px;
-    background: rgba(255, 255, 255, .10);
-    border: 1px solid rgba(255, 255, 255, .22);
-    border-radius: var(--radio-grande);
-    padding: 14px 22px;
-    backdrop-filter: blur(4px);
-}
-
-.flujo-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--blanco);
-    font-size: .82rem;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.flujo-item.flujo-final {
-    color: var(--verde-hoja);
-    font-weight: 700;
-}
-
-.flujo-icono {
-    font-size: .95rem;
-}
-
-.flujo-flecha {
-    color: rgba(255, 255, 255, .5);
-    font-size: .9rem;
-    transition: transform var(--transicion);
-}
-
-/* --- Flecha animada de scroll --- */
-.hero-scroll {
-    position: absolute;
-    bottom: 22px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    display: flex;
+/* --- TERCER BOTÓN (Explora la página - Centrado y Minimalista abajo) --- */
+.hero .btn:nth-of-type(3) {
+    position: relative;
+    z-index: 2;
+    align-self: center; /* Centrado horizontalmente en la parte inferior del hero */
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    color: rgba(255, 255, 255, .85);
-    font-size: .76rem;
-    font-weight: 600;
-    letter-spacing: .5px;
-    text-transform: uppercase;
+    color: #4a5d73;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    margin-top: 10px;
 }
 
-.hero-scroll:hover {
-    color: var(--verde-hoja);
+.hero .btn:nth-of-type(3):hover {
+    color: var(--azul-marino);
 }
 
-.hero-scroll:focus-visible {
-    outline: 3px solid var(--resalte);
-    outline-offset: 4px;
+/* Flecha hacia abajo minimalista integrada */
+.hero .btn:nth-of-type(3)::after {
+    content: "↓";
+    font-size: 1.2rem;
+    margin-top: 4px;
+    animation: bounce 2s infinite;
 }
 
-.hero-scroll-flecha {
-    font-size: 1.3rem;
-    animation: rebote 2s infinite;
-}
-
-@keyframes rebote {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .hero-scroll-flecha {
-        animation: none;
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
     }
-    .hero-content {
-        animation: none;
+    40% {
+        transform: translateY(5px);
+    }
+    60% {
+        transform: translateY(3px);
     }
 }
 
-#mision-vision,
-#herramientas {
-    scroll-margin-top: 20px;
-}
 
-
-/* --- SECCIÓN RESUMEN (tarjetas debajo del Hero) --- */
-.resumen-section {
-    margin: 50px auto 55px;
-}
-
-.grid-resumen {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-}
-
-.tarjeta-resumen article {
-    align-items: center;
-    text-align: center;
-}
-
-.tarjeta-resumen .tarjeta-icono {
-    font-size: 1.8rem;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.tarjeta-azul { border-top-color: var(--azul-claro); }
-.tarjeta-verde-agua { border-top-color: var(--verde-agua); }
-.tarjeta-coral { border-top-color: var(--resalte); }
-.tarjeta-verde-hoja { border-top-color: var(--verde-hoja); }
-
-
-/* --- SECCIÓN MISIÓN Y VISIÓN (Dos columnas) --- */
+/* --- RESTO DE SECCIONES (Misión, Visión y Grid de Tarjetas) --- */
 .mission-vision {
     display: flex;
     flex-wrap: wrap;
@@ -290,7 +192,6 @@
     min-width: 300px;
 }
 
-/* Sobrescribir un poco el estilo de la tarjeta global para esta sección específica */
 .mission-vision h2 {
     border-bottom: 2px solid var(--fondo-suave);
     padding-bottom: 15px;
@@ -304,8 +205,6 @@
     text-align: justify;
 }
 
-
-/* --- SECCIÓN HERRAMIENTAS (Grid) --- */
 .tools-section {
     margin-bottom: 60px;
 }
@@ -316,46 +215,34 @@
     margin-bottom: 40px;
 }
 
-
 .grid-tarjetas {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 25px;
 }
 
-/* Color especial para Contactos de Emergencia */
 .tarjeta.emergencia {
     border-top: 5px solid var(--resalte);
 }
 
 .tarjeta {
-    /* Fondo limpio */
     background: rgba(255, 255, 255, 0.85); 
-    
-    /* Forma y espacio */
     border-radius: 16px;
     padding: 28px;
     box-shadow: 0 8px 25px rgba(17,46,81,.10);
-    
-    /* LA LÍNEA DE COLOR (IMPORTANTE) */
-    /* Usamos border-top específicamente */
     border-top: 6px solid var(--azul-claro); 
-    
-    /* Otros bordes muy suaves (opcional, si quieres que se vea el contorno) */
     border-left: 1px solid rgba(17,46,81,0.1);
     border-right: 1px solid rgba(17,46,81,0.1);
     border-bottom: 1px solid rgba(17,46,81,0.1);
-    
-    /* Configuración extra */
     transition: 0.3s;
     display: flex;
     flex-direction: column;
 }
+
 .tarjeta:hover {
     transform: translateY(-5px);
     transition: transform 0.2s;
 }
-
 
 .tarjeta h3 {
     color: var(--azul-marino);
@@ -368,48 +255,5 @@
     color: #4a5d73;
     margin-bottom: 0;
     flex-grow: 1;
-}
-
-
-/* --- RESPONSIVE: HERO Y TARJETAS RESUMEN --- */
-@media (max-width: 768px) {
-    .hero {
-        min-height: auto;
-        padding: 46px 18px 90px;
-    }
-
-    .hero-cta {
-        flex-direction: column;
-        width: 100%;
-        gap: 14px;
-    }
-
-    .btn {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .hero-flujo {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .flujo-flecha {
-        transform: rotate(90deg);
-    }
-}
-
-@media (max-width: 480px) {
-    .hero {
-        padding-bottom: 80px;
-    }
-
-    .hero-scroll {
-        bottom: 14px;
-    }
-
-    .hero-indicadores li {
-        font-size: .8rem;
-        padding: 7px 13px;
-    }
+    text-align: justify;
 }
