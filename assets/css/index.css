@@ -3,11 +3,16 @@
 /* --- SECCIÓN HERO (Banner Principal) --- */
 .hero {
     position: relative;
+    min-height: 86vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     overflow: hidden;
-    padding: clamp(35px, 5vw, 55px) 20px;
+    padding: clamp(50px, 7vw, 80px) 20px clamp(80px, 9vw, 100px);
     margin-bottom: 12px;
-    background-color: var(--fondo-suave);
+    background-color: var(--azul-marino);
 }
 
 .hero-bg {
@@ -17,38 +22,261 @@
     height: 100%;
     object-fit: cover;
     z-index: 1;
-    opacity: .8;
+}
 
-    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+/* Overlay suave: mejora la legibilidad del texto sin ocultar la imagen */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+        180deg,
+        rgba(20, 67, 126, .60) 0%,
+        rgba(20, 67, 126, .40) 45%,
+        rgba(20, 67, 126, .68) 100%
+    );
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: aparecer .8s ease both;
 }
 
 .hero h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 8px;
+    color: var(--blanco);
+    font-size: clamp(2.3rem, 5vw, 3.6rem);
+    margin-bottom: 6px;
     letter-spacing: .5px;
 }
 
-.hero h2 {
-
-    padding-top: 0;          /* Anula el padding del style.css */
-
-    margin: 0 0 18px;        /* Mucho más cerca del título */
-
-    font-size: clamp(1.2rem, 2.6vw, 1.75rem);
-
-    color: var(--azul-claro);
-
-    font-weight: 500;
-
-    line-height: 1.35;
-
+.hero-tagline {
+    color: var(--verde-hoja);
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: .5px;
+    margin-bottom: 22px;
 }
+
+.hero-tagline span {
+    color: rgba(255, 255, 255, .55);
+    margin: 0 8px;
+}
+
+.hero-intro {
+    color: rgba(255, 255, 255, .92);
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0 auto 32px;
+}
+
+/* --- Botones CTA --- */
+.hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 34px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border-radius: var(--radio-pill);
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: var(--sombra-media);
+    transition:
+        transform var(--transicion),
+        box-shadow var(--transicion),
+        background-color var(--transicion);
+}
+
+.btn-primario {
+    background: var(--azul-claro);
+    color: var(--blanco);
+}
+
+.btn-primario:hover {
+    background: var(--verde-agua);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-grande);
+}
+
+.btn-secundario {
+    background: var(--verde-hoja);
+    color: var(--azul-marino);
+}
+
+.btn-secundario:hover {
+    background: var(--blanco);
+    color: var(--azul-marino);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-grande);
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--resalte);
+    outline-offset: 3px;
+}
+
+.btn-icono {
+    font-size: 1.05rem;
+}
+
+/* --- Indicadores rápidos --- */
+.hero-indicadores {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 20px;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+.hero-indicadores li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--blanco);
+    font-size: .88rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .28);
+    padding: 8px 16px;
+    border-radius: var(--radio-pill);
+    backdrop-filter: blur(4px);
+}
+
+.indicador-icono {
+    font-size: 1rem;
+}
+
+/* --- Mini diagrama de flujo (Trauma -> Prevención) --- */
+.hero-flujo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 12px;
+    background: rgba(255, 255, 255, .10);
+    border: 1px solid rgba(255, 255, 255, .22);
+    border-radius: var(--radio-grande);
+    padding: 14px 22px;
+    backdrop-filter: blur(4px);
+}
+
+.flujo-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--blanco);
+    font-size: .82rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.flujo-item.flujo-final {
+    color: var(--verde-hoja);
+    font-weight: 700;
+}
+
+.flujo-icono {
+    font-size: .95rem;
+}
+
+.flujo-flecha {
+    color: rgba(255, 255, 255, .5);
+    font-size: .9rem;
+    transition: transform var(--transicion);
+}
+
+/* --- Flecha animada de scroll --- */
+.hero-scroll {
+    position: absolute;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: rgba(255, 255, 255, .85);
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.hero-scroll:hover {
+    color: var(--verde-hoja);
+}
+
+.hero-scroll:focus-visible {
+    outline: 3px solid var(--resalte);
+    outline-offset: 4px;
+}
+
+.hero-scroll-flecha {
+    font-size: 1.3rem;
+    animation: rebote 2s infinite;
+}
+
+@keyframes rebote {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-scroll-flecha {
+        animation: none;
+    }
+    .hero-content {
+        animation: none;
+    }
+}
+
+#mision-vision,
+#herramientas {
+    scroll-margin-top: 20px;
+}
+
+
+/* --- SECCIÓN RESUMEN (tarjetas debajo del Hero) --- */
+.resumen-section {
+    margin: 50px auto 55px;
+}
+
+.grid-resumen {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.tarjeta-resumen article {
+    align-items: center;
+    text-align: center;
+}
+
+.tarjeta-resumen .tarjeta-icono {
+    font-size: 1.8rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.tarjeta-azul { border-top-color: var(--azul-claro); }
+.tarjeta-verde-agua { border-top-color: var(--verde-agua); }
+.tarjeta-coral { border-top-color: var(--resalte); }
+.tarjeta-verde-hoja { border-top-color: var(--verde-hoja); }
+
+
 /* --- SECCIÓN MISIÓN Y VISIÓN (Dos columnas) --- */
 .mission-vision {
     display: flex;
@@ -140,4 +368,48 @@
     color: #4a5d73;
     margin-bottom: 0;
     flex-grow: 1;
+}
+
+
+/* --- RESPONSIVE: HERO Y TARJETAS RESUMEN --- */
+@media (max-width: 768px) {
+    .hero {
+        min-height: auto;
+        padding: 46px 18px 90px;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        gap: 14px;
+    }
+
+    .btn {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .hero-flujo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .flujo-flecha {
+        transform: rotate(90deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding-bottom: 80px;
+    }
+
+    .hero-scroll {
+        bottom: 14px;
+    }
+
+    .hero-indicadores li {
+        font-size: .8rem;
+        padding: 7px 13px;
+    }
 }
