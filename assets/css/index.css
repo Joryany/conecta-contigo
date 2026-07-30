@@ -1,181 +1,345 @@
-/* --- CORREGIDO: ESTILOS ESPECÍFICOS PARA EL HOME --- */
+/*==================================================
+=                  HERO PRINCIPAL                    =
+==================================================*/
 
-/* --- SECCIÓN HERO (Banner Principal) --- */
-.hero {
+/*==================================================
+=                  HERO PRINCIPAL                  =
+==================================================*/
+
+.hero{
     position: relative;
-    text-align: left; /* Alineado a la izquierda para el diseño de banner moderno */
-    overflow: hidden;
-    padding: clamp(60px, 8vw, 100px) clamp(20px, 6vw, 80px);
-    margin-bottom: 40px;
-    background-color: var(--fondo-suave);
+
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 85vh; /* Asegura un tamaño de hero real y profesional */
+    align-items: center;
+
+    width: 100%;
+
+    min-height: 650px;
+    height: 85vh;
+    max-height: 760px;
+
+    padding: 40px 80px;
+
+    overflow: hidden;
+
+    margin-bottom: 50px;
+
+    box-sizing: border-box;
 }
 
-.hero-bg {
+/*--------------- Fondo ----------------*/
+
+.hero-bg{
     position: absolute;
     inset: 0;
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+
+    /* Mueve ligeramente el muelle hacia la derecha */
+    object-position: center right;
+
+    z-index: 0;
+}
+
+/*--------------- Degradado ----------------*/
+
+.hero-overlay{
+    position: absolute;
+    inset: 0;
     z-index: 1;
-    opacity: .75; /* Ligeramente más oscuro para que resalte el texto */
 
-    /* Degradado para fundir la imagen suavemente hacia abajo */
-    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.95) 0%,
+            rgba(255,255,255,.88) 22%,
+            rgba(255,255,255,.60) 42%,
+            rgba(255,255,255,.18) 58%,
+            rgba(255,255,255,0) 72%
+        );
 }
 
-/* --- ASIDE: Pequeño distintivo superior estilo "badge" --- */
-.hero aside {
+/*--------------- Contenedor ----------------*/
+
+.hero-container{
     position: relative;
     z-index: 2;
-    align-self: flex-start;
-    background-color: rgba(40, 167, 69, 0.15); /* Tono verdoso sutil */
-    border: 1px solid rgba(40, 167, 69, 0.3);
-    color: #1e7e34; /* Texto verde corporativo/saludable */
-    padding: 6px 14px;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 650px; /* Limita el ancho del texto para una lectura cómoda */
-    margin-bottom: 30px;
-}
+    width: min(560px, 100%);
 
-.hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    margin-bottom: 12px;
-    letter-spacing: .5px;
-    color: var(--azul-marino);
-    line-height: 1.1;
-}
-
-.hero h2 {
-    padding-top: 0;
-    margin: 0 0 16px;
-    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-    color: var(--azul-claro);
-    font-weight: 600;
-    line-height: 1.35;
-}
-
-.hero .hero-content p {
-    font-size: clamp(1rem, 1.5vw, 1.15rem);
-    color: #334155;
-    line-height: 1.6;
-    margin-bottom: 0;
-    text-align: left;
-}
-
-/* --- BOTONES PRINCIPALES (Lado Izquierdo) --- */
-/* Agrupamos los dos primeros botones en línea */
-.hero .btn:nth-of-type(1),
-.hero .btn:nth-of-type(2) {
-    position: relative;
-    z-index: 2;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    margin-right: 12px;
-    margin-bottom: 40px; /* Espacio antes del botón inferior */
-}
-
-/* Primer botón: Blanco */
-.hero .btn:nth-of-type(1) {
-    background-color: #ffffff;
-    color: var(--azul-marino);
-    border: 1px solid rgba(17,46,81,0.15);
-}
-
-.hero .btn:nth-of-type(1):hover {
-    background-color: #f8fafc;
-    transform: translateY(-2px);
-}
-
-/* Segundo botón: Azul */
-.hero .btn:nth-of-type(2) {
-    background-color: var(--azul-marino, #112e51);
-    color: #ffffff;
-}
-
-.hero .btn:nth-of-type(2):hover {
-    background-color: #0b1e36;
-    transform: translateY(-2px);
-}
-
-/* Flechita decorativa automática para los botones principales */
-.hero .btn:nth-of-type(1)::after {
-    content: "→";
-    font-size: 1.1rem;
-    transition: transform 0.2s;
-}
-.hero .btn:nth-of-type(1):hover::after {
-    transform: translateX(4px);
-}
-
-.hero .btn:nth-of-type(2):::after,
-.hero .btn:nth-of-type(2):after {
-    content: "→";
-    font-size: 1.1rem;
-    transition: transform 0.2s;
-}
-.hero .btn:nth-of-type(2):hover::after {
-    transform: translateX(4px);
-}
-
-
-/* --- TERCER BOTÓN (Explora la página - Centrado y Minimalista abajo) --- */
-.hero .btn:nth-of-type(3) {
-    position: relative;
-    z-index: 2;
-    align-self: center; /* Centrado horizontalmente en la parte inferior del hero */
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+
+/*---------------- Badge ----------------*/
+
+.hero aside {
+
+    display: inline-flex;
+
     align-items: center;
-    color: #4a5d73;
-    text-decoration: none;
-    font-size: 0.9rem;
+
+    gap: 10px;
+
+    padding: 10px 18px;
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, .80);
+
+    backdrop-filter: blur(12px);
+
+    color: #3e9c98;
+
     font-weight: 500;
-    transition: color 0.2s ease;
-    margin-top: 10px;
+
+    font-size: .90rem;
+
+    margin-bottom: 26px;
+
 }
 
-.hero .btn:nth-of-type(3):hover {
-    color: var(--azul-marino);
+.hero aside p {
+
+    margin: 0;
+
 }
 
-/* Flecha hacia abajo minimalista integrada */
-.hero .btn:nth-of-type(3)::after {
-    content: "↓";
-    font-size: 1.2rem;
-    margin-top: 4px;
+/*---------------- Título ----------------*/
+
+
+.hero h1{
+
+    margin:0;
+
+    padding:0;
+
+    line-height:1.05;
+
+    font-size:clamp(3rem,5vw,4.7rem);
+
+}
+
+.hero h2{
+
+    margin:18px 0 22px;
+
+    padding:0;
+
+    text-align:left;
+
+    font-size:clamp(2rem,3vw,3rem);
+
+    line-height:1.15;
+
+    font-weight:700;
+
+    color: #2e67d0;
+
+}
+
+.hero-content p {
+
+    max-width: 580px;
+
+    font-size: 1.15rem;
+
+    line-height: 1.8;
+
+    color: #49596d;
+
+    margin-bottom: 0;
+
+}
+
+/*---------------- Botones ----------------*/
+
+.hero-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin-top: 40px;
+
+}
+
+.hero-buttons .btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 16px 30px;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    transition: .25s;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+
+}
+
+.hero-buttons .btn:hover {
+
+    transform: translateY(-3px);
+
+}
+
+.hero-buttons .btn:first-child {
+
+    background: white;
+
+    color: #173f79;
+
+}
+
+.hero-buttons .btn:last-child {
+
+    background: linear-gradient(135deg,
+            #2e67d0,
+            #4b8dea);
+
+    color: white;
+
+}
+
+.hero-buttons .btn::after {
+
+    content: "→";
+
+    transition: .25s;
+
+}
+
+.hero-buttons .btn:hover::after {
+
+    transform: translateX(4px);
+
+}
+
+/*---------------- Scroll ----------------*/
+
+.scroll-down {
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    bottom:12px;
+
+    z-index:5;
+
+    color:#4a5d73;
+
+}
+
+.scroll-down::after {
+
+   content: "↓";
+
+    font-size: 26px;
+
     animation: bounce 2s infinite;
+
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+
         transform: translateY(0);
+
     }
+
     40% {
-        transform: translateY(5px);
+
+        transform: translateY(6px);
+
     }
+
     60% {
+
         transform: translateY(3px);
+
     }
+
+}
+
+/*---------------- Responsive ----------------*/
+
+@media (max-width:900px) {
+
+    .hero {
+
+        padding: 120px 30px 80px;
+
+    }
+
+    .hero-container {
+
+        max-width: 100%;
+
+    }
+
+    .hero h1 {
+
+        font-size: 3rem;
+
+    }
+
+    .hero h2 {
+
+        font-size: 2rem;
+
+    }
+
+    .hero-content p {
+
+        font-size: 1.05rem;
+
+    }
+
+    .hero-overlay {
+
+        background:
+
+            linear-gradient(180deg,
+
+                rgba(255, 255, 255, .90),
+
+                rgba(255, 255, 255, .55),
+
+                rgba(255, 255, 255, .20));
+
+    }
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
 }
 
 
@@ -185,6 +349,7 @@
     flex-wrap: wrap;
     gap: 30px;
     margin-bottom: 60px;
+    padding: 30px;
 }
 
 .mission-vision .card {
@@ -203,6 +368,7 @@
 .mission-vision p {
     color: #4a5d73;
     text-align: justify;
+    padding: 0px 15px;
 }
 
 .tools-section {
@@ -226,14 +392,14 @@
 }
 
 .tarjeta {
-    background: rgba(255, 255, 255, 0.85); 
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 16px;
-    padding: 28px;
-    box-shadow: 0 8px 25px rgba(17,46,81,.10);
-    border-top: 6px solid var(--azul-claro); 
-    border-left: 1px solid rgba(17,46,81,0.1);
-    border-right: 1px solid rgba(17,46,81,0.1);
-    border-bottom: 1px solid rgba(17,46,81,0.1);
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(17, 46, 81, .10);
+    border-top: 6px solid var(--azul-claro);
+    border-left: 1px solid rgba(17, 46, 81, 0.1);
+    border-right: 1px solid rgba(17, 46, 81, 0.1);
+    border-bottom: 1px solid rgba(17, 46, 81, 0.1);
     transition: 0.3s;
     display: flex;
     flex-direction: column;
@@ -255,5 +421,6 @@
     color: #4a5d73;
     margin-bottom: 0;
     flex-grow: 1;
-    text-align: justify;
+    text-align: left;
+    line-height: 1.7;
 }
