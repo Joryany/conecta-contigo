@@ -1,0 +1,752 @@
+/*==================================================
+=                 VARIABLES GLOBALES               =
+==================================================*/
+
+:root {
+
+    /* Colores principales */
+    --azul-marino: #14437e;
+    --azul-claro: #468ed6;
+    --verde-agua: #69B2AE;
+    --verde-hoja: #a2d88f;
+    --fondo-suave: #F2F7FA;
+    --blanco: #FFFFFF;
+    --gris: #485666;
+    --gris-claro: #d7dfe6;
+    --resalte: #F27D72;
+
+    /* Sombras */
+    --sombra: rgba(17, 46, 81, .10);
+    --sombra-media: 0 4px 15px var(--sombra);
+    --sombra-grande: 0 8px 25px rgba(17, 46, 81, .12);
+
+    /* Bordes */
+    --radio: 12px;
+    --radio-grande: 18px;
+    --radio-pill: 50px;
+
+    /* Transiciones */
+    --transicion: .3s ease;
+
+    /* Gradiente */
+    --gradiente: linear-gradient(
+        135deg,
+        var(--azul-claro),
+        var(--verde-agua)
+    );
+
+    /* Espaciados */
+
+--espacio-xs: 8px;
+--espacio-sm: 16px;
+--espacio-md: 24px;
+--espacio-lg: 40px;
+--espacio-xl: 60px;
+
+/* Tipografía */
+
+--texto: 1rem;
+--texto-grande: 1.1rem;
+
+--titulo-1: clamp(2.8rem,4vw,3.5rem);
+--titulo-2: 2.2rem;
+--titulo-3: 1.45rem;
+
+/* Componentes */
+
+--padding-card:24px;
+--padding-seccion:30px;
+
+--boton-y:11px;
+--boton-x:22px;
+
+}
+
+
+/*==================================================
+=                     RESET                        =
+==================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+/*==================================================
+=                  ELEMENTOS HTML                  =
+==================================================*/
+
+body{
+
+    font-family:'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+    background:var(--fondo-suave);
+
+    color:var(--azul-marino);
+
+    line-height:1.5;
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    text-rendering:optimizeLegibility;
+
+}
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+    height:auto;
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:var(--azul-claro);
+
+    transition:
+        color var(--transicion),
+        background-color var(--transicion),
+        transform var(--transicion);
+
+}
+
+a:hover{
+
+    color:var(--verde-agua);
+
+}
+
+
+/*==================================================
+=                  TIPOGRAFÍA                      =
+==================================================*/
+
+h1,
+h2,
+h3{
+
+    color:var(--azul-marino);
+
+    margin-top:0;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+
+    h1{
+font-size:var(--titulo-1);
+}
+
+
+h2{
+
+    font-size:var(--titulo-2);
+    margin: 35px 0 20px;
+
+    text-align:center;
+
+    position:relative;
+
+}
+
+
+h3{
+
+    font-size:var(--titulo-3);
+    margin-bottom:.75rem;
+
+}
+
+p{
+
+    margin-bottom:18px;
+
+}
+
+
+/*==================================================
+=                LAYOUT GENERAL                    =
+==================================================*/
+
+.container{
+
+    max-width:1000px;
+
+    margin:auto;
+
+    padding:0 20px;
+
+}
+
+main{
+
+    max-width: 1200px;
+    margin: auto;
+    padding: 12px 20px;
+
+
+}
+
+
+/*==================================================
+=            COMPONENTES REUTILIZABLES             =
+==================================================*/
+
+.card{
+
+    background:var(--blanco);
+
+    border-radius:var(--radio);
+
+    padding:var(--padding-card);
+
+    box-shadow:var(--sombra-media);
+
+    transition:
+        transform var(--transicion),
+        box-shadow var(--transicion);
+
+}
+
+.card:hover{
+    transform:translateY(-2px);
+
+    box-shadow:var(--sombra-grande);
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+/*==================================================
+=             HEADER Y NAVEGACIÓN                  =
+==================================================*/
+
+header{
+
+
+     background: var(--blanco);
+
+    padding: 22px 5%;
+
+    border-bottom: 4px solid var(--verde-agua);
+
+    box-shadow: 0 3px 12px var(--sombra);
+
+
+}
+
+.top-nav-container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+
+}
+
+.top-nav-container img{
+
+    width:75px;
+
+    max-width:100%;
+
+    height:auto;
+
+}
+
+
+/*==================================================
+=              MENÚ PRINCIPAL                      =
+==================================================*/
+
+nav{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+nav a{
+
+    background:var(--fondo-suave);
+
+    color:var(--azul-marino);
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+    transition:
+        background-color var(--transicion),
+        color var(--transicion),
+        transform var(--transicion);
+
+}
+
+nav a:hover{
+
+    background:var(--azul-claro);
+
+    color:var(--blanco);
+
+    transform:translateY(-2px);
+
+}
+
+header p{
+
+    max-width:800px;
+
+    margin:15px auto;
+
+    font-size:1.1rem;
+
+    color:#334a66;
+
+    text-align:center;
+
+}
+
+/*==================================================
+=             NAVEGACIÓN SECUNDARIA                =
+==================================================*/
+
+.nav-banner{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:50px;
+
+    padding:25px 0;
+
+    margin:40px 0;
+
+    background:rgba(255,255,255,.35);
+
+    border-top:1px solid var(--azul-claro);
+
+    border-bottom:1px solid var(--azul-claro);
+
+}
+
+.nav-banner a{
+
+    background:none;
+
+    padding:0 0 6px;
+
+    border-radius:50px;
+
+    border-bottom:2px solid transparent;
+
+    color:var(--azul-marino);
+
+    font-size:1.05rem;
+
+    font-weight:600;
+
+}
+
+.nav-banner a:hover{
+
+    background:none;
+
+    color:var(--azul-claro);
+
+    border-bottom-color:var(--verde-agua);
+
+    transform:none;
+
+}
+
+/*==================================================
+=                    FOOTER                        =
+==================================================*/
+
+footer{
+
+    margin-top:70px;
+
+    padding:var(--padding-seccion) 20px;
+
+    background:linear-gradient(
+        135deg,
+        var(--azul-marino),
+        #16375b
+    );
+
+    color:var(--blanco);
+
+    text-align:center;
+
+    border-top:5px solid var(--verde-hoja);
+
+}
+
+footer h3{
+    color:var(--verde-hoja)
+}
+
+footer p{
+
+    max-width:980px;
+
+    margin:12px auto;
+
+    color:rgba(255,255,255,.95);
+
+    text-align:justify;
+
+    text-align-last:left;
+
+    line-height:1.8;
+
+
+}
+
+footer p strong{
+
+    color:var(--verde-agua);
+
+}
+
+footer .copyright{
+
+    margin-top:15px;
+
+    opacity:.75;
+
+    text-align:center;
+
+}
+
+/*==================================================
+=              UTILIDADES GLOBALES                 =
+==================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#e9f1f5;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--azul-claro);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--verde-agua);
+
+}
+
+::selection{
+
+    background:var(--verde-agua);
+
+    color:var(--blanco);
+
+}
+
+/*==================================================
+=              BOTONES GLOBALES                    =
+==================================================*/
+
+button,
+input[type="submit"] {
+
+    background: var(--gradiente);
+
+    color: var(--blanco);
+
+    border: none;
+
+    border-radius: var(--radio-pill);
+
+    padding:
+
+    var(--boton-y)
+
+    var(--boton-x);
+
+    cursor: pointer;
+
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    transition:
+        transform var(--transicion),
+        box-shadow var(--transicion);
+
+}
+
+button:hover,
+input[type="submit"]:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 10px 25px rgba(17, 46, 81, .18);
+
+}
+
+
+/*==================================================
+=               ANIMACIONES GLOBALES              =
+==================================================*/
+
+@keyframes aparecer {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+
+/*==================================================
+=              CLASES UTILITARIAS                 =
+==================================================*/
+
+.oculto {
+
+    display: none !important;
+
+}
+
+.flex {
+
+    display: flex;
+
+}
+
+.grid {
+
+    display: grid;
+
+}
+
+.text-center {
+
+    text-align: center;
+
+}
+
+.text-left {
+
+    text-align: left;
+
+}
+
+.text-right {
+
+    text-align: right;
+
+}
+
+
+/*==================================================
+=             RESPONSIVE GLOBAL                   =
+==================================================*/
+
+@media (max-width:992px){
+
+    .top-nav-container{
+
+        flex-direction:column;
+
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    body{
+
+        font-size:.98rem;
+
+    }
+
+    h1{
+
+        font-size:2rem;
+
+    }
+
+    h2{
+
+        font-size:2rem;
+
+    }
+
+    h3{
+
+        font-size:1.5rem;
+
+    }
+
+    main{
+
+        padding:30px 18px;
+
+    }
+
+    nav{
+
+        gap:10px;
+
+    }
+
+    nav a{
+
+        padding:10px 16px;
+
+        font-size:.95rem;
+
+    }
+
+    .nav-banner{
+
+        gap:20px;
+
+        padding:20px 10px;
+
+    }
+
+    .card{
+
+        padding:20px;
+
+    }
+
+}
+
+
+@media (max-width:576px){
+
+    header{
+
+        padding:15px;
+
+    }
+
+    .top-nav-container img{
+
+        margin:auto;
+
+        width:80px;
+
+    }
+
+    nav{
+
+        justify-content:center;
+
+    }
+
+    nav a{
+
+        padding:8px 14px;
+
+        font-size:.9rem;
+
+    }
+
+    h2{
+
+        font-size:1.8rem;
+
+    }
+
+    .container{
+
+        padding:0 15px;
+
+    }
+
+    main{
+
+        padding:25px 15px;
+
+    }
+
+    .card{
+
+        padding:20px;
+
+    }
+
+    footer{
+
+        padding:35px 18px;
+
+    }
+
+}

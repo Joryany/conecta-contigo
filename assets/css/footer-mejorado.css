@@ -1,0 +1,166 @@
+/*======================================
+=              FOOTER                  =
+======================================*/
+
+footer{
+
+    margin-top:80px;
+    padding:55px 25px 35px;
+
+    background:linear-gradient(
+        135deg,
+        var(--azul-marino),
+        #173a67,
+        #0f2a4a
+    );
+
+    border-top:4px solid var(--verde-hoja);
+
+    text-align:center;
+}
+
+/*------------------------------------
+        Contenedor principal
+------------------------------------*/
+
+.footer-links{
+
+    max-width:900px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:45px;
+}
+
+/*------------------------------------
+           Cada bloque
+------------------------------------*/
+
+.footer-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+/*------------------------------------
+            Títulos
+------------------------------------*/
+
+footer h3{
+
+    margin:0;
+
+    color:white;
+
+    font-size:1.55rem;
+
+    font-weight:700;
+}
+
+/*------------------------------------
+            Enlaces
+------------------------------------*/
+
+footer a{
+
+    color:var(--verde-agua);
+
+    text-decoration:none;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    transition:.25s;
+}
+
+footer a:hover{
+
+    color:var(--verde-hoja);
+
+    text-decoration:underline;
+}
+
+/*------------------------------------
+          Copyright
+------------------------------------*/
+
+.copyright{
+
+    margin:45px auto 0;
+
+    max-width:900px;
+
+    width:100%;
+
+    text-align:center;
+
+    padding-top:30px;
+
+    border-top:1px solid rgba(255,255,255,.12);
+
+    color:rgba(255,255,255,.7);
+
+    font-size:.9rem;
+}
+
+/*------------------------------------
+           Responsive
+------------------------------------*/
+
+@media(max-width:768px){
+
+    footer{
+
+        padding:45px 20px 25px;
+    }
+
+    .footer-links{
+
+        gap:35px;
+    }
+
+    footer h3{
+
+        font-size:1.3rem;
+    }
+
+    footer a{
+
+        font-size:.95rem;
+    }
+
+}
+
+/*------------------------------------
+    Ajuste para alinear los datos legales
+------------------------------------*/
+
+.legal-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px; /* Separación horizontal entre el texto y el enlace */
+    flex-wrap: wrap;
+}
+
+/*------------------------------------
+    Ajuste extra para tu Responsive
+------------------------------------*/
+
+@media(max-width:768px){
+    /* Agrega esto dentro de tu media query existente */
+    .legal-flex {
+        flex-direction: column;
+        gap: 15px; /* Separación vertical en celulares */
+    }
+}
