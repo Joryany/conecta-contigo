@@ -1,17 +1,4 @@
-/*======================================================
-=  ESTILO "MARCO JURÍDICO Y TÉRMINOS"                    =
-=  Depende de style.css (cargar SIEMPRE style.css        =
-=  primero en el <head>, y este archivo después).        =
-=  Aquí NO se repiten variables, header, nav, footer,     =
-=  botones, scrollbar ni la animación @keyframes:         =
-=  ya viven en style.css y se heredan por cascada.        =
-======================================================*/
 
-/* Tokens exclusivos de esta sección (no compiten con
-   los de style.css). Un acento por rama jurídica:
-   Constitución/Tratados = azul institucional (heredado),
-   Leyes = verde agua (heredado), Jurisprudencia = violeta,
-   Términos = gris marino oscuro (heredado). */
 :root {
     --violeta-jur: #7c6bb0;
     --violeta-jur-suave: #efecf9;
