@@ -1,0 +1,161 @@
+.hero-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    margin-top: 40px;
+
+}
+
+.hero-buttons .btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 16px 30px;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    transition: .25s;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+
+}
+
+.hero-buttons .btn:hover {
+
+    transform: translateY(-3px);
+
+}
+
+.hero-buttons .btn:first-child {
+
+    background: white;
+
+    color: #173f79;
+
+}
+
+.hero-buttons .btn:last-child {
+
+    background: linear-gradient(135deg,
+            #2e67d0,
+            #4b8dea);
+
+    color: white;
+
+}
+
+.hero-buttons .btn::after {
+
+    content: "→";
+
+    transition: .25s;
+
+}
+
+
+
+/*---------------- Scroll ----------------*/
+
+.scroll-down {
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    bottom:12px;
+
+    z-index:5;
+
+    color:#4a5d73;
+
+}
+
+.scroll-down::after {
+
+   content: "↓";
+
+    font-size: 26px;
+
+    animation: bounce 2s infinite;
+
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    40% {
+
+        transform: translateY(6px);
+
+    }
+
+    60% {
+
+        transform: translateY(3px);
+
+    }
+
+}
+
+/*---------------- Responsive ----------------*/
+
+@media (max-width:900px) {
+
+
+    .hero h1 {
+
+        font-size: 3rem;
+
+    }
+
+
+    .hero-content p {
+
+        font-size: 1.05rem;
+
+    }
+
+    .hero-overlay {
+
+        background:
+
+            linear-gradient(180deg,
+
+                rgba(255, 255, 255, .90),
+
+                rgba(255, 255, 255, .55),
+
+                rgba(255, 255, 255, .20));
+
+    }
+
+    .hero-buttons {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+}
