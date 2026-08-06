@@ -1,13 +1,11 @@
 .hero-buttons {
 
     display: flex;
-
     flex-wrap: wrap;
-
     gap: 18px;
-
-    margin-top: 40px;
-
+    display: flex;
+    justify-content: center; /* Centrado horizontal */
+    align-items: center;     /* Centrado vertical */
 }
 
 .hero-buttons .btn {
