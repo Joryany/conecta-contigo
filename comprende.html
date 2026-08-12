@@ -7,7 +7,8 @@
     <title>Conecta Contigo - Comprende</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/diario.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/comprende.css">
     <link rel="stylesheet" href="assets/css/footer-mejorado.css">
 
 </head>
@@ -27,27 +28,90 @@
     </header>
 
     <main>
-         <div>
-            <h1 style="text-align: center; font-weight: 600px ;">En diseño...</h1>
-            <p style="text-align: center; padding: 20px;">Puede probar otros apartados de nuestra página, proximamente estará
-                habilitado este apartado.</p>
-        </div>   
-        <div class="hero-buttons">
-        
-            <a href="conoce.html" class="btn">
-                Conoce más
+        <section class="hero">
+            <img class="hero-bg" src="assets/img/comprende/hero.png" alt="Constelaciones con nubes azules de fondo, con un degradado blanco.">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Comprende</h1>
+                    <h2>¿Qué me está pasando?</h2>
+                    <p>
+                        ¿Sientes que algo no va bien o quieres saber cómo apoyar a alguien cercano? No tienes por qué cargar con todo solo. Aquí encontrarás información clara para entender tus emociones o experiencias, y herramientas reales para cuidar de ti o de tu ser querido.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Aquí agregamos la imagen de la chica -->
+            <img class="hero-chica" src="assets/img/comprende/chica.png" alt="Chica pensando en su bienestar">
+
+            <a href="#explorar" class="scroll-down">
+                Explora la página
             </a>
+        </section>
 
-            <a href="contacto.html" class="btn">
-                Busca ayuda
-            </a>
+        <section id="explorar" class="aviso-comprende container">
+            <h2>¿Cómo usar esta sección?</h2>
+            <p>
+                Comprende es un espacio para aprender sobre salud mental y diferentes situaciones que pueden afectar a los adolescentes. <br>
+                Puedes explorar los contenidos según lo que estés viviendo o quieras comprender mejor.   
+            </p>
 
-        </div>
 
+            <h3>¿Es urgente?</h3>
+            <a href="contacto.html#emergencia" class="btn-emergencia"> 🆘 Busca ayuda inmediata -> </a>
+
+        </section>
+
+
+        <section class="accesos-comprende container">
+            <h2>Explora según lo que necesites</h2>
+            <p>No tienes que saber exactamente qué buscas. <br>
+            Empieza por el camino que más se parezca a lo que estás viviendo.</p>
+
+                <div class="grid-accesos">
+
+                    <div class="tarjeta" data-href="comprende-condiciones.html">
+                        <article>
+                            <span class="icono-acceso">🌧️</span>
+                            <h3><a href="comprende-condiciones.html" class="card-title-link">¿Qué me está pasando?</a></h3>
+                            <p>Condiciones que pueden estar detrás de lo que sientes: <strong>depresión, ansiedad, TCA,
+                                    autolesión, psicosis</strong> y más — explicadas con claridad, sin tecnicismos.</p>
+                        </article>
+                    </div>
+
+                    <div class="tarjeta" data-href="comprende-situaciones.html">
+                        <article>
+                            <span class="icono-acceso">🌊</span>
+                            <h3><a href="comprende-situaciones.html" class="card-title-link">¿Qué estoy viviendo?</a></h3>
+                            <p>Situaciones que pueden estar afectándote: <strong>acoso, violencia, presión de pares,
+                                    aislamiento, estrés académico, redes sociales</strong> y más.</p>
+                        </article>
+                    </div>
+
+                    <div class="tarjeta" data-href="comprende-herramientas.html">
+                        <article>
+                            <span class="icono-acceso">🧰</span>
+                            <h3><a href="comprende-herramientas.html" class="card-title-link">¿Qué puedo hacer ya?</a></h3>
+                            <p>Herramientas concretas de autocuidado que puedes empezar a usar
+                                <strong>hoy mismo</strong>, mientras consigues o mientras esperas ayuda profesional.</p>
+                        </article>
+                    </div>
+
+                </div>
+                </section>
+        </section>
+         <aside>
+                <h3>Recuerda:</h3>
+                <p>Esta información es educativa. <br>
+                No permite realizar un diagnóstico ni sustituye la atención de un profesional.</p>
+            </aside> 
     </main>
     <footer>
-
+         <p>© 2026 Conecta Contigo. Todos los derechos reservados.</p>
     </footer>
+     <script src="assets/js/index.js"></script>
 </body>
 
 </html>

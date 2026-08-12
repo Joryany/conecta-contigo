@@ -1,0 +1,438 @@
+/*==================================================
+=            REGLAS GLOBALES Y TIPOGRAFÍA          =
+==================================================*/
+
+/* Importación de fuente suave/amigable si no la tienes en style.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+body {
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+    color: var(--gris);
+    background-color: var(--fondo-suave);
+    margin: 0;
+    padding: 0;
+}
+
+/* Alineamiento general para la estructura de la página */
+.container, 
+aside, 
+.hero, 
+.aviso-comprende, 
+.accesos-comprende {
+    width: 90%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*==================================================
+=                   HERO PRINCIPAL                 =
+==================================================*/
+
+.hero {
+    position: relative;
+    min-height: 380px;
+    margin-top: var(--espacio-md);
+    margin-bottom: var(--espacio-lg); /* Separación limpia, sin encimarse */
+    border-radius: var(--radio-grande);
+    overflow: hidden; 
+    box-shadow: var(--sombra-grande);
+
+    display: flex;
+    align-items: center;
+    padding: var(--espacio-lg);
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+    z-index: 1;
+    opacity: 0.8; 
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(
+        90deg, 
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(255, 255, 255, 0.7) 55%, 
+        rgba(255, 255, 255, 0.1) 100%
+    );
+}
+
+.hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 580px;
+}
+
+.hero-content h1 {
+    font-size: var(--titulo-1);
+    color: var(--azul-marino);
+    margin: 0 0 var(--espacio-xs) 0;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+}
+
+.hero-content h2 {
+    font-size: var(--titulo-3);
+    color: var(--azul-claro);
+    margin: 0 0 var(--espacio-sm) 0;
+    font-weight: 700;
+}
+
+.hero-content p {
+    font-size: var(--texto-grande);
+    line-height: 1.6;
+    color: var(--gris);
+    margin: 0;
+    text-align: justify;
+}
+
+/* Botón inferior del Hero */
+.scroll-down {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: var(--espacio-sm);
+    z-index: 4;
+    color: var(--azul-marino);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.scroll-down::after {
+    content: "↓";
+    font-size: 1.2rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(5px); }
+    60% { transform: translateY(2px); }
+}
+
+/*==================================================
+=           NUEVOS ESTILOS PARA LA CHICA           =
+==================================================*/
+
+/*==================================================
+=           NUEVOS ESTILOS PARA LA CHICA           =
+==================================================*/
+
+.hero-chica {
+    position: absolute;
+    right: -15%; /* La empujamos un poco más hacia el borde para que no invada el texto */
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* Aumentamos el tamaño aquí: */
+    width: 68%;          /* Antes estaba en 55% */
+    max-width: 780px;    /* Antes estaba en 650px (puedes subirlo más si tu monitor es muy grande) */
+    min-width: 450px; 
+    
+    z-index: 3;
+    animation: flotar-chica 6s ease-in-out infinite;
+    filter: drop-shadow(0 10px 15px rgba(20, 67, 126, 0.15));
+}
+
+@keyframes flotar-chica {
+    0%, 100% { 
+        transform: translateY(-50%); 
+    }
+    50% { 
+        transform: translateY(calc(-50% - 12px)); 
+    }
+}
+
+/* Ajustes Responsive para la chica */
+@media (max-width: 900px) {
+    .hero-chica {
+        width: 75%; /* También un poco más grande en pantallas intermedias si deseas */
+        right: -15%; 
+        opacity: 0.15; 
+        z-index: 1;
+        filter: none; 
+    }
+}
+
+
+/*==================================================
+=        NUEVO DISEÑO PARA LA SECCIÓN EXPLORA      =
+==================================================*/
+
+.accesos-comprende {
+    margin-bottom: var(--espacio-xl);
+    
+    /* Le damos un fondo degradado muy suave usando tus colores */
+    background: linear-gradient(135deg, rgba(70, 142, 214, 0.06) 0%, rgba(105, 178, 174, 0.12) 100%);
+    padding: var(--espacio-xl) var(--espacio-lg);
+    border-radius: var(--radio-grande);
+    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.5), var(--sombra);
+    border: 1px solid rgba(255, 255, 255, 0.6); /* Un borde blanquecino sutil */
+    
+    position: relative;
+    overflow: hidden; /* Para contener los círculos decorativos */
+}
+
+/* Círculos decorativos abstractos de fondo para que no se vea "pelao" */
+.accesos-comprende::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 250px;
+    height: 250px;
+    background: var(--azul-claro);
+    opacity: 0.05;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.accesos-comprende::after {
+    content: "";
+    position: absolute;
+    bottom: -80px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background: var(--verde-agua);
+    opacity: 0.05;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Aseguramos que el texto y las tarjetas queden por encima del fondo decorativo */
+.accesos-comprende h2, 
+.accesos-comprende > p, 
+.grid-accesos {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ajustes Responsive para la chica */
+@media (max-width: 900px) {
+    .hero-chica {
+        width: 50%;
+        right: -5%;
+        opacity: 0.15; /* En móviles la volvemos casi transparente y la enviamos al fondo para que no tape el texto */
+        z-index: 1;
+    }
+    
+    .accesos-comprende {
+        padding: var(--espacio-md); /* Menos padding en móviles */
+    }
+}
+
+/*==================================================
+=            CAJA "CÓMO USAR ESTA SECCIÓN"          =
+==================================================*/
+
+.aviso-comprende {
+    background: var(--blanco);
+    border-radius: var(--radio-grande);
+    padding: var(--espacio-lg);
+    margin-bottom: var(--espacio-lg);
+    box-shadow: var(--sombra-media);
+    border-top: 6px solid var(--resalte);
+    text-align: center;
+}
+
+.aviso-comprende h2 {
+    color: var(--azul-marino);
+    font-size: var(--titulo-2);
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: var(--espacio-sm);
+}
+
+.aviso-comprende p {
+    color: var(--gris);
+    line-height: 1.6;
+    margin-bottom: var(--espacio-md);
+    text-align: justify; /* En la tarjeta de aviso, el texto centrado luce más ordenado */
+    font-size: var(--texto-grande);
+}
+
+.aviso-comprende h3 {
+    color: var(--azul-marino);
+    font-size: var(--titulo-3);
+    margin-bottom: var(--espacio-xs);
+}
+
+.btn-emergencia {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: var(--boton-y) var(--boton-x);
+    border-radius: var(--radio-pill);
+    font-weight: 700;
+    font-size: var(--texto-grande);
+    background: var(--resalte);
+    color: var(--blanco);
+    text-decoration: none;
+    box-shadow: var(--sombra-media);
+    transition: var(--transicion);
+}
+
+.btn-emergencia:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-grande);
+    color: var(--blanco);
+}
+
+/*======================================
+=             ASIDE / DATO CLAVE       =
+======================================*/
+
+aside {
+    position: relative;
+    box-sizing: border-box;
+    margin-bottom: var(--espacio-xl);
+    padding: var(--espacio-md) var(--espacio-lg);
+    background: #EBF5F8;
+    border-left: 6px solid var(--azul-claro);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+aside h3 {
+    color: var(--azul-marino);
+    font-size: 1.2rem;
+    margin: 0 0 var(--espacio-xs) 0;
+    font-weight: 800;
+}
+
+aside p {
+    margin: 0;
+    color: var(--gris);
+    line-height: 1.5;
+    font-size: var(--texto);
+}
+
+aside::before {
+    content: "✨";
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.8rem;
+    opacity: 0.5;
+}
+
+/*==================================================
+=              3 ACCESOS PRINCIPALES                =
+==================================================*/
+
+.accesos-comprende {
+    margin-bottom: var(--espacio-xl);
+}
+
+.accesos-comprende h2 {
+    text-align: center;
+    font-size: var(--titulo-2);
+    font-weight: 800;
+    margin-bottom: var(--espacio-xs);
+    color: var(--azul-marino);
+}
+
+/* Estilo para la bajada/subtítulo de "Explora según lo que necesites" */
+.accesos-comprende > p {
+    text-align: center;
+    color: var(--gris);
+    font-size: var(--texto-grande);
+    margin-top: 0;
+    margin-bottom: var(--espacio-lg);
+    line-height: 1.5;
+}
+
+.grid-accesos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--espacio-md);
+}
+
+.grid-accesos .tarjeta {
+    padding: var(--padding-card);
+    background: var(--blanco);
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-media);
+    transition: var(--transicion);
+    border: 1px solid var(--gris-claro);
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-accesos .tarjeta:hover {
+    box-shadow: var(--sombra-grande);
+    transform: translateY(-4px);
+}
+
+.grid-accesos .tarjeta .icono-acceso {
+    font-size: 2.8rem;
+    display: block;
+    text-align: center;
+    margin-bottom: var(--espacio-sm);
+}
+
+.grid-accesos .tarjeta h3 {
+    text-align: center;
+    font-size: var(--titulo-3);
+    margin-bottom: var(--espacio-sm);
+}
+
+.card-title-link {
+    color: var(--azul-marino);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.card-title-link:hover {
+    color: var(--azul-claro);
+}
+
+.grid-accesos .tarjeta p {
+    text-align: left; /* Alineado limpio a la izquierda para evitar huecos grandes entre palabras */
+    color: var(--gris);
+    line-height: 1.6;
+    margin: 0;
+    font-size: var(--texto);
+}
+
+/*==================================================
+=                   RESPONSIVE                     =
+==================================================*/
+
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--espacio-md);
+        min-height: auto;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
+    aside::before {
+        display: none; /* Se oculta el ícono en pantallas pequeñas para dar espacio al texto */
+    }
+}
