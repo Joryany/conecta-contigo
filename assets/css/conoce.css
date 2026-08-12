@@ -1,16 +1,6 @@
-/*======================================================
-=  ESTILO "CONOCE" — sección informativa                =
-=  Depende de style.css (cargar SIEMPRE style.css        =
-=  primero en el <head>, y este archivo después).        =
-=  Aquí NO se repiten variables, header, nav, footer,     =
-=  botones, scrollbar ni la animación @keyframes:         =
-=  ya viven en style.css y se heredan por cascada.        =
-======================================================*/
 
-/* Pequeños tokens exclusivos de esta sección
-   (no compiten con los de style.css) */
 :root {
-    --resalte-infografia: rgba(17, 46, 81, .18);
+    --resalte-infografia: rgba(26, 60, 102, 0.18);
 }
 
 /*======================================
@@ -796,6 +786,119 @@ article:nth-of-type(3) ol li {
     
     
 }
+
+/*======================================
+=      CAPÍTULO IV — ACENTO Y GRID     =
+======================================*/
+
+article:nth-of-type(4) {
+    border-left-color: var(--verde-agua);
+}
+
+.comparacion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.comparacion-col {
+    background: var(--blanco);
+    padding: 22px 24px;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-media);
+    border-top: 5px solid;
+    transition: var(--transicion);
+}
+
+.comparacion-col:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-grande);
+}
+
+.comparacion-col h5 {
+    margin-top: 0;
+    color: var(--azul-marino);
+}
+
+.comparacion-oportunidad {
+    border-top-color: var(--azul-claro);
+}
+
+.comparacion-desafio {
+    border-top-color: var(--resalte);
+}
+
+@media(max-width:600px) {
+    .comparacion-col {
+        padding: 18px;
+    }
+}
+
+/*======================================
+=   CAPÍTULO V — TARJETAS NAVEGABLES    =
+======================================*/
+
+article:nth-of-type(5) {
+    border-left-color: var(--azul-claro);
+}
+
+.componentes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+    margin: 30px 0;
+}
+
+.componente-card {
+    background: var(--blanco);
+    padding: 22px 24px;
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-media);
+    border-top: 5px solid var(--verde-agua);
+    transition: var(--transicion);
+    display: flex;
+    flex-direction: column;
+}
+
+.componente-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--sombra-grande);
+    border-top-color: var(--azul-claro);
+}
+
+.componente-card h5 {
+    margin-top: 0;
+    color: var(--azul-marino);
+}
+
+.componente-card p {
+    flex-grow: 1;
+    font-size: .92rem;
+}
+
+.componente-card a {
+    align-self: flex-start;
+    margin-top: 10px;
+    padding: 10px 18px;
+    background: var(--azul-claro);
+    color: var(--blanco);
+    border-radius: var(--radio-pill);
+    font-weight: 600;
+    transition: var(--transicion);
+}
+
+.componente-card a:hover {
+    background: var(--verde-agua);
+}
+
+@media(max-width:600px) {
+    .componente-card {
+        padding: 18px;
+    }
+}
+
+
 /*======================================
 =      RESPONSIVE — Tablas Mejoradas   =
 ======================================*/

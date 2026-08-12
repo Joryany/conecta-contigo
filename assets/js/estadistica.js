@@ -1,30 +1,3 @@
-/*==================================================
-=        CONECTA CONTIGO - ESTADÍSTICA JS          =
-=              Sistema de evaluación               =
-==================================================*/
-
-/*
-  CAMBIOS EN ESTA VERSIÓN (resumen para que sepas qué se tocó):
-
-  1) Se quitó un error de sintaxis: "textoPost" estaba declarado
-     dos veces con "const" (eso rompía TODO el script y por eso
-     nada funcionaba bien).
-
-  2) Se corrigieron los números de columna del POSTEST. Tu
-     formulario real tiene 3 columnas extra al inicio (Marca
-     temporal, Código, Confirmación) que el código viejo no
-     contaba, así que todo lo de después quedaba corrido.
-
-  3) "Claridad", "Confiabilidad" y "Contribuye" en realidad son
-     una calificación de 1 a 5 (no "Sí/No"). Se decidió contar
-     como respuesta positiva las calificaciones de 4 o 5. Si tú
-     quieres otro criterio (por ejemplo solo el 5), busca la
-     palabra ES_POSITIVO más abajo y cambia el número.
-
-  4) Se agregó la función que faltaba para dibujar la gráfica de
-     "Herramienta considerada más útil" (pregunta de una sola
-     opción).
-*/
 
 /*==================================================
 =              CONEXIÓN GOOGLE SHEETS               =
