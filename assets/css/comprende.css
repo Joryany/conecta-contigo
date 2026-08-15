@@ -2,7 +2,6 @@
 =            REGLAS GLOBALES Y TIPOGRAFÍA          =
 ==================================================*/
 
-/* Importación de fuente suave/amigable si no la tienes en style.css */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
 body {
@@ -13,12 +12,12 @@ body {
     padding: 0;
 }
 
-/* Alineamiento general para la estructura de la página */
-.container, 
-aside, 
-.hero, 
-.aviso-comprende, 
-.accesos-comprende {
+.container,
+aside,
+.hero,
+.aviso-comprende,
+.accesos-comprende,
+.cierre-comprende {
     width: 90%;
     max-width: 1100px;
     margin-left: auto;
@@ -33,11 +32,10 @@ aside,
     position: relative;
     min-height: 380px;
     margin-top: var(--espacio-md);
-    margin-bottom: var(--espacio-lg); /* Separación limpia, sin encimarse */
+    margin-bottom: var(--espacio-lg);
     border-radius: var(--radio-grande);
-    overflow: hidden; 
+    overflow: hidden;
     box-shadow: var(--sombra-grande);
-
     display: flex;
     align-items: center;
     padding: var(--espacio-lg);
@@ -52,7 +50,7 @@ aside,
     object-fit: cover;
     object-position: right center;
     z-index: 1;
-    opacity: 0.8; 
+    opacity: 0.8;
 }
 
 .hero-overlay {
@@ -63,9 +61,9 @@ aside,
     height: 100%;
     z-index: 2;
     background: linear-gradient(
-        90deg, 
-        rgba(255, 255, 255, 0.95) 0%, 
-        rgba(255, 255, 255, 0.7) 55%, 
+        90deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.7) 55%,
         rgba(255, 255, 255, 0.1) 100%
     );
 }
@@ -101,7 +99,32 @@ aside,
     text-align: justify;
 }
 
-/* Botón inferior del Hero */
+.hero-flujo {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: var(--espacio-sm);
+}
+
+.hero-flujo-paso {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: var(--radio-pill);
+    background: rgba(20, 67, 126, 0.08);
+    color: var(--azul-marino);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.2px;
+}
+
+.hero-flujo-flecha {
+    color: var(--azul-claro);
+    font-weight: 800;
+    font-size: 0.9rem;
+}
+
 .scroll-down {
     position: absolute;
     left: 50%;
@@ -131,69 +154,52 @@ aside,
 }
 
 /*==================================================
-=           NUEVOS ESTILOS PARA LA CHICA           =
-==================================================*/
-
-/*==================================================
-=           NUEVOS ESTILOS PARA LA CHICA           =
+=               ILUSTRACIÓN DE LA CHICA            =
 ==================================================*/
 
 .hero-chica {
     position: absolute;
-    right: -15%; /* La empujamos un poco más hacia el borde para que no invada el texto */
+    right: -15%;
     top: 50%;
     transform: translateY(-50%);
-    
-    /* Aumentamos el tamaño aquí: */
-    width: 68%;          /* Antes estaba en 55% */
-    max-width: 780px;    /* Antes estaba en 650px (puedes subirlo más si tu monitor es muy grande) */
-    min-width: 450px; 
-    
+    width: 68%;
+    max-width: 780px;
+    min-width: 450px;
     z-index: 3;
     animation: flotar-chica 6s ease-in-out infinite;
     filter: drop-shadow(0 10px 15px rgba(20, 67, 126, 0.15));
 }
 
 @keyframes flotar-chica {
-    0%, 100% { 
-        transform: translateY(-50%); 
-    }
-    50% { 
-        transform: translateY(calc(-50% - 12px)); 
-    }
+    0%, 100% { transform: translateY(-50%); }
+    50% { transform: translateY(calc(-50% - 12px)); }
 }
 
-/* Ajustes Responsive para la chica */
 @media (max-width: 900px) {
     .hero-chica {
-        width: 75%; /* También un poco más grande en pantallas intermedias si deseas */
-        right: -15%; 
-        opacity: 0.15; 
+        width: 50%;
+        right: -5%;
+        opacity: 0.15;
         z-index: 1;
-        filter: none; 
+        filter: none;
     }
 }
 
-
 /*==================================================
-=        NUEVO DISEÑO PARA LA SECCIÓN EXPLORA      =
+=          SECCIÓN "EXPLORA SEGÚN LO QUE NECESITES" =
 ==================================================*/
 
 .accesos-comprende {
     margin-bottom: var(--espacio-xl);
-    
-    /* Le damos un fondo degradado muy suave usando tus colores */
     background: linear-gradient(135deg, rgba(70, 142, 214, 0.06) 0%, rgba(105, 178, 174, 0.12) 100%);
     padding: var(--espacio-xl) var(--espacio-lg);
     border-radius: var(--radio-grande);
     box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.5), var(--sombra);
-    border: 1px solid rgba(255, 255, 255, 0.6); /* Un borde blanquecino sutil */
-    
+    border: 1px solid rgba(255, 255, 255, 0.6);
     position: relative;
-    overflow: hidden; /* Para contener los círculos decorativos */
+    overflow: hidden;
 }
 
-/* Círculos decorativos abstractos de fondo para que no se vea "pelao" */
 .accesos-comprende::before {
     content: "";
     position: absolute;
@@ -220,62 +226,215 @@ aside,
     z-index: 0;
 }
 
-/* Aseguramos que el texto y las tarjetas queden por encima del fondo decorativo */
-.accesos-comprende h2, 
-.accesos-comprende > p, 
-.grid-accesos {
+.accesos-comprende h2,
+.accesos-comprende > p,
+.grid-accesos,
+.accesos-transicion {
     position: relative;
     z-index: 1;
 }
 
-/* Ajustes Responsive para la chica */
+.accesos-comprende h2 {
+    text-align: center;
+    font-size: var(--titulo-2);
+    font-weight: 800;
+    margin-bottom: var(--espacio-xs);
+    color: var(--azul-marino);
+}
+
+.accesos-comprende > p {
+    text-align: center;
+    color: var(--gris);
+    font-size: var(--texto-grande);
+    margin-top: 0;
+    margin-bottom: var(--espacio-lg);
+    line-height: 1.5;
+}
+
 @media (max-width: 900px) {
-    .hero-chica {
-        width: 50%;
-        right: -5%;
-        opacity: 0.15; /* En móviles la volvemos casi transparente y la enviamos al fondo para que no tape el texto */
-        z-index: 1;
-    }
-    
     .accesos-comprende {
-        padding: var(--espacio-md); /* Menos padding en móviles */
+        padding: var(--espacio-md);
     }
 }
 
 /*==================================================
-=            CAJA "CÓMO USAR ESTA SECCIÓN"          =
+=                    TARJETAS DE ACCESO             =
+==================================================*/
+
+.grid-accesos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--espacio-md);
+    margin-bottom: var(--espacio-md);
+}
+
+.grid-accesos .tarjeta {
+    position: relative;
+    overflow: hidden;
+    padding: var(--padding-card);
+    background: var(--blanco);
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-media);
+    transition: var(--transicion);
+    border: 1px solid var(--gris-claro);
+    border-top: 5px solid transparent;
+}
+
+.grid-accesos .tarjeta:hover {
+    box-shadow: var(--sombra-grande);
+    transform: translateY(-4px);
+}
+
+.grid-accesos .tarjeta::after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    opacity: 0.08;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.tarjeta-condiciones { border-top-color: var(--azul-claro); }
+.tarjeta-condiciones::after { background: var(--azul-claro); }
+
+.tarjeta-situaciones { border-top-color: var(--verde-agua); }
+.tarjeta-situaciones::after { background: var(--verde-agua); }
+
+.tarjeta-herramientas { border-top-color: var(--resalte); }
+.tarjeta-herramientas::after { background: var(--resalte); }
+
+.grid-accesos .tarjeta article {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+}
+
+.grid-accesos .tarjeta .icono-acceso {
+    font-size: 2.8rem;
+    display: block;
+    text-align: center;
+    margin-bottom: var(--espacio-sm);
+}
+
+.grid-accesos .tarjeta h3 {
+    text-align: center;
+    font-size: var(--titulo-3);
+    margin-bottom: var(--espacio-sm);
+}
+
+.card-title-link {
+    color: var(--azul-marino);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.card-title-link:hover {
+    color: var(--azul-claro);
+}
+
+.grid-accesos .tarjeta p {
+    text-align: left;
+    color: var(--gris);
+    line-height: 1.6;
+    margin: 0;
+    font-size: var(--texto);
+    flex: 1;
+}
+
+.card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: var(--espacio-sm);
+    color: var(--azul-marino);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.92rem;
+    transition: var(--transicion);
+}
+
+.card-cta:hover,
+.card-cta:focus {
+    color: var(--azul-claro);
+    transform: translateX(3px);
+}
+
+.accesos-transicion {
+    text-align: center;
+    color: var(--gris);
+    font-size: 0.92rem;
+    font-style: italic;
+    margin: var(--espacio-lg) 0 0;
+    opacity: 0.85;
+}
+
+/*==================================================
+=              ELEMENTOS DECORATIVOS COMPARTIDOS    =
+==================================================*/
+/* Usados tanto en "¿Es urgente?" como en el cierre, para dar
+   sensación de continuidad entre ambas secciones. */
+
+.decor-elemento {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+/*==================================================
+=              "¿ES URGENTE?" — SALIDA DE SEGURIDAD =
 ==================================================*/
 
 .aviso-comprende {
+    position: relative;
+    overflow: hidden;
     background: var(--blanco);
     border-radius: var(--radio-grande);
     padding: var(--espacio-lg);
     margin-bottom: var(--espacio-lg);
     box-shadow: var(--sombra-media);
     border-top: 6px solid var(--resalte);
-    text-align: center;
 }
 
-.aviso-comprende h2 {
-    color: var(--azul-marino);
-    font-size: var(--titulo-2);
-    font-weight: 800;
-    margin-top: 0;
-    margin-bottom: var(--espacio-sm);
+.aviso-urgente {
+    background: linear-gradient(135deg, rgba(245, 131, 111, 0.08) 0%, rgba(245, 131, 111, 0.03) 100%);
 }
 
-.aviso-comprende p {
+.aviso-urgente-decor {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.aviso-urgente-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: var(--espacio-lg);
+}
+
+.aviso-urgente-texto h3 {
+    color: #C1543A; /* variación cálida derivada de --resalte, para el título */
+    font-size: var(--titulo-3);
+    margin: 0 0 6px 0;
+    text-align: left;
+}
+
+.aviso-urgente-texto p {
     color: var(--gris);
     line-height: 1.6;
-    margin-bottom: var(--espacio-md);
-    text-align: justify; /* En la tarjeta de aviso, el texto centrado luce más ordenado */
-    font-size: var(--texto-grande);
-}
-
-.aviso-comprende h3 {
-    color: var(--azul-marino);
-    font-size: var(--titulo-3);
-    margin-bottom: var(--espacio-xs);
+    text-align: left;
+    margin: 0 0 var(--espacio-sm) 0;
+    font-size: var(--texto);
 }
 
 .btn-emergencia {
@@ -300,8 +459,39 @@ aside,
     color: var(--blanco);
 }
 
+.aviso-urgente-ilustracion {
+    justify-self: center;
+}
+
+.aviso-urgente-ilustracion svg {
+    width: 110px;
+    height: 110px;
+    filter: drop-shadow(0 6px 10px rgba(20, 67, 126, 0.12));
+}
+
+@media (max-width: 700px) {
+    .aviso-urgente-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .aviso-urgente-texto h3,
+    .aviso-urgente-texto p {
+        text-align: center;
+    }
+
+    .aviso-urgente-ilustracion {
+        order: -1;
+    }
+
+    .aviso-urgente-ilustracion svg {
+        width: 84px;
+        height: 84px;
+    }
+}
+
 /*======================================
-=             ASIDE / DATO CLAVE       =
+=       ASIDE / DATO CLAVE (genérico)  =
 ======================================*/
 
 aside {
@@ -340,82 +530,198 @@ aside::before {
 }
 
 /*==================================================
-=              3 ACCESOS PRINCIPALES                =
+=                 CIERRE DE COMPRENDE               =
 ==================================================*/
+/* Una sola composición: mensaje central con ilustración,
+   dos tarjetas de navegación y el aviso "Recuerda" integrado. */
 
-.accesos-comprende {
+.cierre-comprende {
+    position: relative;
+    overflow: hidden;
+    margin-top: var(--espacio-lg);
     margin-bottom: var(--espacio-xl);
-}
-
-.accesos-comprende h2 {
-    text-align: center;
-    font-size: var(--titulo-2);
-    font-weight: 800;
-    margin-bottom: var(--espacio-xs);
-    color: var(--azul-marino);
-}
-
-/* Estilo para la bajada/subtítulo de "Explora según lo que necesites" */
-.accesos-comprende > p {
-    text-align: center;
-    color: var(--gris);
-    font-size: var(--texto-grande);
-    margin-top: 0;
-    margin-bottom: var(--espacio-lg);
-    line-height: 1.5;
-}
-
-.grid-accesos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--espacio-md);
-}
-
-.grid-accesos .tarjeta {
-    padding: var(--padding-card);
-    background: var(--blanco);
+    padding: var(--espacio-xl) var(--espacio-lg);
     border-radius: var(--radio-grande);
-    box-shadow: var(--sombra-media);
-    transition: var(--transicion);
+    background:
+        radial-gradient(circle at 15% 15%, rgba(105, 178, 174, 0.10), transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(70, 142, 214, 0.10), transparent 45%),
+        var(--fondo-suave);
+    box-shadow: var(--sombra);
+}
+
+.cierre-decor {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.cierre-mensaje {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: var(--espacio-lg);
+    margin-bottom: var(--espacio-lg);
+}
+
+.cierre-ilustracion svg {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 8px 14px rgba(20, 67, 126, 0.12));
+}
+
+.cierre-texto h3 {
+    color: var(--azul-marino);
+    font-size: var(--titulo-3);
+    font-weight: 800;
+    line-height: 1.35;
+    margin: 0 0 6px 0;
+    text-align: left;
+}
+
+.cierre-texto p {
+    color: var(--gris);
+    font-size: var(--texto);
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+}
+
+.cierre-accesos {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--espacio-sm);
+    margin-bottom: var(--espacio-md);
+}
+
+.cierre-tarjeta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--blanco);
     border: 1px solid var(--gris-claro);
+    border-radius: var(--radio-grande);
+    padding: var(--espacio-sm) var(--espacio-md);
+    box-shadow: var(--sombra);
+    text-decoration: none;
+    transition: var(--transicion);
+}
+
+.cierre-tarjeta:hover,
+.cierre-tarjeta:focus {
+    box-shadow: var(--sombra-media);
+    transform: translateY(-3px);
+}
+
+.cierre-tarjeta-icono {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.cierre-tarjeta-icono svg {
+    width: 22px;
+    height: 22px;
+}
+
+.cierre-tarjeta-contactos .cierre-tarjeta-icono {
+    background: rgba(70, 142, 214, 0.12);
+}
+
+.cierre-tarjeta-conoce .cierre-tarjeta-icono {
+    background: rgba(105, 178, 174, 0.15);
+}
+
+.cierre-tarjeta-info {
     display: flex;
     flex-direction: column;
+    line-height: 1.3;
 }
 
-.grid-accesos .tarjeta:hover {
-    box-shadow: var(--sombra-grande);
-    transform: translateY(-4px);
-}
-
-.grid-accesos .tarjeta .icono-acceso {
-    font-size: 2.8rem;
-    display: block;
-    text-align: center;
-    margin-bottom: var(--espacio-sm);
-}
-
-.grid-accesos .tarjeta h3 {
-    text-align: center;
-    font-size: var(--titulo-3);
-    margin-bottom: var(--espacio-sm);
-}
-
-.card-title-link {
+.cierre-tarjeta-info strong {
     color: var(--azul-marino);
-    text-decoration: none;
-    font-weight: 700;
+    font-size: 0.95rem;
+    font-weight: 800;
 }
 
-.card-title-link:hover {
-    color: var(--azul-claro);
-}
-
-.grid-accesos .tarjeta p {
-    text-align: left; /* Alineado limpio a la izquierda para evitar huecos grandes entre palabras */
+.cierre-tarjeta-info span {
     color: var(--gris);
-    line-height: 1.6;
+    font-size: 0.8rem;
+}
+
+.cierre-tarjeta-flecha {
+    margin-left: auto;
+    color: var(--azul-claro);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.cierre-recuerda {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: var(--espacio-sm);
+    border-top: 1px solid rgba(20, 67, 126, 0.08);
+}
+
+.cierre-recuerda-icono {
+    flex-shrink: 0;
+    display: flex;
+    margin-top: 2px;
+}
+
+.cierre-recuerda-icono svg {
+    width: 18px;
+    height: 18px;
+}
+
+.cierre-recuerda-texto strong {
+    margin: 0 0 2px 0;
+    color: var(--azul-marino);
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.cierre-recuerda-texto p {
     margin: 0;
-    font-size: var(--texto);
+    color: var(--gris);
+    font-size: 0.78rem;
+    line-height: 2;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 700px) {
+    .cierre-mensaje {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .cierre-ilustracion {
+        justify-self: center;
+    }
+
+    .cierre-ilustracion svg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .cierre-texto h3,
+    .cierre-texto p {
+        text-align: center;
+    }
+
+    .cierre-accesos {
+        grid-template-columns: 1fr;
+    }
 }
 
 /*==================================================
@@ -432,7 +738,16 @@ aside::before {
         font-size: 2.2rem;
     }
 
+    .hero-flujo-paso {
+        font-size: 0.78rem;
+        padding: 4px 10px;
+    }
+
     aside::before {
-        display: none; /* Se oculta el ícono en pantallas pequeñas para dar espacio al texto */
+        display: none;
+    }
+
+    .cierre-comprende {
+        padding: var(--espacio-lg) var(--espacio-md);
     }
 }

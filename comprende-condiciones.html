@@ -1,53 +1,1526 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conecta Contigo - Diario y Registro Emocional</title>
+
+    <title>Conecta Contigo - Comprende: Condiciones</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/diario.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/comprende.css">
     <link rel="stylesheet" href="assets/css/footer-mejorado.css">
-
 </head>
-
 <body>
-    <header>
-        <div class="top-nav-container">
-            <img width="100px" src="assets/img/index/logo-sin-texto.png" alt="Logo de la Página, un lazo azul">
 
-            <nav>
-                <a href="index.html">Inicio</a>
-                <a href="contacto.html">Contactos</a>
-                <a href="conoce.html">Conoce</a>
-                <a href="comprende.html">Comprende</a>
-            </nav>
+<header>
+    <div class="top-nav-container">
+        <img
+            width="100px"
+            src="assets/img/index/logo-sin-texto.png"
+            alt="Logo de la Página, un lazo azul"
+        >
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="contacto.html">Contactos</a>
+            <a href="conoce.html">Conoce</a>
+            <a href="comprende.html">Comprende</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- ============ NAVEGACIÓN SUPERIOR ============ -->
+    <nav class="cond-mini-nav" aria-label="Navegación de Comprende">
+        <a href="comprende.html" class="volver">← Volver a Comprende</a>
+        <div class="cond-mini-nav-links">
+            <a href="comprende-situaciones.html" class="cond-mini-nav-link">← Ir a Situaciones</a>
+            <a href="comprende-herramientas.html" class="cond-mini-nav-link">Ir a Herramientas →</a>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <div>
-            <h1 style="text-align: center; font-weight: 600px ;">En diseño...</h1>
-            <p style="text-align: center; padding: 20px;">Puede probar otros apartados de nuestra página, proximamente estará
-                habilitado este apartado.</p>
-        </div>   
-        <div class="hero-buttons">
-        
-            <a href="conoce.html" class="btn">
-                Conoce más
-            </a>
-
-            <a href="contacto.html" class="btn">
-                Busca ayuda
-            </a>
-
+    <!-- ============ HERO SECUNDARIO ============ -->
+    <section class="cond-hero" aria-label="Introducción a Condiciones">
+        <div class="cond-hero-texto">
+            <span class="cond-hero-eyebrow">Comprende · Condiciones</span>
+            <h1>¿Qué me está pasando?</h1>
+            <p>
+                Entender lo que puede estar pasando con tu salud mental es
+                un primer paso para saber cómo actuar y a quién pedir apoyo.
+                Aquí no vas a encontrar un test para "descubrir qué tienes" —
+                vas a encontrar información real, sin alarmismo, sobre
+                condiciones que pueden aparecer en la adolescencia.
+            </p>
         </div>
+        <figure class="cond-hero-fig">
+            <img
+                class="cond-hero-img"
+                src=""
+                alt="Ilustración de un adolescente sentado con las piernas cruzadas frente a una ventana grande, rodeado de formas suaves y abstractas en tonos azules que representan pensamientos y emociones organizándose, con una expresión pensativa pero serena, no triste ni angustiada"
+            >
+        </figure>
+    </section>
 
-    </main>
-    <footer>
+    <!-- ============ AVISO BREVE: NO DIAGNOSTICA ============ -->
+    <div class="cond-aviso-breve" role="note">
+        <span class="cond-aviso-icono" aria-hidden="true">🧠</span>
+        <p>
+            <strong>Reconocer una señal no es lo mismo que tener una condición.</strong>
+            Muchos síntomas pueden aparecer por distintas razones. El diagnóstico
+            siempre corresponde a un profesional — esta página está hecha para
+            ayudarte a entender, no para que te autodiagnostiques.
+        </p>
+    </div>
 
-    </footer>
+    <!-- ============ INTRODUCCIÓN ============ -->
+    <section class="cond-intro" aria-label="Por qué hablamos de esto">
+        <div class="cond-intro-texto">
+            <p class="cond-intro-destacada">
+                ¿Por qué estamos hablando de esto?
+            </p>
+            <p>
+                La adolescencia es una etapa de muchos cambios, y a veces esos
+                cambios se sienten más grandes de lo normal, o se sostienen más
+                tiempo del esperado. Hablar abiertamente de condiciones de salud
+                mental no es "buscarle problema a todo" — es darte herramientas
+                para reconocer patrones, entender que no estás solo/a si algo de
+                esto te pasa, y saber qué puedes hacer al respecto.
+            </p>
+            <p>
+                No todas las experiencias difíciles significan tener un trastorno.
+                Pero cuando ciertas señales se repiten, se sostienen en el tiempo
+                y afectan tu día a día, vale la pena entender de qué se trata —
+                y saber que existe ayuda real.
+            </p>
+        </div>
+        <div class="cond-intro-dato">
+            <span class="cond-intro-dato-num">1 de cada 7</span>
+            <span class="cond-intro-dato-texto">
+                adolescentes de 10 a 19 años presenta algún trastorno mental,
+                y la depresión y la ansiedad están entre los principales
+                (OMS, 2025).
+            </span>
+        </div>
+    </section>
+
+    <!-- ============ ÍNDICE HORIZONTAL ============ -->
+    <nav class="sit-indice" aria-label="Índice de situaciones">
+        <div class="sit-indice-grupo">
+            <span class="sit-indice-etiqueta">Toca un tema para saber de él</span>
+            <div class="sit-indice-pills">
+                <a href="#depresion" class="sit-pill"><span>01</span> Depresión</a>
+                <a href="#ansiedad" class="sit-pill"><span>02</span> Ansiedad</a>
+                <a href="#ansiedad-social" class="sit-pill"><span>03</span> Ansiedad social</a>
+                <a href="#autolesion-suicidio" class="sit-pill"><span>04</span> Autolesión y pensamientos suicidas</a>
+                <a href="#tca" class="sit-pill"><span>05</span> Trastornos alimentarios</a>
+            </div>
+            <div class="sit-indice-pills">
+                <a href="#imagen-corporal" class="sit-pill"><span>06</span> Imagen corporal y dismorfia</a>
+                <a href="#sustancias" class="sit-pill"><span>07</span> Consumo de sustancias</a>
+                <a href="#psicosis" class="sit-pill"><span>08</span> Psicosis: señales de alerta</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============ LISTA DE TEMAS (ACORDEÓN) ============ -->
+    <div class="temas-lista">
+
+        <!-- ================= 01 DEPRESIÓN ================= -->
+        <details class="tema" id="depresion">
+            <summary>
+                <h3><span class="cond-num">01</span>Depresión</h3>
+                <span class="flecha" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="tema-contenido">
+
+                <div class="caja caja-importante">
+                    <p>
+                        Sentirte triste, desmotivado o cansado alguna vez no
+                        significa que tengas depresión. Este apartado te ayuda
+                        a reconocer patrones, no a autodiagnosticarte.
+                    </p>
+                </div>
+
+                <h4>¿Qué es?</h4>
+                <p>
+                    La depresión es más que estar triste unos días. Es un
+                    cambio sostenido en cómo te sientes, piensas y funcionas,
+                    que dura semanas y afecta cosas concretas de tu vida: cómo
+                    duermes, cómo comes, cómo te concentras, si te apetece
+                    hacer lo que antes disfrutabas. La depresión, la ansiedad
+                    y los trastornos del comportamiento están entre las
+                    principales causas de enfermedad y discapacidad en
+                    adolescentes (OMS, 2025). No es "falta de fuerza de
+                    voluntad" ni algo que se resuelve solo con "pensar
+                    positivo".
+                </p>
+
+                <h4>¿Cómo puede manifestarse?</h4>
+                <div class="cond-categorias">
+                    <div class="cond-categoria cat-emocional">
+                        <h5>Emocionales</h5>
+                        <ul>
+                            <li>Tristeza persistente, o más irritabilidad y enojo que tristeza</li>
+                            <li>Sentimientos de inutilidad o de que "nada tiene sentido"</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-fisica">
+                        <h5>Físicas</h5>
+                        <ul>
+                            <li>Dormir mucho más o mucho menos de lo normal</li>
+                            <li>Cambios en el apetito</li>
+                            <li>Cansancio constante, aunque hayas descansado</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-conductual">
+                        <h5>Conductuales / sociales</h5>
+                        <ul>
+                            <li>Perder el interés en cosas que antes te gustaban</li>
+                            <li>Aislarte de amigos o familia</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-academica">
+                        <h5>Académicas</h5>
+                        <ul>
+                            <li>Dificultad para concentrarte en el colegio</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>
+                    Tener uno o dos de estos síntomas de forma aislada, o por
+                    unos días, no equivale a tener depresión. Lo que orienta
+                    hacia depresión es que varios aparezcan juntos y se
+                    sostengan en el tiempo, afectando tu día a día.
+                </p>
+
+                <h4>Podría verse así</h4>
+                <div class="cond-ejemplos">
+                    <div class="cond-ejemplo">
+                        <p class="cond-ejemplo-antes">Disfrutabas jugar videojuegos con tus amigos casi todos los días.</p>
+                        <span class="cond-ejemplo-flecha" aria-hidden="true">→</span>
+                        <p class="cond-ejemplo-ahora">Has perdido el interés de forma persistente, incluso cuando te invitan.</p>
+                    </div>
+                    <div class="cond-ejemplo">
+                        <p class="cond-ejemplo-antes">Dormías tus horas normales y rendías bien en el colegio.</p>
+                        <span class="cond-ejemplo-flecha" aria-hidden="true">→</span>
+                        <p class="cond-ejemplo-ahora">Duermes muchísimo más o mucho menos, y te cuesta concentrarte en clase.</p>
+                    </div>
+                </div>
+
+                <h4>Señal no es lo mismo que diagnóstico</h4>
+                <div class="cond-camino">
+                    <span class="cond-camino-paso">Reconocer</span>
+                    <span class="cond-camino-flecha" aria-hidden="true">→</span>
+                    <span class="cond-camino-paso">Prestar atención</span>
+                    <span class="cond-camino-flecha" aria-hidden="true">→</span>
+                    <span class="cond-camino-paso">Hablarlo</span>
+                    <span class="cond-camino-flecha" aria-hidden="true">→</span>
+                    <span class="cond-camino-paso">Buscar orientación</span>
+                </div>
+
+                <h4>¿Por qué puede aparecer?</h4>
+                <p>
+                    No hay una sola causa. Entre más factores de riesgo viva
+                    un adolescente, mayor el efecto en su salud mental (OMS,
+                    2025) — situaciones de violencia o acoso escolar, una
+                    crianza muy severa, o dificultades socioeconómicas
+                    importantes son algunos de ellos. Esto no significa que
+                    vivir algo así "vaya a causar" depresión, sino que aumenta
+                    la probabilidad.
+                </p>
+                <div class="stat-destacado">
+                    <span class="stat-num" aria-hidden="true">↑</span>
+                    <p>
+                        Según la cobertura de la presentación oficial de la
+                        Encuesta Nacional de Salud Mental 2025, la prevalencia
+                        de depresión en adolescentes colombianos de 12 a 17
+                        años aumentó de forma marcada frente a 2015 (La
+                        República, 2026). Dato tomado de la cobertura
+                        periodística del acto oficial; el informe técnico
+                        completo aún no se localizó publicado.
+                    </p>
+                </div>
+
+                <h4>Herramientas focalizadas</h4>
+                <div class="cond-herramientas">
+                    <div class="cond-herramienta">
+                        <h5>Activación conductual</h5>
+                        <p>
+                            Hacer algo pequeño y concreto aunque "no tengas
+                            ganas" — la motivación suele llegar después de la
+                            acción, no antes. Componente con evidencia sólida
+                            dentro de la terapia psicológica para depresión
+                            (Hetrick et al., 2016).
+                        </p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Mantener conexión</h5>
+                        <p>
+                            Sostener algún tipo de contacto social, aunque sea
+                            breve, ayuda a no profundizar el aislamiento que
+                            suele acompañar la depresión.
+                        </p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Terapia psicológica estructurada</h5>
+                        <p>
+                            Es el tratamiento de primera línea recomendado
+                            por guías clínicas (NICE, 2019). Se accede con un
+                            psicólogo o psiquiatra — no es algo que se "haga
+                            solo" desde una página web.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cond-acompanamiento">
+                    <div class="cond-acom-card para-ti">
+                        <h4>Si esto te está pasando a ti</h4>
+                        <ul>
+                            <li>Mantén, aunque sea mínimamente, tu rutina de sueño y alimentación</li>
+                            <li>Prueba la activación conductual con actividades muy pequeñas</li>
+                            <li>Mantén algún contacto social, aunque sea breve</li>
+                            <li>No cargues esto solo/a — díselo a un adulto de confianza</li>
+                        </ul>
+                    </div>
+                    <div class="cond-acom-card para-amigo">
+                        <h4>Si te preocupa alguien</h4>
+                        <ul>
+                            <li>Escucha sin minimizar ("ya se te va a pasar") ni presionar para que "se anime"</li>
+                            <li>No intentes ser su terapeuta — acompañar no es tratar</li>
+                            <li>Invítalo a hacer cosas simples juntos, sin exigirle que "tenga ganas"</li>
+                            <li>Si habla de sentirse una carga o de no tener futuro, involucra a un adulto de confianza</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>¿Cuándo pedir ayuda?</h4>
+                <div class="cond-cuando-grid">
+                    <div class="cond-cuando-item">Varios síntomas se mantienen por más de dos semanas</div>
+                    <div class="cond-cuando-item">Están afectando tu colegio o tus relaciones</div>
+                    <div class="cond-cuando-item">Sientes que no puedes manejarlo solo/a</div>
+                </div>
+
+                <div class="caja caja-emergencia">
+                    <p>
+                        🆘 <strong>¿Cuándo es una emergencia?</strong>
+                        Si tienes pensamientos de hacerte daño, de que "no
+                        vale la pena seguir", o sientes que podrías perder el
+                        control sobre eso, esto es una emergencia — no esperes
+                        a que pase solo. Ve ahora mismo a
+                        <a href="contacto.html#emergencia">Contactos</a>,
+                        donde encuentras la Línea 106, Chatlemos y la Línea 123.
+                    </p>
+                </div>
+
+                <div class="caja caja-recuerda">
+                    <p>🩺 Este contenido no es un diagnóstico ni reemplaza una evaluación profesional.</p>
+                </div>
+
+                <p class="tema-fuente">
+                    Fuentes: OMS, La salud mental de los adolescentes (2025); NICE,
+                    Depression in children and young people (NG134, 2019);
+                    Hetrick et al. (2016), Cochrane Database of Systematic Reviews;
+                    La República (2026).
+                </p>
+            </div>
+        </details>
+
+        <!-- ================= 02 ANSIEDAD ================= -->
+        <details class="tema" id="ansiedad">
+            <summary>
+                <h3><span class="cond-num">02</span>Ansiedad (generalizada y crisis de pánico)</h3>
+                <span class="flecha" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="tema-contenido">
+
+                <div class="caja caja-importante">
+                    <p>
+                        Sentir nervios antes de un examen o preocuparte por
+                        algo importante es normal. Este apartado te ayuda a
+                        distinguir eso de un patrón que empieza a limitarte.
+                    </p>
+                </div>
+
+                <h4>¿Qué es?</h4>
+                <p>
+                    Todos sentimos ansiedad alguna vez — es una respuesta
+                    natural ante algo que percibimos como amenaza o reto. El
+                    problema aparece cuando ese miedo o preocupación se vuelve
+                    excesivo, difícil de controlar, y viene con tensión física,
+                    hasta causar angustia importante o dificultar tu día a día
+                    (OMS, 2025). Existen distintos tipos: la preocupación
+                    excesiva y constante (ansiedad generalizada) y las crisis
+                    de pánico, episodios agudos de miedo intenso que aparecen
+                    de forma súbita (OMS, 2025).
+                </p>
+
+                <h4>¿Cómo puede manifestarse?</h4>
+                <div class="cond-categorias">
+                    <div class="cond-categoria cat-cognitiva">
+                        <h5>Ansiedad generalizada</h5>
+                        <ul>
+                            <li>Preocupación constante, difícil de "apagar"</li>
+                            <li>Dificultad para concentrarte, mente en otra parte</li>
+                            <li>Problemas para dormir por darle vueltas a las cosas</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-fisica">
+                        <h5>Ansiedad generalizada (físico)</h5>
+                        <ul>
+                            <li>Tensión muscular, dolores de cabeza o estómago sin causa médica clara</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-fisica">
+                        <h5>Crisis de pánico</h5>
+                        <ul>
+                            <li>Corazón acelerado, falta de aire, mareo, sudoración, temblor</li>
+                            <li>Sensación de que "algo malo va a pasar" o de perder el control</li>
+                            <li>Suele durar minutos, aunque se sienta como mucho más</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-conductual">
+                        <h5>Después de una crisis</h5>
+                        <ul>
+                            <li>Empezar a evitar los lugares o situaciones donde ocurrió</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>
+                    La depresión y la ansiedad pueden compartir síntomas, como
+                    cambios repentinos del estado de ánimo (OMS, 2025) — está
+                    bien no tener claro cuál es cuál; eso lo precisa un
+                    profesional.
+                </p>
+
+                <h4>Podría verse así</h4>
+                <div class="cond-ejemplos">
+                    <div class="cond-ejemplo">
+                        <p class="cond-ejemplo-antes">Te preocupaba un examen la noche anterior, y podías dejarlo de lado.</p>
+                        <span class="cond-ejemplo-flecha" aria-hidden="true">→</span>
+                        <p class="cond-ejemplo-ahora">La preocupación aparece por cosas pequeñas y te cuesta "apagarla" casi todos los días.</p>
+                    </div>
+                    <div class="cond-ejemplo">
+                        <p class="cond-ejemplo-antes">Ibas al centro comercial sin pensarlo dos veces.</p>
+                        <span class="cond-ejemplo-flecha" aria-hidden="true">→</span>
+                        <p class="cond-ejemplo-ahora">Evitas ese lugar porque ahí tuviste una crisis de pánico.</p>
+                    </div>
+                </div>
+
+                <h4>¿Por qué puede aparecer?</h4>
+                <p>
+                    No hay una causa única. La ansiedad suele empezar a
+                    manifestarse en la infancia o la adolescencia, y entre más
+                    factores de riesgo esté viviendo un adolescente
+                    (situaciones adversas, presión social, exploración de la
+                    propia identidad), mayor el posible impacto (OMS, 2025).
+                </p>
+
+                <h4>Herramientas focalizadas</h4>
+                <div class="cond-herramientas">
+                    <div class="cond-herramienta">
+                        <h5>Respiración y relajación</h5>
+                        <p>
+                            Respiración lenta y profunda, prolongando la
+                            exhalación, para calmar la activación física.
+                            Evidencia favorable en adolescentes, aunque se
+                            pide más investigación rigurosa (Hamdani et al., 2022).
+                        </p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Grounding (5-4-3-2-1)</h5>
+                        <p>
+                            Nombrar 5 cosas que ves, 4 que tocas, 3 que
+                            escuchas, 2 que hueles, 1 que saboreas, para
+                            volver al presente. Evidencia todavía limitada
+                            como técnica aislada — vale la pena probarla, sin
+                            esperar que sea "la solución".
+                        </p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Terapia cognitivo-conductual (TCC)</h5>
+                        <p>
+                            El tratamiento psicológico con más evidencia para
+                            ansiedad en esta edad (James et al., 2020). Se
+                            accede con un psicólogo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cond-acompanamiento">
+                    <div class="cond-acom-card para-ti">
+                        <h4>Si esto te está pasando a ti</h4>
+                        <ul>
+                            <li>Practica respiración lenta cuando notes que la ansiedad sube, no solo durante una crisis</li>
+                            <li>Recuerda que una crisis de pánico dura minutos y no es peligrosa en sí misma</li>
+                            <li>Mantén rutinas de sueño — la falta de sueño puede empeorar la ansiedad</li>
+                        </ul>
+                    </div>
+                    <div class="cond-acom-card para-amigo">
+                        <h4>Si te preocupa alguien</h4>
+                        <ul>
+                            <li>Si tiene una crisis de pánico: quédate con él/ella, habla con calma, recuérdale que va a pasar</li>
+                            <li>No digas "cálmate" de forma brusca</li>
+                            <li>No lo empujes a enfrentar de golpe lo que evita</li>
+                            <li>Si evita cada vez más lugares por miedo, invítalo a hablarlo con un adulto de confianza</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>¿Cuándo pedir ayuda?</h4>
+                <div class="cond-cuando-grid">
+                    <div class="cond-cuando-item">La preocupación es difícil de controlar la mayoría de los días</div>
+                    <div class="cond-cuando-item">Evitas cada vez más cosas por miedo a sentir ansiedad</div>
+                    <div class="cond-cuando-item">Las crisis de pánico se repiten</div>
+                </div>
+
+                <div class="caja caja-alerta">
+                    <p>
+                        Una crisis de pánico intensa no suele ser una
+                        emergencia médica en sí misma, pero si sientes dolor
+                        fuerte en el pecho, no sabes si es ansiedad u otra
+                        cosa, o la persona pierde la conciencia, acude a un
+                        servicio de urgencias.
+                    </p>
+                </div>
+
+                <div class="caja caja-emergencia">
+                    <p>
+                        🆘 Si en medio de todo esto aparecen pensamientos de
+                        hacerte daño, eso sí es una emergencia — ve directo a
+                        <a href="contacto.html#emergencia">Contactos</a>.
+                    </p>
+                </div>
+
+                <div class="caja caja-recuerda">
+                    <p>🩺 Este contenido no es un diagnóstico ni reemplaza una evaluación profesional.</p>
+                </div>
+
+                <p class="tema-fuente">
+                    Fuentes: OMS, Trastornos de ansiedad (2025); OMS, Salud mental
+                    de los adolescentes (2025); James et al. (2020), Cochrane;
+                    Hamdani et al. (2022), International Journal of Mental
+                    Health Systems.
+                </p>
+            </div>
+        </details>
+
+        <!-- ================= 03 ANSIEDAD SOCIAL ================= -->
+        <details class="tema" id="ansiedad-social">
+            <summary>
+                <h3><span class="cond-num">03</span>Ansiedad social / fobia social</h3>
+                <span class="flecha" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="tema-contenido">
+
+                <div class="caja caja-importante">
+                    <p>
+                        La timidez y la ansiedad social no son lo mismo.
+                        Sentir vergüenza a veces es normal — este apartado te
+                        ayuda a reconocer cuándo ese miedo empieza a limitarte
+                        de verdad.
+                    </p>
+                </div>
+
+                <h4>¿Qué es?</h4>
+                <p>
+                    Es un miedo intenso y persistente a ser observado, juzgado
+                    o evaluado negativamente por otras personas en situaciones
+                    sociales (OMS, 2025). No es solo "ser tímido": puede ser
+                    tan fuerte que te haga evitar por completo situaciones que
+                    otras personas viven sin mayor dificultad, como hablar en
+                    clase, comer frente a otros o saludar a alguien nuevo.
+                </p>
+
+                <h4>¿Cómo puede manifestarse?</h4>
+                <div class="cond-categorias">
+                    <div class="cond-categoria cat-fisica">
+                        <h5>Físicas</h5>
+                        <ul>
+                            <li>Sudoración, temblor, voz entrecortada</li>
+                            <li>Sensación de "quedarte en blanco" en situaciones sociales</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-conductual">
+                        <h5>Conductuales</h5>
+                        <ul>
+                            <li>Evitar activamente situaciones sociales (no levantar la mano, faltar el día de exponer)</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-cognitiva">
+                        <h5>Cognitivas</h5>
+                        <ul>
+                            <li>Repasar obsesivamente cómo actuaste, buscando "errores"</li>
+                            <li>Miedo a que otros noten que estás nervioso/a</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>
+                    Sentir nervios antes de exponer un trabajo es normal para
+                    casi cualquier persona. Lo que distingue la ansiedad
+                    social es que el miedo es desproporcionado a la situación
+                    real y te lleva a evitar cosas que te importan.
+                </p>
+
+                <div class="stat-destacado">
+                    <span class="stat-num" aria-hidden="true">↑</span>
+                    <p>
+                        La prevalencia de ansiedad social aumenta con la edad:
+                        se estima en 4,7 % en niños, 8,3 % en adolescentes y
+                        17 % en jóvenes adultos (Salari et al., 2024) — no es
+                        algo raro ni aislado en esta etapa de la vida.
+                    </p>
+                </div>
+
+                <h4>Herramientas focalizadas</h4>
+                <div class="cond-herramientas">
+                    <div class="cond-herramienta">
+                        <h5>Exposición gradual</h5>
+                        <p>
+                            Enfrentar poco a poco, empezando por lo que genera
+                            menos ansiedad, en vez de evitarlo por completo.
+                            Idealmente guiada por un profesional, no de forma
+                            improvisada y sola (Yang et al., 2019).
+                        </p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Terapia psicológica (TCC)</h5>
+                        <p>
+                            La intervención con más evidencia para ansiedad
+                            social en esta edad, con diferencia significativa
+                            frente a no recibir ayuda (Yang et al., 2019).
+                        </p>
+                    </div>
+                </div>
+                <div class="caja caja-alerta">
+                    <p>
+                        Exponerte de golpe a lo que más miedo te da, sin
+                        ninguna guía, puede empeorar las cosas en vez de
+                        ayudar — la exposición gradual funciona mejor
+                        acompañada.
+                    </p>
+                </div>
+
+                <div class="cond-acompanamiento">
+                    <div class="cond-acom-card para-ti">
+                        <h4>Si esto te está pasando a ti</h4>
+                        <ul>
+                            <li>Identifica una situación social pequeña que te genere algo de ansiedad, sin exigirte que "no sientas nada"</li>
+                            <li>Trata de no dejar que la evitación se vuelva automática</li>
+                            <li>Sentir vergüenza no significa que "algo salió mal"</li>
+                        </ul>
+                    </div>
+                    <div class="cond-acom-card para-amigo">
+                        <h4>Si te preocupa alguien</h4>
+                        <ul>
+                            <li>No lo etiquetes como "tímido" y lo dejes ahí — pregúntale cómo se siente realmente</li>
+                            <li>No lo obligues a exponerse a algo que le da mucho miedo solo para "que se le quite"</li>
+                            <li>Invítalo a situaciones sociales pequeñas, sin presión</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>¿Cuándo pedir ayuda?</h4>
+                <div class="cond-cuando-grid">
+                    <div class="cond-cuando-item">Faltas a clases o evitas actividades importantes para ti</div>
+                    <div class="cond-cuando-item">El malestar es muy grande y constante</div>
+                </div>
+
+                <div class="caja caja-emergencia">
+                    <p>
+                        🆘 Si el aislamiento se vuelve total, o aparecen
+                        pensamientos de hacerte daño relacionados con el
+                        rechazo o la soledad, eso requiere ayuda inmediata —
+                        ve a <a href="contacto.html#emergencia">Contactos</a>.
+                    </p>
+                </div>
+
+                <div class="caja caja-recuerda">
+                    <p>🩺 Este contenido no es un diagnóstico ni reemplaza una evaluación profesional.</p>
+                </div>
+
+                <p class="tema-fuente">
+                    Fuentes: OMS, Trastornos mentales (2025); Salari et al.
+                    (2024), Journal of Prevention; Yang et al. (2019), European
+                    Child & Adolescent Psychiatry.
+                </p>
+            </div>
+        </details>
+
+        <!-- ================= 04 AUTOLESIÓN Y SUICIDIO ================= -->
+        <details class="tema" id="autolesion-suicidio">
+            <summary>
+                <h3><span class="cond-num">04</span>Autolesiones y pensamientos suicidas</h3>
+                <span class="cond-badge-riesgo">Lee con cuidado</span>
+                <span class="flecha" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="tema-contenido">
+
+                <div class="caja caja-importante">
+                    <p>
+                        Aquí no vas a encontrar detalles de cómo alguien
+                        podría hacerse daño. El objetivo es que reconozcas
+                        señales, sepas qué hacer, y sepas que no estás solo/a
+                        si esto te está pasando a ti o a alguien que quieres.
+                    </p>
+                </div>
+
+                <p>
+                    En Barranquilla y el Atlántico, los adolescentes son uno
+                    de los grupos más afectados por esta situación: cerca de
+                    la mitad de los intentos de suicidio reportados en el
+                    departamento corresponde a personas entre 7 y 21 años
+                    (El Heraldo, 2026; Emisora Atlántico, 2026). Por eso esta
+                    sección existe: no para asustarte, sino para que tengas
+                    información real y sepas qué hacer.
+                </p>
+
+                <h4>¿Qué es?</h4>
+                <p>
+                    Hablamos de dos cosas relacionadas pero distintas. La
+                    <strong>autolesión</strong> es hacerse daño físico a
+                    propósito, sin intención de morir — una forma, no
+                    saludable pero real, de intentar manejar una emoción que
+                    en el momento se siente insoportable (Grandclerc et al.,
+                    2016; Merck Manual, 2026). No es "para llamar la
+                    atención". Los <strong>pensamientos e ideación
+                    suicida</strong> van desde ideas pasajeras hasta
+                    pensamientos más frecuentes o con un plan, con intención
+                    de terminar con el sufrimiento terminando con la vida —
+                    una intención que puede ser confusa o ambivalente, no algo
+                    fijo (Grandclerc et al., 2016). El suicidio es prevenible
+                    (OMS, 2025), y lo mismo aplica para la autolesión: hay
+                    formas de ayudar, y hay ayuda disponible.
+                </p>
+
+                <h4>¿Cómo puede manifestarse?</h4>
+                <p>No vamos a describir formas específicas — eso no ayuda a nadie y puede ser dañino. Estas son señales generales:</p>
+                <div class="cond-categorias">
+                    <div class="cond-categoria cat-emocional">
+                        <h5>Emocionales</h5>
+                        <ul>
+                            <li>Sentir que el dolor emocional es insoportable</li>
+                            <li>Sentirte una carga para las personas que quieres</li>
+                            <li>Hablar de sentirte "atrapado/a" o sin salida</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-conductual">
+                        <h5>Conductuales</h5>
+                        <ul>
+                            <li>Alejarte de la gente, perder interés en todo</li>
+                            <li>Regalar tus cosas o despedirte de forma extraña</li>
+                            <li>Pasar de estar muy mal a estar "en paz" de repente</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-fisica">
+                        <h5>Otras señales</h5>
+                        <ul>
+                            <li>Evitar mostrar el cuerpo (mangas largas en climas cálidos)</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>
+                    Tener un mal día o un pensamiento pasajero de "no quiero
+                    seguir así" no es lo mismo que tener ideación suicida
+                    activa. La diferencia está en la frecuencia, la
+                    intensidad y si hay un plan — y eso lo evalúa un
+                    profesional, no esta página.
+                </p>
+
+                <h4>¿Por qué puede aparecer?</h4>
+                <p>
+                    No hay una causa única. En Colombia, el principal factor
+                    de riesgo identificado en los intentos de suicidio es
+                    tener un antecedente de trastorno psiquiátrico (43,4 % de
+                    los casos), y dentro de ese grupo, el trastorno depresivo
+                    está presente en el 38,7 % (Instituto Nacional de Salud,
+                    2025). En el Atlántico, los principales factores
+                    desencadenantes identificados son los problemas
+                    familiares (38,28 %) y los conflictos de pareja o
+                    expareja (27,24 %), seguidos de problemas económicos,
+                    escolares y situaciones de maltrato (Gobernación del
+                    Atlántico, 2025). Esto no significa que exista una causa
+                    única — significa que ciertas situaciones pueden
+                    acumularse y hacer más difícil sostener el malestar sin
+                    ayuda.
+                </p>
+
+                <h4>¿Qué puedo hacer?</h4>
+                <p>
+                    Aquí no vamos a ofrecer "técnicas de autoayuda" como si
+                    fueran la solución — en este tema eso puede ser engañoso.
+                    La evidencia sobre planificar la seguridad completamente
+                    solo/a, sin acompañamiento, todavía es limitada en
+                    adolescentes (Albaum et al., 2025).
+                </p>
+                <div class="cond-herramientas">
+                    <div class="cond-herramienta">
+                        <h5>Contárselo a alguien</h5>
+                        <p>
+                            Romper el aislamiento es, en sí mismo, uno de los
+                            primeros pasos protectores. No tienes que
+                            explicarlo "perfecto" — con decir "no me siento
+                            bien y necesito hablar con alguien" es suficiente.
+                        </p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Plan de seguridad, con alguien</h5>
+                        <p>
+                            Identificar señales de alerta, contactos a quién
+                            llamar, y formas de reducir el acceso a lo que
+                            podría usarse para hacerte daño — construido con
+                            un adulto de confianza o profesional, no solo/a
+                            (Stanley & Brown, 2012; Albaum et al., 2025).
+                        </p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Reducir el acceso a medios de daño</h5>
+                        <p>
+                            Una de las intervenciones con evidencia más
+                            sólida a nivel poblacional (OMS, 2025). Se trabaja
+                            junto a un adulto de confianza o profesional.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cond-acompanamiento">
+                    <div class="cond-acom-card para-ti">
+                        <h4>Si esto te está pasando a ti</h4>
+                        <ul>
+                            <li>Cuéntaselo a alguien hoy, no cuando "esté peor"</li>
+                            <li>Guarda a mano los contactos de ayuda — en tu celular, no solo en tu memoria</li>
+                            <li>Si sientes que el riesgo es alto ahora mismo, eso ya no es "esperar" — es una emergencia</li>
+                        </ul>
+                    </div>
+                    <div class="cond-acom-card para-amigo">
+                        <h4>Si te preocupa alguien</h4>
+                        <ul>
+                            <li>Tómalo en serio siempre — no asumas que "solo lo dice para llamar la atención"</li>
+                            <li>Escúchalo sin juzgar</li>
+                            <li>No prometas guardar el secreto: contárselo a un adulto de confianza es cuidarlo, no traicionarlo</li>
+                            <li>No lo dejes solo/a si sientes que el riesgo es inmediato</li>
+                            <li>Cuida también tu propio bienestar — también puedes buscar apoyo para ti</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>¿Cuándo pedir ayuda?</h4>
+                <div class="cond-cuando-grid">
+                    <div class="cond-cuando-item">Has tenido pensamientos de hacerte daño, aunque sean pasajeros</div>
+                    <div class="cond-cuando-item">La autolesión se repite o se vuelve más frecuente</div>
+                    <div class="cond-cuando-item">Alguien cercano te ha dicho directamente que ha pensado en morir</div>
+                </div>
+                <p>No necesitas esperar a una crisis para pedir ayuda. Cuanto antes se hable de esto, más opciones hay disponibles.</p>
+
+                <div class="caja caja-emergencia">
+                    <p>
+                        🆘 <strong>Es una emergencia si:</strong> piensas
+                        hacerte daño o quitarte la vida, tienes un plan o los
+                        medios para hacerlo, o sientes que podrías perder el
+                        control sobre esto. No esperes. Ve ahora a
+                        <a href="contacto.html#emergencia">Contactos</a> —
+                        ahí encuentras la Línea 106 / WhatsApp (gratuita y
+                        24/7), Chatlemos si estás en Barranquilla, y la Línea
+                        123 para emergencias. Si el peligro es inmediato,
+                        acude también al centro de salud u hospital más
+                        cercano.
+                    </p>
+                </div>
+
+                <div class="caja caja-recuerda">
+                    <p>🩺 Este contenido no es un diagnóstico ni reemplaza una evaluación profesional. Pedir ayuda es un acto de valentía, no de debilidad.</p>
+                </div>
+
+                <p class="tema-fuente">
+                    Fuentes: OMS, Suicidio (2025); OMS, La salud de los
+                    adolescentes y los adultos jóvenes (2024); Instituto
+                    Nacional de Salud de Colombia, Boletín epidemiológico
+                    semana 36 (2025); Gobernación del Atlántico (2025); El
+                    Heraldo (2026); Emisora Atlántico (2026); Grandclerc et
+                    al. (2016), PLOS ONE; Merck Manual Professional Edition
+                    (2026); Stanley & Brown (2012); Albaum et al. (2025),
+                    JAMA Pediatrics.
+                </p>
+            </div>
+        </details>
+
+        <!-- ================= 05 TCA ================= -->
+        <details class="tema" id="tca">
+            <summary>
+                <h3><span class="cond-num">05</span>Trastornos de la conducta alimentaria</h3>
+                <span class="flecha" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="tema-contenido">
+
+                <div class="caja caja-importante">
+                    <p>
+                        Comer, disfrutar la comida y a veces sentir culpa por
+                        un antojo no es lo mismo que tener un trastorno de la
+                        conducta alimentaria. Este apartado no habla de
+                        dietas, calorías ni "trucos" para bajar de peso —
+                        habla de reconocer cuándo la relación con la comida y
+                        el cuerpo empieza a hacerte daño, y qué hacer al
+                        respecto.
+                    </p>
+                </div>
+
+                <h4>¿Qué es?</h4>
+                <p>
+                    Son condiciones en las que la comida, el peso o la imagen
+                    corporal ocupan un lugar desproporcionado en la vida de
+                    una persona, afectando su bienestar físico y emocional.
+                    Los más frecuentes en la adolescencia son la anorexia
+                    nerviosa (restricción de comida que lleva a un peso
+                    significativamente bajo, con miedo intenso a subir de
+                    peso), la bulimia nerviosa (atracones seguidos de
+                    conductas para "compensar") y el trastorno por atracón
+                    (atracones recurrentes sin conductas compensatorias). A
+                    nivel global, se estima que hasta un 22 % de niños y
+                    adolescentes presenta algún grado de alimentación
+                    desordenada (López-Gil et al., 2023).
+                </p>
+
+                <h4>¿Cómo puede manifestarse?</h4>
+                <div class="cond-categorias">
+                    <div class="cond-categoria cat-cognitiva">
+                        <h5>Cognitivas / emocionales</h5>
+                        <ul>
+                            <li>Pensar en la comida, el peso o el cuerpo durante gran parte del día</li>
+                            <li>Culpa intensa después de comer algo que "no debías"</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-conductual">
+                        <h5>Conductuales</h5>
+                        <ul>
+                            <li>Saltarte comidas, comer a escondidas o en secreto</li>
+                            <li>Episodios de comer mucho sintiendo que no puedes parar</li>
+                            <li>Ejercicio compulsivo, como "castigo" más que por disfrute</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-social">
+                        <h5>Sociales</h5>
+                        <ul>
+                            <li>Aislarte de comidas familiares o sociales</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>
+                    Ninguna de estas por sí sola es un diagnóstico. Lo que
+                    importa es si aparecen juntas, se sostienen en el tiempo,
+                    y afectan tu salud física, tu ánimo o tu vida social.
+                </p>
+
+                <h4>¿Por qué puede aparecer?</h4>
+                <p>
+                    No hay una causa única. La insatisfacción con el propio
+                    cuerpo, síntomas depresivos, la presión social o familiar
+                    en torno al peso, y hacer dieta son factores que,
+                    combinados, aumentan el riesgo. Ponerse a dieta no es un
+                    paso "seguro": en estudios que siguieron adolescentes
+                    durante varios años, quienes reportaban estar a dieta
+                    tuvieron un riesgo notablemente mayor de desarrollar un
+                    trastorno alimentario después que quienes no lo hacían
+                    (Stice et al., 2011). También influyen el temperamento, la
+                    genética, el entorno familiar y factores socioculturales
+                    (Barakat et al., 2023).
+                </p>
+
+                <h4>Herramientas focalizadas</h4>
+                <div class="caja caja-alerta">
+                    <p>
+                        🚫 Aquí no vas a encontrar recomendaciones de dietas,
+                        conteo de calorías o rutinas de ejercicio — eso no es
+                        tratamiento para un TCA, puede empeorarlo, y no es
+                        información que esta página vaya a dar.
+                    </p>
+                </div>
+                <div class="cond-herramientas">
+                    <div class="cond-herramienta">
+                        <h5>Terapia familiar (especialmente para anorexia)</h5>
+                        <p>
+                            El tratamiento con más respaldo para adolescentes
+                            con anorexia; involucra a la familia como parte
+                            del proceso (Benedictson et al., 2025).
+                        </p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Terapia psicológica especializada</h5>
+                        <p>
+                            Estándar de tratamiento recomendado en guías
+                            clínicas internacionales (NICE, 2017/2020). No se
+                            recomienda el medicamento como único tratamiento
+                            para ningún TCA.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cond-acompanamiento">
+                    <div class="cond-acom-card para-ti">
+                        <h4>Si esto te está pasando a ti</h4>
+                        <ul>
+                            <li>Intenta no comer completamente solo/a</li>
+                            <li>Si notas que evitas comidas o restringes mucho, coméntaselo a un adulto de confianza</li>
+                            <li>Evita contenidos que giren en torno a "cómo comer menos" — alimentan el problema, no lo resuelven</li>
+                            <li>Sentir culpa por comer no es una señal de que "hiciste algo mal"</li>
+                        </ul>
+                    </div>
+                    <div class="cond-acom-card para-amigo">
+                        <h4>Si te preocupa alguien</h4>
+                        <ul>
+                            <li>No comentes sobre su peso o su cuerpo, ni en positivo ni en negativo</li>
+                            <li>No lo vigiles ni controles lo que come</li>
+                            <li>Exprésale que te importa desde la preocupación, no desde el juicio</li>
+                            <li>No guardes en secreto una señal de riesgo real — coméntaselo a un adulto de confianza</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>¿Cuándo pedir ayuda?</h4>
+                <div class="cond-cuando-grid">
+                    <div class="cond-cuando-item">Llevas tiempo restringiendo, con atracones, o "compensando"</div>
+                    <div class="cond-cuando-item">La comida y el cuerpo ocupan buena parte de tus pensamientos</div>
+                    <div class="cond-cuando-item">Notas cambios físicos preocupantes</div>
+                </div>
+                <p>No necesitas "verte muy delgado/a" ni cumplir todos los criterios de un manual para merecer ayuda.</p>
+
+                <div class="caja caja-emergencia">
+                    <p>
+                        🆘 Busca ayuda inmediata si hay signos físicos graves
+                        (desmayos, dolor en el pecho, debilidad extrema), si
+                        has perdido mucho peso en poco tiempo, o si aparecen
+                        pensamientos de hacerte daño — ve directo a
+                        <a href="contacto.html#emergencia">Contactos</a>.
+                    </p>
+                </div>
+
+                <div class="caja caja-recuerda">
+                    <p>🩺 Este contenido no es un diagnóstico ni reemplaza una evaluación profesional, médica o nutricional.</p>
+                </div>
+
+                <p class="tema-fuente">
+                    Fuentes: López-Gil et al. (2023); Stice et al. (2011);
+                    Barakat et al. (2023); Benedictson et al. (2025); NICE
+                    (2017/2020).
+                </p>
+            </div>
+        </details>
+
+        <!-- ================= 06 IMAGEN CORPORAL / DISMORFIA ================= -->
+        <details class="tema" id="imagen-corporal">
+            <summary>
+                <h3><span class="cond-num">06</span>Imagen corporal y dismorfia corporal</h3>
+                <span class="flecha" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="tema-contenido">
+
+                <div class="caja caja-importante">
+                    <p>
+                        No gustarte del todo cómo te ves es distinto de la
+                        dismorfia corporal. El Trastorno Dismórfico Corporal
+                        (TDC) es una condición de salud mental diagnosticable,
+                        no solo "ser muy exigente con uno mismo".
+                    </p>
+                </div>
+
+                <h4>¿Qué es?</h4>
+                <p>
+                    El TDC es una condición en la que una persona se
+                    preocupa de forma intensa y persistente por "defectos" en
+                    su apariencia que son mínimos o directamente invisibles
+                    para los demás (Krebs et al., 2024). No es vanidad — es
+                    una preocupación que consume tiempo, genera malestar real
+                    y puede afectar seriamente la vida diaria.
+                </p>
+
+                <h4>¿Qué lo diferencia de la insatisfacción corporal común?</h4>
+                <div class="cond-comparacion">
+                    <div class="cond-comparacion-col">
+                        <h4>Insatisfacción corporal (más común)</h4>
+                        <ul>
+                            <li>Malestar con partes reales de tu apariencia</li>
+                            <li>Va y viene, no domina tu día a día</li>
+                            <li>No suele generar rituales repetitivos</li>
+                        </ul>
+                    </div>
+                    <div class="cond-comparacion-col destaca">
+                        <h4>Dismorfia corporal (TDC)</h4>
+                        <ul>
+                            <li>Preocupación por "defectos" que otros casi no notan o no existen</li>
+                            <li>Pensamientos intrusivos y frecuentes, difíciles de controlar</li>
+                            <li>Conductas repetitivas: revisarte en el espejo, evitarlos por completo, pedir "validación" a otros</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>¿Cómo puede manifestarse?</h4>
+                <div class="cond-categorias">
+                    <div class="cond-categoria cat-cognitiva">
+                        <h5>Cognitivas</h5>
+                        <ul>
+                            <li>Pensar en la misma "imperfección" durante horas al día</li>
+                            <li>Comparar constantemente esa parte con la de otras personas</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-conductual">
+                        <h5>Conductuales</h5>
+                        <ul>
+                            <li>Revisar tu apariencia en espejos de forma repetida, o evitarlos por completo</li>
+                            <li>Buscar "confirmación" repetida de otros sobre cómo te ves</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-social">
+                        <h5>Sociales</h5>
+                        <ul>
+                            <li>Evitar situaciones sociales o fotos por miedo a que "se note" ese defecto</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="stat-destacado">
+                    <span class="stat-num" aria-hidden="true">1-2%</span>
+                    <p>
+                        El TDC suele comenzar en la adolescencia y afecta
+                        aproximadamente al 1-2 % de los adolescentes en un
+                        momento dado, siendo más frecuente en chicas
+                        adolescentes (Krebs et al., 2024). Alrededor del 70 %
+                        de los jóvenes con TDC que acceden a servicios de
+                        salud mental tienen al menos otra condición asociada,
+                        como depresión o ansiedad.
+                    </p>
+                </div>
+
+                <h4>Herramientas focalizadas</h4>
+                <div class="cond-herramientas">
+                    <div class="cond-herramienta">
+                        <h5>Terapia cognitivo-conductual especializada en TDC</h5>
+                        <p>
+                            El tratamiento psicológico de primera línea
+                            recomendado (Krebs et al., 2024). En algunos
+                            casos, un profesional puede considerar también
+                            tratamiento farmacológico — decisión clínica
+                            individual, no algo que se defina en una página
+                            web.
+                        </p>
+                    </div>
+                </div>
+
+                <h4>¿Cuándo pedir ayuda?</h4>
+                <div class="cond-cuando-grid">
+                    <div class="cond-cuando-item">Pasas mucho del día pensando en una parte específica de tu apariencia</div>
+                    <div class="cond-cuando-item">Eso te hace evitar situaciones importantes para ti</div>
+                    <div class="cond-cuando-item">Sientes que "necesitas" revisarte o que te confirmen cómo te ves</div>
+                </div>
+
+                <div class="caja caja-emergencia">
+                    <p>
+                        🆘 El TDC se asocia con mayor riesgo de pensamientos
+                        suicidas (Krebs et al., 2024). Si en algún momento
+                        aparecen pensamientos de hacerte daño, no es "solo
+                        imagen corporal" — ve directo a
+                        <a href="contacto.html#emergencia">Contactos</a>.
+                    </p>
+                </div>
+
+                <div class="caja caja-recuerda">
+                    <p>🩺 Este contenido no es un diagnóstico ni reemplaza una evaluación profesional.</p>
+                </div>
+
+                <p class="tema-fuente">
+                    Fuente: Krebs, Clark, Ford & Stringaris (2024), Journal of
+                    the American Academy of Child & Adolescent Psychiatry.
+                </p>
+            </div>
+        </details>
+
+        <!-- ================= 07 SUSTANCIAS ================= -->
+        <details class="tema" id="sustancias">
+            <summary>
+                <h3><span class="cond-num">07</span>Consumo de sustancias</h3>
+                <span class="flecha" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="tema-contenido">
+
+                <div class="caja caja-importante">
+                    <p>
+                        Probar algo por curiosidad no es lo mismo que tener un
+                        problema de consumo. Este apartado te ayuda a
+                        entender la diferencia y a saber qué hacer si te
+                        preocupa tu consumo o el de alguien cercano.
+                    </p>
+                </div>
+
+                <h4>¿Qué es?</h4>
+                <p>
+                    Hablamos de consumo de sustancias psicoactivas cuando
+                    alguien usa alcohol, tabaco, vapeadores, marihuana u
+                    otras sustancias que alteran cómo funciona el cerebro. No
+                    todo consumo es igual: hay diferencia entre probar algo
+                    una vez, un consumo ocasional, y un consumo que empieza a
+                    tomar el control de tu vida.
+                </p>
+
+                <h4>¿Cómo puede manifestarse?</h4>
+                <div class="cond-categorias">
+                    <div class="cond-categoria cat-emocional">
+                        <h5>Emocionales</h5>
+                        <ul>
+                            <li>Sentir que "necesitas" consumir para estar tranquilo, dormir o socializar</li>
+                            <li>Irritabilidad o malestar cuando pasas tiempo sin consumir</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-conductual">
+                        <h5>Conductuales</h5>
+                        <ul>
+                            <li>Consumir cada vez con más frecuencia o cantidad para sentir el mismo efecto</li>
+                            <li>Descuidar el colegio, el deporte o actividades que antes te importaban</li>
+                            <li>Mentir o esconder el consumo de personas cercanas</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>
+                    Probar algo una sola vez, en un contexto social, no
+                    equivale automáticamente a tener un problema. Lo que
+                    importa es la frecuencia, si estás perdiendo el control
+                    sobre cuándo y cuánto consumes, y qué tanto está
+                    afectando tu vida.
+                </p>
+
+                <div class="stat-destacado">
+                    <span class="stat-num" aria-hidden="true">1/6-7</span>
+                    <p>
+                        En Barranquilla, un estudio con más de 590 estudiantes
+                        de 15 a 18 años encontró que el vapeador es hoy la
+                        sustancia con mayor prevalencia de consumo en esta
+                        edad — cerca de 1 de cada 6-7 estudiantes reportó
+                        consumirlo — y que quienes vapean tienen una
+                        probabilidad significativamente mayor de consumir
+                        también alcohol, cigarrillo tradicional u otras
+                        sustancias (Monsalve et al., 2025).
+                    </p>
+                </div>
+
+                <h4>Herramientas focalizadas</h4>
+                <div class="cond-herramientas">
+                    <div class="cond-herramienta">
+                        <h5>Cuestionar la percepción de "bajo riesgo"</h5>
+                        <p>
+                            Gran parte del consumo de vapeadores se explica
+                            porque se perciben como menos dañinos —
+                            infórmate de fuentes serias, no de la publicidad
+                            o de tus amigos.
+                        </p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Identificar para qué estás consumiendo</h5>
+                        <p>
+                            Muchas veces el consumo empieza como forma de
+                            manejar ansiedad, presión social o aburrimiento —
+                            identificar esa función ayuda a buscar
+                            alternativas más sostenibles.
+                        </p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Reducir la exposición a contextos de alto riesgo</h5>
+                        <p>
+                            Si ciertos grupos o situaciones te llevan siempre
+                            a consumir más de lo que quisieras, vale la pena
+                            replantear cuánto tiempo pasas ahí.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cond-acompanamiento">
+                    <div class="cond-acom-card para-ti">
+                        <h4>Si esto te está pasando a ti</h4>
+                        <ul>
+                            <li>Sé honesto contigo sobre la frecuencia real de tu consumo</li>
+                            <li>Si intentas reducirlo, cuéntaselo a alguien de confianza</li>
+                            <li>Evita las situaciones donde el consumo es casi automático</li>
+                        </ul>
+                    </div>
+                    <div class="cond-acom-card para-amigo">
+                        <h4>Si te preocupa alguien</h4>
+                        <ul>
+                            <li>No lo juzgues ni lo sermonees</li>
+                            <li>Exprésale tu preocupación desde el cariño, no desde el reproche</li>
+                            <li>No te conviertas en su "proveedor" ni en cómplice de ocultarlo</li>
+                            <li>Si su consumo afecta seriamente su salud o seguridad, anímalo a hablar con un adulto de confianza</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>¿Cuándo pedir ayuda?</h4>
+                <div class="cond-cuando-grid">
+                    <div class="cond-cuando-item">Sientes que necesitas consumir para sentirte "normal"</div>
+                    <div class="cond-cuando-item">Has intentado parar o reducir sin éxito</div>
+                    <div class="cond-cuando-item">Tu consumo afecta tu colegio, familia o relaciones</div>
+                </div>
+
+                <div class="caja caja-emergencia">
+                    <p>
+                        🆘 Es una emergencia si tú u otra persona presenta
+                        signos de intoxicación grave (confusión extrema,
+                        dificultad para respirar, pérdida de consciencia,
+                        convulsiones) tras consumir alguna sustancia. Llama de
+                        inmediato a la Línea 123 o acude al servicio de
+                        urgencias más cercano — no esperes a que "se le pase
+                        solo". Para orientación no urgente,
+                        <a href="contacto.html">Contactos</a> tiene las líneas
+                        de apoyo.
+                    </p>
+                </div>
+
+                <div class="caja caja-recuerda">
+                    <p>🩺 Este contenido no es un diagnóstico ni reemplaza una evaluación profesional.</p>
+                </div>
+
+                <p class="tema-fuente">
+                    Fuente: Monsalve, Acosta, Pérez, Barbosa & Contreras
+                    (2025), UNIMETRO — estudio observacional local,
+                    Barranquilla.
+                </p>
+            </div>
+        </details>
+
+        <!-- ================= 08 PSICOSIS ================= -->
+        <details class="tema" id="psicosis">
+            <summary>
+                <h3><span class="cond-num">08</span>Psicosis: señales de alerta</h3>
+                <span class="flecha" aria-hidden="true">⌄</span>
+            </summary>
+            <div class="tema-contenido">
+
+                <div class="caja caja-importante">
+                    <p>
+                        Esto es poco frecuente en la adolescencia, pero
+                        cuando aparece, detectarlo a tiempo hace una
+                        diferencia enorme. No es para generar alarma — es
+                        para saber qué mirar.
+                    </p>
+                </div>
+
+                <h4>¿Qué es?</h4>
+                <p>
+                    La psicosis no es una enfermedad en sí misma, sino un
+                    conjunto de síntomas que puede aparecer dentro de
+                    distintas condiciones de salud mental. Se caracteriza por
+                    una alteración en cómo la persona percibe la realidad:
+                    puede incluir alucinaciones (ver, oír o sentir cosas que
+                    no están sucediendo) o delirios (creencias fijas que no
+                    se ajustan a la realidad, aunque se muestren pruebas de
+                    lo contrario).
+                </p>
+
+                <h4>¿Cómo puede manifestarse?</h4>
+                <p>Antes de un episodio completo, suelen aparecer señales más sutiles ("prodrómicas"):</p>
+                <div class="cond-categorias">
+                    <div class="cond-categoria cat-social">
+                        <h5>Sociales</h5>
+                        <ul>
+                            <li>Aislarte cada vez más de amigos y familia, sin una razón clara</li>
+                            <li>Desconfianza inusual hacia otras personas</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-cognitiva">
+                        <h5>Cognitivas</h5>
+                        <ul>
+                            <li>Dificultad creciente para concentrarte, incluso en tareas simples</li>
+                            <li>Pensamientos confusos o difíciles de organizar</li>
+                        </ul>
+                    </div>
+                    <div class="cond-categoria cat-fisica">
+                        <h5>Físicas / conductuales</h5>
+                        <ul>
+                            <li>Cambios notorios en el sueño (dormir muy poco o muchísimo)</li>
+                            <li>Descuido notorio de la higiene personal o la apariencia</li>
+                        </ul>
+                    </div>
+                </div>
+                <p>
+                    Estas señales, por sí solas, no significan psicosis —
+                    muchas también aparecen en depresión, ansiedad o
+                    momentos de mucho estrés. Lo que importa es la
+                    combinación, la persistencia, y si se acompañan de
+                    alteraciones más marcadas en cómo se percibe la realidad.
+                </p>
+
+                <h4>¿Por qué puede aparecer?</h4>
+                <p>
+                    Suele empezar a manifestarse en la adolescencia o adultez
+                    temprana, con un aumento notorio a partir de los 14 años.
+                    Cuando aparece en esta edad, tiende a tener un curso más
+                    complejo que en la adultez, en parte porque interrumpe
+                    procesos de desarrollo social y cognitivo todavía en
+                    marcha. No existe una causa única — se relaciona con una
+                    combinación de factores genéticos, del desarrollo
+                    cerebral y del entorno.
+                </p>
+
+                <h4>¿Qué puedo hacer?</h4>
+                <p>
+                    Este es un tema donde no corresponde ofrecer técnicas de
+                    autoayuda como estrategia principal — es una condición
+                    que necesita evaluación profesional.
+                </p>
+                <div class="cond-herramientas">
+                    <div class="cond-herramienta">
+                        <h5>No ignorar ni normalizar</h5>
+                        <p>Cambios de comportamiento marcados y sostenidos, ni en ti ni en alguien cercano.</p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Hablarlo pronto</h5>
+                        <p>Con un adulto de confianza lo antes posible, en vez de esperar a "ver si se pasa".</p>
+                    </div>
+                    <div class="cond-herramienta">
+                        <h5>Priorizar la terapia psicológica primero</h5>
+                        <p>
+                            Cuando se detectan síntomas atenuados que aún no
+                            confirman un diagnóstico completo, las guías
+                            clínicas priorizan la TCC antes que la medicación
+                            como primer paso (NICE CG155, 2013).
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cond-acompanamiento">
+                    <div class="cond-acom-card para-amigo">
+                        <h4>Si te preocupa alguien</h4>
+                        <ul>
+                            <li>No te burles ni lo etiquetes como "raro"</li>
+                            <li>No lo confrontes de forma agresiva sobre lo que dice percibir</li>
+                            <li>No lo dejes solo si notas mucha angustia o desorganización — busca un adulto de confianza</li>
+                            <li>No te corresponde a ti diagnosticar — tu papel es acompañar y ayudar a que llegue a evaluación profesional</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>¿Cuándo pedir ayuda?</h4>
+                <p>
+                    Si notas varias de estas señales sostenidas por varias
+                    semanas, en ti o en alguien cercano, es momento de
+                    hablarlo con un adulto de confianza y buscar una
+                    evaluación profesional. Cuando los síntomas de alteración
+                    de la realidad se mantienen por 4 semanas o más, las
+                    guías clínicas consideran esto motivo de derivación
+                    urgente a un servicio especializado (NICE CG155, 2013).
+                </p>
+
+                <div class="caja caja-emergencia">
+                    <p>
+                        🆘 Es una emergencia si la persona pierde por completo
+                        el contacto con la realidad de forma repentina, si
+                        hay riesgo de que se haga daño a sí misma o a otros,
+                        o si el nivel de angustia es extremo. No esperes — ve
+                        a <a href="contacto.html#emergencia">Contactos</a> o
+                        acude directamente a un servicio de urgencias.
+                    </p>
+                </div>
+
+                <div class="caja caja-recuerda">
+                    <p>🩺 Este contenido no es un diagnóstico ni reemplaza una evaluación profesional.</p>
+                </div>
+
+                <p class="tema-fuente">
+                    Fuentes: NICE, Psychosis and schizophrenia in children and
+                    young people (CG155, 2013); Kendall et al. (2013), BMJ.
+                </p>
+            </div>
+        </details>
+
+    </div>
+
+    <!-- ============ CAJA DE EMERGENCIA GENERAL ============ -->
+    <div class="caja caja-emergencia cond-emergencia-general">
+        <p>
+            🆘 <strong>¿Cuándo es una emergencia, en general?</strong>
+            Si tienes pensamientos de hacerte daño, de que "no vale la pena
+            seguir", o sientes que podrías perder el control sobre eso, esto
+            es una emergencia — no esperes a que pase solo. Ve ahora mismo a
+            <a href="contacto.html#emergencia">Contactos</a>, donde
+            encuentras la Línea 106, Chatlemos y la Línea 123.
+        </p>
+    </div>
+
+    <!-- ============ REFERENCIAS ============ -->
+    <section class="fuentes" aria-label="Referencias">
+        <h2>Referencias</h2>
+        <ul>
+            <li>Abbott-Smith, S., Ring, N., Dougall, N., & Davey, J. (2023). Suicide prevention: What does the evidence show for the effectiveness of safety planning for children and young people? Journal of Psychiatric and Mental Health Nursing, 30(5), 899–910.</li>
+            <li>Albaum, C., Irwin, S. H., Muha, J., Schumacher, A., Clarissa, S., Finkelstein, Y., et al. (2025). Safety planning interventions for suicide prevention in children and adolescents: A systematic review and meta-analysis. JAMA Pediatrics, 179, 886.</li>
+            <li>Alcaldía de Barranquilla. (2024). Salud mental. barranquilla.gov.co</li>
+            <li>Barakat, S., et al. (2023). Risk factors for eating disorders: findings from a rapid review.</li>
+            <li>Benedictson, et al. (2025). Family-based treatment for adolescent anorexia nervosa.</li>
+            <li>El Heraldo. (2026, 6 de julio). Gobernación del Atlántico impulsa acciones para fortalecer la salud mental y proteger la vida.</li>
+            <li>Emisora Atlántico. (2026, 7 de julio). Atlántico reduce la tasa de intentos de suicidio y fortalece la atención en salud mental.</li>
+            <li>Gobernación del Atlántico. (2025, 5 de septiembre). Gobernación del Atlántico implementa nueva Ley de salud mental en el departamento.</li>
+            <li>Grandclerc, S., De Labrouhe, D., Spodenkiewicz, M., Lachal, J., & Moro, M.-R. (2016). Relations between nonsuicidal self-injury and suicidal behavior in adolescence: A systematic review. PLOS ONE, 11(4), e0153760.</li>
+            <li>Hamdani, S. U., Zafar, S. W., Suleman, N., Waqas, A., & Rahman, A. (2022). Effectiveness of relaxation techniques as an active ingredient of psychological interventions. International Journal of Mental Health Systems, 16, 31.</li>
+            <li>Hetrick, S. E., Cox, G. R., Witt, K. G., Bir, J. J., & Merry, S. N. (2016). Cognitive behavioural therapy (CBT), third-wave CBT and interpersonal therapy (IPT) based interventions for preventing depression in children and adolescents. Cochrane Database of Systematic Reviews.</li>
+            <li>Instituto Nacional de Salud de Colombia. (2024/2025). Informe de evento / Boletín epidemiológico: intento de suicidio.</li>
+            <li>James, A. C., Reardon, T., Soler, A., James, G., & Creswell, C. (2020). Cognitive behavioural therapy for anxiety disorders in children and adolescents. Cochrane Database of Systematic Reviews, 2020(11), CD013162.</li>
+            <li>Kendall, T., Hollis, C., Stafford, M., & Taylor, C.; Guideline Development Group. (2013). Recognition and management of psychosis and schizophrenia in children and young people: summary of NICE guidance. BMJ, 346, f150.</li>
+            <li>Kothgassner, O. D., Goreis, A., Robinson, K., Huscsava, M. M., Schmahl, C., & Plener, P. L. (2021). Efficacy of dialectical behavior therapy for adolescent self-harm and suicidal ideation. Psychological Medicine, 51(7), 1057–1067.</li>
+            <li>Krebs, G., Clark, B. R., Ford, T. J., & Stringaris, A. (2024). Epidemiology of body dysmorphic disorder and appearance preoccupation in youth. Journal of the American Academy of Child & Adolescent Psychiatry, 64(1), 21–23.</li>
+            <li>La República. (2026, 26 de junio). MinSalud y la UdeA presentan los resultados de la Encuesta Nacional de Salud Mental.</li>
+            <li>La Sala, L., Pirkis, J., Cooper, C., Hill, N. T. M., Lamblin, M., Rajaram, G., Rice, S., Teh, Z., Thorn, P., Zahan, R., & Robinson, J. (2023). Acceptability and potential impact of the #chatsafe suicide postvention response. JMIR Human Factors, 10, e44535.</li>
+            <li>López-Gil, J. F., et al. (2023). Global proportion of disordered eating in children and adolescents.</li>
+            <li>Merck Manual Professional Edition. (2026). Nonsuicidal self-injury (NSSI) in children and adolescents.</li>
+            <li>Ministerio de Salud y Protección Social de Colombia. (2025). Quinta Encuesta Nacional de Salud Mental.</li>
+            <li>Monsalve, M., Acosta, D., Pérez, O., Barbosa, V., & Contreras, L. (2025). Prevalencia y factores asociados al consumo de vapeo en estudiantes de 15 a 18 años. UNIMETRO, 43(1), 59–64.</li>
+            <li>National Institute for Health and Care Excellence. (2013). Psychosis and schizophrenia in children and young people: recognition and management (CG155).</li>
+            <li>National Institute for Health and Care Excellence. (2017/2020). Eating disorders: recognition and treatment (NG69).</li>
+            <li>National Institute for Health and Care Excellence. (2019). Depression in children and young people: identification and management (NG134).</li>
+            <li>National Institute for Health and Care Excellence. (2022). Self-harm: Assessment, management and preventing recurrence (NG225).</li>
+            <li>Organización Mundial de la Salud. (2024). La salud de los adolescentes y los adultos jóvenes.</li>
+            <li>Organización Mundial de la Salud. (2025). La salud mental de los adolescentes.</li>
+            <li>Organización Mundial de la Salud. (2025). Trastornos de ansiedad.</li>
+            <li>Organización Mundial de la Salud. (2025). Trastornos mentales.</li>
+            <li>Organización Mundial de la Salud. (2025). Suicidio.</li>
+            <li>Robinson, J., Thorn, P., McKay, S., et al. (2023). #chatsafe 2.0: Updated guidelines to support young people to communicate safely online about self-harm and suicide. PLOS ONE, 18(8), e0289494.</li>
+            <li>Salari, N., Heidarian, P., Hassanabadi, M., Babajani, F., Abdoli, N., Aminian, M., & Mohammadi, M. (2024). Global prevalence of social anxiety disorder in children, adolescents and youth. Journal of Prevention, 45(5), 795–813.</li>
+            <li>Stanley, B., & Brown, G. K. (2012). Safety planning intervention: A brief intervention to mitigate suicide risk. Cognitive and Behavioral Practice, 19(2), 256–264.</li>
+            <li>Stice, E., et al. (2011). Risk factors that predict future onset of each DSM-5 eating disorder.</li>
+            <li>Whitlock, J., Wyman, P. A., & Moore, S. R. (2014). Connectedness and suicide prevention in adolescents. Suicide and Life-Threatening Behavior, 44(3), 246–272.</li>
+            <li>Yang, L., Zhou, X., Pu, J., Liu, L., Cuijpers, P., Zhang, Y., Zhang, H., & Xie, P. (2019). Efficacy and acceptability of psychological interventions for social anxiety disorder in children and adolescents. European Child & Adolescent Psychiatry, 28(1), 79–89.</li>
+            <li>Yip, P. S. F., Caine, E., Yousuf, S., Chang, S.-S., Wu, K. C.-C., & Chen, Y.-Y. (2012). Means restriction for suicide prevention. The Lancet, 379(9834), 2393–2399.</li>
+        </ul>
+    </section>
+
+    <!-- ============ NAVEGACIÓN INFERIOR ============ -->
+    <nav class="cond-mini-nav cond-mini-nav-footer" aria-label="Continuar explorando">
+        <div class="cond-mini-nav-links">
+            <a href="comprende-situaciones.html" class="cond-mini-nav-link">← Ir a Situaciones</a>
+            <a href="comprende-herramientas.html" class="cond-mini-nav-link">Ir a Herramientas →</a>
+        </div>
+    </nav>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="cond-footer">
+    <div class="cond-footer-inner">
+        <p class="cond-footer-marca">Conecta Contigo</p>
+        <p class="cond-footer-mensaje">
+            Entender lo que puede estar pasando es un primer paso para saber
+            cómo actuar y pedir apoyo. No estás solo/a en esto.
+        </p>
+        <nav class="cond-footer-nav" aria-label="Enlaces del pie de página">
+            <a href="index.html">Inicio</a>
+            <a href="conoce.html">Conoce</a>
+            <a href="comprende.html">Comprende</a>
+            <a href="contacto.html">Contactos</a>
+        </nav>
+        <p class="cond-footer-legal">© 2026 Conecta Contigo. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script src="assets/js/index.js"></script>
+
+<!--<figure class="cond-figura">
+    <img src="assets/img/comprende/depresion-01.png" alt="Descripción específica">
+    <figcaption>Texto corto opcional</figcaption>
+</figure>-->
+
 </body>
-
 </html>
+

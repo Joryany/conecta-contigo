@@ -1,53 +1,795 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conecta Contigo - Diario y Registro Emocional</title>
+
+    <title>Conecta Contigo - ¿Qué estoy viviendo?</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/diario.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/comprende.css">
     <link rel="stylesheet" href="assets/css/footer-mejorado.css">
-
 </head>
-
 <body>
-    <header>
-        <div class="top-nav-container">
-            <img width="100px" src="assets/img/index/logo-sin-texto.png" alt="Logo de la Página, un lazo azul">
 
-            <nav>
-                <a href="index.html">Inicio</a>
-                <a href="contacto.html">Contactos</a>
-                <a href="conoce.html">Conoce</a>
-                <a href="comprende.html">Comprende</a>
-            </nav>
+<header>
+    <div class="top-nav-container">
+        <img
+            width="100px"
+            src="assets/img/index/logo-sin-texto.png"
+            alt="Logo de la Página, un lazo azul"
+        >
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="contacto.html">Contactos</a>
+            <a href="conoce.html">Conoce</a>
+            <a href="comprende.html">Comprende</a>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container sit-main">
+
+    <!-- ===== MINI NAVEGACIÓN ENTRE BLOQUES DE COMPRENDE ===== -->
+    <nav class="sit-mini-nav" aria-label="Navegación entre secciones de Comprende">
+        <a href="comprende.html" class="volver">← Volver a Comprende</a>
+        <div class="sit-mini-nav-links">
+            <a href="comprende-condiciones.html" class="sit-mini-nav-link">← Ir a Condiciones</a>
+            <a href="comprende-herramientas.html" class="sit-mini-nav-link">Ir a Herramientas →</a>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <div>
-            <h1 style="text-align: center; font-weight: 600px ;">En diseño...</h1>
-            <p style="text-align: center; padding: 20px;">Puede probar otros apartados de nuestra página, proximamente estará
-                habilitado este apartado.</p>
-        </div>   
-        <div class="hero-buttons">
-        
-            <a href="conoce.html" class="btn">
-                Conoce más
-            </a>
 
-            <a href="contacto.html" class="btn">
-                Busca ayuda
-            </a>
+    <!-- ===== HERO SECUNDARIO ===== -->
+    <section class="sit-hero">
+        <div class="sit-hero-texto">
+            <p class="sit-hero-eyebrow">Comprende · Situaciones</p>
+            <h1>¿Qué estoy viviendo?</h1>
+            <p>
+                No todo lo que afecta tu salud mental viene de "adentro". A veces
+                es algo que te está pasando — en el colegio, en casa, en redes,
+                con tus amigos. Aquí exploras 10 situaciones reales de la
+                adolescencia: qué son, por qué pasan y qué puedes hacer.
+            </p>
+        </div>
+        <div class="sit-hero-fig" aria-hidden="true">
+            <img
+                src="assets/img/comprende/situaciones-hero.png"
+                alt="Ilustración de un grupo diverso de adolescentes en distintas escenas cotidianas —uno mirando el celular con gesto tenso, dos hablando en un pasillo escolar, uno sentado solo en una banca— representando las distintas situaciones que se abordan en esta sección"
+                class="sit-hero-img"
+            >
+        </div>
+    </section>
+
+
+    <!-- ===== ÍNDICE HORIZONTAL ===== -->
+    <nav class="sit-indice" aria-label="Índice de situaciones">
+        <div class="sit-indice-grupo">
+            <span class="sit-indice-etiqueta">Parte 1 · Daño que viene del entorno</span>
+            <div class="sit-indice-pills">
+                <a href="#acoso-escolar" class="sit-pill"><span>01</span>Acoso escolar</a>
+                <a href="#violencia-emocional" class="sit-pill"><span>02</span>Violencia emocional</a>
+                <a href="#violencia-sexual" class="sit-pill"><span>03</span>Violencia sexual</a>
+                <a href="#discriminacion" class="sit-pill"><span>04</span>Discriminación</a>
+                <a href="#entorno-riesgo" class="sit-pill"><span>05</span>Entorno y riesgo</a>
+            </div>
+        </div>
+        <div class="sit-indice-grupo">
+            <span class="sit-indice-etiqueta">Parte 2 · Presión, conexión y estilo de vida</span>
+            <div class="sit-indice-pills">
+                <a href="#presion-pares" class="sit-pill"><span>06</span>Presión de pares</a>
+                <a href="#aislamiento-soledad" class="sit-pill"><span>07</span>Aislamiento y soledad</a>
+                <a href="#estres-academico" class="sit-pill"><span>08</span>Estrés académico</a>
+                <a href="#sueno-salud" class="sit-pill"><span>09</span>Sueño</a>
+                <a href="#redes-sociales" class="sit-pill"><span>10</span>Redes sociales</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ===== INTRODUCCIÓN ===== -->
+    <section class="sit-intro">
+        <div class="sit-intro-texto">
+            <p class="sit-intro-destacada">
+                No tienes que estar "enfermo" para que algo te esté afectando.
+            </p>
+            <p>
+                Las situaciones de esta página no son diagnósticos: son cosas que
+                le pasan a muchos adolescentes y que, si se sostienen en el
+                tiempo, pueden pesar en tu ánimo, tu sueño o tu forma de
+                relacionarte. Reconocerlas es el primer paso para saber qué
+                hacer — y para saber que no estás exagerando ni estás solo/a
+                en esto.
+            </p>
+        </div>
+        <div class="sit-intro-dato">
+            <span class="sit-intro-dato-num">1 de 4</span>
+            <span class="sit-intro-dato-texto">adolescentes en el mundo está socialmente aislado o se siente solo (OMS, 2025)</span>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         PARTE 1 — DAÑO QUE VIENE DE OTROS / EL ENTORNO
+    ============================================================ -->
+    <section class="sit-parte" aria-labelledby="parte1-titulo">
+
+        <header class="sit-parte-header">
+            <span class="sit-parte-num">Parte 1</span>
+            <h2 id="parte1-titulo">Daño que viene de otros / el entorno</h2>
+            <p>Situaciones donde el origen del malestar está fuera de ti: alguien más te trata mal, o el entorno en el que creces te expone a más riesgo.</p>
+        </header>
+
+        <div class="temas-lista">
+
+            <!-- 01 — ACOSO ESCOLAR -->
+            <details class="tema" id="acoso-escolar">
+                <summary>
+                    <h3><span class="sit-num">01</span> Acoso escolar y ciberacoso</h3>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+
+                    <div class="caja caja-importante">
+                        <p>🧠 <strong>Importante:</strong> un conflicto puntual entre compañeros no es lo mismo que acoso. Aquí hablamos de algo que se repite, con desequilibrio de poder, y donde a la víctima le cuesta defenderse sola.</p>
+                    </div>
+
+                    <h4>¿Qué es?</h4>
+                    <p>Violencia repetida e intencionada — física, verbal, social o digital (ciberacoso) — donde quien agrede tiene o busca tener poder sobre quien la recibe. No es "cosas de chicos": es una forma de violencia con consecuencias medibles en la salud mental.</p>
+
+                    <h4>¿Cómo se manifiesta?</h4>
+                    <ul>
+                        <li>Insultos, apodos hirientes, burlas repetidas.</li>
+                        <li>Exclusión deliberada de un grupo o actividades.</li>
+                        <li>Golpes, empujones, daño a tus pertenencias.</li>
+                        <li>Ciberacoso: mensajes humillantes, difusión de fotos/videos sin consentimiento, suplantación, exclusión intencional de chats.</li>
+                    </ul>
+                    <p>La diferencia con un conflicto normal: aquí hay repetición, intención de daño y una víctima sin el mismo poder para defenderse.</p>
+
+                    <h4>¿Por qué puede pasar?</h4>
+                    <p>Influyen dinámicas de grupo, búsqueda de estatus social y colegios que no intervienen a tiempo. El riesgo es notablemente más alto en estudiantes con discapacidad (más del doble) y en adolescentes LGBTI+ (más del 40 % reporta burlas o amenazas por su orientación o identidad de género).</p>
+
+                    <div class="stat-destacado">
+                        <span class="stat-num">3.º</span>
+                        <p>lugar entre los factores de riesgo global de años de vida saludable perdidos, en chicas de 15 a 19 años (OMS, 2023)</p>
+                    </div>
+
+                    <h4>¿Cómo puede afectar tu vida diaria?</h4>
+                    <p>Las víctimas tienen el doble de probabilidad de sufrir soledad severa, insomnio y pensamientos suicidas frente a quienes no son acosados. También afecta el rendimiento y la asistencia escolar.</p>
+
+                    <h4>¿Qué puedo hacer / mientras consigo ayuda?</h4>
+                    <ul>
+                        <li>Guarda evidencia (capturas, mensajes, fechas): sirve para que un adulto o el colegio puedan actuar.</li>
+                        <li>No respondas la agresión con más agresión ni la enfrentes solo/a.</li>
+                        <li>Cuéntaselo a un adulto de confianza lo antes posible: el silencio es lo que más alarga el acoso.</li>
+                        <li>En ciberacoso: bloquea y reporta en la plataforma, sin borrar la evidencia antes.</li>
+                    </ul>
+
+                    <h4>¿Cómo puedo ayudar a un amigo?</h4>
+                    <p>No te quedes como espectador pasivo: contarle a un adulto lo que viste no es "acusar", es proteger. Acompáñalo, no lo dejes solo en recreos o chats, y anímalo a hablarlo con un adulto de confianza.</p>
+
+                    <h4>¿Cuándo debería pedir ayuda?</h4>
+                    <p>Si el acoso se repite, si te cuesta ir al colegio por miedo, o si empieza a afectar tu ánimo o tu sueño, es momento de hablarlo — no tienes que "aguantar" para que se tome en serio.</p>
+
+                    <div class="caja caja-emergencia">
+                        <p>🆘 <strong>¿Cuándo es una emergencia?</strong> Amenazas de daño físico grave, contenido íntimo difundido sin tu consentimiento, o pensamientos de hacerte daño relacionados con el acoso: ve directo a <a href="contacto.html#emergencia">Contactos</a>.</p>
+                    </div>
+
+                    <div class="caja caja-recuerda">
+                        <p>🩺 Este contenido no reemplaza una evaluación profesional ni la ruta de atención del colegio.</p>
+                    </div>
+
+                    <p class="tema-fuente">Fuentes: UNESCO (2024) · OMS/HBSC (2021/2022) · Infocop (2026), con cifra de OMS 2023.</p>
+                </div>
+            </details>
+
+            <!-- 02 — VIOLENCIA EMOCIONAL -->
+            <details class="tema" id="violencia-emocional">
+                <summary>
+                    <h3><span class="sit-num">02</span> Violencia emocional</h3>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+
+                    <div class="caja caja-importante">
+                        <p>🧠 <strong>Importante:</strong> deja menos huellas visibles que la física, pero sus efectos están igual de documentados. No hace falta que te "peguen" para que algo sea maltrato.</p>
+                    </div>
+
+                    <h4>¿Qué es?</h4>
+                    <p>Actos verbales y no verbales que dañan o pueden dañar tu desarrollo: humillar, ridiculizar, amenazar, intimidar, ignorar sistemáticamente tus necesidades emocionales, o hacerte sentir que solo vales si cumples lo que otros esperan.</p>
+
+                    <h4>¿Cómo se manifiesta?</h4>
+                    <ul>
+                        <li>Humillaciones, comparaciones constantes, insultos disfrazados de "broma".</li>
+                        <li>Amenazas, chantaje emocional, silencios prolongados como castigo.</li>
+                        <li>Ridiculizar tus logros, emociones o forma de ser frente a otros.</li>
+                    </ul>
+                    <p>Puede venir de la familia, de una pareja, de amigos o del entorno escolar: no es exclusiva de un solo contexto.</p>
+
+                    <h4>¿Por qué puede pasar?</h4>
+                    <p>Muchas veces quien ejerce violencia emocional repite patrones que vivió o aprendió, o busca tener control sobre otra persona. Esto no la justifica, solo ayuda a entender que no es tu culpa.</p>
+
+                    <h4>¿Cómo puede afectar tu vida diaria?</h4>
+                    <p>Puede afectar tu autoestima, tu forma de relacionarte, tu concentración y tu sensación de seguridad. El maltrato psicológico sostenido se asocia con mayor riesgo de dificultades emocionales, sociales y de salud física a largo plazo.</p>
+
+                    <h4>¿Qué puedo hacer / mientras consigo ayuda?</h4>
+                    <ul>
+                        <li>Ponle nombre a lo que sientes: no lo restes importancia solo porque no deja marcas visibles.</li>
+                        <li>Busca espacios y personas donde sí te sientas respetado.</li>
+                        <li>Escribe lo que pasa: te ayuda a ver patrones y es útil si más adelante lo cuentas.</li>
+                    </ul>
+
+                    <h4>¿Cómo puedo ayudar a un amigo?</h4>
+                    <p>Cree en lo que te cuenta, aunque no "se vea" el daño. No minimices ni lo empujes a confrontar solo a quien lo trata así. Ayúdalo a pensar en un adulto de confianza.</p>
+
+                    <h4>¿Cuándo debería pedir ayuda?</h4>
+                    <p>Si sientes miedo constante de una persona cercana, si tu autoestima ha bajado notablemente, o si "caminas con cuidado" para no provocar una reacción, es momento de contarlo.</p>
+
+                    <div class="caja caja-emergencia">
+                        <p>🆘 <strong>¿Cuándo es una emergencia?</strong> Amenazas graves, control extremo, o pensamientos de hacerte daño: ve directo a <a href="contacto.html#emergencia">Contactos</a>.</p>
+                    </div>
+
+                    <div class="caja caja-recuerda">
+                        <p>🩺 Este contenido no reemplaza una evaluación profesional.</p>
+                    </div>
+
+                    <p class="tema-fuente">Fuentes: OMS (2026) · OPS/OMS · Infobae (2023), citando Asociación Profesional Americana sobre el Abuso Infantil (1995).</p>
+                </div>
+            </details>
+
+            <!-- 03 — VIOLENCIA SEXUAL -->
+            <details class="tema" id="violencia-sexual">
+                <summary>
+                    <h3><span class="sit-num">03</span> Violencia sexual</h3>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+
+                    <div class="caja caja-importante">
+                        <p>🧠 <strong>Importante:</strong> si esto te está pasando o te pasó, no es tu culpa, sin importar quién fue, qué relación tenías con esa persona o cómo reaccionaste en el momento.</p>
+                    </div>
+
+                    <h4>¿Qué es?</h4>
+                    <p>Cualquier acto sexual, intento de acto sexual, o comentario/insinuación sexual no deseado, impuesto mediante fuerza, manipulación, chantaje o aprovechando una posición de poder o confianza. Incluye el abuso presencial y el facilitado por medios digitales (grooming, sextorsión, difusión de contenido íntimo sin consentimiento).</p>
+
+                    <h4>¿Cómo se manifiesta?</h4>
+                    <p>Puede venir de un desconocido, pero con mucha frecuencia viene de alguien del entorno cercano. Señales en quien lo vive: cambios bruscos de comportamiento, miedo a estar a solas con alguien en particular, retraimiento, cambios en cómo se viste o se relaciona, o malestar físico sin causa clara.</p>
+
+                    <div class="stat-destacado">
+                        <span class="stat-num">1 de 8</span>
+                        <p>niñas y mujeres en el mundo sufrió violación o abuso sexual antes de cumplir 18 años (UNICEF, 2024)</p>
+                    </div>
+
+                    <h4>¿Por qué es importante hablar de esto aquí?</h4>
+                    <p>En Colombia, más de la mitad de los exámenes médico-legales por presunto delito sexual corresponden a menores de edad, concentrados entre los 12 y 17 años. Una parte creciente de esta violencia ocurre a través de medios digitales.</p>
+
+                    <h4>¿Cómo puede afectar tu vida diaria?</h4>
+                    <p>Puede afectar tu sueño, tu concentración, tus relaciones (dificultad para confiar) y tu sensación de seguridad. No hay una única "forma correcta" de reaccionar: el shock, la negación, la culpa o incluso la aparente calma son respuestas posibles y válidas.</p>
+
+                    <h4>¿Qué puedo hacer / mientras consigo ayuda?</h4>
+                    <ul>
+                        <li>Contárselo a un adulto de confianza es el paso más protector que existe; no tienes que dar todos los detalles de una vez.</li>
+                        <li>No necesitas "estar seguro de que fue lo suficientemente grave" para pedir ayuda.</li>
+                        <li>Si hay riesgo de contacto continuo con la persona, un adulto puede ayudarte a poner distancia mientras se activa la ruta de atención.</li>
+                    </ul>
+
+                    <h4>¿Cómo puedo ayudar a un amigo?</h4>
+                    <p>Créele siempre, sin pedirle "pruebas" ni cuestionar su relato. No lo presiones a dar detalles. No prometas guardar el secreto: esto se cuenta a un adulto de confianza, aunque tu amigo te pida lo contrario, porque es la forma de protegerlo.</p>
+
+                    <h4>¿Cuándo debería pedir ayuda?</h4>
+                    <p>Siempre que algo de naturaleza sexual te haya incomodado, dañado o superado, sin esperar a que "sea grave" según algún criterio externo.</p>
+
+                    <div class="caja caja-emergencia">
+                        <p>🆘 <strong>¿Cuándo es una emergencia?</strong> Hecho reciente, riesgo de que se repita de forma inminente, o lesiones físicas: ve directo a <a href="contacto.html#emergencia">Contactos</a>, donde está la ruta de atención inmediata (Línea 123, Medicina Legal, acompañamiento psicológico).</p>
+                    </div>
+
+                    <div class="caja caja-recuerda">
+                        <p>🩺 Este contenido no reemplaza una evaluación profesional ni la ruta legal y de salud correspondiente. Buscar ayuda no te expone a más daño: te protege.</p>
+                    </div>
+
+                    <p class="tema-fuente">Fuentes: Senado de la República de Colombia (2024), cifras de Medicina Legal · Infobae (2026), cifras de UNICEF y Medicina Legal · Concejo de Bogotá, informes ESCNNA (2025).</p>
+                </div>
+            </details>
+
+            <!-- 04 — DISCRIMINACIÓN -->
+            <details class="tema" id="discriminacion">
+                <summary>
+                    <h3><span class="sit-num">04</span> Discriminación y exclusión social</h3>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+
+                    <div class="caja caja-importante">
+                        <p>🧠 <strong>Importante:</strong> sentir que no encajas a veces es parte de crecer. La discriminación es distinta: es un trato desigual o excluyente por algo de quien eres.</p>
+                    </div>
+
+                    <h4>¿Qué es?</h4>
+                    <p>Tratar a alguien de forma injusta o excluirlo por pertenecer a un grupo o tener una característica particular (orientación, identidad, origen, discapacidad, apariencia, situación económica, entre otros). En la adolescencia, la exclusión social por parte de los pares es una de las formas más comunes, y puede combinarse con el acoso escolar.</p>
+
+                    <h4>¿Cómo se manifiesta?</h4>
+                    <ul>
+                        <li>Ser dejado fuera de grupos, planes o conversaciones de forma sistemática.</li>
+                        <li>Comentarios o "chistes" sobre tu origen, orientación, identidad, cuerpo, discapacidad o situación económica.</li>
+                        <li>Sentir que tienes que "esconder" partes de ti para ser aceptado.</li>
+                        <li>Trato diferente (peor) por parte de compañeros, profesores o instituciones.</li>
+                    </ul>
+
+                    <h4>¿Por qué puede pasar?</h4>
+                    <p>Los adolescentes con trastornos de salud mental, discapacidad, o que pertenecen a grupos históricamente marginados son particularmente vulnerables a la exclusión, la discriminación y el estigma, lo cual afecta su disposición a buscar ayuda. No es un problema de quien la sufre, es un problema de cómo trata el entorno a la diversidad.</p>
+
+                    <h4>¿Cómo puede afectar tu vida diaria?</h4>
+                    <p>Puede llevar a aislamiento, a evitar espacios donde antes te sentías cómodo, a bajar tu participación en clase o actividades, con impacto directo en tu autoestima y tu ánimo.</p>
+
+                    <h4>¿Qué puedo hacer / mientras consigo ayuda?</h4>
+                    <ul>
+                        <li>No es tu responsabilidad "cambiar quién eres" para evitar la discriminación.</li>
+                        <li>Busca espacios y personas donde sí te sientas aceptado tal cual eres.</li>
+                        <li>Si viene de una institución, un adulto de confianza puede ayudarte a activar rutas formales de reporte.</li>
+                    </ul>
+
+                    <h4>¿Cómo puedo ayudar a un amigo?</h4>
+                    <p>No te sumes a bromas o comentarios excluyentes, aunque parezcan "sin mala intención". Inclúyelo activamente. Si ves un patrón de exclusión, coméntalo con un adulto de confianza.</p>
+
+                    <h4>¿Cuándo debería pedir ayuda?</h4>
+                    <p>Si la exclusión es sostenida en el tiempo, si afecta tu ánimo o tu deseo de ir al colegio, o si viene con burlas o amenazas.</p>
+
+                    <div class="caja caja-emergencia">
+                        <p>🆘 <strong>¿Cuándo es una emergencia?</strong> Si se combina con amenazas, violencia física, o pensamientos de hacerte daño por sentirte rechazado: ve directo a <a href="contacto.html#emergencia">Contactos</a>.</p>
+                    </div>
+
+                    <div class="caja caja-recuerda">
+                        <p>🩺 Este contenido no reemplaza una evaluación profesional.</p>
+                    </div>
+
+                    <p class="tema-fuente">Fuentes: OMS (2025) · UNESCO (2024), sobre discriminación de adolescentes LGBTI+ y con discapacidad.</p>
+                </div>
+            </details>
+
+            <!-- 05 — ENTORNO Y RIESGO -->
+            <details class="tema" id="entorno-riesgo">
+                <summary>
+                    <h3><span class="sit-num">05</span> Influencia del entorno cercano en conductas de riesgo</h3>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+
+                    <div class="caja caja-importante">
+                        <p>🧠 <strong>Importante:</strong> este tema se conecta con lo que ya viste en Conoce, sobre cómo el entorno familiar moldea el desarrollo emocional. Aquí lo enfocamos en su relación con las conductas de riesgo.</p>
+                    </div>
+
+                    <h4>¿Qué es?</h4>
+                    <p>El entorno cercano (familia, cuidadores, grupo de amigos, incluso el barrio) influye en qué tan expuesto estás a conductas de riesgo: consumo de sustancias, violencia, conductas delictivas o malestar emocional sostenido. No funciona por una sola causa, sino por acumulación de factores.</p>
+
+                    <h4>¿Cómo se manifiesta?</h4>
+                    <ul>
+                        <li>Normalización en el entorno cercano del consumo de sustancias o la violencia como forma de resolver conflictos.</li>
+                        <li>Crianza muy severa, negligente o inconsistente.</li>
+                        <li>Falta de supervisión o de figuras adultas disponibles emocionalmente.</li>
+                        <li>Exposición repetida a conflictos, violencia doméstica o inestabilidad en el hogar.</li>
+                    </ul>
+
+                    <h4>¿Por qué puede pasar?</h4>
+                    <p>Cuantos más factores de riesgo estén presentes en tu entorno, mayor es el efecto acumulado en tu salud mental y en tu probabilidad de involucrarte en conductas de riesgo. Si quieres profundizar en cómo esto se conecta con el desarrollo emocional a largo plazo, revisa los Capítulos I y II de <a href="conoce.html">Conoce</a>.</p>
+
+                    <h4>¿Cómo puede afectar tu vida diaria?</h4>
+                    <p>Puede influir en cómo manejas el estrés, en tus propios patrones de relación, y en tu probabilidad de recurrir a conductas de riesgo como forma de manejar el malestar, no porque "estés destinado" a repetir lo que viviste, sino porque es lo que tu entorno te ha mostrado como opción disponible.</p>
+
+                    <h4>¿Qué puedo hacer / mientras consigo ayuda?</h4>
+                    <ul>
+                        <li>Identificar qué patrones de tu entorno reconoces en ti mismo, no para culparte, sino para decidir con más conciencia.</li>
+                        <li>Busca activamente otros referentes (un profesor, un familiar, un mentor).</li>
+                        <li>El entorno influye, pero no determina: el apoyo profesional te ayuda a construir otras herramientas.</li>
+                    </ul>
+
+                    <h4>¿Cómo puedo ayudar a un amigo?</h4>
+                    <p>No juzgues su entorno familiar ni lo reduzcas a una etiqueta. Sé un espacio estable y sin juicio. Si notas que reproduce patrones que le hacen daño, anímalo a hablarlo con un adulto de confianza o un profesional.</p>
+
+                    <h4>¿Cuándo debería pedir ayuda?</h4>
+                    <p>Si sientes que tu entorno cercano influye de forma negativa en decisiones importantes, o te cuesta ver alternativas a lo que ves en casa o en tu grupo cercano.</p>
+
+                    <div class="caja caja-emergencia">
+                        <p>🆘 <strong>¿Cuándo es una emergencia?</strong> Si tu entorno cercano representa un riesgo inmediato para tu seguridad física o emocional: ve directo a <a href="contacto.html#emergencia">Contactos</a>.</p>
+                    </div>
+
+                    <div class="caja caja-recuerda">
+                        <p>🩺 Este contenido no reemplaza una evaluación profesional. → Ver también Conoce, Capítulos I y II.</p>
+                    </div>
+
+                    <p class="tema-fuente">Fuentes: OMS (2025).</p>
+                </div>
+            </details>
 
         </div>
+    </section>
 
-    </main>
-    <footer>
 
-    </footer>
+    <!-- ============================================================
+         PARTE 2 — PRESIÓN, CONEXIÓN Y ESTILO DE VIDA
+    ============================================================ -->
+    <section class="sit-parte sit-parte-alt" aria-labelledby="parte2-titulo">
+
+        <header class="sit-parte-header">
+            <span class="sit-parte-num">Parte 2</span>
+            <h2 id="parte2-titulo">Presión, conexión y estilo de vida</h2>
+            <p>Situaciones que nacen de cómo vives el día a día: tu grupo, tu descanso, tus pantallas, tu carga académica y cuánta conexión real sientes.</p>
+        </header>
+
+        <div class="temas-lista">
+
+            <!-- 06 — PRESIÓN DE PARES -->
+            <details class="tema" id="presion-pares">
+                <summary>
+                    <h3><span class="sit-num">06</span> Presión de pares</h3>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+
+                    <div class="caja caja-importante">
+                        <p>🧠 <strong>Importante:</strong> la presión de grupo no siempre es negativa, también puede empujarte a mejorar. Aquí nos enfocamos en cuándo se vuelve un problema.</p>
+                    </div>
+
+                    <h4>¿Qué es?</h4>
+                    <p>La influencia, directa o indirecta, que ejerce tu grupo de amigos para que actúes de cierta forma con tal de encajar o ser aceptado. Puede ser positiva (mejorar en el colegio, en el deporte) o negativa (empujarte hacia conductas de riesgo).</p>
+
+                    <h4>¿Cómo se manifiesta?</h4>
+                    <ul>
+                        <li>Sentir que "tienes que" participar en algo arriesgado o actuar en contra de lo que piensas para no quedar fuera del grupo.</li>
+                        <li>Cambiar tu forma de vestir, hablar o comportarte solo por encajar.</li>
+                        <li>Dificultad para decir "no" sin sentir que pierdes tu lugar en el grupo.</li>
+                    </ul>
+                    <p>Las conductas de riesgo (fumar, conducir imprudente, consumo de sustancias) ocurren con mucha más frecuencia estando en grupo que estando solo.</p>
+
+                    <h4>¿Por qué puede pasar?</h4>
+                    <p>La necesidad de pertenecer a un grupo de iguales es un factor clave del desarrollo en la adolescencia. La vulnerabilidad a la presión negativa aumenta con la baja autoestima, la falta de habilidades para expresar tus propias opiniones, y una comunicación familiar poco abierta.</p>
+
+                    <h4>¿Cómo puede afectar tu vida diaria?</h4>
+                    <p>Puede llevarte a tomar decisiones que no tomarías estando solo, generar conflictos con tu familia, o afectar tu bienestar si sientes que constantemente actúas en contra de lo que realmente quieres.</p>
+
+                    <h4>¿Qué puedo hacer / mientras consigo ayuda?</h4>
+                    <ul>
+                        <li>Practica frases simples para decir que no sin dar largas explicaciones ("paso", "hoy no", "no me gusta eso").</li>
+                        <li>Identifica si la presión viene realmente del grupo o de una idea tuya sobre lo que "deberías" hacer para encajar.</li>
+                        <li>Elegir bien con quién pasas más tiempo importa: la influencia de pares también puede ser positiva.</li>
+                    </ul>
+
+                    <h4>¿Cómo puedo ayudar a un amigo?</h4>
+                    <p>No presiones tú mismo a otros para que "se sumen". Si notas que un amigo actúa en contra de lo que quiere solo por encajar, díselo con cariño, sin burlarte. Ofrécele una salida sin exponerlo frente al grupo.</p>
+
+                    <h4>¿Cuándo debería pedir ayuda?</h4>
+                    <p>Si sientes que constantemente cedes a cosas que te hacen daño o con las que no estás de acuerdo, y te cuesta mucho poner límites.</p>
+
+                    <div class="caja caja-emergencia">
+                        <p>🆘 <strong>¿Cuándo es una emergencia?</strong> No suele serlo, pero si te ha llevado a un riesgo físico inmediato (intoxicación, peligro físico), busca ayuda de inmediato en <a href="contacto.html#emergencia">Contactos</a>.</p>
+                    </div>
+
+                    <div class="caja caja-recuerda">
+                        <p>🩺 Este contenido no reemplaza una evaluación profesional.</p>
+                    </div>
+
+                    <p class="tema-fuente">Fuentes: Albert, Chein & Steinberg (2013) · Zero Psicólogos · CEPTECO · PsicologíaYMente.</p>
+                </div>
+            </details>
+
+            <!-- 07 — AISLAMIENTO Y SOLEDAD -->
+            <details class="tema" id="aislamiento-soledad">
+                <summary>
+                    <h3><span class="sit-num">07</span> Aislamiento social y soledad</h3>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+
+                    <div class="caja caja-importante">
+                        <p>🧠 <strong>Importante:</strong> pasar tiempo solo por elección no es lo mismo que sentirte solo. La soledad es el malestar que aparece cuando la conexión que tienes no es la que necesitas.</p>
+                    </div>
+
+                    <div class="sit-comparacion">
+                        <div class="sit-comparacion-col">
+                            <h4>Aislamiento social</h4>
+                            <p>Falta objetiva de conexiones sociales suficientes.</p>
+                        </div>
+                        <div class="sit-comparacion-col">
+                            <h4>Soledad</h4>
+                            <p>Sentimiento doloroso que surge cuando lo que tienes no coincide con lo que necesitas.</p>
+                        </div>
+                    </div>
+                    <p>Puedes estar rodeado de gente y sentirte solo, o estar mucho tiempo solo y no sentirte así.</p>
+
+                    <h4>¿Cómo se manifiesta?</h4>
+                    <ul>
+                        <li>Sensación persistente de no tener con quién hablar de lo que realmente te importa.</li>
+                        <li>Evitar cada vez más situaciones sociales, aunque antes te interesaban.</li>
+                        <li>Sentir que "no encajas" incluso rodeado de conocidos.</li>
+                        <li>Pasar mucho más tiempo solo del que te gustaría.</li>
+                    </ul>
+
+                    <div class="stat-destacado">
+                        <span class="stat-num">17–21%</span>
+                        <p>de los jóvenes de 13 a 29 años declaran sentirse solos, con las cifras más altas justamente en la adolescencia (Comisión OMS sobre Conexión Social, 2025)</p>
+                    </div>
+
+                    <h4>¿Cómo puede afectar tu vida diaria?</h4>
+                    <p>Las personas que se sienten solas tienen el doble de probabilidad de desarrollar depresión, y mayor riesgo de ansiedad, autolesión e ideación suicida. Los adolescentes que se sienten solos tienen un 22 % más de probabilidad de sacar notas bajas.</p>
+
+                    <h4>¿Qué puedo hacer / mientras consigo ayuda?</h4>
+                    <ul>
+                        <li>Prioriza calidad sobre cantidad: una conversación real suele ayudar más que estar rodeado de mucha gente sin conexión genuina.</li>
+                        <li>Da pasos pequeños: unirte a una actividad regular (deporte, arte, voluntariado) ayuda a construir conexión gradualmente.</li>
+                        <li>Si te alejaste tú mismo, reconéctate con alguien de confianza, aunque sea con un mensaje breve.</li>
+                    </ul>
+
+                    <h4>¿Cómo puedo ayudar a un amigo?</h4>
+                    <p>Invítalo activamente, sin esperar a que él dé el primer paso. No lo etiquetes como "raro" por preferir estar solo, pregúntale cómo se siente realmente. Si notas que se aísla cada vez más, dile que lo notas y que te importa.</p>
+
+                    <h4>¿Cuándo debería pedir ayuda?</h4>
+                    <p>Si la soledad es constante, si sientes que no tienes a nadie con quien hablar, o si esto empieza a afectar tu ánimo o tu rendimiento.</p>
+
+                    <div class="caja caja-emergencia">
+                        <p>🆘 <strong>¿Cuándo es una emergencia?</strong> Si el aislamiento viene con pensamientos de hacerte daño o de que "nada tiene sentido": ve directo a <a href="contacto.html#emergencia">Contactos</a>.</p>
+                    </div>
+
+                    <div class="caja caja-recuerda">
+                        <p>🩺 Este contenido no reemplaza una evaluación profesional.</p>
+                    </div>
+
+                    <p class="tema-fuente">Fuentes: OMS, Comisión sobre Conexión Social (2025) · Infocop (2025) · Euronews (2025).</p>
+                </div>
+            </details>
+
+            <!-- 08 — ESTRÉS ACADÉMICO -->
+            <details class="tema" id="estres-academico">
+                <summary>
+                    <h3><span class="sit-num">08</span> Estrés académico</h3>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+
+                    <div class="caja caja-importante">
+                        <p>🧠 <strong>Importante:</strong> sentir presión antes de un examen es normal. El problema aparece cuando esa presión se vuelve constante y le pasa factura a tu cuerpo y tu ánimo.</p>
+                    </div>
+
+                    <h4>¿Qué es?</h4>
+                    <p>Una reacción de activación fisiológica, emocional, cognitiva y conductual ante exigencias académicas (evaluaciones, tareas, plazos). En dosis moderadas es normal; el problema es cuando se vuelve sostenido y desproporcionado.</p>
+
+                    <h4>¿Cómo se manifiesta?</h4>
+                    <ul>
+                        <li>Tensión, irritabilidad, sensación de estar desorganizado o sobrepasado.</li>
+                        <li>Dolores de cabeza o espalda relacionados con la tensión.</li>
+                        <li>Sueño insuficiente por estudiar hasta tarde, lo que reduce la concentración al día siguiente.</li>
+                        <li>Sentir que tu valor depende solo de tus calificaciones.</li>
+                    </ul>
+
+                    <h4>¿Por qué puede pasar?</h4>
+                    <p>Influyen la competitividad entre estudiantes, la sobrevaloración de las notas, la carga de evaluaciones y las expectativas propias, familiares o del colegio. Un estudio publicado en The Lancet encontró asociación entre la presión académica y la depresión/autolesión, sobre todo cuando las intervenciones se centran solo en el individuo y no en el clima escolar.</p>
+
+                    <div class="stat-destacado">
+                        <span class="stat-num">1 de 5</span>
+                        <p>estudiantes en el mundo presenta problemas de salud mental relacionados con el exceso de carga académica (OMS, vía Unifranz 2024)</p>
+                    </div>
+
+                    <h4>¿Cómo puede afectar tu vida diaria?</h4>
+                    <p>Incluyendo ansiedad, depresión y agotamiento (burnout), por la falta de tiempo para el descanso o el ocio.</p>
+
+                    <h4>¿Qué puedo hacer / mientras consigo ayuda?</h4>
+                    <ul>
+                        <li>Divide tareas grandes en pasos pequeños: reduce la sensación de estar desbordado.</li>
+                        <li>Prioriza el sueño incluso en épocas de exámenes.</li>
+                        <li>Habla abiertamente con tu familia sobre las expectativas.</li>
+                        <li>Recuerda que tus notas no definen tu valor como persona.</li>
+                    </ul>
+
+                    <h4>¿Cómo puedo ayudar a un amigo?</h4>
+                    <p>No compares sus resultados con los tuyos ni con los de otros. Pregúntale cómo se siente con la carga, no solo por sus notas. Anímalo a descansar en vez de reforzar que "hay que sacrificarlo todo".</p>
+
+                    <h4>¿Cuándo debería pedir ayuda?</h4>
+                    <p>Si el estrés académico te genera ansiedad constante, afecta tu sueño de forma sostenida, o te hace sentir que "nunca es suficiente" sin importar el esfuerzo.</p>
+
+                    <div class="caja caja-emergencia">
+                        <p>🆘 <strong>¿Cuándo es una emergencia?</strong> Si viene acompañado de pensamientos de hacerte daño: ve directo a <a href="contacto.html#emergencia">Contactos</a>.</p>
+                    </div>
+
+                    <div class="caja caja-recuerda">
+                        <p>🩺 Este contenido no reemplaza una evaluación profesional.</p>
+                    </div>
+
+                    <p class="tema-fuente">Fuentes: Universidad del Norte, citando OMS · Unifranz (2024), citando OMS · Periódico Educación (2026), citando The Lancet.</p>
+                </div>
+            </details>
+
+            <!-- 09 — SUEÑO -->
+            <details class="tema" id="sueno-salud">
+                <summary>
+                    <h3><span class="sit-num">09</span> Sueño y salud mental</h3>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+
+                    <div class="caja caja-importante">
+                        <p>🧠 <strong>Importante:</strong> dormir poco "para rendir más" suele lograr justo lo contrario. El sueño no es tiempo perdido, es parte activa de cómo tu cerebro y tus emociones se regulan.</p>
+                    </div>
+
+                    <h4>¿Qué es?</h4>
+                    <p>Un proceso biológico esencial durante el cual el cuerpo se repara y el cerebro consolida el aprendizaje, procesa emociones y elimina sustancias de desecho. En la adolescencia también cumple una función clave en el crecimiento físico.</p>
+
+                    <div class="stat-destacado">
+                        <span class="stat-num">8–10 h</span>
+                        <p>de sueño por noche necesitan los adolescentes de 13 a 18 años (CDC)</p>
+                    </div>
+
+                    <h4>¿Cómo se manifiesta cuando falla?</h4>
+                    <ul>
+                        <li>Cansancio constante, aunque sientas que "dormiste algo".</li>
+                        <li>Dificultad para concentrarte, irritabilidad, cambios de ánimo.</li>
+                        <li>Dormir mucho menos entre semana y "recuperar" el fin de semana: esto no compensa el déficit acumulado ("jet lag social").</li>
+                        <li>Dificultad para dormirte por el uso de pantallas o mensajes hasta tarde.</li>
+                    </ul>
+
+                    <h4>¿Por qué es relevante para la salud mental?</h4>
+                    <p>La privación de sueño se asocia con mayor riesgo de problemas de ánimo y puede desencadenar o agravar cuadros de depresión. También empeora la ansiedad y reduce la capacidad de regular emociones.</p>
+
+                    <h4>¿Cómo puede afectar tu vida diaria?</h4>
+                    <p>Afecta tu concentración y rendimiento escolar, tu estado de ánimo, tu tolerancia a la frustración y tu salud física. La falta de sueño sostenida puede volverse "normal" para quien la vive, sin notar cuánto la está afectando.</p>
+
+                    <h4>¿Qué puedo hacer / mientras consigo ayuda?</h4>
+                    <ul>
+                        <li>Mantén un horario regular para acostarte y despertar, incluso los fines de semana (máximo 1-2 horas de diferencia).</li>
+                        <li>Evita cafeína por la tarde/noche y limita pantallas 30-60 minutos antes de dormir.</li>
+                        <li>Crea una rutina de desconexión antes de dormir (leer, estirar, bajar la luz).</li>
+                        <li>Haz ejercicio con regularidad, pero no justo antes de acostarte.</li>
+                    </ul>
+
+                    <h4>¿Cómo puedo ayudar a un amigo?</h4>
+                    <p>No minimices si te dice que no está durmiendo bien. Anímalo a hablar con un adulto si el problema es sostenido, sobre todo si además parece decaído o muy irritable.</p>
+
+                    <h4>¿Cuándo debería pedir ayuda?</h4>
+                    <p>Si llevas semanas durmiendo mal pese a intentar mejorar tus hábitos, o si la falta de sueño coincide con cambios en tu ánimo.</p>
+
+                    <div class="caja caja-emergencia">
+                        <p>🆘 <strong>¿Cuándo es una emergencia?</strong> El insomnio en sí no suele serlo, pero si se combina con pensamientos de hacerte daño: ve directo a <a href="contacto.html#emergencia">Contactos</a>.</p>
+                    </div>
+
+                    <div class="caja caja-recuerda">
+                        <p>🩺 Este contenido no reemplaza una evaluación profesional.</p>
+                    </div>
+
+                    <p class="tema-fuente">Fuentes: CDC (vía National Geographic, 2023) · SOM Salud Mental 360 (2024) · Nemours KidsHealth · MedlinePlus.</p>
+                </div>
+            </details>
+
+            <!-- 10 — REDES SOCIALES -->
+            <details class="tema" id="redes-sociales">
+                <summary>
+                    <h3><span class="sit-num">10</span> Redes sociales y bienestar</h3>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+
+                    <div class="caja caja-importante">
+                        <p>🧠 <strong>Importante:</strong> las redes sociales no son "buenas" ni "malas" en sí mismas. Su efecto depende de cómo y cuánto se usan, y de qué tan problemático se vuelve ese uso.</p>
+                    </div>
+
+                    <h4>¿Qué es?</h4>
+                    <p>El entorno digital —redes sociales, mensajería, plataformas con inteligencia artificial— es hoy parte central de la vida adolescente. La OMS reconoce efectos positivos (conexión, aprendizaje, inspiración) y negativos (ciberacoso, ideales corporales irreales, contenido autolesivo, uso problemático).</p>
+
+                    <h4>¿Cómo se manifiesta el uso problemático?</h4>
+                    <ul>
+                        <li>Necesidad de revisar constantemente el celular, ansiedad si no puedes hacerlo.</li>
+                        <li>Comparación constante con la vida o el cuerpo de otras personas en redes.</li>
+                        <li>Perder horas de sueño o tiempo con amigos en persona por estar conectado.</li>
+                        <li>Sentir que tu estado de ánimo depende de likes, comentarios o validación en redes.</li>
+                    </ul>
+
+                    <h4>¿Por qué puede pasar?</h4>
+                    <p>Los sistemas algorítmicos están diseñados para mantenerte conectado el mayor tiempo posible, y pueden agravar riesgos (ideales corporales, comparación social) cuando no hay transparencia sobre cómo funcionan. El uso problemático ha mostrado un aumento marcado en los últimos años en la región europea de la OMS.</p>
+
+                    <h4>¿Cómo puede afectar tu vida diaria?</h4>
+                    <p>El uso problemático (no el uso en general) se relaciona con mayor depresión, acoso, ansiedad y peor desempeño escolar. En cambio, quienes usan redes con frecuencia pero de forma no problemática reportan más apoyo entre pares: el problema no es "usar redes", sino cómo se usan.</p>
+
+                    <h4>¿Qué puedo hacer / mientras consigo ayuda?</h4>
+                    <ul>
+                        <li>Nota cómo te sientes después de usar redes (mejor, peor, indiferente): eso dice más que "cuántas horas" pasaste ahí.</li>
+                        <li>Silencia o deja de seguir cuentas que constantemente te hacen sentir mal contigo mismo.</li>
+                        <li>Establece momentos sin pantalla (antes de dormir, durante comidas).</li>
+                        <li>Usa las redes también para lo que sí suma: aprender, crear, mantener contacto real con quienes te importan.</li>
+                    </ul>
+
+                    <h4>¿Cómo puedo ayudar a un amigo?</h4>
+                    <p>No te burles si notas que le afecta lo que ve en redes: es una experiencia real. Invítalo a hacer planes fuera de la pantalla. Si notas cambios de ánimo relacionados con su uso de redes, coméntaselo con cuidado.</p>
+
+                    <h4>¿Cuándo debería pedir ayuda?</h4>
+                    <p>Si sientes que no puedes controlar tu tiempo en redes pese a intentarlo, si tu autoestima depende cada vez más de la validación digital, o si el contenido que consumes te hace sentir peor de forma sostenida.</p>
+
+                    <div class="caja caja-emergencia">
+                        <p>🆘 <strong>¿Cuándo es una emergencia?</strong> Si encuentras contenido que promueve autolesión o suicidio, o algo en redes te hace pensar en hacerte daño, no sigas navegando esos espacios: ve directo a <a href="contacto.html#emergencia">Contactos</a>.</p>
+                    </div>
+
+                    <div class="caja caja-recuerda">
+                        <p>🩺 Este contenido no reemplaza una evaluación profesional.</p>
+                    </div>
+
+                    <p class="tema-fuente">Fuentes: OMS, Determinantes digitales de la salud mental juvenil (2025), vía Technocio y La Jornada · OMS-Europa (2024).</p>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+
+    <!-- ===== CAJA DE EMERGENCIA GENERAL ===== -->
+    <div class="caja caja-emergencia sit-emergencia-general">
+        <p>
+            <strong>🆘 ¿Cuándo es una emergencia?</strong>
+            Si tienes pensamientos de hacerte daño, de que "no vale la pena seguir",
+            o sientes que podrías perder el control sobre eso, esto es una
+            emergencia, no esperes a que pase solo.
+            Ve ahora mismo a <a href="contacto.html#emergencia">Contactos</a>,
+            donde encuentras la Línea 106, Chatlemos y la Línea 123.
+        </p>
+    </div>
+
+
+    <!-- ===== REFERENCIAS ===== -->
+    <section class="fuentes" aria-labelledby="referencias-titulo">
+        <h2 id="referencias-titulo">Referencias</h2>
+        <div class="tabla-scroll">
+            <ul>
+                <li>UNESCO, <em>Behind the numbers: Ending school violence and bullying</em> (2024).</li>
+                <li>UNESCO, <em>Qué necesita saber acerca de la violencia y el acoso escolar</em> (2024).</li>
+                <li>OMS/HBSC, <em>A focus on adolescent peer violence and bullying in Europe, central Asia and Canada</em> (2021/2022).</li>
+                <li>Infocop, <em>El acoso escolar sigue siendo un desafío...</em> (2026), con cifra de OMS 2023 sobre AVAD.</li>
+                <li>OMS, <em>Violencia contra los niños</em>, ficha técnica (2026).</li>
+                <li>OPS/OMS, <em>Violencia contra las niñas y los niños</em>.</li>
+                <li>Infobae, <em>El maltrato psicológico en niños...</em> (2023), citando Asociación Profesional Americana sobre el Abuso Infantil (1995).</li>
+                <li>Senado de la República de Colombia, <em>Colombia sigue siendo un país peligroso para los niños</em> (2024), con cifras de Medicina Legal.</li>
+                <li>Infobae, <em>Procuraduría alertó por fallas en la atención a menores víctimas de violencia sexual en Colombia</em> (2026), con cifras de UNICEF y Medicina Legal.</li>
+                <li>Concejo de Bogotá, informes de ESCNNA (2025).</li>
+                <li>OMS, <em>La salud mental de los adolescentes</em>, ficha técnica (2025).</li>
+                <li>Albert, D., Chein, J., & Steinberg, L. (2013), citado en Zero Psicólogos, CEPTECO y PsicologíaYMente.</li>
+                <li>OMS, Comisión sobre Conexión Social, <em>Informe mundial sobre soledad y aislamiento</em> (2025).</li>
+                <li>OMS, <em>Soledad y aislamiento: la amenaza oculta...</em> (2025).</li>
+                <li>Infocop, <em>La soledad como amenaza global...</em> (2025).</li>
+                <li>Euronews, <em>Los adolescentes son el grupo más solitario del mundo</em> (2025).</li>
+                <li>Universidad del Norte, <em>Consejos para manejar el estrés académico</em>, citando definición OMS.</li>
+                <li>Unifranz, <em>Presión académica, un reto para la salud mental de los estudiantes</em> (2024), citando OMS.</li>
+                <li>Periódico Educación, <em>Adolescencia, salud mental y presión académica</em> (2026), citando estudio en The Lancet.</li>
+                <li>CDC, vía National Geographic (2023).</li>
+                <li>SOM Salud Mental 360, <em>Mejorar el sueño en adolescentes</em> (2024).</li>
+                <li>Nemours KidsHealth, <em>¿Cuánto necesito dormir?</em> (para adolescentes).</li>
+                <li>MedlinePlus, <em>Los adolescentes y el sueño</em>.</li>
+                <li>OMS, <em>Determinantes digitales de la salud mental juvenil</em> (2025), vía Technocio y La Jornada.</li>
+                <li>OMS-Europa, <em>Uso problemático de redes sociales por adolescentes registró un "fuerte aumento"</em> (2024).</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- ===== MINI NAVEGACIÓN INFERIOR ===== -->
+    <nav class="sit-mini-nav sit-mini-nav-footer" aria-label="Continuar navegando en Comprende">
+        <a href="comprende-condiciones.html" class="sit-mini-nav-link">← Ir a Condiciones</a>
+        <a href="comprende-herramientas.html" class="sit-mini-nav-link">Ir a Herramientas →</a>
+    </nav>
+
+</main>
+
+
+<footer class="sit-footer">
+    <div class="sit-footer-inner">
+        <p class="sit-footer-marca">Conecta Contigo</p>
+        <p class="sit-footer-mensaje">Reconocer lo que te pasa es el primer paso para pedir ayuda. No estás solo/a en esto.</p>
+        <nav class="sit-footer-nav">
+            <a href="comprende.html">Comprende</a>
+            <a href="comprende-condiciones.html">Condiciones</a>
+            <a href="comprende-herramientas.html">Herramientas</a>
+            <a href="contacto.html">Contactos</a>
+        </nav>
+        <p class="sit-footer-legal">© 2026 Conecta Contigo. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+
+<script src="assets/js/comprende-acordeon.js"></script>
+<script src="assets/js/index.js"></script>
+
 </body>
-
 </html>

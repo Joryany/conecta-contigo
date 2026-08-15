@@ -1,53 +1,775 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conecta Contigo - Diario y Registro Emocional</title>
+
+    <title>Conecta Contigo - ¿Qué puedo hacer?</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/diario.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="assets/css/comprende.css">
     <link rel="stylesheet" href="assets/css/footer-mejorado.css">
-
 </head>
-
 <body>
-    <header>
-        <div class="top-nav-container">
-            <img width="100px" src="assets/img/index/logo-sin-texto.png" alt="Logo de la Página, un lazo azul">
 
-            <nav>
-                <a href="index.html">Inicio</a>
-                <a href="contacto.html">Contactos</a>
-                <a href="conoce.html">Conoce</a>
-                <a href="comprende.html">Comprende</a>
-            </nav>
+<header>
+    <div class="top-nav-container">
+        <img
+            width="100px"
+            src="assets/img/index/logo-sin-texto.png"
+            alt="Logo de la Página, un lazo azul"
+        >
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="contacto.html">Contactos</a>
+            <a href="conoce.html">Conoce</a>
+            <a href="comprende.html">Comprende</a>
+        </nav>
+    </div>
+</header>
+
+
+<main class="container her-main">
+
+    <!-- ===== MINI NAVEGACIÓN ENTRE BLOQUES DE COMPRENDE ===== -->
+    <nav class="her-mini-nav" aria-label="Navegación entre secciones de Comprende">
+        <a href="comprende.html" class="volver">← Volver a Comprende</a>
+        <div class="her-mini-nav-links">
+            <a href="comprende-condiciones.html" class="her-mini-nav-link">← Ir a Condiciones</a>
+            <a href="comprende-situaciones.html" class="her-mini-nav-link">Ir a Situaciones →</a>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <div>
-            <h1 style="text-align: center; font-weight: 600px ;">En diseño...</h1>
-            <p style="text-align: center; padding: 20px;">Puede probar otros apartados de nuestra página, proximamente estará
-                habilitado este apartado.</p>
-        </div>   
-        <div class="hero-buttons">
-        
-            <a href="conoce.html" class="btn">
-                Conoce más
-            </a>
 
-            <a href="contacto.html" class="btn">
-                Busca ayuda
-            </a>
+    <!-- ===== HERO SECUNDARIO ===== -->
+    <section class="her-hero">
+        <div class="her-hero-texto">
+            <p class="her-hero-eyebrow">Comprende · Herramientas</p>
+            <h1>¿Qué puedo hacer?</h1>
+            <p>
+                Formas de apoyo diario que pueden ayudarte a sentirte mejor —
+                cada una con su propio respaldo científico. Aquí no te decimos
+                "esto funciona seguro": te decimos qué tan fuerte es la
+                evidencia detrás de cada herramienta, para que decidas con
+                información real.
+            </p>
+        </div>
+        <div class="her-hero-fig" aria-hidden="true">
+            <img
+                src="assets/img/comprende/herramientas-hero.png"
+                alt="Ilustración de un adolescente practicando distintas formas de autocuidado en pequeñas viñetas —respirando con los ojos cerrados, caminando al aire libre, escribiendo en un cuaderno y conversando con un adulto de confianza— representando el abanico de herramientas de esta sección"
+                class="her-hero-img"
+            >
+        </div>
+    </section>
+
+
+    <div class="caja caja-importante her-importante-general">
+        <p>🧠 <strong>Importante:</strong> estas herramientas no son "la solución" a nada por sí solas. Son formas de apoyo diario que pueden ayudarte a sentirte mejor, con distinto nivel de respaldo científico cada una. Ninguna reemplaza el tratamiento profesional si lo necesitas.</p>
+    </div>
+
+
+    <!-- ===== LEYENDA DE NIVELES DE EVIDENCIA ===== -->
+    <section class="her-leyenda" aria-labelledby="leyenda-titulo">
+        <h2 id="leyenda-titulo">Qué significa cada color</h2>
+        <p>Junto a cada herramienta vas a ver una etiqueta de color. Te dice, en una mirada, qué tan respaldada está por investigación — no todas las herramientas tienen el mismo nivel de evidencia, y eso está bien: aun así pueden servirte.</p>
+        <div class="her-leyenda-grid">
+            <div class="her-leyenda-item nivel-solida">
+                <span class="her-leyenda-punto"></span>
+                <div>
+                    <strong>Evidencia sólida</strong>
+                    <p>Respaldada por revisiones sistemáticas o directrices de organismos como la OMS.</p>
+                </div>
+            </div>
+            <div class="her-leyenda-item nivel-moderada">
+                <span class="her-leyenda-punto"></span>
+                <div>
+                    <strong>Evidencia moderada</strong>
+                    <p>Hay estudios favorables, pero los propios investigadores piden más o mejores estudios.</p>
+                </div>
+            </div>
+            <div class="her-leyenda-item nivel-limitada">
+                <span class="her-leyenda-punto"></span>
+                <div>
+                    <strong>Evidencia limitada</strong>
+                    <p>Se usa en la práctica y tiene lógica detrás, pero falta investigación sólida que la confirme.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== ÍNDICE HORIZONTAL ===== -->
+    <nav class="her-indice" aria-label="Índice de herramientas">
+        <div class="her-indice-grupo">
+            <span class="her-indice-etiqueta">Parte 1 · Regulación física / corporal</span>
+            <div class="her-indice-pills">
+                <a href="#respiracion" class="her-pill"><span>01</span>Respiración</a>
+                <a href="#grounding" class="her-pill"><span>02</span>Grounding</a>
+                <a href="#actividad-fisica" class="her-pill"><span>03</span>Actividad física</a>
+                <a href="#sueno-saludable" class="her-pill"><span>04</span>Sueño saludable</a>
+                <a href="#naturaleza" class="her-pill"><span>05</span>Naturaleza</a>
+            </div>
+        </div>
+        <div class="her-indice-grupo">
+            <span class="her-indice-etiqueta">Parte 2 · Regulación cognitiva y conductual</span>
+            <div class="her-indice-pills">
+                <a href="#regulacion-emocional" class="her-pill"><span>06</span>Regulación emocional</a>
+                <a href="#resolucion-problemas" class="her-pill"><span>07</span>Resolución de problemas</a>
+                <a href="#activacion-conductual" class="her-pill"><span>08</span>Activación conductual</a>
+                <a href="#rutinas-estructura" class="her-pill"><span>09</span>Rutinas y estructura</a>
+            </div>
+        </div>
+        <div class="her-indice-grupo">
+            <span class="her-indice-etiqueta">Parte 3 · Conexión y acceso a ayuda</span>
+            <div class="her-indice-pills">
+                <a href="#contacto-social" class="her-pill"><span>10</span>Redes de apoyo</a>
+                <a href="#escritura-expresiva" class="her-pill"><span>11</span>Escritura expresiva</a>
+                <a href="#pedir-ayuda" class="her-pill"><span>12</span>Cómo pedir ayuda</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ============================================================
+         PARTE 1 — REGULACIÓN FÍSICA / CORPORAL
+    ============================================================ -->
+    <section class="her-parte" aria-labelledby="parte1-titulo">
+
+        <header class="her-parte-header">
+            <span class="her-parte-num">Parte 1</span>
+            <h2 id="parte1-titulo">Regulación física / corporal</h2>
+            <p>Herramientas que trabajan a través del cuerpo: respiración, movimiento, sueño y contacto con espacios naturales.</p>
+        </header>
+
+        <div class="temas-lista">
+
+            <!-- 01 — RESPIRACIÓN -->
+            <details class="tema" id="respiracion">
+                <summary>
+                    <h3><span class="her-num">01</span> Respiración</h3>
+                    <span class="nivel-badge nivel-moderada">Evidencia moderada</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Ayudar a calmar la activación física del cuerpo (corazón acelerado, tensión muscular) que acompaña al estrés y la ansiedad.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>Respiración lenta y profunda, alargando más la exhalación que la inhalación: por ejemplo, inhalar contando hasta 4, exhalar contando hasta 6.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Las técnicas de relajación, incluida la respiración, cuentan con evidencia favorable en adolescentes para reducir malestar, ansiedad y síntomas depresivos: evidencia moderada, con los propios investigadores pidiendo estudios de mayor calidad (Hamdani et al., 2022).</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Para casi cualquier persona, como estrategia de apoyo diario o en momentos puntuales de tensión.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si la ansiedad es intensa, frecuente, o interfiere con tu vida diaria, ahí necesitas algo más que respirar (revisa el tema de Ansiedad en Condiciones).</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Grounding, actividad física, o hablarlo con alguien.</p>
+                </div>
+            </details>
+
+            <!-- 02 — GROUNDING -->
+            <details class="tema" id="grounding">
+                <summary>
+                    <h3><span class="her-num">02</span> Grounding / anclaje</h3>
+                    <span class="nivel-badge nivel-limitada">Evidencia limitada</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Ayudarte a volver al presente en un momento de malestar intenso, usando tus sentidos: por ejemplo, la técnica 5-4-3-2-1 (nombrar 5 cosas que ves, 4 que tocas, 3 que oyes, 2 que hueles, 1 que saboreas).</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>Es la secuencia sensorial de arriba: una técnica simple que puedes hacer en cualquier lugar.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Evidencia limitada. No encontramos una revisión sistemática sólida que evalúe esta técnica de forma aislada. Se usa mucho en la práctica clínica y tiene una base teórica razonable, pero eso no es lo mismo que evidencia comprobada. Vale la pena probarla, sin esperar que sea "la solución".</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Cualquiera puede probarla como herramienta de apoyo momentánea.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si el malestar es frecuente o intenso, no reemplaza buscar ayuda profesional.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Respiración, contacto con alguien de confianza, o buscar apoyo profesional si esto se repite.</p>
+                </div>
+            </details>
+
+            <!-- 03 — ACTIVIDAD FÍSICA -->
+            <details class="tema" id="actividad-fisica">
+                <summary>
+                    <h3><span class="her-num">03</span> Actividad física</h3>
+                    <span class="nivel-badge nivel-solida">Evidencia sólida</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Mejorar el estado de ánimo, reducir síntomas depresivos y, según un estudio hecho en Barranquilla, se asocia también a una imagen corporal más positiva.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>La OMS recomienda un promedio de al menos 60 minutos diarios de actividad física de intensidad moderada a vigorosa, principalmente aeróbica, a lo largo de la semana. No tiene que ser deporte formal: caminar rápido, bailar o andar en bicicleta también cuenta.</p>
+
+                    <div class="stat-destacado">
+                        <span class="stat-num">60 min</span>
+                        <p>diarios de actividad moderada-vigorosa recomienda la OMS para beneficios en salud mental (OMS, 2020)</p>
+                    </div>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Sólida a nivel global: la actividad física mejora la salud mental (menos síntomas depresivos) según las directrices de la OMS, basadas en revisiones sistemáticas. A nivel local, un estudio con 300 adolescentes de Barranquilla (13-19 años) encontró que más horas de actividad física se asocian con mayor imagen corporal positiva y menor insatisfacción corporal (Góngora et al., 2024).</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>La mayoría de adolescentes puede incorporarla gradualmente; si tienes alguna condición de salud física, es bueno consultarlo primero.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si la haces desde la exigencia o el castigo hacia tu cuerpo en vez del bienestar (revisa el tema de Imagen corporal), o si tu malestar emocional es intenso, ahí necesitas más que ejercicio.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Empezar con algo mucho más pequeño, como una caminata de 10 minutos, antes de exigirte más.</p>
+                </div>
+            </details>
+
+            <!-- 04 — SUEÑO SALUDABLE -->
+            <details class="tema" id="sueno-saludable">
+                <summary>
+                    <h3><span class="her-num">04</span> Sueño saludable</h3>
+                    <span class="nivel-badge nivel-moderada">Evidencia moderada</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Es una de las bases fisiológicas más importantes del bienestar emocional: dormir mal empeora casi todo lo demás.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>Rutinas positivas antes de dormir (horarios constantes, reducir pantallas antes de acostarte), y llevar un registro simple de tu sueño si notas que es un problema recurrente.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Los enfoques conductuales de higiene del sueño (rutinas, diarios de sueño) mostraron resultados positivos en todos los estudios revisados en una revisión sistemática, aunque los estudios de alta calidad todavía son escasos (Halal & Nunes, 2014).</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Para prácticamente cualquier persona, como hábito de base.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si tienes insomnio persistente o problemas de sueño severos, esto se trabaja mejor con apoyo profesional.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Reducir el tiempo de pantalla antes de dormir específicamente: es uno de los factores más estudiados que interfiere con la calidad del sueño en adolescentes.</p>
+                </div>
+            </details>
+
+            <!-- 05 — NATURALEZA -->
+            <details class="tema" id="naturaleza">
+                <summary>
+                    <h3><span class="her-num">05</span> Contacto con la naturaleza</h3>
+                    <span class="nivel-badge nivel-limitada">Evidencia limitada</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Mejorar el estado de ánimo y reducir el malestar, aunque con menos certeza científica que las herramientas anteriores.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>Pasar tiempo en espacios verdes o al aire libre: un parque, una zona con árboles, cualquier espacio natural accesible para ti.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Evidencia limitada/moderada, hay que ser honestos aquí. Una revisión sistemática y metaanálisis encontró un efecto pequeño de la exposición breve a la naturaleza en la reducción del ánimo depresivo, pero los propios autores señalan que la calidad de los estudios disponibles es baja a muy baja (Roberts et al., 2019). Es decir: probablemente ayuda un poco, pero no es una intervención "comprobada" con la misma fuerza que la actividad física.</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Cualquiera con acceso a algún espacio verde o natural cercano.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si tu malestar es intenso o sostenido, esto es un complemento, no un tratamiento.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Combinarlo con actividad física —caminar en un parque en vez de hacerlo en interiores— puede sumar los beneficios de ambas.</p>
+                </div>
+            </details>
 
         </div>
 
-    </main>
-    <footer>
+        <div class="caja caja-recuerda">
+            <p>🩺 Estas herramientas son apoyo, no tratamiento. Si el malestar persiste, revisa el tema específico que más se parece a lo que sientes en Situaciones o Condiciones — ahí encontrarás cuándo pedir ayuda.</p>
+        </div>
 
-    </footer>
+        <!-- Auditoría de fuentes — Parte 1 -->
+        <div class="fuentes her-auditoria">
+            <h4>Auditoría de fuentes</h4>
+            <div class="tabla-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Afirmación</th>
+                            <th>Fuente</th>
+                            <th>¿La fuente lo afirma?</th>
+                            <th>Nivel</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>60 min/día de actividad física moderada-vigorosa; beneficio en salud mental</td>
+                            <td>OMS, 2020</td>
+                            <td>Sí</td>
+                            <td>1</td>
+                            <td>Directriz global</td>
+                        </tr>
+                        <tr>
+                            <td>Más actividad física → mayor imagen corporal positiva en Barranquilla</td>
+                            <td>Góngora et al., 2024</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Estudio local</td>
+                        </tr>
+                        <tr>
+                            <td>Relajación/respiración con evidencia favorable, moderada</td>
+                            <td>Hamdani et al., 2022</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Ya citado en Ansiedad</td>
+                        </tr>
+                        <tr>
+                            <td>Higiene del sueño conductual efectiva en los estudios revisados, aunque pocos de alta calidad</td>
+                            <td>Halal & Nunes, 2014</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Revisión sistemática</td>
+                        </tr>
+                        <tr>
+                            <td>Naturaleza reduce ánimo depresivo (efecto pequeño), evidencia de baja calidad</td>
+                            <td>Roberts et al., 2019</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Metaanálisis, matiz de calidad incluido</td>
+                        </tr>
+                        <tr>
+                            <td>Grounding con evidencia limitada como técnica aislada</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>Ausencia señalada, no se fuerza una cita débil</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         PARTE 2 — REGULACIÓN COGNITIVA Y CONDUCTUAL
+    ============================================================ -->
+    <section class="her-parte her-parte-alt" aria-labelledby="parte2-titulo">
+
+        <header class="her-parte-header">
+            <span class="her-parte-num">Parte 2</span>
+            <h2 id="parte2-titulo">Regulación cognitiva y conductual</h2>
+            <p>Herramientas que trabajan a través de cómo piensas y cómo organizas tus días.</p>
+        </header>
+
+        <div class="caja caja-importante">
+            <p>🧠 <strong>Importante:</strong> estas herramientas te ayudan a manejar el día a día, pero ninguna reemplaza el tratamiento profesional si lo necesitas — algunas incluso funcionan mejor combinadas con acompañamiento profesional que solas.</p>
+        </div>
+
+        <div class="temas-lista">
+
+            <!-- 06 — REGULACIÓN EMOCIONAL -->
+            <details class="tema" id="regulacion-emocional">
+                <summary>
+                    <h3><span class="her-num">06</span> Regulación emocional (marco general)</h3>
+                    <span class="nivel-badge nivel-moderada">Evidencia moderada</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Aprender a identificar, entender y manejar tus emociones de forma más adaptativa, en vez de que te desborden o las evites por completo.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>Reconocer qué emoción sientes y qué la disparó, antes de reaccionar automáticamente. Practicar pausas entre sentir algo intenso y actuar según eso.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Las intervenciones psicológicas dirigidas a mejorar la regulación emocional (como la terapia cognitivo-conductual o programas específicos) mejoran estas habilidades en jóvenes, con un efecto pequeño a moderado; la calidad de los estudios varía bastante entre programas (Moltrecht et al., 2021).</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Para cualquier adolescente como habilidad de base; es especialmente relevante si sientes que tus emociones "te controlan" más de lo que te gustaría.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si la desregulación emocional es muy frecuente o intensa —por ejemplo, se acompaña de autolesión—, esto se trabaja mejor con acompañamiento profesional estructurado.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Combinarla con resolución de problemas o buscar apoyo profesional si notas que sola no es suficiente.</p>
+                </div>
+            </details>
+
+            <!-- 07 — RESOLUCIÓN DE PROBLEMAS -->
+            <details class="tema" id="resolucion-problemas">
+                <summary>
+                    <h3><span class="her-num">07</span> Resolución de problemas</h3>
+                    <span class="nivel-badge nivel-moderada">Evidencia moderada, con matices</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Enfrentar de forma más ordenada situaciones concretas que te generan estrés o malestar —un conflicto con un amigo, una decisión difícil—, en vez de darles vueltas sin llegar a nada.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>Cuatro pasos simples: (1) definir claramente cuál es el problema, (2) generar varias opciones posibles sin juzgarlas todavía, (3) evaluar cuál parece más viable, (4) intentarla y revisar cómo te fue.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Hay que ser honestos con un matiz importante. La resolución de problemas es eficaz frente a no recibir ninguna ayuda, y tiene buena aceptación —la gente la abandona menos que otras terapias— (Michelson et al., 2022). Pero usada completamente sola, no parece reducir de forma medible los síntomas cuando ya hay depresión o ansiedad instaladas: las guías clínicas no la recomiendan como tratamiento único, aunque sí como parte de terapias más completas (Krause et al., 2021).</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Muy útil para retos concretos del día a día (una decisión, un conflicto puntual); menos indicada como única herramienta si ya tienes síntomas de depresión o ansiedad significativos.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si ya identificaste que tienes depresión o ansiedad, esta herramienta funciona mejor como complemento de terapia, no como reemplazo.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Si el problema que enfrentas es en realidad parte de algo más grande —como síntomas de depresión—, busca apoyo profesional en vez de seguir aplicando esta técnica sola.</p>
+                </div>
+            </details>
+
+            <!-- 08 — ACTIVACIÓN CONDUCTUAL -->
+            <details class="tema" id="activacion-conductual">
+                <summary>
+                    <h3><span class="her-num">08</span> Activación conductual / actividades agradables</h3>
+                    <span class="nivel-badge nivel-solida">Evidencia sólida</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Romper el círculo de "me siento mal → dejo de hacer cosas → me siento peor", haciendo actividades pequeñas y concretas aunque no tengas ganas al principio.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>Elige una actividad pequeña (salir a caminar, escribirle a alguien, ordenar algo) y hazla aunque "no tengas ganas": la motivación suele aparecer después de la acción, no antes.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Es uno de los componentes con más evidencia dentro de las terapias psicológicas para la depresión en adolescentes (Hetrick et al., 2016). Ver más detalle en el tema de Depresión, en Condiciones.</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Especialmente útil si notas que te has ido aislando o dejando de hacer cosas que antes disfrutabas.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si los síntomas son intensos y sostenidos, funciona mejor como parte de terapia psicológica estructurada, no aislada.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Reducir aún más el tamaño de la actividad: a veces el paso inicial elegido es demasiado grande.</p>
+                </div>
+            </details>
+
+            <!-- 09 — RUTINAS Y ESTRUCTURA -->
+            <details class="tema" id="rutinas-estructura">
+                <summary>
+                    <h3><span class="her-num">09</span> Rutinas y estructura diaria</h3>
+                    <span class="nivel-badge nivel-moderada">Evidencia moderada</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Darle a tus días una base predecible (horarios de sueño, comidas, actividades) que reduce la carga de estar decidiendo todo constantemente cuando ya estás con poca energía.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>Mantener horarios similares para dormir, comer y hacer actividades importantes, incluso en versión mínima en los días difíciles.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Las rutinas positivas y constantes mostraron resultados positivos en todos los estudios de una revisión sistemática sobre hábitos conductuales en jóvenes, aunque los estudios de alta calidad todavía son limitados (Halal & Nunes, 2014); la misma lógica de la activación conductual respalda mantener estructura incluso cuando no tienes ganas (Hetrick et al., 2016).</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Para cualquier adolescente, especialmente útil cuando sientes que "los días se mezclan" o que no tienes ningún orden.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si la falta de rutina viene de síntomas de depresión o ansiedad más profundos, la rutina ayuda pero no reemplaza el tratamiento de esa condición.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Empezar con una sola rutina —por ejemplo, solo la hora de dormir— en vez de intentar cambiar todo a la vez.</p>
+                </div>
+            </details>
+
+        </div>
+
+        <div class="caja caja-recuerda">
+            <p>🩺 Estas herramientas son apoyo, no tratamiento. Si el malestar persiste, revisa el tema específico que más se parece a lo que sientes.</p>
+        </div>
+
+        <!-- Auditoría de fuentes — Parte 2 -->
+        <div class="fuentes her-auditoria">
+            <h4>Auditoría de fuentes</h4>
+            <div class="tabla-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Afirmación</th>
+                            <th>Fuente</th>
+                            <th>¿La fuente lo afirma?</th>
+                            <th>Nivel</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Intervenciones psicológicas mejoran regulación emocional en jóvenes, efecto pequeño-moderado</td>
+                            <td>Moltrecht et al., 2021</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Meta-análisis de 21 ECA</td>
+                        </tr>
+                        <tr>
+                            <td>Resolución de problemas eficaz vs. no ayuda, mejor aceptabilidad que TCC</td>
+                            <td>Michelson et al., 2022</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Revisión integrativa</td>
+                        </tr>
+                        <tr>
+                            <td>Resolución de problemas sola no reduce síntomas depresivos de forma medible; guías no la recomiendan como único tratamiento</td>
+                            <td>Krause et al., 2021</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Revisión de alcance + metaanálisis exploratorio, evidencia GRADE baja</td>
+                        </tr>
+                        <tr>
+                            <td>Activación conductual con evidencia moderada-sólida en depresión adolescente</td>
+                            <td>Hetrick et al., 2016</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Ya citada en Depresión</td>
+                        </tr>
+                        <tr>
+                            <td>Rutinas positivas con resultados positivos en estudios revisados</td>
+                            <td>Halal & Nunes, 2014</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Ya citada en Parte 1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+         PARTE 3 — CONEXIÓN Y ACCESO A AYUDA
+    ============================================================ -->
+    <section class="her-parte" aria-labelledby="parte3-titulo">
+
+        <header class="her-parte-header">
+            <span class="her-parte-num">Parte 3</span>
+            <h2 id="parte3-titulo">Conexión y acceso a ayuda</h2>
+            <p>Herramientas que dependen de otras personas: hablar, escribir para procesar, y dar el paso de pedir ayuda.</p>
+        </header>
+
+        <div class="caja caja-importante">
+            <p>🧠 <strong>Importante:</strong> pedir ayuda o apoyarte en otros no es debilidad — es una de las estrategias con más respaldo para cuidar tu salud mental.</p>
+        </div>
+
+        <div class="temas-lista">
+
+            <!-- 10 — CONTACTO SOCIAL -->
+            <details class="tema" id="contacto-social">
+                <summary>
+                    <h3><span class="her-num">10</span> Contacto social y redes de apoyo</h3>
+                    <span class="nivel-badge nivel-moderada">Evidencia moderada</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Sentir que tienes con quién contar está relacionado con mejor bienestar emocional en la adolescencia.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>No se trata de tener muchos amigos, sino de mantener algunas relaciones donde sientas que puedes ser honesto sobre cómo estás: con amigos, familia, profesores, o cualquier adulto de confianza.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Un metaanálisis de 246 estudios encontró una asociación positiva entre el apoyo social y el bienestar en niños y adolescentes. Lo más interesante: lo que más importa no es cuánta gente tienes alrededor, sino si sientes que puedes contar con ellos; el apoyo percibido pesa más que el apoyo objetivamente disponible. El apoyo de profesores y personal del colegio también se asoció con más bienestar, no solo el de la familia o amigos (Chu et al., 2010).</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Para cualquier adolescente, aunque la forma de buscar ese contacto puede variar mucho según tu personalidad.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si no tienes a nadie con quien sientas que puedes hablar en este momento, eso en sí mismo es algo para trabajar con apoyo profesional, no algo que debas resolver solo.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Si no tienes cerca a alguien de confianza, un profesional (psicólogo escolar, línea de ayuda) puede ser ese primer contacto mientras construyes otras relaciones.</p>
+                </div>
+            </details>
+
+            <!-- 11 — ESCRITURA EXPRESIVA -->
+            <details class="tema" id="escritura-expresiva">
+                <summary>
+                    <h3><span class="her-num">11</span> Escritura expresiva / diario</h3>
+                    <span class="nivel-badge nivel-moderada">Evidencia moderada</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Procesar pensamientos y emociones difíciles poniéndolos en palabras, en vez de darles vueltas solo en tu cabeza.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>Escribir de forma libre sobre lo que sientes o sobre una situación difícil, sin preocuparte por la ortografía, la estructura o que alguien más lo vaya a leer: es para ti, no para publicar.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Un metaanálisis con adolescentes de 10 a 18 años encontró beneficios de la escritura expresiva en el ajuste psicosocial (Travagin et al., 2015): evidencia moderada, con variación según cómo se aplique.</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Para adolescentes que se sientan más cómodos procesando las cosas por escrito que hablando de entrada; puede ser un buen primer paso antes de hablarlo con alguien.</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Si notas que escribir sobre algo doloroso te hace sentir peor y no mejor, no te fuerces: no todas las personas procesan así, y no reemplaza hablarlo con alguien si lo necesitas.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Hablarlo en voz alta con alguien de confianza en vez de escribirlo, o combinar ambas cosas.</p>
+                </div>
+            </details>
+
+            <!-- 12 — CÓMO PEDIR AYUDA -->
+            <details class="tema" id="pedir-ayuda">
+                <summary>
+                    <h3><span class="her-num">12</span> Cómo pedir ayuda</h3>
+                    <span class="nivel-badge nivel-info">Barreras documentadas</span>
+                    <span class="flecha">▾</span>
+                </summary>
+                <div class="tema-contenido">
+                    <h4>¿Para qué puede servir?</h4>
+                    <p>Reducir la barrera más grande que existe para cuidar tu salud mental: el miedo o la vergüenza a dar el primer paso.</p>
+
+                    <h4>¿Cómo se realiza?</h4>
+                    <p>No necesitas tener todo claro ni "las palabras perfectas". Decir "no me siento bien y necesito hablar con alguien" es suficiente para empezar: con un adulto de confianza, un orientador escolar, o directamente una línea de ayuda como las que encuentras en Contactos.</p>
+
+                    <h4>¿Qué evidencia existe?</h4>
+                    <p>Una revisión de 90 estudios con adolescentes de 10 a 19 años encontró que el estigma y las creencias negativas hacia los servicios de salud mental son las barreras más mencionadas para pedir ayuda. Por el lado positivo, haber tenido una experiencia previa positiva con un profesional de salud y tener más información real sobre salud mental —justo lo que este apartado busca darte— son los factores que más ayudan a que alguien dé el paso (Aguirre Velasco et al., 2020).</p>
+
+                    <h4>¿Para quién puede ser apropiada?</h4>
+                    <p>Para cualquier adolescente, en cualquier momento: no hace falta "esperar a que sea grave".</p>
+
+                    <h4>¿Cuándo NO usarla como única estrategia?</h4>
+                    <p>Nunca es "solo" esto: pedir ayuda es el paso que abre la puerta a todo lo demás.</p>
+
+                    <h4>¿Qué puedo probar si no funciona?</h4>
+                    <p>Si la primera persona a la que le pediste ayuda no te escuchó bien, eso no significa que debas rendirte: prueba con otra persona o con una línea de ayuda directamente.</p>
+                </div>
+            </details>
+
+        </div>
+
+        <div class="caja caja-recuerda">
+            <p>🩺 Estas herramientas son apoyo, no tratamiento. Si el malestar persiste, revisa el tema específico que más se parece a lo que sientes.</p>
+        </div>
+
+        <!-- Auditoría de fuentes — Parte 3 -->
+        <div class="fuentes her-auditoria">
+            <h4>Auditoría de fuentes</h4>
+            <div class="tabla-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Afirmación</th>
+                            <th>Fuente</th>
+                            <th>¿La fuente lo afirma?</th>
+                            <th>Nivel</th>
+                            <th>Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Asociación positiva entre apoyo social y bienestar; apoyo percibido más relevante que apoyo objetivo; apoyo de profesores relevante</td>
+                            <td>Chu et al., 2010</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Metaanálisis de 246 estudios</td>
+                        </tr>
+                        <tr>
+                            <td>Escritura expresiva con beneficios en ajuste psicosocial en adolescentes de 10-18 años</td>
+                            <td>Travagin et al., 2015</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Metaanálisis de 21 estudios</td>
+                        </tr>
+                        <tr>
+                            <td>Estigma como principal barrera; experiencia previa positiva y alfabetización en salud mental como facilitadores</td>
+                            <td>Aguirre Velasco et al., 2020</td>
+                            <td>Sí</td>
+                            <td>3</td>
+                            <td>Revisión sistemática de 90 estudios</td>
+                        </tr>
+                        <tr>
+                            <td>Ausencia de estudios colombianos/locales sobre estos tres temas</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>—</td>
+                            <td>Señalada explícitamente</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ===== CAJA DE EMERGENCIA GENERAL ===== -->
+    <div class="caja caja-emergencia her-emergencia-general">
+        <p>
+            <strong>🆘 ¿Cuándo es una emergencia?</strong>
+            Si tienes pensamientos de hacerte daño, de que "no vale la pena seguir",
+            o sientes que podrías perder el control sobre eso, esto es una
+            emergencia, no esperes a que pase solo.
+            Ve ahora mismo a <a href="contacto.html#emergencia">Contactos</a>,
+            donde encuentras la Línea 106, Chatlemos y la Línea 123.
+        </p>
+    </div>
+
+
+    <!-- ===== REFERENCIAS ===== -->
+    <section class="fuentes" aria-labelledby="referencias-titulo">
+        <h2 id="referencias-titulo">Referencias</h2>
+        <div class="tabla-scroll">
+            <ul>
+                <li>Aguirre Velasco, A., Silva Santa Cruz, I., Billings, J., Jimenez, M., & Rowe, S. (2020). What are the barriers, facilitators and interventions targeting help-seeking behaviours for common mental health problems in adolescents? A systematic review. <em>BMC Psychiatry, 20</em>, 293.</li>
+                <li>Chu, P. S., Saucier, D. A., & Hafner, E. (2010). Meta-analysis of the relationships between social support and well-being in children and adolescents. <em>Journal of Social and Clinical Psychology, 29</em>(6), 624–645.</li>
+                <li>Góngora, V. C., Martínez Banfi, M., Quiroz Molinares, N., Mercado, S., & Mebarak, M. (2024). Estudio con adolescentes de Barranquilla sobre actividad física e imagen corporal.</li>
+                <li>Halal, C. S. E., & Nunes, M. L. (2014). Education in children's sleep hygiene: which approaches are effective? A systematic review. <em>Jornal de Pediatria, 90</em>(5), 449–456.</li>
+                <li>Hamdani, S. U. et al. (2022). Estudio sobre técnicas de relajación y evidencia en adolescentes.</li>
+                <li>Hetrick, S. E. et al. (2016). Evidencia sobre activación conductual en depresión adolescente.</li>
+                <li>Krause, K. R., Courtney, D. B., Chan, B. W. C., Bonato, S., Aitken, M., Relihan, J., Prebeg, M., Darnay, K., Hawke, L. D., Watson, P., & Szatmari, P. (2021). Problem-solving training as an active ingredient of treatment for youth depression: A scoping review and exploratory meta-analysis. <em>BMC Psychiatry, 21</em>(1), 1–14.</li>
+                <li>Michelson, D., Hodgson, E., Bernstein, A., Chorpita, B. F., & Patel, V. (2022). Problem solving as an active ingredient in indicated prevention and treatment of youth depression and anxiety: An integrative review. <em>Journal of Adolescent Health, 71</em>(4), 390–405.</li>
+                <li>Moltrecht, B., Deighton, J., Patalay, P., & Edbrooke-Childs, J. (2021). Effectiveness of current psychological interventions to improve emotion regulation in youth: A meta-analysis. <em>European Child & Adolescent Psychiatry, 30</em>(6), 829–848.</li>
+                <li>Organización Mundial de la Salud. (2020). Directrices de la OMS sobre actividad física y comportamientos sedentarios.</li>
+                <li>Roberts, H., Van Lissa, C., Hagedoorn, P., Kellar, I., & Helbich, M. (2019). The effect of short-term exposure to the natural environment on depressive mood: A systematic review and meta-analysis. <em>Environmental Research, 177</em>, 108606.</li>
+                <li>Travagin, G., Margola, D., & Revenson, T. A. (2015). How effective are expressive writing interventions for adolescents? A meta-analytic review. <em>Clinical Psychology Review, 36</em>, 42–55.</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- ===== MINI NAVEGACIÓN INFERIOR ===== -->
+    <nav class="her-mini-nav her-mini-nav-footer" aria-label="Continuar navegando en Comprende">
+        <a href="comprende-condiciones.html" class="her-mini-nav-link">← Ir a Condiciones</a>
+        <a href="comprende-situaciones.html" class="her-mini-nav-link">Ir a Situaciones →</a>
+    </nav>
+
+</main>
+
+
+<footer class="her-footer">
+    <div class="her-footer-inner">
+        <p class="her-footer-marca">Conecta Contigo</p>
+        <p class="her-footer-mensaje">Ninguna herramienta reemplaza el acompañamiento profesional. Si algo no te está funcionando, pedir ayuda también es una herramienta válida.</p>
+        <nav class="her-footer-nav">
+            <a href="comprende.html">Comprende</a>
+            <a href="comprende-condiciones.html">Condiciones</a>
+            <a href="comprende-situaciones.html">Situaciones</a>
+            <a href="contacto.html">Contactos</a>
+        </nav>
+        <p class="her-footer-legal">© 2026 Conecta Contigo. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+
+<script src="assets/js/comprende-acordeon.js"></script>
+<script src="assets/js/index.js"></script>
+
 </body>
-
 </html>
