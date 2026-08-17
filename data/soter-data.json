@@ -1,0 +1,695 @@
+{
+  "meta": {
+    "botName": "Soter",
+    "version": "1.0.0",
+    "description": "Archivo de contenido editable de Soter, el asistente de orientación de Conecta Contigo. Edita este archivo para cambiar textos, preguntas, opciones y enlaces sin tocar soter.js."
+  },
+  "config": {
+    "welcomeTitle": "Hola, soy Soter 🌱",
+    "welcomeMessage": "Estoy aquí para ayudarte a encontrar información, comprender algunas experiencias y descubrir recursos.\n¿Qué quieres explorar?",
+    "disclaimer": "Soter brinda información y orientación. No reemplaza la atención profesional ni atiende emergencias.",
+    "disclaimerLinkLabel": "Ir a Contactos →",
+    "emergencyLink": "contacto.html",
+    "links": {
+      "contactos": "contacto.html",
+      "comprende": "conoce.html",
+      "inicio": "index.html",
+      "emocional": "diario.html"
+    },
+    "inputPlaceholder": "Escribe tu pregunta...",
+    "loadErrorMessage": "No pude cargar la información de Soter. Si estás probando esto en tu computador, recuerda abrir el sitio con un servidor local (por ejemplo Live Server) en vez de abrir el archivo directamente."
+  },
+  "risk": {
+    "keywords": [
+      "hacerme daño",
+      "hacerme dano",
+      "lastimarme",
+      "autolesion",
+      "autolesionarme",
+      "suicidio",
+      "suicidarme",
+      "quitarme la vida",
+      "no quiero seguir viviendo",
+      "no quiero vivir",
+      "acabar con mi vida",
+      "matarme",
+      "quiero morir",
+      "quiero morirme",
+      "hacerle daño a alguien",
+      "hacer daño a alguien",
+      "estoy en peligro",
+      "corro peligro",
+      "ya no aguanto mas",
+      "ya no aguanto más"
+    ],
+    "title": "Tu seguridad es lo más importante",
+    "message": "Gracias por confiar esto a Soter. Lo que describes suena muy difícil, y mereces el acompañamiento de una persona real, no solo información. Soter es una herramienta educativa y no puede intervenir en una emergencia.",
+    "secondaryMessage": "Si en este momento corres peligro o sientes que podrías hacerte daño, busca de inmediato a un adulto de confianza, acude a un servicio de salud, o comunícate con una línea de ayuda.",
+    "actionLabel": "Ir a Contactos de ayuda"
+  },
+  "mainMenu": {
+    "options": [
+      {
+        "icon": "🧠",
+        "label": "Entender lo que estoy sintiendo",
+        "next": "entender"
+      },
+      {
+        "icon": "📚",
+        "label": "Aprender sobre salud mental",
+        "next": "aprender"
+      },
+      {
+        "icon": "🛠️",
+        "label": "Encontrar una herramienta",
+        "next": "herramientas"
+      },
+      {
+        "icon": "🆘",
+        "label": "Necesito ayuda",
+        "next": "ayuda"
+      }
+    ]
+  },
+  "fallback": {
+    "botMessage": "🌱 No estoy seguro de qué información buscas, pero podemos encontrarla juntos. También puedes intentar reformular tu pregunta, por ejemplo: \"no puedo dormir\" o \"me siento muy triste\".",
+    "options": [
+      {
+        "label": "Lo que estoy sintiendo",
+        "next": "entender"
+      },
+      {
+        "label": "Una situación que estoy viviendo",
+        "next": "situaciones"
+      },
+      {
+        "label": "Una condición de salud mental",
+        "next": "aprender"
+      },
+      {
+        "label": "Una herramienta",
+        "next": "herramientas"
+      },
+      {
+        "label": "Necesito ayuda",
+        "next": "ayuda"
+      }
+    ]
+  },
+  "followUp": {
+    "botMessage": "¿Qué quieres hacer ahora?",
+    "options": [
+      {
+        "label": "Seguir explorando",
+        "next": "main"
+      },
+      {
+        "label": "Ver herramientas",
+        "next": "herramientas"
+      },
+      {
+        "label": "Volver",
+        "next": "PARENT"
+      },
+      {
+        "label": "Ir a Contactos",
+        "next": "link:contactos"
+      }
+    ]
+  },
+  "nodes": {
+    "entender": {
+      "type": "menu",
+      "botMessage": "Claro 💙 ¿Qué quieres explorar?",
+      "options": [
+        {
+          "label": "Ansiedad",
+          "next": "tema-ansiedad"
+        },
+        {
+          "label": "Tristeza",
+          "next": "tema-tristeza"
+        },
+        {
+          "label": "Estrés",
+          "next": "tema-estres"
+        },
+        {
+          "label": "Cambios en mi comportamiento",
+          "next": "content:cambios-comportamiento"
+        },
+        {
+          "label": "Una situación que estoy viviendo",
+          "next": "situaciones"
+        },
+        {
+          "label": "No sé exactamente qué me pasa",
+          "next": "content:no-se-que-pasa"
+        }
+      ]
+    },
+    "aprender": {
+      "type": "menu",
+      "botMessage": "Estas son algunas experiencias sobre las que puedo darte información 📚",
+      "options": [
+        {
+          "label": "Ansiedad",
+          "next": "tema-ansiedad"
+        },
+        {
+          "label": "Depresión",
+          "next": "tema-depresion"
+        },
+        {
+          "label": "Estrés",
+          "next": "tema-estres"
+        },
+        {
+          "label": "Trastornos del sueño",
+          "next": "tema-sueno"
+        },
+        {
+          "label": "Alimentación y bienestar",
+          "next": "tema-alimentacion"
+        }
+      ]
+    },
+    "content:tema-ansiedad-que-es": {
+      "type": "content",
+      "parent": "tema-ansiedad",
+      "title": "Ansiedad — Qué es",
+      "body": "La ansiedad es una respuesta natural del cuerpo y la mente ante el estrés, la incertidumbre o el peligro percibido. En dosis pequeñas puede ayudarte a estar alerta, por ejemplo antes de un examen. El problema aparece cuando esa sensación es muy intensa, dura mucho tiempo o interfiere con tu día a día."
+    },
+    "content:tema-ansiedad-senales": {
+      "type": "content",
+      "parent": "tema-ansiedad",
+      "title": "Ansiedad — Cuáles son sus señales",
+      "body": "Puede manifestarse con pensamientos que se repiten una y otra vez, dificultad para concentrarte, tensión muscular, taquicardia, sudoración, problemas para dormir, irritabilidad o ganas de evitar ciertas situaciones. No todas las personas la experimentan igual."
+    },
+    "content:tema-ansiedad-por-que": {
+      "type": "content",
+      "parent": "tema-ansiedad",
+      "title": "Ansiedad — Por qué puede aparecer",
+      "body": "Puede relacionarse con situaciones académicas, familiares o sociales, cambios importantes en la vida, presión por resultados, comparación con otras personas, o simplemente con la forma en que el cuerpo procesa la incertidumbre. A veces no hay una causa única y clara."
+    },
+    "content:tema-ansiedad-que-hacer": {
+      "type": "content",
+      "parent": "tema-ansiedad",
+      "title": "Ansiedad — Qué puedo hacer",
+      "body": "Algunas estrategias que pueden ayudar: practicar respiración consciente, escribir lo que sientes, hablar con alguien de confianza, moverte físicamente, y reducir por momentos el contacto con lo que te genera más tensión. En la sección de Herramientas encontrarás ejercicios guiados."
+    },
+    "content:tema-ansiedad-cuando-ayuda": {
+      "type": "content",
+      "parent": "tema-ansiedad",
+      "title": "Ansiedad — Cuándo debería pedir ayuda",
+      "body": "Vale la pena buscar apoyo profesional cuando la ansiedad es muy frecuente, te impide hacer actividades cotidianas, afecta tu sueño o tu alimentación, o sientes que no puedes manejarla solo o sola. Pedir ayuda es un acto de valentía, no una debilidad."
+    },
+    "tema-ansiedad": {
+      "type": "topic",
+      "title": "Ansiedad",
+      "keywords": [
+        "ansiedad",
+        "ansioso",
+        "ansiosa",
+        "preocupacion",
+        "preocupado",
+        "preocupada",
+        "nervios",
+        "nervioso",
+        "nerviosa",
+        "miedo",
+        "panico",
+        "pánico",
+        "taquicardia",
+        "angustia"
+      ],
+      "botMessage": "Claro 💙 ¿Qué quieres saber sobre la ansiedad?",
+      "options": [
+        {
+          "label": "¿Qué es?",
+          "next": "content:tema-ansiedad-que-es"
+        },
+        {
+          "label": "¿Cuáles son sus señales?",
+          "next": "content:tema-ansiedad-senales"
+        },
+        {
+          "label": "¿Por qué puede aparecer?",
+          "next": "content:tema-ansiedad-por-que"
+        },
+        {
+          "label": "¿Qué puedo hacer?",
+          "next": "content:tema-ansiedad-que-hacer"
+        },
+        {
+          "label": "¿Cuándo debería pedir ayuda?",
+          "next": "content:tema-ansiedad-cuando-ayuda"
+        }
+      ]
+    },
+    "content:tema-tristeza-que-es": {
+      "type": "content",
+      "parent": "tema-tristeza",
+      "title": "Tristeza — Qué es",
+      "body": "La tristeza es una emoción humana normal que suele aparecer ante pérdidas, decepciones o cambios difíciles. Sentirla no significa que algo esté mal contigo; es una forma en que la mente procesa lo que estás viviendo."
+    },
+    "content:tema-tristeza-senales": {
+      "type": "content",
+      "parent": "tema-tristeza",
+      "title": "Tristeza — Cuáles son sus señales",
+      "body": "Puede aparecer como ganas de llorar, cansancio, falta de motivación, pensamientos negativos sobre ti o tu futuro, o menos interés en actividades que antes disfrutabas."
+    },
+    "content:tema-tristeza-por-que": {
+      "type": "content",
+      "parent": "tema-tristeza",
+      "title": "Tristeza — Por qué puede aparecer",
+      "body": "Puede surgir por conflictos familiares, cambios importantes, presión académica, dificultades para socializar, o simplemente por sentir que las cosas no van como esperabas. A veces varias causas se combinan."
+    },
+    "content:tema-tristeza-que-hacer": {
+      "type": "content",
+      "parent": "tema-tristeza",
+      "title": "Tristeza — Qué puedo hacer",
+      "body": "Permitirte sentir la tristeza sin juzgarte, hablar de lo que sientes con alguien de confianza, mantener rutinas básicas como dormir y comer, y buscar pequeños momentos de conexión con otras personas puede ayudarte a atravesarla."
+    },
+    "content:tema-tristeza-cuando-ayuda": {
+      "type": "content",
+      "parent": "tema-tristeza",
+      "title": "Tristeza — Cuándo debería pedir ayuda",
+      "body": "Si la tristeza se mantiene durante varias semanas, es muy intensa, o empieza a afectar tu energía, tu sueño o tus ganas de hacer cosas, es buen momento para buscar el apoyo de un adulto de confianza o un profesional."
+    },
+    "tema-tristeza": {
+      "type": "topic",
+      "title": "Tristeza",
+      "keywords": [
+        "tristeza",
+        "triste",
+        "desanimo",
+        "desánimo",
+        "desanimado",
+        "desanimada",
+        "sin ganas",
+        "vacio",
+        "vacío",
+        "llorar",
+        "apatia",
+        "apatía"
+      ],
+      "botMessage": "Claro 💙 ¿Qué quieres saber sobre la tristeza?",
+      "options": [
+        {
+          "label": "¿Qué es?",
+          "next": "content:tema-tristeza-que-es"
+        },
+        {
+          "label": "¿Cuáles son sus señales?",
+          "next": "content:tema-tristeza-senales"
+        },
+        {
+          "label": "¿Por qué puede aparecer?",
+          "next": "content:tema-tristeza-por-que"
+        },
+        {
+          "label": "¿Qué puedo hacer?",
+          "next": "content:tema-tristeza-que-hacer"
+        },
+        {
+          "label": "¿Cuándo debería pedir ayuda?",
+          "next": "content:tema-tristeza-cuando-ayuda"
+        }
+      ]
+    },
+    "content:tema-estres-que-es": {
+      "type": "content",
+      "parent": "tema-estres",
+      "title": "Estrés — Qué es",
+      "body": "El estrés es la respuesta del cuerpo ante exigencias que sientes que superan tus recursos, como muchas tareas, exámenes o responsabilidades acumuladas. En su punto justo puede ayudarte a organizarte, pero en exceso agota."
+    },
+    "content:tema-estres-senales": {
+      "type": "content",
+      "parent": "tema-estres",
+      "title": "Estrés — Cuáles son sus señales",
+      "body": "Puede sentirse como cansancio, dolores de cabeza o de estómago, dificultad para concentrarte, irritabilidad, tensión muscular o sensación de no dar abasto con todo lo que tienes pendiente."
+    },
+    "content:tema-estres-por-que": {
+      "type": "content",
+      "parent": "tema-estres",
+      "title": "Estrés — Por qué puede aparecer",
+      "body": "Suele relacionarse con carga académica, falta de tiempo, expectativas altas -propias o de otras personas-, conflictos, o dificultad para organizar las tareas del día a día."
+    },
+    "content:tema-estres-que-hacer": {
+      "type": "content",
+      "parent": "tema-estres",
+      "title": "Estrés — Qué puedo hacer",
+      "body": "Organizar tus pendientes por prioridad, tomar pausas cortas y reales, dormir lo suficiente, y practicar alguna técnica de relajación pueden bajar la intensidad del estrés. En Herramientas tienes ejercicios prácticos."
+    },
+    "content:tema-estres-cuando-ayuda": {
+      "type": "content",
+      "parent": "tema-estres",
+      "title": "Estrés — Cuándo debería pedir ayuda",
+      "body": "Si el estrés es constante, te cuesta relajarte incluso en tus tiempos libres, o empieza a afectar tu salud física o tu ánimo, considera hablarlo con un adulto de confianza o buscar apoyo profesional."
+    },
+    "tema-estres": {
+      "type": "topic",
+      "title": "Estrés",
+      "keywords": [
+        "estres",
+        "estrés",
+        "estresado",
+        "estresada",
+        "presion",
+        "presión",
+        "agobio",
+        "agobiado",
+        "agobiada",
+        "sobrecarga",
+        "examenes",
+        "exámenes"
+      ],
+      "botMessage": "Claro 💙 ¿Qué quieres saber sobre el estrés?",
+      "options": [
+        {
+          "label": "¿Qué es?",
+          "next": "content:tema-estres-que-es"
+        },
+        {
+          "label": "¿Cuáles son sus señales?",
+          "next": "content:tema-estres-senales"
+        },
+        {
+          "label": "¿Por qué puede aparecer?",
+          "next": "content:tema-estres-por-que"
+        },
+        {
+          "label": "¿Qué puedo hacer?",
+          "next": "content:tema-estres-que-hacer"
+        },
+        {
+          "label": "¿Cuándo debería pedir ayuda?",
+          "next": "content:tema-estres-cuando-ayuda"
+        }
+      ]
+    },
+    "content:tema-sueno-que-es": {
+      "type": "content",
+      "parent": "tema-sueno",
+      "title": "Trastornos del sueño — Qué es",
+      "body": "Dormir bien es esencial para el cuerpo y la mente: durante el sueño el cerebro procesa emociones, consolida lo aprendido y se recupera físicamente. Las dificultades para dormir son comunes en la adolescencia, entre otras razones por cambios en los horarios biológicos."
+    },
+    "content:tema-sueno-senales": {
+      "type": "content",
+      "parent": "tema-sueno",
+      "title": "Trastornos del sueño — Cuáles son sus señales",
+      "body": "Puede manifestarse como dificultad para conciliar el sueño, despertarte varias veces en la noche, pensar demasiado antes de dormir, o sentirte cansado o cansada durante el día aunque hayas dormido varias horas."
+    },
+    "content:tema-sueno-que-hacer": {
+      "type": "content",
+      "parent": "tema-sueno",
+      "title": "Trastornos del sueño — Qué puedo hacer",
+      "body": "Mantener un horario regular para dormir y despertar, reducir pantallas antes de acostarte, evitar cafeína en la tarde-noche, y escribir tus pensamientos antes de dormir si sientes que 'piensas demasiado' pueden ayudar."
+    },
+    "content:tema-sueno-cuando-ayuda": {
+      "type": "content",
+      "parent": "tema-sueno",
+      "title": "Trastornos del sueño — Cuándo debería pedir ayuda",
+      "body": "Si las dificultades para dormir se repiten varias noches por semana durante varias semanas, o afectan claramente tu concentración y tu ánimo, es buena idea comentarlo con un adulto de confianza o un profesional de salud."
+    },
+    "tema-sueno": {
+      "type": "topic",
+      "title": "Trastornos del sueño",
+      "keywords": [
+        "dormir",
+        "sueno",
+        "sueño",
+        "insomnio",
+        "no puedo dormir",
+        "pesadillas",
+        "desvelado",
+        "desvelada",
+        "trasnochar"
+      ],
+      "botMessage": "Claro 💙 ¿Qué quieres saber sobre el sueño?",
+      "options": [
+        {
+          "label": "¿Qué es?",
+          "next": "content:tema-sueno-que-es"
+        },
+        {
+          "label": "¿Cuáles son sus señales?",
+          "next": "content:tema-sueno-senales"
+        },
+        {
+          "label": "¿Qué puedo hacer?",
+          "next": "content:tema-sueno-que-hacer"
+        },
+        {
+          "label": "¿Cuándo debería pedir ayuda?",
+          "next": "content:tema-sueno-cuando-ayuda"
+        }
+      ]
+    },
+    "content:tema-depresion-que-es": {
+      "type": "content",
+      "parent": "tema-depresion",
+      "title": "Depresión — Qué es",
+      "body": "La depresión es una condición de salud mental que va más allá de sentir tristeza algunos días: implica un decaimiento del ánimo y la energía que se mantiene en el tiempo y afecta distintas áreas de la vida. Esta información no reemplaza una evaluación profesional."
+    },
+    "content:tema-depresion-senales": {
+      "type": "content",
+      "parent": "tema-depresion",
+      "title": "Depresión — Cuáles son sus señales",
+      "body": "Algunas señales pueden ser tristeza o vacío casi todos los días, pérdida de interés en actividades que antes disfrutabas, cambios en el sueño o el apetito, dificultad para concentrarte, cansancio constante o pensamientos muy negativos sobre ti mismo o ti misma."
+    },
+    "content:tema-depresion-que-hacer": {
+      "type": "content",
+      "parent": "tema-depresion",
+      "title": "Depresión — Qué puedo hacer",
+      "body": "Hablar con alguien de confianza sobre cómo te sientes es un primer paso importante. Mantener pequeñas rutinas, no aislarte por completo y evitar exigirte demasiado también puede ayudar mientras buscas apoyo."
+    },
+    "content:tema-depresion-cuando-ayuda": {
+      "type": "content",
+      "parent": "tema-depresion",
+      "title": "Depresión — Cuándo debería pedir ayuda",
+      "body": "Si estas señales se mantienen por más de dos semanas y afectan tu vida diaria, es momento de buscar apoyo profesional. Un psicólogo o psiquiatra puede evaluar mejor lo que estás viviendo que cualquier información en línea."
+    },
+    "tema-depresion": {
+      "type": "topic",
+      "title": "Depresión",
+      "keywords": [
+        "depresion",
+        "depresión",
+        "deprimido",
+        "deprimida",
+        "sin sentido",
+        "no siento nada"
+      ],
+      "botMessage": "Claro 💙 Esta información puede ayudarte a comprender algunas experiencias relacionadas con la depresión.",
+      "options": [
+        {
+          "label": "¿Qué es?",
+          "next": "content:tema-depresion-que-es"
+        },
+        {
+          "label": "¿Cuáles son sus señales?",
+          "next": "content:tema-depresion-senales"
+        },
+        {
+          "label": "¿Qué puedo hacer?",
+          "next": "content:tema-depresion-que-hacer"
+        },
+        {
+          "label": "¿Cuándo debería pedir ayuda?",
+          "next": "content:tema-depresion-cuando-ayuda"
+        }
+      ]
+    },
+    "content:tema-alimentacion-que-es": {
+      "type": "content",
+      "parent": "tema-alimentacion",
+      "title": "Alimentación y bienestar — Qué es",
+      "body": "La relación con la comida y con el propio cuerpo puede volverse una fuente de malestar importante durante la adolescencia, por presión social, comparación en redes o autoexigencia. Cuando esta relación se vuelve rígida o dolorosa, puede requerir apoyo especializado."
+    },
+    "content:tema-alimentacion-senales": {
+      "type": "content",
+      "parent": "tema-alimentacion",
+      "title": "Alimentación y bienestar — Cuáles son sus señales",
+      "body": "Algunas señales de alerta son preocupación constante por el cuerpo o la comida, cambios notorios en los hábitos alimenticios, evitar comer en público, o que el estado de ánimo dependa mucho de cómo te ves. Cada persona vive esto de forma distinta."
+    },
+    "content:tema-alimentacion-cuando-ayuda": {
+      "type": "content",
+      "parent": "tema-alimentacion",
+      "title": "Alimentación y bienestar — Cuándo debería pedir ayuda",
+      "body": "Si notas estas señales en ti o en alguien cercano, es importante buscar apoyo profesional lo antes posible; entre más pronto se acompañe esta situación, más fácil suele ser el proceso. Hablarlo con un adulto de confianza es un buen primer paso."
+    },
+    "tema-alimentacion": {
+      "type": "topic",
+      "title": "Alimentación y bienestar",
+      "keywords": [
+        "alimentacion",
+        "alimentación",
+        "comer",
+        "peso",
+        "cuerpo",
+        "comida"
+      ],
+      "botMessage": "Claro 💙 Esta información puede ayudarte a comprender algunas experiencias relacionadas con la alimentación y la imagen corporal.",
+      "options": [
+        {
+          "label": "¿Qué es?",
+          "next": "content:tema-alimentacion-que-es"
+        },
+        {
+          "label": "¿Cuáles son sus señales?",
+          "next": "content:tema-alimentacion-senales"
+        },
+        {
+          "label": "¿Cuándo debería pedir ayuda?",
+          "next": "content:tema-alimentacion-cuando-ayuda"
+        }
+      ]
+    },
+    "content:cambios-comportamiento": {
+      "type": "content",
+      "parent": "entender",
+      "title": "Cambios en mi comportamiento",
+      "body": "A veces no se trata de una emoción puntual, sino de notar que algo cambió: te alejas de personas con las que antes compartías, tu rendimiento académico bajó, duermes o comes distinto, o simplemente sientes que 'no eres tú'. Estos cambios pueden ser una señal de que algo te está afectando, y no necesitan un nombre exacto para merecer atención.\nHablarlo con alguien de confianza puede ayudarte a entender mejor qué está pasando."
+    },
+    "content:no-se-que-pasa": {
+      "type": "content",
+      "parent": "entender",
+      "title": "No sé exactamente qué me pasa",
+      "body": "No siempre es fácil ponerle nombre a lo que sientes, y está bien no saberlo con exactitud. A veces ayuda empezar por lo físico: ¿cómo duermes?, ¿cómo comes?, ¿tienes ganas de hacer las cosas que antes disfrutabas?\nTambién puedes explorar las categorías de Soter para ver si algo se relaciona con lo que vives, o simplemente hablarlo con alguien de confianza sin necesidad de tener claro qué es."
+    },
+    "situaciones": {
+      "type": "menu",
+      "botMessage": "Cuéntame un poco más, ¿qué tipo de situación estás viviendo?",
+      "options": [
+        {
+          "label": "Acoso o conflictos con compañeros",
+          "next": "content:situacion-acoso"
+        },
+        {
+          "label": "Conflictos o tensión en casa",
+          "next": "content:situacion-casa"
+        },
+        {
+          "label": "Presión académica o de resultados",
+          "next": "content:situacion-academica"
+        },
+        {
+          "label": "Comparación o presión en redes sociales",
+          "next": "content:situacion-redes"
+        }
+      ]
+    },
+    "content:situacion-acoso": {
+      "type": "content",
+      "parent": "situaciones",
+      "title": "Acoso o conflictos con compañeros",
+      "body": "Vivir situaciones de acoso, exclusión o conflictos constantes con compañeros puede afectar mucho tu bienestar, aunque a veces se minimicen o parezcan 'normales'. No estás exagerando si esto te afecta.\nBuscar apoyo de un adulto de confianza en el colegio o en casa es un paso importante para que la situación no se sostenga en el tiempo."
+    },
+    "content:situacion-casa": {
+      "type": "content",
+      "parent": "situaciones",
+      "title": "Conflictos o tensión en casa",
+      "body": "Los conflictos familiares, las discusiones frecuentes o la tensión en casa pueden generar mucho desgaste emocional, incluso si sientes que 'debes' manejarlo solo o sola.\nHablar con un adulto de confianza fuera de la situación, o con un profesional, puede ayudarte a encontrar formas de sobrellevarlo."
+    },
+    "content:situacion-academica": {
+      "type": "content",
+      "parent": "situaciones",
+      "title": "Presión académica o de resultados",
+      "body": "La presión por buenas calificaciones, exámenes o expectativas de otras personas puede generar mucho estrés y afectar tu autoestima. Tu valor no depende únicamente de tus resultados académicos.\nOrganizar tus tiempos y hablar con adultos sobre lo que sientes puede aliviar parte de esa carga."
+    },
+    "content:situacion-redes": {
+      "type": "content",
+      "parent": "situaciones",
+      "title": "Comparación o presión en redes sociales",
+      "body": "Pasar mucho tiempo comparándote con lo que ves en redes sociales puede afectar cómo te sientes contigo mismo o misma. Recuerda que lo que se muestra en línea suele ser una versión editada de la realidad.\nTomar pausas del uso de redes y hablar de cómo te hacen sentir puede ayudarte a cuidar tu bienestar."
+    },
+    "herramientas": {
+      "type": "menu",
+      "botMessage": "Estas son algunas herramientas prácticas que puedes probar 🛠️",
+      "options": [
+        {
+          "label": "Respiración consciente",
+          "next": "content:herr-respiracion"
+        },
+        {
+          "label": "Pausa de regulación (5-4-3-2-1)",
+          "next": "content:herr-pausa"
+        },
+        {
+          "label": "Registro emocional",
+          "next": "content:herr-registro"
+        },
+        {
+          "label": "Identificar lo que siento",
+          "next": "content:herr-identificar"
+        },
+        {
+          "label": "Organizar mis pensamientos",
+          "next": "content:herr-organizar"
+        }
+      ]
+    },
+    "content:herr-respiracion": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Respiración consciente",
+      "body": "Inhala contando hasta 4, sostén el aire contando hasta 4, y exhala lentamente contando hasta 6. Repite este ciclo entre 5 y 8 veces.\nRespirar de forma consciente ayuda a calmar la activación del cuerpo cuando sientes ansiedad o estrés."
+    },
+    "content:herr-pausa": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Pausa de regulación (5-4-3-2-1)",
+      "body": "Cuando te sientas muy abrumado o abrumada, nombra: 5 cosas que puedes ver, 4 que puedes tocar, 3 que puedes escuchar, 2 que puedes oler y 1 que puedes saborear.\nEsta técnica ayuda a traer tu atención al presente cuando los pensamientos se sienten desbordados."
+    },
+    "content:herr-registro": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Registro emocional",
+      "body": "Escribir lo que sientes, sin filtro y sin buscar que 'suene bien', puede ayudarte a ordenar tus pensamientos y reconocer patrones.\nPuedes usar la sección Emocional de Conecta Contigo para llevar tu propio registro."
+    },
+    "content:herr-identificar": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Identificar lo que siento",
+      "body": "A veces sentimos 'algo raro' sin saber exactamente qué es. Preguntarte dónde sientes esa emoción en el cuerpo, cuándo empezó, y qué situación la acompaña puede ayudarte a ponerle nombre y a entenderla mejor."
+    },
+    "content:herr-organizar": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Organizar mis pensamientos",
+      "body": "Cuando tengas muchas ideas o preocupaciones dando vueltas, escríbelas todas sin orden en un papel o nota, y luego sepáralas en tres grupos: lo que puedo resolver hoy, lo que puedo resolver después, y lo que no depende de mí.\nEsto ayuda a reducir la sensación de estar sobrepasado."
+    },
+    "ayuda": {
+      "type": "menu",
+      "botMessage": "Este es un espacio para pensar en cómo pedir apoyo 🆘",
+      "options": [
+        {
+          "label": "Hablar con alguien de confianza",
+          "next": "content:ayuda-hablar"
+        },
+        {
+          "label": "Buscar apoyo profesional",
+          "next": "content:ayuda-profesional"
+        },
+        {
+          "label": "Contactos de ayuda",
+          "next": "link:contactos"
+        }
+      ]
+    },
+    "content:ayuda-hablar": {
+      "type": "content",
+      "parent": "ayuda",
+      "title": "Hablar con alguien de confianza",
+      "body": "Elegir a una persona con la que te sientas segura o seguro -un familiar, docente, orientador u orientadora, o amigo cercano- y compartir cómo te sientes puede aliviar mucho la carga.\nNo tienes que tener todas las palabras exactas; puedes empezar simplemente diciendo que no te sientes bien."
+    },
+    "content:ayuda-profesional": {
+      "type": "content",
+      "parent": "ayuda",
+      "title": "Buscar apoyo profesional",
+      "body": "Un psicólogo o psicóloga puede ayudarte a comprender lo que estás viviendo desde un lugar preparado para acompañarte, sin juzgarte.\nPedir esta ayuda no significa que algo esté 'mal' contigo; es una forma de cuidarte."
+    }
+  }
+}

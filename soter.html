@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soter · Conecta Contigo</title>
+    <meta name="description" content="Soter, el asistente de orientación de Conecta Contigo: información y recursos sobre salud mental para adolescentes.">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/soter.css">
+</head>
+<body>
+
+    <header>
+        <div class="top-nav-container">
+            <img width="75" src="assets/img/index/logo-sin-texto.png" alt="Logo de la Página, un lazo azul">
+
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="contacto.html">Contactos</a>
+                <a href="conoce.html">Conoce</a>
+                <a href="diario.html">Emocional</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="soter-page">
+
+        <h1 class="sr-only">Soter — asistente de orientación de Conecta Contigo</h1>
+
+        <p class="soter-eyebrow">🌱 SOTER · tu espacio para comprender y encontrar apoyo</p>
+
+        <section class="soter-widget" aria-label="Conversación con Soter">
+
+            <div class="soter-widget__header">
+                <div class="soter-widget__identity">
+                    <span class="soter-avatar" aria-hidden="true">🌱</span>
+                    <div>
+                        <p class="soter-widget__name">Soter</p>
+                        <p class="soter-widget__subtitle">Asistente de orientación</p>
+                    </div>
+                </div>
+
+                <div class="soter-widget__controls">
+                    <button type="button" id="soter-back" class="soter-icon-btn" aria-label="Volver a la respuesta anterior" disabled>
+                        ←
+                    </button>
+                    <button type="button" id="soter-reset" class="soter-icon-btn" aria-label="Reiniciar conversación">
+                        ↺
+                    </button>
+                </div>
+            </div>
+
+            <div class="soter-widget__body" id="soter-chat-log" role="log" aria-live="polite" aria-relevant="additions">
+                <!-- Los mensajes de la conversación se generan dinámicamente aquí -->
+            </div>
+
+            <form class="soter-widget__composer" id="soter-form" autocomplete="off">
+                <label for="soter-input" class="sr-only">Escribe tu pregunta para Soter</label>
+                <input
+                    type="text"
+                    id="soter-input"
+                    name="soter-input"
+                    placeholder="Escribe tu pregunta..."
+                    maxlength="200"
+                    aria-label="Escribe tu pregunta para Soter"
+                >
+                <button type="submit" class="soter-send-btn" aria-label="Enviar pregunta">➤</button>
+            </form>
+
+            <div class="soter-widget__footer">
+                <p class="soter-disclaimer">
+                    Soter brinda información y orientación. No reemplaza la atención profesional ni atiende emergencias.
+                    <a href="contacto.html">Ir a Contactos →</a>
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="assets/js/soter.js" defer></script>
+</body>
+</html>
