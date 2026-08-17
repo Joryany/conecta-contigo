@@ -243,7 +243,26 @@
             .replace(/[\u0300-\u036f]/g, "")
             .trim();
     }
+        /* ====================================================================
+        AVATAR DE SOTER
+        Una única función para mantener el avatar consistente en todo el chat.
+        ==================================================================== */
 
+        function createSoterAvatar() {
+            const avatar = document.createElement("span");
+
+            avatar.className = "soter-msg__avatar";
+            avatar.setAttribute("aria-hidden", "true");
+
+            const img = document.createElement("img");
+
+            img.src = "assets/img/soter/soter.png";
+            img.alt = "";
+
+            avatar.appendChild(img);
+
+            return avatar;
+        }
     /* ====================================================================
        RENDER DE MENSAJES EN EL CHAT
     ==================================================================== */
@@ -260,58 +279,70 @@
     function appendTyping() {
         const row = document.createElement("div");
         row.className = "soter-msg soter-msg--bot";
-        row.innerHTML =
-            '<span class="soter-msg__avatar" aria-hidden="true">🌱</span>' +
-            '<div class="soter-bubble soter-typing" aria-label="Soter está escribiendo">' +
-            "<span></span><span></span><span></span></div>";
+
+        const avatar = createSoterAvatar();
+
+        const bubble = document.createElement("div");
+        bubble.className = "soter-bubble soter-typing";
+        bubble.setAttribute("aria-label", "Soter está escribiendo");
+
+        bubble.innerHTML =
+            "<span></span><span></span><span></span>";
+
+        row.appendChild(avatar);
+        row.appendChild(bubble);
+
         els.log.appendChild(row);
+
         scrollToBottom();
+
         return row;
     }
 
     function appendBotMessage(text) {
-        const row = document.createElement("div");
-        row.className = "soter-msg soter-msg--bot";
+    const row = document.createElement("div");
+    row.className = "soter-msg soter-msg--bot";
 
-        const avatar = document.createElement("span");
-        avatar.className = "soter-msg__avatar";
-        avatar.setAttribute("aria-hidden", "true");
-        avatar.textContent = "🌱";
+    const avatar = createSoterAvatar();
 
-        const bubble = document.createElement("div");
-        bubble.className = "soter-bubble";
-        // El texto puede traer saltos de línea ("\n"); los convertimos en párrafos.
-        textToParagraphs(bubble, text);
+    const bubble = document.createElement("div");
+    bubble.className = "soter-bubble";
 
-        row.appendChild(avatar);
-        row.appendChild(bubble);
-        els.log.appendChild(row);
-        scrollToBottom();
-    }
+    // El texto puede traer saltos de línea ("\n");
+    // los convertimos en párrafos.
+    textToParagraphs(bubble, text);
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+
+    els.log.appendChild(row);
+
+    scrollToBottom();
+}
 
     function appendContentMessage(node) {
-        const row = document.createElement("div");
-        row.className = "soter-msg soter-msg--bot";
+    const row = document.createElement("div");
+    row.className = "soter-msg soter-msg--bot";
 
-        const avatar = document.createElement("span");
-        avatar.className = "soter-msg__avatar";
-        avatar.setAttribute("aria-hidden", "true");
-        avatar.textContent = "🌱";
+    const avatar = createSoterAvatar();
 
-        const bubble = document.createElement("div");
-        bubble.className = "soter-bubble";
+    const bubble = document.createElement("div");
+    bubble.className = "soter-bubble";
 
-        const title = document.createElement("strong");
-        title.textContent = node.title;
-        bubble.appendChild(title);
+    const title = document.createElement("strong");
+    title.textContent = node.title;
 
-        textToParagraphs(bubble, node.body);
+    bubble.appendChild(title);
 
-        row.appendChild(avatar);
-        row.appendChild(bubble);
-        els.log.appendChild(row);
-        scrollToBottom();
-    }
+    textToParagraphs(bubble, node.body);
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+
+    els.log.appendChild(row);
+
+    scrollToBottom();
+}
 
     function textToParagraphs(container, text) {
         (text || "").split("\n").forEach(function (line) {

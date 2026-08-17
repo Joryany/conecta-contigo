@@ -62,8 +62,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+/* ====================================================================
+   Intercambiable
+==================================================================== */
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    const estilos = [
+        "estilo-hojas-1",
+        "estilo-hojas-2",
+        "estilo-hojas-3",
+        "estilo-hojas-4",
+        "estilo-hojas-5", 
+        "estilo-hojas-6", 
+    ];
 
+    const estiloAleatorio = estilos[Math.floor(Math.random() * estilos.length)];
+    document.body.classList.add(estiloAleatorio);
+});
 
 

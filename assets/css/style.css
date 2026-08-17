@@ -967,3 +967,170 @@ input[type="submit"]:hover {
         font-size: 1.05rem;
     }
 }
+
+
+/*==================================================
+=          ESTILOS DE HOJAS INTERCALABLES          =
+==================================================*/
+
+/* 1. Decoración Hojas Laterales */
+body.estilo-hojas-1 {
+    background-color: var(--fondo-suave);
+    background-image: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' fill='%2369B2AE' opacity='0.25'%3E%3Cpath d='M10 180 C 40 140, 30 90, 80 50 C 50 70, 30 110, 10 180 Z'/%3E%3Cpath d='M0 120 C 30 100, 40 60, 60 20 C 35 40, 15 70, 0 120 Z'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200' fill='%2369B2AE' opacity='0.25'%3E%3Cpath d='M90 180 C 60 140, 70 90, 20 50 C 50 70, 70 110, 90 180 Z'/%3E%3Cpath d='M100 120 C 70 100, 60 60, 40 20 C 65 40, 85 70, 100 120 Z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, right center;
+    background-size: 280px auto, 280px auto;
+    background-attachment: fixed, fixed;
+}
+
+
+/* 3. Hojas Redondeadas con Tallo Flotante */
+body.estilo-hojas-2 {
+    background-color: var(--fondo-suave);
+    background-image: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 280' fill='none'%3E%3Cpath d='M-10 10 Q25 140 -10 270' stroke='%2369B2AE' stroke-width='1.5' opacity='0.22'/%3E%3Cpath d='M10 220 C 45 180, 35 130, 85 90 C 55 110, 35 150, 10 220 Z' fill='%2369B2AE' opacity='0.25'/%3E%3Cpath d='M0 160 C 35 140, 45 100, 65 60 C 40 80, 20 110, 0 160 Z' fill='%23a2d88f' opacity='0.28'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 280' fill='none'%3E%3Cpath d='M130 10 Q95 140 130 270' stroke='%2369B2AE' stroke-width='1.5' opacity='0.22'/%3E%3Cpath d='M110 220 C 75 180, 85 130, 35 90 C 65 110, 85 150, 110 220 Z' fill='%2369B2AE' opacity='0.25'/%3E%3Cpath d='M120 160 C 85 140, 75 100, 55 60 C 80 80, 100 110, 120 160 Z' fill='%23a2d88f' opacity='0.28'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, no-repeat;
+    background-position: left center, right center;
+    background-size: 260px auto, 260px auto;
+    background-attachment: fixed, fixed;
+}
+
+/* 4. Marco Botánico de 4 Esquinas */
+body.estilo-hojas-3 {
+    background-color: var(--fondo-suave);
+    background-image: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='%2369B2AE' opacity='0.2'%3E%3Cpath d='M0,0 Q80,10 120,60 Q60,60 0,0'/%3E%3Cpath d='M0,0 Q10,80 60,120 Q60,60 0,0' fill='%23a2d88f'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='%2369B2AE' opacity='0.2'%3E%3Cpath d='M200,0 Q120,10 80,60 Q140,60 200,0'/%3E%3Cpath d='M200,0 Q190,80 140,120 Q140,60 200,0' fill='%23a2d88f'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='%2369B2AE' opacity='0.18'%3E%3Cpath d='M0,200 Q80,190 120,140 Q60,140 0,200'/%3E%3Cpath d='M0,200 Q10,120 60,80 Q60,140 0,200' fill='%23a2d88f'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='%2369B2AE' opacity='0.18'%3E%3Cpath d='M200,200 Q120,190 80,140 Q140,140 200,200'/%3E%3Cpath d='M200,200 Q190,120 140,80 Q140,140 200,200' fill='%23a2d88f'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: left top, right top, left bottom, right bottom;
+    background-size: 200px 200px, 200px 200px, 180px 180px, 180px 180px;
+    background-attachment: fixed, fixed, fixed, fixed;
+}
+
+/*==================================================
+=    ESTILOS INSPIRADOS EN LA IMAGEN DE REFERENCIA =
+==================================================*/
+
+/* 5. Estilo Ondas Orgánicas + Ramas en Esquinas Inferiores */
+body.estilo-hojas-4 {
+    background-color: var(--fondo-suave);
+    background-image: 
+        /* Manchas orgánicas traslúcidas (Fondo) */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 400' fill='none'%3E%3Cpath d='M-20,100 C60,50 140,120 100,220 C60,320 -40,300 -20,100 Z' fill='%23468ed6' opacity='0.12'/%3E%3Cpath d='M-50,220 C40,180 80,260 40,360 C0,460 -70,400 -50,220 Z' fill='%2369B2AE' opacity='0.15'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 400' fill='none'%3E%3Cpath d='M220,100 C140,50 60,120 100,220 C140,320 240,300 220,100 Z' fill='%23468ed6' opacity='0.12'/%3E%3Cpath d='M250,220 C160,180 120,260 160,360 C200,460 270,400 250,220 Z' fill='%2369B2AE' opacity='0.15'/%3E%3C/svg%3E"),
+        /* Ramas definidas de hojas en primer plano */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 300' fill='none'%3E%3Cpath d='M-10,310 Q40,210 120,150' stroke='%2369B2AE' stroke-width='3' stroke-linecap='round' opacity='0.4'/%3E%3Cpath d='M20,260 C50,230 70,250 50,275 C30,285 15,275 20,260 Z' fill='%2369B2AE' opacity='0.45'/%3E%3Cpath d='M45,215 C75,185 95,205 75,230 C55,240 40,230 45,215 Z' fill='%23a2d88f' opacity='0.5'/%3E%3Cpath d='M75,175 C105,145 125,165 105,190 C85,200 70,190 75,175 Z' fill='%2369B2AE' opacity='0.45'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 300' fill='none'%3E%3Cpath d='M160,310 Q110,210 30,150' stroke='%2369B2AE' stroke-width='3' stroke-linecap='round' opacity='0.4'/%3E%3Cpath d='M130,260 C100,230 80,250 100,275 C120,285 135,275 130,260 Z' fill='%2369B2AE' opacity='0.45'/%3E%3Cpath d='M105,215 C75,185 55,205 75,230 C95,240 110,230 105,215 Z' fill='%23a2d88f' opacity='0.5'/%3E%3Cpath d='M75,175 C45,145 25,165 45,190 C65,200 80,190 75,175 Z' fill='%2369B2AE' opacity='0.45'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: left center, right center, left bottom, right bottom;
+    background-size: 260px auto, 260px auto, 220px auto, 220px auto;
+    background-attachment: fixed, fixed, fixed, fixed;
+}
+
+
+/* 7. Estilo Pizca de Mar y Hojas (Ondas Celestes + Follaje) */
+body.estilo-hojas-5 {
+    background-color: var(--fondo-suave);
+    background-image: 
+        /* Pétalos suaves traslúcidos arriba */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='%23468ed6' opacity='0.15'%3E%3Cpath d='M0,0 C60,20 120,70 100,140 C50,120 10,60 0,0 Z'/%3E%3Cpath d='M0,0 C80,50 90,120 40,170 C20,120 0,80 0,0 Z' fill='%2369B2AE' opacity='0.15'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' fill='%23468ed6' opacity='0.15'%3E%3Cpath d='M200,0 C140,20 80,70 100,140 C150,120 190,60 200,0 Z'/%3E%3Cpath d='M200,0 C120,50 110,120 160,170 C180,120 200,80 200,0 Z' fill='%2369B2AE' opacity='0.15'/%3E%3C/svg%3E"),
+        /* Ramita verde abajo */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' fill='%2369B2AE' opacity='0.35'%3E%3Cpath d='M0,150 C30,100 80,80 120,70 C80,95 40,120 0,150 Z'/%3E%3Cpath d='M0,150 C50,120 100,120 140,130 C90,140 40,145 0,150 Z' fill='%23a2d88f' opacity='0.4'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150' fill='%2369B2AE' opacity='0.35'%3E%3Cpath d='M150,150 C120,100 70,80 30,70 C70,95 110,120 150,150 Z'/%3E%3Cpath d='M150,150 C100,120 50,120 10,130 C60,140 110,145 150,150 Z' fill='%23a2d88f' opacity='0.4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    background-position: left top, right top, left bottom, right bottom;
+    background-size: 240px 240px, 240px 240px, 200px 200px, 200px 200px;
+    background-attachment: fixed, fixed, fixed, fixed;
+}
+
+
+/*==================================================
+=       ESTILO DE HOJAS 6 · ESQUINAS BOTÁNICAS      =
+==================================================*/
+
+body.estilo-hojas-6 {
+    background-color: var(--fondo-suave);
+
+    background-image:
+
+        /* Esquina superior izquierda */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 260'%3E%3Cpath d='M0 235 C55 185 90 135 135 95 C170 65 210 40 255 20' fill='none' stroke='%2369B2AE' stroke-width='4' stroke-linecap='round' opacity='.42'/%3E%3Cellipse cx='58' cy='180' rx='15' ry='38' transform='rotate(-48 58 180)' fill='%2369B2AE' opacity='.36'/%3E%3Cellipse cx='88' cy='145' rx='14' ry='34' transform='rotate(42 88 145)' fill='%23a2d88f' opacity='.45'/%3E%3Cellipse cx='125' cy='112' rx='15' ry='37' transform='rotate(-45 125 112)' fill='%2369B2AE' opacity='.34'/%3E%3Cellipse cx='160' cy='83' rx='13' ry='32' transform='rotate(42 160 83)' fill='%23a2d88f' opacity='.42'/%3E%3Cellipse cx='198' cy='55' rx='12' ry='29' transform='rotate(-42 198 55)' fill='%2369B2AE' opacity='.32'/%3E%3C/svg%3E"),
+
+        /* Esquina superior derecha */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 260'%3E%3Cpath d='M260 235 C205 185 170 135 125 95 C90 65 50 40 5 20' fill='none' stroke='%2369B2AE' stroke-width='4' stroke-linecap='round' opacity='.42'/%3E%3Cellipse cx='202' cy='180' rx='15' ry='38' transform='rotate(48 202 180)' fill='%2369B2AE' opacity='.36'/%3E%3Cellipse cx='172' cy='145' rx='14' ry='34' transform='rotate(-42 172 145)' fill='%23a2d88f' opacity='.45'/%3E%3Cellipse cx='135' cy='112' rx='15' ry='37' transform='rotate(45 135 112)' fill='%2369B2AE' opacity='.34'/%3E%3Cellipse cx='100' cy='83' rx='13' ry='32' transform='rotate(-42 100 83)' fill='%23a2d88f' opacity='.42'/%3E%3Cellipse cx='62' cy='55' rx='12' ry='29' transform='rotate(42 62 55)' fill='%2369B2AE' opacity='.32'/%3E%3C/svg%3E"),
+
+        /* Esquina inferior izquierda */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cpath d='M0 220 C50 180 85 145 125 110 C160 80 195 55 235 35' fill='none' stroke='%2369B2AE' stroke-width='4' opacity='.4'/%3E%3Cellipse cx='52' cy='183' rx='14' ry='35' transform='rotate(-48 52 183)' fill='%23a2d88f' opacity='.42'/%3E%3Cellipse cx='84' cy='153' rx='13' ry='32' transform='rotate(42 84 153)' fill='%2369B2AE' opacity='.34'/%3E%3Cellipse cx='119' cy='120' rx='14' ry='34' transform='rotate(-45 119 120)' fill='%23a2d88f' opacity='.4'/%3E%3Cellipse cx='154' cy='91' rx='12' ry='29' transform='rotate(45 154 91)' fill='%2369B2AE' opacity='.32'/%3E%3C/svg%3E"),
+
+        /* Esquina inferior derecha */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cpath d='M240 220 C190 180 155 145 115 110 C80 80 45 55 5 35' fill='none' stroke='%2369B2AE' stroke-width='4' opacity='.4'/%3E%3Cellipse cx='188' cy='183' rx='14' ry='35' transform='rotate(48 188 183)' fill='%23a2d88f' opacity='.42'/%3E%3Cellipse cx='156' cy='153' rx='13' ry='32' transform='rotate(-42 156 153)' fill='%2369B2AE' opacity='.34'/%3E%3Cellipse cx='121' cy='120' rx='14' ry='34' transform='rotate(45 121 120)' fill='%23a2d88f' opacity='.4'/%3E%3Cellipse cx='86' cy='91' rx='12' ry='29' transform='rotate(-45 86 91)' fill='%2369B2AE' opacity='.32'/%3E%3C/svg%3E");
+
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        no-repeat,
+        no-repeat;
+
+    background-position:
+        left top,
+        right top,
+        left bottom,
+        right bottom;
+
+    background-size:
+        270px 270px,
+        270px 270px,
+        250px 250px,
+        250px 250px;
+
+    background-attachment:
+        fixed,
+        fixed,
+        fixed,
+        fixed;
+}
+
+
+
+
+/*==================================================
+=                 RESPONSIVE                       =
+==================================================*/
+
+/* Tablets */
+
+@media (max-width: 900px) {
+
+    body.estilo-hojas-6 {
+        background-size:
+            130px 400px,
+            130px 400px,
+            140px 280px,
+            140px 280px;
+    }
+
+}
+
+
+/* Móviles */
+
+@media (max-width: 600px) {
+
+    body.estilo-hojas-6 {
+        background-image: none;
+    }
+
+}
+
+/* Desactivar en pantallas pequeñas */
+@media (max-width: 1024px) {
+    body[class*="estilo-hojas-"] {
+        background-image: none !important;
+    }
+}
