@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soter · Conecta Contigo</title>
-    <meta name="description" content="Soter, el asistente de orientación de Conecta Contigo: información y recursos sobre salud mental para adolescentes.">
+    <meta name="description"
+        content="Soter, el asistente de orientación de Conecta Contigo: información y recursos sobre salud mental para adolescentes.">
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/soter.css">
 </head>
+
 <body>
 
     <header>
@@ -19,67 +22,204 @@
                 <a href="index.html">Inicio</a>
                 <a href="contacto.html">Contactos</a>
                 <a href="conoce.html">Conoce</a>
-                <a href="diario.html">Emocional</a>
+                <a href="comprende.html">Comprende</a>
+                <a href="soter.html">Soter</a>
             </nav>
         </div>
     </header>
 
     <main class="soter-page">
 
-        <h1 class="sr-only"> Soter — asistente de orientación de Conecta Contigo</h1>
+        <!-- ============================================
+             HERO DE SOTER
+        ============================================ -->
+        <h1 class="sr-only">Soter — asistente de orientación de Conecta Contigo</h1>
 
-        <p class="soter-eyebrow"> SOTER · tu espacio para comprender y encontrar apoyo</p>
+        <section class="soter-hero-card">
 
-        <section class="soter-widget" aria-label="Conversación con Soter">
+            <img class="soter-hero-card__image" src="assets/img/soter/hero.png"
+                alt="¡Hola! Soy Soter. Tu guía en salud mental. Explora, aprende y encuentra recursos de manera fácil y segura. Aquí también estás acompañado. Preguntar también es cuidarse.">
 
-            <div class="soter-widget__header">
-                <div class="soter-widget__identity">
-                    <img class="soter-avatar" aria-hidden="true" src="assets/img/soter/soter.png" alt="Soter, imagen de un robotsito sonriendo">
-                    <div>
-                        <p class="soter-widget__name">Soter</p>
-                        <p class="soter-widget__subtitle">Asistente de orientación</p>
-                    </div>
-                </div>
+            <!-- ============================================
+                 NAVEGACIÓN INTERNA DE SOTER (horizontal)
+                 Los ids/aria-controls coinciden con lo que ya
+                 espera el módulo "NAVEGACIÓN INTERNA DE SOTER"
+                 en soter.js.
+            ============================================ -->
+                    <!-- ============================================
+             HERO DE SOTER
+             La imagen ya trae el texto integrado (título,
+             tagline y bocadillo), por eso no hay overlay
+             de texto encima.
+        ============================================ -->
+        <h1 class="sr-only">Soter — asistente de orientación de Conecta Contigo</h1>
 
-                <div class="soter-widget__controls">
-                    <button type="button" id="soter-back" class="soter-icon-btn" aria-label="Volver a la respuesta anterior" disabled>
-                        ←
-                    </button>
-                    <button type="button" id="soter-reset" class="soter-icon-btn" aria-label="Reiniciar conversación">
-                        ↺
-                    </button>
-                </div>
-            </div>
 
-            <div class="soter-widget__body" id="soter-chat-log" role="log" aria-live="polite" aria-relevant="additions">
-                <!-- Los mensajes de la conversación se generan dinámicamente aquí -->
-            </div>
-
-            <form class="soter-widget__composer" id="soter-form" autocomplete="off">
-                <label for="soter-input" class="sr-only">Escribe tu pregunta para Soter</label>
-                <input
-                    type="text"
-                    id="soter-input"
-                    name="soter-input"
-                    placeholder="Escribe tu pregunta..."
-                    maxlength="200"
-                    aria-label="Escribe tu pregunta para Soter"
-                >
-                <button type="submit" class="soter-send-btn" aria-label="Enviar pregunta">➤</button>
-            </form>
-
-            <div class="soter-widget__footer">
-                <p class="soter-disclaimer">
-                    Soter brinda información y orientación. No reemplaza la atención profesional ni atiende emergencias.
-                    <a href="contacto.html">Ir a Contactos →</a>
-                </p>
-            </div>
+            <nav class="soter-tabs" role="tablist" aria-label="Secciones de Soter">
+                <button type="button" class="soter-tab is-active" id="soter-tab-chat" role="tab" aria-selected="true"
+                    aria-controls="soter-panel-chat" tabindex="0">
+                    <span class="soter-tab__icon" aria-hidden="true">💬</span>
+                    <span class="soter-tab__label">Hablar con Soter</span>
+                </button>
+                <button type="button" class="soter-tab" id="soter-tab-conoce" role="tab" aria-selected="false"
+                    aria-controls="soter-panel-conoce" tabindex="-1">
+                    <span class="soter-tab__icon" aria-hidden="true">💙</span>
+                    <span class="soter-tab__label">Conoce a Soter</span>
+                </button>
+                <button type="button" class="soter-tab" id="soter-tab-como" role="tab" aria-selected="false"
+                    aria-controls="soter-panel-como" tabindex="-1">
+                    <span class="soter-tab__icon" aria-hidden="true">❓</span>
+                    <span class="soter-tab__label">¿Cómo funciona?</span>
+                </button>
+            </nav>
 
         </section>
 
+        
+
+        <!-- ============================================
+             VISTA 1 · HABLAR CON SOTER (chatbot sin cambios)
+        ============================================ -->
+        <div class="soter-panel" id="soter-panel-chat" role="tabpanel" aria-labelledby="soter-tab-chat">
+
+            <p class="soter-eyebrow">SOTER · tu espacio para comprender y encontrar apoyo</p>
+
+            <section class="soter-widget" aria-label="Conversación con Soter">
+
+                <div class="soter-widget__header">
+                    <div class="soter-widget__identity">
+                        <img class="soter-avatar" aria-hidden="true" src="assets/img/soter/soter.png"
+                            alt="Soter, imagen de un robotsito sonriendo">
+                        <div>
+                            <p class="soter-widget__name">Soter</p>
+                            <p class="soter-widget__subtitle">Asistente de orientación</p>
+                        </div>
+                    </div>
+
+                    <div class="soter-widget__controls">
+                        <button type="button" id="soter-back" class="soter-icon-btn"
+                            aria-label="Volver a la respuesta anterior" disabled>
+                            ←
+                        </button>
+                        <button type="button" id="soter-reset" class="soter-icon-btn"
+                            aria-label="Reiniciar conversación">
+                            ↺
+                        </button>
+                    </div>
+                </div>
+
+                <div class="soter-widget__body" id="soter-chat-log" role="log" aria-live="polite"
+                    aria-relevant="additions">
+                    <!-- Los mensajes de la conversación se generan dinámicamente aquí -->
+                </div>
+
+                <form class="soter-widget__composer" id="soter-form" autocomplete="off">
+                    <label for="soter-input" class="sr-only">Escribe tu pregunta para Soter</label>
+                    <input type="text" id="soter-input" name="soter-input" placeholder="Escribe tu pregunta..."
+                        maxlength="200" aria-label="Escribe tu pregunta para Soter">
+                    <button type="submit" class="soter-send-btn" aria-label="Enviar pregunta">➤</button>
+                </form>
+
+                <div class="soter-widget__footer">
+                    <p class="soter-disclaimer">
+                        Soter brinda información y orientación. No reemplaza la atención profesional ni atiende
+                        emergencias.
+                        <a href="contacto.html">Ir a Contactos →</a>
+                    </p>
+                </div>
+
+            </section>
+
+        </div>
+
+                <!-- ============================================
+             VISTA 2 · CONOCE A SOTER
+        ============================================ -->
+        <div class="soter-panel" id="soter-panel-conoce" role="tabpanel" aria-labelledby="soter-tab-conoce" hidden>
+
+            <h2>Conoce a Soter</h2>
+            <p class="soter-info__intro">Un espacio para comprender y orientarte.</p>
+
+            <div class="soter-info__grid">
+
+                <article class="soter-info-card">
+                    <span class="soter-info-card__icon" aria-hidden="true">🌱</span>
+                    <h3>¿Qué es Soter?</h3>
+                    <p>Contenido editable.</p>
+                </article>
+
+                <article class="soter-info-card">
+                    <span class="soter-info-card__icon" aria-hidden="true">🎯</span>
+                    <h3>¿Cuál es su objetivo?</h3>
+                    <p>Contenido editable.</p>
+                </article>
+
+                <article class="soter-info-card">
+                    <span class="soter-info-card__icon" aria-hidden="true">✅</span>
+                    <h3>¿Qué puede hacer?</h3>
+                    <p>Contenido editable.</p>
+                </article>
+
+                <article class="soter-info-card">
+                    <span class="soter-info-card__icon" aria-hidden="true">🚫</span>
+                    <h3>¿Qué no puede hacer?</h3>
+                    <p>Contenido editable.</p>
+                </article>
+
+            </div>
+
+        </div>
+
+        <!-- ============================================
+             VISTA 3 · ¿CÓMO FUNCIONA?
+             Acordeones nativos <details>/<summary>.
+             Los ids "faq-*" son reconocidos por el abridor
+             de acordeón por hash que ya existe en general.js.
+        ============================================ -->
+        <div class="soter-panel" id="soter-panel-como" role="tabpanel" aria-labelledby="soter-tab-como" hidden>
+
+            <h2>¿Cómo funciona Soter?</h2>
+
+            <div class="soter-faq">
+
+                <details id="faq-comenzar">
+                    <summary>¿Cómo puedo comenzar?</summary>
+                    <p>Contenido editable.</p>
+                </details>
+
+                <details id="faq-pregunta-propia">
+                    <summary>¿Puedo escribir mi propia pregunta?</summary>
+                    <p>Contenido editable.</p>
+                </details>
+
+                <details id="faq-tipo-informacion">
+                    <summary>¿Qué tipo de información puedo encontrar?</summary>
+                    <p>Contenido editable.</p>
+                </details>
+
+                <details id="faq-diagnostico">
+                    <summary>¿Soter puede diagnosticarme?</summary>
+                    <p>Contenido editable.</p>
+                </details>
+
+                <details id="faq-necesito-ayuda">
+                    <summary>¿Qué hago si necesito ayuda?</summary>
+                    <p>Contenido editable.</p>
+                </details>
+
+                <details id="faq-explicar-sentimientos">
+                    <summary>¿Qué puedo hacer si no sé cómo explicar lo que siento?</summary>
+                    <p>Contenido editable.</p>
+                </details>
+
+            </div>
+
+        </div>
+        
     </main>
 
     <script src="assets/js/soter.js" defer></script>
     <script src="assets/js/general.js"></script>
 </body>
+
 </html>

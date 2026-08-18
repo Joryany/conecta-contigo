@@ -916,3 +916,457 @@
         opacity: .6;
     }
 }
+
+/* ====================================================================
+   22. HERO DE SOTER (tarjeta con imagen + pestañas unidas)
+   ==================================================================== */
+
+.soter-hero-card {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto var(--espacio-lg);
+
+    background: var(--blanco);
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-grande);
+    overflow: hidden;
+}
+
+.soter-hero-card__image {
+    width: 100%;
+    display: block;
+}
+
+
+/* ====================================================================
+   23. NAVEGACIÓN INTERNA DE SOTER (pestañas)
+   ==================================================================== */
+
+/* =========================================================
+   NAVEGADOR INTERNO DE SOTER
+   ========================================================= */
+
+.soter-tabs {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    width: calc(100% - 40px);
+    max-width: 980px;
+
+    margin: 22px auto 26px;
+    padding: 9px;
+
+    /* Degradado muy suave acorde a la identidad de Soter */
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.98) 0%,
+            rgba(240, 248, 251, 0.96) 52%,
+            rgba(232, 247, 246, 0.95) 100%
+        );
+
+    border: 1px solid rgba(70, 142, 214, 0.16);
+    border-radius: 18px;
+
+    /* Separación visual del fondo */
+    box-shadow:
+        0 6px 18px rgba(30, 65, 107, 0.07),
+        0 1px 4px rgba(30, 65, 107, 0.04);
+
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+
+    z-index: 5;
+}
+
+/* Ocultar scrollbar */
+.soter-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.soter-tab {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    flex: 0 0 auto;
+    white-space: nowrap;
+
+    padding: 10px 17px;
+
+    background: transparent;
+    color: var(--gris);
+
+    border: 1px solid transparent;
+    border-radius: 13px;
+
+    font-size: 0.91rem;
+    font-weight: 600;
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow: none;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* =========================================================
+   ICONOS
+   ========================================================= */
+
+.soter-tab__icon {
+    width: 17px;
+    height: 17px;
+
+    flex: 0 0 17px;
+
+    color: currentColor;
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.soter-tab:hover {
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--azul-marino);
+
+    border-color: rgba(70, 142, 214, 0.10);
+
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(30, 65, 107, 0.06);
+}
+
+.soter-tab:hover .soter-tab__icon {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   ESTADO ACTIVO
+   ========================================================= */
+
+.soter-tab.is-active {
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            rgba(242, 248, 252, 0.98) 100%
+        );
+
+    color: var(--azul-marino);
+
+    border-color: rgba(70, 142, 214, 0.30);
+
+    box-shadow:
+        0 4px 12px rgba(30, 65, 107, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.soter-tab.is-active .soter-tab__icon {
+    color: var(--azul-claro);
+}
+
+
+/* =========================================================
+   INDICADOR SUTIL DEL ACTIVO
+   ========================================================= */
+
+.soter-tab.is-active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 4px;
+
+    width: 22px;
+    height: 2px;
+
+    transform: translateX(-50%);
+
+    background: var(--verde-agua);
+
+    border-radius: 999px;
+
+    opacity: 0.75;
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD
+   ========================================================= */
+
+.soter-tab:focus-visible {
+    outline: 3px solid rgba(105, 178, 174, 0.38);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   PANELES
+   ========================================================= */
+
+.soter-panel {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    animation: aparecer 0.3s ease;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .soter-tabs {
+        width: calc(100% - 28px);
+
+        margin: 18px auto 22px;
+        padding: 8px;
+
+        gap: 6px;
+
+        border-radius: 16px;
+
+        justify-content: flex-start;
+    }
+
+    .soter-tab {
+        padding: 10px 14px;
+        font-size: 0.88rem;
+    }
+
+    .soter-tab__icon {
+        width: 16px;
+        height: 16px;
+        flex-basis: 16px;
+    }
+}
+
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .soter-tabs {
+        width: calc(100% - 20px);
+
+        margin: 15px auto 20px;
+
+        border-radius: 15px;
+
+        /* Permite desplazamiento horizontal sin romper el diseño */
+        justify-content: flex-start;
+    }
+
+    .soter-tab {
+        padding: 10px 13px;
+        font-size: 0.84rem;
+    }
+
+    .soter-tab__label {
+        white-space: nowrap;
+    }
+}
+
+
+/* ====================================================================
+   24. RESPONSIVE — HERO Y PESTAÑAS
+   ==================================================================== */
+
+@media (max-width: 576px) {
+
+    .soter-tabs {
+        justify-content: flex-start;
+        padding: 10px 12px;
+    }
+
+    .soter-tab {
+        padding: 8px 12px;
+        font-size: .84rem;
+    }
+
+    .soter-tab__label {
+        font-size: .84rem;
+    }
+}
+
+/* ====================================================================
+   25. TARJETAS "CONOCE A SOTER"
+   ==================================================================== */
+
+.soter-info__intro {
+    max-width: 620px;
+    margin: 0 auto var(--espacio-lg);
+
+    text-align: center;
+    color: var(--gris);
+}
+
+.soter-info__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--espacio-md);
+}
+
+.soter-info-card {
+    background: var(--blanco);
+    border-radius: var(--radio);
+    padding: var(--padding-card);
+
+    box-shadow: var(--sombra-media);
+
+    transition:
+        transform var(--transicion),
+        box-shadow var(--transicion);
+}
+
+.soter-info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-grande);
+}
+
+.soter-info-card__icon {
+    display: block;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+.soter-info-card h3 {
+    margin-bottom: 6px;
+}
+
+.soter-info-card p {
+    margin: 0;
+    color: var(--gris);
+}
+
+
+/* ====================================================================
+   26. ACORDEONES "¿CÓMO FUNCIONA?"
+   ==================================================================== */
+
+.soter-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.soter-faq details {
+    background: var(--blanco);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-media);
+    overflow: hidden;
+}
+
+.soter-faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    padding: 16px 20px;
+
+    color: var(--azul-marino);
+    font-weight: 600;
+
+    list-style: none;
+    cursor: pointer;
+
+    transition: background var(--transicion);
+}
+
+.soter-faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.soter-faq summary::after {
+    content: "+";
+    flex-shrink: 0;
+
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--azul-claro);
+}
+
+.soter-faq details[open] summary::after {
+    content: "–";
+}
+
+.soter-faq summary:hover {
+    background: var(--fondo-suave);
+}
+
+.soter-faq summary:focus-visible {
+    outline: 3px solid var(--verde-agua);
+    outline-offset: -3px;
+    border-radius: 8px;
+}
+
+.soter-faq details p {
+    margin: 0;
+    padding: 0 20px 18px;
+
+    color: var(--gris);
+    line-height: 1.6;
+}
+
+
+/* ====================================================================
+   27. RESPONSIVE — TARJETAS Y ACORDEONES
+   ==================================================================== */
+
+@media (max-width: 700px) {
+
+    .soter-info__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .soter-info-card {
+        padding: 20px;
+    }
+
+    .soter-faq summary {
+        padding: 14px 16px;
+        font-size: .95rem;
+    }
+
+    .soter-faq details p {
+        padding: 0 16px 16px;
+    }
+}

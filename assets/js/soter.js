@@ -433,3 +433,92 @@
     }
 
 }());
+
+/* ====================================================================
+   NAVEGACIÓN INTERNA DE SOTER
+   ----------------------------------------------------------------------
+   Controla las 3 vistas de soter.html. Envuelto en su propio listener
+   de DOMContentLoaded (no depende de que el <script> tenga "defer"),
+   así que funciona sin importar dónde se cargue el archivo.
+==================================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const tabs = Array.prototype.slice.call(document.querySelectorAll(".soter-tab"));
+    if (!tabs.length) {
+        console.warn("Soter (nav interna): no se encontró ningún botón .soter-tab en el HTML.");
+        return;
+    }
+
+    const panels = {};
+    tabs.forEach(function (tab) {
+        const controlsId = tab.getAttribute("aria-controls");
+        const panel = controlsId ? document.getElementById(controlsId) : null;
+        if (!panel) {
+            console.warn('Soter (nav interna): el botón #' + tab.id +
+                ' tiene aria-controls="' + controlsId + '" pero no existe ningún panel con ese id.');
+        }
+        panels[tab.id] = panel;
+    });
+
+    const HASH_TO_TAB = {
+        chat: "soter-tab-chat",
+        conoce: "soter-tab-conoce",
+        "como-funciona": "soter-tab-como"
+    };
+
+    function activate(tab, opts) {
+        opts = opts || {};
+        tabs.forEach(function (t) {
+            const selected = t === tab;
+            t.classList.toggle("is-active", selected);
+            t.setAttribute("aria-selected", selected ? "true" : "false");
+            t.tabIndex = selected ? 0 : -1;
+            const panel = panels[t.id];
+            if (panel) panel.hidden = !selected;
+        });
+        if (opts.focus) tab.focus();
+    }
+
+    tabs.forEach(function (tab, index) {
+        tab.addEventListener("click", function () {
+            activate(tab);
+        });
+
+        tab.addEventListener("keydown", function (event) {
+            let targetIndex = null;
+            if (event.key === "ArrowRight") targetIndex = (index + 1) % tabs.length;
+            else if (event.key === "ArrowLeft") targetIndex = (index - 1 + tabs.length) % tabs.length;
+            else if (event.key === "Home") targetIndex = 0;
+            else if (event.key === "End") targetIndex = tabs.length - 1;
+
+            if (targetIndex !== null) {
+                event.preventDefault();
+                activate(tabs[targetIndex], { focus: true });
+            }
+        });
+    });
+
+    function activateFromHash() {
+        const key = window.location.hash.replace("#", "");
+        if (!key) return false;
+
+        let tabId = HASH_TO_TAB[key];
+        if (!tabId && key.indexOf("faq-") === 0) tabId = "soter-tab-como";
+
+        const tab = tabId && document.getElementById(tabId);
+        if (tab) {
+            activate(tab);
+            return true;
+        }
+        return false;
+    }
+
+    if (!activateFromHash()) {
+        const defaultTab = document.getElementById("soter-tab-chat");
+        if (defaultTab) activate(defaultTab);
+    }
+
+    window.addEventListener("hashchange", activateFromHash);
+
+});
