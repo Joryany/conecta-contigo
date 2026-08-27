@@ -122,30 +122,15 @@
       "type": "menu",
       "botMessage": "Claro 💙 ¿Qué quieres explorar?",
       "options": [
-        {
-          "label": "Ansiedad",
-          "next": "tema-ansiedad"
-        },
-        {
-          "label": "Tristeza",
-          "next": "tema-tristeza"
-        },
-        {
-          "label": "Estrés",
-          "next": "tema-estres"
-        },
-        {
-          "label": "Cambios en mi comportamiento",
-          "next": "content:cambios-comportamiento"
-        },
-        {
-          "label": "Una situación que estoy viviendo",
-          "next": "situaciones"
-        },
-        {
-          "label": "No sé exactamente qué me pasa",
-          "next": "content:no-se-que-pasa"
-        }
+        { "label": "Ansiedad", "next": "tema-ansiedad" },
+        { "label": "Tristeza", "next": "tema-tristeza" },
+        { "label": "Estrés", "next": "tema-estres" },
+        { "label": "Soledad", "next": "tema-soledad" },
+        { "label": "Ira o rabia", "next": "tema-ira" },
+        { "label": "Duelo o pérdidas", "next": "tema-duelo" },
+        { "label": "Cambios en mi comportamiento", "next": "content:cambios-comportamiento" },
+        { "label": "Una situación que estoy viviendo", "next": "situaciones" },
+        { "label": "No sé exactamente qué me pasa", "next": "content:no-se-que-pasa" }
       ]
     },
     "aprender": {
@@ -690,6 +675,53 @@
       "parent": "ayuda",
       "title": "Buscar apoyo profesional",
       "body": "Un psicólogo o psicóloga puede ayudarte a comprender lo que estás viviendo desde un lugar preparado para acompañarte, sin juzgarte.\nPedir esta ayuda no significa que algo esté 'mal' contigo; es una forma de cuidarte."
-    }
+    },
+    "content:tema-soledad-que-es": {
+      "type": "content",
+      "parent": "tema-soledad",
+      "title": "Soledad — Qué es",
+      "body": "Sentirte solo o sola no siempre significa estar físicamente sin compañía; puedes tener gente alrededor y aun así sentir que nadie te entiende de verdad. Es una experiencia emocional válida que muchos adolescentes atraviesan en algún momento."
+    },
+    "content:tema-soledad-senales": {
+      "type": "content",
+      "parent": "tema-soledad",
+      "title": "Soledad — Cuáles son sus señales",
+      "body": "Puede sentirse como querer alejarte de todos, pensar que a nadie le importaría si desapareces por un tiempo, dificultad para abrirte con otras personas, o la sensación de que 'no encajas' en ningún lugar."
+    },
+    "content:tema-soledad-por-que": {
+      "type": "content",
+      "parent": "tema-soledad",
+      "title": "Soledad — Por qué puede aparecer",
+      "body": "Puede aparecer por cambios como un cambio de colegio o ciudad, conflictos con amigos, dificultad para socializar, o simplemente por atravesar una etapa donde te sientes distinto a quienes te rodean."
+    },
+    "content:tema-soledad-que-hacer": {
+      "type": "content",
+      "parent": "tema-soledad",
+      "title": "Soledad — Qué puedo hacer",
+      "body": "Buscar pequeños espacios de conexión, aunque sean breves, ayuda: escribirle a alguien, unirte a una actividad que te guste, o simplemente estar cerca de otras personas aunque no hables mucho. No tienes que forzarte a sentirte acompañado de inmediato."
+    },
+    "content:tema-soledad-cuando-ayuda": {
+      "type": "content",
+      "parent": "tema-soledad",
+      "title": "Soledad — Cuándo debería pedir ayuda",
+      "body": "Si la soledad se mantiene por mucho tiempo, te hace sentir sin ganas de nada, o te aleja completamente de las personas que antes eran importantes para ti, hablarlo con un adulto de confianza o un profesional puede ayudarte a encontrar el camino de vuelta."
+    },
+    "tema-soledad": {
+      "type": "topic",
+      "title": "Soledad",
+      "keywords": [
+        "soledad",
+        "solo",
+        "sola",
+        "aislado",
+        "aislada",
+        "aislamiento",
+        "sin amigos",
+        "nadie me entiende",
+        "desconectado"
+       ]
+      }
+
   }
+
 }

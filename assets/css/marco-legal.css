@@ -28,6 +28,7 @@ section {
     justify-content: space-between;
     gap: 12px;
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 .barra-retorno .volver {
@@ -72,6 +73,7 @@ section {
     border-radius: 0 0 35px 35px;
     box-shadow: var(--sombra-grande);
     background: linear-gradient(180deg, rgba(255, 255, 255, .6), var(--fondo-suave));
+    box-sizing: border-box;
 }
 
 .hero-legal .etiqueta-eyebrow {
@@ -103,6 +105,8 @@ section {
     max-width: 620px;
     margin: 0 auto;
     position: relative;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .buscador-legal input {
@@ -115,6 +119,7 @@ section {
     color: var(--azul-marino);
     box-shadow: var(--sombra-media);
     transition: box-shadow var(--transicion), border-color var(--transicion);
+    box-sizing: border-box;
 }
 
 .buscador-legal input::placeholder {
@@ -178,6 +183,7 @@ section {
     color: var(--gris);
     text-align: center;
     display: none;
+    box-sizing: border-box;
 }
 
 .resultado-busqueda-vacio.visible {
@@ -218,6 +224,7 @@ mark.coincidencia {
     gap: 14px;
     justify-content: center;
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 .tabs-legal button {
@@ -257,6 +264,7 @@ mark.coincidencia {
     box-shadow: var(--sombra-media);
     margin-bottom: 35px;
     color: var(--gris);
+    box-sizing: border-box;
 }
 
 .bloque-legal > .intro-bloque strong {
@@ -326,6 +334,7 @@ mark.coincidencia {
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 .card-legal summary::-webkit-details-marker {
@@ -386,6 +395,7 @@ mark.coincidencia {
 .cuerpo-norma {
     padding: 0 24px 26px;
     animation: aparecer .35s ease both;
+    box-sizing: border-box;
 }
 
 .cuerpo-norma p.descripcion {
@@ -401,6 +411,7 @@ mark.coincidencia {
     color: var(--azul-marino);
     font-style: italic;
     border-radius: 0 var(--radio) var(--radio) 0;
+    box-sizing: border-box;
 }
 
 .categoria-legal--leyes .cuerpo-norma blockquote.ratio { border-left-color: var(--verde-agua); }
@@ -415,6 +426,7 @@ mark.coincidencia {
     border: 1px solid var(--gris-claro);
     border-radius: var(--radio);
     padding: 20px 22px;
+    box-sizing: border-box;
 }
 
 .ficha h4 {
@@ -453,6 +465,7 @@ mark.coincidencia {
     border-radius: var(--radio);
     padding: 14px 16px;
     margin-bottom: 18px;
+    box-sizing: border-box;
 }
 
 .cita-apa p {
@@ -461,6 +474,7 @@ mark.coincidencia {
     font-size: .85rem;
     color: var(--gris);
     line-height: 1.6;
+    word-break: break-word;
 }
 
 .cita-apa button {
@@ -561,6 +575,7 @@ mark.coincidencia {
     justify-content: space-between;
     gap: 16px;
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 .tarjeta-terminos > summary::-webkit-details-marker {
@@ -614,6 +629,7 @@ mark.coincidencia {
 .cuerpo-terminos {
     padding: 0 30px 32px;
     animation: aparecer .35s ease both;
+    box-sizing: border-box;
 }
 
 .cuerpo-terminos h4 {

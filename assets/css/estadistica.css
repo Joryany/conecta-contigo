@@ -920,6 +920,13 @@ main section header p {
 
 .resultado canvas {
 
+  /* Chart.js suele fijar un width/height en pixeles vía atributo
+     inline; sin este width forzado, el canvas podía desbordar la
+     tarjeta .resultado en pantallas angostas antes de que el
+     redibujo de Chart.js reaccionara. Mismo patrón que ya usabas
+     en .herramientas canvas más abajo. */
+  width: 100% !important;
+
   max-height: 250px;
 
 }
@@ -1390,6 +1397,24 @@ footer dd {
 }
 
 /*==================================================
+=       PREVENCIÓN DE DESBORDAMIENTO EN GRIDS      =
+   Por defecto una celda de grid no se encoge más allá de su
+   contenido (min-width:auto). Esto lo neutraliza sin cambiar
+   nada visual — solo asegura que las tarjetas puedan achicarse
+   junto con su columna en vez de forzar el ancho.
+==================================================*/
+
+.kpi,
+.resultado,
+.subseccion-evaluacion article,
+.variables article,
+.proceso article {
+
+  min-width: 0;
+
+}
+
+/*==================================================
 =                RESPONSIVE                        =
 ==================================================*/
 
@@ -1630,5 +1655,21 @@ footer dd {
 
   }
 
+
+}
+
+@media(max-width:480px) {
+
+  .hero {
+
+    padding: 30px 18px;
+
+  }
+
+  .kpi {
+
+    padding: 18px 14px;
+
+  }
 
 }

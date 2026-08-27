@@ -1276,7 +1276,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .cond-intro-destacada {
-    font-size: 1.3rem;
+    font-size: clamp(1.15rem, 1rem + 0.9vw, 1.3rem);
     font-weight: 800;
     color: var(--azul-marino);
     line-height: 1.4;
@@ -1312,6 +1312,22 @@ h1, h2, h3, h4, h5 {
     font-size: 0.9rem;
     line-height: 1.5;
     opacity: 0.9;
+}
+
+@media (max-width: 700px) {
+    .cond-intro {
+        grid-template-columns: 1fr;
+        gap: var(--espacio-md);
+    }
+    .cond-intro-destacada,
+    .cond-intro-texto p:not(.cond-intro-destacada) {
+        text-align: center;
+    }
+    .cond-intro-dato {
+        max-width: 320px;
+        width: 100%;
+        margin: 0 auto;
+    }
 }
 
 .cond-num {
@@ -1612,7 +1628,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .sit-intro-destacada {
-    font-size: 1.35rem;
+    font-size: clamp(1.15rem, 1rem + 0.9vw, 1.35rem);
     font-weight: 800;
     color: var(--azul-marino);
     line-height: 1.4;
@@ -1648,6 +1664,22 @@ h1, h2, h3, h4, h5 {
     font-size: 0.9rem;
     line-height: 1.5;
     opacity: 0.9;
+}
+
+@media (max-width: 700px) {
+    .sit-intro {
+        grid-template-columns: 1fr;
+        gap: var(--espacio-md);
+    }
+    .sit-intro-destacada,
+    .sit-intro-texto p:not(.sit-intro-destacada) {
+        text-align: center;
+    }
+    .sit-intro-dato {
+        max-width: 320px;
+        width: 100%;
+        margin: 0 auto;
+    }
 }
 
 .sit-num {

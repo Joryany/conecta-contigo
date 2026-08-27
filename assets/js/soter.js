@@ -50,6 +50,7 @@
         els.resetBtn.addEventListener("click", resetChat);
 
         renderWelcome();
+        openTopicFromHash();
     }
 
     function renderLoadError() {
@@ -80,6 +81,21 @@
         currentId = "main";
         updateBackButton();
         botSay(renderWelcomeContent);
+    }
+
+    /**
+     * Si la URL trae un hash tipo "#tema:ansiedad", abre ese nodo
+     * directamente al cargar la página (deep-linking). Permite enlazar
+     * o compartir un tema puntual de Soter desde otras páginas del sitio.
+     */
+    function openTopicFromHash() {
+        const hash = window.location.hash.replace("#", "");
+        if (hash.indexOf("tema:") !== 0) return;
+
+        const id = hash.slice(5);
+        if (DATA.nodes[id]) {
+            navigateTo(id, { pushToStack: false });
+        }
     }
 
     /**
@@ -119,6 +135,13 @@
         if (pushToStack && currentId) stack.push(currentId);
         currentId = id;
         updateBackButton();
+
+        // Deja el hash de la URL apuntando al nodo actual, para poder
+        // compartir o recargar en el mismo punto de la conversación.
+        // replaceState (no pushState) evita ensuciar el historial del
+        // navegador con una entrada por cada clic dentro del chat.
+        history.replaceState(null, "", "#tema:" + id);
+
         renderNode(node);
     }
 
@@ -155,10 +178,14 @@
         updateBackButton();
 
         if (prevId === "main") {
+            history.replaceState(null, "", window.location.pathname + window.location.search);
             botSay(renderWelcomeContent);
         } else {
             const node = DATA.nodes[prevId];
-            if (node) renderNode(node);
+            if (node) {
+                history.replaceState(null, "", "#tema:" + prevId);
+                renderNode(node);
+            }
         }
     }
 
@@ -168,6 +195,7 @@
 
     function resetChat() {
         els.log.innerHTML = "";
+        history.replaceState(null, "", window.location.pathname + window.location.search);
         renderWelcome();
         els.input.value = "";
     }
@@ -502,6 +530,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function activateFromHash() {
         const key = window.location.hash.replace("#", "");
         if (!key) return false;
+
+        // Los hashes "tema:xxx" los maneja el módulo del chatbot de
+        // Soter (deep-linking a un tema), no la navegación de pestañas.
+        if (key.indexOf("tema:") === 0) return false;
 
         let tabId = HASH_TO_TAB[key];
         if (!tabId && key.indexOf("faq-") === 0) tabId = "soter-tab-como";
