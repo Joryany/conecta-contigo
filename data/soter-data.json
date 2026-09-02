@@ -1,7 +1,7 @@
 {
   "meta": {
     "botName": "Soter",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Archivo de contenido editable de Soter, el asistente de orientación de Conecta Contigo. Edita este archivo para cambiar textos, preguntas, opciones y enlaces sin tocar soter.js."
   },
   "config": {
@@ -63,6 +63,11 @@
         "icon": "🛠️",
         "label": "Encontrar una herramienta",
         "next": "herramientas"
+      },
+      {
+        "icon": "💡",
+        "label": "Acerca de Soter y la plataforma",
+        "next": "sobre-soter"
       },
       {
         "icon": "🆘",
@@ -137,27 +142,40 @@
       "type": "menu",
       "botMessage": "Estas son algunas experiencias sobre las que puedo darte información 📚",
       "options": [
-        {
-          "label": "Ansiedad",
-          "next": "tema-ansiedad"
-        },
-        {
-          "label": "Depresión",
-          "next": "tema-depresion"
-        },
-        {
-          "label": "Estrés",
-          "next": "tema-estres"
-        },
-        {
-          "label": "Trastornos del sueño",
-          "next": "tema-sueno"
-        },
-        {
-          "label": "Alimentación y bienestar",
-          "next": "tema-alimentacion"
-        }
+        { "label": "Ansiedad", "next": "tema-ansiedad" },
+        { "label": "Depresión", "next": "tema-depresion" },
+        { "label": "Estrés", "next": "tema-estres" },
+        { "label": "Trastornos del sueño", "next": "tema-sueno" },
+        { "label": "Alimentación y bienestar", "next": "tema-alimentacion" },
+        { "label": "Autoestima y confianza", "next": "tema-autoestima" }
       ]
+    },
+    "sobre-soter": {
+      "type": "menu",
+      "botMessage": "Aquí tienes información sobre cómo funciono y qué hay detrás de este espacio 💡",
+      "options": [
+        { "label": "¿Quién soy y qué hago?", "next": "content:soter-quien-soy" },
+        { "label": "¿Cómo protege mi privacidad?", "next": "content:soter-privacidad" },
+        { "label": "¿Qué es Conecta Contigo?", "next": "content:soter-plataforma" }
+      ]
+    },
+    "content:soter-quien-soy": {
+      "type": "content",
+      "parent": "sobre-soter",
+      "title": "Quién es Soter",
+      "body": "Soy Soter, un asistente virtual informativo diseñado para acompañarte dentro de la plataforma Conecta Contigo. Mi objetivo es brindarte orientación educativa, herramientas de autocuidado y recursos confiables sobre salud mental y bienestar."
+    },
+    "content:soter-privacidad": {
+      "type": "content",
+      "parent": "sobre-soter",
+      "title": "Privacidad y confidencialidad",
+      "body": "Tus conversaciones con Soter ocurren directamente en tu navegador y no almacenan datos personales que puedan identificarte. Es un espacio seguro para consultar información y reflexionar a tu propio ritmo."
+    },
+    "content:soter-plataforma": {
+      "type": "content",
+      "parent": "sobre-soter",
+      "title": "Sobre Conecta Contigo",
+      "body": "Conecta Contigo es una plataforma interactiva pensada para promover el bienestar emocional, ofrecer recursos prácticos y facilitar el acceso a redes de apoyo escolar y comunitario."
     },
     "content:tema-ansiedad-que-es": {
       "type": "content",
@@ -210,26 +228,11 @@
       ],
       "botMessage": "Claro 💙 ¿Qué quieres saber sobre la ansiedad?",
       "options": [
-        {
-          "label": "¿Qué es?",
-          "next": "content:tema-ansiedad-que-es"
-        },
-        {
-          "label": "¿Cuáles son sus señales?",
-          "next": "content:tema-ansiedad-senales"
-        },
-        {
-          "label": "¿Por qué puede aparecer?",
-          "next": "content:tema-ansiedad-por-que"
-        },
-        {
-          "label": "¿Qué puedo hacer?",
-          "next": "content:tema-ansiedad-que-hacer"
-        },
-        {
-          "label": "¿Cuándo debería pedir ayuda?",
-          "next": "content:tema-ansiedad-cuando-ayuda"
-        }
+        { "label": "¿Qué es?", "next": "content:tema-ansiedad-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-ansiedad-senales" },
+        { "label": "¿Por qué puede aparecer?", "next": "content:tema-ansiedad-por-que" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-ansiedad-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-ansiedad-cuando-ayuda" }
       ]
     },
     "content:tema-tristeza-que-es": {
@@ -281,26 +284,11 @@
       ],
       "botMessage": "Claro 💙 ¿Qué quieres saber sobre la tristeza?",
       "options": [
-        {
-          "label": "¿Qué es?",
-          "next": "content:tema-tristeza-que-es"
-        },
-        {
-          "label": "¿Cuáles son sus señales?",
-          "next": "content:tema-tristeza-senales"
-        },
-        {
-          "label": "¿Por qué puede aparecer?",
-          "next": "content:tema-tristeza-por-que"
-        },
-        {
-          "label": "¿Qué puedo hacer?",
-          "next": "content:tema-tristeza-que-hacer"
-        },
-        {
-          "label": "¿Cuándo debería pedir ayuda?",
-          "next": "content:tema-tristeza-cuando-ayuda"
-        }
+        { "label": "¿Qué es?", "next": "content:tema-tristeza-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-tristeza-senales" },
+        { "label": "¿Por qué puede aparecer?", "next": "content:tema-tristeza-por-que" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-tristeza-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-tristeza-cuando-ayuda" }
       ]
     },
     "content:tema-estres-que-es": {
@@ -352,26 +340,11 @@
       ],
       "botMessage": "Claro 💙 ¿Qué quieres saber sobre el estrés?",
       "options": [
-        {
-          "label": "¿Qué es?",
-          "next": "content:tema-estres-que-es"
-        },
-        {
-          "label": "¿Cuáles son sus señales?",
-          "next": "content:tema-estres-senales"
-        },
-        {
-          "label": "¿Por qué puede aparecer?",
-          "next": "content:tema-estres-por-que"
-        },
-        {
-          "label": "¿Qué puedo hacer?",
-          "next": "content:tema-estres-que-hacer"
-        },
-        {
-          "label": "¿Cuándo debería pedir ayuda?",
-          "next": "content:tema-estres-cuando-ayuda"
-        }
+        { "label": "¿Qué es?", "next": "content:tema-estres-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-estres-senales" },
+        { "label": "¿Por qué puede aparecer?", "next": "content:tema-estres-por-que" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-estres-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-estres-cuando-ayuda" }
       ]
     },
     "content:tema-sueno-que-es": {
@@ -414,22 +387,10 @@
       ],
       "botMessage": "Claro 💙 ¿Qué quieres saber sobre el sueño?",
       "options": [
-        {
-          "label": "¿Qué es?",
-          "next": "content:tema-sueno-que-es"
-        },
-        {
-          "label": "¿Cuáles son sus señales?",
-          "next": "content:tema-sueno-senales"
-        },
-        {
-          "label": "¿Qué puedo hacer?",
-          "next": "content:tema-sueno-que-hacer"
-        },
-        {
-          "label": "¿Cuándo debería pedir ayuda?",
-          "next": "content:tema-sueno-cuando-ayuda"
-        }
+        { "label": "¿Qué es?", "next": "content:tema-sueno-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-sueno-senales" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-sueno-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-sueno-cuando-ayuda" }
       ]
     },
     "content:tema-depresion-que-es": {
@@ -469,22 +430,10 @@
       ],
       "botMessage": "Claro 💙 Esta información puede ayudarte a comprender algunas experiencias relacionadas con la depresión.",
       "options": [
-        {
-          "label": "¿Qué es?",
-          "next": "content:tema-depresion-que-es"
-        },
-        {
-          "label": "¿Cuáles son sus señales?",
-          "next": "content:tema-depresion-senales"
-        },
-        {
-          "label": "¿Qué puedo hacer?",
-          "next": "content:tema-depresion-que-hacer"
-        },
-        {
-          "label": "¿Cuándo debería pedir ayuda?",
-          "next": "content:tema-depresion-cuando-ayuda"
-        }
+        { "label": "¿Qué es?", "next": "content:tema-depresion-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-depresion-senales" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-depresion-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-depresion-cuando-ayuda" }
       ]
     },
     "content:tema-alimentacion-que-es": {
@@ -518,25 +467,78 @@
       ],
       "botMessage": "Claro 💙 Esta información puede ayudarte a comprender algunas experiencias relacionadas con la alimentación y la imagen corporal.",
       "options": [
-        {
-          "label": "¿Qué es?",
-          "next": "content:tema-alimentacion-que-es"
-        },
-        {
-          "label": "¿Cuáles son sus señales?",
-          "next": "content:tema-alimentacion-senales"
-        },
-        {
-          "label": "¿Cuándo debería pedir ayuda?",
-          "next": "content:tema-alimentacion-cuando-ayuda"
-        }
+        { "label": "¿Qué es?", "next": "content:tema-alimentacion-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-alimentacion-senales" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-alimentacion-cuando-ayuda" }
+      ]
+    },
+    "content:tema-autoestima-que-es": {
+      "type": "content",
+      "parent": "tema-autoestima",
+      "title": "Autoestima y confianza — Qué es",
+      "body": "La autoestima es la valoración y percepción que tienes sobre ti mismo o ti misma. No se trata de sentirte perfecto todo el tiempo, sino de reconocer tu valor más allá de tus errores, tus notas o la opinión de los demás."
+    },
+    "content:tema-autoestima-que-hacer": {
+      "type": "content",
+      "parent": "tema-autoestima",
+      "title": "Autoestima y confianza — Qué puedo hacer",
+      "body": "Practica la autocompasión: háblate con la misma amabilidad con la que le hablarías a un buen amigo. Evita compararte constantemente con realidades ajenas que ves en redes sociales y reconoce tus pequeños logros diarios."
+    },
+    "tema-autoestima": {
+      "type": "topic",
+      "title": "Autoestima y confianza",
+      "keywords": [
+        "autoestima",
+        "confianza",
+        "inseguridad",
+        "inseguro",
+        "insegura",
+        "no me gusto",
+        "valor propio"
+      ],
+      "botMessage": "💙 La confianza en uno mismo es un pilar fundamental. ¿Qué te gustaría explorar?",
+      "options": [
+        { "label": "¿Qué es?", "next": "content:tema-autoestima-que-es" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-autoestima-que-hacer" }
+      ]
+    },
+    "content:tema-ira-que-es": {
+      "type": "content",
+      "parent": "tema-ira",
+      "title": "Ira o rabia — Qué es",
+      "body": "La ira es una emoción natural que surge cuando percibes una injusticia, un límite violado o frustración. No es mala en sí misma; el reto está en aprender a expresarla y canalizarla sin lastimarte ni lastimar a otros."
+    },
+    "content:tema-ira-que-hacer": {
+      "type": "content",
+      "parent": "tema-ira",
+      "title": "Ira o rabia — Qué puedo hacer",
+      "body": "Cuando sientas que la rabia te desborda, aléjate un momento de la situación (toma una pausa), respira profundamente o realiza actividad física para liberar la tensión acumulada antes de intentar hablar o resolver el problema."
+    },
+    "tema-ira": {
+      "type": "topic",
+      "title": "Ira o rabia",
+      "keywords": [
+        "ira",
+        "rabia",
+        "enojo",
+        "enojado",
+        "enojada",
+        "frustracion",
+        "frustración",
+        "molesto",
+        "molesta"
+      ],
+      "botMessage": "💙 La rabia o la ira son emociones intensas. ¿Cómo podemos abordarlas?",
+      "options": [
+        { "label": "¿Qué es?", "next": "content:tema-ira-que-es" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-ira-que-hacer" }
       ]
     },
     "content:cambios-comportamiento": {
       "type": "content",
       "parent": "entender",
       "title": "Cambios en mi comportamiento",
-      "body": "A veces no se trata de una emoción puntual, sino de notar que algo cambió: te alejas de personas con las que antes compartías, tu rendimiento académico bajó, duermes o comes distinto, o simplemente sientes que 'no eres tú'. Estos cambios pueden ser una señal de que algo te está afectando, y no necesitan un nombre exacto para merecer atención.\nHablarlo con alguien de confianza puede ayudarte a entender mejor qué está pasando."
+      "body": "A veces no se trata de una emoción puntual, sino de notar que algo cambió: te alejas de personas con las que antes compartías, tu rendimiento académico bajó, duermes o comes distinto, o sientes que 'no eres tú'. Estos cambios pueden ser una señal de que algo te está afectando, y no necesitan un nombre exacto para merecer atención.\nHablarlo con alguien de confianza puede ayudarte a entender mejor qué está pasando."
     },
     "content:no-se-que-pasa": {
       "type": "content",
@@ -548,22 +550,10 @@
       "type": "menu",
       "botMessage": "Cuéntame un poco más, ¿qué tipo de situación estás viviendo?",
       "options": [
-        {
-          "label": "Acoso o conflictos con compañeros",
-          "next": "content:situacion-acoso"
-        },
-        {
-          "label": "Conflictos o tensión en casa",
-          "next": "content:situacion-casa"
-        },
-        {
-          "label": "Presión académica o de resultados",
-          "next": "content:situacion-academica"
-        },
-        {
-          "label": "Comparación o presión en redes sociales",
-          "next": "content:situacion-redes"
-        }
+        { "label": "Acoso o conflictos con compañeros", "next": "content:situacion-acoso" },
+        { "label": "Conflictos o tensión en casa", "next": "content:situacion-casa" },
+        { "label": "Presión académica o de resultados", "next": "content:situacion-academica" },
+        { "label": "Comparación o presión en redes sociales", "next": "content:situacion-redes" }
       ]
     },
     "content:situacion-acoso": {
@@ -594,26 +584,12 @@
       "type": "menu",
       "botMessage": "Estas son algunas herramientas prácticas que puedes probar 🛠️",
       "options": [
-        {
-          "label": "Respiración consciente",
-          "next": "content:herr-respiracion"
-        },
-        {
-          "label": "Pausa de regulación (5-4-3-2-1)",
-          "next": "content:herr-pausa"
-        },
-        {
-          "label": "Registro emocional",
-          "next": "content:herr-registro"
-        },
-        {
-          "label": "Identificar lo que siento",
-          "next": "content:herr-identificar"
-        },
-        {
-          "label": "Organizar mis pensamientos",
-          "next": "content:herr-organizar"
-        }
+        { "label": "Respiración consciente", "next": "content:herr-respiracion" },
+        { "label": "Pausa de regulación (5-4-3-2-1)", "next": "content:herr-pausa" },
+        { "label": "Registro emocional", "next": "content:herr-registro" },
+        { "label": "Identificar lo que siento", "next": "content:herr-identificar" },
+        { "label": "Organizar mis pensamientos", "next": "content:herr-organizar" },
+        { "label": "Técnica del anclaje positivo", "next": "content:herr-anclaje" }
       ]
     },
     "content:herr-respiracion": {
@@ -646,22 +622,19 @@
       "title": "Organizar mis pensamientos",
       "body": "Cuando tengas muchas ideas o preocupaciones dando vueltas, escríbelas todas sin orden en un papel o nota, y luego sepáralas en tres grupos: lo que puedo resolver hoy, lo que puedo resolver después, y lo que no depende de mí.\nEsto ayuda a reducir la sensación de estar sobrepasado."
     },
+    "content:herr-anclaje": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Técnica del anclaje positivo",
+      "body": "Trae a tu memoria un momento en el que te hayas sentido seguro, tranquilo o orgulloso de ti mismo. Cierra los ojos por un instante y recuerda los detalles de esa escena: los sonidos, las sensaciones y el alivio que sentiste. Esto ayuda a tu cerebro a recordar que el bienestar también es posible."
+    },
     "ayuda": {
       "type": "menu",
       "botMessage": "Este es un espacio para pensar en cómo pedir apoyo 🆘",
       "options": [
-        {
-          "label": "Hablar con alguien de confianza",
-          "next": "content:ayuda-hablar"
-        },
-        {
-          "label": "Buscar apoyo profesional",
-          "next": "content:ayuda-profesional"
-        },
-        {
-          "label": "Contactos de ayuda",
-          "next": "link:contactos"
-        }
+        { "label": "Hablar con alguien de confianza", "next": "content:ayuda-hablar" },
+        { "label": "Buscar apoyo profesional", "next": "content:ayuda-profesional" },
+        { "label": "Contactos de ayuda", "next": "link:contactos" }
       ]
     },
     "content:ayuda-hablar": {
@@ -719,9 +692,15 @@
         "sin amigos",
         "nadie me entiende",
         "desconectado"
-       ]
-      }
-
+      ],
+      "botMessage": "Claro 💙 ¿Qué quieres saber sobre la soledad?",
+      "options": [
+        { "label": "¿Qué es?", "next": "content:tema-soledad-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-soledad-senales" },
+        { "label": "¿Por qué puede aparecer?", "next": "content:tema-soledad-por-que" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-soledad-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-soledad-cuando-ayuda" }
+      ]
+    }
   }
-
 }

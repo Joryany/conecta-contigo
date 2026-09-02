@@ -164,6 +164,23 @@ article > a:hover {
 
 /*Seccion de Información*/
 
+.text-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    text-shadow: 0 8px 25px rgba(17, 46, 81, .20);
+    gap: 10x;
+}
+
+
+
+h2#Información~article h3 {
+    text-align: center;
+}
+
 
 h2#Información~article {
 
@@ -182,6 +199,8 @@ h2#Información~article {
     transition: .35s;
 
     box-sizing: border-box;
+
+    text-align: left;
 }
 
 h2#Información~article:hover {
@@ -229,6 +248,7 @@ h2#Información article:hover img {
 h2#Información~article h4 {
     color: var(--azul-claro);
     margin-top: 20px;
+    text-align: center;
 }
 
 .contacto {
@@ -240,6 +260,40 @@ h2#Información~article h4 {
     /* Deja un respiro (margen) a los lados en pantallas pequeñas */
     box-sizing: border-box;
 }
+
+h2#Información~article a {
+    border-radius: 30px;
+    box-shadow: 0 8px 25px rgba(17, 46, 81, .20);
+}
+
+.normal {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 18px;
+
+    border-radius: 50px;
+
+    background: rgba(255, 255, 255, .80);
+
+    backdrop-filter: blur(12px);
+
+    color: #3e9c98;
+
+    font-weight: 500;
+
+    font-size: .90rem;
+
+    margin-bottom: 26px;
+
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+
 
 /*---------------- Responsive ----------------*/
 

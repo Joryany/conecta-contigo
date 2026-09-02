@@ -406,13 +406,7 @@ main section header p {
 
   border-left: 8px solid var(--verde-hoja);
 
-  background:
-
-    linear-gradient(135deg,
-
-      rgba(149, 200, 131, .12),
-
-      rgba(255, 255, 255, 1));
+  background: var(--blanco);
 
 }
 
@@ -1246,13 +1240,7 @@ main section header p {
 
 .conclusiones {
 
-  background:
-
-    linear-gradient(135deg,
-
-      rgba(9, 98, 187, .06),
-
-      rgba(105, 178, 174, .12));
+  background: var (--blanco);
 
   border-top: 6px solid var(--verde-hoja);
 

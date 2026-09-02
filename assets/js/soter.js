@@ -31,7 +31,7 @@
     init();
 
     /* ====================================================================
-       INICIALIZACIÓN
+        INICIALIZACIÓN
     ==================================================================== */
 
     async function init() {
@@ -45,9 +45,9 @@
             return;
         }
 
-        els.form.addEventListener("submit", onSubmitQuestion);
-        els.backBtn.addEventListener("click", goBack);
-        els.resetBtn.addEventListener("click", resetChat);
+        if (els.form) els.form.addEventListener("submit", onSubmitQuestion);
+        if (els.backBtn) els.backBtn.addEventListener("click", goBack);
+        if (els.resetBtn) els.resetBtn.addEventListener("click", resetChat);
 
         renderWelcome();
         openTopicFromHash();
@@ -59,23 +59,19 @@
         const div = document.createElement("div");
         div.className = "soter-error";
         div.textContent = msg;
-        els.log.appendChild(div);
+        if (els.log) els.log.appendChild(div);
     }
 
     /* ====================================================================
-       NAVEGACIÓN ENTRE NODOS
-       Un "nodo" es cualquier entrada dentro de data.nodes (o el nodo
-       virtual "main"). Cada nodo sabe qué mostrar y qué opciones ofrecer.
+        NAVEGACIÓN ENTRE NODOS
     ==================================================================== */
 
-    /** Dibuja el mensaje de bienvenida + menú principal (sin tocar el estado). */
     function renderWelcomeContent() {
         const cfg = DATA.config;
         appendBotMessage(cfg.welcomeTitle + "\n" + cfg.welcomeMessage);
         appendOptions(DATA.mainMenu.options);
     }
 
-    /** Primera pantalla al cargar la página: reinicia el estado y dibuja. */
     function renderWelcome() {
         stack = [];
         currentId = "main";
@@ -83,11 +79,6 @@
         botSay(renderWelcomeContent);
     }
 
-    /**
-     * Si la URL trae un hash tipo "#tema:ansiedad", abre ese nodo
-     * directamente al cargar la página (deep-linking). Permite enlazar
-     * o compartir un tema puntual de Soter desde otras páginas del sitio.
-     */
     function openTopicFromHash() {
         const hash = window.location.hash.replace("#", "");
         if (hash.indexOf("tema:") !== 0) return;
@@ -98,14 +89,6 @@
         }
     }
 
-    /**
-     * Navega hacia un nodo por su id.
-     * Formatos especiales de id:
-     *   "main"        -> vuelve al menú principal
-     *   "link:xxx"    -> redirige a una URL definida en config.links.xxx
-     *   "content:xxx" -> nodo de contenido (tipo "content")
-     *   cualquier otro -> nodo normal dentro de data.nodes
-     */
     function navigateTo(id, options) {
         options = options || {};
         const pushToStack = options.pushToStack !== false;
@@ -136,12 +119,7 @@
         currentId = id;
         updateBackButton();
 
-        // Deja el hash de la URL apuntando al nodo actual, para poder
-        // compartir o recargar en el mismo punto de la conversación.
-        // replaceState (no pushState) evita ensuciar el historial del
-        // navegador con una entrada por cada clic dentro del chat.
         history.replaceState(null, "", "#tema:" + id);
-
         renderNode(node);
     }
 
@@ -190,22 +168,24 @@
     }
 
     function updateBackButton() {
-        els.backBtn.disabled = stack.length === 0;
+        if (els.backBtn) els.backBtn.disabled = stack.length === 0;
     }
 
     function resetChat() {
-        els.log.innerHTML = "";
+        if (els.log) els.log.innerHTML = "";
         history.replaceState(null, "", window.location.pathname + window.location.search);
         renderWelcome();
-        els.input.value = "";
+        if (els.input) els.input.value = "";
     }
 
     /* ====================================================================
-       ENTRADA DE TEXTO LIBRE (búsqueda por palabras clave)
+        ENTRADA DE TEXTO LIBRE
     ==================================================================== */
 
     function onSubmitQuestion(event) {
         event.preventDefault();
+        if (!els.input) return;
+        
         const raw = els.input.value.trim();
         if (!raw) return;
 
@@ -214,8 +194,6 @@
 
         const norm = normalize(raw);
 
-        // 1) Ruta especial de seguridad: si hay coincidencia de riesgo,
-        //    Soter NO continúa la conversación normal.
         const riskHit = DATA.risk.keywords.some(function (k) {
             return norm.indexOf(normalize(k)) !== -1;
         });
@@ -227,7 +205,6 @@
             return;
         }
 
-        // 2) Búsqueda por palabras clave entre los temas disponibles.
         const matches = [];
         Object.keys(DATA.nodes).forEach(function (id) {
             const node = DATA.nodes[id];
@@ -259,10 +236,6 @@
         appendOptions(DATA.fallback.options);
     }
 
-    /**
-     * Normaliza texto para comparar palabras clave sin depender de
-     * mayúsculas, acentos o espacios extra.
-     */
     function normalize(text) {
         return (text || "")
             .toString()
@@ -271,106 +244,95 @@
             .replace(/[\u0300-\u036f]/g, "")
             .trim();
     }
-        /* ====================================================================
-        AVATAR DE SOTER
-        Una única función para mantener el avatar consistente en todo el chat.
-        ==================================================================== */
 
-        function createSoterAvatar() {
-            const avatar = document.createElement("span");
-
-            avatar.className = "soter-msg__avatar";
-            avatar.setAttribute("aria-hidden", "true");
-
-            const img = document.createElement("img");
-
-            img.src = "assets/img/soter/soter.png";
-            img.alt = "";
-
-            avatar.appendChild(img);
-
-            return avatar;
-        }
     /* ====================================================================
-       RENDER DE MENSAJES EN EL CHAT
+        AVATAR DE SOTER
+    ==================================================================== */
+
+    function createSoterAvatar() {
+        const avatar = document.createElement("span");
+        avatar.className = "soter-msg__avatar";
+        avatar.setAttribute("aria-hidden", "true");
+
+        const img = document.createElement("img");
+        img.src = "assets/img/soter/soter.png";
+        img.alt = "";
+
+        avatar.appendChild(img);
+        return avatar;
+    }
+
+    /* ====================================================================
+        RENDER DE MENSAJES EN EL CHAT
     ==================================================================== */
 
     function botSay(renderFn, delay) {
         const typingEl = appendTyping();
         window.setTimeout(function () {
-            typingEl.remove();
+            if (typingEl) typingEl.remove();
             renderFn();
             scrollToBottom();
         }, delay || TYPING_DELAY);
     }
 
     function appendTyping() {
+        if (!els.log) return null;
         const row = document.createElement("div");
         row.className = "soter-msg soter-msg--bot";
 
         const avatar = createSoterAvatar();
-
         const bubble = document.createElement("div");
         bubble.className = "soter-bubble soter-typing";
         bubble.setAttribute("aria-label", "Soter está escribiendo");
-
-        bubble.innerHTML =
-            "<span></span><span></span><span></span>";
+        bubble.innerHTML = "<span></span><span></span><span></span>";
 
         row.appendChild(avatar);
         row.appendChild(bubble);
-
         els.log.appendChild(row);
 
         scrollToBottom();
-
         return row;
     }
 
     function appendBotMessage(text) {
-    const row = document.createElement("div");
-    row.className = "soter-msg soter-msg--bot";
+        if (!els.log) return;
+        const row = document.createElement("div");
+        row.className = "soter-msg soter-msg--bot";
 
-    const avatar = createSoterAvatar();
+        const avatar = createSoterAvatar();
+        const bubble = document.createElement("div");
+        bubble.className = "soter-bubble";
 
-    const bubble = document.createElement("div");
-    bubble.className = "soter-bubble";
+        textToParagraphs(bubble, text);
 
-    // El texto puede traer saltos de línea ("\n");
-    // los convertimos en párrafos.
-    textToParagraphs(bubble, text);
+        row.appendChild(avatar);
+        row.appendChild(bubble);
+        els.log.appendChild(row);
 
-    row.appendChild(avatar);
-    row.appendChild(bubble);
-
-    els.log.appendChild(row);
-
-    scrollToBottom();
-}
+        scrollToBottom();
+    }
 
     function appendContentMessage(node) {
-    const row = document.createElement("div");
-    row.className = "soter-msg soter-msg--bot";
+        if (!els.log) return;
+        const row = document.createElement("div");
+        row.className = "soter-msg soter-msg--bot";
 
-    const avatar = createSoterAvatar();
+        const avatar = createSoterAvatar();
+        const bubble = document.createElement("div");
+        bubble.className = "soter-bubble";
 
-    const bubble = document.createElement("div");
-    bubble.className = "soter-bubble";
+        const title = document.createElement("strong");
+        title.textContent = node.title;
 
-    const title = document.createElement("strong");
-    title.textContent = node.title;
+        bubble.appendChild(title);
+        textToParagraphs(bubble, node.body);
 
-    bubble.appendChild(title);
+        row.appendChild(avatar);
+        row.appendChild(bubble);
+        els.log.appendChild(row);
 
-    textToParagraphs(bubble, node.body);
-
-    row.appendChild(avatar);
-    row.appendChild(bubble);
-
-    els.log.appendChild(row);
-
-    scrollToBottom();
-}
+        scrollToBottom();
+    }
 
     function textToParagraphs(container, text) {
         (text || "").split("\n").forEach(function (line) {
@@ -382,12 +344,13 @@
     }
 
     function appendUserMessage(text) {
+        if (!els.log) return;
         const row = document.createElement("div");
         row.className = "soter-msg soter-msg--user";
 
         const bubble = document.createElement("div");
         bubble.className = "soter-bubble";
-        bubble.textContent = text; // textContent: nunca se interpreta como HTML
+        bubble.textContent = text;
 
         row.appendChild(bubble);
         els.log.appendChild(row);
@@ -395,6 +358,7 @@
     }
 
     function appendOptions(options) {
+        if (!els.log) return;
         const wrap = document.createElement("div");
         wrap.className = "soter-options";
         wrap.setAttribute("role", "group");
@@ -407,8 +371,6 @@
             btn.textContent = (opt.icon ? opt.icon + " " : "") + opt.label;
 
             btn.addEventListener("click", function () {
-                // Deshabilita todas las opciones de este grupo para evitar
-                // dobles clics y deja marcada la elegida.
                 Array.prototype.forEach.call(wrap.children, function (b) {
                     b.disabled = true;
                 });
@@ -426,6 +388,7 @@
     }
 
     function appendRiskCard() {
+        if (!els.log) return;
         const risk = DATA.risk;
         const card = document.createElement("div");
         card.className = "soter-risk";
@@ -457,35 +420,26 @@
     }
 
     function scrollToBottom() {
-        els.log.scrollTop = els.log.scrollHeight;
+        if (els.log) {
+            els.log.scrollTop = els.log.scrollHeight;
+        }
     }
 
 }());
 
 /* ====================================================================
    NAVEGACIÓN INTERNA DE SOTER
-   ----------------------------------------------------------------------
-   Controla las 3 vistas de soter.html. Envuelto en su propio listener
-   de DOMContentLoaded (no depende de que el <script> tenga "defer"),
-   así que funciona sin importar dónde se cargue el archivo.
 ==================================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
     const tabs = Array.prototype.slice.call(document.querySelectorAll(".soter-tab"));
-    if (!tabs.length) {
-        console.warn("Soter (nav interna): no se encontró ningún botón .soter-tab en el HTML.");
-        return;
-    }
+    if (!tabs.length) return;
 
     const panels = {};
     tabs.forEach(function (tab) {
         const controlsId = tab.getAttribute("aria-controls");
         const panel = controlsId ? document.getElementById(controlsId) : null;
-        if (!panel) {
-            console.warn('Soter (nav interna): el botón #' + tab.id +
-                ' tiene aria-controls="' + controlsId + '" pero no existe ningún panel con ese id.');
-        }
         panels[tab.id] = panel;
     });
 
@@ -531,8 +485,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const key = window.location.hash.replace("#", "");
         if (!key) return false;
 
-        // Los hashes "tema:xxx" los maneja el módulo del chatbot de
-        // Soter (deep-linking a un tema), no la navegación de pestañas.
         if (key.indexOf("tema:") === 0) return false;
 
         let tabId = HASH_TO_TAB[key];

@@ -1,29 +1,4 @@
-/* ====================================================================
-   CONECTA CONTIGO — comprende.css
-   Sistema de diseño único para Comprende (portada, Condiciones,
-   Situaciones y Herramientas). Reorganizado en un solo archivo:
 
-     1. Variables locales
-     2. Estilos generales
-     3. Elementos compartidos (cajas, acordeón, badges, índice A/B)
-     4. Navegación (mini-nav e índice horizontal de temas)
-     5. Hero (portada + heroes secundarios)
-     6. Estilos específicos de cada sección
-        6.1 Portada (accesos, aviso urgente, cierre)
-        6.2 Condiciones
-        6.3 Situaciones
-        6.4 Herramientas
-     7. Aside / información desplegable
-     8. Footer
-     9. Botón flotante "volver arriba"
-     10. Responsive
-
-   Las variables de marca (--azul-marino, --azul-claro, --verde-agua,
-   --verde-hoja, --resalte, --gris, --gris-claro, --blanco,
-   --fondo-suave, --espacio-*, --radio*, --sombra*, --titulo-*,
-   --texto*, --transicion, --boton-*, --padding-card, --gradiente)
-   siguen viviendo en style.css — este archivo las usa, no las repite.
-   ==================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
@@ -799,10 +774,10 @@ h1, h2, h3, h4, h5 {
 
 .accesos-comprende {
     margin-bottom: var(--espacio-xl);
-    background: linear-gradient(135deg, rgba(70, 142, 214, 0.06) 0%, rgba(105, 178, 174, 0.12) 100%);
+    background: linear-gradient(135deg, rgba(53, 144, 235, 0.3) 0%, rgba(105, 178, 174, 0.12) 100%);
     padding: var(--espacio-xl) var(--espacio-lg);
     border-radius: var(--radio-grande);
-    box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.5), var(--sombra);
+    box-shadow: var(--sombra);
     border: 1px solid rgba(255, 255, 255, 0.6);
     position: relative;
     overflow: hidden;
@@ -987,7 +962,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .aviso-urgente {
-    background: linear-gradient(135deg, rgba(245, 131, 111, 0.08) 0%, rgba(245, 131, 111, 0.03) 100%);
+    background: var(--blanco);
 }
 
 .aviso-urgente-decor {
@@ -1092,7 +1067,7 @@ h1, h2, h3, h4, h5 {
     font-weight: 800;
     line-height: 1.35;
     margin: 0 0 6px 0;
-    text-align: left;
+    text-align: center;
 }
 
 .cierre-texto p {
@@ -1100,7 +1075,7 @@ h1, h2, h3, h4, h5 {
     font-size: var(--texto);
     line-height: 1.5;
     margin: 0;
-    text-align: left;
+    text-align: center;
 }
 
 .cierre-accesos {
