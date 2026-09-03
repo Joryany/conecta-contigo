@@ -36,6 +36,7 @@
 
     /* Transiciones */
     --transicion: .3s ease;
+    --transicion-lenta: .5s ease;
 
     /* Gradiente */
     --gradiente: linear-gradient(
@@ -264,13 +265,13 @@ nav a {
     border-radius: 30px;
     font-weight: 600;
     transition:
-        background-color var(--transicion),
+        background var(--transicion-lenta),
         color var(--transicion),
         transform var(--transicion);
 }
 
 nav a:hover {
-    background: var(--azul-claro);
+    background: linear-gradient(135deg, var(--azul-claro), var(--azul-marino));
     color: var(--blanco);
     transform: translateY(-2px);
 }
@@ -281,6 +282,12 @@ header p {
     font-size: 1.1rem;
     color: #334a66;
     text-align: center;
+}
+
+#activo {
+    background: linear-gradient(135deg, var(--azul-claro), var(--azul-marino));
+    color: var(--blanco);
+
 }
 
 /* Navegación secundaria (banner de anclas) */
