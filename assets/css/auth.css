@@ -1,0 +1,87 @@
+/* =========================================================
+   AUTENTICACIÓN · CONECTA CONTIGO
+   Reutiliza las variables de color/espaciado ya definidas en
+   emocional.css y style.css; solo añade lo que faltaba: pestañas
+   y campos de formulario.
+   ========================================================= */
+
+.auth-seccion {
+    max-width: 480px;
+}
+
+.auth-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin: var(--espacio-lg) 0 var(--espacio-md);
+}
+
+.auth-tab {
+    padding: 10px 22px;
+
+    color: var(--azul-marino);
+    background: var(--fondo-suave);
+
+    border: 1.5px solid transparent;
+    border-radius: var(--radio-pill);
+
+    font-weight: 700;
+    font-size: 0.92rem;
+
+    cursor: pointer;
+
+    transition:
+        background var(--transicion-media),
+        border-color var(--transicion-media),
+        color var(--transicion-media);
+}
+
+.auth-tab.activa {
+    color: var(--blanco);
+    background: var(--gradiente, var(--azul-claro));
+    border-color: transparent;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.auth-form label {
+    margin-top: 10px;
+
+    color: var(--azul-marino);
+
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.auth-form input {
+    padding: 12px 14px;
+
+    color: var(--azul-marino);
+    background: var(--blanco);
+
+    border: 1px solid var(--gris-claro);
+    border-radius: var(--radio-elemento);
+
+    font-size: 0.95rem;
+
+    transition:
+        border-color var(--transicion-media),
+        box-shadow var(--transicion-media);
+}
+
+.auth-form input:focus-visible {
+    outline: none;
+
+    border-color: var(--azul-claro);
+
+    box-shadow:
+        0 0 0 3px color-mix(in srgb, var(--azul-claro) 25%, transparent);
+}

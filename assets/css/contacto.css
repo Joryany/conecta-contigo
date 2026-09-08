@@ -340,3 +340,57 @@ h2#Información~article a {
         width: 140px;
     }
 }
+
+.nav-inter nav {
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    z-index: 5;
+    margin-top: 35px;
+    padding: 18px;
+    background: rgba(255, 255, 255, .55);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: var(--sombra-media);
+}
+
+.nav-inter nav a {
+    position: relative;
+    overflow: hidden;
+    background: var(--blanco);
+    padding: 12px 20px;
+    border-radius: var(--radio-pill);
+    box-shadow: var(--sombra-media);
+}
+
+.nav-inter nav a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--gradiente);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--transicion);
+    z-index: -1;
+}
+
+.nav-inter nav a:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-inter nav a:hover {
+    color: var(--blanco);
+    transform: translateY(-3px);
+}
+
+@media(max-width:900px) {
+
+    .nav-inter nav {
+        gap: 10px;
+    }
+
+    .nav-inter nav a {
+        font-size: .9rem;
+        padding: 10px 16px;
+    }
+}

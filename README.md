@@ -15,3 +15,27 @@
         └── js/                 <-- Carpeta para la lógica
             ├── diario.js       <-- Lógica del diario y emociones
             └── chatbot.js      <-- Lógica de respuestas del chat
+
+
+
+emociones.html
+│
+├── Introducción
+│
+├── Registrar emoción
+│   │
+│   ├── Emociones principales
+│   ├── Matices
+│   ├── No sé qué siento
+│   │     └── Cuestionario
+│   └── Guardar
+│
+├── Calendario emocional
+│   │
+│   ├── Calendario
+│   │
+│   └── Resumen del día
+│         │
+│         └── Ver registros completos
+│
+└── Comprender emociones

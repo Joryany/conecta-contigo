@@ -1,159 +1,1940 @@
-.hero-buttons {
+/* =========================================================
+   REGISTRO EMOCIONAL · CONECTA CONTIGO
+   Diseño limpio · moderno · suave · accesible
+   ========================================================= */
 
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-    display: flex;
-    justify-content: center; /* Centrado horizontal */
-    align-items: center;     /* Centrado vertical */
+:root {
+    /* ───────── Colores emocionales ───────── */
+    --emocion-alegria: #FFD700;
+    --emocion-amor: #FF7F7F;
+    --emocion-sorpresa: #FFA500;
+    --emocion-ansiedad: #D95D27;
+    --emocion-estres: #5A5F69;
+    --emocion-miedo: #4B0082;
+    --emocion-tristeza: #4682B4;
+    --emocion-enojo: #CC0000;
+
+    /* ───────── Sistema visual ───────── */
+    --sombra-suave:
+        0 4px 18px rgba(20, 45, 70, 0.05);
+
+    --sombra-media:
+        0 10px 30px rgba(20, 45, 70, 0.08);
+
+    --sombra-hover:
+        0 14px 35px rgba(20, 45, 70, 0.11);
+
+    --borde-suave:
+        1px solid rgba(30, 65, 107, 0.09);
+
+    --fondo-card:
+        rgba(255, 255, 255, 0.92);
+
+    /* ───────── Transiciones ───────── */
+
+    /* Para movimientos importantes */
+    --transicion-lenta:
+        0.65s cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* Para cuestionarios */
+    --transicion-cuestionario:
+        0.8s cubic-bezier(0.22, 1, 0.36, 1);
+
+    /* Para botones y elementos pequeños */
+    --transicion-media:
+        0.35s cubic-bezier(0.22, 1, 0.36, 1);
+
+    --transicion-rapida:
+        0.2s ease;
+
+    /* ───────── Medidas ───────── */
+    --ancho-contenido:
+        900px;
+
+    --ancho-cuestionario:
+        720px;
+
+    --ancho-texto:
+        65ch;
+
+    --radio-card:
+        20px;
+
+    --radio-elemento:
+        14px;
+
+    --radio-pill:
+        999px;
 }
 
-.hero-buttons .btn {
 
-    display: inline-flex;
+/* =========================================================
+   BASE
+   ========================================================= */
 
+.seccion-emocional {
+    width: min(100%, var(--ancho-contenido));
+    margin: 0 auto var(--espacio-xl);
+    transition:
+        opacity var(--transicion-lenta),
+        transform var(--transicion-lenta);
+}
+
+
+/* =========================================================
+   TARJETAS
+   ========================================================= */
+.seccion-emocional.card {
+    max-width: var(--ancho-contenido);
+
+    padding: 42px 48px;
+
+    background: var(--fondo-card);
+
+    border: var(--borde-suave);
+    border-radius: var(--radio-card);
+
+    box-shadow: var(--sombra-suave);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+.seccion-emocional.card:hover {
+    box-shadow: var(--sombra-media);
+}
+
+
+/* =========================================================
+   TEXTOS GENERALES
+   ========================================================= */
+
+.intro-texto,
+.explorador-texto {
+    width: min(100%, var(--ancho-texto));
+    margin: 0 auto;
+
+    color: var(--gris);
+
+    text-align: center;
+    line-height: 1.7;
+}
+
+.intro-texto--matices {
+    margin-top: var(--espacio-sm);
+
+    font-size: 0.94rem;
+    text-align: center;
+}
+
+.oculto {
+    display: none !important;
+}
+
+
+/* =========================================================
+   MENSAJES DE ESTADO
+   ========================================================= */
+
+.mensaje-aviso {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+
+    gap: var(--espacio-sm);
+
+    padding: 15px 18px;
+    margin-bottom: var(--espacio-md);
+
+    color: var(--azul-marino);
+
+    background: rgba(217, 93, 39, 0.07);
+
+    border: 1px solid rgba(217, 93, 39, 0.12);
+    border-left: 4px solid var(--emocion-ansiedad);
+
+    border-radius: var(--radio-elemento);
+
+    animation: aparecer 0.7s ease both;
+}
+
+.mensaje-aviso--info {
+    background: rgba(70, 142, 214, 0.07);
+    border-color: rgba(70, 142, 214, 0.12);
+    border-left-color: var(--azul-claro);
+}
+
+.mensaje-estado {
+    min-height: 1.4em;
+
+    margin-top: var(--espacio-sm);
+
+    color: var(--verde-agua);
+
+    text-align: center;
+    font-weight: 600;
+}
+
+.mensaje-estado--error {
+    color: var(--emocion-enojo);
+}
+
+
+/* =========================================================
+   SELECTOR DE EMOCIONES
+   ========================================================= */
+
+.lista-emociones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 
     gap: 12px;
 
-    padding: 16px 30px;
+    margin: var(--espacio-lg) auto;
+}
 
-    border-radius: 999px;
+
+/* ───────── Botón de emoción ───────── */
+
+.emocion-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    min-height: 48px;
+
+    padding: 11px 19px;
+
+    color: var(--azul-marino);
+    background: var(--blanco);
+
+    border: 1.5px solid var(
+        --color-emocion,
+        var(--gris-claro)
+    );
+
+    border-radius: var(--radio-pill);
+
+    font-size: 0.94rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 8px rgba(20, 45, 70, 0.03);
+
+    transition:
+        transform var(--transicion-media),
+        background var(--transicion-media),
+        border-color var(--transicion-media),
+        box-shadow var(--transicion-media);
+}
+
+.emocion-boton:hover:not(:disabled) {
+    transform: translateY(-3px);
+
+    box-shadow: var(--sombra-media);
+
+    background: color-mix(
+        in srgb,
+        var(--color-emocion) 7%,
+        white
+    );
+}
+
+.emocion-boton:active:not(:disabled) {
+    transform: translateY(-1px) scale(0.98);
+}
+
+.emocion-boton.seleccionada {
+    background: color-mix(
+        in srgb,
+        var(--color-emocion) 18%,
+        white
+    );
+
+    border-width: 2px;
+
+    box-shadow:
+        0 6px 18px color-mix(
+            in srgb,
+            var(--color-emocion) 16%,
+            transparent
+        );
+
+    transform: translateY(-2px);
+}
+
+.emocion-boton:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* ───────── Punto de color ───────── */
+
+.punto-color {
+    width: 13px;
+    height: 13px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(
+        --color-emocion,
+        var(--gris)
+    );
+
+    box-shadow:
+        0 0 0 4px color-mix(
+            in srgb,
+            var(--color-emocion) 18%,
+            transparent
+        );
+}
+
+.marca-seleccion {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--azul-marino);
+}
+
+
+/* =========================================================
+   MATICES
+   ========================================================= */
+
+.contenedor-matices {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 14px;
+
+    margin: var(--espacio-lg) 0;
+
+    animation: aparecer 0.65s ease both;
+}
+
+.grupo-matiz {
+    width: 100%;
+    max-width: 620px;
+
+    padding: 17px;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border: var(--borde-suave);
+    border-radius: var(--radio-elemento);
+
+    transition:
+        border-color var(--transicion-media),
+        box-shadow var(--transicion-media),
+        transform var(--transicion-media);
+}
+
+.grupo-matiz:hover {
+    border-color: color-mix(
+        in srgb,
+        var(--azul-claro) 35%,
+        var(--gris-claro)
+    );
+
+    box-shadow: var(--sombra-suave);
+}
+
+.grupo-matiz legend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    gap: 8px;
+
+    padding: 0 7px;
+
+    color: var(--azul-marino);
+
+    font-weight: 700;
+}
+
+.matices-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-top: 13px;
+}
+
+
+/* ───────── Botones de matiz ───────── */
+
+.matiz-boton {
+    min-height: 38px;
+
+    padding: 8px 15px;
+
+    color: var(--azul-marino);
+    background: var(--fondo-suave);
+
+    border: 1px solid var(--gris-claro);
+    border-radius: var(--radio-pill);
+
+    font-size: 0.87rem;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transicion-media),
+        background var(--transicion-media),
+        border-color var(--transicion-media),
+        color var(--transicion-media),
+        box-shadow var(--transicion-media);
+}
+
+.matiz-boton:hover:not(:disabled):not(.seleccionado) {
+    transform: translateY(-2px);
+
+    border-color: var(--azul-claro);
+
+    background: var(--blanco);
+
+    box-shadow: var(--sombra-suave);
+}
+
+.matiz-boton.seleccionado {
+    color: var(--blanco);
+    background: var(--azul-claro);
+
+    border-color: var(--azul-claro);
 
     font-weight: 600;
 
-    transition: .25s;
+    box-shadow:
+        0 5px 15px rgba(70, 142, 214, 0.22);
 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
-
+    transform: translateY(-1px);
 }
 
-.hero-buttons .btn:hover {
+.matiz-boton.seleccionado:hover:not(:disabled) {
+    color: var(--blanco);
+    background: color-mix(
+        in srgb,
+        var(--azul-claro) 85%,
+        black
+    );
+    border-color: var(--azul-claro);
+}
+
+.matiz-boton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   ACCIONES DE LA SECCIÓN
+   ========================================================= */
+
+.acciones-registro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    margin-top: 28px;
+    padding-top: 4px;
+
+    gap: 14px;
+}
+
+.acciones-registro button {
+    margin: 0 auto;
+}
+
+button.btn-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 220px;
+
+    padding: 13px 24px;
+
+    color: var(--blanco);
+    background: linear-gradient(
+        135deg,
+        var(--azul-claro),
+        var(--verde-agua)
+    );
+
+    border: none;
+    border-radius: var(--radio-pill);
+
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    text-align: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 14px rgba(70, 142, 214, 0.18);
+
+    transition:
+        transform var(--transicion-media),
+        box-shadow var(--transicion-media),
+        filter var(--transicion-media);
+}
+
+button.btn-secundario:hover {
+    color: var(--blanco);
 
     transform: translateY(-3px);
 
+    box-shadow:
+        0 9px 22px rgba(70, 142, 214, 0.24);
+
+    filter: brightness(1.03);
 }
 
-.hero-buttons .btn:first-child {
-
-    background: white;
-
-    color: #173f79;
-
+button.btn-secundario:active {
+    transform: translateY(-1px) scale(0.98);
 }
 
-.hero-buttons .btn:last-child {
-
-    background: linear-gradient(135deg,
-            #2e67d0,
-            #4b8dea);
-
-    color: white;
-
+button.btn-primario:disabled,
+button.btn-secundario:disabled {
+    background: var(--gris-claro);
+    color: var(--gris);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    filter: none;
 }
 
-.hero-buttons .btn::after {
+/* =========================================================
+   MENSAJE DE ESTADO (registro guardado / límite)
+   ========================================================= */
 
-    content: "→";
+#mensaje-registro {
+    margin-top: var(--espacio-lg);
+}
 
-    transition: .25s;
+/* El aviso de límite diario (y cualquier otro aviso simple, de un solo
+   párrafo) se centra y usa el mismo fondo que el resto de la página,
+   en vez del tinte de color que tienen los avisos con una acción
+   dentro (como el de edición, que conserva su propio estilo). */
+.mensaje-aviso:not(.mensaje-aviso--info) {
+    justify-content: center;
+    text-align: center;
+    background: var(--fondo-suave);
+    border-left-color: var(--gris-claro);
+}
 
+#mensaje-limite-diario {
+    margin-top: var(--espacio-md);
 }
 
 
+/* =========================================================
+   EXPLORADOR EMOCIONAL
+   ========================================================= */
 
-/*---------------- Scroll ----------------*/
-
-.scroll-down {
-
-    position:absolute;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    bottom:12px;
-
-    z-index:5;
-
-    color:#4a5d73;
-
+.explorador {
+    width: min(100%, var(--ancho-cuestionario));
+    margin-inline: auto;
 }
 
-.scroll-down::after {
 
-   content: "↓";
+/* ───────── Progreso ───────── */
 
-    font-size: 26px;
+.explorador-progreso {
+    margin-bottom: 12px;
 
-    animation: bounce 2s infinite;
+    color: var(--verde-agua);
 
+    text-align: center;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
-@keyframes bounce {
 
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
+/* ───────── Pregunta ───────── */
 
+.explorador-pregunta {
+    max-width: 680px;
+
+    margin: 0 auto var(--espacio-lg);
+
+    color: var(--azul-marino);
+
+    text-align: center;
+
+    font-size: clamp(
+        1.15rem,
+        2vw,
+        1.35rem
+    );
+
+    line-height: 1.5;
+
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   OPCIONES DEL CUESTIONARIO
+   ========================================================= */
+
+.explorador-opciones {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: var(--espacio-lg);
+
+    /*
+       La animación es intencionalmente lenta.
+       Esto hace que cada pregunta tenga una
+       pequeña pausa visual.
+    */
+    animation: preguntaEntrar
+        var(--transicion-cuestionario)
+        both;
+}
+
+.opcion-pregunta {
+    position: relative;
+
+    width: 100%;
+
+    padding: 17px 20px;
+
+    color: var(--azul-marino);
+    background: var(--blanco);
+
+    border: 1px solid var(--gris-claro);
+    border-radius: var(--radio-elemento);
+
+    text-align: left;
+
+    font-size: 0.96rem;
+    line-height: 1.5;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    box-shadow: 0 2px 7px rgba(20, 45, 70, 0.025);
+
+    transition:
+        transform var(--transicion-media),
+        background var(--transicion-media),
+        border-color var(--transicion-media),
+        box-shadow var(--transicion-media);
+}
+
+.opcion-pregunta:hover {
+    background: color-mix(
+        in srgb,
+        var(--azul-claro) 4%,
+        white
+    );
+
+    border-color: color-mix(
+        in srgb,
+        var(--azul-claro) 55%,
+        var(--gris-claro)
+    );
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--sombra-media);
+}
+
+.opcion-pregunta:active {
+    transform: scale(0.985);
+}
+
+/* Transición de salida: se aplica al contenedor saliente justo antes
+   de sustituir su contenido, para que el cambio de pregunta no sea
+   instantáneo. Ver JS: renderExplorador() añade/quita esta clase. */
+#explorador-contenido.transicion-saliendo > * {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+        opacity var(--transicion-media),
+        transform var(--transicion-media);
+}
+
+
+/* =========================================================
+   RESULTADOS
+   ========================================================= */
+
+.explorador-opciones--resultado {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: var(--espacio-lg);
+}
+
+.resultado-emocion-boton {
+    padding: 14px 26px;
+
+    margin: 0;
+
+    color: var(--azul-marino);
+
+    background: color-mix(
+        in srgb,
+        var(--color-emocion) 14%,
+        white
+    );
+
+    border: 1.5px solid var(--color-emocion);
+    border-radius: var(--radio-pill);
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transicion-media),
+        background var(--transicion-media),
+        color var(--transicion-media),
+        box-shadow var(--transicion-media);
+}
+
+.resultado-emocion-boton:hover {
+    color: var(--blanco);
+
+    background: var(--color-emocion);
+
+    transform: translateY(-3px);
+
+    box-shadow: var(--sombra-hover);
+}
+
+
+/* =========================================================
+   CALENDARIO
+   ========================================================= */
+
+.calendario-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(280px, 340px);
+
+    gap: var(--espacio-lg);
+
+    align-items: start;
+}
+
+.calendario-card {
+    padding: var(--espacio-lg);
+}
+
+.calendario-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    margin-bottom: var(--espacio-md);
+}
+
+.calendario-header h3 {
+    margin: 0;
+
+    color: var(--azul-marino);
+
+    text-transform: capitalize;
+}
+
+
+/* ───────── Días de la semana ───────── */
+
+.calendario-dias-semana {
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    margin-bottom: 9px;
+
+    color: var(--gris);
+
+    text-align: center;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* ───────── Cuadrícula ───────── */
+
+.calendario-grid {
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 7px;
+}
+
+.dia-celda {
+    position: relative;
+
+    aspect-ratio: 1;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    padding: 6px;
+
+    color: var(--azul-marino);
+    background: var(--fondo-suave);
+
+    border: 1px solid transparent;
+    border-radius: 13px;
+
+    overflow: hidden;
+    background-clip: padding-box;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--transicion-media),
+        background var(--transicion-media),
+        box-shadow var(--transicion-media),
+        border-color var(--transicion-media);
+}
+
+.dia-celda:hover {
+    transform: translateY(-2px);
+
+    border-color: var(--gris-claro);
+
+    box-shadow: var(--sombra-media);
+}
+
+.dia-vacio {
+    background: transparent;
+
+    cursor: default;
+    pointer-events: none;
+}
+
+.dia-sin-registro {
+    background: var(--fondo-suave);
+}
+
+.dia-numero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 23px;
+    height: 23px;
+
+    color: var(--azul-marino);
+    background: rgba(255, 255, 255, 0.92);
+
+    border-radius: 50%;
+
+    font-size: 0.76rem;
+    font-weight: 700;
+
+    box-shadow:
+        0 2px 5px rgba(20, 45, 70, 0.05);
+}
+
+.dia-hoy {
+    box-shadow:
+        0 0 0 2px var(--azul-marino) inset;
+}
+
+.dia-seleccionado {
+    border-color: var(--azul-marino);
+    box-shadow:
+        0 0 0 3px var(--azul-marino) inset;
+}
+
+
+/* =========================================================
+   LEYENDA DEL CALENDARIO
+   ========================================================= */
+
+.calendario-leyenda {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 10px 20px;
+
+    margin-top: var(--espacio-lg);
+    padding-top: var(--espacio-md);
+
+    border-top: 1px solid var(--gris-claro);
+}
+
+.leyenda-item {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: var(--gris);
+
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   PANEL DEL DÍA
+   ========================================================= */
+
+.panel-dia {
+    min-height: 200px;
+
+    padding: var(--espacio-lg);
+
+    animation:
+        aparecer 0.7s
+        cubic-bezier(0.22, 1, 0.36, 1)
+        both;
+}
+
+.panel-dia h3 {
+    margin: 0 0 7px;
+
+    color: var(--azul-marino);
+
+    text-align: left;
+
+    text-transform: capitalize;
+}
+
+.frecuencia-lista {
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+
+    margin: var(--espacio-md) 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.frecuencia-item {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--azul-marino);
+
+    font-size: 0.91rem;
+    font-weight: 600;
+}
+
+.matices-dia {
+    color: var(--gris);
+
+    font-size: 0.87rem;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   REGISTROS
+   ========================================================= */
+
+.registros-completos {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: var(--espacio-md);
+    padding: 0;
+
+    list-style: none;
+}
+
+.registro-item {
+    padding: 14px 16px;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    border: 1px solid var(--gris-claro);
+    border-radius: var(--radio-elemento);
+
+    transition:
+        transform var(--transicion-media),
+        border-color var(--transicion-media),
+        box-shadow var(--transicion-media);
+}
+
+.registro-item:hover {
+    border-color: var(--azul-claro);
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--sombra-suave);
+}
+
+.registro-hora {
+    margin-bottom: 7px;
+
+    color: var(--gris);
+
+    font-size: 0.77rem;
+    font-weight: 700;
+}
+
+.registro-emociones {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-bottom: 9px;
+}
+
+.etiqueta-emocion {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 12px;
+
+    color: var(--azul-marino);
+
+    background: color-mix(
+        in srgb,
+        var(--color-emocion) 16%,
+        white
+    );
+
+    border: 1px solid var(--color-emocion);
+    border-radius: var(--radio-pill);
+
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.registro-acciones {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.registro-acciones button {
+    padding: 6px 13px;
+
+    font-size: 0.78rem;
+}
+
+
+/* =========================================================
+   INFORMACIÓN EMOCIONAL
+   ========================================================= */
+
+.info-emociones {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.emocion-detalle {
+    padding: 17px 19px;
+
+    background: var(--blanco);
+
+    border: 1px solid var(--gris-claro);
+    border-radius: var(--radio-elemento);
+
+    box-shadow:
+        0 2px 8px rgba(20, 45, 70, 0.02);
+
+    transition:
+        transform var(--transicion-media),
+        border-color var(--transicion-media),
+        box-shadow var(--transicion-media);
+}
+
+.emocion-detalle:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--sombra-media);
+}
+
+.emocion-detalle summary {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--azul-marino);
+
+    cursor: pointer;
+
+    font-weight: 700;
+}
+
+.emocion-detalle p {
+    margin: 12px 0 0;
+
+    color: var(--gris);
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ACCESIBILIDAD
+   ========================================================= */
+
+.emocion-boton:focus-visible,
+.matiz-boton:focus-visible,
+.opcion-pregunta:focus-visible,
+.resultado-emocion-boton:focus-visible,
+.dia-celda:focus-visible,
+button.btn-enlace:focus-visible,
+button.btn-icono:focus-visible {
+    outline: 3px solid
+        color-mix(
+            in srgb,
+            var(--azul-claro) 65%,
+            transparent
+        );
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   ANIMACIONES
+   ========================================================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
         transform: translateY(0);
-
     }
-
-    40% {
-
-        transform: translateY(6px);
-
-    }
-
-    60% {
-
-        transform: translateY(3px);
-
-    }
-
 }
 
-/*---------------- Responsive ----------------*/
 
-@media (max-width:900px) {
+/*
+   Animación especial para el cuestionario.
 
+   Es deliberadamente más lenta para que el cambio
+   de pregunta no parezca instantáneo.
+*/
 
-    .hero h1 {
-
-        font-size: 3rem;
-
+@keyframes preguntaEntrar {
+    0% {
+        opacity: 0;
+        transform: translateY(18px);
     }
 
-
-    .hero-content p {
-
-        font-size: 1.05rem;
-
+    45% {
+        opacity: 0;
+        transform: translateY(12px);
     }
 
-    .hero-overlay {
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        background:
 
-            linear-gradient(180deg,
+/* =========================================================
+   RESPONSIVE · TABLET
+   ========================================================= */
 
-                rgba(255, 255, 255, .90),
+@media (max-width: 900px) {
 
-                rgba(255, 255, 255, .55),
-
-                rgba(255, 255, 255, .20));
-
+    .calendario-layout {
+        grid-template-columns: 1fr;
     }
 
-    .hero-buttons {
+    .panel-dia {
+        min-height: auto;
+    }
+}
 
+
+/* =========================================================
+   RESPONSIVE · MÓVIL
+   ========================================================= */
+
+@media (max-width: 576px) {
+
+    .seccion-emocional.card {
+        border-radius: 17px;
+    }
+
+    .intro-texto,
+    .explorador-texto {
+        line-height: 1.6;
+    }
+
+    .lista-emociones {
+        gap: 9px;
+    }
+
+    .emocion-boton {
+        min-height: 44px;
+
+        padding: 9px 14px;
+
+        font-size: 0.86rem;
+    }
+
+    .matices-opciones {
+        gap: 7px;
+    }
+
+    .matiz-boton {
+        padding: 7px 12px;
+
+        font-size: 0.83rem;
+    }
+
+    .explorador-pregunta {
+        font-size: 1.08rem;
+
+        line-height: 1.5;
+    }
+
+    .opcion-pregunta {
+        padding: 15px 16px;
+
+        font-size: 0.92rem;
+    }
+
+    .calendario-card,
+    .panel-dia {
+        padding: var(--espacio-md);
+    }
+
+    .calendario-grid {
+        gap: 5px;
+    }
+
+    .dia-celda {
+        padding: 4px;
+
+        border-radius: 10px;
+    }
+
+    .dia-numero {
+        width: 19px;
+        height: 19px;
+
+        font-size: 0.65rem;
+    }
+
+    .calendario-dias-semana {
+        font-size: 0.68rem;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .seccion-emocional.card {
+        padding: 30px 20px;
+    }
+
+    .acciones-registro {
+        margin-top: 24px;
+    }
+
+    button.btn-secundario {
+        width: 100%;
+        min-width: 0;
+        max-width: 280px;
+    }
+}
+
+/* =========================================================
+   ACCESIBILIDAD · MENOS MOVIMIENTO
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/*==================================================
+=                    HERO / INICIO                 =
+==================================================*/
+
+.hero-emocional {
+    position: relative;
+
+    width: 100%;
+    max-width: none;
+
+    margin: 0 0 var(--espacio-md);
+    padding: var(--espacio-xl) 5% calc(var(--espacio-xl) + 10px);
+
+    background: linear-gradient(
+        135deg,
+        var(--azul-marino) 0%,
+        color-mix(in srgb, var(--azul-marino) 45%, var(--azul-claro)) 55%,
+        color-mix(in srgb, var(--azul-claro) 80%, white) 100%
+    );
+
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-emocional::before {
+    /* Toque de luz para que el degradado se sienta más vivo, no plano. */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at 85% 10%,
+        rgba(255, 255, 255, 0.22),
+        transparent 55%
+    );
+    pointer-events: none;
+}
+
+.hero-emocional::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 48px;
+    background: var(--fondo-suave);
+    border-radius: 100% 100% 0 0 / 100% 100% 0 0;
+}
+
+.hero-emocional__contenido {
+    position: relative;
+    z-index: 1;
+
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.hero-emocional h1 {
+    color: var(--blanco);
+    font-size: var(--titulo-1);
+    margin-bottom: var(--espacio-sm);
+}
+
+.hero-emocional__texto {
+    width: auto;
+    max-width: 60ch;
+    margin: 0 auto var(--espacio-md);
+
+    color: rgba(255, 255, 255, 0.94);
+    font-size: var(--texto-grande);
+    line-height: 1.7;
+}
+
+.hero-emocional__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 16px 32px;
+
+    margin-bottom: var(--espacio-md);
+
+    color: var(--azul-marino);
+    background: var(--blanco);
+
+    border: none;
+    border-radius: var(--radio-pill);
+
+    font-size: 1.05rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 28px rgba(17, 46, 81, 0.22);
+
+    transition:
+        transform var(--transicion-media),
+        box-shadow var(--transicion-media);
+}
+
+.hero-emocional__cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(17, 46, 81, 0.28);
+}
+
+.hero-emocional__nota {
+    margin: 0 auto;
+    max-width: 46ch;
+
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.92rem;
+    font-style: italic;
+}
+
+.hero-emocional button {
+    transition: transfrom var(--transicion-lenta),
+    color var(--transicion-media),
+    background var(--transicion-lenta);
+}
+.hero-emocional button:hover {
+     background: var(--gradiente);
+     color: var(--blanco);
+    transform: translateY(-3px);
+}
+
+.nav-inter nav {
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    z-index: 5;
+    margin-top: 35px;
+    padding: 18px;
+    background: rgba(255, 255, 255, .55);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: var(--sombra-media);
+
+    margin-bottom: 60px;
+}
+
+.nav-inter nav a {
+    position: relative;
+    overflow: hidden;
+    background: var(--blanco);
+    padding: 12px 20px;
+    border-radius: var(--radio-pill);
+    box-shadow: var(--sombra-media);
+}
+
+.nav-inter nav a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--gradiente);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: var(--transicion);
+    z-index: -1;
+}
+
+.nav-inter nav a:hover::before {
+    transform: scaleX(1);
+}
+
+.nav-inter nav a:hover {
+    color: var(--blanco);
+    transform: translateY(-3px);
+}
+
+@media(max-width:900px) {
+
+    .nav-inter nav {
+        gap: 10px;
+    }
+
+    .nav-inter nav a {
+        font-size: .9rem;
+        padding: 10px 16px;
+    }
+}
+
+/*==================================================
+=       INVITACIÓN A "CONOCE TUS EMOCIONES"        =
+==================================================*/
+
+.invitacion-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    gap: var(--espacio-sm);
+
+    padding-top: calc(var(--padding-card) + 14px);
+
+    background: var(--gradiente);
+}
+
+.invitacion-info__texto h2 {
+    text-align: center;
+    color: var(--blanco);
+    margin-bottom: 6px;
+}
+
+.invitacion-info .intro-texto {
+    color: rgba(255, 255, 255, .92);
+    margin-bottom: 0;
+    background: transparent;
+}
+
+.invitacion-info .btn-primario {
+    flex-shrink: 0;
+    margin-top: var(--espacio-md);
+    background: var(--blanco);
+    color: var(--azul-marino);
+}
+
+.invitacion-info .btn-primario:hover {
+    background: var(--fondo-suave);
+}
+
+
+/* RESET DE ESTILOS DE BOTONES */
+.footer a,
+.footer a:hover {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: auto !important;
+    width: auto !important;
+}
+
+.footer {
+    width: 100%;
+    background-color: var(--azul-marino, #1e416b) !important;
+    color: #ffffff;
+}
+
+/* CONTENEDOR APILADO (SIN COLUMNAS) */
+.footer-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 0 25px;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 25px !important;
+}
+
+/* MARCA */
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    max-width: 550px;
+}
+
+.footer-logo {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.footer-description {
+    margin: 0;
+    color: #dce8ee;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.footer-quote {
+    color: var(--verde-agua, #69B2AE);
+    font-size: 0.82rem;
+    font-style: italic;
+}
+
+/* NAVEGACIÓN EN UNA SOLA FILA */
+.footer-explore {
+    width: 100%;
+}
+
+.footer-links-row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+}
+
+.footer-links-row a {
+    color: #ffffff !important;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
+
+.footer-links-row a:hover {
+    color: var(--verde-agua, #69B2AE) !important;
+    text-decoration: underline !important;
+}
+
+/* PRIVACIDAD */
+.footer-privacy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #dce8ee;
+}
+
+.footer-privacy strong {
+    color: #ffffff;
+}
+
+.footer-privacy a {
+    color: var(--verde-agua, #69B2AE) !important;
+    text-decoration: underline !important;
+}
+
+/* COPYRIGHT */
+.footer-bottom {
+    display: flex;
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #aac1ce;
+    font-size: 0.78rem;
+}
+
+/*==================================================
+=        VENTANA EMERGENTE "CONOCE TUS EMOCIONES"  =
+==================================================*/
+
+/* Usamos <dialog> nativo: se abre con showModal() y ya trae
+   manejo de foco y de la tecla Escape del navegador. */
+dialog.modal-emociones {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+
+    border: none;
+    padding: 0;
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-grande);
+    width: min(640px, calc(100vw - 48px));
+    height: min(680px, 92vh);
+    max-height: 92vh;
+    overflow: hidden;
+}
+
+dialog.modal-emociones[open] {
+    animation: aparecer .22s ease;
+}
+
+dialog.modal-emociones::backdrop {
+    background: rgba(20, 46, 81, .55);
+}
+
+.modal-emociones__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.modal-emociones__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-sm);
+    padding: 12px var(--espacio-md);
+    border-bottom: 1px solid var(--gris-claro);
+    flex-shrink: 0;
+}
+
+.modal-emociones__header h2 {
+    margin: 0;
+    text-align: left;
+    font-size: 1.15rem;
+}
+
+.btn-cerrar-modal {
+    background: var(--fondo-suave);
+    color: var(--azul-marino);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: .9rem;
+    line-height: 1;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.btn-cerrar-modal:hover {
+    background: var(--emocion-enojo);
+    color: var(--blanco);
+}
+
+.modal-emociones__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px var(--espacio-md);
+    border-bottom: 1px solid var(--gris-claro);
+    flex-shrink: 0;
+}
+
+.modal-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    background: var(--fondo-suave);
+    color: var(--azul-marino);
+    border: 2px solid transparent;
+    border-radius: var(--radio-pill);
+    padding: 6px 12px;
+    font-size: .8rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modal-tab.activa {
+    border-color: var(--color-emocion);
+    background: color-mix(in srgb, var(--color-emocion) 16%, white);
+}
+
+.modal-emociones__contenido {
+    padding: var(--espacio-md);
+    overflow-y: auto;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.modal-emocion-cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: var(--espacio-md);
+    padding-bottom: var(--espacio-sm);
+    border-bottom: 3px solid var(--color-emocion);
+}
+
+.modal-emocion-cabecera h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.punto-color--grande {
+    width: 22px;
+    height: 22px;
+}
+
+.modal-emociones__contenido h4 {
+    margin: var(--espacio-md) 0 10px;
+    color: var(--azul-marino);
+    text-align: center;
+}
+
+.modal-emociones__contenido p {
+    text-align: center;
+    margin-bottom: var(--espacio-md);
+}
+
+.modal-matices-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-matices-lista li {
+    background: var(--fondo-suave);
+    border-radius: var(--radio);
+    padding: 12px 14px;
+    font-size: .92rem;
+    color: var(--gris);
+    text-align: center;
+}
+
+.modal-matices-lista li strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--azul-marino);
+}
+
+.modal-emociones__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-sm);
+    padding: 12px var(--espacio-md);
+    border-top: 1px solid var(--gris-claro);
+    background: var(--fondo-suave);
+    flex-shrink: 0;
+}
+
+.modal-emociones__footer p {
+    margin: 0;
+    font-size: .85rem;
+    color: var(--azul-marino);
+    font-weight: 600;
+}
+
+/* En ventanas bajas (poca altura), la pregunta del pie ocupa espacio
+   que hace más falta para leer el contenido: se oculta y se deja solo
+   el botón, bien compacto. */
+@media (max-height: 640px) {
+    .modal-emociones__footer p {
+        display: none;
+    }
+
+    .modal-emociones__footer {
+        justify-content: center;
+        padding: 10px var(--espacio-md);
+    }
+
+    .modal-emociones__header {
+        padding: 8px var(--espacio-md);
+    }
+
+    .modal-emociones__tabs {
+        padding: 6px var(--espacio-md);
+    }
+}
+
+/* El enlace "Ir a Comprende" es una etiqueta <a>, y los estilos globales
+   de botón (fondo, radio, sombra) solo se aplican a <button> e
+   <input type="submit">, así que aquí le damos el aspecto completo de
+   un botón real para que no se vea como un simple enlace de texto. */
+.modal-emociones__footer .btn-primario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 12px 26px;
+
+    color: var(--blanco);
+    background: var(--gradiente);
+
+    border: none;
+    border-radius: var(--radio-pill);
+
+    font-weight: 700;
+    font-size: 0.95rem;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 16px rgba(17, 46, 81, .18);
+
+    transition:
+        transform var(--transicion-media),
+        box-shadow var(--transicion-media);
+}
+
+.modal-emociones__footer .btn-primario:hover {
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 9px 20px rgba(17, 46, 81, .24);
+}
+
+/*==================================================
+=                  RESPONSIVE                      =
+==================================================*/
+
+@media (max-width: 900px) {
+    .calendario-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .emocion-boton {
+        padding: 8px 14px;
+        font-size: .88rem;
+    }
+
+    .opcion-pregunta {
+        padding: 12px 14px;
+    }
+
+    .calendario-card,
+    .panel-dia {
+        padding: var(--espacio-sm);
+    }
+
+    .dia-numero {
+        width: 16px;
+        height: 16px;
+        font-size: .68rem;
+    }
+
+    .invitacion-info {
         flex-direction: column;
-
-        align-items: flex-start;
-
+        align-items: stretch;
+        text-align: center;
     }
 
+    .invitacion-info__texto h2 {
+        text-align: center;
+    }
+
+    dialog.modal-emociones {
+        width: 94vw;
+        height: 90vh;
+        max-height: 90vh;
+    }
+
+    .modal-emociones__footer {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
 }

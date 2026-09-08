@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conecta Contigo - Registro Emocional</title>
+    <title>Registro Emocional - Registro Emocional</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/emocional.css">
-    
+    <link rel="stylesheet" href="assets/css/auth.css">
+
 
 </head>
 
@@ -24,33 +25,165 @@
                 <a href="comprende.html">Comprende</a>
                 <a href="emocional.html" id="activo">Emociones</a>
                 <a href="soter.html">Soter</a>
+                <a href="cuenta.html" id="nav-auth-link">Cuenta</a>
 
             </nav>
         </div>
     </header>
 
     <main>
-        <div>
-            <h1 style="text-align: center; font-weight: 600px ;">En diseño...</h1>
-            <p style="text-align: center; padding: 20px;">Puede probar otros apartados de nuestra página, proximamente estará
-                habilitado este apartado.</p>
-        </div>   
-        <div class="hero-buttons">
+        <section id="inicio-emocional" class="hero-emocional" aria-labelledby="titulo-hero">
+            <div class="hero-emocional__contenido">
+                <h1 id="titulo-hero">¿Cómo te sientes hoy?</h1>
+                <p class="hero-emocional__texto">
+                    A veces ponerle nombre a lo que sentimos es el primer paso para entendernos mejor.
+                    Registra tus emociones, explora sus matices y observa cómo cambian con el tiempo.
+                </p>
+                <button type="button" id="btn-hero-registrar" class="hero-emocional__cta">Registrar cómo me siento →</button>
+                <p class="hero-emocional__nota">No hay emociones correctas o incorrectas. <br>
+                    Este espacio es para ti.</p>
+            </div>
+        </section>
+
+        <div class="nav-inter">
+            <nav  aria-label="Navegación de la página de emociones">
+            <a href="#registro-emocional">Registro</a>
+            <a href="#calendario-emocional">Calendario</a>
+            <a href="#informacion-emocional">Aprender</a>
+        </nav>
+        </div>
         
-            <a href="conoce.html" class="btn">
-                Conoce más
-            </a>
 
-            <a href="contacto.html" class="btn">
-                Busca ayuda
-            </a>
+        <section id="registro-emocional" class="seccion-emocional card" aria-labelledby="titulo-registro">
+            <h2 id="titulo-registro">Registra tu emoción</h2>
+            <p class="intro-texto">
+                Elige entre una y tres emociones que representen lo que sientes ahora. 
+                <br>
+                Si quieres, puedes añadir hasta dos matices por cada una para describirlo mejor. Tú decides qué representa
+                mejor tu experiencia.
+            </p>
 
+            <div id="mensaje-limite-diario" class="mensaje-aviso oculto" role="alert"></div>
+
+            <div id="aviso-edicion" class="mensaje-aviso mensaje-aviso--info oculto">
+                <span>Estás editando un registro.</span>
+                <button type="button" id="btn-cancelar-edicion" class="btn-enlace">Cancelar edición</button>
+            </div>
+
+            <div id="lista-emociones" class="lista-emociones" role="group" aria-label="Emociones principales"></div>
+
+            <div id="contenedor-matices" class="contenedor-matices"></div>
+
+            <div class="acciones-registro">
+                <button type="button" id="btn-no-se" class="btn-secundario">No sé qué siento</button>
+                <button type="button" id="btn-guardar-registro" class="btn-primario">Guardar registro</button>
+            </div>
+
+            <p id="mensaje-registro" class="mensaje-estado" aria-live="polite"></p>
+        </section>
+
+        <section id="explorador-emocional" class="seccion-emocional card oculto" aria-labelledby="titulo-explorador">
+            <h2 id="titulo-explorador">Explorador emocional</h2>
+            <div id="explorador-contenido"></div>
+        </section>
+
+        <section id="calendario-emocional" class="seccion-emocional" aria-labelledby="titulo-calendario">
+            <h2 id="titulo-calendario">Tu calendario emocional</h2>
+
+            <div class="calendario-layout">
+                <div class="card calendario-card">
+                    <div class="calendario-header">
+                        <button type="button" id="mes-anterior" class="btn-icono" aria-label="Mes anterior">‹</button>
+                        <h3 id="calendario-mes-actual" aria-live="polite"></h3>
+                        <button type="button" id="mes-siguiente" class="btn-icono" aria-label="Mes siguiente">›</button>
+                    </div>
+
+                    <div class="calendario-dias-semana" aria-hidden="true">
+                        <span>Lun</span><span>Mar</span><span>Mié</span><span>Jue</span><span>Vie</span><span>Sáb</span><span>Dom</span>
+                    </div>
+
+                    <div id="calendario-grid" class="calendario-grid" role="grid" aria-label="Días del mes"></div>
+
+                    <div id="calendario-leyenda" class="calendario-leyenda"></div>
+                </div>
+
+                <div class="card panel-dia" id="panel-dia" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <section id="informacion-emocional" class="seccion-emocional" aria-labelledby="titulo-informacion">
+            <div class="card invitacion-info">
+                <div class="invitacion-info__texto">
+                    <h2 id="titulo-informacion">¿Te gustaría conocer más sobre tus emociones?</h2>
+                    <p class="intro-texto">
+                        Descubre cómo se siente cada una, cómo identificarla y qué significan sus matices.
+                        Leer esta información no crea ni modifica ningún registro.
+                    </p>
+                </div>
+                <button type="button" id="btn-abrir-info-emociones" class="btn-primario">Conoce tus emociones</button>
+            </div>
+        </section>
+
+        <dialog id="modal-emociones" class="modal-emociones" aria-labelledby="modal-emociones-titulo">
+            <div class="modal-emociones__inner">
+                <div class="modal-emociones__header">
+                    <h2 id="modal-emociones-titulo">Conoce tus emociones</h2>
+                    <button type="button" id="btn-cerrar-modal-emociones" class="btn-cerrar-modal" aria-label="Cerrar ventana">✕</button>
+                </div>
+
+                <div class="modal-emociones__tabs" id="modal-emociones-tabs" role="tablist" aria-label="Selecciona una emoción"></div>
+
+                <div class="modal-emociones__contenido" id="modal-emociones-contenido" role="tabpanel"></div>
+
+                <div class="modal-emociones__footer">
+                    <p>¿Te gustaría aprender a regularte? Conoce más herramientas para cuidar tu bienestar.</p>
+                    <a href="comprende.html" class="btn-primario">Ir a Comprende</a>
+                </div>
+            </div>
+        </dialog>
+    </main>
+    <footer class="footer">
+    <div class="footer-container">
+        
+        <!-- 1. Marca -->
+        <div class="footer-brand">
+            <a href="index.html" class="footer-logo">Conecta Contigo</a>
+            <p class="footer-description">
+                Un espacio para conocerte mejor, comprender lo que sientes y conectar contigo.
+            </p>
+            <span class="footer-quote">“Lo que sientes también merece un espacio.”</span>
         </div>
 
-    </main>
-    <footer>
+        <!-- 2. Enlaces en una sola fila horizontal -->
+       <nav class="footer-explore" aria-label="Explora Conecta Contigo">
+            <div class="footer-links-row">
+                <a href="index.html">Inicio</a>
+                <a href="contacto.html">Rutas de Ayuda</a>
+                <a href="conoce.html">Conoce</a>
+                <a href="comprende.html">Comprende</a>
+                <a href="registro-emocional.html">Registro emocional</a>
+                <a href="soter.html">Soter</a>
+            </div>
+        </nav>
 
-    </footer>
+        <!-- 3. Privacidad -->
+        <div class="footer-privacy">
+            <span class="privacy-icon">🔒</span>
+            <span><strong>Tu privacidad importa:</strong> <a href="privacidad.html">Consulta nuestra Política de Privacidad</a></span>
+        </div>
+
+    </div>
+
+    <!-- 4. Copyright -->
+    <div class="footer-bottom">
+        <p>© 2026 Conecta Contigo</p>
+    </div>
+</footer> 
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="assets/js/supabase-config.js" defer></script>
+    <script src="assets/js/auth.js" defer></script>
+    <script src="assets/js/emocional.js" defer></script>
 </body>
 
 </html>

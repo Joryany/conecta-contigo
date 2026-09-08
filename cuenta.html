@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conecta Contigo - Mi cuenta</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/emocional.css">
+    <link rel="stylesheet" href="assets/css/auth.css">
+</head>
+
+<body>
+    <header>
+        <div class="top-nav-container">
+            <img width="100px" src="assets/img/index/logo-sin-texto.png" alt="Logo de la Página, un lazo azul">
+
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="contacto.html">Rutas</a>
+                <a href="conoce.html">Conoce</a>
+                <a href="comprende.html">Comprende</a>
+                <a href="emocional.html">Emociones</a>
+                <a href="soter.html">Soter</a>
+                <a href="cuenta.html" id="nav-auth-link">Cuenta</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="seccion-emocional card auth-seccion" aria-labelledby="titulo-cuenta">
+            <h2 id="titulo-cuenta">Mi cuenta</h2>
+            <p class="intro-texto">
+                Necesitas una cuenta para guardar tus registros emocionales de forma privada y
+                acceder a ellos cuando quieras.
+            </p>
+
+            <div class="auth-tabs" role="tablist">
+                <button type="button" id="tab-login" class="auth-tab activa" role="tab">Iniciar sesión</button>
+                <button type="button" id="tab-registro" class="auth-tab" role="tab">Crear cuenta</button>
+            </div>
+
+            <form id="form-login" class="auth-form">
+                <label for="login-email">Correo electrónico</label>
+                <input type="email" id="login-email" name="email" required autocomplete="email">
+
+                <label for="login-password">Contraseña</label>
+                <input type="password" id="login-password" name="password" required autocomplete="current-password">
+
+                <div class="acciones-registro">
+                    <button type="submit" class="btn-primario">Iniciar sesión</button>
+                </div>
+            </form>
+
+            <form id="form-registro" class="auth-form oculto">
+                <label for="registro-email">Correo electrónico</label>
+                <input type="email" id="registro-email" name="email" required autocomplete="email">
+
+                <label for="registro-password">Contraseña</label>
+                <input type="password" id="registro-password" name="password" required autocomplete="new-password" minlength="6">
+
+                <label for="registro-password2">Confirmar contraseña</label>
+                <input type="password" id="registro-password2" name="password2" required autocomplete="new-password" minlength="6">
+
+                <div class="acciones-registro">
+                    <button type="submit" class="btn-primario">Crear cuenta</button>
+                </div>
+            </form>
+
+            <p id="auth-mensaje" class="mensaje-estado" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">Conecta Contigo</a>
+                <p class="footer-description">
+                    Un espacio para conocerte mejor, comprender lo que sientes y conectar contigo.
+                </p>
+                <span class="footer-quote">“Lo que sientes también merece un espacio.”</span>
+            </div>
+
+            <nav class="footer-explore" aria-label="Explora Conecta Contigo">
+                <div class="footer-links-row">
+                    <a href="index.html">Inicio</a>
+                    <a href="contacto.html">Rutas de Ayuda</a>
+                    <a href="conoce.html">Conoce</a>
+                    <a href="comprende.html">Comprende</a>
+                    <a href="emocional.html">Registro emocional</a>
+                    <a href="soter.html">Soter</a>
+                </div>
+            </nav>
+
+            <div class="footer-privacy">
+                <span class="privacy-icon">🔒</span>
+                <span><strong>Tu privacidad importa:</strong> <a href="privacidad.html">Consulta nuestra Política de Privacidad</a></span>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Conecta Contigo</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="assets/js/supabase-config.js" defer></script>
+    <script src="assets/js/auth.js" defer></script>
+</body>
+
+</html>
