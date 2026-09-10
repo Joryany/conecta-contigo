@@ -1,13 +1,5 @@
 /* ====================================================================
    PERSONALIZACIÓN DEL CALENDARIO — Conecta Contigo
-   ====================================================================
-   Este archivo se carga DESPUÉS de emocional.js, así que puede usar
-   sus variables y funciones (EMOTIONS, EMOTION_ORDER, renderCalendar,
-   renderPanelDia, renderListaEmociones, renderContenedorMatices,
-   renderModalTabs, renderModalContenido, modalEmocionActual).
-
-   Las preferencias se guardan en la tabla
-   public.personalizacion_calendario (una fila por usuario).
    ==================================================================== */
 
 const TEMAS = [
@@ -176,17 +168,33 @@ async function aplicarPaleta(coloresPorClave) {
 }
 
 async function aplicarPersonalizacionVisual() {
-    const seccion = document.getElementById("calendario-emocional");
-    if (!seccion) return;
+    const calendario = document.getElementById("calendario-emocional");
+    const registro = document.getElementById("registro-emocional");
+    if (!calendario) return;
 
-    seccion.dataset.tema = personalizacionActual.tema;
-    seccion.dataset.formaDia = personalizacionActual.forma_dia;
-    seccion.dataset.formaNumero = personalizacionActual.forma_numero;
-    seccion.dataset.borde = personalizacionActual.estilo_borde;
-    seccion.style.setProperty("--fuente-calendario", `'${personalizacionActual.fuente}', sans-serif`);
-    seccion.classList.toggle("sin-sombras", !personalizacionActual.sombras);
-    seccion.classList.toggle("sin-decoraciones", !personalizacionActual.decoraciones);
-    seccion.classList.toggle("sin-animaciones", !personalizacionActual.animaciones);
+    // ── FIX bug #10 ──────────────────────────────────────────────────
+    // Antes, aplicarPersonalizacionVisual() solo escribía los dataset
+    // (tema, borde, fuente) y las clases sin-sombras/sin-decoraciones/
+    // sin-animaciones en #calendario-emocional. La sección
+    // #registro-emocional (el cuadro donde eliges tu emoción) nunca
+    // recibía esos atributos, así que ningún selector de
+    // personalizacion.css la alcanzaba: por eso parecía que "no
+    // respondía". Ahora aplicamos ese mismo bloque de atributos a
+    // AMBAS secciones. Las formas de día/número siguen siendo solo
+    // del calendario, porque solo el calendario tiene celdas de día.
+    const objetivosPersonalizacionGeneral = [calendario, registro].filter(Boolean);
+
+    objetivosPersonalizacionGeneral.forEach(el => {
+        el.dataset.tema = personalizacionActual.tema;
+        el.dataset.borde = personalizacionActual.estilo_borde;
+        el.style.setProperty("--fuente-calendario", `'${personalizacionActual.fuente}', sans-serif`);
+        el.classList.toggle("sin-sombras", !personalizacionActual.sombras);
+        el.classList.toggle("sin-decoraciones", !personalizacionActual.decoraciones);
+        el.classList.toggle("sin-animaciones", !personalizacionActual.animaciones);
+    });
+
+    calendario.dataset.formaDia = personalizacionActual.forma_dia;
+    calendario.dataset.formaNumero = personalizacionActual.forma_numero;
 
     const coloresPaleta = personalizacionActual.paleta === "personalizada"
         ? (personalizacionActual.colores_personalizados || PALETAS.original.colores)

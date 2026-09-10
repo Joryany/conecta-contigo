@@ -82,3 +82,31 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+/* ====================================================================
+   Modo oscuro
+==================================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+    const boton = document.getElementById("boton-tema");
+    if (!boton) return;
+
+    const icono = boton.querySelector("span");
+    const CLAVE = "cc-tema";
+
+    function aplicarTema(tema) {
+        document.body.classList.toggle("modo-oscuro", tema === "oscuro");
+        if (icono) icono.textContent = tema === "oscuro" ? "🌙" : "☀️";
+        boton.setAttribute(
+            "aria-label",
+            tema === "oscuro" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"
+        );
+    }
+
+    aplicarTema(localStorage.getItem(CLAVE) || "claro");
+
+    boton.addEventListener("click", function () {
+        const nuevoTema = document.body.classList.contains("modo-oscuro") ? "claro" : "oscuro";
+        localStorage.setItem(CLAVE, nuevoTema);
+        aplicarTema(nuevoTema);
+    });
+});

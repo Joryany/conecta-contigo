@@ -957,3 +957,227 @@ input[type="submit"]:focus-visible {
         background-image: none !important;
     }
 }
+
+/* ====================================================================
+   MODO OSCURO · CONECTA CONTIGO
+   Mantiene la identidad visual original, pero adapta el contraste
+   para una experiencia más suave, cálida y coherente.
+==================================================================== */
+
+body.modo-oscuro {
+
+    /* Identidad principal */
+    --azul-marino: #dce8f5;
+    --azul-claro: #75aee3;
+    --verde-agua: #79bdb8;
+    --verde-hoja: #9acb87;
+
+    /* Fondos */
+    --fondo-suave: #101b2b;
+    --blanco: #182638;
+
+    /* Texto */
+    --gris: #b7c4d3;
+    --gris-claro: #2a394c;
+
+    /* Acento */
+    --resalte: #ef9a88;
+
+    /* Sombras */
+    --sombra-rgb: 0, 0, 0;
+    --blanco-rgb: 24, 38, 56;
+}
+
+
+/* ====================================================================
+   ELEMENTOS GENERALES
+==================================================================== */
+
+/* Superficies blancas que dependan de la variable */
+body.modo-oscuro .card,
+body.modo-oscuro .tarjeta,
+body.modo-oscuro .contenedor,
+body.modo-oscuro .seccion,
+body.modo-oscuro .panel {
+    background: var(--blanco);
+    color: var(--azul-marino);
+}
+
+
+/* Textos secundarios */
+body.modo-oscuro .texto-secundario,
+body.modo-oscuro .descripcion,
+body.modo-oscuro small {
+    color: var(--gris);
+}
+
+
+/* ====================================================================
+   BOTÓN DE TEMA
+==================================================================== */
+
+.boton-tema {
+    width: 42px;
+    height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    /* Más integrado con la navegación */
+    background: transparent;
+    color: var(--azul-marino);
+
+    border: 1px solid var(--gris-claro);
+    border-radius: 50%;
+
+    font-size: 1.05rem;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* Hover */
+.boton-tema:hover {
+    background: rgba(117, 174, 227, 0.12);
+    color: var(--azul-claro);
+
+    border-color: rgba(117, 174, 227, 0.45);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+
+/* Focus accesible */
+.boton-tema:focus-visible {
+    outline: 2px solid var(--verde-agua);
+    outline-offset: 3px;
+}
+
+
+/* Cuando está en modo oscuro */
+body.modo-oscuro .boton-tema {
+    background: rgba(117, 174, 227, 0.07);
+    color: #dce8f5;
+
+    border-color: #33465c;
+}
+
+
+/* Hover en oscuro */
+body.modo-oscuro .boton-tema:hover {
+    background: rgba(117, 174, 227, 0.14);
+    color: #8fc2ed;
+
+    border-color: #496782;
+
+    box-shadow:
+        0 5px 16px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ====================================================================
+   ENLACES
+==================================================================== */
+
+body.modo-oscuro a {
+    color: var(--azul-claro);
+}
+
+body.modo-oscuro a:hover {
+    color: #91c4ee;
+}
+
+
+/* ====================================================================
+   BOTONES
+==================================================================== */
+
+body.modo-oscuro button:not(.boton-tema) {
+    color: #eef5fc;
+}
+
+body.modo-oscuro .boton-secundario {
+    background: transparent;
+    color: var(--azul-claro);
+    border-color: #40556b;
+}
+
+body.modo-oscuro .boton-secundario:hover {
+    background: rgba(117, 174, 227, 0.10);
+    border-color: var(--azul-claro);
+}
+
+
+/* ====================================================================
+   CAMPOS DE FORMULARIO
+==================================================================== */
+
+body.modo-oscuro input,
+body.modo-oscuro textarea,
+body.modo-oscuro select {
+    background: #142235;
+    color: #e1ebf5;
+
+    border-color: #34475b;
+}
+
+body.modo-oscuro input::placeholder,
+body.modo-oscuro textarea::placeholder {
+    color: #8495a8;
+}
+
+body.modo-oscuro input:focus,
+body.modo-oscuro textarea:focus,
+body.modo-oscuro select:focus {
+    border-color: var(--azul-claro);
+
+    box-shadow:
+        0 0 0 3px rgba(117, 174, 227, 0.12);
+
+    outline: none;
+}
+
+
+/* ====================================================================
+   TARJETAS Y ELEMENTOS INTERACTIVOS
+==================================================================== */
+
+body.modo-oscuro .card:hover,
+body.modo-oscuro .tarjeta:hover {
+    border-color: rgba(117, 174, 227, 0.30);
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+
+/* ====================================================================
+   BORDES
+==================================================================== */
+
+body.modo-oscuro hr {
+    border-color: #2c3c50;
+}
+
+
+/* ====================================================================
+   SELECCIÓN DE TEXTO
+==================================================================== */
+
+body.modo-oscuro ::selection {
+    background: rgba(117, 174, 227, 0.30);
+    color: #ffffff;
+}

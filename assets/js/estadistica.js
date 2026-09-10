@@ -1,16 +1,60 @@
-
 /*==================================================
 =              CONEXIÓN GOOGLE SHEETS               =
 ==================================================*/
 
-const URL_SHEET_PRETEST =
-    'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJktpVPDBSCbiLerfxEL3SDQ2Hg_voVFqfQyYxNhkc_oYmRFtWAlVcpke_VVTrdZMiDnS1ooKUR63O/pub?gid=338468623&single=true&output=csv';
 
-const URL_SHEET_POSTEST =
-    'https://docs.google.com/spreadsheets/d/e/2PACX-1vRJktpVPDBSCbiLerfxEL3SDQ2Hg_voVFqfQyYxNhkc_oYmRFtWAlVcpke_VVTrdZMiDnS1ooKUR63O/pub?gid=1555379758&single=true&output=csv';
+const URL_SHEET_RESPUESTAS =
+    'https://docs.google.com/spreadsheets/d/e/2PACX-1vSk2rN297uXJcKoa6JPoFSIzh2PAere1pPQRqUFGXCf1dxuU4EF1MO4WtX8BjR7L5EanuovtoEl-gdH/pub?single=true&output=csv';
 
 // A partir de qué calificación (escala 1-5) contamos una respuesta como "positiva"
 const ES_POSITIVO = 4;
+
+/*==================================================
+=      MAPA DE COLUMNAS DEL FORMULARIO ÚNICO       =
+==================================================*/
+
+
+const COL = {
+
+    MARCA_TEMPORAL: 0,
+    CONSENTIMIENTO: 1,
+    CODIGO: 2,
+    EDAD: 3,
+    GENERO: 4,
+
+    // Dimensiones iniciales (antes: formulario pretest, columnas 5-11)
+    TRAUMA_PRE: 5,
+    ANTISOCIAL_PRE: 6,
+    RUTAS_PRE: 7,
+    SALUD_PRE: 8,
+    COMPRENSION_PRE: 9,
+    SENALES_PRE: 10,
+    AYUDA_PRE: 11,
+
+    CONFIRMACION: 12, // confirmación de haber explorado la plataforma
+
+    // Dimensiones finales (antes: formulario postest, columnas 3-9)
+    TRAUMA_POST: 13,
+    ANTISOCIAL_POST: 14,
+    RUTAS_POST: 15,
+    SALUD_POST: 16,
+    COMPRENSION_POST: 17,
+    SENALES_POST: 18,
+    AYUDA_POST: 19,
+
+    // Evaluación de la plataforma (antes: columnas 10-19 del postest)
+    CALIFICACION: 20,
+    HERRAMIENTA: 21,
+    NAVEGACION: 22,
+    CLARIDAD: 23,
+    CONFIABILIDAD: 24,
+    RECOMIENDA: 25,
+    APRENDIO: 26,
+    CONTRIBUYE: 27,
+    COMENTARIO_POSITIVO: 28,
+    SUGERENCIAS: 29
+
+};
 
 /*==================================================
 =              VARIABLES GLOBALES                  =
@@ -18,9 +62,7 @@ const ES_POSITIVO = 4;
 
 let graficos = {};
 
-let datosPretest = [];
-
-let datosPostest = [];
+let datosRespuestas = [];
 
 /*==================================================
 =              PARSER CSV SEGURO                   =
@@ -142,26 +184,16 @@ function esSi(valor) {
 =              CARGAR DATOS GOOGLE SHEETS          =
 ==================================================*/
 
-async function cargarDatosSheets() {
+async function cargarDatosRespuestas() {
 
     try {
 
-        const [respuestaPre, respuestaPost] = await Promise.all([
+        const respuesta = await fetch(URL_SHEET_RESPUESTAS);
 
-            fetch(URL_SHEET_PRETEST),
-
-            fetch(URL_SHEET_POSTEST)
-
-        ]);
-
-        const textoPre = await respuestaPre.text();
-        const textoPost = await respuestaPost.text();
+        const texto = await respuesta.text();
 
         // Eliminamos encabezados
-
-        datosPretest = parsearCSV(textoPre).slice(1);
-
-        datosPostest = parsearCSV(textoPost).slice(1);
+        datosRespuestas = parsearCSV(texto).slice(1);
 
         procesarDatos();
 
@@ -185,7 +217,7 @@ async function cargarDatosSheets() {
 function procesarDatos() {
 
     const participantes =
-        datosPostest.length;
+        datosRespuestas.length;
 
     actualizarParticipantes(participantes);
 
@@ -205,33 +237,6 @@ function procesarDatos() {
 
 function procesarEvaluacionPlataforma() {
 
-    /*
-
-    POSTEST (columnas reales confirmadas con los datos de prueba):
-
-    0  Marca temporal
-    1  Código
-    2  Confirmación
-    3  Trauma
-    4  Antisocial
-    5  Rutas
-    6  Salud mental
-    7  Comprensión
-    8  Señales
-    9  Ayuda
-    10 Calificación general (1-5)
-    11 Herramienta más útil (opción única)
-    12 Navegación (1-5)
-    13 Claridad (1-5)
-    14 Confiabilidad (1-5)
-    15 Recomienda (Sí/No)
-    16 Aprendió (Sí/No)
-    17 Contribuye (1-5)
-    18 Comentario positivo
-    19 Mejoras / sugerencias
-
-    */
-
     let calificaciones = [];
 
     let navegacion = [];
@@ -246,25 +251,25 @@ function procesarEvaluacionPlataforma() {
 
     let aprendio = 0;
 
-    datosPostest.forEach(fila => {
+    datosRespuestas.forEach(fila => {
 
-        if (numero(fila[10]) !== null) {
+        if (numero(fila[COL.CALIFICACION]) !== null) {
 
             calificaciones.push(
-                numero(fila[10])
+                numero(fila[COL.CALIFICACION])
             );
 
         }
 
-        if (numero(fila[12]) !== null) {
+        if (numero(fila[COL.NAVEGACION]) !== null) {
 
             navegacion.push(
-                numero(fila[12])
+                numero(fila[COL.NAVEGACION])
             );
 
         }
 
-        const valorClaridad = numero(fila[13]);
+        const valorClaridad = numero(fila[COL.CLARIDAD]);
 
         if (valorClaridad !== null) {
 
@@ -272,7 +277,7 @@ function procesarEvaluacionPlataforma() {
 
         }
 
-        const valorConfiabilidad = numero(fila[14]);
+        const valorConfiabilidad = numero(fila[COL.CONFIABILIDAD]);
 
         if (valorConfiabilidad !== null) {
 
@@ -280,19 +285,19 @@ function procesarEvaluacionPlataforma() {
 
         }
 
-        if (esSi(fila[15])) {
+        if (esSi(fila[COL.RECOMIENDA])) {
 
             recomienda++;
 
         }
 
-        if (esSi(fila[16])) {
+        if (esSi(fila[COL.APRENDIO])) {
 
             aprendio++;
 
         }
 
-        const valorContribuye = numero(fila[17]);
+        const valorContribuye = numero(fila[COL.CONTRIBUYE]);
 
         if (valorContribuye !== null) {
 
@@ -303,7 +308,7 @@ function procesarEvaluacionPlataforma() {
     });
 
     const total =
-        datosPostest.length;
+        datosRespuestas.length;
 
     // Para claridad/confiabilidad/contribuye contamos como "positiva"
     // cualquier calificación mayor o igual a ES_POSITIVO (por defecto 4 de 5)
@@ -518,9 +523,9 @@ function procesarHerramientas() {
 
     const conteo = {};
 
-    datosPostest.forEach(fila => {
+    datosRespuestas.forEach(fila => {
 
-        const herramienta = fila[11] && fila[11].trim();
+        const herramienta = fila[COL.HERRAMIENTA] && fila[COL.HERRAMIENTA].trim();
 
         if (!herramienta) {
 
@@ -621,30 +626,30 @@ function procesarComentarios() {
 
     const sugerencias = [];
 
-    datosPostest.forEach(fila => {
+    datosRespuestas.forEach(fila => {
 
-        // Comentario positivo (columna 18)
+        // Comentario positivo
 
         if (
-            fila[18] &&
-            fila[18].trim().length > 2
+            fila[COL.COMENTARIO_POSITIVO] &&
+            fila[COL.COMENTARIO_POSITIVO].trim().length > 2
         ) {
 
             comentarios.push(
-                fila[18]
+                fila[COL.COMENTARIO_POSITIVO]
             );
 
         }
 
-        // Mejoras / sugerencias (columna 19)
+        // Mejoras / sugerencias
 
         if (
-            fila[19] &&
-            fila[19].trim().length > 2
+            fila[COL.SUGERENCIAS] &&
+            fila[COL.SUGERENCIAS].trim().length > 2
         ) {
 
             sugerencias.push(
-                fila[19]
+                fila[COL.SUGERENCIAS]
             );
 
         }
@@ -716,7 +721,7 @@ function mostrarLista(id, lista, icono) {
 }
 
 /*==================================================
-=          COMPARACIÓN PRETEST VS POSTEST          =
+=          COMPARACIÓN INICIAL VS FINAL            =
 ==================================================*/
 
 function procesarComparacion() {
@@ -725,9 +730,9 @@ function procesarComparacion() {
 
         trauma: {
 
-            pre: 5,
+            pre: COL.TRAUMA_PRE,
 
-            post: 3,
+            post: COL.TRAUMA_POST,
 
             canvas: "chartTrauma",
 
@@ -745,9 +750,9 @@ function procesarComparacion() {
 
         antisociales: {
 
-            pre: 6,
+            pre: COL.ANTISOCIAL_PRE,
 
-            post: 4,
+            post: COL.ANTISOCIAL_POST,
 
             canvas: "chartAntisociales",
 
@@ -765,9 +770,9 @@ function procesarComparacion() {
 
         rutas: {
 
-            pre: 7,
+            pre: COL.RUTAS_PRE,
 
-            post: 5,
+            post: COL.RUTAS_POST,
 
             canvas: "chartRutas",
 
@@ -785,9 +790,9 @@ function procesarComparacion() {
 
         saludMental: {
 
-            pre: 8,
+            pre: COL.SALUD_PRE,
 
-            post: 6,
+            post: COL.SALUD_POST,
 
             canvas: "chartSaludMental",
 
@@ -805,9 +810,9 @@ function procesarComparacion() {
 
         comprension: {
 
-            pre: 9,
+            pre: COL.COMPRENSION_PRE,
 
-            post: 7,
+            post: COL.COMPRENSION_POST,
 
             canvas: "chartComprension",
 
@@ -825,9 +830,9 @@ function procesarComparacion() {
 
         senales: {
 
-            pre: 10,
+            pre: COL.SENALES_PRE,
 
-            post: 8,
+            post: COL.SENALES_POST,
 
             canvas: "chartSenales",
 
@@ -845,9 +850,9 @@ function procesarComparacion() {
 
         ayuda: {
 
-            pre: 11,
+            pre: COL.AYUDA_PRE,
 
-            post: 9,
+            post: COL.AYUDA_POST,
 
             canvas: "chartAyuda",
 
@@ -872,35 +877,32 @@ function procesarComparacion() {
 
             const valoresPost = [];
 
-            // PRETEST
+            // Antes había que recorrer dos hojas distintas (pretest y
+            // postest) por separado. Ahora cada fila del formulario único
+            // trae ambos valores (inicial y final), así que basta un solo
+            // recorrido sobre "datosRespuestas".
 
-            datosPretest.forEach(fila => {
+            datosRespuestas.forEach(fila => {
 
-                const valor =
+                const valorPre =
                     numero(
                         fila[dimension.pre]
                     );
 
-                if (valor !== null) {
+                if (valorPre !== null) {
 
-                    valoresPre.push(valor);
+                    valoresPre.push(valorPre);
 
                 }
 
-            });
-
-            // POSTEST
-
-            datosPostest.forEach(fila => {
-
-                const valor =
+                const valorPost =
                     numero(
                         fila[dimension.post]
                     );
 
-                if (valor !== null) {
+                if (valorPost !== null) {
 
-                    valoresPost.push(valor);
+                    valoresPost.push(valorPost);
 
                 }
 
@@ -1132,7 +1134,7 @@ document.addEventListener(
 
     () => {
 
-        cargarDatosSheets();
+        cargarDatosRespuestas();
 
     }
 
@@ -1146,7 +1148,7 @@ setInterval(
 
     () => {
 
-        cargarDatosSheets();
+        cargarDatosRespuestas();
 
     },
 

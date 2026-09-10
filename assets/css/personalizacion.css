@@ -165,7 +165,28 @@
 #calendario-emocional[data-forma-dia="estrella"] .dia-forma { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
 #calendario-emocional[data-forma-dia="corazon"] .dia-forma { clip-path: polygon(50% 15%, 61% 5%, 75% 5%, 90% 20%, 90% 40%, 50% 90%, 10% 40%, 10% 20%, 25% 5%, 39% 5%); }
 #calendario-emocional[data-forma-dia="flor"] .dia-forma { clip-path: polygon(50% 0%, 65% 20%, 85% 10%, 80% 35%, 100% 50%, 80% 65%, 85% 90%, 65% 80%, 50% 100%, 35% 80%, 15% 90%, 20% 65%, 0% 50%, 20% 35%, 15% 10%, 35% 20%); }
-#calendario-emocional[data-forma-dia="nube"] .dia-forma { border-radius: 45% 55% 40% 60% / 60% 40% 60% 40%; }
+
+/* ---- FIX "nube": antes era un simple border-radius asimétrico
+   (45% 55% 40% 60% / 60% 40% 60% 40%), que solo produce un blob
+   ovalado deforme, no una nube con bultos. Un border-radius nunca
+   puede crear varios "lóbulos" porque solo controla las 4 esquinas
+   de una caja. La solución real es recortar con una máscara (mask)
+   con forma de nube (un SVG en línea, sin archivos ni librerías
+   nuevas): la máscara sí puede tener varios círculos superpuestos,
+   así que el resultado se ve como una nube de verdad, y conserva
+   el color/gradiente que ya se le da al elemento por JS. */
+#calendario-emocional[data-forma-dia="nube"] .dia-forma {
+    border-radius: 0;
+    clip-path: none;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M25 78c-12 0-21-9-21-20 0-9 6-17 15-19 1-14 13-25 27-25 12 0 22 7 26 18 11 1 19 10 19 21 0 12-10 21-22 21H25z'/></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M25 78c-12 0-21-9-21-20 0-9 6-17 15-19 1-14 13-25 27-25 12 0 22 7 26 18 11 1 19 10 19 21 0 12-10 21-22 21H25z'/></svg>");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
 
 /* ---- Formas del número (aplicadas según data-forma-numero) ---- */
 #calendario-emocional[data-forma-numero="circulo"] .dia-numero { border-radius: 50%; }
@@ -176,50 +197,74 @@
 #calendario-emocional[data-forma-numero="corazon"] .dia-numero { clip-path: polygon(50% 15%, 61% 5%, 75% 5%, 90% 20%, 90% 40%, 50% 90%, 10% 40%, 10% 20%, 25% 5%, 39% 5%); }
 #calendario-emocional[data-forma-numero="ninguno"] .dia-numero { background: transparent; box-shadow: none; }
 
-/* ---- Fuente del calendario ---- */
+/* ---- Fuente del calendario y de la sección de registro ---- */
+/* FIX bug #10 (parte 1): se añaden aquí los selectores de
+   #registro-emocional para que la fuente elegida también se note en
+   el cuadro donde se elige la emoción, no solo en el calendario. */
 #calendario-emocional h2,
 #calendario-emocional h3,
 #calendario-emocional .dia-numero,
 #calendario-emocional .frecuencia-item,
 #calendario-emocional .leyenda-item,
-#calendario-emocional .panel-dia p {
+#calendario-emocional .panel-dia p,
+#registro-emocional h2,
+#registro-emocional .intro-texto,
+#registro-emocional .emocion-boton,
+#registro-emocional .matiz-boton {
     font-family: var(--fuente-calendario, inherit);
 }
 
-/* ---- Temas (fondo del calendario y del panel del día) ---- */
+/* ---- Temas (fondo del calendario, del panel del día y del cuadro de registro) ---- */
 .calendario-card,
-.panel-dia {
+.panel-dia,
+#registro-emocional.seccion-emocional.card {
     position: relative;
-    transition: background var(--transicion-lenta), border-color var(--transicion-lenta);
+    transition: background var(--transicion-lenta), border-color var(--transicion-lenta), color var(--transicion-lenta);
 }
 
+/* FIX bug #10 (parte 2 — el problema central):
+   Antes, aplicarPersonalizacionVisual() en personalizacion.js solo
+   escribía data-tema en #calendario-emocional. Como esa era la única
+   pieza de HTML con el atributo, y todas estas reglas dependían de
+   "#calendario-emocional[data-tema=...]", el cuadro de
+   #registro-emocional nunca podía coincidir con ningún selector: no
+   es que el CSS estuviera mal escrito, es que el atributo nunca le
+   llegaba. Ahora personalizacion.js también escribe data-tema en
+   #registro-emocional, así que basta con añadir su selector aquí
+   junto a los que ya existían. */
 #calendario-emocional[data-tema="pastel"] .calendario-card,
-#calendario-emocional[data-tema="pastel"] .panel-dia {
+#calendario-emocional[data-tema="pastel"] .panel-dia,
+#registro-emocional[data-tema="pastel"] {
     background: linear-gradient(160deg, #FDF3F8, #EAF6FF);
     border-color: rgba(255, 182, 213, 0.35);
 }
 #calendario-emocional[data-tema="bosque"] .calendario-card,
-#calendario-emocional[data-tema="bosque"] .panel-dia {
+#calendario-emocional[data-tema="bosque"] .panel-dia,
+#registro-emocional[data-tema="bosque"] {
     background: linear-gradient(160deg, #F1F8EE, #E4F0E1);
     border-color: rgba(120, 170, 110, 0.35);
 }
 #calendario-emocional[data-tema="rosa"] .calendario-card,
-#calendario-emocional[data-tema="rosa"] .panel-dia {
+#calendario-emocional[data-tema="rosa"] .panel-dia,
+#registro-emocional[data-tema="rosa"] {
     background: linear-gradient(160deg, #FFF1F4, #FFE3EA);
     border-color: rgba(255, 127, 141, 0.3);
 }
 #calendario-emocional[data-tema="oceano"] .calendario-card,
-#calendario-emocional[data-tema="oceano"] .panel-dia {
+#calendario-emocional[data-tema="oceano"] .panel-dia,
+#registro-emocional[data-tema="oceano"] {
     background: linear-gradient(160deg, #EAF7FB, #D8EEF7);
     border-color: rgba(70, 142, 180, 0.3);
 }
 #calendario-emocional[data-tema="lavanda"] .calendario-card,
-#calendario-emocional[data-tema="lavanda"] .panel-dia {
+#calendario-emocional[data-tema="lavanda"] .panel-dia,
+#registro-emocional[data-tema="lavanda"] {
     background: linear-gradient(160deg, #F4EEFB, #ECE1F7);
     border-color: rgba(150, 110, 200, 0.3);
 }
 #calendario-emocional[data-tema="noche"] .calendario-card,
-#calendario-emocional[data-tema="noche"] .panel-dia {
+#calendario-emocional[data-tema="noche"] .panel-dia,
+#registro-emocional[data-tema="noche"] {
     background: linear-gradient(160deg, #1B2340, #2B3358);
     border-color: rgba(255, 255, 255, 0.12);
 }
@@ -233,6 +278,25 @@
 }
 #calendario-emocional[data-tema="noche"] .dia-sin-registro {
     background: rgba(255, 255, 255, 0.06);
+}
+
+/* Igual que con el calendario: si el tema "Noche" es oscuro, el
+   texto del cuadro de registro también tiene que aclararse para no
+   perder contraste (así lo pedía el brief: "si el fondo elegido es
+   oscuro, adapta automáticamente los elementos necesarios"). */
+#registro-emocional[data-tema="noche"] h2,
+#registro-emocional[data-tema="noche"] .intro-texto,
+#registro-emocional[data-tema="noche"] .mensaje-estado,
+#registro-emocional[data-tema="noche"] .mensaje-aviso {
+    color: #F1F1FA;
+}
+#registro-emocional[data-tema="noche"] .emocion-boton {
+    background: rgba(255, 255, 255, 0.08);
+    color: #F1F1FA;
+}
+#registro-emocional[data-tema="noche"] .grupo-matiz {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 /* Iconos decorativos por tema (esquina de la tarjeta), apagables */
@@ -252,14 +316,33 @@
     pointer-events: none;
 }
 
+/* El mismo icono decorativo, ahora también en el cuadro de registro. */
+#registro-emocional:not(.sin-decoraciones)[data-tema="pastel"]::before { content: "☁️"; }
+#registro-emocional:not(.sin-decoraciones)[data-tema="bosque"]::before { content: "🌿"; }
+#registro-emocional:not(.sin-decoraciones)[data-tema="rosa"]::before { content: "🌷"; }
+#registro-emocional:not(.sin-decoraciones)[data-tema="oceano"]::before { content: "🌊"; }
+#registro-emocional:not(.sin-decoraciones)[data-tema="lavanda"]::before { content: "💜"; }
+#registro-emocional:not(.sin-decoraciones)[data-tema="noche"]::before { content: "🌙"; }
+
+#registro-emocional::before {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    font-size: 1.3rem;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 /* ---- Bordes / estilo ---- */
 #calendario-emocional[data-borde="ondas"] .calendario-card,
-#calendario-emocional[data-borde="ondas"] .panel-dia {
+#calendario-emocional[data-borde="ondas"] .panel-dia,
+#registro-emocional[data-borde="ondas"] {
     border-style: dashed;
     border-width: 2px;
 }
 #calendario-emocional[data-borde="contorno"] .calendario-card,
-#calendario-emocional[data-borde="contorno"] .panel-dia {
+#calendario-emocional[data-borde="contorno"] .panel-dia,
+#registro-emocional[data-borde="contorno"] {
     background: transparent;
     border-width: 2px;
     box-shadow: none;
@@ -269,7 +352,9 @@
 #calendario-emocional.sin-sombras .dia-celda,
 #calendario-emocional.sin-sombras .calendario-card,
 #calendario-emocional.sin-sombras .panel-dia,
-#calendario-emocional.sin-sombras .dia-numero {
+#calendario-emocional.sin-sombras .dia-numero,
+#registro-emocional.sin-sombras.seccion-emocional.card,
+#registro-emocional.sin-sombras .emocion-boton {
     box-shadow: none !important;
 }
 
@@ -283,6 +368,11 @@
 }
 #calendario-emocional.sin-animaciones .dia-celda,
 #calendario-emocional.sin-animaciones .dia-forma {
+    transition: none !important;
+    animation: none !important;
+}
+#registro-emocional.sin-animaciones,
+#registro-emocional.sin-animaciones * {
     transition: none !important;
     animation: none !important;
 }
