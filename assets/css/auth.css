@@ -1,8 +1,5 @@
 /* =========================================================
    AUTENTICACIÓN · CONECTA CONTIGO
-   Reutiliza las variables de color/espaciado ya definidas en
-   emocional.css y style.css; solo añade lo que faltaba: pestañas
-   y campos de formulario.
    ========================================================= */
 
 .auth-seccion {
@@ -84,4 +81,90 @@
 
     box-shadow:
         0 0 0 3px color-mix(in srgb, var(--azul-claro) 25%, transparent);
+}
+
+.auth-ayuda {
+    margin: 2px 0 0;
+
+    color: var(--gris);
+
+    font-size: 0.78rem;
+}
+
+.auth-pregunta-mostrada {
+    margin: var(--espacio-sm) 0;
+
+    padding: 10px 14px;
+
+    background: var(--fondo-suave);
+    border-radius: var(--radio-elemento);
+
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.codigo-recuperacion-caja {
+    max-width: 360px;
+    margin: var(--espacio-md) auto 0;
+    padding: 16px 18px;
+
+    text-align: center;
+
+    background: rgba(70, 142, 214, 0.08);
+    border: 1.5px solid var(--azul-claro);
+    border-radius: var(--radio-elemento);
+}
+
+.codigo-recuperacion-texto {
+    margin: 6px 0 10px;
+
+    color: var(--azul-marino);
+
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+
+@media (max-width: 480px) {
+    .auth-tabs {
+        flex-wrap: wrap;
+    }
+}
+
+.campo-password-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.campo-password-wrapper input {
+    flex: 1;
+}
+
+.btn-mostrar-password {
+    flex-shrink: 0;
+
+    padding: 0 14px;
+
+    color: var(--azul-marino);
+    background: var(--fondo-suave);
+
+    border: 1px solid var(--gris-claro);
+    border-radius: var(--radio-elemento);
+
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background var(--transicion-rapida);
+}
+
+.btn-mostrar-password:hover {
+    background: var(--gris-claro);
+}
+
+.campo-invalido {
+    border-color: var(--emocion-enojo) !important;
+    box-shadow: 0 0 0 2px rgba(204, 0, 0, 0.12) !important;
 }

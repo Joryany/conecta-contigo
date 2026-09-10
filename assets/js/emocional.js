@@ -1,17 +1,5 @@
 /* ====================================================================
    REGISTRO EMOCIONAL — Conecta Contigo
-   ====================================================================
-   Versión conectada a backend real (Supabase: base de datos + auth).
-   Los registros ya NO se guardan en localStorage: se guardan en la
-   tabla public.registros_emocionales de Supabase, asociados al
-   usuario autenticado, con las reglas (límite diario, edición mismo
-   día, eliminación 48h, aislamiento entre usuarios) aplicadas TAMBIÉN
-   en el servidor (ver database/schema.sql), no solo aquí.
-
-   Toda la capa de acceso a datos está aislada en el objeto `db` para
-   que el resto del archivo (calendario, explorador, selección de
-   emociones/matices) no tenga que saber que ahora es una base de
-   datos real y no localStorage.
    ==================================================================== */
 
 /* ====================================================================
@@ -1007,9 +995,9 @@ async function renderCalendar() {
             <button type="button"
                 class="dia-celda${esHoy ? " dia-hoy" : ""}${esSeleccionado ? " dia-seleccionado" : ""}${!registrosDia.length ? " dia-sin-registro" : ""}"
                 data-fecha="${fechaStr}"
-                style="${gradiente ? `background:${gradiente};` : ""}"
                 aria-pressed="${esSeleccionado}"
                 aria-label="${dia} de ${nombreMes}${registrosDia.length ? ", " + registrosDia.length + " registro(s)" : ", sin registros"}">
+                ${gradiente ? `<span class="dia-forma" style="background:${gradiente}" aria-hidden="true"></span>` : ""}
                 <span class="dia-numero">${dia}</span>
             </button>
         `;

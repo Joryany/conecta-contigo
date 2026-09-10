@@ -1,0 +1,294 @@
+/* =========================================================
+   PERSONALIZACIÓN DEL CALENDARIO · CONECTA CONTIGO
+   ========================================================= */
+
+/* ---------------- Panel de controles ---------------- */
+
+.personalizacion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--espacio-md);
+
+    margin: var(--espacio-lg) 0;
+}
+
+.personalizacion-grupo {
+    padding: 16px;
+
+    background: rgba(255, 255, 255, 0.6);
+    border: var(--borde-suave);
+    border-radius: var(--radio-elemento);
+}
+
+.personalizacion-grupo legend {
+    padding: 0 6px;
+    color: var(--azul-marino);
+    font-weight: 700;
+}
+
+.personalizacion-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 8px;
+}
+
+.personalizacion-opcion {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 8px 12px;
+
+    color: var(--azul-marino);
+    background: var(--blanco);
+
+    border: 1.5px solid var(--gris-claro);
+    border-radius: var(--radio-pill);
+
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        border-color var(--transicion-rapida),
+        background var(--transicion-rapida),
+        transform var(--transicion-rapida);
+}
+
+.personalizacion-opcion:hover {
+    border-color: var(--azul-claro);
+    transform: translateY(-1px);
+}
+
+.personalizacion-opcion.seleccionada {
+    color: var(--blanco);
+    background: var(--azul-claro);
+    border-color: var(--azul-claro);
+}
+
+.personalizacion-swatch-emoji {
+    font-size: 1.1rem;
+}
+
+.personalizacion-simbolo {
+    font-size: 1rem;
+}
+
+.mini-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.personalizacion-grupo select {
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px 12px;
+
+    color: var(--azul-marino);
+    background: var(--blanco);
+
+    border: 1px solid var(--gris-claro);
+    border-radius: var(--radio-elemento);
+
+    font-size: 0.9rem;
+}
+
+.personalizacion-grupo label.personalizacion-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 8px;
+
+    font-size: 0.88rem;
+    color: var(--azul-marino);
+}
+
+.personalizacion-colores-custom {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+.personalizacion-color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    font-size: 0.72rem;
+    color: var(--gris);
+}
+
+.personalizacion-color-item input[type="color"] {
+    width: 34px;
+    height: 26px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* ============================================================
+   APLICACIÓN VISUAL EN EL CALENDARIO
+   ============================================================ */
+
+/* La "forma" del día vive en un span interno (.dia-forma) que carga
+   el degradado; la celda (.dia-celda) se queda como botón normal
+   cuadrado y accesible, para no perder el foco de teclado ni el
+   área de clic. */
+.dia-forma {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    pointer-events: none;
+}
+
+.dia-numero {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---- Formas del día (aplicadas según data-forma-dia en #calendario-emocional) ---- */
+#calendario-emocional[data-forma-dia="circulo"] .dia-forma { border-radius: 50%; }
+#calendario-emocional[data-forma-dia="cuadrado"] .dia-forma { border-radius: 6px; }
+#calendario-emocional[data-forma-dia="rombo"] .dia-forma { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+#calendario-emocional[data-forma-dia="hexagono"] .dia-forma { clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); }
+#calendario-emocional[data-forma-dia="estrella"] .dia-forma { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+#calendario-emocional[data-forma-dia="corazon"] .dia-forma { clip-path: polygon(50% 15%, 61% 5%, 75% 5%, 90% 20%, 90% 40%, 50% 90%, 10% 40%, 10% 20%, 25% 5%, 39% 5%); }
+#calendario-emocional[data-forma-dia="flor"] .dia-forma { clip-path: polygon(50% 0%, 65% 20%, 85% 10%, 80% 35%, 100% 50%, 80% 65%, 85% 90%, 65% 80%, 50% 100%, 35% 80%, 15% 90%, 20% 65%, 0% 50%, 20% 35%, 15% 10%, 35% 20%); }
+#calendario-emocional[data-forma-dia="nube"] .dia-forma { border-radius: 45% 55% 40% 60% / 60% 40% 60% 40%; }
+
+/* ---- Formas del número (aplicadas según data-forma-numero) ---- */
+#calendario-emocional[data-forma-numero="circulo"] .dia-numero { border-radius: 50%; }
+#calendario-emocional[data-forma-numero="cuadrado"] .dia-numero { border-radius: 6px; }
+#calendario-emocional[data-forma-numero="pastilla"] .dia-numero { border-radius: 999px; width: auto; min-width: 23px; padding: 0 8px; }
+#calendario-emocional[data-forma-numero="rombo"] .dia-numero { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+#calendario-emocional[data-forma-numero="estrella"] .dia-numero { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+#calendario-emocional[data-forma-numero="corazon"] .dia-numero { clip-path: polygon(50% 15%, 61% 5%, 75% 5%, 90% 20%, 90% 40%, 50% 90%, 10% 40%, 10% 20%, 25% 5%, 39% 5%); }
+#calendario-emocional[data-forma-numero="ninguno"] .dia-numero { background: transparent; box-shadow: none; }
+
+/* ---- Fuente del calendario ---- */
+#calendario-emocional h2,
+#calendario-emocional h3,
+#calendario-emocional .dia-numero,
+#calendario-emocional .frecuencia-item,
+#calendario-emocional .leyenda-item,
+#calendario-emocional .panel-dia p {
+    font-family: var(--fuente-calendario, inherit);
+}
+
+/* ---- Temas (fondo del calendario y del panel del día) ---- */
+.calendario-card,
+.panel-dia {
+    position: relative;
+    transition: background var(--transicion-lenta), border-color var(--transicion-lenta);
+}
+
+#calendario-emocional[data-tema="pastel"] .calendario-card,
+#calendario-emocional[data-tema="pastel"] .panel-dia {
+    background: linear-gradient(160deg, #FDF3F8, #EAF6FF);
+    border-color: rgba(255, 182, 213, 0.35);
+}
+#calendario-emocional[data-tema="bosque"] .calendario-card,
+#calendario-emocional[data-tema="bosque"] .panel-dia {
+    background: linear-gradient(160deg, #F1F8EE, #E4F0E1);
+    border-color: rgba(120, 170, 110, 0.35);
+}
+#calendario-emocional[data-tema="rosa"] .calendario-card,
+#calendario-emocional[data-tema="rosa"] .panel-dia {
+    background: linear-gradient(160deg, #FFF1F4, #FFE3EA);
+    border-color: rgba(255, 127, 141, 0.3);
+}
+#calendario-emocional[data-tema="oceano"] .calendario-card,
+#calendario-emocional[data-tema="oceano"] .panel-dia {
+    background: linear-gradient(160deg, #EAF7FB, #D8EEF7);
+    border-color: rgba(70, 142, 180, 0.3);
+}
+#calendario-emocional[data-tema="lavanda"] .calendario-card,
+#calendario-emocional[data-tema="lavanda"] .panel-dia {
+    background: linear-gradient(160deg, #F4EEFB, #ECE1F7);
+    border-color: rgba(150, 110, 200, 0.3);
+}
+#calendario-emocional[data-tema="noche"] .calendario-card,
+#calendario-emocional[data-tema="noche"] .panel-dia {
+    background: linear-gradient(160deg, #1B2340, #2B3358);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+#calendario-emocional[data-tema="noche"] .calendario-card h3,
+#calendario-emocional[data-tema="noche"] .panel-dia h3,
+#calendario-emocional[data-tema="noche"] .calendario-dias-semana,
+#calendario-emocional[data-tema="noche"] .frecuencia-item,
+#calendario-emocional[data-tema="noche"] .leyenda-item,
+#calendario-emocional[data-tema="noche"] .panel-dia p {
+    color: #F1F1FA;
+}
+#calendario-emocional[data-tema="noche"] .dia-sin-registro {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* Iconos decorativos por tema (esquina de la tarjeta), apagables */
+#calendario-emocional:not(.sin-decoraciones)[data-tema="pastel"] .calendario-card::before { content: "☁️"; }
+#calendario-emocional:not(.sin-decoraciones)[data-tema="bosque"] .calendario-card::before { content: "🌿"; }
+#calendario-emocional:not(.sin-decoraciones)[data-tema="rosa"] .calendario-card::before { content: "🌷"; }
+#calendario-emocional:not(.sin-decoraciones)[data-tema="oceano"] .calendario-card::before { content: "🌊"; }
+#calendario-emocional:not(.sin-decoraciones)[data-tema="lavanda"] .calendario-card::before { content: "💜"; }
+#calendario-emocional:not(.sin-decoraciones)[data-tema="noche"] .calendario-card::before { content: "🌙"; }
+
+#calendario-emocional .calendario-card::before {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.3rem;
+    opacity: 0.55;
+    pointer-events: none;
+}
+
+/* ---- Bordes / estilo ---- */
+#calendario-emocional[data-borde="ondas"] .calendario-card,
+#calendario-emocional[data-borde="ondas"] .panel-dia {
+    border-style: dashed;
+    border-width: 2px;
+}
+#calendario-emocional[data-borde="contorno"] .calendario-card,
+#calendario-emocional[data-borde="contorno"] .panel-dia {
+    background: transparent;
+    border-width: 2px;
+    box-shadow: none;
+}
+
+/* ---- Sombras suaves (apagable) ---- */
+#calendario-emocional.sin-sombras .dia-celda,
+#calendario-emocional.sin-sombras .calendario-card,
+#calendario-emocional.sin-sombras .panel-dia,
+#calendario-emocional.sin-sombras .dia-numero {
+    box-shadow: none !important;
+}
+
+/* ---- Animación al seleccionar un día (apagable) ---- */
+@keyframes pulsoSeleccionDia {
+    0% { transform: scale(0.82); }
+    100% { transform: scale(1); }
+}
+#calendario-emocional:not(.sin-animaciones) .dia-seleccionado .dia-forma {
+    animation: pulsoSeleccionDia 0.3s ease;
+}
+#calendario-emocional.sin-animaciones .dia-celda,
+#calendario-emocional.sin-animaciones .dia-forma {
+    transition: none !important;
+    animation: none !important;
+}
+
+@media (max-width: 576px) {
+    .personalizacion-grid {
+        grid-template-columns: 1fr;
+    }
+}

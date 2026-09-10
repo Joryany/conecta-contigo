@@ -4,11 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro Emocional - Registro Emocional</title>
+    <title>Conecta Contigo - Registro Emocional</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/emocional.css">
     <link rel="stylesheet" href="assets/css/auth.css">
+    <link rel="stylesheet" href="assets/css/personalizacion.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Montserrat:wght@400;600;700&family=Nunito:wght@400;600;700&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@400;600;700&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
 
 
 </head>
@@ -25,7 +29,7 @@
                 <a href="comprende.html">Comprende</a>
                 <a href="emocional.html" id="activo">Emociones</a>
                 <a href="soter.html">Soter</a>
-                <a href="cuenta.html" id="nav-auth-link">Cuenta</a>
+                <a href="cuenta.html" id="nav-auth-link">Cargando...</a>
 
             </nav>
         </div>
@@ -48,6 +52,7 @@
         <div class="nav-inter">
             <nav  aria-label="Navegación de la página de emociones">
             <a href="#registro-emocional">Registro</a>
+            <a href="#personalizacion">Personalizar</a>
             <a href="#calendario-emocional">Calendario</a>
             <a href="#informacion-emocional">Aprender</a>
         </nav>
@@ -87,7 +92,60 @@
             <div id="explorador-contenido"></div>
         </section>
 
-        <section id="calendario-emocional" class="seccion-emocional" aria-labelledby="titulo-calendario">
+        <section id="personalizacion" class="seccion-emocional card" aria-labelledby="titulo-personalizacion">
+            <h2 id="titulo-personalizacion">Personaliza tu calendario</h2>
+            <p class="intro-texto">
+                Elige los estilos que más te gusten y haz de tu calendario un espacio que se sienta como tú.
+            </p>
+
+            <div class="personalizacion-grid">
+                <fieldset class="personalizacion-grupo">
+                    <legend>Fondo / Tema</legend>
+                    <div id="personalizacion-temas" class="personalizacion-opciones"></div>
+                </fieldset>
+
+                <fieldset class="personalizacion-grupo">
+                    <legend>Paleta de emociones</legend>
+                    <div id="personalizacion-paletas" class="personalizacion-opciones"></div>
+                    <div id="personalizacion-colores-custom" class="personalizacion-colores-custom oculto"></div>
+                </fieldset>
+
+                <fieldset class="personalizacion-grupo">
+                    <legend>Forma del día</legend>
+                    <div id="personalizacion-formas-dia" class="personalizacion-opciones"></div>
+                </fieldset>
+
+                <fieldset class="personalizacion-grupo">
+                    <legend>Forma del número</legend>
+                    <div id="personalizacion-formas-numero" class="personalizacion-opciones"></div>
+                </fieldset>
+
+                <fieldset class="personalizacion-grupo">
+                    <legend>Fuente</legend>
+                    <select id="personalizacion-fuente"></select>
+                </fieldset>
+
+                <fieldset class="personalizacion-grupo">
+                    <legend>Bordes y estilo</legend>
+                    <div id="personalizacion-bordes" class="personalizacion-opciones"></div>
+                </fieldset>
+
+                <fieldset class="personalizacion-grupo">
+                    <legend>Opciones extra</legend>
+                    <label class="personalizacion-switch"><input type="checkbox" id="personalizacion-sombras"> Sombras suaves</label>
+                    <label class="personalizacion-switch"><input type="checkbox" id="personalizacion-decoraciones"> Iconos decorativos</label>
+                    <label class="personalizacion-switch"><input type="checkbox" id="personalizacion-animaciones"> Animaciones al seleccionar</label>
+                </fieldset>
+            </div>
+
+            <div class="acciones-registro">
+                <button type="button" id="btn-aplicar-personalizacion" class="btn-primario">Aplicar cambios</button>
+            </div>
+            <p id="mensaje-personalizacion" class="mensaje-estado" aria-live="polite"></p>
+        </section>
+
+        <section id="calendario-emocional" class="seccion-emocional" aria-labelledby="titulo-calendario"
+            data-tema="pastel" data-forma-dia="circulo" data-forma-numero="circulo" data-borde="redondeado">
             <h2 id="titulo-calendario">Tu calendario emocional</h2>
 
             <div class="calendario-layout">
@@ -184,6 +242,7 @@
     <script src="assets/js/supabase-config.js" defer></script>
     <script src="assets/js/auth.js" defer></script>
     <script src="assets/js/emocional.js" defer></script>
+    <script src="assets/js/personalizacion.js" defer></script>
 </body>
 
 </html>
