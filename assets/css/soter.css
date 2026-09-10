@@ -1239,14 +1239,15 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--espacio-md);
+    
 }
 
 .soter-info-card {
     background: var(--blanco);
     border-radius: var(--radio);
-    padding: var(--padding-card);
 
     box-shadow: var(--sombra-media);
+    padding: 20px 22px;
 
     transition:
         transform var(--transicion),
@@ -1265,11 +1266,11 @@
 }
 
 .soter-info-card h3 {
-    margin-bottom: 6px;
+    margin-bottom: 10px;
 }
 
 .soter-info-card p {
-    margin: 0;
+    margin: 15px 20px;
     color: var(--gris);
 }
 

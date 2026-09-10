@@ -1696,6 +1696,7 @@ dialog.modal-emociones::backdrop {
     margin: 0;
     text-align: left;
     font-size: 1.15rem;
+    
 }
 
 .btn-cerrar-modal {
@@ -1764,8 +1765,10 @@ dialog.modal-emociones::backdrop {
 }
 
 .modal-emocion-cabecera h3 {
-    margin: 0;
+    color: var(--azul-marino);
+    margin: 0 0 5px 0;
     text-align: center;
+    
 }
 
 .punto-color--grande {
@@ -1782,6 +1785,11 @@ dialog.modal-emociones::backdrop {
 .modal-emociones__contenido p {
     text-align: center;
     margin-bottom: var(--espacio-md);
+}
+
+.modal-emociones__contenido p strong {
+    text-align: center;
+    color: var(--azul-marino);
 }
 
 .modal-matices-lista {
