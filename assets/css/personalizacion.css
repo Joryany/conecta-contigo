@@ -2,14 +2,164 @@
    PERSONALIZACIÓN DEL CALENDARIO · CONECTA CONTIGO
    ========================================================= */
 
-/* ---------------- Panel de controles ---------------- */
+/* ---------------- Botón que abre la ventana emergente ----------------
+   Ícono pequeño anclado a la esquina superior derecha de LA TARJETA
+   del calendario (.calendario-card), no una sección aparte arriba de
+   la página.
+
+   FIX "el emoji/ícono no combina con algunos temas": antes el botón
+   llevaba un fondo circular con degradado fijo, que en varios temas
+   (sobre todo los de foto clara u oscura) desentonaba. Ahora el botón
+   no tiene fondo ni borde: es solo el símbolo elegido, con una sombra
+   (drop-shadow) que lo hace legible sobre cualquier imagen o color de
+   fondo, y su propio color cambia a blanco cuando el tema activo es de
+   "texto claro" (ver reglas más abajo), igual que el resto de textos
+   del calendario. El símbolo en sí (🎨, ⚙️, ☰, etc.) ahora se elige
+   desde el panel de personalización — ver "icono_boton" en
+   personalizacion.js. */
+
+.btn-personalizar-icono {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    font-size: 1.35rem;
+    line-height: 1;
+
+    color: var(--azul-marino);
+    background: none;
+    border: none;
+
+    cursor: pointer;
+
+    filter: drop-shadow(0 2px 4px rgba(17, 46, 81, 0.35));
+
+    transition: transform var(--transicion-media), filter var(--transicion-media), color var(--transicion-media);
+}
+
+.btn-personalizar-icono:hover {
+    transform: translateY(-2px) scale(1.08);
+    filter: drop-shadow(0 3px 6px rgba(17, 46, 81, 0.45));
+}
+
+/* Sobre temas/fondos de texto claro (los oscuros), el ícono pasa a
+   blanco para no perderse — misma lógica que ya usa el resto de
+   textos del calendario con estas mismas clases (tema normal,
+   degradado rápido o modo avanzado). */
+#calendario-emocional.tema-texto-claro .btn-personalizar-icono,
+#calendario-emocional.avanzado-activo.avanzado-texto-claro .btn-personalizar-icono {
+    color: var(--blanco);
+}
+
+/* ---- FIX "el botón queda pegado/superpuesto a mes-siguiente" -----
+   El botón es absolute (top:12/right:12) sobre .calendario-card, y el
+   header del calendario (con mes-anterior / mes-siguiente) arranca
+   justo después del padding normal de la tarjeta (--padding-card:
+   24px), así que ambos terminaban ocupando la misma franja superior
+   derecha. La solución es reservarle al ícono su propia franja arriba,
+   empujando el header hacia abajo con padding-top, en vez de mover el
+   ícono a coordenadas negativas (que overflow:hidden recortaría). */
+.calendario-card {
+    padding-top: 58px;
+}
+
+/* ---------------- Ventana emergente (dialog) ---------------- */
+
+dialog.modal-personalizacion {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+
+    border: none;
+    padding: 0;
+    border-radius: var(--radio-grande, 20px);
+    box-shadow: var(--sombra-grande, 0 20px 60px rgba(10, 30, 55, 0.35));
+
+    width: min(760px, calc(100vw - 40px));
+    height: min(720px, 90vh);
+    max-height: 90vh;
+    overflow: hidden;
+}
+
+dialog.modal-personalizacion[open] {
+    animation: aparecer 0.22s ease;
+}
+
+dialog.modal-personalizacion::backdrop {
+    background: rgba(20, 46, 81, 0.55);
+}
+
+.modal-personalizacion__inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.modal-personalizacion__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-sm);
+
+    padding: 16px var(--espacio-lg);
+
+    border-bottom: 1px solid var(--gris-claro);
+    flex-shrink: 0;
+}
+
+.modal-personalizacion__header h2 {
+    margin: 0;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+.modal-personalizacion__contenido {
+    flex: 1 1 auto;
+    min-height: 0;
+
+    overflow-y: auto;
+
+    /* Márgenes generosos para que el contenido no quede pegado a los
+       bordes de la ventana emergente, y centrado dentro de su ancho
+       máximo de lectura. */
+    padding: var(--espacio-lg) var(--espacio-lg) var(--espacio-md);
+}
+
+.modal-personalizacion__contenido .intro-texto {
+    margin-bottom: var(--espacio-md);
+}
+
+.modal-personalizacion__footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+
+    padding: 14px var(--espacio-lg) 18px;
+
+    border-top: 1px solid var(--gris-claro);
+    background: var(--fondo-suave);
+    flex-shrink: 0;
+}
+
+/* ---------------- Panel de controles (dentro del modal) ---------------- */
 
 .personalizacion-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: var(--espacio-md);
 
-    margin: var(--espacio-lg) 0;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto var(--espacio-lg);
 }
 
 .personalizacion-grupo {
@@ -32,6 +182,20 @@
     gap: 8px;
 
     margin-top: 8px;
+
+    transition: opacity var(--transicion-rapida);
+}
+
+.personalizacion-opciones--bloqueada {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+.personalizacion-nota {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.76rem;
+    color: var(--gris);
 }
 
 .personalizacion-opcion {
@@ -71,6 +235,19 @@
 
 .personalizacion-swatch-emoji {
     font-size: 1.1rem;
+}
+
+.personalizacion-swatch-imagen {
+    display: inline-block;
+    width: 28px;
+    height: 20px;
+
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--fondo-suave);
+
+    flex-shrink: 0;
 }
 
 .personalizacion-simbolo {
@@ -139,10 +316,6 @@
    APLICACIÓN VISUAL EN EL CALENDARIO
    ============================================================ */
 
-/* La "forma" del día vive en un span interno (.dia-forma) que carga
-   el degradado; la celda (.dia-celda) se queda como botón normal
-   cuadrado y accesible, para no perder el foco de teclado ni el
-   área de clic. */
 .dia-forma {
     position: absolute;
     top: 10%;
@@ -157,25 +330,38 @@
     z-index: 1;
 }
 
-/* ---- Formas del día (aplicadas según data-forma-dia en #calendario-emocional) ---- */
+/* ---- Formas del día ---- */
 #calendario-emocional[data-forma-dia="circulo"] .dia-forma { border-radius: 50%; }
 #calendario-emocional[data-forma-dia="cuadrado"] .dia-forma { border-radius: 6px; }
+#calendario-emocional[data-forma-dia="cuadrado_recto"] .dia-forma { border-radius: 0; }
 #calendario-emocional[data-forma-dia="rombo"] .dia-forma { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
 #calendario-emocional[data-forma-dia="hexagono"] .dia-forma { clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); }
 #calendario-emocional[data-forma-dia="estrella"] .dia-forma { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
 #calendario-emocional[data-forma-dia="corazon"] .dia-forma { clip-path: polygon(50% 15%, 61% 5%, 75% 5%, 90% 20%, 90% 40%, 50% 90%, 10% 40%, 10% 20%, 25% 5%, 39% 5%); }
-#calendario-emocional[data-forma-dia="flor"] .dia-forma { clip-path: polygon(50% 0%, 65% 20%, 85% 10%, 80% 35%, 100% 50%, 80% 65%, 85% 90%, 65% 80%, 50% 100%, 35% 80%, 15% 90%, 20% 65%, 0% 50%, 20% 35%, 15% 10%, 35% 20%); }
+#calendario-emocional[data-forma-dia="triangulo"] .dia-forma { clip-path: polygon(50% 6%, 96% 94%, 4% 94%); }
 
-/* ---- FIX "nube": antes era un simple border-radius asimétrico
-   (45% 55% 40% 60% / 60% 40% 60% 40%), que solo produce un blob
-   ovalado deforme, no una nube con bultos. Un border-radius nunca
-   puede crear varios "lóbulos" porque solo controla las 4 esquinas
-   de una caja. La solución real es recortar con una máscara (mask)
-   con forma de nube (un SVG en línea, sin archivos ni librerías
-   nuevas): la máscara sí puede tener varios círculos superpuestos,
-   así que el resultado se ve como una nube de verdad, y conserva
-   el color/gradiente que ya se le da al elemento por JS. */
-#calendario-emocional[data-forma-dia="nube"] .dia-forma {
+/* ---- FIX flor: antes era un clip-path de puntas afiladas (parecía
+   una estrella rara, no una flor). Ahora se usa una máscara SVG hecha
+   de 8 pétalos ovalados superpuestos + un centro, igual que se hizo
+   con la nube: así los pétalos quedan REDONDEADOS y se nota que es
+   una flor, no picos. ---- */
+#calendario-emocional[data-forma-dia="flor"] .dia-forma,
+#calendario-emocional[data-forma-numero="flor"] .dia-numero {
+    border-radius: 0;
+    clip-path: none;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='black'><ellipse cx='50' cy='24' rx='15' ry='21'/><ellipse cx='50' cy='76' rx='15' ry='21'/><ellipse cx='24' cy='50' rx='21' ry='15'/><ellipse cx='76' cy='50' rx='21' ry='15'/><ellipse cx='31' cy='31' rx='17' ry='12' transform='rotate(45 31 31)'/><ellipse cx='69' cy='31' rx='17' ry='12' transform='rotate(-45 69 31)'/><ellipse cx='31' cy='69' rx='17' ry='12' transform='rotate(-45 31 69)'/><ellipse cx='69' cy='69' rx='17' ry='12' transform='rotate(45 69 69)'/><circle cx='50' cy='50' r='15'/></g></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='black'><ellipse cx='50' cy='24' rx='15' ry='21'/><ellipse cx='50' cy='76' rx='15' ry='21'/><ellipse cx='24' cy='50' rx='21' ry='15'/><ellipse cx='76' cy='50' rx='21' ry='15'/><ellipse cx='31' cy='31' rx='17' ry='12' transform='rotate(45 31 31)'/><ellipse cx='69' cy='31' rx='17' ry='12' transform='rotate(-45 69 31)'/><ellipse cx='31' cy='69' rx='17' ry='12' transform='rotate(-45 31 69)'/><ellipse cx='69' cy='69' rx='17' ry='12' transform='rotate(45 69 69)'/><circle cx='50' cy='50' r='15'/></g></svg>");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+/* ---- Nube (día y ahora también número, mismo recorte) ---- */
+#calendario-emocional[data-forma-dia="nube"] .dia-forma,
+#calendario-emocional[data-forma-numero="nube"] .dia-numero {
     border-radius: 0;
     clip-path: none;
     -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M25 78c-12 0-21-9-21-20 0-9 6-17 15-19 1-14 13-25 27-25 12 0 22 7 26 18 11 1 19 10 19 21 0 12-10 21-22 21H25z'/></svg>");
@@ -188,19 +374,34 @@
     mask-position: center;
 }
 
-/* ---- Formas del número (aplicadas según data-forma-numero) ---- */
+/* ---- Sol (día y número): un círculo con 8 rayos, hecho con máscara ---- */
+#calendario-emocional[data-forma-dia="sol"] .dia-forma,
+#calendario-emocional[data-forma-numero="sol"] .dia-numero {
+    border-radius: 0;
+    clip-path: none;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='black'><circle cx='50' cy='50' r='23'/><rect x='44' y='0' width='12' height='24' rx='5'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(45 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(90 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(135 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(180 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(225 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(270 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(315 50 50)'/></g></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g fill='black'><circle cx='50' cy='50' r='23'/><rect x='44' y='0' width='12' height='24' rx='5'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(45 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(90 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(135 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(180 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(225 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(270 50 50)'/><rect x='44' y='0' width='12' height='24' rx='5' transform='rotate(315 50 50)'/></g></svg>");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+/* ---- Formas del número ---- */
 #calendario-emocional[data-forma-numero="circulo"] .dia-numero { border-radius: 50%; }
 #calendario-emocional[data-forma-numero="cuadrado"] .dia-numero { border-radius: 6px; }
+#calendario-emocional[data-forma-numero="cuadrado_recto"] .dia-numero { border-radius: 0; }
 #calendario-emocional[data-forma-numero="pastilla"] .dia-numero { border-radius: 999px; width: auto; min-width: 23px; padding: 0 8px; }
 #calendario-emocional[data-forma-numero="rombo"] .dia-numero { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
 #calendario-emocional[data-forma-numero="estrella"] .dia-numero { clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
 #calendario-emocional[data-forma-numero="corazon"] .dia-numero { clip-path: polygon(50% 15%, 61% 5%, 75% 5%, 90% 20%, 90% 40%, 50% 90%, 10% 40%, 10% 20%, 25% 5%, 39% 5%); }
+#calendario-emocional[data-forma-numero="hexagono"] .dia-numero { clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); }
+#calendario-emocional[data-forma-numero="triangulo"] .dia-numero { clip-path: polygon(50% 6%, 96% 94%, 4% 94%); }
 #calendario-emocional[data-forma-numero="ninguno"] .dia-numero { background: transparent; box-shadow: none; }
 
 /* ---- Fuente del calendario y de la sección de registro ---- */
-/* FIX bug #10 (parte 1): se añaden aquí los selectores de
-   #registro-emocional para que la fuente elegida también se note en
-   el cuadro donde se elige la emoción, no solo en el calendario. */
 #calendario-emocional h2,
 #calendario-emocional h3,
 #calendario-emocional .dia-numero,
@@ -214,123 +415,192 @@
     font-family: var(--fuente-calendario, inherit);
 }
 
-/* ---- Temas (fondo del calendario, del panel del día y del cuadro de registro) ---- */
+/* ---- Temas: fondo del calendario, panel del día y cuadro de registro ---- */
 .calendario-card,
 .panel-dia,
 #registro-emocional.seccion-emocional.card {
     position: relative;
-    transition: background var(--transicion-lenta), border-color var(--transicion-lenta), color var(--transicion-lenta);
+    isolation: isolate;
+    overflow: hidden;
 }
 
-/* FIX bug #10 (parte 2 — el problema central):
-   Antes, aplicarPersonalizacionVisual() en personalizacion.js solo
-   escribía data-tema en #calendario-emocional. Como esa era la única
-   pieza de HTML con el atributo, y todas estas reglas dependían de
-   "#calendario-emocional[data-tema=...]", el cuadro de
-   #registro-emocional nunca podía coincidir con ningún selector: no
-   es que el CSS estuviera mal escrito, es que el atributo nunca le
-   llegaba. Ahora personalizacion.js también escribe data-tema en
-   #registro-emocional, así que basta con añadir su selector aquí
-   junto a los que ya existían. */
-#calendario-emocional[data-tema="pastel"] .calendario-card,
-#calendario-emocional[data-tema="pastel"] .panel-dia,
-#registro-emocional[data-tema="pastel"] {
-    background: linear-gradient(160deg, #FDF3F8, #EAF6FF);
-    border-color: rgba(255, 182, 213, 0.35);
-}
-#calendario-emocional[data-tema="bosque"] .calendario-card,
-#calendario-emocional[data-tema="bosque"] .panel-dia,
-#registro-emocional[data-tema="bosque"] {
-    background: linear-gradient(160deg, #F1F8EE, #E4F0E1);
-    border-color: rgba(120, 170, 110, 0.35);
-}
-#calendario-emocional[data-tema="rosa"] .calendario-card,
-#calendario-emocional[data-tema="rosa"] .panel-dia,
-#registro-emocional[data-tema="rosa"] {
-    background: linear-gradient(160deg, #FFF1F4, #FFE3EA);
-    border-color: rgba(255, 127, 141, 0.3);
-}
-#calendario-emocional[data-tema="oceano"] .calendario-card,
-#calendario-emocional[data-tema="oceano"] .panel-dia,
-#registro-emocional[data-tema="oceano"] {
-    background: linear-gradient(160deg, #EAF7FB, #D8EEF7);
-    border-color: rgba(70, 142, 180, 0.3);
-}
-#calendario-emocional[data-tema="lavanda"] .calendario-card,
-#calendario-emocional[data-tema="lavanda"] .panel-dia,
-#registro-emocional[data-tema="lavanda"] {
-    background: linear-gradient(160deg, #F4EEFB, #ECE1F7);
-    border-color: rgba(150, 110, 200, 0.3);
-}
-#calendario-emocional[data-tema="noche"] .calendario-card,
-#calendario-emocional[data-tema="noche"] .panel-dia,
-#registro-emocional[data-tema="noche"] {
-    background: linear-gradient(160deg, #1B2340, #2B3358);
-    border-color: rgba(255, 255, 255, 0.12);
-}
-#calendario-emocional[data-tema="noche"] .calendario-card h3,
-#calendario-emocional[data-tema="noche"] .panel-dia h3,
-#calendario-emocional[data-tema="noche"] .calendario-dias-semana,
-#calendario-emocional[data-tema="noche"] .frecuencia-item,
-#calendario-emocional[data-tema="noche"] .leyenda-item,
-#calendario-emocional[data-tema="noche"] .panel-dia p {
-    color: #F1F1FA;
-}
-#calendario-emocional[data-tema="noche"] .dia-sin-registro {
-    background: rgba(255, 255, 255, 0.06);
-}
 
-/* Igual que con el calendario: si el tema "Noche" es oscuro, el
-   texto del cuadro de registro también tiene que aclararse para no
-   perder contraste (así lo pedía el brief: "si el fondo elegido es
-   oscuro, adapta automáticamente los elementos necesarios"). */
-#registro-emocional[data-tema="noche"] h2,
-#registro-emocional[data-tema="noche"] .intro-texto,
-#registro-emocional[data-tema="noche"] .mensaje-estado,
-#registro-emocional[data-tema="noche"] .mensaje-aviso {
-    color: #F1F1FA;
-}
-#registro-emocional[data-tema="noche"] .emocion-boton {
-    background: rgba(255, 255, 255, 0.08);
-    color: #F1F1FA;
-}
-#registro-emocional[data-tema="noche"] .grupo-matiz {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.12);
-}
-
-/* Iconos decorativos por tema (esquina de la tarjeta), apagables */
-#calendario-emocional:not(.sin-decoraciones)[data-tema="pastel"] .calendario-card::before { content: "☁️"; }
-#calendario-emocional:not(.sin-decoraciones)[data-tema="bosque"] .calendario-card::before { content: "🌿"; }
-#calendario-emocional:not(.sin-decoraciones)[data-tema="rosa"] .calendario-card::before { content: "🌷"; }
-#calendario-emocional:not(.sin-decoraciones)[data-tema="oceano"] .calendario-card::before { content: "🌊"; }
-#calendario-emocional:not(.sin-decoraciones)[data-tema="lavanda"] .calendario-card::before { content: "💜"; }
-#calendario-emocional:not(.sin-decoraciones)[data-tema="noche"] .calendario-card::before { content: "🌙"; }
-
-#calendario-emocional .calendario-card::before {
+.calendario-card::before,
+.panel-dia::before,
+#registro-emocional.seccion-emocional.card::before {
+    content: "";
     position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 1.3rem;
-    opacity: 0.55;
+    inset: 0;
+    z-index: -1;
     pointer-events: none;
+    border-radius: inherit;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.32)),
+        var(--tema-imagen, none),
+        var(--tema-fondo-respaldo, linear-gradient(160deg, #EAF3FB, #FFFFFF));
+    background-size: cover, cover, cover;
+    background-position: center, center, center;
+    background-repeat: no-repeat, no-repeat, no-repeat;
 }
 
-/* El mismo icono decorativo, ahora también en el cuadro de registro. */
-#registro-emocional:not(.sin-decoraciones)[data-tema="pastel"]::before { content: "☁️"; }
-#registro-emocional:not(.sin-decoraciones)[data-tema="bosque"]::before { content: "🌿"; }
-#registro-emocional:not(.sin-decoraciones)[data-tema="rosa"]::before { content: "🌷"; }
-#registro-emocional:not(.sin-decoraciones)[data-tema="oceano"]::before { content: "🌊"; }
-#registro-emocional:not(.sin-decoraciones)[data-tema="lavanda"]::before { content: "💜"; }
-#registro-emocional:not(.sin-decoraciones)[data-tema="noche"]::before { content: "🌙"; }
+/* En pantallas angostas, si la foto tiene su parte importante arriba,
+   mostrar un poco más de esa zona en vez del centro exacto (ver guía
+   de fondos: en cover, el recorte lateral es más agresivo en móvil). */
+@media (max-width: 480px) {
+    .calendario-card::before,
+    .panel-dia::before,
+    #registro-emocional.seccion-emocional.card::before {
+        background-position: center, 50% 20%, center;
+    }
+}
 
-#registro-emocional::before {
-    position: absolute;
-    top: 18px;
-    right: 22px;
-    font-size: 1.3rem;
-    opacity: 0.5;
-    pointer-events: none;
+/* Temas con "texto: oscuro" en TEMAS (personalizacion.js) usan un velo
+   oscuro en vez de uno claro, para no "lavar" la foto y mantener buen
+   contraste con el texto claro que llevan esos temas. La clase la pone
+   reaplicarTemaSobreCalendario() según el campo "texto" de cada tema
+   (o, si el degradado rápido está activo, según el contraste calculado
+   a partir de sus 2 colores). */
+.tema-texto-claro.calendario-card::before,
+.tema-texto-claro.panel-dia::before,
+#registro-emocional.tema-texto-claro.seccion-emocional.card::before,
+#calendario-emocional.tema-texto-claro .calendario-card::before,
+#calendario-emocional.tema-texto-claro .panel-dia::before {
+    background-image:
+        linear-gradient(rgba(10, 15, 30, 0.34), rgba(10, 15, 30, 0.34)),
+        var(--tema-imagen, none),
+        var(--tema-fondo-respaldo, linear-gradient(160deg, #EAF3FB, #FFFFFF));
+}
+
+/* Degradado de respaldo genérico (ULTIMÍSIMO fallback): solo se ve si
+   por algún motivo --tema-fondo-respaldo tampoco llegó a fijarse. En
+   condiciones normales, siempre hay un valor de color, así que esto
+   casi nunca se muestra. */
+.calendario-card,
+.panel-dia,
+#registro-emocional.seccion-emocional.card {
+    background: linear-gradient(160deg, var(--fondo-suave, #EAF3FB), #FFFFFF);
+}
+
+/* Cuando el modo avanzado está activo, --tema-imagen y
+   --tema-fondo-respaldo se ponen en "none" desde JS, así que el
+   ::before de arriba queda invisible automáticamente y no compite con
+   el fondo armado por capas. */
+
+/* ============================================================
+   EMOJI DEL TEMA — SOLO EN EL TÍTULO
+   ============================================================
+   El emoji del tema decora ÚNICAMENTE el título: se agrega a los dos
+   lados del texto con ::before/::after. Si el interruptor "Emoji junto
+   al título" está apagado, --tema-icono se pone en "none" y no se
+   muestra nada. Esto es independiente del ícono del BOTÓN de
+   personalizar (ver .btn-personalizar-icono arriba), que ahora se
+   elige aparte en el panel. */
+#calendario-emocional > h2,
+#registro-emocional > h2 {
+    position: relative;
+}
+
+#calendario-emocional > h2::before,
+#registro-emocional > h2::before {
+    content: var(--tema-icono, none);
+    margin-right: 10px;
+}
+
+#calendario-emocional > h2::after,
+#registro-emocional > h2::after {
+    content: var(--tema-icono, none);
+    margin-left: 10px;
+}
+
+/* ---- Contraste de texto según el tema (claro/oscuro) ---------------
+   Reemplaza las reglas que antes existían por cada id de tema viejo:
+   ahora es una sola regla genérica controlada por la clase
+   .tema-texto-claro, que reaplicarTemaSobreCalendario() alterna según
+   el campo "texto" de TEMAS en personalizacion.js (o el contraste
+   calculado del degradado rápido). */
+#calendario-emocional.tema-texto-claro > h2,
+#registro-emocional.tema-texto-claro > h2 {
+    color: #F5F7FF;
+}
+#calendario-emocional.tema-texto-claro .calendario-card h3,
+#calendario-emocional.tema-texto-claro .panel-dia h3,
+#calendario-emocional.tema-texto-claro .calendario-dias-semana,
+#calendario-emocional.tema-texto-claro .frecuencia-item,
+#calendario-emocional.tema-texto-claro .leyenda-item,
+#calendario-emocional.tema-texto-claro .panel-dia p {
+    color: #F5F7FF;
+}
+#calendario-emocional.tema-texto-claro .dia-sin-registro {
+    background: rgba(255, 255, 255, 0.14);
+}
+#registro-emocional.tema-texto-claro h2,
+#registro-emocional.tema-texto-claro .intro-texto,
+#registro-emocional.tema-texto-claro .mensaje-estado,
+#registro-emocional.tema-texto-claro .mensaje-aviso {
+    color: #F5F7FF;
+}
+#registro-emocional.tema-texto-claro .emocion-boton {
+    background: rgba(255, 255, 255, 0.14);
+    color: #F5F7FF;
+}
+#registro-emocional.tema-texto-claro .grupo-matiz {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.calendario-card > *:not(.btn-personalizar-icono),
+#registro-emocional.seccion-emocional.card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================================
+   MODO MINIMALISTA
+   ============================================================
+   A diferencia de "Contorno" (que solo quita el relleno), el modo
+   minimalista deja el fondo de la tarjeta en blanco/neutro y quita el
+   degradado del tema por completo: lo único que conserva el color de
+   la personalización son las celdas de los días (según la paleta) y
+   el título. Pensado para quien prefiera algo limpio en vez de un
+   fondo temático. */
+#calendario-emocional.modo-minimalista .calendario-card,
+#calendario-emocional.modo-minimalista .panel-dia,
+#registro-emocional.modo-minimalista {
+    background: var(--blanco) !important;
+    border-color: var(--gris-claro) !important;
+}
+/* La imagen / el degradado del tema viven en un ::before aparte (no
+   son parte de "background"), así que hay que ocultarlos explícitamente
+   aquí; si no, se seguirían viendo encima del blanco de arriba. */
+#calendario-emocional.modo-minimalista .calendario-card::before,
+#calendario-emocional.modo-minimalista .panel-dia::before,
+#registro-emocional.modo-minimalista::before {
+    display: none !important;
+}
+#calendario-emocional.modo-minimalista > h2 {
+    color: var(--azul-marino) !important;
+}
+#calendario-emocional.modo-minimalista > h2::before,
+#calendario-emocional.modo-minimalista > h2::after,
+#registro-emocional.modo-minimalista > h2::before,
+#registro-emocional.modo-minimalista > h2::after {
+    content: none !important;
+}
+#calendario-emocional.modo-minimalista .calendario-card h3,
+#calendario-emocional.modo-minimalista .panel-dia h3,
+#calendario-emocional.modo-minimalista .calendario-dias-semana,
+#calendario-emocional.modo-minimalista .frecuencia-item,
+#calendario-emocional.modo-minimalista .leyenda-item,
+#calendario-emocional.modo-minimalista .panel-dia p {
+    color: var(--azul-marino) !important;
+}
+#registro-emocional.modo-minimalista h2,
+#registro-emocional.modo-minimalista .intro-texto {
+    color: var(--azul-marino) !important;
+}
+#registro-emocional.modo-minimalista .emocion-boton {
+    background: var(--blanco) !important;
+    color: var(--azul-marino) !important;
 }
 
 /* ---- Bordes / estilo ---- */
@@ -381,4 +651,247 @@
     .personalizacion-grid {
         grid-template-columns: 1fr;
     }
+
+    dialog.modal-personalizacion {
+        width: 94vw;
+        height: 90vh;
+        max-height: 90vh;
+    }
+
+    .calendario-card {
+        padding-top: 50px;
+    }
+
+    .btn-personalizar-icono {
+        width: 34px;
+        height: 34px;
+        top: 8px;
+        right: 8px;
+    }
+}
+
+/* ============================================================
+   FONDO / TEMA AVANZADO
+   ============================================================ */
+
+.personalizacion-grupo--ancho {
+    grid-column: 1 / -1;
+}
+
+.personalizacion-av-controles {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.personalizacion-av-preview-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.personalizacion-av-etiqueta {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--azul-marino);
+}
+
+.personalizacion-av-preview {
+    width: 100%;
+    max-width: 260px;
+    height: 90px;
+    border-radius: 14px;
+    border: 1px solid var(--gris-claro);
+    box-shadow: var(--sombra-suave);
+}
+
+.personalizacion-av-fila {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+}
+
+.personalizacion-av-fila > label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    flex: 1;
+    min-width: 150px;
+
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--azul-marino);
+}
+
+.personalizacion-av-fila input[type="range"] {
+    width: 100%;
+    accent-color: var(--azul-claro);
+}
+
+.personalizacion-av-fila input[type="color"] {
+    width: 42px;
+    height: 28px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.personalizacion-av-fila select {
+    padding: 8px 10px;
+    border: 1px solid var(--gris-claro);
+    border-radius: 8px;
+    color: var(--azul-marino);
+}
+
+.personalizacion-av-fila--dos {
+    gap: 22px;
+}
+
+.personalizacion-av-subgrupo {
+    flex: 1;
+    min-width: 170px;
+
+    padding: 8px 12px 10px;
+
+    border: 1px solid var(--gris-claro);
+    border-radius: 10px;
+}
+
+.personalizacion-av-subgrupo legend {
+    padding: 0 4px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--azul-marino);
+}
+
+.personalizacion-av-subgrupo label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-top: 6px;
+
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--azul-marino);
+}
+
+/* ---- Capa base (textura + degradado propio) -----------------------
+   Se aplica sobre .calendario-card, .panel-dia, #registro-emocional y
+   la miniatura de previsualización del modal, siempre que tengan la
+   clase .fondo-avanzado. Se listan explícitamente los 3 contextos
+   reales + la previsualización para asegurar suficiente especificidad
+   y así ganarle a las reglas de "Fondo / Tema" normales. */
+.calendario-card.fondo-avanzado[data-textura="gradiente"],
+.panel-dia.fondo-avanzado[data-textura="gradiente"],
+#registro-emocional.fondo-avanzado[data-textura="gradiente"],
+.personalizacion-av-preview.fondo-avanzado[data-textura="gradiente"] {
+    background: linear-gradient(160deg, var(--av-color-base) 0%, var(--av-color-secundario) var(--av-mezcla), var(--av-color-base) 100%);
+}
+
+.calendario-card.fondo-avanzado[data-textura="papel"],
+.panel-dia.fondo-avanzado[data-textura="papel"],
+#registro-emocional.fondo-avanzado[data-textura="papel"],
+.personalizacion-av-preview.fondo-avanzado[data-textura="papel"] {
+    background:
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, var(--av-opacidad-textura)) 0px, rgba(255, 255, 255, var(--av-opacidad-textura)) 1px, transparent 1px, transparent 7px),
+        linear-gradient(160deg, var(--av-color-base) 0%, var(--av-color-secundario) var(--av-mezcla), var(--av-color-base) 100%);
+}
+
+.calendario-card.fondo-avanzado[data-textura="nebulosa"],
+.panel-dia.fondo-avanzado[data-textura="nebulosa"],
+#registro-emocional.fondo-avanzado[data-textura="nebulosa"],
+.personalizacion-av-preview.fondo-avanzado[data-textura="nebulosa"] {
+    background:
+        radial-gradient(circle at 20% 25%, rgba(255, 255, 255, var(--av-opacidad-textura)) 0%, transparent 42%),
+        radial-gradient(circle at 78% 70%, rgba(255, 255, 255, var(--av-opacidad-textura)) 0%, transparent 46%),
+        linear-gradient(160deg, var(--av-color-base) 0%, var(--av-color-secundario) var(--av-mezcla), var(--av-color-base) 100%);
+}
+
+.calendario-card.fondo-avanzado[data-textura="seda"],
+.panel-dia.fondo-avanzado[data-textura="seda"],
+#registro-emocional.fondo-avanzado[data-textura="seda"],
+.personalizacion-av-preview.fondo-avanzado[data-textura="seda"] {
+    background:
+        repeating-linear-gradient(115deg, rgba(255, 255, 255, var(--av-opacidad-textura)) 0px, rgba(255, 255, 255, var(--av-opacidad-textura)) 2px, transparent 2px, transparent 34px),
+        linear-gradient(160deg, var(--av-color-base) 0%, var(--av-color-secundario) var(--av-mezcla), var(--av-color-base) 100%);
+}
+
+/* ---- Capa de efectos (brillo + patrón de nubes/estrellas) ----------
+   Va en un ::after independiente, detrás del contenido (z-index -1) y
+   por delante del fondo base, así que no importa en qué contexto
+   (calendario, registro o la previsualización) se use: basta con la
+   clase + el atributo de iluminación. */
+.fondo-avanzado {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.fondo-avanzado::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: var(--av-opacidad-capa, 0.8);
+    background-repeat: no-repeat, repeat, repeat;
+    background-size:
+        100% 100%,
+        var(--av-patron-size, 100px) auto,
+        calc(var(--av-patron-size, 100px) * 0.55) auto;
+    background-position: center, 0 0, 14px 14px;
+}
+
+.fondo-avanzado[data-iluminacion="cenital"]::after {
+    background-image:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, var(--av-brillo-opacidad, 0)) 0%, transparent var(--av-difusion, 55%)),
+        var(--av-nubes-img, none),
+        var(--av-estrellas-img, none);
+}
+
+.fondo-avanzado[data-iluminacion="suave"]::after {
+    background-image:
+        radial-gradient(circle at 25% 20%, rgba(255, 255, 255, var(--av-brillo-opacidad, 0)) 0%, transparent var(--av-difusion, 55%)),
+        var(--av-nubes-img, none),
+        var(--av-estrellas-img, none);
+}
+
+.fondo-avanzado[data-iluminacion="difusa"]::after {
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, var(--av-brillo-opacidad, 0)) 0%, transparent var(--av-difusion, 65%)),
+        var(--av-nubes-img, none),
+        var(--av-estrellas-img, none);
+}
+
+/* ---- Contraste de texto automático sobre fondo avanzado ---- */
+#calendario-emocional.avanzado-activo.avanzado-texto-claro > h2,
+#registro-emocional.fondo-avanzado.fondo-avanzado--texto-claro > h2 {
+    color: #F5F7FF;
+}
+
+.fondo-avanzado--texto-claro h3,
+.fondo-avanzado--texto-claro .calendario-dias-semana,
+.fondo-avanzado--texto-claro .frecuencia-item,
+.fondo-avanzado--texto-claro .leyenda-item,
+.fondo-avanzado--texto-claro.panel-dia p,
+#registro-emocional.fondo-avanzado--texto-claro h2,
+#registro-emocional.fondo-avanzado--texto-claro .intro-texto,
+#registro-emocional.fondo-avanzado--texto-claro .mensaje-estado,
+#registro-emocional.fondo-avanzado--texto-claro .mensaje-aviso {
+    color: #F5F7FF;
+}
+
+#registro-emocional.fondo-avanzado--texto-claro .emocion-boton {
+    background: rgba(255, 255, 255, 0.14);
+    color: #F5F7FF;
+}
+
+#registro-emocional.fondo-avanzado--texto-claro .grupo-matiz {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
 }

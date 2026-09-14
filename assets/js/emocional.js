@@ -165,24 +165,12 @@ const TIEBREAK_QUESTIONS = [
 /* ====================================================================
    4. ACCESO A DATOS (Supabase: base de datos + autenticación)
    ==================================================================== */
-/* Este objeto reemplaza al antiguo `storage` de localStorage.
-   `supabaseClient` viene de assets/js/supabase-config.js (cargado
-   antes que este archivo en emocional.html).
-
-   Formato interno que sigue usando el resto del archivo (igual que
-   antes, para no tener que tocar los renders):
-     { id, createdAt, emotions: [{ name, nuances }] }
-
-   Ese formato se traduce desde/hacia las columnas reales de la tabla
-   (id, created_at, emociones). */
 
 function mapearFila(fila) {
     return { id: fila.id, createdAt: fila.created_at, emotions: fila.emociones };
 }
 
 const db = {
-    // Trae TODOS los registros del usuario autenticado (RLS en el
-    // servidor garantiza que nunca vengan registros de otro usuario).
     async getRecords() {
         const { data: { user } } = await supabaseClient.auth.getUser();
         if (!user) return [];
@@ -200,9 +188,6 @@ const db = {
         return data.map(mapearFila);
     },
 
-    // Crea un registro nuevo. El límite diario y la validación de
-    // forma se verifican en la base de datos (ver database/schema.sql),
-    // así que aquí solo interpretamos el resultado.
     async insertRecord(emocionesArray) {
         const { data: { user } } = await supabaseClient.auth.getUser();
         if (!user) return { ok: false, motivo: "sin-sesion" };
@@ -223,9 +208,6 @@ const db = {
         return { ok: true, registro: mapearFila(data) };
     },
 
-    // Actualiza SOLO las emociones/matices. La política de RLS
-    // "editar_mismo_dia" rechaza la operación si ya no es el mismo
-    // día de creación, sin importar lo que haga el frontend.
     async updateRecord(id, emocionesArray) {
         const { error } = await supabaseClient
             .from("registros_emocionales")
@@ -236,8 +218,6 @@ const db = {
         return !error;
     },
 
-    // La política de RLS "eliminar_48h" rechaza la operación si ya
-    // pasaron más de 48 horas desde la creación.
     async deleteRecord(id) {
         const { error } = await supabaseClient
             .from("registros_emocionales")
@@ -287,15 +267,10 @@ function obtenerColorPorNombre(nombre) {
     return key ? EMOTIONS[key].color : "#999999";
 }
 
-// Un registro solo puede editarse mientras la fecha de HOY siga siendo
-// la misma fecha calendario en la que fue creado (el servidor aplica
-// la misma regla de forma independiente; ver política "editar_mismo_dia").
 function esEditable(registro) {
     return dateKeyFromTimestamp(registro.createdAt) === todayDateStr();
 }
 
-// Un registro puede eliminarse durante exactamente 48 horas desde su
-// creación (el servidor aplica la misma regla; ver "eliminar_48h").
 function esEliminable(registro) {
     const creado = new Date(registro.createdAt).getTime();
     const limiteMs = 48 * 60 * 60 * 1000;
@@ -331,8 +306,6 @@ function toggleMatiz(emoKey, matiz) {
     renderContenedorMatices();
 }
 
-// Crea un nuevo registro. El límite diario de 5 lo verifica el
-// servidor; aquí solo interpretamos la respuesta.
 async function crearRegistro(emocionesArray) {
     return db.insertRecord(emocionesArray);
 }
@@ -1007,10 +980,15 @@ async function renderCalendar() {
     renderLeyendaCalendario();
 }
 
+// ── FIX "la leyenda no cambia de color" ─────────────────────────────
+// Antes esta función se pintaba UNA sola vez y nunca más, por el
+// guard `if (leyenda.dataset.render === "hecho") return;`. Como
+// renderCalendar() la llama en cada redibujo (cambio de mes, cambio de
+// paleta, etc.), ese guard bloqueaba todas las actualizaciones después
+// de la primera. Ahora se repinta siempre; es una lista de 8 items,
+// no tiene costo real hacerlo cada vez.
 function renderLeyendaCalendario() {
     const leyenda = document.getElementById("calendario-leyenda");
-    if (leyenda.dataset.render === "hecho") return;
-    leyenda.dataset.render = "hecho";
     leyenda.innerHTML = EMOTION_ORDER.map(key => `
         <span class="leyenda-item">
             <span class="punto-color" style="--color-emocion:${EMOTIONS[key].color}" aria-hidden="true"></span>
@@ -1279,9 +1257,6 @@ function renderModalContenido(key) {
    ==================================================================== */
 
 document.addEventListener("DOMContentLoaded", async () => {
-    // Guarda de autenticación: esta página es privada. Si no hay
-    // sesión activa, exigirSesion() (assets/js/auth.js) redirige a
-    // cuenta.html y detenemos la inicialización.
     const sesion = await exigirSesion();
     if (!sesion) return;
 

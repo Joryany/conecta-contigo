@@ -93,64 +93,181 @@
             <div id="explorador-contenido"></div>
         </section>
 
-        <section id="personalizacion" class="seccion-emocional card" aria-labelledby="titulo-personalizacion">
-            <h2 id="titulo-personalizacion">Personaliza tu calendario</h2>
-            <p class="intro-texto">
-                Elige los estilos que más te gusten y haz de tu calendario un espacio que se sienta como tú.
-            </p>
+        <!-- El botón de Personalizar ahora vive DENTRO de la tarjeta del
+             calendario (esquina superior derecha, ícono personalizable),
+             ver más abajo junto a calendario-header. El
+             id="personalizacion" se conserva ahí para que el enlace del
+             menú "Personalizar" siga funcionando. -->
 
-            <div class="personalizacion-grid">
-                <fieldset class="personalizacion-grupo">
-                    <legend>Fondo / Tema</legend>
-                    <div id="personalizacion-temas" class="personalizacion-opciones"></div>
-                </fieldset>
+        <dialog id="modal-personalizacion" class="modal-personalizacion" aria-labelledby="modal-personalizacion-titulo">
+            <div class="modal-personalizacion__inner">
+                <div class="modal-personalizacion__header">
+                    <h2 id="modal-personalizacion-titulo">Personaliza tu calendario</h2>
+                    <button type="button" id="btn-cerrar-personalizacion" class="btn-cerrar-modal" aria-label="Cerrar ventana">✕</button>
+                </div>
 
-                <fieldset class="personalizacion-grupo">
-                    <legend>Paleta de emociones</legend>
-                    <div id="personalizacion-paletas" class="personalizacion-opciones"></div>
-                    <div id="personalizacion-colores-custom" class="personalizacion-colores-custom oculto"></div>
-                </fieldset>
+                <div class="modal-personalizacion__contenido">
+                    <p class="intro-texto">
+                        Elige los estilos que más te gusten y haz de tu calendario un espacio que se sienta como tú.
+                    </p>
 
-                <fieldset class="personalizacion-grupo">
-                    <legend>Forma del día</legend>
-                    <div id="personalizacion-formas-dia" class="personalizacion-opciones"></div>
-                </fieldset>
+                    <div class="personalizacion-grid">
+                        <fieldset class="personalizacion-grupo">
+                            <legend>Fondo / Tema</legend>
+                            <div id="personalizacion-temas" class="personalizacion-opciones"></div>
 
-                <fieldset class="personalizacion-grupo">
-                    <legend>Forma del número</legend>
-                    <div id="personalizacion-formas-numero" class="personalizacion-opciones"></div>
-                </fieldset>
+                            <!-- Atajo simple: degradado de 2 colores, sin entrar
+                                 al modo avanzado. Reemplaza la foto del tema
+                                 por un degradado hecho con los colores que la
+                                 persona elija. -->
+                            <label class="personalizacion-switch">
+                                <input type="checkbox" id="personalizacion-degradado-activo">
+                                Usar un degradado de colores en vez del tema
+                            </label>
+                            <div id="personalizacion-degradado-colores" class="personalizacion-colores-custom oculto">
+                                <label class="personalizacion-color-item">
+                                    Color 1
+                                    <input type="color" id="personalizacion-degradado-color1">
+                                </label>
+                                <label class="personalizacion-color-item">
+                                    Color 2
+                                    <input type="color" id="personalizacion-degradado-color2">
+                                </label>
+                            </div>
+                        </fieldset>
 
-                <fieldset class="personalizacion-grupo">
-                    <legend>Fuente</legend>
-                    <select id="personalizacion-fuente"></select>
-                </fieldset>
+                        <fieldset class="personalizacion-grupo">
+                            <legend>Paleta de emociones</legend>
+                            <div id="personalizacion-paletas" class="personalizacion-opciones"></div>
+                            <div id="personalizacion-colores-custom" class="personalizacion-colores-custom oculto"></div>
+                        </fieldset>
 
-                <fieldset class="personalizacion-grupo">
-                    <legend>Bordes y estilo</legend>
-                    <div id="personalizacion-bordes" class="personalizacion-opciones"></div>
-                </fieldset>
+                        <fieldset class="personalizacion-grupo">
+                            <legend>Forma del día</legend>
+                            <div id="personalizacion-formas-dia" class="personalizacion-opciones"></div>
+                        </fieldset>
 
-                <fieldset class="personalizacion-grupo">
-                    <legend>Opciones extra</legend>
-                    <label class="personalizacion-switch"><input type="checkbox" id="personalizacion-sombras"> Sombras suaves</label>
-                    <label class="personalizacion-switch"><input type="checkbox" id="personalizacion-decoraciones"> Iconos decorativos</label>
-                    <label class="personalizacion-switch"><input type="checkbox" id="personalizacion-animaciones"> Animaciones al seleccionar</label>
-                </fieldset>
+                        <fieldset class="personalizacion-grupo">
+                            <legend>Forma del número</legend>
+                            <label class="personalizacion-switch">
+                                <input type="checkbox" id="personalizacion-sincronizar-formas"> Usar la misma forma que el día
+                            </label>
+                            <div id="personalizacion-formas-numero" class="personalizacion-opciones"></div>
+                            <span class="personalizacion-nota">Si se sincroniza, el número toma también el color de fondo de la forma del día, no solo su contorno.</span>
+                        </fieldset>
+
+                        <fieldset class="personalizacion-grupo">
+                            <legend>Fuente</legend>
+                            <select id="personalizacion-fuente"></select>
+                        </fieldset>
+
+                        <fieldset class="personalizacion-grupo">
+                            <legend>Bordes y estilo</legend>
+                            <div id="personalizacion-bordes" class="personalizacion-opciones"></div>
+                        </fieldset>
+
+                        <fieldset class="personalizacion-grupo">
+                            <legend>Ícono del botón de personalizar</legend>
+                            <div id="personalizacion-icono-boton" class="personalizacion-opciones"></div>
+                            <span class="personalizacion-nota">Este es el botón que abre esta misma ventana desde el calendario. Elige el que mejor combine con tu tema.</span>
+                        </fieldset>
+
+                        <fieldset class="personalizacion-grupo personalizacion-grupo--ancho">
+                            <legend>🎨 Fondo / Tema avanzado</legend>
+                            <label class="personalizacion-switch">
+                                <input type="checkbox" id="personalizacion-av-activo">
+                                Activar modo avanzado (reemplaza el tema elegido arriba por uno armado en capas)
+                            </label>
+
+                            <div id="personalizacion-av-controles" class="personalizacion-av-controles oculto">
+                                <div class="personalizacion-av-preview-wrap">
+                                    <span class="personalizacion-av-etiqueta">Previsualización del fondo</span>
+                                    <div id="personalizacion-avanzado-preview" class="personalizacion-av-preview"></div>
+                                </div>
+
+                                <div class="personalizacion-av-fila">
+                                    <label>Textura base
+                                        <select id="personalizacion-av-textura">
+                                            <option value="papel">Papel texturizado</option>
+                                            <option value="gradiente">Degradado suave</option>
+                                            <option value="nebulosa">Nebulosa</option>
+                                            <option value="seda">Seda</option>
+                                        </select>
+                                    </label>
+                                </div>
+
+                                <div class="personalizacion-av-fila">
+                                    <label>Opacidad de textura
+                                        <input type="range" min="0" max="100" id="personalizacion-av-opacidad-textura">
+                                    </label>
+                                    <label>Densidad de patrón
+                                        <input type="range" min="0" max="100" id="personalizacion-av-densidad-patron">
+                                    </label>
+                                    <label>Opacidad de capa
+                                        <input type="range" min="0" max="100" id="personalizacion-av-opacidad-capa">
+                                    </label>
+                                </div>
+
+                                <div class="personalizacion-av-fila personalizacion-av-fila--dos">
+                                    <fieldset class="personalizacion-av-subgrupo">
+                                        <legend>Iluminación de fondo</legend>
+                                        <label><input type="radio" name="personalizacion-av-iluminacion" value="cenital"> Cenital</label>
+                                        <label><input type="radio" name="personalizacion-av-iluminacion" value="suave"> Suave</label>
+                                        <label><input type="radio" name="personalizacion-av-iluminacion" value="difusa"> Difusa</label>
+                                    </fieldset>
+                                    <fieldset class="personalizacion-av-subgrupo">
+                                        <legend>Efectos</legend>
+                                        <label><input type="checkbox" id="personalizacion-av-efecto-nubes"> Nubes</label>
+                                        <label><input type="checkbox" id="personalizacion-av-efecto-estrellas"> Estrellas</label>
+                                        <label><input type="checkbox" id="personalizacion-av-efecto-brillo"> Brillo</label>
+                                    </fieldset>
+                                </div>
+
+                                <div class="personalizacion-av-fila">
+                                    <label>Difusión de color
+                                        <input type="range" min="0" max="100" id="personalizacion-av-difusion">
+                                    </label>
+                                </div>
+
+                                <div class="personalizacion-av-fila personalizacion-av-fila--dos">
+                                    <label>Color base <input type="color" id="personalizacion-av-color-base"></label>
+                                    <label>Color secundario <input type="color" id="personalizacion-av-color-secundario"></label>
+                                </div>
+
+                                <div class="personalizacion-av-fila">
+                                    <label>Mezcla (Blend)
+                                        <input type="range" min="0" max="100" id="personalizacion-av-mezcla">
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="personalizacion-grupo">
+                            <legend>Opciones extra</legend>
+                            <label class="personalizacion-switch"><input type="checkbox" id="personalizacion-sombras"> Sombras suaves</label>
+                            <label class="personalizacion-switch"><input type="checkbox" id="personalizacion-decoraciones"> Emoji junto al título (ej. "🌊 Tu calendario emocional 🌊")</label>
+                            <label class="personalizacion-switch"><input type="checkbox" id="personalizacion-animaciones"> Animaciones al seleccionar</label>
+                            <label class="personalizacion-switch"><input type="checkbox" id="personalizacion-minimalista"> Modo minimalista (fondo blanco, solo colores en los días)</label>
+                        </fieldset>
+                    </div>
+                </div>
+
+                <div class="modal-personalizacion__footer">
+                    <button type="button" id="btn-aplicar-personalizacion" class="btn-primario">Aplicar cambios</button>
+                    <p id="mensaje-personalizacion" class="mensaje-estado" aria-live="polite"></p>
+                </div>
             </div>
-
-            <div class="acciones-registro">
-                <button type="button" id="btn-aplicar-personalizacion" class="btn-primario">Aplicar cambios</button>
-            </div>
-            <p id="mensaje-personalizacion" class="mensaje-estado" aria-live="polite"></p>
-        </section>
+        </dialog>
 
         <section id="calendario-emocional" class="seccion-emocional" aria-labelledby="titulo-calendario"
-            data-tema="pastel" data-forma-dia="circulo" data-forma-numero="circulo" data-borde="redondeado">
+            data-tema="rosa-pastel" data-forma-dia="circulo" data-forma-numero="circulo" data-borde="redondeado">
+            <span id="personalizacion" aria-hidden="true"></span>
             <h2 id="titulo-calendario">Tu calendario emocional</h2>
 
             <div class="calendario-layout">
                 <div class="card calendario-card">
+                    <button type="button" id="btn-abrir-personalizacion" class="btn-personalizar-icono" aria-label="Personaliza tu calendario">🎨</button>
+
                     <div class="calendario-header">
                         <button type="button" id="mes-anterior" class="btn-icono" aria-label="Mes anterior">‹</button>
                         <h3 id="calendario-mes-actual" aria-live="polite"></h3>
