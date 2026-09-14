@@ -21,7 +21,8 @@ const TEMAS = [
     { id: "manchas-pastel", nombre: "Manchas pastel", iconoTitulo: "🎨", texto: "oscuro", colorFondo1: "#F6DCEA", colorFondo2: "#D7C4EE" },
     { id: "acuarela-azul", nombre: "Acuarela azul", iconoTitulo: "🖌️", texto: "oscuro", colorFondo1: "#BEE0EE", colorFondo2: "#5FA8C9" },
     { id: "olas", nombre: "Olas", iconoTitulo: "🌊", texto: "oscuro", colorFondo1: "#B8E0E6", colorFondo2: "#4396A6" },
-    { id: "gatos", nombre: "Gatos", iconoTitulo: "🐱", texto: "oscuro", colorFondo1: "#F5E6CC", colorFondo2: "#E3B77D" }
+    { id: "gatos", nombre: "Gatos", iconoTitulo: "🐱", texto: "oscuro", colorFondo1: "#F5E6CC", colorFondo2: "#E3B77D" },
+    { id: "gato", nombre: "Gato Sentado", iconoTitulo: "🍕", texto: "oscuro", colorFondo1: "#cce5f5", colorFondo2: "#7dc3e3" }
 ];
 
 // La ruta se calcula sola a partir del id (así no hay que repetirla a
