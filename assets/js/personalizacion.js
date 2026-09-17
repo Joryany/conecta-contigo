@@ -6,27 +6,36 @@
 const TEMAS = [
     { id: "rosa-pastel", nombre: "Rosa pastel", iconoTitulo: "🌷", texto: "oscuro", colorFondo1: "#FFD9E8", colorFondo2: "#FFB6D1" },
     { id: "jardin-botanico", nombre: "Jardín botánico", iconoTitulo: "🌿", texto: "oscuro", colorFondo1: "#CDEBC3", colorFondo2: "#8FD694" },
-    { id: "noche-estrellada", nombre: "Noche estrellada", iconoTitulo: "✨", texto: "oscuro", colorFondo1: "#1B2A4A", colorFondo2: "#3E4A78" },
+    { id: "noche-estrellada", nombre: "Noche estrellada", iconoTitulo: "✨", texto: "claro", colorFondo1: "#1B2A4A", colorFondo2: "#3E4A78" },
     { id: "coral-romantico", nombre: "Coral romántico", iconoTitulo: "💗", texto: "oscuro", colorFondo1: "#FFD3C7", colorFondo2: "#FF8C7A" },
-    { id: "oceano", nombre: "Océano", iconoTitulo: "🌊", texto: "oscuro", colorFondo1: "#BFE3F0", colorFondo2: "#3E8FB0" },
+    { id: "oceano", nombre: "Océano", iconoTitulo: "🌊", texto: "claro", colorFondo1: "#BFE3F0", colorFondo2: "#3E8FB0" },
     { id: "atardecer", nombre: "Atardecer", iconoTitulo: "🌅", texto: "oscuro", colorFondo1: "#FFD79A", colorFondo2: "#FF8A5B" },
     { id: "lavanda", nombre: "Lavanda", iconoTitulo: "💜", texto: "oscuro", colorFondo1: "#E4D4F4", colorFondo2: "#B98CE0" },
-    { id: "montanas", nombre: "Montañas", iconoTitulo: "⛰️", texto: "oscuro", colorFondo1: "#4A5A72", colorFondo2: "#7C93AC" },
+    { id: "montanas", nombre: "Montañas", iconoTitulo: "⛰️", texto: "claro", colorFondo1: "#4A5A72", colorFondo2: "#7C93AC" },
     { id: "flores", nombre: "Flores", iconoTitulo: "🌸", texto: "oscuro", colorFondo1: "#FFDCEB", colorFondo2: "#FF9FC0" },
-    { id: "galaxia", nombre: "Galaxia", iconoTitulo: "🌌", texto: "oscuro", colorFondo1: "#241B4E", colorFondo2: "#4B3B8C" },
+    { id: "galaxia", nombre: "Galaxia", iconoTitulo: "🌌", texto: "claro", colorFondo1: "#241B4E", colorFondo2: "#4B3B8C" },
     { id: "hojas-simple", nombre: "Hojas simple", iconoTitulo: "🍃", texto: "oscuro", colorFondo1: "#DCEFD2", colorFondo2: "#A8D48E" },
     { id: "cielo", nombre: "Cielo", iconoTitulo: "☁️", texto: "oscuro", colorFondo1: "#DCEEFB", colorFondo2: "#A9D2F0" },
     { id: "dorado", nombre: "Dorado", iconoTitulo: "✨", texto: "oscuro", colorFondo1: "#FCEBB6", colorFondo2: "#E8C26A" },
-    { id: "paisaje-violeta", nombre: "Paisaje violeta", iconoTitulo: "🔮", texto: "oscuro", colorFondo1: "#3A2A5C", colorFondo2: "#6A4C93" },
+    { id: "paisaje-violeta", nombre: "Paisaje violeta", iconoTitulo: "🔮", texto: "claro", colorFondo1: "#3A2A5C", colorFondo2: "#6A4C93" },
     { id: "manchas-pastel", nombre: "Manchas pastel", iconoTitulo: "🎨", texto: "oscuro", colorFondo1: "#F6DCEA", colorFondo2: "#D7C4EE" },
-    { id: "acuarela-azul", nombre: "Acuarela azul", iconoTitulo: "🖌️", texto: "oscuro", colorFondo1: "#BEE0EE", colorFondo2: "#5FA8C9" },
-    { id: "olas", nombre: "Olas", iconoTitulo: "🌊", texto: "oscuro", colorFondo1: "#B8E0E6", colorFondo2: "#4396A6" },
+    { id: "acuarela-azul", nombre: "Acuarela azul", iconoTitulo: "🖌️", texto: "claro", colorFondo1: "#BEE0EE", colorFondo2: "#5FA8C9" },
+    { id: "olas", nombre: "Olas", iconoTitulo: "🌊", texto: "claro", colorFondo1: "#B8E0E6", colorFondo2: "#4396A6" },
     { id: "gatos", nombre: "Gatos", iconoTitulo: "🐱", texto: "oscuro", colorFondo1: "#F5E6CC", colorFondo2: "#E3B77D" },
-    { id: "gato", nombre: "Gato Sentado", iconoTitulo: "🍕", texto: "oscuro", colorFondo1: "#cce5f5", colorFondo2: "#7dc3e3" }
+    // ── Tema exclusivo ──────────────────────────────────────────────
+    { id: "gato", nombre: "Gato Sentado", iconoTitulo: "🍕", texto: "oscuro", colorFondo1: "#cce5f5", colorFondo2: "#7dc3e3", exclusivoPara: ["gonzalescaballerojai@conectacontigo.local"] }
 ];
 
-// La ruta se calcula sola a partir del id (así no hay que repetirla a
-// mano en las 18 entradas ni arriesgarse a un typo).
+
+let usuarioEmailActual = null;
+
+
+function temaVisibleParaUsuario(tema) {
+    if (!tema.exclusivoPara || tema.exclusivoPara.length === 0) return true;
+    return !!usuarioEmailActual && tema.exclusivoPara.includes(usuarioEmailActual);
+}
+
+
 function rutaImagenTema(id) {
     return new URL(`assets/img/emocional/${id}.png`, document.baseURI).href;
 }
@@ -60,9 +69,7 @@ const PALETAS = {
     personalizada: { nombre: "Personalizada", colores: null }
 };
 
-// Formas del día. Las primeras 8 son las originales (con la flor ya
-// corregida a nivel visual en CSS, ver personalizacion.css).
-// Las 3 últimas son nuevas ("Más formas").
+
 const FORMAS_DIA = [
     { id: "circulo", nombre: "Círculo" },
     { id: "corazon", nombre: "Corazón" },
@@ -77,9 +84,6 @@ const FORMAS_DIA = [
     { id: "cuadrado_recto", nombre: "Cuadrado" }
 ];
 
-// Forma del número: ahora soporta el mismo repertorio que la forma del
-// día (incluidas nube y flor, que antes solo existían para el día), más
-// "pastilla" y "ninguno" que son exclusivas del número.
 const FORMAS_NUMERO = [
     { id: "circulo", nombre: "Círculo" },
     { id: "pastilla", nombre: "Pastilla" },
@@ -111,13 +115,7 @@ const SIMBOLO_FORMA = {
     cuadrado_recto: "■"
 };
 
-// Íconos disponibles para el BOTÓN que abre el modal de personalización
-// (el que vive en la esquina superior derecha de la tarjeta del
-// calendario). Es independiente del emoji del título de cada tema: la
-// persona puede elegir el que mejor combine con su fondo, ya que ese
-// botón ya no lleva ningún círculo de color detrás (ver
-// .btn-personalizar-icono en personalizacion.css), solo el símbolo con
-// una sombra para que se lea sobre cualquier imagen o color.
+
 const ICONOS_BOTON = [
     { id: "paleta", emoji: "🎨", nombre: "Paleta" },
     { id: "engranaje", emoji: "⚙️", nombre: "Engranaje" },
@@ -143,22 +141,14 @@ let personalizacionActual = {
     // ── Ícono del botón que abre este mismo panel ────────────────────
     icono_boton: "paleta",
     // ── Degradado rápido ─────────────────────────────────────────────
-    // Atajo simple: 2 colores elegidos por la persona, sin tener que
-    // entrar a todos los controles del "Fondo / Tema avanzado". Estos
-    // 2 colores son SIEMPRE el degradado de respaldo detrás de la foto
-    // del tema (mientras esta cargue o si aún no existe), y además,
-    // cuando "activo" es true, reemplazan por completo la foto del
-    // tema. Ver aplicarImagenTema() más abajo.
+
     degradado_rapido: {
         activo: false,
         color1: "#FFD1DC",
         color2: "#B983FF"
     },
     // ── Fondo / Tema avanzado ───────────────────────────────────────
-    // Cuando "activo" es true, este bloque REEMPLAZA por completo el
-    // fondo del tema elegido en "Fondo / Tema" (incluido el degradado
-    // rápido de arriba) por uno construido a partir de capas (textura +
-    // patrón + brillo + degradado propio).
+
     avanzado: {
         activo: false,
         textura: "gradiente",        // papel | gradiente | nebulosa | seda
@@ -178,19 +168,12 @@ let personalizacionActual = {
    CARGAR / GUARDAR (Supabase)
    ==================================================================== */
 
-// NOTA IMPORTANTE: se agregaron columnas nuevas al objeto que se
-// guarda (sincronizar_formas, modo_minimalista, avanzado,
-// degradado_rapido, icono_boton). Es necesario añadir esas columnas a
-// la tabla "personalizacion_calendario" en Supabase:
-//   sincronizar_formas   boolean
-//   modo_minimalista     boolean
-//   avanzado             jsonb
-//   degradado_rapido     jsonb
-//   icono_boton          text
-// para que guardarPersonalizacion() no falle al hacer upsert.
+
 async function cargarPersonalizacion() {
     const { data: { user } } = await supabaseClient.auth.getUser();
     if (!user) return;
+
+    usuarioEmailActual = user.email;
 
     const { data, error } = await supabaseClient
         .from("personalizacion_calendario")
@@ -252,10 +235,6 @@ async function guardarPersonalizacion() {
    APLICAR VISUALMENTE
    ==================================================================== */
 
-// Cambia los colores de las 8 emociones y vuelve a pintar todo lo que
-// depende de ese color (lista de emociones, matices, calendario, panel
-// del día, la LEYENDA del calendario y el modal educativo si está
-// abierto).
 async function aplicarPaleta(coloresPorClave) {
     EMOTION_ORDER.forEach(key => {
         if (coloresPorClave && coloresPorClave[key]) {
@@ -268,16 +247,7 @@ async function aplicarPaleta(coloresPorClave) {
     await renderCalendar();
     await renderPanelDia();
 
-    // ── FIX bug "la leyenda no cambia de color" ─────────────────────
-    // La leyenda (#calendario-leyenda) muestra un punto de color por
-    // emoción. Si esos puntos se generan una sola vez y no se vuelven
-    // a pintar cuando cambia la paleta, se quedan con el color viejo.
-    // 1) Si emocional.js expone una función dedicada para redibujar
-    //    la leyenda, la usamos (esto es lo ideal).
-    // 2) Si no existe esa función, forzamos manualmente el color de
-    //    cualquier elemento de la leyenda que identifique la emoción
-    //    por data-emocion, por una clase "emocion-<clave>" o por su
-    //    texto, cubriendo los patrones de marcado más comunes.
+
     if (typeof window.renderLeyenda === "function") {
         window.renderLeyenda();
     } else if (typeof window.renderCalendarioLeyenda === "function") {
@@ -312,8 +282,6 @@ function actualizarLeyendaManualmente() {
             el.style.backgroundColor = color;
         });
 
-        // Patrón C: buscar el .leyenda-item cuyo texto empieza con el
-        // nombre de la emoción, y colorear su primer hijo (el punto).
         leyenda.querySelectorAll(".leyenda-item").forEach(item => {
             if (item.textContent.trim().toLowerCase().startsWith(nombre.toLowerCase())) {
                 const punto = item.querySelector("span, .punto-color") || item.firstElementChild;
@@ -331,9 +299,7 @@ async function aplicarPersonalizacionVisual() {
     const registro = document.getElementById("registro-emocional");
     if (!calendario) return;
 
-    // ── FIX bug #10 ──────────────────────────────────────────────────
-    // #registro-emocional recibe el mismo bloque de atributos que el
-    // calendario para que la personalización también se note ahí.
+
     const objetivosPersonalizacionGeneral = [calendario, registro].filter(Boolean);
 
     objetivosPersonalizacionGeneral.forEach(el => {
@@ -352,28 +318,17 @@ async function aplicarPersonalizacionVisual() {
         ? (personalizacionActual.colores_personalizados || PALETAS.original.colores)
         : PALETAS[personalizacionActual.paleta].colores;
 
-    // IMPORTANTE: aplicarPaleta() dispara renderCalendar()/renderPanelDia(),
-    // que redibujan el CONTENIDO de .calendario-card y .panel-dia. Si
-    // ponemos el tema ANTES de esto, queda pisado por el redibujo. Por
-    // eso se aplica la paleta primero...
+ 
     await aplicarPaleta(coloresPaleta);
 
-    // ...y DESPUÉS se vuelve a consultar el elemento (por si fue
-    // reconstruido) y recién ahí se pinta la imagen del tema (o el
-    // degradado rápido) y el fondo avanzado, para que sobrevivan al
-    // redibujo del calendario.
+ 
     reaplicarTemaSobreCalendario();
 
-    // El ícono del botón que abre este panel no depende del tema, así
-    // que se aplica aparte y no necesita esperar al redibujo.
+
     aplicarIconoBotonPersonalizar();
 }
 
-// Vuelve a pintar la imagen del tema (o el degradado que corresponda) y
-// el fondo avanzado sobre los elementos ACTUALES de .calendario-card /
-// .panel-dia / registro (los vuelve a buscar en el DOM en vez de
-// reutilizar una referencia vieja, por si fueron reconstruidos). No
-// toca la paleta de colores de las emociones.
+
 function reaplicarTemaSobreCalendario() {
     const calendario = document.getElementById("calendario-emocional");
     const registro = document.getElementById("registro-emocional");
@@ -387,20 +342,12 @@ function reaplicarTemaSobreCalendario() {
     aplicarImagenTema(panelDia, tema);
     aplicarImagenTema(registro, tema);
 
-    // El emoji del tema decora SOLO el título (no se esparcen íconos
-    // por el resto de la tarjeta). No se muestra si el degradado
-    // rápido o el modo avanzado están activos, porque en ese caso ya
-    // no hay "tema" con foto, sino un fondo armado por la persona.
     const usaFondoPersonalizado = personalizacionActual.avanzado.activo ||
         (personalizacionActual.degradado_rapido && personalizacionActual.degradado_rapido.activo);
     aplicarIconoTitulo(calendario.querySelector("#titulo-calendario"), tema, usaFondoPersonalizado);
     aplicarIconoTitulo(registro.querySelector("#titulo-registro"), tema, usaFondoPersonalizado);
 
-    // Contraste de texto: si el degradado rápido está activo, se
-    // calcula a partir de sus 2 colores; si no, cada tema trae su
-    // propio "texto" (claro/oscuro) definido a mano en TEMAS, porque no
-    // hay forma confiable de calcularlo automáticamente sobre una foto
-    // real.
+
     const rapido = personalizacionActual.degradado_rapido;
     const textoClaro = (rapido && rapido.activo)
         ? necesitaTextoClaroColores(rapido.color1, rapido.color2)
@@ -420,11 +367,7 @@ function reaplicarTemaSobreCalendario() {
     aplicarIconoBotonPersonalizar();
 }
 
-// El botón de mes anterior/siguiente vive en emocional.js y redibuja
-// el calendario por su cuenta, sin pasar por personalizacion.js. Este
-// observador detecta ese redibujo (cambios dentro de la cuadrícula o
-// del panel del día) y vuelve a aplicar el tema automáticamente, para
-// que no se pierda al cambiar de mes o de día.
+
 function observarRedibujoCalendario() {
     const grid = document.getElementById("calendario-grid");
     const panelDia = document.getElementById("panel-dia");
@@ -439,23 +382,7 @@ function observarRedibujoCalendario() {
    IMAGEN / DEGRADADO DE FONDO POR TEMA + EMOJI DEL TÍTULO
    ==================================================================== */
 
-// Decide qué va en el fondo del tema, en orden de prioridad:
-//   1) Modo avanzado activo → no pinta nada aquí (aplicarFondoAvanzado
-//      se encarga de todo el fondo por capas).
-//   2) Degradado rápido activo → un degradado simple con los 2 colores
-//      que la persona eligió, sin foto de tema.
-//   3) Tema normal → la foto real del tema (si existe el archivo y
-//      carga bien) con un degradado de RESPALDO detrás, visible
-//      mientras la foto no esté subida o mientras carga.
-//
-// FIX pedido: el degradado de respaldo YA NO usa los colores fijos de
-// cada tema (tema.colorFondo1/colorFondo2). Ahora siempre usa los 2
-// colores que la persona eligió en "Usar un degradado de colores en
-// vez del tema" (personalizacionActual.degradado_rapido.color1/color2),
-// tanto si ese interruptor está activo (reemplaza la foto) como si
-// está apagado (queda solo de respaldo detrás de la foto). Así el
-// degradado es siempre un gusto de la persona, nunca algo fijo por
-// tema.
+
 function aplicarImagenTema(el, tema) {
     if (!el || !tema) return;
 
@@ -481,24 +408,14 @@ function aplicarImagenTema(el, tema) {
     el.style.setProperty("--tema-fondo-respaldo", gradienteElegido);
 }
 
-// Coloca el emoji del tema a los lados del título (por ejemplo
-// "🌊 Tu calendario emocional 🌊"), y NADA MÁS: ya no se esparcen
-// íconos por el resto de la tarjeta. El interruptor "Iconos
-// decorativos" del panel controla si este emoji se muestra o no; si la
-// persona está usando un fondo personalizado (degradado rápido o modo
-// avanzado) tampoco se muestra, porque ya no hay "tema" al que asociar
-// el emoji.
+
 function aplicarIconoTitulo(h2, tema, usaFondoPersonalizado) {
     if (!h2) return;
     const mostrar = personalizacionActual.decoraciones && tema.iconoTitulo && !usaFondoPersonalizado;
     h2.style.setProperty("--tema-icono", mostrar ? `"${tema.iconoTitulo}"` : "none");
 }
 
-// Pinta el símbolo elegido (paleta, engranaje, tres rayas, etc.) en el
-// botón que abre este mismo modal de personalización. Es
-// independiente del tema y del emoji del título: la idea es que la
-// persona pueda elegir el que mejor se lea sobre su fondo, ya que ese
-// botón ya no lleva ningún círculo de color detrás.
+
 function aplicarIconoBotonPersonalizar() {
     const btn = document.getElementById("btn-abrir-personalizacion");
     if (!btn) return;
@@ -511,9 +428,7 @@ function aplicarIconoBotonPersonalizar() {
    FONDO / TEMA AVANZADO
    ==================================================================== */
 
-// Luminancia relativa (0 = negro, 1 = blanco) según WCAG, para decidir
-// automáticamente si el texto debe ser claro u oscuro sobre un fondo
-// que arme la persona (degradado rápido o modo avanzado).
+
 function luminanciaRelativa(hex) {
     const limpio = (hex || "#ffffff").replace("#", "");
     const r = parseInt(limpio.substring(0, 2), 16) / 255;
@@ -528,16 +443,12 @@ function necesitaTextoClaro(av) {
     return promedio < 0.45;
 }
 
-// Misma idea que necesitaTextoClaro(), pero para 2 colores sueltos (se
-// usa con el degradado rápido, que no tiene el resto del objeto "av").
+
 function necesitaTextoClaroColores(color1, color2) {
     const promedio = (luminanciaRelativa(color1) + luminanciaRelativa(color2)) / 2;
     return promedio < 0.45;
 }
 
-// Calcula las variables CSS a partir del estado "avanzado" y las
-// escribe como custom properties + atributos/clases sobre un elemento
-// (tarjeta del calendario, panel del día o cuadro de registro).
 function aplicarFondoAvanzado(el) {
     if (!el) return;
     const av = personalizacionActual.avanzado;
@@ -545,10 +456,7 @@ function aplicarFondoAvanzado(el) {
     el.classList.toggle("fondo-avanzado", !!av.activo);
     if (!av.activo) return;
 
-    // El modo avanzado reemplaza por completo el fondo: si el tema
-    // elegido (o el degradado rápido) tenía su propia capa, se oculta
-    // mientras esté activo (esto ya lo hace aplicarImagenTema, pero se
-    // refuerza aquí por si este método se llama en otro orden).
+   
     el.style.setProperty("--tema-imagen", "none");
     el.style.setProperty("--tema-fondo-respaldo", "none");
 
@@ -564,9 +472,7 @@ function aplicarFondoAvanzado(el) {
     el.style.setProperty("--av-opacidad-capa", (av.opacidad_capa / 100).toFixed(2));
     el.style.setProperty("--av-patron-size", `${tamanoPatron}px`);
     el.style.setProperty("--av-difusion", `${40 + av.difusion_color * 0.4}%`);
-    // Nubes/estrellas ahora son siluetas reales (SVG), no círculos
-    // borrosos: se activan/desactivan intercambiando la imagen por
-    // "none" en vez de variar una opacidad sobre una forma redonda.
+   
     el.style.setProperty("--av-nubes-img", av.efectos.nubes
         ? `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 60'><path d='M22 50c-10 0-18-7-18-16 0-7 5-13 12-15 1-11 10-19 21-19 9 0 17 5 20 14 9 1 15 8 15 16 0 9-8 16-17 16H22z' fill='white' fill-opacity='0.5'/></svg>")`
         : "none");
@@ -580,8 +486,7 @@ function aplicarFondoAvanzado(el) {
     el.classList.toggle("fondo-avanzado--texto-oscuro", !claro);
 }
 
-// Actualiza la miniatura de previsualización del modal en vivo,
-// mientras la persona mueve los controles (antes de pulsar "Aplicar").
+
 function actualizarPreviewAvanzado() {
     const preview = document.getElementById("personalizacion-avanzado-preview");
     if (!preview) return;
@@ -593,16 +498,14 @@ function actualizarPreviewAvanzado() {
    CONSTRUIR EL PANEL DE CONTROLES
    ==================================================================== */
 
-// Bloquea visualmente el selector de "Fondo / Tema" (18 temas) cuando
-// la persona está usando el degradado rápido o el modo avanzado, ya
-// que en esos casos elegir un tema no tendría efecto hasta desactivar
-// esa opción.
+
 function actualizarBloqueoSelectorTemas() {
     const contTemas = document.getElementById("personalizacion-temas");
     if (!contTemas) return;
     const bloqueado = personalizacionActual.avanzado.activo ||
         (personalizacionActual.degradado_rapido && personalizacionActual.degradado_rapido.activo);
-    contTemas.parentElement.classList.toggle("personalizacion-opciones--bloqueada", bloqueado);
+  
+    contTemas.classList.toggle("personalizacion-opciones--bloqueada", bloqueado);
 }
 
 function construirBotonesOpcion(contenedorId, lista, campo, render) {
@@ -638,10 +541,6 @@ function construirBotonesOpcion(contenedorId, lista, campo, render) {
     });
 }
 
-// Aplica visualmente la misma forma elegida para el día también al
-// contenedor del número, siempre que exista esa forma en la lista de
-// formas de número (todas las formas "orgánicas" como nube y flor ya
-// están soportadas también para el número).
 function sincronizarFormaNumeroConDia(valorForma) {
     const disponibleParaNumero = FORMAS_NUMERO.some(f => f.id === valorForma);
     const valorFinal = disponibleParaNumero ? valorForma : "circulo";
@@ -685,11 +584,7 @@ function actualizarVisibilidadColoresCustom() {
     });
 }
 
-// Conecta el checkbox + los 2 selectores de color del atajo de
-// "degradado rápido" con personalizacionActual.degradado_rapido. Se
-// apaga automáticamente el modo avanzado si estaba activo (y
-// viceversa, ver inicializarControlesAvanzados), para que no compitan
-// por el mismo fondo.
+
 function inicializarControlDegradadoRapido() {
     const chk = document.getElementById("personalizacion-degradado-activo");
     const bloqueColores = document.getElementById("personalizacion-degradado-colores");
@@ -724,9 +619,7 @@ function inicializarControlDegradadoRapido() {
     inputColor2.addEventListener("input", () => { estado.color2 = inputColor2.value; });
 }
 
-// Conecta todos los controles del panel "Fondo / Tema avanzado" con
-// personalizacionActual.avanzado, y refresca la previsualización en
-// vivo con cada cambio (sin necesidad de pulsar "Aplicar cambios").
+
 function inicializarControlesAvanzados() {
     const av = personalizacionActual.avanzado;
 
@@ -825,7 +718,9 @@ function inicializarControlesAvanzados() {
 }
 
 function construirPanelPersonalizacion() {
-    construirBotonesOpcion("personalizacion-temas", TEMAS, "tema", t => `
+    // Solo se listan los temas normales + los exclusivos que le
+    // correspondan a esta persona (ver temaVisibleParaUsuario).
+    construirBotonesOpcion("personalizacion-temas", TEMAS.filter(temaVisibleParaUsuario), "tema", t => `
         <span class="personalizacion-swatch-imagen" style="background-image:url('${rutaImagenTema(t.id)}')"></span>
         <span>${t.nombre}</span>
     `);
@@ -855,8 +750,6 @@ function construirPanelPersonalizacion() {
 
     const selectFuente = document.getElementById("personalizacion-fuente");
     if (selectFuente) {
-        // Cada opción del selector se muestra escrita en su propia
-        // fuente, para poder comparar el estilo antes de elegir.
         selectFuente.innerHTML = FUENTES.map(f =>
             `<option value="${f}" style="font-family:'${f}', sans-serif" ${personalizacionActual.fuente === f ? "selected" : ""}>${f}</option>`
         ).join("");
