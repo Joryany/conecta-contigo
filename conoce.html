@@ -52,8 +52,8 @@
             </nav>
         </section>
 
-        <section id="introduccion">
-            <h2>Introducción</h2>
+        <section id="introduccion" >
+            <h2 data-separador="introduccion">Introducción</h2>
             <p>Las experiencias vividas durante la infancia pueden influir en el desarrollo emocional, social y
                 conductual de
                 una persona. <strong>Eventos adversos como el abuso, la negligencia, el abandono o la exposición a la
@@ -110,15 +110,15 @@
                 #2 - Cleveland Clinic</a>
         </section>
 
-        <section id="problema">
+        <section id="problema" data-separador="">
             <h2>Pregunta Problema</h2>
             <p>¿De qué manera influyen los traumas infantiles en el bienestar emocional de los estudiantes de secundaria
                 del Colegio Jerusalem, y cómo la implementación de la plataforma web "Conecta Contigo" contribuye a la
                 prevención y sensibilización sobre los rasgos antisociales?</p>
         </section>
 
-        <section id="objetivos">
-            <h2>Objetivos</h2>
+        <section id="objetivos" data-separador="">
+            <h2 >Objetivos</h2>
             <h3>Objetivo general</h3>
             <p>Analizar la influencia de los traumas infantiles en el desarrollo emocional de los estudiantes de
                 secundaria, y evaluar el aporte preventivo de la plataforma digital "Conecta Contigo" frente a las
@@ -140,8 +140,8 @@
         <section id="marcot">
             <h2>Conoce</h2>
 
-            <article>
-                <h3>Capítulo I</h3>
+            <article data-separador="">
+                <h3 data-subseparador="">Capítulo I</h3>
                 <p>Saber el cómo influyen las experiencias de la infancia en el desarrollo emocional es el primer paso
                     para comprendernos mejor y promover el bienestar mental.</p>
 
@@ -158,7 +158,7 @@
                 </aside>
                 <cite>American Psychological Association (APA); Medical News Today (2024).</cite>
 
-                <h4>Tipos de trauma</h4>
+                <h4 data-subseparador="">Tipos de trauma</h4>
                 <!-- Uso de <dl> (Definition List) para pares de término/descripción -->
                 <dl>
                     <dt class="Tarjeta">Trauma agudo</dt>
@@ -191,7 +191,7 @@
 
 
 
-                <h4>Experiencias que pueden generar trauma</h4>
+                <h4 data-subseparador="">Experiencias que pueden generar trauma</h4>
                 <!-- Las imágenes y párrafos deben ir DENTRO de los <li> -->
                 <ol class="grid-experiencias">
                     <li>
@@ -268,7 +268,7 @@
                     <cite>Fuente: CDC; Van der Kolk (2015).</cite>
                 </aside>
 
-                <h4>¿Cómo puede afectar?</h4>
+                <h4 data-subseparador="">¿Cómo puede afectar?</h4>
                 <table>
                     <caption>Síntomas asociados al trauma</caption>
                     <thead>
@@ -316,7 +316,7 @@
                     <cite>Fuente: CDC; Van der Kolk (2015).</cite>
                 </aside>
 
-                <h5 id="area-neuronal">Área Neuronal</h5>
+                <h5 id="area-neuronal" data-subseparador="">Área Neuronal</h5>
 
                 <figure>
                     <img src="assets/img/conoce/Infografia.png"
@@ -348,7 +348,6 @@
                     <dd>Suele aparecer en contextos de abuso o negligencia y dificulta la regulación emocional.</dd>
                 </dl>
 
-                html
                 <aside>
                     <p><strong>Dato importante:</strong> Tener un apego seguro no solo ayuda a crecer emocionalmente
                         sano: también
@@ -376,7 +375,7 @@
             </article>
 
             <article>
-                <h3>Capítulo II</h3>
+                <h3 data-separador="">Capítulo II</h3>
                 <p><em>Este apartado será basado en el DSM-5-TR (2024)</em></p>
                 <p>Los traumas infantiles pueden aumentar el riesgo de ciertas dificultades emocionales y conductuales,
                     pero no determinan que una persona desarrolle un trastorno o cometa delitos. La prevención, el apoyo
@@ -550,7 +549,7 @@
             </article>
 
             <article>
-                <h3>Capítulo III</h3>
+                <h3 data-separador="">Capítulo III</h3>
                 <p>La salud mental de los adolescentes está influenciada por su entorno familiar, escolar y social.
                     Comprender este contexto nos ayuda a reconocer la importancia de la prevención, el apoyo
                     emocional y
@@ -669,7 +668,7 @@
                 </ol>
             </article>
             <article>
-                <h3>Capítulo IV</h3>
+                <h3 data-separador="">Capítulo IV</h3>
                 <p>Antes de conocer cómo funciona Conecta Contigo, vale la pena responder una pregunta honesta: ¿de
                     verdad
                     una página web puede ayudar con algo tan importante como la salud mental? La ciencia ya ha estudiado
@@ -727,7 +726,7 @@
 
             </article>
             <article>
-                <h3>Capítulo V</h3>
+                <h3 data-separador="">Capítulo V</h3>
                 <p>Todo lo que has leído hasta ahora —el trauma, sus efectos, el contexto local y la evidencia digital—
                     es la
                     base sobre la que se construyó Conecta Contigo. Esta plataforma no es solo información: es una
@@ -814,7 +813,7 @@
 
 
 
-        <section class="footer-links">
+        <section class="footer-links" data-separador="">
 
             <div class="footer-item">
                 <h3>Marco Legal y Privacidad</h3>
@@ -841,13 +840,10 @@
 
     </footer>
 
-    <button id="boton-subir" class="boton-subir" type="button" aria-label="Volver al inicio de la página"
-        title="Volver arriba">
-        <span aria-hidden="true">&#8593;</span>
-    </button>
 
     <script src="assets/js/general.js"></script>
-
+    <script src="assets/js/separador.js"></script>
+    <nav class="separadores-nav" id="separadores-nav" aria-label="Navegación de secciones"></nav> 
 </body>
 
 </html>
