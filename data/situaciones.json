@@ -1,0 +1,45 @@
+{
+  "situations": [
+    {
+      "id": "estres",
+      "title": "Estrés",
+      "keywords": ["estrés", "presión", "agobio", "examenes"],
+      "shortDescription": "Por qué la persistencia es el factor que convierte al estrés en un riesgo.",
+      "intro": "El estrés es una respuesta natural ante retos externos. Sin embargo, su persistencia es lo que lo convierte en un riesgo para la salud mental.",
+      "type": "comparison",
+      "comparison": {
+        "columns": ["Estrés cotidiano", "Estrés persistente"],
+        "note": "El factor crítico no es sentir estrés, sino que este se mantenga en el tiempo.",
+        "rows": [
+          { "label": "Origen", "values": ["Causas externas puntuales (ej. un examen mañana).", "Situaciones crónicas (ej. acoso, problemas en casa)."] },
+          { "label": "Duración", "values": ["Desaparece al resolverse la situación.", "Se mantiene incluso sin una amenaza inmediata presente."] },
+          { "label": "Impacto físico", "values": ["Alerta temporal del cuerpo.", "Daño a los sistemas inmunitario, digestivo, cardiovascular y reproductivo."] },
+          { "label": "Consecuencia", "values": ["Motivación para cumplir metas.", "Alto riesgo de desarrollar depresión o trastornos de ansiedad."] }
+        ]
+      },
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": []
+    },
+    {
+      "id": "redes-sociales",
+      "title": "Redes sociales y entorno",
+      "keywords": ["redes sociales", "ciberacoso", "comparación social", "entorno digital"],
+      "shortDescription": "El mundo digital ofrece conexión, pero también riesgos para la autoestima.",
+      "intro": "El mundo digital ofrece conexión, pero también riesgos. El uso pasivo (ver sin interactuar) fomenta la comparación social negativa, lo que daña la autoestima. En Colombia, el 52.2% de los jóvenes ya presenta síntomas de ansiedad, cifra que se agrava ante el ciberacoso.",
+      "type": "flow",
+      "flow": {
+        "title": "Pasos de apoyo para alguien en crisis ambiental",
+        "steps": [
+          { "step": "Validar", "description": "No digas \"ignóralo\"; reconoce que su dolor es real." },
+          { "step": "Desconectar", "description": "Fomenta espacios fuera de línea para actividades físicas o pasatiempos." },
+          { "step": "Identificar", "description": "Ayuda a clarificar si el malestar viene de una persona o situación específica." },
+          { "step": "Denunciar", "description": "Si hay acoso o violencia, busca la intervención de autoridades escolares o legales." }
+        ]
+      },
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": []
+    }
+  ]
+}

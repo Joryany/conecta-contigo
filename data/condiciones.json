@@ -1,0 +1,610 @@
+{
+  "conditions": [
+    {
+      "id": "depresion",
+      "title": "Depresión",
+      "category": "Ánimo",
+      "keywords": ["tristeza", "desánimo", "vacío", "desesperanza"],
+      "shortDescription": "Afecta el ánimo y la energía de forma persistente, más allá de la tristeza pasajera.",
+      "description": "Es una enfermedad médica grave que afecta el ánimo y la energía, mucho más profunda que una tristeza pasajera. Se caracteriza por un sentimiento persistente de vacío o desesperanza que dura al menos dos semanas e interfiere con la vida diaria.",
+      "experience": {
+        "columns": [
+          { "label": "Mente", "items": [
+            "Sentimientos de vacío, desesperanza o irritabilidad constante.",
+            "Dificultad para concentrarse, recordar detalles o tomar decisiones.",
+            "Sentimientos de culpa excesiva o inutilidad."
+          ]},
+          { "label": "Cuerpo", "items": [
+            "Fatiga extrema, falta de energía y sensación de lentitud motora.",
+            "Cambios en el apetito (perder o ganar peso sin planearlo).",
+            "Dolores de cabeza, calambres o problemas digestivos persistentes."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Pérdida de interés en pasatiempos que antes se disfrutaban.",
+            "Retraimiento social y aislamiento de amigos o familiares.",
+            "Pensamientos recurrentes sobre la muerte o autolesiones."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Hablar sobre querer morir o no tener una razón para vivir.",
+        "Dormir demasiado (hipersomnia) o incapacidad para dormir.",
+        "Irritabilidad extrema o enfado por problemas menores.",
+        "Descuido repentino de las responsabilidades escolares."
+      ],
+      "actions": {
+        "self": "Habla con un adulto de confianza. No es algo de lo que puedas \"salir\" solo con voluntad; el tratamiento médico y psicológico es necesario.",
+        "other": "Escucha sin juzgar. Recuérdale que la depresión es una afección tratable y acompáñalo a buscar ayuda."
+      },
+      "faq": [
+        { "question": "¿Es lo mismo que estar triste?", "answer": "No. La tristeza es una reacción normal; la depresión es un trastorno clínico que afecta el funcionamiento del cerebro." }
+      ],
+      "tools": [
+        { "name": "Activación conductual", "description": "Retomar pequeñas tareas diarias." },
+        { "name": "Psicoterapia interpersonal" }
+      ],
+      "whenToSeekHelp": "Si los síntomas persisten por más de dos semanas o si hay pensamientos de daño.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "OMS", "title": "Depresión", "url": "https://www.who.int" },
+        { "institution": "NIMH", "title": "La depresión en los adolescentes", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "ansiedad",
+      "title": "Ansiedad (Trastorno de Ansiedad Generalizada)",
+      "category": "Ansiedad",
+      "keywords": ["TAG", "preocupación", "nervios", "ansiedad generalizada"],
+      "shortDescription": "Preocupación excesiva y difícil de controlar por situaciones cotidianas.",
+      "description": "Es una preocupación excesiva y persistente por situaciones cotidianas que resulta difícil de controlar. Afecta a 72 millones de niños y adolescentes a nivel mundial, manifestándose como un miedo constante incluso cuando no hay una amenaza real.",
+      "experience": {
+        "columns": [
+          { "label": "Mente", "items": [
+            "Preocupación constante por el futuro, la escuela o la salud.",
+            "Sensación de pavor o peligro inminente sin causa clara.",
+            "Irritabilidad y dificultad para concentrarse (mente en blanco)."
+          ]},
+          { "label": "Cuerpo", "items": [
+            "Palpitaciones, sudoración excesiva y tensión muscular.",
+            "Dolores de cabeza, de estómago o náuseas frecuentes.",
+            "Trastornos del sueño y sensación de agotamiento al despertar."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Dificultad para relajarse o sentirse siempre \"con los nervios de punta\".",
+            "Evitación de situaciones que generan incertidumbre o estrés.",
+            "Necesidad de ir al baño con frecuencia o dificultad para tragar."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Perfeccionismo extremo por miedo a cometer errores.",
+        "Necesidad constante de aprobación y reafirmación de otros.",
+        "Tics nerviosos o movimientos repetitivos por inquietud.",
+        "Sentirse abrumado por tareas sencillas del día a día."
+      ],
+      "actions": {
+        "self": "Practica la respiración profunda y limita la cafeína. Identifica los pensamientos negativos y cuestiónalos.",
+        "other": "Valida su miedo sin minimizarlo. Ayúdale a enfocarse en lo que puede controlar en el presente."
+      },
+      "faq": [
+        { "question": "¿La ansiedad es peligrosa?", "answer": "No es mortal, pero el estrés crónico afecta el sistema inmunitario y cardiovascular." }
+      ],
+      "tools": [
+        { "name": "Terapia Cognitivo-Conductual (TCC)" },
+        { "name": "Técnicas de mindfulness" }
+      ],
+      "whenToSeekHelp": "Cuando la preocupación interfiere con el sueño, los estudios o las relaciones sociales.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "OMS", "title": "Trastornos de ansiedad", "url": "https://www.who.int" },
+        { "institution": "NIMH", "title": "Trastorno de Ansiedad Generalizada", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "fobia-social",
+      "title": "Trastorno de ansiedad social (fobia social)",
+      "category": "Ansiedad",
+      "keywords": ["fobia social", "timidez extrema", "miedo social"],
+      "shortDescription": "Miedo intenso a ser juzgado o rechazado en situaciones sociales.",
+      "description": "Es un miedo intenso a ser juzgado, analizado o rechazado en situaciones sociales. No es timidez extrema; es una angustia que puede impedir hablar en clase, conocer gente o incluso realizar tareas rutinarias frente a otros.",
+      "experience": {
+        "columns": [
+          { "label": "Mente", "items": [
+            "Miedo abrumador a parecer \"tonto\" o humillado ante los demás.",
+            "Preocupación por un evento social semanas antes de que ocurra.",
+            "Autocrítica severa tras interactuar con otras personas."
+          ]},
+          { "label": "Cuerpo", "items": [
+            "Enrojecimiento facial, temblores o sudoración profusa.",
+            "Malestar estomacal o náuseas en entornos públicos.",
+            "Frecuencia cardíaca rápida al estar con desconocidos."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Evitar eventos sociales o lugares muy concurridos.",
+            "Hablar en voz muy baja o evitar el contacto visual.",
+            "Postura corporal rígida y dificultad para iniciar conversaciones."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Negarse a asistir a la escuela por miedo a la interacción social.",
+        "Dificultad extrema para pedir ayuda en tiendas o restaurantes.",
+        "Arrebatos emocionales antes de tener que hablar en público.",
+        "Aislamiento por temor a las críticas ajenas."
+      ],
+      "actions": {
+        "self": "Participa en grupos de apoyo; escuchar que otros sienten lo mismo ayuda a ver que tus juicios son distorsionados.",
+        "other": "No lo fuerces a situaciones sociales extremas. Acompáñalo en pasos pequeños y celebra sus avances."
+      },
+      "faq": [
+        { "question": "¿Se quita solo al crecer?", "answer": "No siempre; requiere aprender estrategias de afrontamiento para mejorar la calidad de vida." }
+      ],
+      "tools": [
+        { "name": "Terapia de exposición gradual" },
+        { "name": "Entrenamiento en habilidades sociales" }
+      ],
+      "whenToSeekHelp": "Si el miedo te impide cumplir con tus deberes académicos o tener amistades.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "NIMH", "title": "Trastorno de Ansiedad Social", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "tca",
+      "title": "Trastornos de la conducta alimentaria",
+      "category": "Alimentación y cuerpo",
+      "keywords": ["anorexia", "bulimia", "atracón", "ARFID", "alimentación"],
+      "shortDescription": "Conductas alimentarias alteradas y obsesión con el peso o la imagen corporal.",
+      "description": "Son enfermedades médicas graves vinculadas a conductas alimentarias anormales y obsesión por el peso. Incluyen el ARFID, donde se restringe comida por miedo a consecuencias (atragantarse) o rechazo sensorial, no solo por imagen corporal.",
+      "experience": {
+        "columns": [
+          { "label": "Mente", "items": [
+            "Imagen corporal distorsionada (sentirse con sobrepeso estando delgado).",
+            "Temor intenso a ganar peso o ansiedad por calorías.",
+            "Ansiedad extrema ante la textura o color de ciertos alimentos (ARFID)."
+          ]},
+          { "label": "Cuerpo", "items": [
+            "Pérdida de peso extrema o fluctuaciones rápidas.",
+            "Mareos, desmayos, sensación de frío y problemas dentales.",
+            "Debilidad muscular y cambios en la piel o el cabello."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Comer a escondidas o desaparecer tras las comidas.",
+            "Uso de laxantes o ejercicio físico compulsivo.",
+            "Rituales con la comida (cortar trozos minúsculos)."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Comentarios constantes sobre \"estar gordo\" a pesar de la delgadez.",
+        "Uso de ropa muy holgada para ocultar la forma del cuerpo.",
+        "Evitar comer en público o con amigos de forma sistemática.",
+        "Irritabilidad excesiva relacionada con las horas de comida."
+      ],
+      "actions": {
+        "self": "Habla con un médico de inmediato. Estos trastornos tienen la tasa de mortalidad más alta entre las enfermedades mentales.",
+        "other": "Sé un aliado. No critiques su peso ni su plato; anímalo a buscar tratamiento especializado con urgencia."
+      },
+      "faq": [
+        { "question": "¿Es solo por vanidad?", "answer": "No, son trastornos biológicos, psicológicos y sociales complejos; no es una elección de estilo de vida." }
+      ],
+      "tools": [
+        { "name": "Terapia de base familiar" },
+        { "name": "Rehabilitación nutricional supervisada" }
+      ],
+      "whenToSeekHelp": "Ante cualquier signo de restricción severa, purgas o pérdida de control al comer.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "OMS", "title": "Trastornos de la conducta alimentaria", "url": "https://www.who.int" },
+        { "institution": "NIMH", "title": "Tipos de trastornos de la alimentación", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "tdc",
+      "title": "Trastorno dismórfico corporal",
+      "category": "Alimentación y cuerpo",
+      "keywords": ["TDC", "apariencia", "imagen corporal", "defecto físico"],
+      "shortDescription": "Preocupación intensa por defectos en la apariencia que otros apenas notan.",
+      "description": "Es una obsesión con defectos percibidos en la apariencia física que son invisibles o mínimos para los demás. Esta preocupación causa una angustia profunda y consume horas del día en rituales de revisión o camuflaje.",
+      "experience": {
+        "columns": [
+          { "label": "Mente", "items": [
+            "Convicción de que un rasgo físico es \"deforme\" o \"repugnante\".",
+            "Comparación constante con la apariencia de otros.",
+            "Creencia de que los demás se burlan del defecto percibido."
+          ]},
+          { "label": "Cuerpo", "items": [
+            "Tensión física por la ansiedad constante sobre la apariencia.",
+            "Fatiga por realizar rutinas de aseo excesivamente largas.",
+            "Inquietud ante la posibilidad de ser observado por otros."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Revisarse obsesivamente en espejos o evitarlos por completo.",
+            "Ocultar \"defectos\" con maquillaje, ropa o posturas específicas.",
+            "Buscar procedimientos estéticos o cirugías repetidamente."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Pasar más de una hora al día preocupado por un rasgo físico.",
+        "Preguntar constantemente \"¿Cómo me veo?\" sin aceptar respuestas positivas.",
+        "Aislamiento social para evitar ser \"visto\" por otros.",
+        "Pellizcarse la piel o realizar rituales de belleza dañinos."
+      ],
+      "actions": {
+        "self": "Entiende que tu cerebro está filtrando la realidad de forma distorsionada. La TCC ayuda a cambiar esta percepción.",
+        "other": "Valida su angustia (\"veo que esto te duele\"), pero no confirmes que el defecto es real."
+      },
+      "faq": [
+        { "question": "¿Se cura con una cirugía?", "answer": "No, el problema es la percepción mental; la cirugía suele empeorar la obsesión." }
+      ],
+      "tools": [
+        { "name": "Terapia de exposición y prevención de respuesta" }
+      ],
+      "whenToSeekHelp": "Si la preocupación te impide salir de casa o realizar tus actividades.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "NIMH", "title": "Trastorno Dismórfico Corporal", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "toc",
+      "title": "Trastorno obsesivo-compulsivo (TOC)",
+      "category": "Ansiedad",
+      "keywords": ["TOC", "obsesiones", "compulsiones", "rituales"],
+      "shortDescription": "Pensamientos recurrentes (obsesiones) y rituales repetidos (compulsiones).",
+      "description": "Se caracteriza por pensamientos recurrentes y no deseados (obsesiones) y comportamientos repetitivos (compulsiones) realizados para reducir la ansiedad. Se siente como una \"prisión mental\" donde los rituales consumen mucho tiempo y energía.",
+      "experience": {
+        "columns": [
+          { "label": "Mente", "items": [
+            "Miedo excesivo a gérmenes o a causar daño por error.",
+            "Necesidad de orden, simetría o perfección absoluta.",
+            "Pensamientos intrusivos o imágenes perturbadoras e involuntarias."
+          ]},
+          { "label": "Cuerpo", "items": [
+            "Agotamiento físico por la repetición de rituales.",
+            "Palpitaciones y tensión si se intenta evitar un ritual.",
+            "Marcas físicas o lesiones (como manos agrietadas por el lavado)."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Lavarse las manos o limpiar objetos de forma excesiva.",
+            "Comprobar puertas o estufas muchas veces para estar \"seguro\".",
+            "Contar objetos o repetir frases mentalmente de forma ritual."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Tardar mucho en tareas simples por necesidad de perfección.",
+        "Irritabilidad si alguien interrumpe un ritual o mueve objetos.",
+        "Pedir a otros que repitan frases para confirmar que todo está bien.",
+        "Evitar tocar objetos por miedo a la \"contaminación\"."
+      ],
+      "actions": {
+        "self": "Los pensamientos intrusivos no son deseos reales. Busca terapia especializada; no tienes que vivir esclavizado a los rituales.",
+        "other": "No participes en sus rituales (no revises la puerta por él) y anímalo a hablar con un profesional."
+      },
+      "faq": [
+        { "question": "¿Tener manías es tener TOC?", "answer": "No, el TOC causa una angustia significativa e interfiere con la vida diaria." }
+      ],
+      "tools": [
+        { "name": "Terapia de Exposición y Prevención de Respuesta (EPR)" }
+      ],
+      "whenToSeekHelp": "Cuando los rituales consumen más de una hora al día o causan mucho sufrimiento.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "NIMH", "title": "Trastorno Obsesivo-Compulsivo", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "psicosis",
+      "title": "Experiencias o trastornos psicóticos",
+      "category": "Psicosis",
+      "keywords": ["psicosis", "alucinaciones", "delirios"],
+      "shortDescription": "Una pérdida de contacto con la realidad que afecta pensamientos y percepciones.",
+      "description": "La psicosis es una pérdida de contacto con la realidad que afecta los pensamientos y percepciones. Es vital saber que solo el 29% de las personas con psicosis recibe atención formal; sin embargo, el tratamiento temprano tras el primer episodio es la clave para una recuperación exitosa.",
+      "experience": {
+        "columns": [
+          { "label": "Percepción y pensamiento", "items": [
+            "Alucinaciones: oír voces críticas o ver cosas que otros no perciben.",
+            "Delirios: creencias falsas (ej. creer que la TV envía mensajes).",
+            "Habla confusa o dificultad para pensar con lógica y claridad."
+          ]},
+          { "label": "Emociones", "items": [
+            "Falta total de sentimientos o emociones inusualmente intensas.",
+            "Ansiedad severa y perturbaciones emocionales inexplicables.",
+            "Falta de motivación y dificultad para funcionar."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Desconfianza extrema o ideas de que otros quieren dañarte.",
+            "Menos atención al cuidado personal y la higiene.",
+            "Aislamiento social debido a miedos infundados."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Baja repentina en las calificaciones o el desempeño escolar.",
+        "Problemas persistentes para distinguir entre realidad y fantasía.",
+        "Cambios drásticos en el sueño y la conducta habitual.",
+        "Hablar incoherentemente o sin sentido para el contexto."
+      ],
+      "actions": {
+        "self": "Busca ayuda médica de inmediato. No estás \"loco\"; tu cerebro está procesando información de forma distinta y hay medicina para equilibrarlo.",
+        "other": "Mantén la calma, no discutas la realidad de sus visiones y llévalo a urgencias si notas riesgo de daño."
+      },
+      "faq": [
+        { "question": "¿Se puede vivir normal con psicosis?", "answer": "Sí, con Atención Especializada Coordinada (RAISE), muchas personas logran vidas plenas e independientes." }
+      ],
+      "tools": [
+        { "name": "Medicamentos antipsicóticos" },
+        { "name": "Programas de apoyo familiar" }
+      ],
+      "whenToSeekHelp": "Ante la primera señal de alucinaciones, delirios o confusión mental grave.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "NIMH", "title": "Cómo comprender qué es la psicosis", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "tae",
+      "title": "Trastorno afectivo estacional",
+      "category": "Ánimo",
+      "keywords": ["TAE", "estacional", "invierno", "luz solar"],
+      "shortDescription": "Un tipo de depresión ligada a los cambios de estación, sobre todo en otoño e invierno.",
+      "description": "Es un tipo de depresión que aparece y desaparece según las estaciones, generalmente iniciando en otoño/invierno por la reducción de luz solar. No es solo \"tristeza invernal\", sino una alteración biológica del ciclo circadiano.",
+      "experience": {
+        "columns": [
+          { "label": "Mente", "items": [
+            "Sentimientos de tristeza o desesperanza en meses oscuros.",
+            "Irritabilidad y falta de interés en actividades diarias.",
+            "Sensación de \"pesadez\" en brazos y piernas."
+          ]},
+          { "label": "Cuerpo", "items": [
+            "Hipersomnia (dormir mucho más de lo habitual).",
+            "Aumento de peso y fatiga constante durante el día.",
+            "Disminución notable de la energía general."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Retraimiento social marcado durante el invierno.",
+            "Antojos intensos por alimentos dulces o con mucha azúcar.",
+            "Disminución del desempeño académico en meses fríos."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Tristeza que persiste más de dos semanas en invierno.",
+        "Dificultad extrema para levantarse de la cama cada mañana.",
+        "Los síntomas desaparecen por completo al llegar la primavera.",
+        "Aislamiento total de amigos durante las vacaciones de fin de año."
+      ],
+      "actions": {
+        "self": "Pasa tiempo al aire libre bajo la luz solar, incluso en días nublados. Mantén hábitos de sueño regulares.",
+        "other": "Invítalo a caminatas diurnas y acompáñalo en sus momentos de baja energía sin presionarlo."
+      },
+      "faq": [
+        { "question": "¿Solo pasa en países con nieve?", "answer": "No, la reducción de horas de luz o cambios climáticos drásticos pueden afectarnos en cualquier lugar." }
+      ],
+      "tools": [
+        { "name": "Fototerapia", "description": "Lámparas de luz especial." },
+        { "name": "Suplementos de Vitamina D" }
+      ],
+      "whenToSeekHelp": "Si los síntomas graves duran más de dos semanas o impiden tus actividades básicas.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "NIMH", "title": "Trastorno afectivo estacional: algo más que la tristeza invernal", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "tddea",
+      "title": "Trastorno de desregulación disruptiva del estado de ánimo",
+      "category": "Ánimo",
+      "keywords": ["TDDEA", "irritabilidad", "enojo", "arrebatos"],
+      "shortDescription": "Irritabilidad crónica y arrebatos de enojo desproporcionados para la situación.",
+      "description": "Se caracteriza por una irritabilidad crónica y grave en niños y adolescentes, con arrebatos de enojo frecuentes que son desproporcionados a la situación. Es una dificultad real para regular la intensidad de las emociones.",
+      "experience": {
+        "columns": [
+          { "label": "Estado de ánimo", "items": [
+            "Estado de ánimo persistentemente irritable o enojado casi todo el día.",
+            "Sentirse \"con los nervios de punta\" de forma constante.",
+            "Frustración extrema ante inconvenientes mínimos."
+          ]},
+          { "label": "Cuerpo", "items": [
+            "Tensión física evidente y agitación antes de un estallido.",
+            "Problemas de sueño debido a la agitación emocional.",
+            "Agotamiento profundo tras los episodios de enojo."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Arrebatos de ira graves (verbales o físicos) 3 o más veces por semana.",
+            "Problemas persistentes para mantener amistades.",
+            "Dificultad extrema para funcionar en el entorno escolar."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Los arrebatos ocurren de forma consistente durante al menos un año.",
+        "La irritabilidad es observable por padres, maestros y amigos por igual.",
+        "Las reacciones son mucho más intensas que las esperadas para su edad.",
+        "El enojo persiste incluso entre los episodios de estallido."
+      ],
+      "actions": {
+        "self": "Aprende a identificar los \"detonantes\" de tu enojo y trabaja con un psicólogo en técnicas de enfriamiento emocional.",
+        "other": "No respondas con más ira. Mantén la calma y busca un ambiente seguro hasta que el episodio pase."
+      },
+      "faq": [
+        { "question": "¿Es lo mismo que ser maleducado?", "answer": "No, es una dificultad biológica para regular la intensidad emocional que requiere terapia." }
+      ],
+      "tools": [
+        { "name": "Entrenamiento en habilidades sociales" },
+        { "name": "Capacitación para padres" }
+      ],
+      "whenToSeekHelp": "Cuando los arrebatos ocurren más de 3 veces por semana y afectan la vida familiar y escolar.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "OMS", "title": "Trastornos de comportamiento disruptivo", "url": "https://www.who.int" },
+        { "institution": "NIMH", "title": "TDDEA", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "tdah",
+      "title": "Trastorno por déficit de atención e hiperactividad (TDAH)",
+      "category": "Neurodesarrollo",
+      "keywords": ["TDAH", "atención", "hiperactividad", "impulsividad"],
+      "shortDescription": "Dificultad persistente para mantener la atención, la calma o controlar impulsos.",
+      "description": "Es un trastorno del neurodesarrollo que afecta las funciones ejecutivas del cerebro. Se manifiesta como un patrón persistente de falta de atención, hiperactividad e impulsividad que dificulta la ejecución de tareas intelectuales y sociales.",
+      "experience": {
+        "columns": [
+          { "label": "Mente", "items": [
+            "Dificultad para mantener la concentración o seguir instrucciones.",
+            "Tendencia a soñar despierto o parecer que no escucha.",
+            "Problemas graves de organización y gestión del tiempo."
+          ]},
+          { "label": "Cuerpo", "items": [
+            "Inquietud motora (mover manos o pies constantemente).",
+            "Sentirse incapaz de quedarse sentado por mucho tiempo.",
+            "Hablar en exceso o de forma muy rápida."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Interrumpir a otros o actuar sin pensar en las consecuencias.",
+            "Olvidar o perder objetos necesarios (libros, llaves, móvil).",
+            "Evitar tareas que requieren un esfuerzo mental sostenido."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Cometer errores por descuido frecuente en exámenes o tareas.",
+        "Dificultad notable para esperar el turno en juegos o charlas.",
+        "Rendimiento escolar muy por debajo de la capacidad intelectual real.",
+        "Olvidos constantes de responsabilidades diarias."
+      ],
+      "actions": {
+        "self": "Usa agendas, alarmas y divide tareas grandes en pasos minúsculos. Tu cerebro brilla en periodos cortos y variados.",
+        "other": "Sé paciente. No es falta de voluntad o flojera; es una diferencia en el desarrollo cerebral que requiere apoyo estructural."
+      },
+      "faq": [
+        { "question": "¿El TDAH solo es de niños?", "answer": "No, puede persistir en la adultez, aunque los síntomas de hiperactividad suelen disminuir." }
+      ],
+      "tools": [
+        { "name": "Terapia ocupacional" },
+        { "name": "Psicoterapia conductual" },
+        { "name": "Andamiaje de funciones ejecutivas" }
+      ],
+      "whenToSeekHelp": "Si los síntomas causan problemas graves en el estudio o en la relación con tus padres y amigos.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "OMS", "title": "Trastornos del neurodesarrollo", "url": "https://www.who.int" },
+        { "institution": "NIMH", "title": "TDAH", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "panico",
+      "title": "Trastorno de pánico",
+      "category": "Ansiedad",
+      "keywords": ["pánico", "ataque de pánico", "agorafobia"],
+      "shortDescription": "Episodios repentinos de miedo intenso con síntomas físicos muy fuertes.",
+      "description": "Se caracteriza por ataques de pánico repentinos y repetidos: oleadas de temor intenso acompañadas de síntomas físicos que el cerebro interpreta como un peligro mortal, aunque no haya una amenaza real. Es como una \"falsa alarma\" de los instintos de supervivencia.",
+      "experience": {
+        "columns": [
+          { "label": "Mente", "items": [
+            "Miedo abrumador a morir, perder el control o volverse loco.",
+            "Sensación de estar fuera de la realidad (despersonalización).",
+            "Preocupación constante por cuándo será el próximo ataque."
+          ]},
+          { "label": "Cuerpo", "items": [
+            "Palpitaciones fuertes, sudor, temblores y escalofríos.",
+            "Dificultad para respirar o sensación de asfixia.",
+            "Hormigueo en manos, mareos, náuseas o dolor de pecho."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Evitar lugares donde ocurrió un ataque anteriormente.",
+            "Pavor intenso que suele durar de minutos a una hora.",
+            "Cambios en la rutina para estar siempre cerca de una salida."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Visitas a urgencias por síntomas físicos sin causa médica clara.",
+        "Miedo intenso a estar en lugares de los que sea difícil escapar.",
+        "Agorafobia (evitar espacios abiertos o concurridos por miedo al pánico).",
+        "Modificar la vida diaria drásticamente para evitar sensaciones físicas."
+      ],
+      "actions": {
+        "self": "Recuerda que las sensaciones son incómodas pero NO peligrosas. Respirar despacio ayuda a que la alarma del cerebro se apague.",
+        "other": "Mantén la calma. No le digas \"cálmate\"; mejor dile \"estás a salvo, respira conmigo, esto va a pasar\"."
+      },
+      "faq": [
+        { "question": "¿Me puede dar un infarto?", "answer": "No, aunque se sienta igual, el corazón está sano; es una respuesta del sistema nervioso." }
+      ],
+      "tools": [
+        { "name": "Terapia de exposición interoceptiva" },
+        { "name": "Ejercicios de relajación muscular" }
+      ],
+      "whenToSeekHelp": "Cuando el miedo a tener un nuevo ataque te impide llevar una vida normal.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "NIMH", "title": "Trastorno de pánico", "url": "https://www.nimh.nih.gov" }
+      ]
+    },
+    {
+      "id": "bipolar",
+      "title": "Trastorno bipolar",
+      "category": "Ánimo",
+      "keywords": ["bipolar", "manía", "episodios", "euforia"],
+      "shortDescription": "Cambios de energía y ánimo entre episodios de euforia y de tristeza profunda.",
+      "description": "Es un trastorno que afecta a 3.8 millones de adolescentes a nivel mundial. Causa cambios inusuales en el ánimo, pasando de episodios de energía extrema y euforia (manía) a episodios de tristeza profunda y vacío (depresión).",
+      "experience": {
+        "columns": [
+          { "label": "Episodio maníaco", "items": [
+            "Euforia excesiva, pensamientos acelerados y verborrea.",
+            "Menor necesidad de dormir sin sentirse cansado al día siguiente.",
+            "Autoestima inflada o sentimientos de grandeza irreales."
+          ]},
+          { "label": "Episodio depresivo", "items": [
+            "Tristeza profunda, desesperanza y sentimientos de vacío.",
+            "Fatiga extrema, dormir demasiado y falta de energía.",
+            "Pérdida total de interés en todas las actividades favoritas."
+          ]},
+          { "label": "Conducta y entorno", "items": [
+            "Comportamientos impulsivos o riesgosos (gastos, velocidad).",
+            "Cambios drásticos en el nivel de actividad y sociabilidad.",
+            "Dificultad para mantener un desempeño estable en la escuela."
+          ]}
+        ]
+      },
+      "warningSigns": [
+        "Ciclos de alegría desbordante seguidos de caídas emocionales severas.",
+        "Hablar tan rápido que los demás no pueden seguir el hilo.",
+        "Participar en actividades peligrosas que antes no le interesaban.",
+        "Riesgo elevado de pensamientos suicidas durante las crisis."
+      ],
+      "actions": {
+        "self": "El tratamiento continuo es la llave del equilibrio. Lleva un registro de tus estados de ánimo para detectar cambios temprano.",
+        "other": "Apoya el cumplimiento del tratamiento médico y ofrece estabilidad emocional durante las diferentes fases."
+      },
+      "faq": [
+        { "question": "¿Cambiar de humor en el mismo día es bipolaridad?", "answer": "No necesariamente; la bipolaridad implica episodios que duran días o semanas con cambios drásticos en la energía." }
+      ],
+      "tools": [
+        { "name": "Psicoeducación" },
+        { "name": "Medicación estabilizadora" },
+        { "name": "Terapia de ritmos sociales" }
+      ],
+      "whenToSeekHelp": "Ante cambios extremos de energía que afecten el juicio o pongan en riesgo la seguridad.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        { "institution": "OMS", "title": "Trastornos mentales", "url": "https://www.who.int" },
+        { "institution": "NIMH", "title": "Trastorno Bipolar", "url": "https://www.nimh.nih.gov" }
+      ]
+    }
+  ]
+}

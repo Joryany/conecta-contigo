@@ -1,0 +1,62 @@
+{
+  "cycle": {
+    "title": "El ciclo de tu mente",
+    "description": "Tus experiencias funcionan como un engranaje interconectado. Intervenir en tus pensamientos ayuda a cambiar cómo te sientes y cómo actúas.",
+    "steps": [
+      { "label": "Emoción", "example": "Siento miedo" },
+      { "label": "Pensamiento", "example": "Algo malo va a pasar" },
+      { "label": "Conducta", "example": "Evito la situación / Me aíslo" }
+    ]
+  },
+  "pillars": {
+    "title": "Pilares del bienestar",
+    "description": "Ganancia mental: pequeños hábitos que sostienen tu equilibrio día a día.",
+    "items": [
+      { "id": "sueno", "title": "Sueño regular", "description": "Repara el cerebro.", "gain": "Estabilidad emocional." },
+      { "id": "actividad-fisica", "title": "Actividad física", "description": "Libera endorfinas.", "gain": "Reducción natural del estrés." },
+      { "id": "relaciones", "title": "Relaciones reales", "description": "Crea redes de seguridad.", "gain": "Sentido de pertenencia." },
+      { "id": "alimentacion", "title": "Alimentación sana", "description": "Combustible para el ánimo.", "gain": "Evita irritabilidad." },
+      { "id": "ocio", "title": "Tiempo de ocio", "description": "Desconexión necesaria.", "gain": "Previene el agotamiento." },
+      { "id": "limites-digitales", "title": "Límites digitales", "description": "Protege la autoestima.", "gain": "Menos comparación social." }
+    ]
+  },
+  "emergencyHelp": {
+    "title": "¿Necesitas ayuda ahora?",
+    "selfHarmNote": {
+      "title": "Autolesiones: comprendiendo el dolor",
+      "text": "Las autolesiones (cortes, quemaduras) son una forma poco saludable de afrontar un dolor emocional insoportable, no necesariamente un deseo de morir. No son \"para llamar la atención\"; son un grito de auxilio ante sentimientos que superan la capacidad de gestión de la persona."
+    },
+    "protocolTitle": "Protocolo de acción ante riesgo suicida",
+    "protocolIntro": "El suicidio es la 2ª causa de muerte en niños de 10-14 años y la 3ª en jóvenes de 15-29 años. Si hay una crisis, actúa con urgencia calmada.",
+    "protocolSteps": [
+      { "step": "Preguntar", "description": "\"¿Estás pensando en suicidarte?\". Hablar de ello no da ideas, abre la puerta a la ayuda." },
+      { "step": "Asegurar el entorno", "description": "Retira objetos peligrosos (pastillas, armas, cordones)." },
+      { "step": "Estar presente", "description": "Escucha sin juzgar y no dejes sola a la persona ni un segundo." },
+      { "step": "Conectar con ayuda", "description": "Llama de inmediato a una línea de crisis o ve a urgencias." },
+      { "step": "Seguimiento", "description": "Mantente cerca tras la crisis; la conexión humana es el mejor protector." }
+    ],
+    "directoryTitle": "Directorio de emergencias en Colombia",
+    "directory": [
+      { "entity": "Línea 106 (Nacional/Bogotá)", "contact": "106 (o WhatsApp 3007548930)", "service": "\"El poder de ser escuchado\": apoyo emocional para jóvenes." },
+      { "entity": "Línea de Crisis Nacional", "contact": "988", "service": "Prevención del suicidio y crisis de salud mental." },
+      { "entity": "Emergencias Médicas", "contact": "123", "service": "Riesgo vital o accidentes graves." },
+      { "entity": "Línea Púrpura (Mujeres)", "contact": "018000112137", "service": "Orientación en violencia de género." }
+    ],
+    "helpLink": "contacto.html#emergencia"
+  },
+  "generalFaq": [
+    { "question": "¿Tener síntomas significa que tengo un trastorno?", "answer": "No siempre. Se considera trastorno cuando los síntomas son intensos, duran meses e interfieren con tu vida diaria." },
+    { "question": "¿Es normal sentirse mal a veces?", "answer": "Sí, la adolescencia es un caos hormonal y social. Lo importante es que ese malestar no controle tu vida." },
+    { "question": "¿Pedir ayuda me hace débil?", "answer": "Al contrario, reconocer que necesitas apoyo es el acto de mayor valentía y el primer paso para recuperar tu control." },
+    { "question": "¿Qué diferencia hay entre emoción y trastorno?", "answer": "Una emoción es una reacción temporal; un trastorno es una condición clínica persistente que requiere atención profesional." }
+  ],
+  "generalSources": [
+    { "institution": "Organización Mundial de la Salud (OMS)", "title": "Salud mental del adolescente y Trastornos mentales", "url": "https://www.who.int" },
+    { "institution": "Convención de las Naciones Unidas sobre los Derechos del Niño", "title": "Convención sobre los Derechos del Niño" },
+    { "institution": "Departamento Administrativo Nacional de Estadística (DANE)", "title": "Estadísticas de salud mental y carga de enfermedad" },
+    { "institution": "Ministerio de Salud", "title": "Salud Mental en Colombia: análisis de los efectos de la pandemia" },
+    { "institution": "National Institute of Mental Health (NIMH)", "title": "Cómo comprender qué es la psicosis, Trastorno de Ansiedad Generalizada y Depresión en adolescentes", "url": "https://www.nimh.nih.gov" },
+    { "institution": "KidsHealth de Nemours", "title": "Suicidio y Autolesiones", "url": "https://kidshealth.org" },
+    { "institution": "MedlinePlus", "title": "Evaluación del riesgo de suicidio", "url": "https://medlineplus.gov" }
+  ]
+}
