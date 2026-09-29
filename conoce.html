@@ -7,6 +7,7 @@
     <title>Conoce - Conecta Contigo</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/conoce.css">
+    <link rel="stylesheet" href="assets/css/presentacion.css">
 
 </head>
 
@@ -39,7 +40,29 @@
                     personalidad antisocial, fortaleciendo el bienestar emocional y promoviendo la búsqueda de ayuda
                     cuando sea necesaria.</p>
                 <h3>Utilice las pestañas para navegar respecto a su interés.</h3>
+                
             </div>
+
+            <!-- ================================================================
+     BLOQUE 1 · BOTÓN "VER PRESENTACIÓN"
+     Pégalo en conoce.html donde quieras que aparezca el botón.
+     La ruta del PDF se cambia SOLO aquí (atributo data-pdf).
+================================================================ -->
+<button type="button"
+        class="presentation-open-btn"
+        data-presentation-open
+        data-pdf="assets/img/conecta-contigo.pdf"
+        data-title="Conecta Contigo · Presentación"
+        aria-haspopup="dialog"
+        aria-controls="presentation-modal">
+    <svg class="presentation-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="3" y="4" width="18" height="12" rx="2"></rect>
+        <path d="M12 16v4M8 20h8"></path>
+    </svg>
+    Ver presentación
+</button>
+
+
 
             <!-- NAVEGACIÓN INTERNA -->
             <nav aria-label="Navegación interna de la página">
@@ -840,10 +863,121 @@
 
     </footer>
 
+<!-- ================================================================
+     BLOQUE 2 · MODAL DE LA PRESENTACIÓN
+     Pégalo justo ANTES de </body> (antes de los <script>).
+================================================================ -->
+<div class="presentation-modal" id="presentation-modal" hidden>
+    <div class="presentation-dialog" id="presentation-dialog"
+         role="dialog" aria-modal="true" aria-labelledby="presentation-title" tabindex="-1">
+
+        <!-- Barra superior -->
+        <div class="presentation-topbar">
+            <span class="presentation-title" id="presentation-title">Conecta Contigo · Presentación</span>
+
+            <div class="presentation-topbar-actions">
+                <a class="presentation-btn" id="presentation-newtab" href="#"
+                   target="_blank" rel="noopener"
+                   title="Abrir PDF en una nueva pestaña"
+                   aria-label="Abrir PDF en una nueva pestaña">
+                    <svg class="presentation-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"></path>
+                    </svg>
+                </a>
+                <button type="button" class="presentation-btn presentation-btn--close" id="presentation-close"
+                        title="Cerrar (Esc)" aria-label="Cerrar presentación">
+                    <svg class="presentation-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M6 6l12 12M18 6L6 18"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="presentation-progress" aria-hidden="true"><span id="presentation-progress-bar"></span></div>
+        </div>
+
+        <!-- Área del PDF -->
+        <div class="presentation-body" id="presentation-body">
+            <div class="presentation-stage" id="presentation-stage" tabindex="-1">
+                <div class="presentation-page" id="presentation-page"></div>
+            </div>
+
+            <span class="presentation-edge presentation-edge--prev" aria-hidden="true">
+                <svg class="presentation-icon" viewBox="0 0 24 24" focusable="false"><path d="M15 5l-7 7 7 7"></path></svg>
+            </span>
+            <span class="presentation-edge presentation-edge--next" aria-hidden="true">
+                <svg class="presentation-icon" viewBox="0 0 24 24" focusable="false"><path d="M9 5l7 7-7 7"></path></svg>
+            </span>
+
+            <!-- Cargando -->
+            <div class="presentation-status" id="presentation-loading" role="status" aria-live="polite">
+                <div class="presentation-spinner" aria-hidden="true"></div>
+                <p id="presentation-loading-text">Cargando presentación…</p>
+            </div>
+
+            <!-- Error -->
+            <div class="presentation-status" id="presentation-error" role="alert" hidden>
+                <svg class="presentation-icon presentation-status-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M12 7.5v5.5M12 16.5h.01"></path>
+                </svg>
+                <p>No pudimos cargar la presentación. Comprueba que el archivo exista en la carpeta indicada.</p>
+                <div class="presentation-status-actions">
+                    <a class="presentation-btn presentation-btn--primary" id="presentation-error-link"
+                       href="#" target="_blank" rel="noopener">Abrir PDF en una nueva pestaña</a>
+                    <button type="button" class="presentation-btn" id="presentation-retry">Reintentar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de controles -->
+        <div class="presentation-controls" role="toolbar" aria-label="Controles de la presentación">
+
+            <div class="presentation-group presentation-group--nav">
+                <button type="button" class="presentation-btn" id="presentation-prev"
+                        title="Página anterior (←)" aria-label="Página anterior">
+                    <svg class="presentation-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 5l-7 7 7 7"></path></svg>
+                </button>
+
+                <span class="presentation-counter" id="presentation-counter" aria-live="polite" aria-atomic="true">Página – de –</span>
+
+                <button type="button" class="presentation-btn presentation-btn--primary" id="presentation-next"
+                        title="Página siguiente (→)" aria-label="Página siguiente">
+                    <svg class="presentation-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+
+            <div class="presentation-group presentation-group--tools">
+                <button type="button" class="presentation-btn" id="presentation-zoom-out"
+                        title="Reducir (−)" aria-label="Reducir zoom">
+                    <svg class="presentation-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"></path></svg>
+                </button>
+
+                <button type="button" class="presentation-btn presentation-btn--zoom-label" id="presentation-zoom-reset"
+                        title="Restaurar zoom (0)" aria-label="Restaurar zoom al 100%">100%</button>
+
+                <button type="button" class="presentation-btn" id="presentation-zoom-in"
+                        title="Ampliar (+)" aria-label="Ampliar zoom">
+                    <svg class="presentation-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14M5 12h14"></path></svg>
+                </button>
+
+                <span class="presentation-divider" aria-hidden="true"></span>
+
+                <button type="button" class="presentation-btn" id="presentation-fullscreen"
+                        title="Pantalla completa (F)" aria-label="Pantalla completa" aria-pressed="false">
+                    <svg class="presentation-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path></svg>
+                    <span class="presentation-btn__text" id="presentation-fullscreen-text">Pantalla completa</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
     <script src="assets/js/general.js"></script>
     <script src="assets/js/separador.js"></script>
     <nav class="separadores-nav" id="separadores-nav" aria-label="Navegación de secciones"></nav> 
+    <script src="assets/js/presentacion.js" defer></script>
 </body>
 
 </html>

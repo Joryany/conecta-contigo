@@ -1,0 +1,503 @@
+/* ====================================================================
+   MODO PRESENTACIÓN · Conecta Contigo
+   Archivo: assets/css/presentacion.css
+   - Todas las clases empiezan por "presentation-" para no chocar con tu CSS.
+   - Usa tus variables de style.css (con valores de respaldo por si faltan).
+   - Se cargan DESPUÉS de style.css y conoce.css.
+==================================================================== */
+
+/* --------------------------------------------------------------------
+   0. Utilidades internas
+-------------------------------------------------------------------- */
+
+.presentation-modal [hidden] {
+    display: none !important;
+}
+
+.presentation-icon {
+    width: 20px;
+    height: 20px;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
+/* Botón "Ver presentación" (hereda el estilo global de <button> de tu sitio) */
+.presentation-open-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* --------------------------------------------------------------------
+   1. Overlay + modal
+-------------------------------------------------------------------- */
+
+.presentation-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--espacio-md, 24px);
+    background: rgba(10, 24, 44, .74);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    overscroll-behavior: contain;
+    transition: opacity .25s ease, visibility 0s linear .25s;
+}
+
+.presentation-modal[hidden] {
+    display: none !important;
+}
+
+.presentation-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity .25s ease, visibility 0s;
+}
+
+.presentation-dialog {
+    position: relative;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    width: min(1400px, 100%);
+    height: min(92vh, 1000px);
+    height: min(92dvh, 1000px);
+    overflow: hidden;
+    background: var(--blanco, #fff);
+    color: var(--azul-marino, #14437e);
+    border-radius: var(--radio-grande, 18px);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, .45);
+    outline: none;
+    transform: translateY(14px) scale(.98);
+    transition: transform .25s ease;
+}
+
+.presentation-modal.is-open .presentation-dialog {
+    transform: none;
+}
+
+/* --------------------------------------------------------------------
+   2. Barra superior
+-------------------------------------------------------------------- */
+
+.presentation-topbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 10px 8px 20px;
+    background: var(--blanco, #fff);
+    border-bottom: 1px solid var(--gris-claro, #d7dfe6);
+}
+
+.presentation-title {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--azul-marino, #14437e);
+}
+
+.presentation-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: none;
+}
+
+/* Barra de progreso fina (identidad de marca) */
+.presentation-progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    background: transparent;
+}
+
+.presentation-progress span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--gradiente, linear-gradient(135deg, #468ed6, #69B2AE));
+    transition: width .3s ease;
+}
+
+/* --------------------------------------------------------------------
+   3. Botones (escopados para vencer el estilo global de <button> y <a>)
+-------------------------------------------------------------------- */
+
+.presentation-modal .presentation-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0 12px;
+    border: 1px solid transparent;
+    border-radius: var(--radio, 12px);
+    background: var(--fondo-suave, #f2f7fa);
+    color: var(--azul-marino, #14437e);
+    font: inherit;
+    font-size: .95rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: none;
+    transform: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: background-color .18s ease, color .18s ease,
+                border-color .18s ease, transform .12s ease;
+}
+
+.presentation-modal .presentation-btn:hover {
+    background: var(--azul-claro, #468ed6);
+    color: var(--blanco, #fff);
+    box-shadow: none;
+    transform: none;
+}
+
+.presentation-modal .presentation-btn:focus-visible {
+    outline: 3px solid var(--verde-agua, #69B2AE);
+    outline-offset: 2px;
+}
+
+.presentation-modal .presentation-btn:active {
+    background: var(--azul-marino, #14437e);
+    color: var(--blanco, #fff);
+    box-shadow: none;
+    transform: scale(.94);
+}
+
+.presentation-modal .presentation-btn:disabled,
+.presentation-modal .presentation-btn:disabled:hover,
+.presentation-modal .presentation-btn:disabled:active {
+    background: var(--fondo-suave, #f2f7fa);
+    color: var(--gris, #485666);
+    opacity: .4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Variante principal (siguiente) */
+.presentation-modal .presentation-btn--primary {
+    background: var(--gradiente, linear-gradient(135deg, #468ed6, #69B2AE));
+    color: var(--blanco, #fff);
+}
+
+.presentation-modal .presentation-btn--primary:hover {
+    background: var(--azul-marino, #14437e);
+}
+
+/* Variante cerrar */
+.presentation-modal .presentation-btn--close:hover,
+.presentation-modal .presentation-btn--close:active {
+    background: var(--resalte, #f5836f);
+    color: var(--blanco, #fff);
+}
+
+/* Etiqueta de porcentaje (también restaura el zoom) */
+.presentation-modal .presentation-btn--zoom-label {
+    min-width: 64px;
+    padding: 0 8px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------
+   4. Área principal (donde se dibuja la página del PDF)
+-------------------------------------------------------------------- */
+
+.presentation-body {
+    position: relative;
+    min-height: 0;
+    background: #e4ecf3;
+}
+
+.presentation-stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    overflow: auto;
+    padding: 20px;
+    outline: none;
+    overscroll-behavior: contain;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.presentation-stage.is-zoomed {
+    cursor: grab;
+}
+
+.presentation-stage.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+}
+
+.presentation-body[data-side="prev"] .presentation-stage,
+.presentation-body[data-side="next"] .presentation-stage {
+    cursor: pointer;
+}
+
+.presentation-page {
+    flex: none;
+    margin: auto;
+    line-height: 0;
+}
+
+.presentation-canvas {
+    display: block;
+    max-width: none;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 6px 26px rgba(17, 46, 81, .28);
+    animation: presentation-fade .25s ease;
+}
+
+@keyframes presentation-fade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Flechas laterales que aparecen al pasar el mouse (solo con mouse) */
+.presentation-edge {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    width: 48px;
+    height: 48px;
+    margin-top: -24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(20, 67, 126, .88);
+    color: #fff;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+
+.presentation-edge--prev { left: 14px; }
+.presentation-edge--next { right: 14px; }
+
+.presentation-body[data-side="prev"] .presentation-edge--prev,
+.presentation-body[data-side="next"] .presentation-edge--next {
+    opacity: 1;
+}
+
+@media (hover: none) {
+    .presentation-edge { display: none; }
+}
+
+/* --------------------------------------------------------------------
+   5. Cargando / error
+-------------------------------------------------------------------- */
+
+.presentation-status {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 24px;
+    text-align: center;
+    background: rgba(242, 247, 250, .95);
+    color: var(--azul-marino, #14437e);
+}
+
+.presentation-status p {
+    max-width: 460px;
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.presentation-spinner {
+    width: 44px;
+    height: 44px;
+    border: 4px solid var(--gris-claro, #d7dfe6);
+    border-top-color: var(--azul-claro, #468ed6);
+    border-radius: 50%;
+    animation: presentation-spin .8s linear infinite;
+}
+
+@keyframes presentation-spin {
+    to { transform: rotate(360deg); }
+}
+
+.presentation-status-icon {
+    width: 52px;
+    height: 52px;
+    color: var(--resalte, #f5836f);
+}
+
+.presentation-status-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+/* --------------------------------------------------------------------
+   6. Barra de controles inferior
+-------------------------------------------------------------------- */
+
+.presentation-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    padding: 10px 16px;
+    background: var(--blanco, #fff);
+    border-top: 1px solid var(--gris-claro, #d7dfe6);
+}
+
+.presentation-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.presentation-divider {
+    width: 1px;
+    height: 26px;
+    margin: 0 4px;
+    background: var(--gris-claro, #d7dfe6);
+}
+
+.presentation-counter {
+    min-width: 132px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--azul-marino, #14437e);
+}
+
+/* --------------------------------------------------------------------
+   7. Pantalla completa (nativa o "simulada" en iPhone)
+-------------------------------------------------------------------- */
+
+.presentation-modal.is-expanded {
+    padding: 0;
+}
+
+.presentation-dialog.is-fullscreen {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border-radius: 0;
+}
+
+.presentation-dialog.is-fullscreen .presentation-body {
+    background: #0d1b2e;
+}
+
+/* --------------------------------------------------------------------
+   8. Responsive
+-------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+    .presentation-modal { padding: 12px; }
+    .presentation-modal .presentation-btn__text { display: none; }
+}
+
+/* Móvil: el modal ocupa toda la pantalla */
+@media (max-width: 640px) {
+    .presentation-modal {
+        padding: env(safe-area-inset-top) env(safe-area-inset-right)
+                 env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+
+    .presentation-dialog {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    .presentation-topbar { padding: 6px 8px 6px 14px; }
+    .presentation-title { font-size: .95rem; }
+    .presentation-stage { padding: 8px; }
+
+    .presentation-controls {
+        gap: 6px 14px;
+        padding: 8px 10px;
+    }
+
+    .presentation-group--nav {
+        flex: 1 1 100%;
+        justify-content: space-between;
+    }
+
+    .presentation-counter { min-width: 0; flex: 1; }
+}
+
+/* Teléfono en horizontal: barras compactas y una sola fila */
+@media (max-height: 520px) and (orientation: landscape) {
+    .presentation-topbar { padding: 4px 8px 4px 14px; }
+    .presentation-modal .presentation-btn { height: 40px; min-width: 40px; }
+    .presentation-stage { padding: 6px; }
+
+    .presentation-controls {
+        flex-wrap: nowrap;
+        gap: 14px;
+        padding: 4px 10px;
+    }
+
+    .presentation-group--nav {
+        flex: 0 0 auto;
+        justify-content: center;
+    }
+
+    .presentation-counter { flex: none; min-width: 110px; }
+}
+
+/* --------------------------------------------------------------------
+   9. Accesibilidad e impresión
+-------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .presentation-modal,
+    .presentation-dialog,
+    .presentation-progress span,
+    .presentation-edge,
+    .presentation-modal .presentation-btn {
+        transition: none;
+    }
+
+    .presentation-canvas { animation: none; }
+    .presentation-spinner { animation-duration: 2s; }
+}
+
+@media print {
+    .presentation-modal { display: none !important; }
+}
