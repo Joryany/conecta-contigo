@@ -28,10 +28,14 @@
 
 /* Botón "Ver presentación" (hereda el estilo global de <button> de tu sitio) */
 .presentation-open-btn {
+    position: relative;
+    z-index: 3;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+    margin-top: var(--espacio-sm, 16px);
+    cursor: pointer;
 }
 
 /* --------------------------------------------------------------------
@@ -412,14 +416,80 @@
 }
 
 .presentation-dialog.is-fullscreen {
+    grid-template-rows: minmax(0, 1fr);
     width: 100%;
     height: 100%;
     max-width: none;
     border-radius: 0;
+    background: #0d1b2e;
 }
 
 .presentation-dialog.is-fullscreen .presentation-body {
     background: #0d1b2e;
+}
+
+/* Solo el PDF: sin márgenes ni marco alrededor de la página */
+.presentation-dialog.is-fullscreen .presentation-stage {
+    padding: 0;
+}
+
+.presentation-dialog.is-fullscreen .presentation-canvas {
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Barra superior y controles: flotan sobre el PDF y se ocultan solos */
+.presentation-dialog.is-fullscreen .presentation-topbar,
+.presentation-dialog.is-fullscreen .presentation-controls {
+    position: absolute;
+    z-index: 5;
+    transition: opacity .25s ease, transform .25s ease;
+}
+
+.presentation-dialog.is-fullscreen .presentation-topbar {
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: calc(10px + env(safe-area-inset-top));
+    border-bottom: 0;
+    background: linear-gradient(rgba(10, 24, 44, .85), rgba(10, 24, 44, 0));
+}
+
+.presentation-dialog.is-fullscreen .presentation-title {
+    color: #fff;
+}
+
+.presentation-dialog.is-fullscreen .presentation-progress {
+    display: none;
+}
+
+.presentation-dialog.is-fullscreen .presentation-controls {
+    left: 50%;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    width: max-content;
+    max-width: calc(100% - 24px);
+    transform: translateX(-50%);
+    border: 1px solid var(--gris-claro, #d7dfe6);
+    border-radius: var(--radio-grande, 18px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+/* Estado oculto (nadie mueve el mouse) */
+.presentation-dialog.is-fullscreen:not(.is-ui-visible) .presentation-topbar {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px);
+}
+
+.presentation-dialog.is-fullscreen:not(.is-ui-visible) .presentation-controls {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 16px);
+}
+
+/* Sin controles a la vista, tampoco se muestra el cursor */
+.presentation-dialog.is-fullscreen:not(.is-ui-visible) .presentation-stage {
+    cursor: none;
 }
 
 /* --------------------------------------------------------------------
@@ -490,6 +560,8 @@
     .presentation-dialog,
     .presentation-progress span,
     .presentation-edge,
+    .presentation-dialog.is-fullscreen .presentation-topbar,
+    .presentation-dialog.is-fullscreen .presentation-controls,
     .presentation-modal .presentation-btn {
         transition: none;
     }

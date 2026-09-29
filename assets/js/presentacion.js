@@ -35,7 +35,10 @@
 
         // Zonas de clic/tap: izquierda = anterior, derecha = siguiente
         zonaIzquierda: 0.35,
-        zonaDerecha: 0.65
+        zonaDerecha: 0.65,
+
+        // Pantalla completa: milisegundos sin mover el mouse antes de ocultar los controles
+        ocultarControlesMs: 3000
     };
 
     /* ================================================================
@@ -70,7 +73,14 @@
         pinch: null,
         swipe: null,
         gestureLock: false,
-        scrollBackup: null
+        scrollBackup: null,
+
+        uiVisible: false,     // controles visibles en pantalla completa
+        uiTimer: null,
+        uiHover: false,       // el mouse está sobre los controles
+        lastX: -1,
+        lastY: -1,
+        lastPointerType: "mouse"
     };
 
     const els = {};
@@ -160,6 +170,17 @@
         els.stage.addEventListener("touchend", onTouchEnd, { passive: true });
         els.stage.addEventListener("touchcancel", onTouchEnd, { passive: true });
 
+        // Pantalla completa: mostrar los controles al mover el mouse
+        els.controls = els.dialog.querySelector(".presentation-controls");
+        els.topbar = els.dialog.querySelector(".presentation-topbar");
+        els.dialog.addEventListener("pointermove", onDialogMove);
+        els.dialog.addEventListener("pointerdown", function (e) { state.lastPointerType = e.pointerType || "mouse"; });
+        [els.controls, els.topbar].forEach(function (el) {
+            if (!el) return;
+            el.addEventListener("pointerenter", function () { state.uiHover = true; });
+            el.addEventListener("pointerleave", function () { state.uiHover = false; });
+        });
+
         // Pantalla completa (siempre escuchando para mantener la interfaz sincronizada)
         document.addEventListener("fullscreenchange", onFullscreenChange);
         document.addEventListener("webkitfullscreenchange", onFullscreenChange);
@@ -225,6 +246,8 @@
 
         clearTimeout(state.renderTimer);
         cancelRender();
+        clearTimeout(state.uiTimer);
+        state.uiHover = false;
 
         if (isNativeFullscreen()) exitNativeFullscreen();
         if (state.pseudoFs) setPseudoFullscreen(false);
@@ -650,6 +673,45 @@
                 ? "M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"
                 : "M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5");
         }
+
+        // Al entrar: mostramos los controles un momento y luego se ocultan solos
+        if (on) {
+            showControls();
+        } else {
+            clearTimeout(state.uiTimer);
+            state.uiVisible = false;
+            state.uiHover = false;
+            els.dialog.classList.remove("is-ui-visible");
+        }
+    }
+
+    /* Controles flotantes en pantalla completa */
+    function showControls() {
+        if (!isFullscreen()) return;
+        els.dialog.classList.add("is-ui-visible");
+        state.uiVisible = true;
+        clearTimeout(state.uiTimer);
+        state.uiTimer = setTimeout(function () { hideControls(false); }, CONFIG.ocultarControlesMs);
+    }
+
+    function hideControls(force) {
+        clearTimeout(state.uiTimer);
+        if (!force && state.uiHover) {
+            // El mouse está sobre los controles: esperamos a que se aparte
+            state.uiTimer = setTimeout(function () { hideControls(false); }, 1000);
+            return;
+        }
+        state.uiVisible = false;
+        els.dialog.classList.remove("is-ui-visible");
+    }
+
+    function onDialogMove(e) {
+        if (e.pointerType === "touch" || !isFullscreen()) return;
+        // Ignora movimientos "fantasma" del navegador (sin desplazamiento real)
+        if (Math.abs(e.clientX - state.lastX) < 3 && Math.abs(e.clientY - state.lastY) < 3) return;
+        state.lastX = e.clientX;
+        state.lastY = e.clientY;
+        showControls();
     }
 
     function onFullscreenChange() {
@@ -668,6 +730,7 @@
         const key = e.key;
 
         if (key === "Tab") {
+            showControls(); // en pantalla completa, Tab revela los controles
             trapFocus(e);
             return;
         }
@@ -773,10 +836,19 @@
     }
 
     function onStageClick(e) {
-        if (!state.pdf || state.zoom > 1.001) return; // con zoom se usa arrastrar, no navegar
+        if (!state.pdf) return;
         if (e.target.closest("a, button")) return;
 
         const side = sideFromEvent(e);
+
+        // Pantalla completa: tocar el centro muestra/oculta los controles (útil en táctil)
+        if (isFullscreen() && side === "") {
+            if (state.lastPointerType === "touch" && state.uiVisible) hideControls(true);
+            else showControls();
+            return;
+        }
+
+        if (state.zoom > 1.001) return; // con zoom se usa arrastrar, no navegar
         if (side === "prev") goTo(state.page - 1);
         else if (side === "next") goTo(state.page + 1);
     }
