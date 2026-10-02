@@ -6,7 +6,6 @@
 <title>Comprende | Conecta Contigo</title>
 <meta name="description" content="Comprende: una guía visual e interactiva para reconocer qué puedes estar sintiendo, identificar señales importantes y saber cuándo buscar apoyo.">
 
-<!-- Hojas de estilo del sitio (rutas de ejemplo: ajusta a la estructura real de tu proyecto) -->
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/comprende.css">
 </head>
@@ -14,17 +13,15 @@
 
 <header>
     <div class="top-nav-container">
-        <a href="index.html">
-            <img src="assets/img/index/logo-sin-texto.png" alt="Logo Conecta Contigo">
-        </a>
+        <img width="75" src="assets/img/index/logo-sin-texto.png" alt="Logo de la Página, un lazo azul">
+
         <nav>
             <a href="index.html">Inicio</a>
             <a href="contacto.html">Rutas</a>
             <a href="conoce.html">Conoce</a>
-            <a href="comprende.html" aria-current="page">Comprende</a>
-            <a href="emocional.html">Emocional</a>
+            <a href="comprende.html" id="activo">Comprende</a>
+            <a href="emocional.html">Emociones</a>
             <a href="soter.html">Soter</a>
-            
         </nav>
     </div>
 </header>
@@ -32,10 +29,8 @@
 <main>
     <div class="container">
 
-        <!-- ============================================================
-             HERO
-        ============================================================= -->
-        <section class="comprende-hero">
+        <!-- HERO -->
+        <section class="comprende-hero" id="comprende-hero">
             <div class="comprende-hero__texto">
                 <h1>Comprende</h1>
                 <p class="comprende-hero__subtitulo">Comprender lo que sentimos también es una forma de cuidarnos.</p>
@@ -50,21 +45,10 @@
             </div>
         </section>
 
-        <!-- Aviso breve, siempre visible, sin ser flotante (evita solaparse
-             con el botón "volver arriba" y el botón de evaluación) -->
-        <div class="apoyo-banner">
-            <p><strong>¿Necesitas ayuda ahora?</strong> Si tú o alguien cercano está en riesgo, hay apoyo inmediato disponible.</p>
-            <a class="boton-secundario" href="#comprende-ayuda-inmediata" style="background:var(--fondo-suave);color:var(--azul-marino);padding:var(--boton-y) var(--boton-x);border-radius:var(--radio-pill);font-weight:600;">Ir a apoyo inmediato</a>
-        </div>
-
-        <!-- ============================================================
-             CONTENEDOR PRINCIPAL: se alterna entre "home" y "detalle"
-        ============================================================= -->
-
+        <!-- CONTENEDOR PRINCIPAL: se alterna entre "home" y "detalle" -->
         <div id="comprende-home">
 
-            <!-- Rutas principales -->
-            <nav class="rutas-grid" aria-label="Secciones de Comprende">
+            <div class="rutas-grid" role="navigation" aria-label="Secciones de Comprende">
                 <a class="ruta-card" href="#comprende-condiciones">
                     <h3>Condiciones y experiencias</h3>
                     <p>Información para comprender diferentes condiciones y experiencias relacionadas con la salud mental.</p>
@@ -77,11 +61,9 @@
                     <h3>Herramientas</h3>
                     <p>Recursos y estrategias para comprender, regular y buscar apoyo.</p>
                 </a>
-            </nav>
+            </div>
 
-            <!-- ========================================================
-                 CONDICIONES
-            ========================================================= -->
+            <!-- CONDICIONES -->
             <section id="comprende-condiciones" class="comprende-seccion">
                 <h2>Condiciones y experiencias</h2>
                 <p class="comprende-seccion__intro">Explora para entender qué puede estar pasando y cómo se manifiesta.</p>
@@ -99,44 +81,38 @@
                 <p id="condiciones-vacio" class="buscador-vacio" hidden>No encontramos un tema con ese nombre. Prueba con otra palabra.</p>
             </section>
 
-            <!-- ========================================================
-                 SITUACIONES
-            ========================================================= -->
+            <!-- SITUACIONES -->
             <section id="comprende-situaciones" class="comprende-seccion">
                 <h2>Situaciones</h2>
                 <p class="comprende-seccion__intro">Experiencias del día a día que también pueden afectar tu bienestar.</p>
                 <div id="grid-situaciones" class="grid-tarjetas"></div>
             </section>
 
-            <!-- ========================================================
-                 HERRAMIENTAS
-            ========================================================= -->
+            <!-- HERRAMIENTAS -->
             <section id="comprende-herramientas" class="comprende-seccion">
                 <h2>Herramientas</h2>
                 <p class="comprende-seccion__intro">Ideas simples para comprenderte, regularte y saber a quién acudir.</p>
 
                 <div class="bloque bloque--card">
-                    <h2 id="ciclo-titulo"></h2>
+                    <h3 id="ciclo-titulo"></h3>
                     <p id="ciclo-descripcion"></p>
                     <div id="ciclo-mente" class="ciclo-mente"></div>
                 </div>
 
-                <div class="bloque">
-                    <h2 id="pilares-titulo"></h2>
-                    <p id="pilares-descripcion" class="comprende-seccion__intro" style="margin-top:-8px;"></p>
+                <div class="bloque bloque--card">
+                    <h3 id="pilares-titulo"></h3>
+                    <p id="pilares-descripcion" style="margin:0;"></p>
                     <div id="pilares-grid" class="pilares-grid"></div>
                 </div>
 
-                <div class="bloque" id="comprende-ayuda-inmediata"></div>
-
-                <div class="bloque">
-                    <h2>Preguntas frecuentes</h2>
+                <div class="bloque bloque--card">
+                    <h3><span class="icono-seccion" aria-hidden="true">❓</span>Preguntas frecuentes</h3>
                     <div id="faq-general" class="acordeon-grupo"></div>
                 </div>
 
                 <div class="bloque">
                     <details class="acordeon-item" id="fuentes-generales-detalle">
-                        <summary>Fuentes y referencias generales</summary>
+                        <summary><span class="icono-seccion" aria-hidden="true" style="width:26px;height:26px;margin-right:6px;">📖</span>Fuentes y referencias generales</summary>
                         <div class="acordeon-item__contenido" id="fuentes-generales"></div>
                     </details>
                 </div>
@@ -144,29 +120,20 @@
 
         </div><!-- /#comprende-home -->
 
-        <!-- ============================================================
-             VISTA DE DETALLE (se llena dinámicamente con JS)
-        ============================================================= -->
+        <!-- VISTA DE DETALLE (se llena con JS) -->
         <section id="comprende-detalle" hidden></section>
 
     </div>
 </main>
 
-<!-- ================================================================
-     MODAL GENÉRICO REUTILIZABLE
-================================================================= -->
+<!-- MODAL GENÉRICO (también muestra el protocolo de crisis) -->
 <div class="modal-overlay" id="comprende-modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" hidden>
     <div class="modal-panel" id="modal-panel">
-        <button type="button" class="modal-cerrar" id="modal-cerrar" aria-label="Cerrar">✕</button>
+        <button type="button" class="modal-cerrar" id="modal-cerrar" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button>
         <div id="modal-contenido"></div>
     </div>
 </div>
 
-<!--
-    PIE DE PÁGINA
-    Referencia basada en el patrón del resto del sitio.
-    Reemplázalo por tu footer/include real.
--->
 <footer>
     <div class="container">
         <h3>Conecta Contigo</h3>
@@ -175,12 +142,29 @@
     </div>
 </footer>
 
-<!-- Botón flotante "volver arriba" (usa el JS/CSS global ya existente en el sitio) -->
+<!-- BOTÓN FLOTANTE DE AYUDA (abajo a la IZQUIERDA; "volver arriba" va a la derecha) -->
+<div class="ayuda-flotante" id="ayuda-flotante">
+    <div class="ayuda-menu" id="ayuda-menu" role="menu" aria-label="Opciones de ayuda">
+        <a class="ayuda-menu__item" href="contacto.html" role="menuitem">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg>
+            Contactos
+        </a>
+        <button type="button" class="ayuda-menu__item" data-action="abrir-protocolo" role="menuitem">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="14"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Protocolo de crisis
+        </button>
+    </div>
+
+    <button type="button" class="ayuda-flotante__boton" data-action="alternar-menu-ayuda" aria-haspopup="true" aria-expanded="false" aria-controls="ayuda-menu">
+        <span class="ayuda-flotante__icono"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg></span>
+        <span class="ayuda-flotante__texto">¿Necesitas ayuda ahora?</span>
+    </button>
+</div>
+
+<!-- Botón "volver arriba" -->
 <button id="boton-subir" class="boton-subir" aria-label="Volver arriba">↑</button>
 
-<!-- Scripts del sitio (JS global: acordeones por hash, tarjetas con data-href, botón subir) -->
 <script src="assets/js/general.js"></script>
-<!-- Script propio de esta sección -->
 <script src="assets/js/comprende.js"></script>
 </body>
 </html>

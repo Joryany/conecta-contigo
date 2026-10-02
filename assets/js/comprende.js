@@ -13,9 +13,10 @@
      compartir o recargar un enlace directo.
    - Toda interacción (abrir un tema, cambiar de pestaña, abrir un
      modal, reproducir audio...) pasa por un único listener de clics
-     delegado que lee atributos data-action, en vez de asignar un
-     listener distinto a cada botón cada vez que se vuelve a dibujar
-     el contenido.
+     delegado que lee atributos data-action.
+   - El protocolo de crisis y el directorio de líneas de ayuda viven
+     en este archivo (constante LINEAS_AYUDA) y se muestran en un modal
+     que se abre desde el botón flotante SOS.
 ==================================================================== */
 
 'use strict';
@@ -23,7 +24,7 @@
 (function () {
 
     /* ----------------------------------------------------------------
-       0. ESTADO Y REFERENCIAS
+       0. ESTADO, REFERENCIAS E ÍCONOS
     ---------------------------------------------------------------- */
 
     const DATA_PATHS = {
@@ -32,7 +33,6 @@
         herramientas: 'data/herramientas.json'
     };
 
-    // Elementos usados con frecuencia sin poder ser sustituidos por que están fuera de las vistas dinámicas.
     const el = {};
 
     const estado = {
@@ -42,14 +42,82 @@
         categoriaActiva: 'Todas'
     };
 
-    // Tema (condición o situación) que se está mostrando en el detalle actual.
     let detalleActual = null;
     let ultimoFoco = null;
 
-    // Elementos/atributos que nunca deben leerse en voz alta aunque estén
-    // dentro de un bloque marcado como "data-speak".
     const SELECTOR_EXCLUIR_LECTURA =
-        'button, select, .audio-controles, .modo-toggle, .accion-tabs, .detalle__volver, a.boton-ayuda';
+        'button, select, .audio-controles, .modo-toggle, .accion-tabs, .detalle__volver, .migas, a.boton-primario, a.boton-secundario';
+
+    // Íconos usados como referencia visual rápida (no reemplazan al texto,
+    // solo lo acompañan). Cambiarlos aquí los cambia en toda la sección.
+    const ICONOS = {
+        entender: '🌿',
+        reconocer: '🔎',
+        actuar: '🛠️',
+        recursos: '📚',
+        queEs: '💡',
+        experiencia: '🧭',
+        alerta: '⚠️',
+        accion: '🌱',
+        faq: '❓',
+        herramientas: '🧰',
+        ayuda: '❤️',
+        comparacion: '⚖️',
+        flujo: '🔄'
+    };
+
+    const CTA_CONDICIONES = ['Comprender', 'Explorar', 'Conocer más', 'Descubrir'];
+    const CTA_SITUACIONES = ['Explorar', 'Conocer más'];
+    const TOOL_ICONOS = ['🧩', '🌙', '🫁', '🧘', '📘', '🛠️'];
+    const PILAR_ICONOS = {
+        'sueno': '😴',
+        'actividad-fisica': '🏃',
+        'relaciones': '🤝',
+        'alimentacion': '🥗',
+        'ocio': '🎨',
+        'limites-digitales': '📱'
+    };
+    const CICLO_ICONOS = { 'Emoción': '❤️', 'Pensamiento': '💭', 'Conducta': '🏃' };
+
+    /* ----------------------------------------------------------------
+       ÍCONOS SVG (trazo, sin emojis) Y DIRECTORIO DE LÍNEAS DE AYUDA
+    ---------------------------------------------------------------- */
+
+    const SVG_ICONOS = {
+        escuchar: '<path d="M6 8.5a6 6 0 0 1 12 0c0 3.5-3 4-3 7a3 3 0 0 1-6 0"/><path d="M9.5 8.5a2.5 2.5 0 0 1 5 0"/>',
+        preguntar: '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+        usuarios: '<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/>',
+        proteger: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+        llamar: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
+        mensaje: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+        corazon: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>',
+        reloj: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+        alerta: '<path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
+        evitar: '<circle cx="12" cy="12" r="10"/><line x1="4.9" y1="4.9" x2="19.1" y2="19.1"/>',
+        ninos: '<circle cx="12" cy="8" r="4"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/>'
+    };
+
+    function icono(nombre) {
+        return `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${SVG_ICONOS[nombre] || ''}</svg>`;
+    }
+
+    // Directorio único de líneas. "tel" = número para marcar; "wa" = número
+    // internacional sin "+" para abrir WhatsApp (opcional).
+    // IMPORTANTE: verifica periódicamente estos números con el Ministerio de Salud.
+    const LINEAS_AYUDA = [
+        { nombre: 'Emergencias', numero: '123', tel: '123', icono: 'alerta', urgente: true,
+          servicio: 'Policía, ambulancia y bomberos. Todos los días, 24 h.' },
+        { nombre: 'Línea Nacional de Salud Mental', numero: '106', tel: '106', icono: 'corazon',
+          servicio: 'Orientación emocional y prevención del suicidio. Gratuita, 24 h.' },
+        { nombre: 'Línea 106 · chat (Bogotá)', numero: '300 754 8933', tel: '+573007548933', wa: '573007548933', icono: 'mensaje',
+          servicio: 'Chat de la Línea 106 por WhatsApp. 24 h.' },
+        { nombre: 'Línea de la Vida (Barranquilla)', numero: '(605) 339 9999', tel: '+576053399999', icono: 'llamar',
+          servicio: 'Atención en salud mental en Barranquilla y su área metropolitana.' },
+        { nombre: 'ICBF · Línea 141', numero: '141', tel: '141', icono: 'ninos',
+          servicio: 'Protección de niñas, niños y adolescentes. Gratuita, 24 h.' },
+        { nombre: 'Línea 155', numero: '155', tel: '155', icono: 'usuarios',
+          servicio: 'Orientación a mujeres víctimas de violencia. Gratuita, 24 h.' }
+    ];
 
     document.addEventListener('DOMContentLoaded', iniciar);
 
@@ -76,6 +144,7 @@
     }
 
     function cachearElementos() {
+        el.hero = document.getElementById('comprende-hero');
         el.home = document.getElementById('comprende-home');
         el.detalle = document.getElementById('comprende-detalle');
         el.gridCondiciones = document.getElementById('grid-condiciones');
@@ -141,6 +210,7 @@
         el.detalle.hidden = true;
         el.detalle.innerHTML = '';
         el.home.hidden = false;
+        if (el.hero) el.hero.hidden = false;
     }
 
     function abrirDetalle(tipo, id) {
@@ -158,6 +228,7 @@
 
         detenerAudio();
         el.home.hidden = true;
+        if (el.hero) el.hero.hidden = true;
         el.detalle.hidden = false;
 
         if (tipo === 'condicion') {
@@ -170,43 +241,91 @@
     }
 
     /* ----------------------------------------------------------------
-       3. TARJETAS DE INICIO (condiciones y situaciones)
+       3. MIGAS DE PAN (breadcrumb)
     ---------------------------------------------------------------- */
 
-    function crearTarjetaCondicion(cond) {
+    // items: [{ label, href? , action?, dataCategoria? }]
+    // El último elemento siempre se trata como la página actual (sin enlace).
+    function renderBreadcrumb(items) {
+        const partes = items.map((item, i) => {
+            const esUltimo = i === items.length - 1;
+            if (esUltimo) {
+                return `<span aria-current="page">${escapeHtml(item.label)}</span>`;
+            }
+            if (item.href) {
+                return `<a href="${item.href}">${escapeHtml(item.label)}</a>`;
+            }
+            if (item.action) {
+                const dataCat = item.dataCategoria ? ` data-categoria="${escapeAttr(item.dataCategoria)}"` : '';
+                return `<button type="button" data-action="${item.action}"${dataCat}>${escapeHtml(item.label)}</button>`;
+            }
+            return `<span>${escapeHtml(item.label)}</span>`;
+        });
+        return `<div class="migas" role="navigation" aria-label="Ruta de navegación">${partes.join('<span class="migas__separador" aria-hidden="true">/</span>')}</div>`;
+    }
+
+    /* ----------------------------------------------------------------
+       4. ILUSTRACIONES: espacio reservado con alt genérico
+    ---------------------------------------------------------------- */
+
+    // Genera un marcador de posición visual (SVG embebido, nunca rompe el
+    // layout con un ícono de "imagen no encontrada") con un alt ya escrito
+    // de forma general. Cuando tengas la ilustración real, basta con
+    // cambiar el atributo src de la etiqueta <img> resultante.
+    function placeholderIlustracion(descripcionAlt, claseExtra) {
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="320" viewBox="0 0 400 320">
+            <rect width="400" height="320" rx="28" fill="#e9f3f1"/>
+            <text x="50%" y="46%" font-size="46" text-anchor="middle" dominant-baseline="middle">🖼️</text>
+            <text x="50%" y="68%" font-size="13" fill="#8fa3ad" text-anchor="middle" font-family="sans-serif">Espacio para ilustración</text>
+        </svg>`;
+        const src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+        return `<img class="ilustracion-placeholder${claseExtra ? ' ' + claseExtra : ''}" src="${src}" alt="${escapeAttr(descripcionAlt)}" loading="lazy">`;
+    }
+
+    function altGenericoPara(titulo) {
+        return `Ilustración conceptual sobre ${titulo}, estilo plano e ilustrativo, tonos azul y verde, sin texto incrustado.`;
+    }
+
+    /* ----------------------------------------------------------------
+       5. TARJETAS DE INICIO (condiciones y situaciones)
+    ---------------------------------------------------------------- */
+
+    function crearTarjetaCondicion(cond, index) {
+        const cta = CTA_CONDICIONES[index % CTA_CONDICIONES.length];
         return `
             <article class="tarjeta-item">
                 <span class="tarjeta-item__etiqueta">${escapeHtml(cond.category)}</span>
                 <h3>${escapeHtml(cond.title)}</h3>
                 <p>${escapeHtml(cond.shortDescription)}</p>
                 <button type="button" class="tarjeta-item__boton" data-action="abrir-detalle" data-tipo="condicion" data-id="${cond.id}">
-                    Comprender →
+                    ${cta} →
                 </button>
             </article>`;
     }
 
-    function crearTarjetaSituacion(sit) {
+    function crearTarjetaSituacion(sit, index) {
+        const cta = CTA_SITUACIONES[index % CTA_SITUACIONES.length];
         return `
             <article class="tarjeta-item">
                 <h3>${escapeHtml(sit.title)}</h3>
                 <p>${escapeHtml(sit.shortDescription)}</p>
                 <button type="button" class="tarjeta-item__boton" data-action="abrir-detalle" data-tipo="situacion" data-id="${sit.id}">
-                    Comprender →
+                    ${cta} →
                 </button>
             </article>`;
     }
 
     function renderGridCondiciones(lista) {
-        el.gridCondiciones.innerHTML = lista.map(crearTarjetaCondicion).join('');
+        el.gridCondiciones.innerHTML = lista.map((c, i) => crearTarjetaCondicion(c, i)).join('');
         el.condicionesVacio.hidden = lista.length !== 0;
     }
 
     function renderGridSituaciones(lista) {
-        el.gridSituaciones.innerHTML = lista.map(crearTarjetaSituacion).join('');
+        el.gridSituaciones.innerHTML = lista.map((s, i) => crearTarjetaSituacion(s, i)).join('');
     }
 
     /* ----------------------------------------------------------------
-       4. BUSCADOR Y FILTRO POR CATEGORÍA
+       6. BUSCADOR Y FILTRO POR CATEGORÍA
     ---------------------------------------------------------------- */
 
     function configurarBuscador() {
@@ -245,62 +364,98 @@
     }
 
     /* ----------------------------------------------------------------
-       5. DETALLE: CONDICIÓN
+       7. ENCABEZADOS AUXILIARES (grupo + ícono de sección)
+    ---------------------------------------------------------------- */
+
+    function grupoHeader(numero, icono, titulo) {
+        return `
+            <div class="grupo-header">
+                <span class="grupo-header__numero" aria-hidden="true">${numero}</span>
+                <h2>${icono} ${escapeHtml(titulo)}</h2>
+            </div>`;
+    }
+
+    function tituloConIcono(icono, texto) {
+        return `<span class="icono-seccion" aria-hidden="true">${icono}</span>${escapeHtml(texto)}`;
+    }
+
+    /* ----------------------------------------------------------------
+       8. DETALLE: CONDICIÓN
     ---------------------------------------------------------------- */
 
     function renderDetalleCondicion(cond) {
         detalleActual = cond;
 
         const faqHtml = (cond.faq && cond.faq.length) ? `
-            <div class="bloque solo-completo">
-                <h2>Preguntas frecuentes</h2>
+            <div class="bloque bloque--card solo-completo">
+                <h3>${tituloConIcono(ICONOS.faq, 'Preguntas frecuentes')}</h3>
                 <div class="acordeon-grupo">
                     ${cond.faq.map((f, i) => accordionItem(`faq-${cond.id}-${i}`, f.question, f.answer)).join('')}
                 </div>
             </div>` : '';
 
-        const herramientasHtml = (cond.tools && cond.tools.length) ? `
-            <div class="bloque solo-completo">
-                <h2>Herramientas</h2>
-                <div class="herramientas-grid">
-                    ${cond.tools.map(toolCard).join('')}
+        const grupoActuarHtml = (cond.tools && cond.tools.length) ? `
+            <div class="solo-completo">
+                ${grupoHeader(3, ICONOS.actuar, 'Actuar')}
+                <div class="bloque bloque--card">
+                    <h3>${tituloConIcono(ICONOS.herramientas, 'Herramientas')}</h3>
+                    <div class="herramientas-grid">
+                        ${cond.tools.map((t, i) => toolCard(t, i)).join('')}
+                    </div>
                 </div>
             </div>` : '';
 
         el.detalle.innerHTML = `
+            ${renderBreadcrumb([
+                { label: 'Inicio', href: 'index.html' },
+                { label: 'Comprende', action: 'volver' },
+                { label: cond.category, action: 'ir-categoria', dataCategoria: cond.category },
+                { label: cond.title }
+            ])}
+
             <button type="button" class="detalle__volver" data-action="volver">← Volver a Comprende</button>
 
-            <div class="detalle__hero" data-speak>
-                <span class="detalle__categoria">${escapeHtml(cond.category)}</span>
-                <h2>${escapeHtml(cond.title)}</h2>
-                <p>${escapeHtml(cond.shortDescription)}</p>
-                ${audioControlesHtml(cond.id)}
+            <div class="detalle-header">
+                <div class="detalle-header__texto" data-speak>
+                    <h1>${escapeHtml(cond.title)}</h1>
+                    <p>${escapeHtml(cond.shortDescription)}</p>
+                </div>
+                <div class="detalle-header__imagen">
+                    ${placeholderIlustracion(altGenericoPara(cond.title))}
+                </div>
             </div>
 
-            <div class="modo-toggle" role="group" aria-label="Nivel de detalle">
-                <button type="button" data-action="modo" data-modo="completo" aria-pressed="true">Completo</button>
-                <button type="button" data-action="modo" data-modo="resumen" aria-pressed="false">Resumen</button>
+            <div class="detalle-controles">
+                ${audioControlesHtml(cond.id)}
+                <div class="modo-toggle" role="group" aria-label="Nivel de detalle">
+                    <button type="button" data-action="modo" data-modo="completo" aria-pressed="true">Completo</button>
+                    <button type="button" data-action="modo" data-modo="resumen" aria-pressed="false">Resumen</button>
+                </div>
             </div>
+
+            ${grupoHeader(1, ICONOS.entender, 'Entender')}
 
             <div class="bloque bloque--card" data-speak>
-                <h2>¿Qué es?</h2>
+                <h3>${tituloConIcono(ICONOS.queEs, '¿Qué es?')}</h3>
                 <p>${escapeHtml(cond.description)}</p>
             </div>
 
             <div class="bloque bloque--card" data-speak>
-                <h2>¿Cómo puede experimentarse?</h2>
+                <h3>${tituloConIcono(ICONOS.experiencia, '¿Cómo puede experimentarse?')}</h3>
                 <div class="experiencia-grid">
                     ${cond.experience.columns.map(col => `
                         <div class="experiencia-col">
-                            <h3>${escapeHtml(col.label)}</h3>
+                            <h4>${escapeHtml(col.label)}</h4>
                             <ul>${col.items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>
                         </div>
                     `).join('')}
                 </div>
             </div>
 
+            ${grupoHeader(2, ICONOS.reconocer, 'Reconocer')}
+
             <div class="bloque bloque--card" data-speak>
-                <h2>Señales de alerta</h2>
+                <h3>${tituloConIcono(ICONOS.alerta, 'Señales de alerta')}</h3>
                 <ul class="senales-lista">
                     ${cond.warningSigns.map(s => `
                         <li class="senal-item">
@@ -313,7 +468,7 @@
             </div>
 
             <div class="bloque bloque--card" data-speak>
-                <h2>¿Qué puedo hacer?</h2>
+                <h3>${tituloConIcono(ICONOS.accion, '¿Qué puedo hacer?')}</h3>
                 <div class="accion-tabs" role="group" aria-label="Elige tu situación">
                     <button type="button" data-action="accion-tab" data-tab="self" aria-pressed="true">Me pasa a mí</button>
                     <button type="button" data-action="accion-tab" data-tab="other" aria-pressed="false">Le pasa a alguien cercano</button>
@@ -322,12 +477,14 @@
             </div>
 
             ${faqHtml}
-            ${herramientasHtml}
+            ${grupoActuarHtml}
+
+            ${grupoHeader(4, ICONOS.recursos, 'Recursos y ayuda')}
 
             <div class="bloque ayuda-bloque" data-speak>
-                <h2>¿Cuándo buscar ayuda?</h2>
+                <h3>${tituloConIcono(ICONOS.ayuda, '¿Cuándo buscar ayuda?')}</h3>
                 <p>${escapeHtml(cond.whenToSeekHelp)}</p>
-                ${cond.helpLink ? `<a class="boton-ayuda" style="display:inline-block;padding:var(--boton-y) var(--boton-x);border-radius:var(--radio-pill);text-decoration:none;" href="${cond.helpLink}">Buscar ayuda</a>` : ''}
+                ${cond.helpLink ? `<a class="boton-primario" href="${cond.helpLink}">Buscar ayuda</a>` : ''}
             </div>
 
             ${renderRecursos(cond.resources)}
@@ -339,7 +496,7 @@
     }
 
     /* ----------------------------------------------------------------
-       6. DETALLE: SITUACIÓN
+       9. DETALLE: SITUACIÓN
     ---------------------------------------------------------------- */
 
     function renderDetalleSituacion(sit) {
@@ -353,11 +510,26 @@
         }
 
         el.detalle.innerHTML = `
+            ${renderBreadcrumb([
+                { label: 'Inicio', href: 'index.html' },
+                { label: 'Comprende', action: 'volver' },
+                { label: 'Situaciones', action: 'ir-situaciones' },
+                { label: sit.title }
+            ])}
+
             <button type="button" class="detalle__volver" data-action="volver">← Volver a Comprende</button>
 
-            <div class="detalle__hero" data-speak>
-                <h2>${escapeHtml(sit.title)}</h2>
-                <p>${escapeHtml(sit.intro)}</p>
+            <div class="detalle-header">
+                <div class="detalle-header__texto" data-speak>
+                    <h1>${escapeHtml(sit.title)}</h1>
+                    <p>${escapeHtml(sit.intro)}</p>
+                </div>
+                <div class="detalle-header__imagen">
+                    ${placeholderIlustracion(altGenericoPara(sit.title))}
+                </div>
+            </div>
+
+            <div class="detalle-controles">
                 ${audioControlesHtml(sit.id)}
             </div>
 
@@ -374,7 +546,7 @@
 
     function renderComparacion(comp) {
         return `
-            <h2>Comparación</h2>
+            <h3>${tituloConIcono(ICONOS.comparacion, 'Comparación')}</h3>
             <div class="comparacion-grid">
                 <div class="comparacion-fila comparacion-fila--encabezado">
                     <div class="comparacion-fila__etiqueta"></div>
@@ -389,18 +561,18 @@
                     </div>
                 `).join('')}
             </div>
-            ${comp.note ? `<p class="nota" style="margin-top:10px;">${escapeHtml(comp.note)}</p>` : ''}
+            ${comp.note ? `<p class="nota">${escapeHtml(comp.note)}</p>` : ''}
         `;
     }
 
     function renderFlujo(flow) {
         return `
-            <h2>${escapeHtml(flow.title)}</h2>
+            <h3>${tituloConIcono(ICONOS.flujo, flow.title)}</h3>
             <div class="flujo">
                 ${flow.steps.map((s, i) => `
                     <div class="flujo__paso">
                         <span class="flujo__numero">${i + 1}</span>
-                        <h3>${escapeHtml(s.step)}</h3>
+                        <h4>${escapeHtml(s.step)}</h4>
                         <p>${escapeHtml(s.description)}</p>
                     </div>
                     ${i < flow.steps.length - 1 ? '<div class="flujo__flecha" aria-hidden="true">→</div>' : ''}
@@ -410,7 +582,7 @@
     }
 
     /* ----------------------------------------------------------------
-       7. MODO COMPLETO / RESUMEN Y TABS "¿QUÉ PUEDO HACER?"
+       10. MODO COMPLETO / RESUMEN Y TABS "¿QUÉ PUEDO HACER?"
     ---------------------------------------------------------------- */
 
     function cambiarModo(modo) {
@@ -432,7 +604,7 @@
     }
 
     /* ----------------------------------------------------------------
-       8. FAQ / ACORDEONES (<details><summary>)
+       11. FAQ / ACORDEONES (<details><summary>)
     ---------------------------------------------------------------- */
 
     function accordionItem(id, pregunta, respuesta) {
@@ -443,10 +615,6 @@
             </details>`;
     }
 
-    // El evento "toggle" de <details> no burbujea, pero sí pasa por la
-    // fase de captura, así que un único listener en document (con el
-    // tercer argumento "true") alcanza para todos los acordeones,
-    // incluso los que todavía no existían cuando se registró.
     function manejarToggleAcordeon(e) {
         if (!(e.target instanceof HTMLElement)) return;
         if (!e.target.matches('details')) return;
@@ -455,19 +623,21 @@
     }
 
     /* ----------------------------------------------------------------
-       9. HERRAMIENTAS (tarjetas de condición + sección general)
+       12. HERRAMIENTAS (tarjetas de condición + sección general)
     ---------------------------------------------------------------- */
 
-    function toolCard(tool) {
+    function toolCard(tool, index) {
+        const icono = TOOL_ICONOS[index % TOOL_ICONOS.length];
         const descripcion = tool.description ? `<p>${escapeHtml(tool.description)}</p>` : '';
         const boton = tool.description ? `
-            <button type="button" data-action="abrir-modal-herramienta"
+            <button type="button" class="boton-texto" data-action="abrir-modal-herramienta"
                 data-nombre="${escapeAttr(tool.name)}" data-descripcion="${escapeAttr(tool.description)}">
-                Ver herramienta
+                Ver herramienta →
             </button>` : '';
         return `
             <div class="herramienta-card">
-                <h3>${escapeHtml(tool.name)}</h3>
+                <span class="herramienta-card__icono" aria-hidden="true">${icono}</span>
+                <h4>${escapeHtml(tool.name)}</h4>
                 ${descripcion}
                 ${boton}
             </div>`;
@@ -477,52 +647,28 @@
         const h = estado.herramientas;
         if (!h) return;
 
-        // Ciclo de la mente
-        document.getElementById('ciclo-titulo').textContent = h.cycle.title;
+        // Ciclo de la mente (se respeta el orden original: Emoción → Pensamiento → Conducta)
+        document.getElementById('ciclo-titulo').innerHTML = tituloConIcono('🔄', h.cycle.title);
         document.getElementById('ciclo-descripcion').textContent = h.cycle.description;
         document.getElementById('ciclo-mente').innerHTML = h.cycle.steps.map((s, i) => `
-            <div class="ciclo-mente__paso"><strong>${escapeHtml(s.label)}</strong><span>${escapeHtml(s.example)}</span></div>
+            <div class="ciclo-mente__paso">
+                <span class="ciclo-mente__icono" aria-hidden="true">${CICLO_ICONOS[s.label] || '✨'}</span>
+                <strong>${escapeHtml(s.label)}</strong>
+                <span>${escapeHtml(s.example)}</span>
+            </div>
             ${i < h.cycle.steps.length - 1 ? '<span class="ciclo-mente__flecha" aria-hidden="true">→</span>' : ''}
         `).join('');
 
         // Pilares del bienestar
-        document.getElementById('pilares-titulo').textContent = h.pillars.title;
+        document.getElementById('pilares-titulo').innerHTML = tituloConIcono('🌈', h.pillars.title);
         document.getElementById('pilares-descripcion').textContent = h.pillars.description;
         document.getElementById('pilares-grid').innerHTML = h.pillars.items.map(p => `
             <div class="pilar-card">
-                <h3>${escapeHtml(p.title)}</h3>
-                <p>${escapeHtml(p.description)}</p>
-                <span class="pilar-ganancia">${escapeHtml(p.gain)}</span>
+                <span class="pilar-card__icono" aria-hidden="true">${PILAR_ICONOS[p.id] || '🌟'}</span>
+                <h4>${escapeHtml(p.title)}</h4>
+                <p class="pilar-card__detalle">${escapeHtml(p.description)} <strong>${escapeHtml(p.gain)}</strong></p>
             </div>
         `).join('');
-
-        // Ayuda inmediata (autolesiones / riesgo suicida)
-        const eh = h.emergencyHelp;
-        document.getElementById('comprende-ayuda-inmediata').innerHTML = `
-            <div class="emergencia-bloque" data-speak>
-                <h2>${escapeHtml(eh.title)}</h2>
-                <h3>${escapeHtml(eh.selfHarmNote.title)}</h3>
-                <p>${escapeHtml(eh.selfHarmNote.text)}</p>
-                <h3>${escapeHtml(eh.protocolTitle)}</h3>
-                <p>${escapeHtml(eh.protocolIntro)}</p>
-                <ol class="protocolo-pasos">
-                    ${eh.protocolSteps.map(s => `
-                        <li><div><strong>${escapeHtml(s.step)}</strong><span>${escapeHtml(s.description)}</span></div></li>
-                    `).join('')}
-                </ol>
-                <h3>${escapeHtml(eh.directoryTitle)}</h3>
-                <div class="emergencia-directorio">
-                    ${eh.directory.map(d => `
-                        <div class="emergencia-item">
-                            <strong>${escapeHtml(d.entity)}</strong>
-                            <span class="emergencia-contacto">${escapeHtml(d.contact)}</span>
-                            <span class="emergencia-servicio">${escapeHtml(d.service)}</span>
-                        </div>
-                    `).join('')}
-                </div>
-                ${eh.helpLink ? `<a class="boton-ayuda" style="display:inline-block;margin-top:12px;padding:var(--boton-y) var(--boton-x);border-radius:var(--radio-pill);background:var(--resalte);color:#fff;font-weight:700;text-decoration:none;" href="${eh.helpLink}">Buscar ayuda</a>` : ''}
-            </div>
-        `;
 
         // FAQ general
         document.getElementById('faq-general').innerHTML = h.generalFaq
@@ -534,14 +680,17 @@
     }
 
     /* ----------------------------------------------------------------
-       10. RECURSOS MULTIMEDIA (imagen / video / pdf / enlace)
+       13. RECURSOS MULTIMEDIA
+       Tipos admitidos: image, infographic, mindmap, video, pdf, link.
+       Si el arreglo "resources" de un tema viene vacío, esta sección
+       no se dibuja; si un tema no trae un tipo, ese bloque no aparece.
     ---------------------------------------------------------------- */
 
     function renderRecursos(resources) {
         if (!resources || !resources.length) return '';
         return `
             <div class="bloque solo-completo">
-                <h2>Recursos</h2>
+                <h2>${tituloConIcono('🎒', 'Recursos')}</h2>
                 <div class="recursos-grid">
                     ${resources.map(recursoCard).join('')}
                 </div>
@@ -556,8 +705,32 @@
                         <img src="${r.src}" alt="${escapeAttr(r.alt || '')}"
                             data-action="abrir-modal-imagen" data-src="${r.src}" data-alt="${escapeAttr(r.alt || '')}">
                         <div class="recurso-card__cuerpo">
-                            <h3>${escapeHtml(r.title || '')}</h3>
+                            <h4>${escapeHtml(r.title || '')}</h4>
                             <p>${escapeHtml(r.description || '')}</p>
+                        </div>
+                    </div>`;
+            case 'infographic':
+                return `
+                    <div class="recurso-card recurso-imagen">
+                        <img src="${r.src}" alt="${escapeAttr(r.alt || '')}"
+                            data-action="abrir-modal-imagen" data-src="${r.src}" data-alt="${escapeAttr(r.alt || '')}">
+                        <div class="recurso-card__cuerpo">
+                            <h4>🖼️ ${escapeHtml(r.title || 'Infografía')}</h4>
+                            <p>${escapeHtml(r.description || '')}</p>
+                            <button type="button" class="recurso-enlace-boton" data-action="abrir-modal-imagen"
+                                data-src="${r.src}" data-alt="${escapeAttr(r.alt || '')}">Ver infografía →</button>
+                        </div>
+                    </div>`;
+            case 'mindmap':
+                return `
+                    <div class="recurso-card recurso-imagen">
+                        <img src="${r.src}" alt="${escapeAttr(r.alt || '')}"
+                            data-action="abrir-modal-imagen" data-src="${r.src}" data-alt="${escapeAttr(r.alt || '')}">
+                        <div class="recurso-card__cuerpo">
+                            <h4>🧠 ${escapeHtml(r.title || 'Mapa mental')}</h4>
+                            <p>${escapeHtml(r.description || '')}</p>
+                            <button type="button" class="recurso-enlace-boton" data-action="abrir-modal-imagen"
+                                data-src="${r.src}" data-alt="${escapeAttr(r.alt || '')}">Ver mapa mental →</button>
                         </div>
                     </div>`;
             case 'video':
@@ -565,7 +738,7 @@
                     <div class="recurso-card recurso-video">
                         <div class="recurso-video__envoltorio">${resolverVideoEmbed(r.src)}</div>
                         <div class="recurso-card__cuerpo">
-                            <h3>${escapeHtml(r.title || '')}</h3>
+                            <h4>🎬 ${escapeHtml(r.title || '')}</h4>
                             <p>${escapeHtml(r.description || '')}</p>
                         </div>
                     </div>`;
@@ -573,7 +746,7 @@
                 return `
                     <div class="recurso-card">
                         <div class="recurso-card__cuerpo">
-                            <h3>📄 ${escapeHtml(r.title || 'Documento')}</h3>
+                            <h4>📄 ${escapeHtml(r.title || 'Documento')}</h4>
                             <p>${escapeHtml(r.description || '')}</p>
                             <a class="recurso-enlace" href="${r.src}" target="_blank" rel="noopener noreferrer">Ver PDF →</a>
                         </div>
@@ -582,7 +755,7 @@
                 return `
                     <div class="recurso-card">
                         <div class="recurso-card__cuerpo">
-                            <h3>🔗 ${escapeHtml(r.title || '')}</h3>
+                            <h4>🔗 ${escapeHtml(r.title || '')}</h4>
                             <p>${escapeHtml(r.description || '')}</p>
                             <a class="recurso-enlace" href="${r.url}" target="_blank" rel="noopener noreferrer">Visitar recurso →</a>
                         </div>
@@ -603,18 +776,19 @@
     }
 
     /* ----------------------------------------------------------------
-       11. FUENTES
+       14. FUENTES (sin paréntesis visibles; el enlace es el propio texto)
     ---------------------------------------------------------------- */
 
     function listaFuentesHtml(fuentes) {
         return `
-            <ul style="list-style:disc;padding-left:20px;display:flex;flex-direction:column;gap:6px;">
-                ${fuentes.map(s => `
-                    <li>
-                        ${escapeHtml(s.institution)}${s.title ? ' — ' + escapeHtml(s.title) : ''}
-                        ${s.url ? ` (<a href="${s.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.url.replace(/^https?:\/\//, ''))}</a>)` : ''}
-                    </li>
-                `).join('')}
+            <ul class="fuentes-lista">
+                ${fuentes.map(s => {
+                    const texto = `${escapeHtml(s.institution)}${s.title ? ' — ' + escapeHtml(s.title) : ''}`;
+                    if (s.url) {
+                        return `<li><a href="${s.url}" target="_blank" rel="noopener noreferrer">${texto} <span aria-hidden="true">↗</span></a></li>`;
+                    }
+                    return `<li>${texto}</li>`;
+                }).join('')}
             </ul>`;
     }
 
@@ -623,14 +797,14 @@
         return `
             <div class="bloque solo-completo">
                 <details class="acordeon-item">
-                    <summary aria-expanded="false">Fuentes y referencias</summary>
+                    <summary aria-expanded="false">${tituloConIcono('📖', 'Fuentes y referencias')}</summary>
                     <div class="acordeon-item__contenido">${listaFuentesHtml(fuentes)}</div>
                 </details>
             </div>`;
     }
 
     /* ----------------------------------------------------------------
-       12. AUDIO (Web Speech API / SpeechSynthesis)
+       15. AUDIO (Web Speech API / SpeechSynthesis)
     ---------------------------------------------------------------- */
 
     function audioSoportado() {
@@ -659,8 +833,6 @@
         if (controles) controles.hidden = true;
     }
 
-    // Extrae solo el texto visible y "leíble" del contenido actual,
-    // ignorando botones, navegación y bloques ocultos por el modo Resumen.
     function textoLegible() {
         const raiz = el.detalle.hidden
             ? document.getElementById('comprende-herramientas')
@@ -740,7 +912,7 @@
     }
 
     /* ----------------------------------------------------------------
-       13. MODAL GENÉRICO
+       16. MODAL GENÉRICO
     ---------------------------------------------------------------- */
 
     function configurarModal() {
@@ -748,14 +920,19 @@
             if (e.target === el.modal) cerrarModal();
         });
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !el.modal.hidden) cerrarModal();
+            if (e.key !== 'Escape') return;
+            if (!el.modal.hidden) cerrarModal();
+            cerrarMenuAyuda();
         });
+        const cerrar = document.getElementById('modal-cerrar');
+        if (cerrar) cerrar.addEventListener('click', cerrarModal);
     }
 
     function abrirModal(html, opciones = {}) {
         ultimoFoco = document.activeElement;
         el.modalContenido.innerHTML = html;
         el.modalPanel.classList.toggle('modal-panel--imagen', !!opciones.imagen);
+        el.modalPanel.classList.toggle('modal-panel--protocolo', !!opciones.protocolo);
         el.modal.hidden = false;
         requestAnimationFrame(() => el.modal.classList.add('activo'));
 
@@ -799,10 +976,116 @@
     }
 
     /* ----------------------------------------------------------------
-       14. DELEGACIÓN DE EVENTOS (data-action)
+       MENÚ FLOTANTE DE AYUDA + MODAL DE PROTOCOLO
+    ---------------------------------------------------------------- */
+
+    function alternarMenuAyuda() {
+        const menu = document.getElementById('ayuda-menu');
+        const boton = document.querySelector('.ayuda-flotante__boton');
+        if (!menu || !boton) return;
+        const abrir = !menu.classList.contains('activo');
+        menu.classList.toggle('activo', abrir);
+        boton.setAttribute('aria-expanded', String(abrir));
+    }
+
+    function cerrarMenuAyuda() {
+        const menu = document.getElementById('ayuda-menu');
+        const boton = document.querySelector('.ayuda-flotante__boton');
+        if (menu) menu.classList.remove('activo');
+        if (boton) boton.setAttribute('aria-expanded', 'false');
+    }
+
+    function flashHtml(item, indice, variante) {
+        return `
+            <div class="flash${variante ? ' flash--' + variante : ''}">
+                <span class="flash__num" aria-hidden="true">${indice + 1}</span>
+                <span class="flash__icono">${icono(item.icono)}</span>
+                <h5>${escapeHtml(item.titulo)}</h5>
+                <p>${escapeHtml(item.texto)}</p>
+            </div>`;
+    }
+
+    function lineaHtml(l) {
+        const wa = l.wa
+            ? `<a class="linea__btn linea__btn--wa" href="https://wa.me/${l.wa}" target="_blank" rel="noopener noreferrer">${icono('mensaje')} WhatsApp</a>`
+            : '';
+        return `
+            <div class="linea${l.urgente ? ' linea--urgente' : ''}">
+                <span class="linea__nombre">${icono(l.icono)} ${escapeHtml(l.nombre)}</span>
+                <span class="linea__numero">${escapeHtml(l.numero)}</span>
+                <span class="linea__servicio">${escapeHtml(l.servicio)}</span>
+                <div class="linea__acciones">
+                    <a class="linea__btn linea__btn--llamar" href="tel:${l.tel}">${icono('llamar')} Llamar</a>
+                    ${wa}
+                </div>
+            </div>`;
+    }
+
+    function abrirModalProtocolo() {
+        const ayudar = [
+            { icono: 'escuchar',   titulo: 'Escucha con calma',   texto: 'Deja que hable sin juzgar ni interrumpir.' },
+            { icono: 'preguntar',  titulo: 'Pregunta directo',    texto: '«¿Estás pensando en hacerte daño?» Preguntar no lo provoca.' },
+            { icono: 'usuarios',   titulo: 'No lo dejes solo/a',  texto: 'Quédate cerca o pide a alguien de confianza que lo haga.' },
+            { icono: 'proteger',   titulo: 'Aleja el peligro',    texto: 'Retira objetos o medicamentos con los que podría hacerse daño.' },
+            { icono: 'llamar',     titulo: 'Pide ayuda',          texto: 'Llama al 106 o al 123 si el riesgo es inminente.' },
+            { icono: 'reloj',      titulo: 'Haz seguimiento',     texto: 'Escríbele o visítalo en los días siguientes.' }
+        ];
+        const yo = [
+            { icono: 'mensaje',    titulo: 'Habla con alguien',    texto: 'Cuéntale a una persona de confianza cómo te sientes ahora.' },
+            { icono: 'usuarios',   titulo: 'No te quedes a solas', texto: 'Ve a un lugar con gente o pide que te acompañen.' },
+            { icono: 'proteger',   titulo: 'Ponte a salvo',        texto: 'Pide que guarden o retiren lo que podría hacerte daño.' },
+            { icono: 'llamar',     titulo: 'Llama al 106',         texto: 'Es gratis y te atienden personas capacitadas, las 24 h.' }
+        ];
+        const evitar = [
+            { icono: 'evitar', titulo: 'No minimices',        texto: 'Evita frases como «no es para tanto».' },
+            { icono: 'evitar', titulo: 'No prometas secreto', texto: 'Su seguridad va primero.' },
+            { icono: 'evitar', titulo: 'No discutas',         texto: 'No lo juzgues ni lo culpes.' },
+            { icono: 'evitar', titulo: 'No lo dejes solo/a',  texto: 'Si hay riesgo, acompáñalo hasta que llegue ayuda.' }
+        ];
+
+        abrirModal(`
+            <div class="protocolo">
+                <div class="protocolo__encabezado">
+                    <span class="protocolo__icono">${icono('proteger')}</span>
+                    <div>
+                        <h3 id="modal-titulo">Protocolo de crisis</h3>
+                        <p>Qué hacer paso a paso si tú o alguien cercano piensa en hacerse daño.</p>
+                    </div>
+                </div>
+
+                <div class="protocolo__cuerpo">
+                    <div class="protocolo__alerta">
+                        <span class="protocolo__alerta-icono">${icono('alerta')}</span>
+                        <p><strong>Si hay peligro inmediato, no esperes:</strong> llama al 123.</p>
+                        <a class="linea__btn linea__btn--llamar" href="tel:123">${icono('llamar')} Llamar al 123</a>
+                    </div>
+
+                    <h4 class="protocolo__subtitulo">${icono('usuarios')} Si ayudas a otra persona</h4>
+                    <div class="flash-grid">${ayudar.map((c, i) => flashHtml(c, i)).join('')}</div>
+
+                    <h4 class="protocolo__subtitulo">${icono('corazon')} Si eres tú quien lo siente</h4>
+                    <div class="flash-grid">${yo.map((c, i) => flashHtml(c, i, 'yo')).join('')}</div>
+
+                    <h4 class="protocolo__subtitulo">${icono('evitar')} Qué evitar</h4>
+                    <div class="flash-grid">${evitar.map((c, i) => flashHtml(c, i, 'evitar')).join('')}</div>
+
+                    <h4 class="protocolo__subtitulo">${icono('llamar')} Líneas de ayuda</h4>
+                    <div class="linea-grid">${LINEAS_AYUDA.map(lineaHtml).join('')}</div>
+
+                    <p class="nota">Esta guía orienta, pero no reemplaza la atención de un profesional de la salud.</p>
+                </div>
+            </div>
+        `, { protocolo: true });
+    }
+
+    /* ----------------------------------------------------------------
+       17. DELEGACIÓN DE EVENTOS (data-action)
     ---------------------------------------------------------------- */
 
     function manejarClicGlobal(e) {
+        // Cierra el menú flotante si se hace clic fuera de él
+        if (!e.target.closest('.ayuda-flotante')) cerrarMenuAyuda();
+
         const boton = e.target.closest('[data-action]');
         if (!boton) return;
 
@@ -812,6 +1095,21 @@
                 break;
             case 'volver':
                 volverAHome();
+                break;
+            case 'ir-categoria':
+                volverAHome();
+                seleccionarCategoria(boton.dataset.categoria);
+                requestAnimationFrame(() => {
+                    const seccion = document.getElementById('comprende-condiciones');
+                    if (seccion) seccion.scrollIntoView({ behavior: 'smooth' });
+                });
+                break;
+            case 'ir-situaciones':
+                volverAHome();
+                requestAnimationFrame(() => {
+                    const seccion = document.getElementById('comprende-situaciones');
+                    if (seccion) seccion.scrollIntoView({ behavior: 'smooth' });
+                });
                 break;
             case 'modo':
                 cambiarModo(boton.dataset.modo);
@@ -837,6 +1135,13 @@
             case 'abrir-modal-herramienta':
                 abrirModalHerramienta(boton.dataset.nombre, boton.dataset.descripcion);
                 break;
+            case 'alternar-menu-ayuda':
+                alternarMenuAyuda();
+                break;
+            case 'abrir-protocolo':
+                cerrarMenuAyuda();
+                abrirModalProtocolo();
+                break;
             case 'cerrar-modal':
                 cerrarModal();
                 break;
@@ -845,8 +1150,6 @@
 
     function manejarCambioGlobal(e) {
         if (e.target.matches('[data-audio-rate]')) {
-            // La Web Speech API no permite cambiar la velocidad de una
-            // lectura en curso, así que se reinicia con la nueva velocidad.
             if (audioSoportado() && window.speechSynthesis.speaking) {
                 detenerAudio();
                 iniciarOReanudarLectura();
@@ -854,15 +1157,8 @@
         }
     }
 
-    // El botón de cerrar del modal vive fuera del contenido dinámico,
-    // así que se conecta una sola vez al cargar la página.
-    document.addEventListener('DOMContentLoaded', () => {
-        const cerrar = document.getElementById('modal-cerrar');
-        if (cerrar) cerrar.addEventListener('click', cerrarModal);
-    });
-
     /* ----------------------------------------------------------------
-       15. UTILIDADES
+       18. UTILIDADES
     ---------------------------------------------------------------- */
 
     function escapeHtml(str) {

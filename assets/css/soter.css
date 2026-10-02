@@ -1371,3 +1371,912 @@
         padding: 0 16px 16px;
     }
 }
+
+/* ================================================================
+   SOTER · REFINAMIENTO VISUAL
+   Capa de diseño sobre el CSS original
+   ================================================================ */
+
+
+/* ================================================================
+   1. HERO
+   ================================================================ */
+
+.soter-hero-card {
+    position: relative;
+    border: 1px solid rgba(20, 67, 126, 0.08);
+    box-shadow:
+        0 18px 45px rgba(20, 67, 126, 0.10),
+        0 4px 12px rgba(20, 67, 126, 0.05);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.soter-hero-card:hover {
+    box-shadow:
+        0 22px 50px rgba(20, 67, 126, 0.12),
+        0 5px 15px rgba(20, 67, 126, 0.06);
+}
+
+.soter-hero-card__image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+/* ================================================================
+   2. PESTAÑAS
+   ================================================================ */
+
+.soter-tabs {
+    width: calc(100% - 48px);
+
+    margin: 18px auto 22px;
+
+    padding: 7px;
+
+    background: rgba(242, 247, 250, 0.92);
+
+    border: 1px solid rgba(20, 67, 126, 0.08);
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 5px 18px rgba(20, 67, 126, 0.06);
+
+    backdrop-filter: blur(8px);
+
+    gap: 6px;
+}
+
+
+/* Cada pestaña */
+
+.soter-tab {
+    min-height: 42px;
+
+    padding: 10px 17px;
+
+    color: #667585;
+
+    border: 1px solid transparent;
+
+    border-radius: 11px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.22s ease,
+        color 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease,
+        transform 0.22s ease;
+}
+
+
+/* Iconos */
+
+.soter-tab__icon {
+    font-size: 0.95rem;
+    transition: transform 0.22s ease;
+}
+
+
+/* Hover */
+
+.soter-tab:hover {
+    background: rgba(255, 255, 255, 0.8);
+
+    color: var(--azul-marino);
+
+    border-color: rgba(70, 142, 214, 0.10);
+
+    transform: translateY(-1px);
+}
+
+.soter-tab:hover .soter-tab__icon {
+    transform: scale(1.08);
+}
+
+
+/* Activa */
+
+.soter-tab.is-active {
+    background: var(--blanco);
+
+    color: var(--azul-marino);
+
+    border-color: rgba(70, 142, 214, 0.18);
+
+    box-shadow:
+        0 4px 12px rgba(20, 67, 126, 0.09);
+}
+
+
+/* Línea inferior */
+
+.soter-tab.is-active::after {
+    bottom: 3px;
+
+    width: 24px;
+    height: 2px;
+
+    background: var(--verde-agua);
+
+    opacity: 1;
+}
+
+
+/* ================================================================
+   3. PANEL DEL CHAT
+   ================================================================ */
+
+.soter-panel {
+    animation: soterPanelIn 0.35s ease;
+}
+
+@keyframes soterPanelIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.soter-eyebrow {
+    margin-bottom: 13px;
+
+    color: var(--azul-claro);
+
+    font-size: 0.78rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+
+/* ================================================================
+   4. CHAT PRINCIPAL
+   ================================================================ */
+
+.soter-widget {
+    border: 1px solid rgba(20, 67, 126, 0.09);
+
+    border-radius: 26px;
+
+    box-shadow:
+        0 20px 45px rgba(20, 67, 126, 0.10),
+        0 4px 12px rgba(20, 67, 126, 0.04);
+
+    background: #fff;
+
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.soter-widget:hover {
+    box-shadow:
+        0 23px 50px rgba(20, 67, 126, 0.12),
+        0 5px 15px rgba(20, 67, 126, 0.05);
+}
+
+
+/* ================================================================
+   5. HEADER DEL CHAT
+   ================================================================ */
+
+.soter-widget__header {
+    position: relative;
+
+    padding: 15px 20px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #f2f7fa 0%,
+            #f7fbfc 55%,
+            #eef8f7 100%
+        );
+
+    border-bottom: 1px solid rgba(20, 67, 126, 0.07);
+}
+
+
+/* Pequeño detalle verde */
+
+.soter-widget__header::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -1px;
+
+    width: 85px;
+    height: 2px;
+
+    background: var(--verde-agua);
+
+    border-radius: 0 4px 4px 0;
+}
+
+
+/* ================================================================
+   6. AVATAR PRINCIPAL
+   ================================================================ */
+
+.soter-avatar {
+    width: 54px;
+    height: 54px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eef9f7,
+            #e5f3f5
+        );
+
+    border: 2px solid rgba(105, 178, 174, 0.22);
+
+    box-shadow:
+        0 4px 12px rgba(20, 67, 126, 0.09);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.soter-widget__identity:hover .soter-avatar {
+    transform: translateY(-1px) rotate(-2deg);
+
+    box-shadow:
+        0 6px 15px rgba(20, 67, 126, 0.12);
+}
+
+
+.soter-widget__name {
+    font-size: 1.02rem;
+
+    color: var(--azul-marino);
+}
+
+.soter-widget__subtitle {
+    color: #6f7d89;
+}
+
+
+/* ================================================================
+   7. BOTONES DE HEADER
+   ================================================================ */
+
+.soter-icon-btn {
+    width: 36px;
+    height: 36px;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    border-color: rgba(20, 67, 126, 0.10);
+
+    color: var(--azul-marino);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.soter-icon-btn:hover:not(:disabled) {
+    background: var(--azul-claro);
+
+    color: var(--blanco);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 10px rgba(20, 67, 126, 0.14);
+}
+
+
+/* ================================================================
+   8. CUERPO DEL CHAT
+   ================================================================ */
+
+.soter-widget__body {
+    padding: 22px 21px;
+
+    background:
+        radial-gradient(
+            circle at 10% 5%,
+            rgba(105, 178, 174, 0.055),
+            transparent 30%
+        ),
+        linear-gradient(
+            180deg,
+            #fcfefe 0%,
+            #ffffff 100%
+        );
+}
+
+
+/* ================================================================
+   9. BURBUJAS
+   ================================================================ */
+
+.soter-bubble {
+    padding: 13px 17px;
+
+    border-radius: 18px;
+
+    line-height: 1.58;
+
+    box-shadow: 0 2px 7px rgba(20, 67, 126, 0.035);
+}
+
+
+/* Soter */
+
+.soter-msg--bot .soter-bubble {
+    background:
+        linear-gradient(
+            145deg,
+            #f2f7fa,
+            #f7fbfc
+        );
+
+    border: 1px solid rgba(20, 67, 126, 0.045);
+
+    border-bottom-left-radius: 6px;
+
+    color: var(--azul-marino);
+}
+
+
+/* Usuario */
+
+.soter-msg--user .soter-bubble {
+    background:
+        linear-gradient(
+            135deg,
+            #468ed6,
+            #397fc3
+        );
+
+    border-bottom-right-radius: 6px;
+
+    box-shadow:
+        0 4px 10px rgba(70, 142, 214, 0.16);
+}
+
+
+/* ================================================================
+   10. AVATAR DE LOS MENSAJES
+   ================================================================ */
+
+.soter-msg__avatar {
+    background:
+        linear-gradient(
+            145deg,
+            #eef9f7,
+            #e6f3f5
+        );
+
+    border: 1px solid rgba(105, 178, 174, 0.18);
+
+    box-shadow:
+        0 2px 7px rgba(20, 67, 126, 0.07);
+}
+
+
+/* ================================================================
+   11. OPCIONES / CHIPS
+   ================================================================ */
+
+.soter-options {
+    gap: 9px;
+
+    margin-top: 2px;
+}
+
+
+.soter-widget button.soter-chip {
+    min-height: 40px;
+
+    padding: 9px 15px;
+
+    background: #fff;
+
+    color: var(--azul-marino);
+
+    border: 1px solid rgba(70, 142, 214, 0.20);
+
+    border-radius: 13px;
+
+    box-shadow:
+        0 2px 7px rgba(20, 67, 126, 0.035);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.soter-widget button.soter-chip:hover:not(:disabled) {
+    background:
+        linear-gradient(
+            135deg,
+            #468ed6,
+            #69b2ae
+        );
+
+    color: #fff;
+
+    border-color: transparent;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 13px rgba(70, 142, 214, 0.16);
+}
+
+
+/* Elegir */
+
+.soter-widget button.soter-chip.is-chosen {
+    background: var(--verde-agua);
+
+    border-color: var(--verde-agua);
+
+    box-shadow:
+        0 4px 10px rgba(105, 178, 174, 0.16);
+}
+
+
+/* ================================================================
+   12. INDICADOR DE ESCRITURA
+   ================================================================ */
+
+.soter-typing span {
+    background: var(--verde-agua);
+}
+
+
+/* ================================================================
+   13. CAMPO DE TEXTO
+   ================================================================ */
+
+.soter-widget__composer {
+    padding: 13px 17px;
+
+    background: #fff;
+
+    border-top: 1px solid rgba(20, 67, 126, 0.07);
+}
+
+
+.soter-widget__composer input {
+    height: 45px;
+
+    background: #f5f9fb;
+
+    border: 1px solid rgba(20, 67, 126, 0.10);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.soter-widget__composer input:hover {
+    background: #f1f7f9;
+}
+
+
+.soter-widget__composer input:focus {
+    background: #fff;
+
+    border-color: var(--azul-claro);
+
+    box-shadow:
+        0 0 0 3px rgba(70, 142, 214, 0.10);
+}
+
+
+/* ================================================================
+   14. BOTÓN ENVIAR
+   ================================================================ */
+
+.soter-send-btn {
+    width: 45px;
+    height: 45px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--azul-claro),
+            var(--azul-marino)
+        );
+
+    color: #fff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 10px rgba(20, 67, 126, 0.13);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+.soter-send-btn:hover {
+    transform: translateY(-2px);
+
+    filter: brightness(1.04);
+
+    box-shadow:
+        0 7px 14px rgba(20, 67, 126, 0.17);
+}
+
+
+/* ================================================================
+   15. FOOTER DEL CHAT
+   ================================================================ */
+
+.soter-widget__footer {
+    padding: 0 20px 13px;
+
+    background: #fff;
+}
+
+
+.soter-disclaimer {
+    color: #7b8792;
+
+    font-size: 0.73rem;
+}
+
+
+.soter-disclaimer a {
+    color: var(--azul-claro);
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+
+.soter-disclaimer a:hover {
+    color: var(--azul-marino);
+
+    text-decoration: underline;
+}
+
+
+/* ================================================================
+   16. TARJETAS "CONOCE A SOTER"
+   ================================================================ */
+
+.soter-info__intro {
+    margin-bottom: 24px;
+
+    color: var(--gris);
+
+    font-size: 0.95rem;
+}
+
+
+.soter-info__grid {
+    gap: 18px;
+}
+
+
+.soter-info-card {
+    position: relative;
+
+    padding: 23px 23px 21px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #f9fcfd 100%
+        );
+
+    border: 1px solid rgba(20, 67, 126, 0.07);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 7px 20px rgba(20, 67, 126, 0.055);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* Decoración suave */
+
+.soter-info-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    top: -42px;
+    right: -35px;
+
+    border-radius: 50%;
+
+    background: rgba(105, 178, 174, 0.10);
+
+    pointer-events: none;
+}
+
+
+.soter-info-card:hover {
+    transform: translateY(-3px);
+
+    border-color: rgba(70, 142, 214, 0.15);
+
+    box-shadow:
+        0 12px 25px rgba(20, 67, 126, 0.09);
+}
+
+
+/* Iconos */
+
+.soter-info-card__icon {
+    position: relative;
+
+    display: inline-flex;
+
+    width: 43px;
+    height: 43px;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 13px;
+
+    background: #edf7f6;
+
+    border-radius: 13px;
+
+    font-size: 1.25rem;
+
+    box-shadow:
+        0 3px 8px rgba(105, 178, 174, 0.10);
+}
+
+
+.soter-info-card h3 {
+    position: relative;
+
+    margin: 0 0 9px;
+
+    color: var(--azul-marino);
+
+    font-size: 1.05rem;
+}
+
+
+.soter-info-card p {
+    position: relative;
+
+    margin: 0;
+
+    color: var(--gris);
+
+    font-size: 0.92rem;
+
+    line-height: 1.62;
+}
+
+
+/* ================================================================
+   17. FAQ
+   ================================================================ */
+
+.soter-faq {
+    gap: 10px;
+}
+
+
+.soter-faq details {
+    border: 1px solid rgba(20, 67, 126, 0.07);
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 16px rgba(20, 67, 126, 0.045);
+
+    transition:
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.soter-faq details:hover {
+    border-color: rgba(70, 142, 214, 0.16);
+
+    box-shadow:
+        0 7px 20px rgba(20, 67, 126, 0.07);
+}
+
+
+.soter-faq details[open] {
+    border-color: rgba(105, 178, 174, 0.25);
+
+    box-shadow:
+        0 8px 22px rgba(20, 67, 126, 0.07);
+}
+
+
+.soter-faq summary {
+    padding: 17px 19px;
+
+    color: var(--azul-marino);
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.soter-faq summary:hover {
+    background: #f5fafb;
+
+    color: var(--azul-marino);
+}
+
+
+.soter-faq summary::after {
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #eef7f7;
+
+    border-radius: 50%;
+
+    color: var(--verde-agua);
+
+    font-size: 1rem;
+}
+
+
+.soter-faq details[open] summary::after {
+    background: #e7f3f2;
+
+    color: var(--azul-claro);
+}
+
+
+.soter-faq details p {
+    padding: 0 20px 19px;
+
+    color: var(--gris);
+
+    line-height: 1.65;
+}
+
+
+/* ================================================================
+   18. TARJETA DE RIESGO
+   ================================================================ */
+
+.soter-risk {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(245, 131, 111, 0.07),
+            rgba(245, 131, 111, 0.035)
+        );
+
+    box-shadow:
+        0 5px 15px rgba(245, 131, 111, 0.06);
+}
+
+
+/* ================================================================
+   19. RESPONSIVE
+   ================================================================ */
+
+@media (max-width: 768px) {
+
+    .soter-hero-card {
+        border-radius: 20px;
+    }
+
+    .soter-tabs {
+        width: calc(100% - 28px);
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+
+    .soter-widget {
+        border-radius: 21px;
+    }
+
+    .soter-info__grid {
+        gap: 14px;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .soter-page {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .soter-hero-card {
+        border-radius: 17px;
+    }
+
+    .soter-tabs {
+        width: calc(100% - 16px);
+
+        margin-top: 12px;
+        margin-bottom: 16px;
+
+        padding: 6px;
+
+        border-radius: 14px;
+    }
+
+    .soter-tab {
+        padding: 9px 12px;
+
+        font-size: 0.82rem;
+    }
+
+    .soter-tab__icon {
+        font-size: 0.85rem;
+    }
+
+    .soter-widget {
+        border-radius: 18px;
+    }
+
+    .soter-widget__header {
+        padding: 12px 14px;
+    }
+
+    .soter-widget__body {
+        padding: 17px 13px;
+    }
+
+    .soter-info-card {
+        padding: 20px;
+    }
+
+}
