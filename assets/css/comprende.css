@@ -236,7 +236,7 @@ body {
    6. RUTAS PRINCIPALES
    ========================================================= */
 
-.rutas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin: var(--space-xl) 0 var(--space-xl); }
+.rutas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); margin: var(--space-xl) 0 var(--space-xl); }
 
 .ruta-card {
     position: relative;
@@ -258,13 +258,15 @@ body {
     border-radius: 50%; background: rgba(105, 178, 174, 0.10); transition: transform .3s ease;
 }
 .ruta-card:nth-child(2)::after { background: rgba(70, 142, 214, 0.10); }
-.ruta-card:nth-child(3)::after { background: rgba(162, 216, 143, 0.15); }
+.ruta-card:nth-child(3)::after { background: rgba(245, 131, 111, 0.12); }
+.ruta-card:nth-child(4)::after { background: rgba(162, 216, 143, 0.15); }
 .ruta-card:hover { transform: translateY(-5px); border-color: rgba(70,142,214,0.35); box-shadow: var(--comprende-sombra-hover); }
 .ruta-card:hover::after { transform: scale(1.25); }
 .ruta-card h3 { position: relative; z-index: 1; margin: 0 0 .5rem; color: var(--comprende-azul); font-size: 1.2rem; text-align: left; }
 .ruta-card p { position: relative; z-index: 1; margin: 0; line-height: 1.6; }
 
-@media (max-width: 768px) { .rutas-grid { grid-template-columns: 1fr; } }
+@media (max-width: 992px) { .rutas-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .rutas-grid { grid-template-columns: 1fr; } }
 
 
 /* =========================================================
@@ -406,7 +408,7 @@ body {
 .detalle-header {
     position: relative;
     display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-columns: 1.1fr 0.9fr;
     align-items: center;
     gap: var(--space-lg);
     padding: clamp(1.3rem, 3vw, 2rem);
@@ -425,13 +427,15 @@ body {
 .detalle-header h1 { margin: 0 0 .5rem; color: var(--comprende-azul); font-size: clamp(1.8rem, 4vw, 2.5rem); text-align: left; line-height: 1.1; }
 .detalle-header__texto p { margin: 0; line-height: 1.65; }
 .detalle-header__imagen { position: relative; z-index: 1; display: flex; justify-content: center; }
-.ilustracion-placeholder { width: 100%; max-width: 210px; border-radius: 18px; display: block; }
+.ilustracion-detalle { width: 100%; max-width: 360px; height: auto; aspect-ratio: 5 / 4; object-fit: contain; display: block; }
+.ilustracion-placeholder { width: 100%; max-width: 260px; border-radius: 18px; display: block; }
 
 @media (max-width: 760px) {
     .detalle-header { grid-template-columns: 1fr; text-align: center; }
     .detalle-header h1 { text-align: center; }
     .detalle-header__imagen { order: -1; }
-    .ilustracion-placeholder { max-width: 150px; margin: 0 auto; }
+    .ilustracion-detalle { max-width: 240px; margin: 0 auto; }
+    .ilustracion-placeholder { max-width: 180px; margin: 0 auto; }
 }
 
 .detalle-controles { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md); margin: var(--space-md) 0 var(--space-lg); }
@@ -897,6 +901,67 @@ body {
     .modal-panel--protocolo .modal-cerrar { top: 12px; right: 12px; width: 42px; height: 42px; }
     .protocolo__cuerpo { padding: 1rem 1rem 1.4rem; }
 }
+
+
+/* =========================================================
+   25b. AVISO DE SEGURIDAD (temas delicados) Y HERRAMIENTAS DETALLADAS
+   ========================================================= */
+
+.aviso-seguridad {
+    display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-md);
+    margin: var(--space-sm) 0 var(--space-md);
+    padding: var(--space-md) var(--space-lg);
+    border: 1px solid rgba(245,131,111,.3); border-left: 5px solid var(--comprende-rosa);
+    border-radius: var(--comprende-radio-sm);
+    background: linear-gradient(100deg, rgba(245,131,111,.12), rgba(255,255,255,.9));
+}
+.aviso-seguridad__icono { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%; background: var(--comprende-rosa); color: #fff; }
+.aviso-seguridad__icono .ico { width: 22px; height: 22px; }
+.aviso-seguridad__texto { flex: 1 1 280px; }
+.aviso-seguridad__texto strong { color: var(--comprende-azul); }
+.aviso-seguridad__texto p { margin: .2rem 0 0; line-height: 1.55; }
+@media (max-width: 620px) { .aviso-seguridad .boton-primario { width: 100%; } }
+
+.herramienta-pasos { margin: .8rem 0; padding-left: 1.3rem; }
+.herramienta-pasos li { margin-bottom: .45rem; line-height: 1.55; }
+.herramienta-objetivo, .herramienta-limite { margin: .6rem 0 0; font-size: .92rem; line-height: 1.55; }
+.herramienta-limite { padding: .7rem .9rem; border-radius: 12px; background: var(--comprende-fondo); }
+
+
+/* =========================================================
+   25c. NUEVOS BLOQUES: aviso general, secciones libres, delicados y herramientas
+   ========================================================= */
+
+.aviso-general {
+    max-width: 880px; margin: var(--space-md) auto 0; padding: .8rem 1.1rem;
+    border-radius: var(--comprende-radio-sm); background: rgba(105,178,174,.10);
+    color: var(--comprende-texto); font-size: .9rem; line-height: 1.55; text-align: center;
+}
+.aviso-general strong { color: var(--comprende-azul); }
+
+.subtitulo-centrado { margin: var(--space-md) 0 var(--space-sm); color: var(--comprende-azul); font-size: 1.2rem; text-align: center; }
+
+.tarjeta-item--delicada::before { background: linear-gradient(90deg, var(--comprende-rosa), #f7a99b); }
+.tarjeta-item--delicada .tarjeta-item__etiqueta { background: rgba(245,131,111,.12); }
+.tarjeta-item--herramienta::before { background: linear-gradient(90deg, var(--comprende-verde-claro), var(--comprende-verde)); }
+.tarjeta-item__icono { font-size: 1.9rem; line-height: 1; margin: .4rem 0 .5rem; }
+
+.herramienta-hero-icono {
+    display: grid; place-items: center; width: 140px; height: 140px; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(162,216,143,.35), rgba(70,142,214,.25));
+    font-size: 4rem; box-shadow: inset 0 0 0 6px rgba(255,255,255,.6);
+}
+@media (max-width: 760px) { .herramienta-hero-icono { width: 96px; height: 96px; font-size: 2.6rem; } }
+
+.seccion-lista, .seccion-pasos { margin: .6rem 0; padding-left: 1.3rem; }
+.seccion-lista li, .seccion-pasos li { margin-bottom: .45rem; line-height: 1.6; }
+.seccion-cita {
+    margin: .7rem 0; padding: .8rem 1rem; border-left: 4px solid var(--comprende-verde);
+    border-radius: 0 12px 12px 0; background: var(--comprende-fondo);
+    color: var(--comprende-azul); font-weight: 700; font-style: italic;
+}
+.seccion-nota { margin: .8rem 0 0; padding: .7rem .9rem; border-radius: 12px; background: rgba(105,178,174,.12); font-size: .92rem; line-height: 1.55; }
+.accion-panel .seccion-lista { margin: 0; }
 
 
 /* =========================================================

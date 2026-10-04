@@ -1,5 +1,3 @@
-
-
 /*==================================================
 = 1. VARIABLES GLOBALES                            =
 ==================================================*/
@@ -97,6 +95,8 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     text-rendering: optimizeLegibility;
+    display: flex;               /* NUEVO: el footer siempre queda al final */
+    flex-direction: column;      /* NUEVO */
 }
 
 
@@ -191,9 +191,11 @@ a:hover {
 }
 
 main {
+    width: 100%;                 /* NUEVO: en un flex-column, margin:auto encogería el main */
     max-width: 1200px;
-    margin: auto;
+    margin: 0 auto;              /* antes: auto */
     padding: 12px 20px;
+    flex: 1 0 auto;              /* NUEVO: el main absorbe el espacio libre */
 }
 
 
@@ -624,118 +626,192 @@ body.estilo-hojas-6 {
 
 
 /*==================================================
-= 12. FOOTER                                       =
-   ⚠ Sigue pendiente de confirmar: el proyecto tiene DOS variantes
-   de footer (una basada en párrafos sueltos y otra basada en
-   .footer-links/.footer-item). Se conservan ambas, en el mismo
-   orden relativo del archivo original, porque no puedo confirmar
-   sin ver el HTML si alguna página todavía usa la variante de
-   párrafos. La cascada final (quién gana en cada propiedad) es
-   idéntica a la del archivo que compartiste. Si me confirmas que
-   ya ninguna página usa la variante A, la elimino para dejar el
-   archivo más limpio.
+= 12. FOOTER GLOBAL (.pie)                         =
+   Reemplaza las antiguas variantes A y B del footer.
+   Todo usa clases .pie* para no chocar con las reglas
+   globales h2 / p / a / button.
+   HTML: ver footer.html (se pega antes de </body>).
 ==================================================*/
 
-/* --- Variante A: footer con párrafos sueltos (versión original) --- */
-
-footer {
-    margin-top: 70px;
-    padding: var(--padding-seccion) 20px;
-    background: linear-gradient(135deg, var(--azul-marino), #16375b);
-    color: var(--blanco);
-    text-align: center;
-    border-top: 5px solid var(--verde-hoja);
+.pie {
+    margin: var(--espacio-xl) 0 0;
+    padding: var(--espacio-lg) 5% var(--espacio-md);
+    background: var(--blanco);
+    border-top: 4px solid var(--verde-agua);
+    box-shadow: 0 -3px 12px var(--sombra);
+    color: var(--gris);
+    font-size: .95rem;
+    line-height: 1.5;
+    text-align: left;
 }
 
-footer h3 {
-    color: var(--verde-hoja);
-}
-
-footer p {
-    max-width: 980px;
-    margin: 12px auto;
-    color: rgba(var(--blanco-rgb), .95);
-    text-align: justify;
-    text-align-last: left;
-    line-height: 1.8;
-}
-
-footer p strong {
-    color: var(--verde-agua);
-}
-
-footer .copyright {
-    margin-top: 15px;
-    opacity: .75;
-    text-align: center;
-}
-
-.legal-flex {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-/* --- Variante B: footer con estructura .footer-links (más reciente) ---
-   Redefine intencionalmente margin-top/padding/background/border-top
-   de "footer" y color/tamaño de "footer h3" y ".copyright" de la
-   variante A — así se comportaba el CSS que compartiste y se
-   respeta aquí tal cual. */
-
-footer {
-    margin-top: 80px;
-    padding: 55px 25px 35px;
-    background: linear-gradient(135deg, var(--azul-marino), #173a67, #0f2a4a);
-    border-top: 4px solid var(--verde-hoja);
-    text-align: center;
-}
-
-.footer-links {
-    max-width: 900px;
+.pie__contenedor {
+    max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 45px;
 }
 
-.footer-item {
+/* --- Columnas --- */
+
+.pie__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: var(--espacio-lg);
+}
+
+/* --- Bloque 1: identidad --- */
+
+.pie__nombre {
+    margin: 0;
+    color: var(--azul-marino);
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.pie__lema {
+    margin: 4px 0 12px;
+    color: var(--azul-marino);
+    font-size: .85rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    text-align: left;
+}
+
+.pie__lema span {
+    color: var(--verde-agua);   /* solo decorativo (los puntos) */
+    padding: 0 .35em;
+}
+
+.pie__descripcion {
+    max-width: 36ch;
+    margin: 0;
+    color: var(--gris);
+    font-size: .9rem;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* --- Bloques 2-4: enlaces (centrados) --- */
+
+.pie__bloque {
+    display: block;              /* anula el display:flex global de "nav" */
+    text-align: center;
+}
+
+.pie__titulo {
+    margin: 0 0 10px;
+    color: var(--azul-marino);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.pie__titulo::before,
+.pie__titulo::after {
+    content: none;               /* anula decoraciones globales de h2 */
+}
+
+.pie__lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 2px;
 }
 
-footer h3 {
+/* Quita viñetas / palomitas / fondos que vengan de otros CSS */
+.pie .pie__lista li {
+    list-style: none;
     margin: 0;
-    color: white;
-    font-size: 1.55rem;
-    font-weight: 700;
+    padding: 0;
+    background: none;
 }
 
-footer a {
-    color: var(--verde-agua);
+.pie .pie__lista li::before,
+.pie .pie__lista li::after,
+.pie .pie__lista a::before,
+.pie .pie__lista a::after {
+    content: none;
+    display: none;
+}
+
+/* Enlace simple: texto + subrayado sutil al pasar el cursor (sin caja ni fondo) */
+.pie .pie__lista a {
+    display: inline-block;
+    padding: 6px 0 4px;
+    background: none;
+    border-bottom: 2px solid transparent;
+    border-radius: 2px;
+    color: var(--gris);
+    font-size: .95rem;
+    font-weight: 500;
     text-decoration: none;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: .25s;
+    transform: none;
+    transition: color var(--transicion), border-color var(--transicion);
 }
 
-footer a:hover {
-    color: var(--verde-hoja);
-    text-decoration: underline;
+.pie .pie__lista a:hover {
+    background: none;
+    color: var(--azul-marino);
+    border-bottom-color: var(--verde-agua);
+    text-decoration: none;
+    transform: none;
 }
 
-.copyright {
-    margin: 45px auto 0;
-    max-width: 900px;
-    width: 100%;
+.pie .pie__lista a:focus-visible {
+    outline: 2px solid var(--azul-claro);
+    outline-offset: 3px;
+}
+
+/* Página actual (se pone aria-current="page" en el enlace correspondiente) */
+.pie .pie__lista a[aria-current="page"] {
+    color: var(--azul-marino);
+    font-weight: 700;
+    border-bottom-color: var(--verde-agua);
+}
+
+/* --- Franja inferior (centrada) --- */
+
+.pie__base {
+    margin-top: var(--espacio-md);
+    padding-top: 18px;
+    border-top: 1px solid var(--gris-claro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
     text-align: center;
-    padding-top: 30px;
-    border-top: 1px solid rgba(var(--blanco-rgb), .12);
-    color: rgba(var(--blanco-rgb), .7);
-    font-size: .9rem;
+    font-size: .85rem;
+}
+
+.pie__aviso,
+.pie__copy {
+    margin: 0;
+    color: var(--gris);
+    font-size: .85rem;
+    line-height: 1.5;
+    text-align: center;
+    text-align-last: center;
+}
+
+/* Título de ESTA página, en su propia línea (cámbialo en cada HTML) */
+.pie__pagina {
+    margin: 6px 0 0;
+    color: var(--azul-marino);
+    font-size: .85rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.pie__pagina::before,
+.pie__pagina::after {
+    content: none;
 }
 
 
@@ -810,7 +886,8 @@ input[type="submit"]:focus-visible {
 /*==================================================
 = 16. RESPONSIVE (CONSOLIDADO)                     =
    Los breakpoints se mantienen exactamente igual que en el
-   original (992 / 900 / 768 / 600 / 576 / 480 / 1024).
+   original (992 / 900 / 768 / 600 / 576 / 480 / 1024), más
+   los del footer (900 / 768 / 560).
 ==================================================*/
 
 @media (max-width: 992px) {
@@ -823,6 +900,34 @@ input[type="submit"]:focus-visible {
 @media (max-width: 900px) {
     body.estilo-hojas-6 {
         background-size: 130px 400px, 130px 400px, 140px 280px, 140px 280px;
+    }
+}
+
+/* Footer: tablet — identidad arriba a todo el ancho, 3 columnas de enlaces */
+@media (max-width: 900px) {
+    .pie__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--espacio-md);
+    }
+
+    .pie__marca {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    .pie__nombre,
+    .pie__lema,
+    .pie__descripcion {
+        text-align: center;
+    }
+
+    .pie__descripcion {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .pie__descripcion {
+        max-width: 60ch;
     }
 }
 
@@ -874,12 +979,37 @@ input[type="submit"]:focus-visible {
         bottom: calc(var(--espacio-sm) + 66px);
         font-size: 1.05rem;
     }
+
+    /* Footer: deja libres los botones flotantes (evaluación / volver arriba) */
+    .pie {
+        padding-bottom: calc(var(--espacio-md) + 56px);
+    }
 }
 
 /* Fondos decorativos: móviles */
 @media (max-width: 600px) {
     body.estilo-hojas-6 {
         background-image: none;
+    }
+}
+
+/* Footer: móvil — 2 columnas (Explora / Apoyo) y Proyecto a todo el ancho */
+@media (max-width: 560px) {
+    .pie {
+        padding-top: var(--espacio-md);
+    }
+
+    .pie__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--espacio-sm) var(--espacio-md);
+    }
+
+    .pie__bloque--proyecto {
+        grid-column: 1 / -1;
+    }
+
+    .pie .pie__lista a {
+        padding: 9px 0 7px;     /* área táctil más cómoda */
     }
 }
 
@@ -917,15 +1047,6 @@ input[type="submit"]:focus-visible {
     .card {
         padding: 20px;
     }
-
-    footer {
-        padding: 35px 18px;
-    }
-
-    .legal-flex {
-        flex-direction: column;
-        gap: 15px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -957,4 +1078,3 @@ input[type="submit"]:focus-visible {
         background-image: none !important;
     }
 }
-

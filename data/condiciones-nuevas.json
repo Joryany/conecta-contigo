@@ -1,0 +1,604 @@
+{
+  "conditions": [
+    {
+      "id": "tdah",
+      "title": "Trastorno por déficit de atención e hiperactividad (TDAH)",
+      "category": "Neurodesarrollo",
+      "keywords": [
+        "TDAH",
+        "atención",
+        "hiperactividad",
+        "impulsividad",
+        "organización",
+        "concentración"
+      ],
+      "shortDescription": "Dificultades persistentes con la atención, la organización, los impulsos o la actividad, que empiezan en la infancia.",
+      "description": "El trastorno por déficit de atención e hiperactividad (TDAH) es una condición del neurodesarrollo cuyos síntomas comienzan durante la infancia y pueden continuar durante la adolescencia y la adultez. Puede involucrar dificultades persistentes relacionadas con la atención, la organización, el control de impulsos y/o la actividad. No todas las personas experimentan los mismos síntomas ni con la misma intensidad. Puede influir en el rendimiento escolar, la organización, las relaciones sociales y las tareas cotidianas, y también puede presentarse junto con ansiedad, depresión, problemas de sueño u otras dificultades, por lo que una dificultad de concentración por sí sola no significa que una persona tenga TDAH. Tener problemas ocasionales para concentrarse, olvidar algo o procrastinar no significa automáticamente tener TDAH: el diagnóstico requiere una evaluación profesional.",
+      "experience": {
+        "columns": [
+          {
+            "label": "Mente",
+            "items": [
+              "Dificultad para mantener la atención en tareas poco estimulantes.",
+              "Sensación de tener muchos pensamientos o estímulos compitiendo por la atención.",
+              "Dificultad para organizar o priorizar tareas.",
+              "Olvidos frecuentes."
+            ]
+          },
+          {
+            "label": "Cuerpo",
+            "items": [
+              "Inquietud o necesidad de moverse en algunas personas.",
+              "Dificultad para permanecer quieto durante períodos prolongados."
+            ]
+          },
+          {
+            "label": "Conducta y entorno",
+            "items": [
+              "Interrumpir o responder antes de tiempo.",
+              "Postergar tareas o empezar muchas actividades y tener dificultad para terminarlas.",
+              "Perder objetos o materiales necesarios.",
+              "Dificultad para calcular cuánto tiempo necesita una actividad.",
+              "Dificultades académicas u organizativas, conflictos por olvidos o incumplimientos y problemas para mantener rutinas."
+            ]
+          }
+        ]
+      },
+      "warningTitle": "Señales que justifican pedir una evaluación",
+      "warningSigns": [
+        "Las dificultades llevan tiempo y aparecen en diferentes contextos.",
+        "Interfieren de manera importante con el colegio, las relaciones o las actividades diarias.",
+        "La organización, la atención o la impulsividad generan problemas frecuentes.",
+        "Las dificultades no se explican mejor por falta de sueño, estrés, ansiedad, depresión u otra situación."
+      ],
+      "actions": {
+        "self": [
+          "Divide las tareas grandes en pasos pequeños y visibles.",
+          "Usa recordatorios externos en lugar de depender solo de la memoria.",
+          "Mantén los materiales necesarios en lugares definidos.",
+          "Trabaja con una lista breve de prioridades y reduce las distracciones durante una tarea.",
+          "Usa temporizadores para ver el tiempo disponible.",
+          "Registra qué situaciones dificultan más tu atención.",
+          "Habla con un adulto de confianza y pide una evaluación si las dificultades afectan de forma importante tu vida diaria."
+        ],
+        "other": [
+          "Evita llamarlo «perezoso», «irresponsable» o «distraído» como explicación automática.",
+          "Pregunta qué dificultad concreta está teniendo.",
+          "Ayúdalo a dividir una tarea sin hacerla por él.",
+          "Recuérdale las cosas de forma clara y concreta.",
+          "Reconoce sus esfuerzos y fortalezas.",
+          "Sugiere apoyo profesional si las dificultades interfieren de forma importante con su vida."
+        ]
+      },
+      "faq": [
+        {
+          "question": "¿Tener mala memoria significa tener TDAH?",
+          "answer": "No necesariamente. Los olvidos pueden aparecer por muchas razones, como falta de sueño, estrés, ansiedad u otras condiciones."
+        },
+        {
+          "question": "¿El TDAH significa que una persona no puede concentrarse?",
+          "answer": "No. Una persona con TDAH puede concentrarse intensamente en algunas actividades y tener dificultades para mantener la atención en otras."
+        },
+        {
+          "question": "¿Se puede saber si tengo TDAH con un test de internet?",
+          "answer": "Un cuestionario puede servir como punto de partida para reconocer dificultades, pero no confirma un diagnóstico."
+        },
+        {
+          "question": "¿El TDAH desaparece al crecer?",
+          "answer": "Los síntomas pueden cambiar con la edad. Algunas personas continúan presentando dificultades durante la adolescencia y la adultez."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Plan de una sola tarea",
+          "icon": "🎯",
+          "description": "Escribe solamente la siguiente acción concreta que debes realizar. Cuando termines, define la siguiente.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Descomposición de tareas",
+          "icon": "🧱",
+          "description": "Convierte «hacer el trabajo» en acciones pequeñas.",
+          "steps": [
+            "Abrir el documento.",
+            "Escribir el título.",
+            "Buscar información.",
+            "Redactar el primer punto."
+          ],
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Recordatorios externos",
+          "icon": "⏰",
+          "description": "Usa calendario, alarmas, listas o notas para no depender exclusivamente de la memoria.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Registro de distracciones",
+          "icon": "📝",
+          "description": "Durante una actividad, anota rápidamente qué te interrumpió. Después observa si existen patrones.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Entorno de baja distracción",
+          "icon": "🔇",
+          "description": "Reduce, durante un período definido, los estímulos que no necesitas para la tarea.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        }
+      ],
+      "whenToSeekHelp": "Si las dificultades llevan tiempo, aparecen en diferentes contextos e interfieren de manera importante con el colegio, las relaciones o las actividades diarias, pide una evaluación con un profesional de salud.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        {
+          "institution": "OMS",
+          "title": "Trastornos del neurodesarrollo",
+          "url": "https://www.who.int"
+        },
+        {
+          "institution": "NIMH",
+          "title": "TDAH",
+          "url": "https://www.nimh.nih.gov"
+        }
+      ]
+    },
+    {
+      "id": "tea",
+      "title": "Autismo (trastorno del espectro autista)",
+      "category": "Neurodesarrollo",
+      "keywords": [
+        "autismo",
+        "TEA",
+        "espectro autista",
+        "sensorial",
+        "rutinas",
+        "neurodesarrollo"
+      ],
+      "shortDescription": "Una forma distinta de comunicarse, aprender y procesar experiencias. No existe una sola manera de ser autista.",
+      "description": "El trastorno del espectro autista (TEA) es una condición del neurodesarrollo que puede influir en la manera en que una persona se comunica, interactúa, aprende y procesa determinadas experiencias. El autismo es un espectro: las características, necesidades, dificultades y fortalezas pueden ser muy diferentes entre personas. Algunas personas pueden presentar dificultades para interpretar ciertas formas de comunicación social, comprender el lenguaje no literal, establecer relaciones o adaptarse a determinados cambios. También pueden existir intereses intensos, comportamientos repetitivos o diferencias en la forma de procesar estímulos sensoriales. El autismo no se puede identificar simplemente porque alguien sea tímido, prefiera estar solo, tenga intereses particulares o dificultades sociales.",
+      "experience": {
+        "columns": [
+          {
+            "label": "Mente",
+            "items": [
+              "Puede resultar difícil interpretar determinadas señales sociales.",
+              "Algunas situaciones sociales pueden requerir mucho esfuerzo consciente.",
+              "Los cambios inesperados pueden resultar especialmente difíciles para algunas personas."
+            ]
+          },
+          {
+            "label": "Cuerpo",
+            "items": [
+              "Determinados sonidos, luces, texturas, olores u otros estímulos pueden resultar especialmente intensos o molestos para algunas personas."
+            ]
+          },
+          {
+            "label": "Conducta y entorno",
+            "items": [
+              "Preferencia por rutinas e intereses muy intensos o específicos.",
+              "Movimientos o comportamientos repetitivos en algunas personas.",
+              "Necesidad de tiempo para procesar determinada información.",
+              "Malentendidos con compañeros y dificultades para interpretar sarcasmo, humor, tono de voz o lenguaje corporal.",
+              "Cansancio después de situaciones sociales exigentes y dificultades cuando el entorno no se adapta a sus necesidades."
+            ]
+          }
+        ]
+      },
+      "warningTitle": "Señales que pueden justificar una evaluación",
+      "warningSigns": [
+        "Dificultades persistentes de comunicación social.",
+        "Dificultad para comprender determinados aspectos implícitos de la comunicación.",
+        "Intereses restringidos o muy intensos.",
+        "Conductas repetitivas.",
+        "Diferencias sensoriales.",
+        "Dificultad importante con los cambios o la incertidumbre."
+      ],
+      "warningNote": "Estas características no son suficientes por sí mismas para diagnosticar autismo. Una evaluación profesional considera la historia del desarrollo y el funcionamiento de la persona.",
+      "actions": {
+        "self": [
+          "Identifica las situaciones que producen sobrecarga y registra qué estímulos o cambios resultan especialmente difíciles.",
+          "Prepara con anticipación las situaciones nuevas cuando sea posible.",
+          "Usa instrucciones escritas cuando ayuden a comprender mejor una actividad y pide explicaciones claras cuando una indicación sea ambigua.",
+          "Identifica personas con quienes sea seguro pedir ayuda.",
+          "Solicita una evaluación profesional si las dificultades afectan de forma importante tu vida cotidiana."
+        ],
+        "other": [
+          "No asumas que la persona «no quiere socializar».",
+          "Da instrucciones claras cuando sea necesario y avisa con anticipación sobre cambios importantes, cuando sea posible.",
+          "Respeta sus necesidades sensoriales.",
+          "Pregunta qué tipo de apoyo le resulta útil.",
+          "No uses el diagnóstico para invalidar sus opiniones o decisiones."
+        ]
+      },
+      "faq": [
+        {
+          "question": "¿Ser tímido significa ser autista?",
+          "answer": "No. La timidez por sí sola no significa autismo."
+        },
+        {
+          "question": "¿Una persona autista puede tener amigos?",
+          "answer": "Sí. Las personas autistas pueden establecer amistades y relaciones, aunque algunas pueden experimentar dificultades particulares en la comunicación social."
+        },
+        {
+          "question": "¿El autismo se puede adquirir durante la adolescencia?",
+          "answer": "No se considera una condición que aparezca repentinamente en la adolescencia. Las características relacionadas con el desarrollo suelen estar presentes desde etapas tempranas, aunque pueden hacerse más evidentes después."
+        },
+        {
+          "question": "¿Puedo saber si soy autista mediante un cuestionario?",
+          "answer": "Un cuestionario no confirma el diagnóstico. Si existen dudas persistentes, es recomendable solicitar una evaluación profesional."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Mapa de estímulos",
+          "icon": "🗺️",
+          "description": "Registra situaciones, sonidos, luces, texturas o ambientes que producen comodidad o sobrecarga.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Guion para situaciones sociales",
+          "icon": "💬",
+          "description": "Antes de una situación nueva, escribe qué ocurrirá, qué necesitas hacer, qué puedes decir si no entiendes y a quién puedes pedir ayuda.",
+          "steps": [
+            "Qué ocurrirá.",
+            "Qué necesito hacer.",
+            "Qué puedo decir si no entiendo.",
+            "A quién puedo pedir ayuda."
+          ],
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Anticipación de cambios",
+          "icon": "🗓️",
+          "description": "Cuando sea posible, escribe qué va a cambiar, cuándo ocurrirá y qué permanecerá igual.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Comunicación clara",
+          "icon": "📣",
+          "description": "Si una instrucción no se entiende, puedes pedir: «¿Puedes decirme exactamente qué tengo que hacer y para cuándo?».",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        }
+      ],
+      "whenToSeekHelp": "Si las dificultades de comunicación, de adaptación a los cambios o de tolerancia a ciertos estímulos afectan de forma importante tu vida cotidiana, pide una evaluación con un profesional de salud.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        {
+          "institution": "OMS",
+          "title": "Autismo",
+          "url": "https://www.who.int/es/news-room/fact-sheets/detail/autism-spectrum-disorders"
+        },
+        {
+          "institution": "NIMH",
+          "title": "Autism Spectrum Disorder",
+          "url": "https://www.nimh.nih.gov/health/publications/autism-spectrum-disorder"
+        },
+        {
+          "institution": "MedlinePlus",
+          "title": "Trastorno del espectro autista",
+          "url": "https://medlineplus.gov/spanish/ency/article/001526.htm"
+        }
+      ]
+    },
+    {
+      "id": "autolesiones",
+      "title": "Autolesiones",
+      "category": "Conductas y riesgos",
+      "sensitive": true,
+      "safetyNotice": "La autolesión requiere especial cuidado. Esta información es educativa y de orientación: no enseña métodos ni sustituye una evaluación profesional. Si hay riesgo de suicidio o de daño grave, busca atención de urgencia (en Colombia, la línea 123) y no te quedes solo.",
+      "keywords": [
+        "autolesión",
+        "hacerse daño",
+        "cortes",
+        "autolesiones"
+      ],
+      "shortDescription": "Provocarse daño físico de forma deliberada, a menudo para afrontar emociones muy intensas. Se toma en serio y hay ayuda.",
+      "description": "La autolesión es una conducta en la que una persona se provoca daño físico deliberadamente. No es una enfermedad mental por sí misma: puede funcionar como una forma dañina de afrontar emociones o experiencias difíciles. Aunque muchas personas que se autolesionan no tienen intención de morir, la autolesión está asociada con un mayor riesgo de conducta suicida y requiere atención.",
+      "extraSections": [
+        {
+          "title": "¿Por qué puede ocurrir?",
+          "icon": "🧩",
+          "paragraphs": [
+            "Puede estar relacionada con dificultades para procesar o expresar emociones intensas. Algunas personas pueden intentar aliviar temporalmente sentimientos de angustia, vacío, rabia, soledad o desesperanza.",
+            "Las razones pueden ser diferentes entre personas."
+          ]
+        }
+      ],
+      "experience": {
+        "columns": [
+          {
+            "label": "Mente",
+            "items": [
+              "Sensación de estar abrumado.",
+              "Vacío emocional y desesperanza.",
+              "Dificultad para identificar o expresar lo que se siente."
+            ]
+          },
+          {
+            "label": "Cuerpo",
+            "items": [
+              "Tensión intensa.",
+              "Agitación.",
+              "Sensación de desconexión o entumecimiento emocional."
+            ]
+          },
+          {
+            "label": "Conducta",
+            "items": [
+              "Lesiones provocadas deliberadamente.",
+              "Ocultar heridas.",
+              "Evitar hablar sobre lo ocurrido y buscar aislamiento."
+            ]
+          },
+          {
+            "label": "Entorno",
+            "items": [
+              "Retirarse de otras personas.",
+              "Dificultades en las relaciones.",
+              "Cambios en las actividades habituales."
+            ]
+          }
+        ]
+      },
+      "warningSigns": [
+        "Lesiones repetidas sin una explicación clara.",
+        "Cicatrices o heridas frecuentes.",
+        "Intentar ocultar las lesiones.",
+        "Aislamiento.",
+        "Cambios importantes de comportamiento.",
+        "Hablar de sentirse vacío, desesperado o incapaz de manejar lo que ocurre.",
+        "Aumento de pensamientos relacionados con morir o hacerse daño."
+      ],
+      "warningNote": "Una señal aislada no confirma por sí sola que exista autolesión. Si algo te preocupa, habla con alguien de confianza.",
+      "actions": {
+        "self": [
+          "No tienes que manejarlo solo.",
+          "Aléjate de la situación o del lugar en el que sientas mayor impulso y busca estar acompañado por una persona segura.",
+          "Dilo directamente: «Estoy teniendo ganas de hacerme daño y necesito que te quedes conmigo».",
+          "Registra qué ocurrió antes del impulso y qué emoción apareció.",
+          "Busca apoyo de un adulto de confianza y atención profesional.",
+          "Si existe riesgo de suicidio, intención de morir, un plan o una situación que no puedes mantener segura, no te quedes solo y busca atención de urgencia de inmediato."
+        ],
+        "other": [
+          "Escucha sin juzgar y sin amenazar ni avergonzar.",
+          "No minimices diciendo «solo busca llamar la atención».",
+          "Pregunta cómo se encuentra y si está a salvo.",
+          "Anímala a hablar con un adulto de confianza o con un profesional.",
+          "Si es menor de edad y existe riesgo, busca ayuda adulta aunque la persona pida mantenerlo en secreto.",
+          "Si existe riesgo inmediato de suicidio, busca atención de emergencia."
+        ]
+      },
+      "faq": [
+        {
+          "question": "¿Autolesionarse significa querer morir?",
+          "answer": "No necesariamente. La autolesión y la conducta suicida no son lo mismo, aunque la autolesión aumenta el riesgo de suicidio."
+        },
+        {
+          "question": "¿Es una forma de llamar la atención?",
+          "answer": "Reducir la autolesión a «llamar la atención» es incorrecto. Puede ser una forma dañina de afrontar emociones intensas o de comunicar que la persona necesita ayuda."
+        },
+        {
+          "question": "¿Si una lesión parece pequeña significa que no es importante?",
+          "answer": "No. La gravedad física de una lesión no determina la gravedad del sufrimiento psicológico."
+        },
+        {
+          "question": "¿Debo guardar el secreto si mi amigo me lo pide?",
+          "answer": "Si existe riesgo para su seguridad, no debes cargar tú solo con la situación. Busca a un adulto responsable o ayuda profesional."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Semáforo de intensidad emocional",
+          "icon": "🚦",
+          "description": "Identifica en qué nivel estás para decidir qué necesitas.",
+          "steps": [
+            "Verde: puedes continuar.",
+            "Amarillo: necesitas disminuir estímulos y buscar apoyo.",
+            "Rojo: necesitas ayuda inmediata y no debes quedarte solo."
+          ],
+          "notEnough": "No sustituye la atención profesional. Si el malestar aumenta o hay riesgo para tu seguridad, busca ayuda de inmediato."
+        },
+        {
+          "name": "Registro de desencadenantes",
+          "icon": "📝",
+          "description": "Anota para entender qué pasa antes del impulso.",
+          "steps": [
+            "Qué ocurrió.",
+            "Qué sentí.",
+            "Qué pensé.",
+            "Qué hice.",
+            "Qué necesitaba realmente."
+          ],
+          "notEnough": "No sustituye la atención profesional. Si el malestar aumenta o hay riesgo para tu seguridad, busca ayuda de inmediato."
+        },
+        {
+          "name": "Kit de regulación",
+          "icon": "🧰",
+          "description": "Prepara de antemano actividades seguras que te ayuden a regularte: escuchar música, escribir, dibujar, respirar con calma o contactar a una persona segura.",
+          "notEnough": "No sustituye la atención profesional. Si el malestar aumenta o hay riesgo para tu seguridad, busca ayuda de inmediato."
+        },
+        {
+          "name": "Retrasar y acompañar",
+          "icon": "⏳",
+          "description": "Cuando aparezca el impulso, busca compañía y concéntrate primero en atravesar el momento sin hacerte daño. No lo conviertas en una prueba de fuerza de voluntad: si no puedes, pide ayuda de inmediato.",
+          "notEnough": "No sustituye la atención profesional. Si el malestar aumenta o hay riesgo para tu seguridad, busca ayuda de inmediato."
+        }
+      ],
+      "whenToSeekHelp": "Cuéntaselo a un adulto de confianza aunque haya ocurrido una sola vez. Busca ayuda profesional si las lesiones se repiten o aumentan, y atención de urgencia de inmediato si existe riesgo de suicidio o de daño grave.",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        {
+          "institution": "MedlinePlus",
+          "title": "Autolesión",
+          "url": "https://medlineplus.gov/spanish/selfharm.html"
+        },
+        {
+          "institution": "KidsHealth",
+          "title": "Cortes y autolesiones",
+          "url": "https://kidshealth.org/es/teens/cutting.html"
+        },
+        {
+          "institution": "NIMH",
+          "title": "Child and Adolescent Mental Health",
+          "url": "https://www.nimh.nih.gov/health/topics/child-and-adolescent-mental-health"
+        }
+      ]
+    },
+    {
+      "id": "suicidio",
+      "title": "Ideación y conducta suicida",
+      "category": "Conductas y riesgos",
+      "sensitive": true,
+      "safetyNotice": "Este es un tema de alto riesgo y esta sección no sustituye la atención de emergencia. Si una persona está en peligro inmediato, tiene intención de quitarse la vida, tiene un plan o no puede mantenerse segura, busca urgencias de inmediato (123) y que permanezca acompañada. En Colombia también puedes llamar a la Línea 106.",
+      "keywords": [
+        "suicidio",
+        "ideación suicida",
+        "conducta suicida",
+        "querer morir",
+        "crisis",
+        "código dorado"
+      ],
+      "shortDescription": "Pensamientos sobre morir o quitarse la vida: se toman en serio, y existe ayuda inmediata.",
+      "description": "La ideación suicida se refiere a pensamientos relacionados con morir o quitarse la vida. Puede variar desde pensamientos pasivos, como desear no despertar, hasta pensamientos suicidas más concretos. La conducta suicida incluye acciones relacionadas con intentar quitarse la vida. Tener pensamientos suicidas no significa que una persona necesariamente vaya a intentar suicidarse, pero si aparecen deben tomarse en serio. En Colombia, el Ministerio de Salud establece el Código Dorado (Resolución 0347 de 2026) como estrategia de respuesta para la detección, la atención inmediata y el seguimiento de personas en riesgo de conducta suicida.",
+      "experience": {
+        "columns": [
+          {
+            "label": "Mente",
+            "items": [
+              "Pensamientos sobre morir.",
+              "Sensación de desesperanza.",
+              "Sentirse atrapado y pensar que no existe una salida.",
+              "Pensar que se es una carga."
+            ]
+          },
+          {
+            "label": "Emociones",
+            "items": [
+              "Angustia intensa.",
+              "Desesperación y vacío.",
+              "Tristeza profunda.",
+              "Ira o agitación."
+            ]
+          },
+          {
+            "label": "Conducta y entorno",
+            "items": [
+              "Aislarse y alejarse de personas importantes.",
+              "Cambios extremos de comportamiento.",
+              "Hablar de morir o despedirse de personas.",
+              "Buscar formas de hacerse daño.",
+              "Situaciones de violencia, pérdida, aislamiento u otras experiencias adversas pueden aumentar la vulnerabilidad."
+            ]
+          }
+        ]
+      },
+      "warningTitle": "Señales de alerta",
+      "warningSigns": [
+        "Hablar de querer morir o decir que no quiere seguir viviendo.",
+        "Sentirse atrapado, sin esperanza o una carga.",
+        "Buscar información relacionada con el suicidio.",
+        "Despedirse de personas.",
+        "Cambios extremos de comportamiento o aislamiento repentino.",
+        "Conductas imprudentes.",
+        "Aumento del consumo de sustancias.",
+        "Un intento previo de suicidio."
+      ],
+      "warningNote": "Si reconoces varias de estas señales en ti o en alguien cercano, no esperes: pide ayuda ahora.",
+      "actions": {
+        "self": [
+          "Si existe riesgo inmediato: no te quedes solo y díselo directamente a una persona segura.",
+          "Aléjate de cualquier elemento o situación con la que puedas hacerte daño.",
+          "Busca atención de urgencias de inmediato. Si no puedes mantenerte seguro, pide a otra persona que haga la llamada o te acompañe.",
+          "Puedes decir simplemente: «Estoy pensando en hacerme daño o en quitarme la vida y necesito ayuda ahora». No necesitas explicar perfectamente lo que sientes para pedir ayuda."
+        ],
+        "other": [
+          "Pregunta directamente si está pensando en quitarse la vida. Preguntar no provoca que una persona se suicide; puede abrir una conversación necesaria.",
+          "Escucha sin juzgar y no prometas mantenerlo en secreto si existe riesgo.",
+          "Quédate con la persona y ayúdala a alejarse de situaciones o elementos con los que pueda hacerse daño.",
+          "Contacta a un adulto responsable o a un profesional.",
+          "Si existe riesgo inmediato, busca atención de urgencias."
+        ]
+      },
+      "faq": [
+        {
+          "question": "¿Preguntar «¿estás pensando en suicidarte?» empeora la situación?",
+          "answer": "No. Preguntar directamente puede ayudar a identificar el riesgo y facilitar que la persona reciba ayuda."
+        },
+        {
+          "question": "¿Tengo que esperar a tener un plan para pedir ayuda?",
+          "answer": "No. Los pensamientos suicidas merecen atención incluso cuando no existe un plan."
+        },
+        {
+          "question": "¿Qué hago si mi amigo me pide que no le diga a nadie?",
+          "answer": "Si existe riesgo para su vida, la seguridad tiene prioridad sobre guardar el secreto."
+        },
+        {
+          "question": "¿La persona que piensa en suicidarse siempre quiere morir?",
+          "answer": "No necesariamente. Puede existir ambivalencia y un deseo intenso de dejar de sufrir. Esto no hace que el riesgo sea menos importante."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Red de seguridad",
+          "icon": "🛟",
+          "description": "Identifica de antemano a quién y a dónde acudir. En una situación de posible riesgo suicida, las herramientas de autocuidado no son un tratamiento suficiente.",
+          "goal": "Saber cómo pedir ayuda antes de que llegue el momento difícil.",
+          "steps": [
+            "Personas a quienes puedes llamar.",
+            "Lugares seguros.",
+            "Profesionales o servicios de salud.",
+            "Señales personales de empeoramiento.",
+            "Pasos concretos para pedir ayuda."
+          ],
+          "notEnough": "No sustituye la atención profesional. Si el malestar aumenta o hay riesgo para tu seguridad, busca ayuda de inmediato."
+        },
+        {
+          "name": "Tarjeta «Necesito ayuda»",
+          "icon": "🆘",
+          "description": "Una nota preparada previamente con una frase como: «No me siento seguro/a estando solo/a. Necesito que te quedes conmigo y me ayudes a buscar atención».",
+          "goal": "Pedir ayuda con palabras claras cuando cuesta hablar.",
+          "notEnough": "No sustituye la atención profesional. Si el malestar aumenta o hay riesgo para tu seguridad, busca ayuda de inmediato."
+        },
+        {
+          "name": "Plan de apoyo",
+          "icon": "🤝",
+          "description": "Registra quién puede acompañarte, a quién acudir y qué hacer si la situación empeora.",
+          "goal": "Aumentar la seguridad y la conexión con otras personas.",
+          "notEnough": "No sustituye la atención profesional. Si el malestar aumenta o hay riesgo para tu seguridad, busca ayuda de inmediato."
+        }
+      ],
+      "whenToSeekHelp": "Ahora mismo, sin esperar una cita: si piensas en morir o en quitarte la vida, o alguien cercano lo hace, pide ayuda hoy. Si hay peligro inmediato, ve a urgencias o llama al 123. En Colombia, la ideación o el intento de suicidio se atiende como una urgencia (Código Dorado, Resolución 0347 de 2026).",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": [
+        {
+          "institution": "NIMH",
+          "title": "Warning Signs of Suicide",
+          "url": "https://www.nimh.nih.gov/health/publications/warning-signs-of-suicide"
+        },
+        {
+          "institution": "NIMH",
+          "title": "5 Action Steps to Help Someone Having Thoughts of Suicide",
+          "url": "https://www.nimh.nih.gov/health/publications/5-action-steps-to-help-someone-having-thoughts-of-suicide"
+        },
+        {
+          "institution": "NIMH",
+          "title": "Frequently Asked Questions About Suicide",
+          "url": "https://www.nimh.nih.gov/health/publications/suicide-faq"
+        },
+        {
+          "institution": "Ministerio de Salud y Protección Social",
+          "title": "Prevención del suicidio",
+          "url": "https://www.minsalud.gov.co/salud/publica/salud-mental/Paginas/prevencion-suicidio.aspx"
+        },
+        {
+          "institution": "Ministerio de Salud y Protección Social",
+          "title": "Gobierno Nacional activa el Código Dorado",
+          "url": "https://www.minsalud.gov.co/Comunicaciones/noticias/2026/Paginas/gobierno-activa-el-codigo-dorado.aspx"
+        }
+      ]
+    }
+  ]
+}

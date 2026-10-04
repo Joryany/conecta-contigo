@@ -30,7 +30,11 @@
     const DATA_PATHS = {
         condiciones: 'data/condiciones.json',
         situaciones: 'data/situaciones.json',
-        herramientas: 'data/herramientas.json'
+        herramientas: 'data/herramientas.json',
+        // Archivos opcionales: si existen, se fusionan por id con los anteriores
+        condicionesNuevas: 'data/condiciones-nuevas.json',
+        situacionesNuevas: 'data/situaciones-nuevas.json',
+        herramientasCatalogo: 'data/herramientas-catalogo.json'
     };
 
     const el = {};
@@ -38,6 +42,9 @@
     const estado = {
         condiciones: [],
         situaciones: [],
+        delicados: [],
+        catalogo: [],
+        catalogoFuentes: [],
         herramientas: null,
         categoriaActiva: 'Todas'
     };
@@ -109,10 +116,12 @@
           servicio: 'Policía, ambulancia y bomberos. Todos los días, 24 h.' },
         { nombre: 'Línea Nacional de Salud Mental', numero: '106', tel: '106', icono: 'corazon',
           servicio: 'Orientación emocional y prevención del suicidio. Gratuita, 24 h.' },
-        { nombre: 'Línea 106 · chat (Bogotá)', numero: '300 754 8933', tel: '+573007548933', wa: '573007548933', icono: 'mensaje',
-          servicio: 'Chat de la Línea 106 por WhatsApp. 24 h.' },
         { nombre: 'Línea de la Vida (Barranquilla)', numero: '(605) 339 9999', tel: '+576053399999', icono: 'llamar',
-          servicio: 'Atención en salud mental en Barranquilla y su área metropolitana.' },
+          servicio: 'Salud mental en Barranquilla y su área metropolitana. 24 h.' },
+        { nombre: 'Línea de Salud Mental Distrital', numero: '315 300 2003', tel: '+573153002003', icono: 'llamar',
+          servicio: 'Atención en salud mental del Distrito de Barranquilla. 24 h.' },
+        { nombre: 'Línea Charlemos (WhatsApp)', numero: '318 804 4000', wa: '573188044000', icono: 'mensaje',
+          servicio: 'Atención por mensaje de WhatsApp en Barranquilla. 24 h.' },
         { nombre: 'ICBF · Línea 141', numero: '141', tel: '141', icono: 'ninos',
           servicio: 'Protección de niñas, niños y adolescentes. Gratuita, 24 h.' },
         { nombre: 'Línea 155', numero: '155', tel: '155', icono: 'usuarios',
@@ -131,10 +140,13 @@
 
         renderGridCondiciones(estado.condiciones);
         renderGridSituaciones(estado.situaciones);
+        renderGridDelicados(estado.delicados);
+        renderGridHerramientas(estado.catalogo);
         renderHerramientasGenerales();
         configurarBuscador();
         configurarModal();
 
+        document.addEventListener('error', manejarErrorImagen, true);
         document.addEventListener('click', manejarClicGlobal);
         document.addEventListener('change', manejarCambioGlobal);
         document.addEventListener('toggle', manejarToggleAcordeon, true);
@@ -149,12 +161,32 @@
         el.detalle = document.getElementById('comprende-detalle');
         el.gridCondiciones = document.getElementById('grid-condiciones');
         el.gridSituaciones = document.getElementById('grid-situaciones');
+        el.gridDelicados = document.getElementById('grid-delicados');
+        el.gridHerramientas = document.getElementById('grid-herramientas');
         el.condicionesVacio = document.getElementById('condiciones-vacio');
         el.buscadorInput = document.getElementById('buscador-input');
         el.chipGroup = document.getElementById('chip-group');
         el.modal = document.getElementById('comprende-modal');
         el.modalPanel = document.getElementById('modal-panel');
         el.modalContenido = document.getElementById('modal-contenido');
+    }
+
+    // Devuelve el JSON o null si el archivo no existe (los archivos "nuevos" son opcionales).
+    async function cargarJsonOpcional(ruta) {
+        try {
+            const r = await fetch(ruta);
+            if (!r.ok) return null;
+            return await r.json();
+        } catch (_) {
+            return null;
+        }
+    }
+
+    // Une dos listas por "id": si un id se repite, gana el de la lista nueva (conserva la posición original).
+    function fusionarPorId(base, extra) {
+        const mapa = new Map((base || []).map(x => [x.id, x]));
+        (extra || []).forEach(x => mapa.set(x.id, x));
+        return [...mapa.values()];
     }
 
     async function cargarDatos() {
@@ -165,9 +197,18 @@
                 fetch(DATA_PATHS.herramientas)
             ]);
             const [dCond, dSit, dHer] = await Promise.all([rCond.json(), rSit.json(), rHer.json()]);
+            const [xCond, xSit, xCat] = await Promise.all([
+                cargarJsonOpcional(DATA_PATHS.condicionesNuevas),
+                cargarJsonOpcional(DATA_PATHS.situacionesNuevas),
+                cargarJsonOpcional(DATA_PATHS.herramientasCatalogo)
+            ]);
 
-            estado.condiciones = dCond.conditions || [];
-            estado.situaciones = dSit.situations || [];
+            const todas = fusionarPorId(dCond.conditions, xCond && xCond.conditions);
+            estado.condiciones = todas.filter(c => !c.sensitive);
+            estado.delicados = todas.filter(c => c.sensitive);
+            estado.situaciones = fusionarPorId(dSit.situations, xSit && xSit.situations);
+            estado.catalogo = (xCat && xCat.tools) || [];
+            estado.catalogoFuentes = (xCat && xCat.sources) || [];
             estado.herramientas = dHer || {};
         } catch (error) {
             console.error('Comprende: no se pudieron cargar los datos.', error);
@@ -216,9 +257,11 @@
     function abrirDetalle(tipo, id) {
         let item = null;
         if (tipo === 'condicion') {
-            item = estado.condiciones.find(c => c.id === id);
+            item = estado.condiciones.concat(estado.delicados).find(c => c.id === id);
         } else if (tipo === 'situacion') {
             item = estado.situaciones.find(s => s.id === id);
+        } else if (tipo === 'herramienta') {
+            item = estado.catalogo.find(h => h.id === id);
         }
 
         if (!item) {
@@ -233,6 +276,11 @@
 
         if (tipo === 'condicion') {
             renderDetalleCondicion(item);
+        } else if (tipo === 'herramienta') {
+            renderDetalleHerramienta(item);
+        } else if (item.type === 'guide') {
+            // Experiencia con ficha completa (qué es, señales, qué hacer, FAQ, herramientas...)
+            renderDetalleCondicion(item, { origen: 'situacion' });
         } else {
             renderDetalleSituacion(item);
         }
@@ -268,18 +316,66 @@
        4. ILUSTRACIONES: espacio reservado con alt genérico
     ---------------------------------------------------------------- */
 
-    // Genera un marcador de posición visual (SVG embebido, nunca rompe el
-    // layout con un ícono de "imagen no encontrada") con un alt ya escrito
-    // de forma general. Cuando tengas la ilustración real, basta con
-    // cambiar el atributo src de la etiqueta <img> resultante.
-    function placeholderIlustracion(descripcionAlt, claseExtra) {
+    // Carpeta donde viven las ilustraciones de cada tema:
+    //   assets/img/comprende/<carpeta>/ilustracion.png
+    // Si el id del JSON NO coincide con el nombre de la carpeta, agrégalo aquí:
+    //   'id-en-el-json': 'nombre-de-la-carpeta'
+    const RUTA_IMG = 'assets/img/comprende/';
+    const EXTENSIONES_IMG = ['png', 'webp', 'jpg'];
+    const CARPETA_POR_ID = {
+        // id en el JSON      : carpeta en assets/img/comprende/
+        'fobia-social'        : 'fobia',
+        'tdc'                 : 'dismorfia-corporal',
+        'tae'                 : 'estacional',
+        'tddea'               : 'regularizacion',
+        'panico'              : 'trastorno-panico',
+        'bipolar'             : 'bipolaridad'
+        // Los demás coinciden con su carpeta y no necesitan línea:
+        // depresion, ansiedad, tca, toc, tdah, psicosis, estres, redes-sociales
+    };
+
+    function carpetaDe(id) {
+        return CARPETA_POR_ID[id] || id;
+    }
+
+    // Marcador de posición (SVG embebido) para cuando todavía no existe la ilustración.
+    function placeholderSrc() {
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="320" viewBox="0 0 400 320">
             <rect width="400" height="320" rx="28" fill="#e9f3f1"/>
             <text x="50%" y="46%" font-size="46" text-anchor="middle" dominant-baseline="middle">🖼️</text>
             <text x="50%" y="68%" font-size="13" fill="#8fa3ad" text-anchor="middle" font-family="sans-serif">Espacio para ilustración</text>
         </svg>`;
-        const src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-        return `<img class="ilustracion-placeholder${claseExtra ? ' ' + claseExtra : ''}" src="${src}" alt="${escapeAttr(descripcionAlt)}" loading="lazy">`;
+        return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    }
+
+    // Ilustración del encabezado de cada tema. Orden de búsqueda:
+    //   1) el campo "image" del JSON (si lo escribes),
+    //   2) assets/img/comprende/<carpeta>/ilustracion.png | .webp | .jpg,
+    //   3) el marcador de posición, si no existe ninguna.
+    function ilustracionDetalle(item, altTexto) {
+        const candidatas = [];
+        if (item.image) candidatas.push(item.image);
+        EXTENSIONES_IMG.forEach(ext => candidatas.push(`${RUTA_IMG}${carpetaDe(item.id)}/ilustracion.${ext}`));
+        const [primera, ...resto] = candidatas;
+        return `<img class="ilustracion-detalle" src="${escapeAttr(primera)}" alt="${escapeAttr(altTexto)}"
+            data-fallbacks="${escapeAttr(JSON.stringify(resto))}" width="1000" height="800">`;
+    }
+
+    // Si una imagen no carga, prueba la siguiente extensión; al final, el marcador.
+    function manejarErrorImagen(e) {
+        const img = e.target;
+        if (!(img instanceof HTMLImageElement) || !img.dataset.fallbacks) return;
+        let resto = [];
+        try { resto = JSON.parse(img.dataset.fallbacks); } catch (_) { resto = []; }
+        if (resto.length) {
+            img.dataset.fallbacks = JSON.stringify(resto.slice(1));
+            img.src = resto[0];
+        } else {
+            delete img.dataset.fallbacks;
+            img.classList.remove('ilustracion-detalle');
+            img.classList.add('ilustracion-placeholder');
+            img.src = placeholderSrc();
+        }
     }
 
     function altGenericoPara(titulo) {
@@ -293,7 +389,7 @@
     function crearTarjetaCondicion(cond, index) {
         const cta = CTA_CONDICIONES[index % CTA_CONDICIONES.length];
         return `
-            <article class="tarjeta-item">
+            <article class="tarjeta-item${cond.sensitive ? ' tarjeta-item--delicada' : ''}">
                 <span class="tarjeta-item__etiqueta">${escapeHtml(cond.category)}</span>
                 <h3>${escapeHtml(cond.title)}</h3>
                 <p>${escapeHtml(cond.shortDescription)}</p>
@@ -318,6 +414,28 @@
     function renderGridCondiciones(lista) {
         el.gridCondiciones.innerHTML = lista.map((c, i) => crearTarjetaCondicion(c, i)).join('');
         el.condicionesVacio.hidden = lista.length !== 0;
+    }
+
+    function crearTarjetaHerramienta(h) {
+        return `
+            <article class="tarjeta-item tarjeta-item--herramienta">
+                <span class="tarjeta-item__icono" aria-hidden="true">${h.icon || '🧰'}</span>
+                <h3>${escapeHtml(h.title)}</h3>
+                <p>${escapeHtml(h.shortDescription)}</p>
+                <button type="button" class="tarjeta-item__boton" data-action="abrir-detalle" data-tipo="herramienta" data-id="${h.id}">
+                    Ver herramienta →
+                </button>
+            </article>`;
+    }
+
+    function renderGridDelicados(lista) {
+        if (!el.gridDelicados) return;
+        el.gridDelicados.innerHTML = lista.map((c, i) => crearTarjetaCondicion(c, i)).join('');
+    }
+
+    function renderGridHerramientas(lista) {
+        if (!el.gridHerramientas) return;
+        el.gridHerramientas.innerHTML = lista.map(crearTarjetaHerramienta).join('');
     }
 
     function renderGridSituaciones(lista) {
@@ -383,8 +501,55 @@
        8. DETALLE: CONDICIÓN
     ---------------------------------------------------------------- */
 
-    function renderDetalleCondicion(cond) {
+    const AYUDA_GENERAL = 'Busca ayuda profesional si lo que ocurre dura un tiempo prolongado, interfiere con el colegio, las relaciones, el sueño o las actividades, sientes que no puedes manejarlo solo, aparecen conductas de riesgo o autolesión, hay violencia, abuso o peligro, o la situación empeora. Pedir ayuda no significa que lo que vives tenga que ser «lo suficientemente grave».';
+    const NOTA_HERRAMIENTAS = 'Esta herramienta es una estrategia de bienestar: no es un tratamiento y no sustituye la atención de un profesional. Si lo que sientes es intenso, dura mucho tiempo o interfiere con tu vida, pide ayuda.';
+    const NOTA_SENALES = 'Reconocer una señal no significa automáticamente tener un trastorno. Esta información es para comprender, no para autodiagnosticarte.';
+
+    // Lista (array) o texto (string) para el panel de "¿Qué puedo hacer?"
+    function accionHtml(valor) {
+        if (Array.isArray(valor)) {
+            return `<ul class="seccion-lista">${valor.map(v => `<li>${escapeHtml(v)}</li>`).join('')}</ul>`;
+        }
+        return escapeHtml(valor || '');
+    }
+
+    // Sección libre: title, icon, lead, paragraphs[], quote, text, items[], steps[], note, noteLabel
+    function seccionHtml(sec) {
+        const lead = sec.lead ? `<p>${escapeHtml(sec.lead)}</p>` : '';
+        const parrafos = (sec.paragraphs || []).map(p => `<p>${escapeHtml(p)}</p>`).join('');
+        const cita = sec.quote ? `<blockquote class="seccion-cita">${escapeHtml(sec.quote)}</blockquote>` : '';
+        const texto = sec.text ? `<p>${escapeHtml(sec.text)}</p>` : '';
+        const items = (sec.items && sec.items.length)
+            ? `<ul class="seccion-lista">${sec.items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>` : '';
+        const pasos = (sec.steps && sec.steps.length)
+            ? `<ol class="seccion-pasos">${sec.steps.map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ol>` : '';
+        const nota = sec.note
+            ? `<p class="seccion-nota"><strong>${escapeHtml(sec.noteLabel || 'Importante')}:</strong> ${escapeHtml(sec.note)}</p>` : '';
+        return `
+            <div class="bloque bloque--card" data-speak>
+                <h3>${tituloConIcono(sec.icon || ICONOS.queEs, sec.title)}</h3>
+                ${lead}${parrafos}${cita}${texto}${items}${pasos}${nota}
+            </div>`;
+    }
+
+    function avisoSeguridadHtml(item) {
+        if (!item.safetyNotice) return '';
+        return `
+            <div class="aviso-seguridad" role="note" data-speak>
+                <span class="aviso-seguridad__icono" aria-hidden="true">${icono('alerta')}</span>
+                <div class="aviso-seguridad__texto">
+                    <strong>Antes de leer</strong>
+                    <p>${escapeHtml(item.safetyNotice)}</p>
+                </div>
+                <button type="button" class="boton-primario boton-urgente" data-action="abrir-protocolo">Ver qué hacer ahora</button>
+            </div>`;
+    }
+
+    // Ficha completa. Sirve para condiciones, temas delicados y experiencias (type: "guide").
+    // Todos los bloques son opcionales: solo se dibuja lo que el JSON trae.
+    function renderDetalleCondicion(cond, opciones = {}) {
         detalleActual = cond;
+        const esSituacion = opciones.origen === 'situacion';
 
         const faqHtml = (cond.faq && cond.faq.length) ? `
             <div class="bloque bloque--card solo-completo">
@@ -394,9 +559,9 @@
                 </div>
             </div>` : '';
 
-        const grupoActuarHtml = (cond.tools && cond.tools.length) ? `
+        const herramientasHtml = (cond.tools && cond.tools.length) ? `
             <div class="solo-completo">
-                ${grupoHeader(3, ICONOS.actuar, 'Actuar')}
+                ${grupoHeader(0, ICONOS.actuar, 'Actuar')}
                 <div class="bloque bloque--card">
                     <h3>${tituloConIcono(ICONOS.herramientas, 'Herramientas')}</h3>
                     <div class="herramientas-grid">
@@ -405,15 +570,77 @@
                 </div>
             </div>` : '';
 
+        const extraHtml = (cond.extraSections || []).map(seccionHtml).join('');
+
+        const experienciaHtml = (cond.experience && cond.experience.columns) ? `
+            <div class="bloque bloque--card" data-speak>
+                <h3>${tituloConIcono(ICONOS.experiencia, '¿Cómo puede experimentarse?')}</h3>
+                <div class="experiencia-grid">
+                    ${cond.experience.columns.map(col => `
+                        <div class="experiencia-col">
+                            <h4>${escapeHtml(col.label)}</h4>
+                            <ul>${col.items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>` : '';
+
+        const notaSenales = ('warningNote' in cond) ? cond.warningNote : NOTA_SENALES;
+        const senalesHtml = (cond.warningSigns && cond.warningSigns.length) ? `
+            <div class="bloque bloque--card" data-speak>
+                <h3>${tituloConIcono(ICONOS.alerta, cond.warningTitle || 'Señales de alerta')}</h3>
+                <ul class="senales-lista">
+                    ${cond.warningSigns.map(s => `
+                        <li class="senal-item">
+                            <span class="senal-item__icono" aria-hidden="true">⚠</span>
+                            <span>${escapeHtml(s)}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+                ${notaSenales ? `<p class="nota">${escapeHtml(notaSenales)}</p>` : ''}
+            </div>` : '';
+
+        const etiquetas = cond.actionLabels || { self: 'Me pasa a mí', other: 'Le pasa a alguien cercano' };
+        const tabsHtml = (cond.actions && cond.actions.other) ? `
+                <div class="accion-tabs" role="group" aria-label="Elige tu situación">
+                    <button type="button" data-action="accion-tab" data-tab="self" aria-pressed="true">${escapeHtml(etiquetas.self)}</button>
+                    <button type="button" data-action="accion-tab" data-tab="other" aria-pressed="false">${escapeHtml(etiquetas.other)}</button>
+                </div>` : '';
+        const accionesHtml = (cond.actions && cond.actions.self) ? `
+            <div class="bloque bloque--card" data-speak>
+                <h3>${tituloConIcono(ICONOS.accion, cond.actionsTitle || '¿Qué puedo hacer?')}</h3>
+                ${tabsHtml}
+                <div class="accion-panel" id="accion-panel">${accionHtml(cond.actions.self)}</div>
+            </div>` : '';
+
+        const comparacionHtml = cond.comparison ? `<div class="bloque bloque--card" data-speak>${renderComparacion(cond.comparison)}</div>` : '';
+        const flujoHtml = cond.flow ? `<div class="bloque bloque--card" data-speak>${renderFlujo(cond.flow)}</div>` : '';
+
+        const hayReconocer = senalesHtml || accionesHtml;
+        const numActuar = hayReconocer ? 3 : 2;
+        const herramientasFinal = herramientasHtml.replace(/<span class="grupo-header__numero" aria-hidden="true">\d+<\/span>/,
+            `<span class="grupo-header__numero" aria-hidden="true">${numActuar}</span>`);
+        const numRecursos = (cond.tools && cond.tools.length) ? numActuar + 1 : numActuar;
+
+        let miga;
+        if (esSituacion) miga = { label: 'Situaciones', action: 'ir-situaciones' };
+        else if (cond.sensitive) miga = { label: 'Temas delicados', action: 'ir-delicados' };
+        else miga = { label: cond.category, action: 'ir-categoria', dataCategoria: cond.category };
+
+        const ayudaTexto = cond.whenToSeekHelp || AYUDA_GENERAL;
+        const ayudaLink = cond.helpLink || 'contacto.html#emergencia';
+
         el.detalle.innerHTML = `
             ${renderBreadcrumb([
                 { label: 'Inicio', href: 'index.html' },
                 { label: 'Comprende', action: 'volver' },
-                { label: cond.category, action: 'ir-categoria', dataCategoria: cond.category },
+                miga,
                 { label: cond.title }
             ])}
 
             <button type="button" class="detalle__volver" data-action="volver">← Volver a Comprende</button>
+
+            ${avisoSeguridadHtml(cond)}
 
             <div class="detalle-header">
                 <div class="detalle-header__texto" data-speak>
@@ -421,7 +648,7 @@
                     <p>${escapeHtml(cond.shortDescription)}</p>
                 </div>
                 <div class="detalle-header__imagen">
-                    ${placeholderIlustracion(altGenericoPara(cond.title))}
+                    ${ilustracionDetalle(cond, cond.imageAlt || altGenericoPara(cond.title))}
                 </div>
             </div>
 
@@ -440,51 +667,24 @@
                 <p>${escapeHtml(cond.description)}</p>
             </div>
 
-            <div class="bloque bloque--card" data-speak>
-                <h3>${tituloConIcono(ICONOS.experiencia, '¿Cómo puede experimentarse?')}</h3>
-                <div class="experiencia-grid">
-                    ${cond.experience.columns.map(col => `
-                        <div class="experiencia-col">
-                            <h4>${escapeHtml(col.label)}</h4>
-                            <ul>${col.items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
+            ${extraHtml}
+            ${experienciaHtml}
 
-            ${grupoHeader(2, ICONOS.reconocer, 'Reconocer')}
+            ${hayReconocer ? grupoHeader(2, ICONOS.reconocer, 'Reconocer') : ''}
+            ${senalesHtml}
+            ${accionesHtml}
 
-            <div class="bloque bloque--card" data-speak>
-                <h3>${tituloConIcono(ICONOS.alerta, 'Señales de alerta')}</h3>
-                <ul class="senales-lista">
-                    ${cond.warningSigns.map(s => `
-                        <li class="senal-item">
-                            <span class="senal-item__icono" aria-hidden="true">⚠</span>
-                            <span>${escapeHtml(s)}</span>
-                        </li>
-                    `).join('')}
-                </ul>
-                <p class="nota">Reconocer una señal no significa automáticamente tener un trastorno. Esta información es para comprender, no para autodiagnosticarte.</p>
-            </div>
-
-            <div class="bloque bloque--card" data-speak>
-                <h3>${tituloConIcono(ICONOS.accion, '¿Qué puedo hacer?')}</h3>
-                <div class="accion-tabs" role="group" aria-label="Elige tu situación">
-                    <button type="button" data-action="accion-tab" data-tab="self" aria-pressed="true">Me pasa a mí</button>
-                    <button type="button" data-action="accion-tab" data-tab="other" aria-pressed="false">Le pasa a alguien cercano</button>
-                </div>
-                <div class="accion-panel" id="accion-panel">${escapeHtml(cond.actions.self)}</div>
-            </div>
-
+            ${comparacionHtml}
+            ${flujoHtml}
             ${faqHtml}
-            ${grupoActuarHtml}
+            ${herramientasFinal}
 
-            ${grupoHeader(4, ICONOS.recursos, 'Recursos y ayuda')}
+            ${grupoHeader(numRecursos, ICONOS.recursos, 'Recursos y ayuda')}
 
             <div class="bloque ayuda-bloque" data-speak>
                 <h3>${tituloConIcono(ICONOS.ayuda, '¿Cuándo buscar ayuda?')}</h3>
-                <p>${escapeHtml(cond.whenToSeekHelp)}</p>
-                ${cond.helpLink ? `<a class="boton-primario" href="${cond.helpLink}">Buscar ayuda</a>` : ''}
+                <p>${escapeHtml(ayudaTexto)}</p>
+                <a class="boton-primario" href="${ayudaLink}">Buscar ayuda</a>
             </div>
 
             ${renderRecursos(cond.resources)}
@@ -492,6 +692,58 @@
         `;
 
         cambiarModo('completo');
+        ocultarAudioSiNoSoportado();
+    }
+
+    // Ficha de una herramienta del catálogo general
+    function renderDetalleHerramienta(h) {
+        detalleActual = null;
+        const fuentes = (h.sources && h.sources.length) ? h.sources : estado.catalogoFuentes;
+
+        el.detalle.innerHTML = `
+            ${renderBreadcrumb([
+                { label: 'Inicio', href: 'index.html' },
+                { label: 'Comprende', action: 'volver' },
+                { label: 'Herramientas', action: 'ir-herramientas' },
+                { label: h.title }
+            ])}
+
+            <button type="button" class="detalle__volver" data-action="volver">← Volver a Comprende</button>
+
+            <div class="detalle-header">
+                <div class="detalle-header__texto" data-speak>
+                    <h1>${escapeHtml(h.title)}</h1>
+                    <p>${escapeHtml(h.shortDescription)}</p>
+                </div>
+                <div class="detalle-header__imagen">
+                    <span class="herramienta-hero-icono" aria-hidden="true">${h.icon || '🧰'}</span>
+                </div>
+            </div>
+
+            <div class="detalle-controles">
+                ${audioControlesHtml(h.id)}
+            </div>
+
+            <div class="bloque bloque--card" data-speak>
+                <h3>${tituloConIcono(ICONOS.queEs, '¿Qué es?')}</h3>
+                <p>${escapeHtml(h.description)}</p>
+            </div>
+
+            ${(h.sections || []).map(seccionHtml).join('')}
+
+            <div class="bloque bloque--card" data-speak>
+                <p class="seccion-nota" style="margin:0;">${escapeHtml(NOTA_HERRAMIENTAS)}</p>
+            </div>
+
+            <div class="bloque ayuda-bloque" data-speak>
+                <h3>${tituloConIcono(ICONOS.ayuda, '¿Cuándo pedir ayuda?')}</h3>
+                <p>${escapeHtml(AYUDA_GENERAL)}</p>
+                <a class="boton-primario" href="contacto.html#emergencia">Buscar ayuda</a>
+            </div>
+
+            ${renderFuentes(fuentes)}
+        `;
+
         ocultarAudioSiNoSoportado();
     }
 
@@ -525,7 +777,7 @@
                     <p>${escapeHtml(sit.intro)}</p>
                 </div>
                 <div class="detalle-header__imagen">
-                    ${placeholderIlustracion(altGenericoPara(sit.title))}
+                    ${ilustracionDetalle(sit, sit.imageAlt || altGenericoPara(sit.title))}
                 </div>
             </div>
 
@@ -600,7 +852,7 @@
             b.setAttribute('aria-pressed', String(b.dataset.tab === tab));
         });
         const panel = document.getElementById('accion-panel');
-        if (panel) panel.textContent = detalleActual.actions[tab] || '';
+        if (panel) panel.innerHTML = accionHtml(detalleActual.actions[tab]);
     }
 
     /* ----------------------------------------------------------------
@@ -627,16 +879,16 @@
     ---------------------------------------------------------------- */
 
     function toolCard(tool, index) {
-        const icono = TOOL_ICONOS[index % TOOL_ICONOS.length];
+        const iconoHerr = tool.icon || TOOL_ICONOS[index % TOOL_ICONOS.length];
         const descripcion = tool.description ? `<p>${escapeHtml(tool.description)}</p>` : '';
-        const boton = tool.description ? `
-            <button type="button" class="boton-texto" data-action="abrir-modal-herramienta"
-                data-nombre="${escapeAttr(tool.name)}" data-descripcion="${escapeAttr(tool.description)}">
+        const tieneDetalle = tool.description || (tool.steps && tool.steps.length);
+        const boton = tieneDetalle ? `
+            <button type="button" class="boton-texto" data-action="abrir-modal-herramienta" data-index="${index}">
                 Ver herramienta →
             </button>` : '';
         return `
             <div class="herramienta-card">
-                <span class="herramienta-card__icono" aria-hidden="true">${icono}</span>
+                <span class="herramienta-card__icono" aria-hidden="true">${iconoHerr}</span>
                 <h4>${escapeHtml(tool.name)}</h4>
                 ${descripcion}
                 ${boton}
@@ -971,8 +1223,15 @@
         abrirModal(`<img src="${src}" alt="${escapeAttr(alt || '')}">`, { imagen: true });
     }
 
-    function abrirModalHerramienta(nombre, descripcion) {
-        abrirModal(`<h3 id="modal-titulo">${escapeHtml(nombre)}</h3><p>${escapeHtml(descripcion)}</p>`);
+    function abrirModalHerramienta(indice) {
+        const t = detalleActual && detalleActual.tools && detalleActual.tools[indice];
+        if (!t) return;
+        const descripcion = t.description ? `<p>${escapeHtml(t.description)}</p>` : '';
+        const objetivo = t.goal ? `<p class="herramienta-objetivo"><strong>Para qué sirve:</strong> ${escapeHtml(t.goal)}</p>` : '';
+        const pasos = (t.steps && t.steps.length)
+            ? `<ol class="herramienta-pasos">${t.steps.map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ol>` : '';
+        const limite = t.notEnough ? `<p class="herramienta-limite"><strong>Cuándo no es suficiente:</strong> ${escapeHtml(t.notEnough)}</p>` : '';
+        abrirModal(`<h3 id="modal-titulo">${t.icon ? escapeHtml(t.icon) + ' ' : ''}${escapeHtml(t.name)}</h3>${descripcion}${objetivo}${pasos}${limite}`);
     }
 
     /* ----------------------------------------------------------------
@@ -1015,7 +1274,7 @@
                 <span class="linea__numero">${escapeHtml(l.numero)}</span>
                 <span class="linea__servicio">${escapeHtml(l.servicio)}</span>
                 <div class="linea__acciones">
-                    <a class="linea__btn linea__btn--llamar" href="tel:${l.tel}">${icono('llamar')} Llamar</a>
+                    ${l.tel ? `<a class="linea__btn linea__btn--llamar" href="tel:${l.tel}">${icono('llamar')} Llamar</a>` : ''}
                     ${wa}
                 </div>
             </div>`;
@@ -1072,6 +1331,7 @@
                     <h4 class="protocolo__subtitulo">${icono('llamar')} Líneas de ayuda</h4>
                     <div class="linea-grid">${LINEAS_AYUDA.map(lineaHtml).join('')}</div>
 
+                    <p class="nota">En Colombia, la ideación o el intento de suicidio se atiende como una urgencia: el Código Dorado (Resolución 0347 de 2026) obliga a las EPS y a las IPS a responder de inmediato y sin trámites previos.</p>
                     <p class="nota">Esta guía orienta, pero no reemplaza la atención de un profesional de la salud.</p>
                 </div>
             </div>
@@ -1111,6 +1371,20 @@
                     if (seccion) seccion.scrollIntoView({ behavior: 'smooth' });
                 });
                 break;
+            case 'ir-delicados':
+                volverAHome();
+                requestAnimationFrame(() => {
+                    const seccion = document.getElementById('comprende-delicados');
+                    if (seccion) seccion.scrollIntoView({ behavior: 'smooth' });
+                });
+                break;
+            case 'ir-herramientas':
+                volverAHome();
+                requestAnimationFrame(() => {
+                    const seccion = document.getElementById('comprende-herramientas');
+                    if (seccion) seccion.scrollIntoView({ behavior: 'smooth' });
+                });
+                break;
             case 'modo':
                 cambiarModo(boton.dataset.modo);
                 break;
@@ -1133,7 +1407,7 @@
                 abrirModalImagen(boton.dataset.src, boton.dataset.alt);
                 break;
             case 'abrir-modal-herramienta':
-                abrirModalHerramienta(boton.dataset.nombre, boton.dataset.descripcion);
+                abrirModalHerramienta(Number(boton.dataset.index));
                 break;
             case 'alternar-menu-ayuda':
                 alternarMenuAyuda();

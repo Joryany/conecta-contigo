@@ -1,0 +1,244 @@
+{
+  "title": "Herramientas para sentirte mejor",
+  "tools": [
+    {
+      "id": "respiracion",
+      "icon": "🌬️",
+      "title": "Respiración consciente",
+      "shortDescription": "Prestar atención a la respiración unos minutos para volver al presente.",
+      "description": "Prestar atención deliberadamente a la respiración durante unos minutos puede ayudar a dirigir la atención hacia el momento presente y disminuir la activación en algunas situaciones.",
+      "sections": [
+        {
+          "title": "Cómo hacerlo",
+          "icon": "🧭",
+          "steps": [
+            "Siéntate en una posición cómoda.",
+            "Observa cómo entra y sale el aire sin intentar hacerlo perfecto.",
+            "Si la atención se va, vuelve suavemente a la respiración."
+          ],
+          "note": "Si concentrarte en la respiración aumenta tu ansiedad, puedes cambiar a otra herramienta de regulación."
+        }
+      ]
+    },
+    {
+      "id": "grounding",
+      "icon": "👣",
+      "title": "Grounding: conexión con el presente",
+      "shortDescription": "Dirigir la atención a lo que hay a tu alrededor ahora mismo.",
+      "description": "Es una estrategia para dirigir la atención hacia elementos presentes en el entorno.",
+      "sections": [
+        {
+          "title": "Ejercicio",
+          "icon": "🧭",
+          "text": "Observa y nombra objetos, sonidos, sensaciones físicas y elementos del entorno que puedas percibir ahora mismo."
+        },
+        {
+          "title": "Objetivo",
+          "icon": "🎯",
+          "text": "Volver la atención al presente, especialmente cuando los pensamientos están muy concentrados en preocupaciones."
+        }
+      ]
+    },
+    {
+      "id": "actividad-fisica",
+      "icon": "🏃",
+      "title": "Actividad física",
+      "shortDescription": "El movimiento regular forma parte de los hábitos de bienestar.",
+      "description": "El movimiento regular forma parte de los hábitos relacionados con el bienestar físico y mental.",
+      "sections": [
+        {
+          "title": "Algunas opciones",
+          "icon": "🧭",
+          "items": [
+            "Caminar.",
+            "Bailar.",
+            "Practicar un deporte.",
+            "Estirarse.",
+            "Otra actividad adecuada para tu condición física."
+          ],
+          "note": "No debe utilizarse como castigo ni como compensación por comer."
+        }
+      ]
+    },
+    {
+      "id": "sueno-saludable",
+      "icon": "😴",
+      "title": "Sueño saludable",
+      "shortDescription": "Crear condiciones para dormir lo suficiente y con cierta regularidad.",
+      "description": "Consiste en crear condiciones que favorezcan un sueño suficiente y relativamente regular.",
+      "sections": [
+        {
+          "title": "Puede incluir",
+          "icon": "🧭",
+          "items": [
+            "Horarios consistentes.",
+            "Una rutina de cierre.",
+            "Un ambiente adecuado.",
+            "Reducir las actividades estimulantes antes de dormir."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "naturaleza",
+      "icon": "🌳",
+      "title": "Naturaleza",
+      "shortDescription": "Pasar tiempo en espacios naturales o tranquilos.",
+      "description": "Pasar tiempo en espacios naturales o tranquilos puede formar parte de actividades de bienestar y recuperación.",
+      "sections": [
+        {
+          "title": "Importante",
+          "icon": "💡",
+          "note": "No debe presentarse como tratamiento de una condición mental."
+        }
+      ]
+    },
+    {
+      "id": "regulacion-emocional",
+      "icon": "🎛️",
+      "title": "Regulación emocional",
+      "shortDescription": "Reconocer lo que sientes y elegir una respuesta que no empeore la situación.",
+      "description": "Consiste en reconocer una emoción, comprender qué la está provocando y elegir una respuesta que no empeore la situación.",
+      "sections": [
+        {
+          "title": "Secuencia",
+          "icon": "🧭",
+          "steps": [
+            "¿Qué siento?",
+            "¿Qué ocurrió?",
+            "¿Qué necesito?",
+            "¿Qué puedo hacer ahora?",
+            "¿Necesito apoyo?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resolucion-problemas",
+      "icon": "🧩",
+      "title": "Resolución de problemas",
+      "shortDescription": "Pasos para abordar un problema concreto.",
+      "description": "Sirve para problemas concretos: ayuda a dividirlos y a elegir una acción posible.",
+      "sections": [
+        {
+          "title": "Pasos",
+          "icon": "🧭",
+          "steps": [
+            "Define el problema.",
+            "Divide el problema en partes.",
+            "Piensa en varias alternativas.",
+            "Evalúa las consecuencias.",
+            "Elige una opción.",
+            "Comprueba qué ocurrió.",
+            "Ajusta si es necesario."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "activacion-conductual",
+      "icon": "🌅",
+      "title": "Activación conductual",
+      "shortDescription": "Recuperar poco a poco actividades pequeñas y realistas.",
+      "description": "Cuando una persona se encuentra triste o desmotivada, puede comenzar a abandonar actividades que antes le aportaban estructura o bienestar. Una estrategia consiste en recuperar gradualmente actividades pequeñas y realistas.",
+      "sections": [
+        {
+          "title": "Ejemplos",
+          "icon": "🧭",
+          "items": [
+            "Ducharse.",
+            "Salir unos minutos.",
+            "Ordenar un espacio.",
+            "Hablar con alguien.",
+            "Realizar una actividad que antes disfrutabas."
+          ],
+          "note": "No significa obligarse a estar feliz."
+        }
+      ]
+    },
+    {
+      "id": "rutinas",
+      "icon": "🗓️",
+      "title": "Rutinas y estructura",
+      "shortDescription": "Reducir la cantidad de decisiones con una estructura flexible.",
+      "description": "Las rutinas pueden reducir la cantidad de decisiones que una persona debe tomar.",
+      "sections": [
+        {
+          "title": "Una rutina básica puede incluir",
+          "icon": "🧭",
+          "text": "Dormir → despertar → higiene → alimentación → responsabilidades → descanso → conexión social → preparación para dormir.",
+          "note": "Debe ser flexible. Una rutina que se convierte en una fuente adicional de culpa deja de cumplir su función."
+        }
+      ]
+    },
+    {
+      "id": "escritura-expresiva",
+      "icon": "✍️",
+      "title": "Escritura expresiva",
+      "shortDescription": "Escribir unos minutos para organizar pensamientos y emociones.",
+      "description": "Escribir durante unos minutos sobre lo que se siente o sobre una experiencia puede ayudar a organizar pensamientos y emociones. No es necesario escribir bien ni mostrar el texto a otra persona.",
+      "sections": [
+        {
+          "title": "Una estructura sencilla",
+          "icon": "🧭",
+          "steps": [
+            "Qué pasó.",
+            "Qué sentí.",
+            "Qué pensé.",
+            "Qué necesitaba.",
+            "Qué puedo hacer ahora."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "red-apoyo",
+      "icon": "🤝",
+      "title": "Red de apoyo",
+      "shortDescription": "Identificar personas con las que puedes hablar cuando algo es difícil.",
+      "description": "Consiste en identificar personas con las que se pueda hablar cuando una situación resulta difícil.",
+      "sections": [
+        {
+          "title": "Puede incluir",
+          "icon": "🧭",
+          "items": [
+            "Un familiar.",
+            "Un amigo.",
+            "Un docente.",
+            "Un orientador escolar.",
+            "Un profesional de salud.",
+            "Un adulto de confianza."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arte",
+      "icon": "🎨",
+      "title": "Arte y expresión creativa",
+      "shortDescription": "Dibujar, pintar, escribir o hacer música como forma de expresión.",
+      "description": "Dibujar, pintar, escribir, hacer música o realizar manualidades puede utilizarse como forma de expresión y regulación.",
+      "sections": [
+        {
+          "title": "Importante",
+          "icon": "💡",
+          "note": "No es necesario que el resultado sea «bonito»."
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "institution": "OMS",
+      "title": "La salud mental de los adolescentes"
+    },
+    {
+      "institution": "KidsHealth",
+      "title": "Centro de apoyo y control del estrés"
+    },
+    {
+      "institution": "MedlinePlus",
+      "title": "Cómo ayudar a un adolescente a lidiar con el estrés"
+    }
+  ]
+}

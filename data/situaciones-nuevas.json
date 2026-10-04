@@ -1,0 +1,755 @@
+{
+  "situations": [
+    {
+      "id": "acoso-escolar",
+      "title": "Acoso escolar",
+      "keywords": [
+        "acoso",
+        "bullying",
+        "ciberacoso",
+        "burlas",
+        "exclusión"
+      ],
+      "shortDescription": "Agresión repetida entre estudiantes, física, verbal, social o digital. No es una broma y nunca es culpa de quien la recibe.",
+      "description": "El acoso escolar es una forma de agresión o comportamiento dañino que ocurre entre estudiantes y puede ser físico, verbal, social o realizarse mediante tecnologías digitales. No es simplemente «una broma» cuando produce daño y existe una dinámica persistente de agresión o desequilibrio de poder.",
+      "extraSections": [
+        {
+          "title": "¿Por qué puede ocurrir?",
+          "icon": "🧩",
+          "paragraphs": [
+            "Puede estar relacionado con dinámicas de poder, normas del grupo, exclusión y otros factores del entorno. La responsabilidad del acoso corresponde a quien ejerce la conducta, no a quien la recibe."
+          ]
+        }
+      ],
+      "warningTitle": "¿Cómo identificarlo?",
+      "warningSigns": [
+        "Insultos o humillaciones repetidas.",
+        "Amenazas.",
+        "Exclusión deliberada.",
+        "Difusión de rumores.",
+        "Agresiones físicas.",
+        "Acoso digital.",
+        "Miedo recurrente a asistir al colegio.",
+        "Cambios en el rendimiento, las relaciones o el comportamiento."
+      ],
+      "warningNote": "Estas señales sirven para observar y pedir orientación cuando haga falta; no son pruebas diagnósticas.",
+      "actionsTitle": "Cómo actuar",
+      "actionLabels": {
+        "self": "¿Qué puedo hacer?",
+        "other": "¿Cómo apoyar a alguien?"
+      },
+      "actions": {
+        "self": [
+          "No respondas con violencia.",
+          "Guarda evidencias cuando sea acoso digital.",
+          "Cuéntaselo a un adulto de confianza e informa a la institución educativa.",
+          "Evita enfrentarlo completamente solo.",
+          "Identifica espacios y personas seguras.",
+          "Si existe peligro físico inmediato, busca ayuda de emergencia."
+        ],
+        "other": [
+          "Créele y escúchalo.",
+          "No lo culpes.",
+          "No digas «ignóralos» como única solución.",
+          "Acompáñalo a informar la situación.",
+          "Ayúdalo a mantenerse conectado con personas seguras."
+        ]
+      },
+      "tools": [
+        {
+          "name": "Registro de incidentes",
+          "icon": "📝",
+          "description": "Anota lo ocurrido para poder contarlo con claridad a un adulto o a la institución.",
+          "steps": [
+            "Fecha.",
+            "Lugar.",
+            "Qué ocurrió.",
+            "Quiénes estaban.",
+            "Evidencias.",
+            "A quién se informó."
+          ],
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Mapa de personas seguras",
+          "icon": "🗺️",
+          "description": "Identifica adultos, docentes, familiares y compañeros a quienes puedes acudir.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Respuesta breve y retirada",
+          "icon": "🚪",
+          "description": "Cuando sea seguro, usa respuestas breves y retírate hacia un lugar seguro en vez de prolongar una confrontación.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        }
+      ],
+      "sources": [
+        {
+          "institution": "OMS",
+          "title": "Violencia juvenil"
+        },
+        {
+          "institution": "KidsHealth",
+          "title": "Salud mental para adolescentes"
+        }
+      ],
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": []
+    },
+    {
+      "id": "violencia-emocional",
+      "title": "Violencia emocional",
+      "keywords": [
+        "maltrato emocional",
+        "humillación",
+        "control",
+        "amenazas",
+        "desvalorización"
+      ],
+      "shortDescription": "Humillaciones, amenazas, control o desvalorización que dañan el bienestar aunque no dejen marcas físicas.",
+      "description": "Es un patrón de comportamientos que puede dañar el bienestar emocional de una persona, como humillaciones, amenazas, intimidación, control excesivo o desvalorización. No siempre deja marcas físicas, pero puede producir consecuencias importantes.",
+      "warningTitle": "¿Cómo identificarla?",
+      "warningSigns": [
+        "Te humillan constantemente.",
+        "Te hacen sentir miedo para conseguir que obedezcas.",
+        "Te amenazan.",
+        "Controlan excesivamente tus relaciones o actividades.",
+        "Te hacen sentir culpable por todo.",
+        "Te desvalorizan de manera constante."
+      ],
+      "warningNote": "Estas señales sirven para observar y pedir orientación cuando haga falta; no son pruebas diagnósticas.",
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actions": {
+        "self": [
+          "Reconoce que el maltrato no es culpa de quien lo recibe.",
+          "Habla con una persona segura.",
+          "Registra las situaciones si hacerlo es seguro.",
+          "Busca apoyo institucional o profesional.",
+          "Si existe peligro, prioriza tu seguridad y busca ayuda inmediata."
+        ]
+      },
+      "tools": [
+        {
+          "name": "Mapa de límites",
+          "icon": "🛡️",
+          "description": "Escribe qué comportamiento no aceptas, qué necesitas, qué puedes controlar y a quién acudir.",
+          "steps": [
+            "Qué comportamiento no acepto.",
+            "Qué necesito.",
+            "Qué puedo controlar.",
+            "A quién puedo acudir si mis límites no son respetados."
+          ],
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        }
+      ],
+      "sources": [
+        {
+          "institution": "OMS",
+          "title": "Violencia juvenil"
+        }
+      ],
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": []
+    },
+    {
+      "id": "violencia-sexual",
+      "title": "Violencia sexual",
+      "keywords": [
+        "abuso sexual",
+        "acoso sexual",
+        "consentimiento",
+        "chantaje",
+        "coerción"
+      ],
+      "safetyNotice": "Este tema puede resultar difícil de leer. Una persona nunca tiene la obligación de aceptar una conducta sexual y nada de lo ocurrido es su culpa. Si estás en peligro inmediato, busca ayuda de emergencia (123). Si eres menor de edad, la Línea 141 del ICBF atiende las 24 horas.",
+      "shortDescription": "Cualquier acto o presión de carácter sexual sin consentimiento. Nunca es culpa de quien lo vive.",
+      "description": "Es cualquier acto, contacto, presión o comportamiento de carácter sexual realizado sin consentimiento o mediante coerción, manipulación, amenaza o aprovechamiento de una situación de vulnerabilidad. Una persona nunca tiene la obligación de aceptar una conducta sexual.",
+      "warningTitle": "¿Cómo identificarla? Puede incluir:",
+      "warningSigns": [
+        "Presión para realizar actos sexuales.",
+        "Contacto sexual no deseado.",
+        "Amenazas o chantaje.",
+        "Difusión de contenido íntimo sin consentimiento.",
+        "Manipulación para obtener imágenes o actos sexuales.",
+        "Aprovechamiento de una situación en la que la persona no puede consentir libremente."
+      ],
+      "warningNote": "",
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actions": {
+        "self": [
+          "Aléjate de la situación si puedes hacerlo de forma segura.",
+          "Cuéntaselo a un adulto o a una persona de confianza.",
+          "Busca atención médica o psicológica cuando sea necesario.",
+          "Si existe peligro inmediato, acude a servicios de emergencia.",
+          "No te culpes por lo ocurrido.",
+          "Si eres menor de edad, es especialmente importante involucrar a un adulto seguro o a las autoridades o profesionales correspondientes cuando exista violencia."
+        ]
+      },
+      "tools": [
+        {
+          "name": "Red de seguridad",
+          "icon": "🛟",
+          "description": "Identifica tres personas o instituciones a las que podrías acudir y cómo contactarlas.",
+          "notEnough": "No sustituye la atención profesional. Si el malestar aumenta o hay riesgo para tu seguridad, busca ayuda de inmediato."
+        }
+      ],
+      "sources": [
+        {
+          "institution": "OMS",
+          "title": "Violencia juvenil"
+        }
+      ],
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": []
+    },
+    {
+      "id": "discriminacion",
+      "title": "Discriminación",
+      "keywords": [
+        "discriminación",
+        "exclusión",
+        "trato injusto",
+        "prejuicio"
+      ],
+      "shortDescription": "Trato injusto o desigual por una característica, identidad o pertenencia a un grupo.",
+      "description": "Es un trato injusto o desigual hacia una persona por una característica, identidad, condición o pertenencia a determinado grupo. Puede producir exclusión, humillación y aislamiento, y afectar el bienestar emocional.",
+      "warningTitle": "¿Cómo identificarla?",
+      "warningSigns": [
+        "Exclusión sistemática.",
+        "Insultos relacionados con una característica personal.",
+        "Trato desigual deliberado.",
+        "Negación injustificada de oportunidades.",
+        "Burlas o ataques dirigidos a una característica específica."
+      ],
+      "warningNote": "Estas señales sirven para observar y pedir orientación cuando haga falta; no son pruebas diagnósticas.",
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actions": {
+        "self": [
+          "Identifica que el problema está en la conducta discriminatoria, no en tu valor como persona.",
+          "Busca personas seguras.",
+          "Informa cuando sea posible.",
+          "Registra los incidentes.",
+          "Evita enfrentamientos que puedan poner en riesgo tu seguridad."
+        ]
+      },
+      "tools": [
+        {
+          "name": "Registro de situaciones",
+          "icon": "📝",
+          "description": "Anota lo ocurrido para poder explicarlo y buscar apoyo.",
+          "steps": [
+            "Qué ocurrió.",
+            "Por qué considero que fue discriminatorio.",
+            "Impacto que tuvo en mí.",
+            "Persona o institución a la que puedo acudir."
+          ],
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        }
+      ],
+      "sources": [
+        {
+          "institution": "OMS",
+          "title": "Violencia juvenil"
+        }
+      ],
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": []
+    },
+    {
+      "id": "entorno-en-riesgo",
+      "title": "Entorno en riesgo",
+      "keywords": [
+        "violencia",
+        "abuso",
+        "amenazas",
+        "peligro",
+        "explotación",
+        "entorno peligroso"
+      ],
+      "safetyNotice": "Si estás en peligro ahora mismo, busca ayuda de emergencia (123) y acércate a una persona o a un lugar seguro. Si eres menor de edad, la Línea 141 del ICBF atiende las 24 horas.",
+      "shortDescription": "Cuando la seguridad o el bienestar están amenazados por violencia, abuso, amenazas o peligros constantes.",
+      "description": "Es un entorno en el que existen factores que pueden amenazar la seguridad o el bienestar de una persona, como violencia, abuso, explotación, amenazas o exposición constante a situaciones peligrosas.",
+      "warningTitle": "¿Cómo identificarlo?",
+      "warningSigns": [
+        "Miedo frecuente dentro o fuera de casa.",
+        "Amenazas.",
+        "Violencia.",
+        "Abuso.",
+        "Presencia constante de situaciones peligrosas.",
+        "Falta de un adulto o de un espacio seguro."
+      ],
+      "warningNote": "",
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actions": {
+        "self": [
+          "Cuando el entorno es peligroso, calmarte o regularte no resuelve el problema de fondo.",
+          "La prioridad es identificar a una persona o institución segura y buscar protección."
+        ]
+      },
+      "tools": [
+        {
+          "name": "Mapa de seguridad",
+          "icon": "🗺️",
+          "description": "Responde estas preguntas para tener claro adónde ir y a quién acudir.",
+          "steps": [
+            "¿Dónde estoy seguro?",
+            "¿Con quién estoy seguro?",
+            "¿A quién puedo llamar?",
+            "¿Qué lugar puedo abandonar si aumenta el peligro?",
+            "¿Qué adulto puede intervenir?"
+          ],
+          "notEnough": "No sustituye la atención profesional. Si el malestar aumenta o hay riesgo para tu seguridad, busca ayuda de inmediato."
+        }
+      ],
+      "sources": [
+        {
+          "institution": "OMS",
+          "title": "Violencia juvenil"
+        }
+      ],
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": []
+    },
+    {
+      "id": "pares",
+      "title": "Presión de pares",
+      "keywords": [
+        "presión de grupo",
+        "amigos",
+        "encajar",
+        "decir que no",
+        "pares"
+      ],
+      "shortDescription": "Cuando el grupo influye en lo que piensas, dices o haces, y cuesta decir que no.",
+      "description": "Es la influencia que pueden ejercer los compañeros para que una persona piense, diga o haga algo. Puede ser directa («hazlo») o indirecta, cuando una persona siente que necesita comportarse de determinada manera para pertenecer al grupo.",
+      "extraSections": [
+        {
+          "title": "¿Cómo puede experimentarse?",
+          "icon": "🧭",
+          "items": [
+            "Miedo a quedar excluido.",
+            "Necesidad de aprobación.",
+            "Dificultad para decir que no.",
+            "Culpa después de aceptar algo que realmente no querías.",
+            "Ansiedad antes de tomar una decisión."
+          ]
+        },
+        {
+          "title": "¿Cómo identificarla?",
+          "icon": "🔎",
+          "lead": "Pregúntate:",
+          "quote": "«Si estuviera solo/a, ¿elegiría hacer esto?»",
+          "text": "Si la respuesta es no y la principal razón para hacerlo es evitar el rechazo, puede existir presión de grupo."
+        }
+      ],
+      "actionsTitle": "¿Cómo afrontarla?",
+      "actions": {
+        "self": [
+          "Prepara frases para decir no.",
+          "Pide tiempo para decidir.",
+          "Aléjate de la situación.",
+          "Busca amigos que respeten tus límites.",
+          "Recuerda que pertenecer a un grupo no exige aceptar todo lo que haga."
+        ]
+      },
+      "tools": [
+        {
+          "name": "Frase de salida",
+          "icon": "✋",
+          "description": "Practica de antemano una frase corta para las situaciones de presión.",
+          "steps": [
+            "«No quiero hacerlo.»",
+            "«Paso.»",
+            "«Eso no es para mí.»",
+            "«Me voy.»"
+          ],
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Regla de pausa",
+          "icon": "⏸️",
+          "description": "Cuando exista presión, no decidas de inmediato. Tómate unos minutos para pensar fuera de la influencia del grupo.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        }
+      ],
+      "sources": [
+        {
+          "institution": "KidsHealth",
+          "title": "La presión de grupo entre los adolescentes",
+          "url": "https://kidshealth.org/es/teens/peer-pressure.html"
+        }
+      ],
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": []
+    },
+    {
+      "id": "aislamiento-soledad",
+      "title": "Aislamiento y soledad",
+      "keywords": [
+        "soledad",
+        "aislamiento",
+        "desconexión",
+        "sentirse solo"
+      ],
+      "shortDescription": "Sentirse desconectado, incluso acompañado, o alejarse de las personas por mucho tiempo.",
+      "description": "La soledad es una experiencia subjetiva de desconexión o falta de vínculos significativos. Una persona puede sentirse sola incluso estando rodeada de personas. El aislamiento puede ser voluntario durante un período y resultar reparador, pero también puede convertirse en un patrón que reduzca las conexiones y empeore el bienestar.",
+      "warningTitle": "Señales de alerta",
+      "warningSigns": [
+        "Dejar de hablar con personas importantes.",
+        "Evitar constantemente actividades.",
+        "Sentirse desconectado incluso acompañado.",
+        "Pérdida de interés por las relaciones.",
+        "Permanecer aislado durante períodos prolongados."
+      ],
+      "warningNote": "Estas señales sirven para observar y pedir orientación cuando haga falta; no son pruebas diagnósticas.",
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actions": {
+        "self": [
+          "Contacta a una persona segura.",
+          "Empieza con interacciones pequeñas.",
+          "Participa en actividades relacionadas con tus intereses.",
+          "Mantén rutinas básicas.",
+          "Pide ayuda si la soledad persiste o se acompaña de tristeza intensa, desesperanza o pensamientos de hacerte daño."
+        ]
+      },
+      "tools": [
+        {
+          "name": "Conexión mínima diaria",
+          "icon": "🔗",
+          "description": "Elige una acción pequeña de conexión: enviar un mensaje, hablar cinco minutos, estudiar acompañado o participar en una actividad.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        }
+      ],
+      "sources": [
+        {
+          "institution": "KidsHealth",
+          "title": "Salud mental para adolescentes"
+        }
+      ],
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": []
+    },
+    {
+      "id": "estres-academico",
+      "title": "Estrés académico",
+      "keywords": [
+        "estrés",
+        "exámenes",
+        "tareas",
+        "notas",
+        "presión escolar"
+      ],
+      "shortDescription": "Estrés por tareas, exámenes, calificaciones y expectativas, que se vuelve intenso o persistente.",
+      "description": "Es el estrés relacionado con las exigencias académicas, como tareas, exámenes, calificaciones, carga de trabajo, expectativas o dificultades para equilibrar estudio y vida personal. Un cierto nivel de estrés puede aparecer ante desafíos, pero cuando se vuelve intenso, persistente o interfiere con el funcionamiento, merece atención.",
+      "experience": {
+        "columns": [
+          {
+            "label": "Mente",
+            "items": [
+              "Preocupación constante.",
+              "Dificultad para concentrarse."
+            ]
+          },
+          {
+            "label": "Cuerpo",
+            "items": [
+              "Tensión y cansancio.",
+              "Cambios en el sueño o el apetito."
+            ]
+          },
+          {
+            "label": "Conducta",
+            "items": [
+              "Procrastinación o evitación.",
+              "Irritabilidad."
+            ]
+          },
+          {
+            "label": "Entorno",
+            "items": [
+              "Acumulación de tareas.",
+              "Conflictos por el rendimiento."
+            ]
+          }
+        ]
+      },
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actions": {
+        "self": [
+          "Identifica qué tareas son realmente urgentes y divide los trabajos grandes.",
+          "Prioriza.",
+          "Incluye pausas y descanso.",
+          "Mantén horarios de sueño.",
+          "Pide ayuda académica cuando la carga sea excesiva.",
+          "Habla con un adulto o profesional si el estrés empieza a afectar seriamente tu funcionamiento."
+        ]
+      },
+      "tools": [
+        {
+          "name": "Descarga mental",
+          "icon": "🧠",
+          "description": "Escribe todas las tareas pendientes y después clasifícalas por prioridad.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Primer paso mínimo",
+          "icon": "👣",
+          "description": "Define una acción que pueda realizarse en pocos minutos.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Plan de recuperación",
+          "icon": "🔄",
+          "description": "Si una jornada salió mal, no intentes compensarla con una sobrecarga extrema. Define qué puede recuperarse hoy y qué puede trasladarse.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        }
+      ],
+      "sources": [
+        {
+          "institution": "MedlinePlus",
+          "title": "Cómo ayudar a un adolescente a lidiar con el estrés"
+        }
+      ],
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": []
+    },
+    {
+      "id": "sueno",
+      "title": "Sueño y salud mental",
+      "keywords": [
+        "sueño",
+        "dormir",
+        "insomnio",
+        "descanso",
+        "somnolencia"
+      ],
+      "shortDescription": "Dormir lo suficiente influye en la atención, el ánimo y el funcionamiento diario.",
+      "description": "El sueño forma parte de los hábitos relacionados con el bienestar durante la adolescencia. Dormir de forma insuficiente puede afectar la atención, el estado de ánimo y el funcionamiento diario. Los adolescentes necesitan, en general, alrededor de 9 horas de sueño cada noche.",
+      "warningTitle": "Señales de que el sueño puede estar afectando el bienestar",
+      "warningSigns": [
+        "Somnolencia durante el día.",
+        "Dificultad para despertar.",
+        "Problemas de concentración.",
+        "Irritabilidad.",
+        "Cambios en el estado de ánimo.",
+        "Dificultad persistente para conciliar o mantener el sueño."
+      ],
+      "warningNote": "Estas señales sirven para observar y pedir orientación cuando haga falta; no son pruebas diagnósticas.",
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actions": {
+        "self": [
+          "Mantén horarios relativamente regulares.",
+          "Crea una rutina previa al sueño.",
+          "Reduce las actividades estimulantes antes de dormir.",
+          "Mantén el dormitorio adecuado para descansar.",
+          "Evita sacrificar sistemáticamente el sueño para estudiar.",
+          "Consulta si los problemas son persistentes o afectan de forma importante tu vida diaria."
+        ]
+      },
+      "tools": [
+        {
+          "name": "Rutina de cierre",
+          "icon": "🌙",
+          "description": "Repite las mismas actividades tranquilas antes de dormir para señalar que el día está terminando.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Registro de sueño",
+          "icon": "📓",
+          "description": "Anota la hora aproximada de acostarte y despertar y la calidad percibida del descanso para identificar patrones.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        }
+      ],
+      "sources": [
+        {
+          "institution": "MedlinePlus",
+          "title": "Los adolescentes y el sueño"
+        }
+      ],
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": []
+    },
+    {
+      "id": "redes-sociales",
+      "title": "Redes sociales y entorno",
+      "keywords": [
+        "redes sociales",
+        "ciberacoso",
+        "comparación social",
+        "entorno digital",
+        "pantallas"
+      ],
+      "shortDescription": "El mundo digital ofrece conexión, pero también riesgos para la autoestima.",
+      "description": "Las plataformas digitales pueden influir en las experiencias sociales, la exposición a información, las relaciones y la percepción que una persona tiene de sí misma. No todas las personas reaccionan igual ni todo uso de redes sociales es perjudicial. El uso pasivo (ver sin interactuar) fomenta la comparación social negativa, lo que daña la autoestima. En Colombia, el 52.2% de los jóvenes ya presenta síntomas de ansiedad, cifra que se agrava ante el ciberacoso.",
+      "warningTitle": "Señales de que el uso puede estar afectando el bienestar",
+      "warningSigns": [
+        "Interferencia con el sueño o el estudio.",
+        "Uso que desplaza constantemente actividades importantes.",
+        "Comparación constante con otras personas.",
+        "Exposición repetida a contenido que genera angustia.",
+        "Dificultad para desconectarse.",
+        "Uso de redes para evitar sistemáticamente emociones o responsabilidades."
+      ],
+      "warningNote": "Estas señales sirven para observar y pedir orientación cuando haga falta; no son pruebas diagnósticas.",
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actions": {
+        "self": [
+          "Observa qué contenido empeora o mejora tu estado.",
+          "Deja de seguir o silencia el contenido que genera malestar.",
+          "Establece momentos sin redes.",
+          "Evita usarlas como única estrategia para manejar emociones.",
+          "Mantén actividades presenciales y relaciones fuera de internet."
+        ]
+      },
+      "flow": {
+        "title": "Pasos de apoyo para alguien en crisis ambiental",
+        "steps": [
+          {
+            "step": "Validar",
+            "description": "No digas «ignóralo»; reconoce que su dolor es real."
+          },
+          {
+            "step": "Desconectar",
+            "description": "Fomenta espacios fuera de línea para actividades físicas o pasatiempos."
+          },
+          {
+            "step": "Identificar",
+            "description": "Ayuda a clarificar si el malestar viene de una persona o situación específica."
+          },
+          {
+            "step": "Denunciar",
+            "description": "Si hay acoso o violencia, busca la intervención de autoridades escolares o legales."
+          }
+        ]
+      },
+      "tools": [
+        {
+          "name": "Auditoría de contenido",
+          "icon": "🔍",
+          "description": "Durante varios días registra qué consumiste y cómo te sentiste antes y después.",
+          "steps": [
+            "Qué consumí.",
+            "Cómo me sentí antes.",
+            "Cómo me sentí después."
+          ],
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        },
+        {
+          "name": "Límite de contexto",
+          "icon": "🚫",
+          "description": "Define momentos específicos sin redes: estudiar, comer, conversar o prepararte para dormir.",
+          "notEnough": "Esta herramienta es una estrategia de autocuidado: no sustituye una evaluación ni la atención de un profesional de la salud."
+        }
+      ],
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": []
+    },
+    {
+      "id": "estres",
+      "title": "Estrés",
+      "keywords": [
+        "estrés",
+        "presión",
+        "agobio",
+        "examenes"
+      ],
+      "shortDescription": "Por qué la persistencia es el factor que convierte al estrés en un riesgo.",
+      "description": "El estrés es una respuesta ante situaciones que una persona percibe como exigentes, amenazantes o difíciles de manejar. No todo estrés es perjudicial: puede ayudarnos a responder ante desafíos. El problema aparece cuando es demasiado intenso, persistente o interfiere con la vida cotidiana. Su persistencia es lo que lo convierte en un riesgo para la salud mental.",
+      "experience": {
+        "columns": [
+          {
+            "label": "Mente",
+            "items": [
+              "Preocupación y pensamientos acelerados.",
+              "Dificultad para concentrarse."
+            ]
+          },
+          {
+            "label": "Cuerpo",
+            "items": [
+              "Tensión y cansancio.",
+              "Cambios en el sueño o el apetito."
+            ]
+          },
+          {
+            "label": "Conducta",
+            "items": [
+              "Irritabilidad.",
+              "Evitación, procrastinación o aislamiento."
+            ]
+          },
+          {
+            "label": "Entorno",
+            "items": [
+              "Dificultades académicas, familiares o sociales."
+            ]
+          }
+        ]
+      },
+      "comparison": {
+        "columns": [
+          "Estrés cotidiano",
+          "Estrés persistente"
+        ],
+        "note": "El factor crítico no es sentir estrés, sino que este se mantenga en el tiempo.",
+        "rows": [
+          {
+            "label": "Origen",
+            "values": [
+              "Causas externas puntuales (ej. un examen mañana).",
+              "Situaciones crónicas (ej. acoso, problemas en casa)."
+            ]
+          },
+          {
+            "label": "Duración",
+            "values": [
+              "Desaparece al resolverse la situación.",
+              "Se mantiene incluso sin una amenaza inmediata presente."
+            ]
+          },
+          {
+            "label": "Impacto físico",
+            "values": [
+              "Alerta temporal del cuerpo.",
+              "Daño a los sistemas inmunitario, digestivo, cardiovascular y reproductivo."
+            ]
+          },
+          {
+            "label": "Consecuencia",
+            "values": [
+              "Motivación para cumplir metas.",
+              "Alto riesgo de desarrollar depresión o trastornos de ansiedad."
+            ]
+          }
+        ]
+      },
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actions": {
+        "self": [
+          "Identifica qué está generando el estrés.",
+          "Separa lo que puedes controlar de lo que no.",
+          "Resuelve primero el problema más concreto.",
+          "Descansa.",
+          "Mantén sueño, alimentación y movimiento adecuados.",
+          "Habla con alguien de confianza.",
+          "Busca ayuda profesional cuando el estrés persiste o interfiere de forma importante."
+        ]
+      },
+      "type": "guide",
+      "helpLink": "contacto.html#emergencia",
+      "resources": [],
+      "sources": []
+    }
+  ]
+}
