@@ -21,14 +21,20 @@ section {
 
 .barra-retorno {
     max-width: 1200px;
-    margin: 0 auto 18px;
+    margin: 20px auto 0;
     padding: 0 20px;
-    display: flex;
+    display:flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
     flex-wrap: wrap;
     box-sizing: border-box;
+    border: 1px solid rgba(70,142,214,.35); border-radius: 999px;
+    background: #fff; color: var(--comprende-azul);
+    font: inherit; font-size: .9rem; font-weight: 700; cursor: pointer;
+    box-shadow: 0 3px 10px rgba(20,67,126,.06);
+    transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
+    
 }
 
 .barra-retorno .volver {
