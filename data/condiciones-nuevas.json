@@ -86,6 +86,18 @@
         {
           "question": "¿El TDAH desaparece al crecer?",
           "answer": "Los síntomas pueden cambiar con la edad. Algunas personas continúan presentando dificultades durante la adolescencia y la adultez."
+        },
+        {
+          "question": "¿El TDAH es falta de interés o pereza?",
+          "answer": "No. Es una condición del neurodesarrollo en la que el cerebro tiene dificultades con la planificación, el enfoque y el control de impulsos, relacionadas con áreas que dependen de la dopamina."
+        },
+        {
+          "question": "¿Por qué puedo jugar videojuegos durante horas pero me cuesta concentrarme 10 minutos en una tarea?",
+          "answer": "Se llama hiperfoco. Los videojuegos dan recompensa y estimulación constantes, mientras que las tareas escolares exigen que la función ejecutiva del cerebro genere ese enfoque de forma manual."
+        },
+        {
+          "question": "¿Se puede tener TDAH sin ser una persona hiperactiva o inquieta?",
+          "answer": "Sí. Existe la presentación predominantemente inatenta (lo que antes se llamaba solo TDA). La hiperactividad puede ser mental: por fuera la persona se ve tranquila y callada, pero por dentro su mente salta de un pensamiento a otro, sueña despierta o pierde el hilo de las conversaciones. Como no interrumpe la clase, muchas veces nadie lo nota y la persona cree, equivocadamente, que es «perezosa» o «despistada»."
         }
       ],
       "tools": [
@@ -599,6 +611,673 @@
           "url": "https://www.minsalud.gov.co/Comunicaciones/noticias/2026/Paginas/gobierno-activa-el-codigo-dorado.aspx"
         }
       ]
+    },
+    {
+      "id": "depresion",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿La depresión es lo mismo que estar triste por un mal día?",
+          "answer": "No. La tristeza es una emoción natural que dura horas o pocos días. La depresión es una condición en la que el desánimo, la falta de energía o la irritabilidad se mantienen casi todos los días durante al menos dos semanas y dificultan hacer las actividades cotidianas."
+        },
+        {
+          "question": "¿Si me da depresión significa que soy una persona «débil»?",
+          "answer": "Para nada. La depresión involucra factores biológicos, genéticos y ambientales. No se trata de «falta de fuerza de voluntad», igual que tener asma o una fractura no es falta de voluntad."
+        },
+        {
+          "question": "¿Se puede superar la depresión sin tratamiento profesional?",
+          "answer": "Aunque algunas personas mejoran con el tiempo, la psicoterapia acelera la recuperación y previene recaídas graves. Buscar ayuda profesional es el camino más seguro."
+        },
+        {
+          "question": "¿Es posible tener depresión aunque sonría, salga con mis amigos y tenga buenas notas?",
+          "answer": "Sí. Muchas personas viven lo que a veces se llama «depresión de alto funcionamiento»: se esfuerzan enormemente por ocultar su dolor detrás de una máscara de normalidad, para no preocupar a sus padres, para no sentirse una carga o por miedo a ser juzgadas. Que alguien ría en el colegio o cumpla con sus tareas no significa que no esté luchando por dentro."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Activación conductual",
+          "icon": "🌅",
+          "evidence": "Muy fuerte: tratamiento de primera línea en la terapia cognitivo-conductual.",
+          "description": "Cuando sentimos depresión, el cerebro nos pide aislarnos o no hacer nada, y eso aumenta la tristeza. La activación conductual consiste en realizar actividades gratificantes o útiles antes de sentir las ganas de hacerlas, lo que ayuda a romper el ciclo de apatía.",
+          "howTo": "Haz una lista de 3 actividades sencillas (por ejemplo, una caminata de 10 minutos, escuchar una canción favorita u ordenar el escritorio). Programa una actividad al día en un horario fijo y cúmplela como un compromiso, sin depender de tu estado de ánimo.",
+          "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud.",
+          "catalogId": "activacion-conductual"
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "Acepta el estado actual:",
+            "text": "Reconoce que estás pasando por un episodio depresivo sin culparte."
+          },
+          {
+            "title": "Mantén rutinas básicas:",
+            "text": "Enfócate en mantener hábitos mínimos de higiene, alimentación y sueño a la misma hora."
+          },
+          {
+            "title": "Comunícalo:",
+            "text": "Cuéntale a un profesor de confianza, al orientador escolar o a tus padres cómo te has sentido."
+          }
+        ],
+        "other": [
+          {
+            "title": "Escucha activa:",
+            "text": "Bríndale un espacio sin juzgar. Evita frases como «échale ganas» o «no tienes motivos para estar triste»."
+          },
+          {
+            "title": "Acompañamiento práctico:",
+            "text": "Invítalo a realizar actividades sencillas sin presionarlo."
+          },
+          {
+            "title": "Avisa a un adulto:",
+            "text": "Si menciona ideas de autolesión o desesperanza profunda, informa de inmediato al colegio o a sus acudientes."
+          }
+        ]
+      }
+    },
+    {
+      "id": "ansiedad",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿Por qué durante un momento de mucha ansiedad siento que me voy a morir o a perder el control?",
+          "answer": "Es una falsa alarma de tu cerebro. Tu sistema nervioso activa el modo de supervivencia y llena tu cuerpo de adrenalina de golpe, lo que produce ahogo, taquicardia o terror intenso. Es una sensación aterradora, pero es tu cuerpo reaccionando a un peligro que no está ahí. La sensación de muerte inminente es temporal: alcanza un pico máximo y luego baja. Si es la primera vez, o tienes dudas, consúltalo con un médico para descartar otras causas."
+        },
+        {
+          "question": "¿Por qué la ansiedad me causa malestares físicos en todo el cuerpo, como temblores, mareos o tensión?",
+          "answer": "Tu mente y tu cuerpo están conectados. Cuando tu cerebro percibe una amenaza (aunque sea imaginaria, como reprobar un examen o el futuro), activa un sistema de emergencia que tensa los músculos, acelera el corazón y cambia el flujo de la sangre para «prepararte para pelear o huir». Eso provoca malestares muy reales, como dolor de estómago, mareos o dolores de cabeza."
+        },
+        {
+          "question": "¿Pensar mucho las cosas (sobrepensar) significa que tengo un trastorno?",
+          "answer": "Sobrepensar de vez en cuando es común. Se vuelve un trastorno cuando los pensamientos catastróficos no se pueden detener y paralizan tu rutina diaria durante meses."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Técnica de enraizamiento 5-4-3-2-1 (grounding)",
+          "icon": "👣",
+          "evidence": "Fuerte: se usa en la terapia cognitivo-conductual y en mindfulness.",
+          "description": "Ayuda a reconectar la mente con el presente físico y la aleja de los pensamientos catastróficos sobre el futuro.",
+          "howTo": "Mira a tu alrededor e identifica, en voz alta o mentalmente:",
+          "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud.",
+          "steps": [
+            "5 cosas que puedas ver.",
+            "4 cosas que puedas tocar (por ejemplo, tu ropa o el escritorio).",
+            "3 sonidos que puedas escuchar.",
+            "2 olores que puedas percibir.",
+            "1 sabor (o una cualidad positiva sobre ti)."
+          ],
+          "catalogId": "grounding"
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "Aplica el 5-4-3-2-1:",
+            "text": "Hazlo apenas notes que los pensamientos te abruman."
+          },
+          {
+            "title": "Escribe tus pensamientos:",
+            "text": "Pon en un cuaderno qué te preocupa y califica del 1 al 10 qué tan probable es que eso ocurra en la realidad."
+          }
+        ],
+        "other": [
+          {
+            "title": "Ayúdale a concentrarse en el presente:",
+            "text": "Pídele que te mire a los ojos o que sienta sus pies apoyados firmemente en el suelo."
+          },
+          {
+            "title": "Valida su emoción:",
+            "text": "Dile: «Entiendo que esto da miedo, pero estás a salvo aquí conmigo»."
+          }
+        ]
+      }
+    },
+    {
+      "id": "fobia-social",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿La ansiedad social es lo mismo que ser tímido?",
+          "answer": "No. La timidez es un rasgo de personalidad que no genera gran malestar. La ansiedad social produce un miedo intenso a ser juzgado, humillado o rechazado, y lleva a evitar exposiciones escolares o eventos sociales."
+        },
+        {
+          "question": "¿Es verdad que las personas con ansiedad social no quieren tener amigos y prefieren estar solas?",
+          "answer": "No, es un mito. La mayoría de los adolescentes con ansiedad social desean profundamente encajar, hacer amigos y participar en actividades grupales. El problema es que el miedo a ser juzgados, rechazados o a hacer el ridículo actúa como un muro. Esa «preferencia» por estar solos no es falta de interés en los demás, sino una forma de protegerse de la angustia que les genera la interacción."
+        },
+        {
+          "question": "¿Es mi culpa sentir este miedo tan irracional al intentar hablar con mis compañeros?",
+          "answer": "No. La ansiedad social tiene bases biológicas (por ejemplo, una región del cerebro llamada amígdala que reacciona de más) y factores del entorno. No es un defecto de tu personalidad ni significa que seas «cobarde». Es una condición real y tratable."
+        },
+        {
+          "question": "¿Se puede superar el miedo a interactuar con los demás?",
+          "answer": "Sí. Con exposición gradual y técnicas para reestructurar el pensamiento, la persona recupera la confianza."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Exposición gradual guiada",
+          "icon": "🪜",
+          "evidence": "Muy fuerte: estándar de oro en las terapias conductuales.",
+          "description": "Consiste en afrontar las situaciones temidas de forma escalonada, demostrándole al cerebro que no son peligrosas.",
+          "howTo": "Haz una «escalera de miedos» del 1 al 5. Empieza practicando el nivel 1 hasta que la ansiedad baje, antes de pasar al nivel 2. Ejemplo:",
+          "notEnough": "Funciona mejor con el acompañamiento de un profesional, sobre todo si el miedo es muy intenso. No sustituye una evaluación ni el tratamiento.",
+          "steps": [
+            "Nivel 1: saludar a un compañero.",
+            "Nivel 2: hacer una pregunta en clase.",
+            "Nivel 3: exponer 1 minuto.",
+            "Y así hasta el nivel 5."
+          ]
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "Centra la atención hacia afuera:",
+            "text": "En lugar de pensar en cómo te ves o si estás sudando, enfócate en el mensaje que vas a decir o en la persona con la que hablas."
+          },
+          {
+            "title": "Recuerda:",
+            "text": "La mayoría de las personas están concentradas en sus propios asuntos y no en juzgarte."
+          }
+        ],
+        "other": [
+          {
+            "title": "No lo expongas bruscamente:",
+            "text": "No lo obligues a hablar en público por sorpresa."
+          },
+          {
+            "title": "Refuerza sus pequeños logros:",
+            "text": "Reconoce cuando participe o interactúe con el grupo."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tca",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿Los TCA son solo un problema de vanidad o moda?",
+          "answer": "No. Son trastornos mentales graves caracterizados por una relación obsesiva con la comida, el peso y la imagen corporal, motivados por dinámicas emocionales profundas."
+        },
+        {
+          "question": "¿Contar calorías o pesarse todos los días es una señal de alarma?",
+          "answer": "Sí. Cuando la alimentación, el ejercicio o el peso dejan de ser un hábito de autocuidado y se convierten en una obsesión que te genera culpa, ocupa gran parte de tus pensamientos o condiciona tu estado de ánimo diario, es una señal de que tu relación con la comida se está volviendo peligrosa y necesitas apoyo profesional."
+        },
+        {
+          "question": "¿Es posible desarrollar un TCA por intentar comer 100 % «saludable» o estar a dieta todo el tiempo?",
+          "answer": "Sí. Existe una alteración llamada ortorexia: la obsesión extrema por comer solo alimentos considerados «puros», «limpios» o «sanos». Muchas veces empieza con una intención genuina de cuidar la salud o mejorar el rendimiento deportivo, y se convierte en un trastorno cuando la persona elimina grupos enteros de alimentos, siente una culpa destructiva si rompe sus propias reglas y deja de ir a cumpleaños o salidas escolares por miedo a la comida que se va a servir."
+        },
+        {
+          "question": "¿Qué debo hacer si siento la necesidad de vomitar o de hacer ejercicio excesivo después de comer?",
+          "answer": "Busca ayuda médica y psicológica de inmediato. Estos comportamientos representan un peligro significativo para tu organismo."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Desintoxicación digital de la imagen corporal",
+          "icon": "📵",
+          "evidence": "Moderada a fuerte: recomendación preventiva de la OMS y la APA.",
+          "description": "Consiste en reducir la exposición a contenidos que promueven ideales corporales inalcanzables o dietas restrictivas, para proteger la autoestima.",
+          "howTo": "Revisa tus redes sociales. Deja de seguir o silencia las cuentas que te hagan sentir mal con tu cuerpo o que promuevan hábitos de alimentación extremos.",
+          "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud."
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "Pide ayuda a un adulto:",
+            "text": "Habla con tus padres, el médico o el psicólogo escolar sobre lo que sientes al comer."
+          },
+          {
+            "title": "Evita pesarte constantemente:",
+            "text": "Guarda o retira la báscula de tu habitación."
+          }
+        ],
+        "other": [
+          {
+            "title": "Evita hacer comentarios sobre su físico:",
+            "text": "No elogies ni critiques su peso o apariencia."
+          },
+          {
+            "title": "Ofrece un acompañamiento enfocado en las emociones:",
+            "text": "Pregúntale «¿cómo te sientes?» en lugar de hablar de comida."
+          }
+        ]
+      }
+    },
+    {
+      "id": "tdc",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿Qué diferencia al TDC de una inseguridad normal sobre la apariencia?",
+          "answer": "En la inseguridad común, la persona nota un detalle de su aspecto pero sigue con su vida. En el TDC, la preocupación por un «defecto» (real o imperceptible para otros) consume horas al día y causa un sufrimiento que lleva a aislarse."
+        },
+        {
+          "question": "¿Por qué compararme con mis compañeros o con cantantes me hace sentir que mi cuerpo está «mal»?",
+          "answer": "En la adolescencia el cuerpo cambia rápido y es normal buscar referentes. En el TDC, el cerebro distorsiona esa comparación: se enfoca obsesivamente en un supuesto «defecto» que los demás apenas notan y crea la ilusión de que tu valor depende exclusivamente de cómo te ves frente a estándares que, muchas veces, son irreales."
+        },
+        {
+          "question": "¿Por qué le pregunto a mis amigos y familiares constantemente si me veo bien, pero sus respuestas nunca me convencen?",
+          "answer": "Esa necesidad de preguntar (la búsqueda de reaseguro) es una compulsión que haces para intentar apagar la ansiedad. En el TDC existe una distorsión en cómo percibes tu imagen: te ves distinto a como te ven los demás. Por eso, cuando alguien te dice «te ves bien, no se nota», el alivio dura solo un par de minutos y luego la duda y la angustia regresan."
+        },
+        {
+          "question": "¿De qué manera las redes sociales (como TikTok o Instagram) empeoran el rechazo hacia mi propio cuerpo?",
+          "answer": "Las redes exponen a los adolescentes a una avalancha constante de vidas curadas, ángulos calculados y cuerpos «ideales» que casi siempre están modificados digitalmente. Pasar horas ahí entrena al cerebro para rechazar la normalidad de un cuerpo real (con poros, asimetrías, manchas o distintas formas), lo que aumenta la insatisfacción y alimenta la obsesión característica del TDC."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Retraso de la comprobación en el espejo",
+          "icon": "🪞",
+          "evidence": "Fuerte: técnica de prevención de respuesta de la terapia cognitivo-conductual.",
+          "description": "Consiste en interrumpir poco a poco los hábitos de inspección para reducir la ansiedad.",
+          "howTo": "Cuando sientas el impulso de mirarte al espejo o de tomarte fotos para comprobar tu aspecto, pon un temporizador de 10 minutos. Durante ese tiempo haz otra actividad. Con la práctica, extiende el tiempo de espera.",
+          "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud."
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "Reconoce la distorsión:",
+            "text": "Recuerda que tu cerebro está amplificando ese detalle y que las demás personas no lo perciben con la misma intensidad."
+          },
+          {
+            "title": "Cubre los espejos de revisión:",
+            "text": "Limita los espejos en los que sueles hacer inspecciones detalladas."
+          }
+        ],
+        "other": [
+          {
+            "title": "No entres en debates:",
+            "text": "Evita discutir sobre si el defecto existe o no."
+          },
+          {
+            "title": "Valida su dolor:",
+            "text": "Dile: «Veo que estás sufriendo mucho por esto, apoyémonos en un profesional»."
+          }
+        ]
+      }
+    },
+    {
+      "id": "toc",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿Tener el cuarto ordenado o lavarse las manos con frecuencia significa tener TOC?",
+          "answer": "No. El orden y la higiene son hábitos. El TOC involucra pensamientos intrusivos no deseados que generan angustia intensa (obsesiones) y acciones repetitivas que la persona se siente obligada a hacer para calmar esa ansiedad (compulsiones)."
+        },
+        {
+          "question": "¿Por qué vienen a mi mente pensamientos horribles o raros que yo no quiero tener?",
+          "answer": "Son pensamientos intrusivos. Todas las personas los tienen, pero el cerebro con TOC se engancha en ellos y los interpreta como una amenaza real o como una muestra de «mala personalidad»."
+        },
+        {
+          "question": "¿Qué pasa si me resisto a hacer una compulsión (como verificar la puerta o contar)?",
+          "answer": "Al principio la ansiedad sube, pero si no realizas el ritual, con el tiempo baja por sí sola. Esto le enseña a tu cerebro que la compulsión no es necesaria."
+        },
+        {
+          "question": "¿El TOC se cura solo?",
+          "answer": "Requiere acompañamiento terapéutico especializado (terapia de exposición y prevención de respuesta) para reentrenar la respuesta del cerebro."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Desidentificación del pensamiento (defusión cognitiva)",
+          "icon": "🌥️",
+          "evidence": "Fuerte: terapia de aceptación y compromiso.",
+          "description": "Consiste en aprender a ver los pensamientos como eventos mentales temporales, no como verdades ni órdenes.",
+          "howTo": "Cuando aparezca una obsesión, di mentalmente: «Estoy teniendo el pensamiento intrusivo de que...». No intentes discutir con el pensamiento ni borrarlo: déjalo pasar como una nube en el cielo.",
+          "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud."
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "Identifica la obsesión:",
+            "text": "Etiquétala: «Esto es solo mi TOC molestando, no es una amenaza real»."
+          },
+          {
+            "title": "Resiste el ritual:",
+            "text": "Intenta retrasar la compulsión unos minutos."
+          }
+        ],
+        "other": [
+          {
+            "title": "No participes en los rituales:",
+            "text": "Si te pide que le asegures que todo está limpio o seguro, responde con amabilidad: «Sabes que mi respuesta alimenta la duda del TOC; prefiero acompañarte a respirar»."
+          }
+        ]
+      }
+    },
+    {
+      "id": "psicosis",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿Por qué la mente adolescente a veces confunde lo que es real con lo que no lo es?",
+          "answer": "Durante la adolescencia el cerebro atraviesa una etapa de reestructuración muy intensa. En algunas personas, por su genética o por situaciones de estrés extremo, el equilibrio de los químicos del cerebro (como la dopamina) se altera. Esto hace que el cerebro procese pensamientos, miedos internos o recuerdos como si fueran imágenes o voces reales que vienen de afuera."
+        },
+        {
+          "question": "¿Las personas con trastornos psicóticos son agresivas, como muestran las películas o series?",
+          "answer": "No: es uno de los mitos más dañinos. Las películas exageran los síntomas para crear terror. Las personas con experiencias psicóticas tienen muchas más probabilidades de ser víctimas de violencia que de ejercerla. Durante un episodio, la persona suele estar aterrada y confundida, y tiende a esconderse o aislarse, no a atacar a otros."
+        },
+        {
+          "question": "¿Se puede tratar un episodio psicótico?",
+          "answer": "Sí. Con atención médica y psiquiátrica oportuna, la mayoría de las personas logran estabilizarse y continuar con su vida diaria."
+        },
+        {
+          "question": "¿Tener una alucinación o escuchar algo raro una vez significa que tendré psicosis para siempre?",
+          "answer": "No. Un episodio aislado puede ocurrir por una falta severa de sueño, una fiebre muy alta, un ataque de pánico extremo o un estrés intenso. Solo un especialista en salud mental puede evaluar si se trata de un trastorno prolongado o de una reacción temporal ante una situación agotadora."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Reducción estructural de estímulos",
+          "icon": "🌙",
+          "evidence": "Fuerte: protocolos internacionales de primeros auxilios psicológicos y salud mental.",
+          "description": "Ante la sobrecarga de procesamiento del cerebro, disminuir la estimulación sensorial ayuda a reducir el miedo y la desorganización.",
+          "howTo": "Busca un espacio tranquilo, con poca luz, sin música ni ruidos fuertes, y permanece en compañía de alguien de confianza.",
+          "notEnough": "Esta herramienta no sustituye la atención médica. Si hay confusión, miedo intenso o riesgo, busca ayuda de un adulto o de urgencias de inmediato."
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "Busca a un adulto de forma inmediata:",
+            "text": "Di: «Me siento muy confundido con lo que estoy sintiendo o escuchando, necesito ayuda»."
+          },
+          "Evita estar a solas."
+        ],
+        "other": [
+          {
+            "title": "No debatas sobre sus alucinaciones o ideas:",
+            "text": "No le digas que está «loco» ni intentes convencerlo de que lo que ve no es real."
+          },
+          {
+            "title": "Muestra empatía por su emoción:",
+            "text": "Dile: «Entiendo que sientas miedo por eso que escuchas. Yo no lo escucho, pero estoy aquí para cuidarte»."
+          },
+          "Llama a emergencias (en Colombia, el 123) o contacta a un adulto de inmediato."
+        ]
+      }
+    },
+    {
+      "id": "tae",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿Por qué la falta de luz solar afecta directamente la química de mi cerebro?",
+          "answer": "La luz natural entra por tus ojos y envía señales al cerebro para regular hormonas importantes. Cuando hay poca luz, el cerebro produce más melatonina (la hormona que da sueño) y reduce la serotonina (el neurotransmisor que regula la energía y el buen humor). Este desajuste biológico contribuye al bajón emocional."
+        },
+        {
+          "question": "¿Por qué ocurre este cambio en el estado de ánimo?",
+          "answer": "La reducción de luz natural altera los niveles de melatonina y serotonina, y desajusta el reloj biológico (ritmo circadiano) que regula el sueño y el ánimo."
+        },
+        {
+          "question": "¿Sentir más cansancio o querer comer más en días lluviosos es síntoma de TAE?",
+          "answer": "Es una respuesta común del cuerpo. En el TAE, en cambio, el cansancio paraliza a la persona y le impide cumplir con sus deberes."
+        },
+        {
+          "question": "¿Ocurre en países caribeños o tropicales?",
+          "answer": "Es menos frecuente que en países con inviernos marcados, pero puede presentarse en épocas de lluvias prolongadas o ante cambios drásticos en la rutina de luz solar."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Higiene de luz natural",
+          "icon": "☀️",
+          "evidence": "Fuerte: fundamento de la terapia de luz y la cronoterapia.",
+          "description": "Consiste en sincronizar el reloj interno del cerebro recibiendo luz solar directa temprano en la mañana.",
+          "howTo": "Al levantarte, abre las cortinas y exponte a la luz natural durante 15 a 30 minutos, sin mirar directamente al sol. Mantén horarios fijos para ir a dormir y para levantarte.",
+          "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud."
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "Haz actividad física matutina:",
+            "text": "Mueve tu cuerpo al aire libre por la mañana para estimular la activación cerebral."
+          },
+          {
+            "title": "No te aísles en la oscuridad:",
+            "text": "Mantén iluminados los espacios de estudio y descanso."
+          }
+        ],
+        "other": [
+          "Motívalo a realizar salidas breves durante el día.",
+          "Acompáñalo en actividades al aire libre."
+        ]
+      }
+    },
+    {
+      "id": "tddea",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿El TDDEA es solo un «berrinche» o falta de educación?",
+          "answer": "No. Es una condición en la que el adolescente tiene estallidos de enojo frecuentes e intensos ante frustraciones pequeñas, y se mantiene irritable la mayor parte del tiempo entre un episodio y otro."
+        },
+        {
+          "question": "¿Cómo se diferencia del mal genio normal en la adolescencia?",
+          "answer": "Los cambios de humor adolescentes son pasajeros. En el TDDEA, las explosiones de rabia ocurren tres o más veces por semana y son desproporcionadas a la situación."
+        },
+        {
+          "question": "¿Un adolescente con TDDEA es una persona agresiva por elección?",
+          "answer": "No. Tiene una dificultad neurobiológica importante para autorregular sus emociones cuando siente frustración."
+        },
+        {
+          "question": "¿Los eventos estresantes o los traumas pueden empeorar estos estallidos?",
+          "answer": "Sí. Crecer en entornos muy estresantes o haber vivido experiencias traumáticas reduce la tolerancia a la frustración e intensifica las respuestas impulsivas."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Técnica del semáforo emocional",
+          "icon": "🚦",
+          "evidence": "Fuerte: terapia conductual y programas de inteligencia emocional.",
+          "description": "Ayuda a identificar las señales físicas del enojo antes de que la conducta se descontrole.",
+          "howTo": "Usa los tres colores:",
+          "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud.",
+          "steps": [
+            {
+              "title": "🔴 Luz roja (detente):",
+              "text": "cuando notes palpitaciones o puños cerrados, haz una pausa y aléjate de la situación."
+            },
+            {
+              "title": "🟡 Luz amarilla (piénsalo):",
+              "text": "respira hondo y busca alternativas para resolver el problema."
+            },
+            {
+              "title": "🟢 Luz verde (actúa):",
+              "text": "expresa tu molestia de forma calmada o toma una decisión."
+            }
+          ]
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "Usa la «pausa táctica»:",
+            "text": "Al sentir rabia, di «Necesito un momento» y retírate a un lugar tranquilo hasta calmarte."
+          }
+        ],
+        "other": [
+          {
+            "title": "Mantén la calma y el espacio seguro:",
+            "text": "No le grites ni intentes razonar en medio de la crisis de rabia."
+          },
+          {
+            "title": "Espera a que pase la ola:",
+            "text": "Habla con la persona únicamente cuando su cuerpo se haya relajado."
+          }
+        ]
+      }
+    },
+    {
+      "id": "panico",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿Es lo mismo tener mucha ansiedad que tener un trastorno de pánico?",
+          "answer": "La ansiedad suele ser una preocupación constante que crece poco a poco. Un ataque de pánico, en cambio, es una explosión súbita de terror extremo que aparece sin un peligro real a la vista y que alcanza su peor momento en pocos minutos."
+        },
+        {
+          "question": "¿Me puedo desmayar durante un ataque de pánico?",
+          "answer": "Es muy raro. Aunque sientas mareo y creas que vas a colapsar, el cuerpo está lleno de adrenalina, lo que hace que la presión arterial suba, no que baje (que es lo que ocurre en un desmayo real)."
+        },
+        {
+          "question": "¿Por qué de repente me da miedo salir de mi casa o ir a lugares llenos de gente?",
+          "answer": "Se conoce como agorafobia y es muy común en el trastorno de pánico. Después de un ataque, el cerebro desarrolla un miedo profundo a que te dé otro en un lugar público donde sea vergonzoso, difícil escapar o donde no puedas recibir ayuda rápida."
+        },
+        {
+          "question": "¿Cuánto dura realmente un ataque de pánico?",
+          "answer": "El pico de máximo terror dura entre 5 y 10 minutos. Aunque después te sientas agotado, tembloroso o asustado durante horas, la respuesta biológica extrema del cuerpo no puede mantenerse por mucho tiempo."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Cambio de temperatura (estimulación del nervio vago)",
+          "icon": "💧",
+          "evidence": "Fuerte: terapia dialéctico conductual (DBT).",
+          "description": "El agua fría activa el «reflejo de inmersión» de los mamíferos. Esto lleva al cerebro a enviar señales al corazón para que baje sus latidos, lo que ayuda a interrumpir el circuito del pánico.",
+          "howTo": "Si sientes que viene un ataque de pánico, ve al baño y mójate la cara con agua fría, o apoya una toalla fría sobre la cara y el cuello. Concéntrate solo en la sensación del frío.",
+          "notEnough": "No uses agua helada. Si tienes algún problema del corazón u otra condición médica, consulta antes con un profesional. Esta herramienta no sustituye una evaluación."
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "No luches contra el ataque:",
+            "text": "Repítete mentalmente: «Esto es adrenalina. Es desagradable, pero no es peligroso. Va a pasar». Pelear contra el ataque genera más tensión."
+          },
+          {
+            "title": "Respiración en caja (square breathing):",
+            "text": "Inhala contando hasta 4, sostén el aire contando hasta 4, exhala contando hasta 4 y mantén los pulmones vacíos contando hasta 4. Si respirar así aumenta la sensación de ahogo, mejor usa el grounding."
+          }
+        ],
+        "other": [
+          {
+            "title": "Transmite seguridad:",
+            "text": "No digas «cálmate». Di con voz suave y firme: «Estás teniendo un ataque de pánico, tu cerebro te está engañando, pero yo estoy aquí y estás a salvo»."
+          },
+          {
+            "title": "Guíalo en la respiración:",
+            "text": "Respira despacio y de forma visible frente a la persona y pídele que iguale tu ritmo."
+          }
+        ]
+      }
+    },
+    {
+      "id": "bipolar",
+      "merge": true,
+      "faq": [
+        {
+          "question": "¿Cambiar de humor varias veces al día significa que soy bipolar?",
+          "answer": "No. Los cambios de humor por cosas que te pasan en el colegio o con tu familia son comunes en la adolescencia. El trastorno bipolar implica episodios de depresión profunda y episodios de energía extrema (manía) que duran días o semanas, sin importar lo que esté pasando a tu alrededor."
+        },
+        {
+          "question": "¿Ser bipolar significa que cambio de humor cada cinco minutos?",
+          "answer": "No, es un mito común. En este trastorno los cambios de ánimo no ocurren de un minuto a otro ni en un mismo día. La persona puede pasar semanas o incluso meses con una tristeza profunda y luego varias semanas con una energía extrema y descontrolada. Los cambios rápidos de humor a lo largo de un día son normales en la adolescencia."
+        },
+        {
+          "question": "¿El lado de «mucha energía» en este trastorno es simplemente estar muy feliz?",
+          "answer": "No es una felicidad normal. Aunque al principio la persona se sienta increíble y crea que puede lograr cualquier cosa, su cerebro se acelera sin control: puede dejar de dormir durante días sin sentir cansancio, hablar tan rápido que cuesta entenderle y tomar decisiones muy peligrosas o impulsivas sin medir las consecuencias."
+        },
+        {
+          "question": "¿Una persona con trastorno bipolar puede llevar una vida normal?",
+          "answer": "Sí. Con el tratamiento médico adecuado y apoyo psicológico, un adolescente con trastorno bipolar puede estudiar, tener relaciones sanas y cumplir sus metas."
+        }
+      ],
+      "tools": [
+        {
+          "name": "Mapeo de rutinas y ritmos sociales",
+          "icon": "🗓️",
+          "evidence": "Fuerte: tratamiento respaldado por la APA (terapia de ritmos interpersonales y sociales).",
+          "description": "El cerebro con trastorno bipolar es muy sensible a los cambios de rutina, sobre todo a la falta de sueño, que puede desencadenar una fase de manía.",
+          "howTo": "Mantén una hora fija para irte a dormir y para despertarte, incluso los fines de semana. Lleva un registro o diario de tu estado de ánimo (puedes usar una app) para detectar pequeños picos de energía o bajones antes de que se conviertan en un episodio mayor.",
+          "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud.",
+          "catalogId": "rutinas"
+        }
+      ],
+      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionLabels": {
+        "self": "Si te pasa a ti",
+        "other": "Si le pasa a alguien cercano"
+      },
+      "actions": {
+        "self": [
+          {
+            "title": "Regla de las 24 horas:",
+            "text": "Si estás en una fase de demasiada energía, ideas brillantes de golpe o ganas de gastar dinero, pospón cualquier decisión importante al menos 24 horas."
+          },
+          {
+            "title": "Contacta a tu red de apoyo:",
+            "text": "Avisa a tus padres o a tu médico si llevas dos días durmiendo menos de 4 horas sin sentir fatiga."
+          }
+        ],
+        "other": [
+          {
+            "title": "En fase depresiva:",
+            "text": "Acompáñalo con activación conductual suave y escucha empática, como en la depresión."
+          },
+          {
+            "title": "En fase de manía:",
+            "text": "Si la persona habla rápido, con ideas irreales y comportamientos de riesgo, no intentes debatir. Avisa de inmediato a un adulto responsable o a su profesional de la salud, ya que en ese estado su cerebro no evalúa bien el peligro."
+          }
+        ]
+      }
     }
   ]
 }

@@ -1,22 +1,85 @@
 {
   "title": "Herramientas para sentirte mejor",
+  "generalNote": "Estas herramientas son estrategias de autocuidado y afrontamiento. Pueden ayudar a manejar determinadas emociones, pensamientos o situaciones, pero no diagnostican ni sustituyen atención psicológica o médica. No todas funcionan igual para todas las personas. Si una herramienta aumenta tu malestar, puedes detenerla y probar otra.",
   "tools": [
     {
       "id": "respiracion",
       "icon": "🌬️",
       "title": "Respiración consciente",
-      "shortDescription": "Prestar atención a la respiración unos minutos para volver al presente.",
-      "description": "Prestar atención deliberadamente a la respiración durante unos minutos puede ayudar a dirigir la atención hacia el momento presente y disminuir la activación en algunas situaciones.",
+      "shortDescription": "Una pausa para observar tu respiración y bajar la activación.",
+      "description": [
+        "Es una práctica en la que diriges deliberadamente la atención hacia la respiración. Puede utilizarse para hacer una pausa, observar el estado corporal y disminuir la activación cuando estás alterado.",
+        "No se trata de «respirar perfecto» ni de obligarte a respirar profundamente."
+      ],
       "sections": [
         {
-          "title": "Cómo hacerlo",
-          "icon": "🧭",
-          "steps": [
-            "Siéntate en una posición cómoda.",
-            "Observa cómo entra y sale el aire sin intentar hacerlo perfecto.",
-            "Si la atención se va, vuelve suavemente a la respiración."
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Puede ser útil cuando:",
+          "items": [
+            "estás muy tenso;",
+            "estás preocupado;",
+            "sientes que necesitas hacer una pausa;",
+            "tienes dificultad para concentrarte en lo que está ocurriendo ahora;",
+            "quieres crear unos minutos de calma antes de responder a una situación."
+          ]
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "lead": "Puedes utilizarla:",
+          "items": [
+            "antes de un examen;",
+            "después de una discusión;",
+            "antes de responder un mensaje cuando estás muy alterado;",
+            "durante una pausa;",
+            "al notar tensión o aceleración emocional."
           ],
-          "note": "Si concentrarte en la respiración aumenta tu ansiedad, puedes cambiar a otra herramienta de regulación."
+          "text": "No tienes que esperar a estar en crisis para practicarla."
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            {
+              "title": "Detente.",
+              "text": "Busca una posición cómoda."
+            },
+            {
+              "title": "Observa tu respiración.",
+              "text": "Sin modificarla inmediatamente, nota cómo entra y sale el aire."
+            },
+            {
+              "title": "Dirige la atención.",
+              "text": "Puedes prestar atención al movimiento del abdomen, el pecho o la sensación del aire."
+            },
+            {
+              "title": "Respira de manera cómoda.",
+              "text": "No necesitas hacer respiraciones exageradamente profundas."
+            },
+            {
+              "title": "Cuando aparezca una distracción, vuelve.",
+              "text": "Si aparece un pensamiento, no necesitas eliminarlo. Reconócelo y vuelve a la respiración."
+            },
+            "Continúa durante unos minutos."
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Pregúntate:",
+          "quote": "¿Estoy un poco más tranquilo/a que antes?",
+          "text": "Si la respuesta es sí, puedes continuar con lo que estabas haciendo. Si sigues muy alterado/a, no significa que lo hayas hecho mal: puedes probar grounding, movimiento, hablar con alguien o retirar temporalmente el estímulo que está generando malestar."
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Puede funcionar como una pausa entre una emoción intensa y una reacción inmediata."
+        },
+        {
+          "title": "Importante",
+          "icon": "⚠️",
+          "text": "Si concentrarte en la respiración aumenta tu ansiedad, sensación de ahogo o incomodidad, detén el ejercicio y prueba otra estrategia, como grounding o prestar atención a elementos externos."
         }
       ]
     },
@@ -24,18 +87,72 @@
       "id": "grounding",
       "icon": "👣",
       "title": "Grounding: conexión con el presente",
-      "shortDescription": "Dirigir la atención a lo que hay a tu alrededor ahora mismo.",
-      "description": "Es una estrategia para dirigir la atención hacia elementos presentes en el entorno.",
+      "shortDescription": "Dirigir la atención a lo que puedes percibir ahora mismo.",
+      "description": [
+        "Es una estrategia que dirige la atención hacia lo que puedes percibir en el momento presente.",
+        "Puede ser útil cuando tus pensamientos están completamente concentrados en una preocupación, recuerdo, miedo o sensación de desconexión."
+      ],
       "sections": [
         {
-          "title": "Ejercicio",
-          "icon": "🧭",
-          "text": "Observa y nombra objetos, sonidos, sensaciones físicas y elementos del entorno que puedas percibir ahora mismo."
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Puede ayudarte a:",
+          "items": [
+            "regresar la atención al presente;",
+            "disminuir la atención excesiva sobre pensamientos repetitivos;",
+            "orientarte hacia tu entorno;",
+            "hacer una pausa antes de reaccionar."
+          ]
         },
         {
-          "title": "Objetivo",
-          "icon": "🎯",
-          "text": "Volver la atención al presente, especialmente cuando los pensamientos están muy concentrados en preocupaciones."
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "lead": "Especialmente cuando:",
+          "items": [
+            "sientes que tus pensamientos están desbordados;",
+            "estás muy preocupado;",
+            "estás atrapado en pensamientos repetitivos;",
+            "necesitas volver a concentrarte en lo que está ocurriendo ahora."
+          ]
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            "Mira a tu alrededor.",
+            {
+              "title": "Identifica objetos que puedas ver.",
+              "text": "No es necesario seguir una cantidad rígida. Puedes comenzar nombrando cinco."
+            },
+            {
+              "title": "Identifica sonidos.",
+              "text": "Escucha los sonidos cercanos y lejanos."
+            },
+            {
+              "title": "Identifica sensaciones físicas.",
+              "text": "Por ejemplo: pies sobre el suelo, espalda apoyada, temperatura del ambiente, textura de la ropa."
+            },
+            {
+              "title": "Describe mentalmente lo que observas.",
+              "text": "Por ejemplo: «Estoy sentado en mi habitación. Hay una ventana frente a mí. Puedo escuchar...»"
+            },
+            {
+              "title": "Termina con una orientación sencilla.",
+              "text": "«Estoy aquí, ahora. Esto es lo que está ocurriendo en este momento.»"
+            }
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Haz una pregunta:",
+          "quote": "¿Qué necesito hacer durante los próximos 10 minutos?",
+          "text": "El objetivo no es resolver toda tu vida en ese momento, sino recuperar suficiente estabilidad para decidir el siguiente paso."
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Ayuda a desplazar temporalmente la atención desde pensamientos internos abrumadores hacia información presente y concreta."
         }
       ]
     },
@@ -43,20 +160,69 @@
       "id": "actividad-fisica",
       "icon": "🏃",
       "title": "Actividad física",
-      "shortDescription": "El movimiento regular forma parte de los hábitos de bienestar.",
-      "description": "El movimiento regular forma parte de los hábitos relacionados con el bienestar físico y mental.",
+      "shortDescription": "Movimiento regular o ligero como parte del bienestar.",
+      "description": [
+        "Es incorporar movimiento corporal de manera regular o utilizar movimiento ligero como parte del afrontamiento cotidiano.",
+        "Puede ser caminar, bailar, practicar un deporte, montar bicicleta, estirarse o realizar otra actividad adecuada para la persona."
+      ],
       "sections": [
         {
-          "title": "Algunas opciones",
-          "icon": "🧭",
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "La actividad física forma parte de hábitos asociados con el bienestar físico y mental. Puede servir para:",
           "items": [
-            "Caminar.",
-            "Bailar.",
-            "Practicar un deporte.",
-            "Estirarse.",
-            "Otra actividad adecuada para tu condición física."
+            "interrumpir períodos prolongados de inactividad;",
+            "cambiar de ambiente;",
+            "liberar tensión;",
+            "incorporar una actividad agradable;",
+            "favorecer rutinas saludables."
+          ]
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "lead": "Puede incorporarse:",
+          "items": [
+            "durante una pausa;",
+            "después de pasar mucho tiempo sentado;",
+            "cuando necesitas cambiar de ambiente;",
+            "como parte de una rutina semanal."
           ],
-          "note": "No debe utilizarse como castigo ni como compensación por comer."
+          "text": "No debe convertirse en una obligación de «hacer ejercicio cada vez que estés triste»."
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            {
+              "title": "Elige un movimiento adecuado para ti.",
+              "text": "Puede ser simplemente caminar."
+            },
+            {
+              "title": "Empieza gradualmente.",
+              "text": "No necesitas comenzar con una sesión intensa."
+            },
+            "Presta atención a cómo responde tu cuerpo.",
+            "Detente si aparece dolor, mareo, dificultad respiratoria u otro síntoma preocupante.",
+            "Termina gradualmente y descansa."
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Observa:",
+          "quote": "¿Me siento igual, un poco mejor o peor?",
+          "text": "Esto ayuda a descubrir qué actividades realmente te ayudan."
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Puede aportar estructura, movimiento, cambio de ambiente y bienestar físico."
+        },
+        {
+          "title": "Importante",
+          "icon": "⚠️",
+          "text": "No debe utilizarse como castigo, compensación por comer ni obligación para «merecer» descanso. Si una persona tiene una condición médica, síntomas físicos importantes o limitaciones, debe adaptar la actividad con orientación profesional."
         }
       ]
     },
@@ -64,32 +230,142 @@
       "id": "sueno-saludable",
       "icon": "😴",
       "title": "Sueño saludable",
-      "shortDescription": "Crear condiciones para dormir lo suficiente y con cierta regularidad.",
-      "description": "Consiste en crear condiciones que favorezcan un sueño suficiente y relativamente regular.",
+      "shortDescription": "Hábitos que favorecen un sueño suficiente y regular.",
+      "description": [
+        "Es un conjunto de hábitos que favorecen un sueño suficiente y regular.",
+        "Durante la adolescencia, dormir adecuadamente es especialmente importante para el funcionamiento diario, el aprendizaje y el bienestar."
+      ],
       "sections": [
         {
-          "title": "Puede incluir",
-          "icon": "🧭",
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Una rutina de sueño adecuada puede favorecer:",
           "items": [
-            "Horarios consistentes.",
-            "Una rutina de cierre.",
-            "Un ambiente adecuado.",
-            "Reducir las actividades estimulantes antes de dormir."
+            "descanso;",
+            "atención;",
+            "funcionamiento durante el día;",
+            "regulación emocional;",
+            "recuperación física."
           ]
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "text": "No comienza cuando ya estás acostado. La preparación empieza durante las horas anteriores al sueño."
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            {
+              "title": "Define una hora aproximada para dormir y despertar.",
+              "text": "Intenta mantener horarios relativamente consistentes."
+            },
+            {
+              "title": "Crea una rutina de cierre.",
+              "text": "Por ejemplo: preparar mochila → higiene → preparar ropa → actividad tranquila → cama."
+            },
+            "Reduce actividades estimulantes antes de dormir.",
+            {
+              "title": "Prepara el entorno.",
+              "text": "Busca que sea cómodo, oscuro y tranquilo en la medida de lo posible."
+            },
+            {
+              "title": "Si no consigues dormir, evita convertir la cama en un lugar de frustración constante.",
+              "text": "Puedes realizar una actividad tranquila y volver cuando aparezca somnolencia."
+            }
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Al día siguiente observa:",
+          "items": [
+            "¿cuánto dormí aproximadamente?",
+            "¿cómo me siento al despertar?",
+            "¿tuve despertares?",
+            "¿qué pudo afectar mi sueño?"
+          ],
+          "text": "No necesitas registrar absolutamente todo. Busca patrones."
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Ayuda a crear condiciones que favorezcan un descanso adecuado."
+        },
+        {
+          "title": "Importante",
+          "icon": "⚠️",
+          "text": "Una mala noche ocasional no significa que exista un trastorno del sueño. Si los problemas son persistentes o afectan significativamente tu vida diaria, conviene consultar a un profesional."
         }
       ]
     },
     {
       "id": "naturaleza",
       "icon": "🌳",
-      "title": "Naturaleza",
-      "shortDescription": "Pasar tiempo en espacios naturales o tranquilos.",
-      "description": "Pasar tiempo en espacios naturales o tranquilos puede formar parte de actividades de bienestar y recuperación.",
+      "title": "Naturaleza y cambio de entorno",
+      "shortDescription": "Salir de un espacio cerrado para hacer una pausa.",
+      "description": [
+        "Es incorporar momentos en espacios naturales o tranquilos como parte del autocuidado.",
+        "Puede ser caminar por un parque, sentarse bajo un árbol, observar el cielo o simplemente salir de un espacio cerrado."
+      ],
       "sections": [
         {
-          "title": "Importante",
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Puede servir para:",
+          "items": [
+            "cambiar de ambiente;",
+            "realizar una pausa;",
+            "incorporar movimiento;",
+            "reducir temporalmente la exposición a estímulos;",
+            "realizar una actividad agradable."
+          ]
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "lead": "Cuando:",
+          "items": [
+            "llevas mucho tiempo estudiando;",
+            "estás saturado;",
+            "necesitas una pausa;",
+            "quieres realizar una actividad fuera de pantallas."
+          ]
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            "Elige un lugar seguro.",
+            {
+              "title": "Sal durante un período que sea realista.",
+              "text": "No necesitas pasar horas."
+            },
+            "Reduce las distracciones digitales si quieres utilizar la salida como pausa.",
+            {
+              "title": "Observa conscientemente el entorno.",
+              "text": "Puedes prestar atención a sonidos, temperatura, luz, movimiento, plantas y cielo."
+            },
+            "Camina o permanece sentado durante unos minutos."
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Pregúntate:",
+          "quote": "¿Qué cambió en mi estado después de salir?",
+          "text": "Si te ayudó, puedes convertirlo en una actividad habitual."
+        },
+        {
+          "title": "¿En qué ayuda?",
           "icon": "💡",
-          "note": "No debe presentarse como tratamiento de una condición mental."
+          "text": "Principalmente proporciona un cambio de contexto, movimiento y una actividad de descanso."
+        },
+        {
+          "title": "Importante",
+          "icon": "⚠️",
+          "text": "No debe presentarse como tratamiento para depresión, ansiedad u otra condición."
         }
       ]
     },
@@ -97,19 +373,65 @@
       "id": "regulacion-emocional",
       "icon": "🎛️",
       "title": "Regulación emocional",
-      "shortDescription": "Reconocer lo que sientes y elegir una respuesta que no empeore la situación.",
-      "description": "Consiste en reconocer una emoción, comprender qué la está provocando y elegir una respuesta que no empeore la situación.",
+      "shortDescription": "Reconocer lo que sientes y elegir cómo responder.",
+      "description": [
+        "Es el proceso de reconocer una emoción, comprender qué está ocurriendo y elegir cómo responder.",
+        "Regular una emoción no significa eliminarla ni obligarse a sentirse bien."
+      ],
       "sections": [
         {
-          "title": "Secuencia",
-          "icon": "🧭",
-          "steps": [
-            "¿Qué siento?",
-            "¿Qué ocurrió?",
-            "¿Qué necesito?",
-            "¿Qué puedo hacer ahora?",
-            "¿Necesito apoyo?"
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Puede ayudar cuando:",
+          "items": [
+            "sientes una emoción intensa;",
+            "estás a punto de reaccionar impulsivamente;",
+            "no sabes exactamente qué estás sintiendo;",
+            "necesitas decidir qué hacer."
           ]
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "lead": "Cuando notes:",
+          "quote": "Estoy sintiendo algo muy fuerte y necesito entender qué está pasando antes de actuar."
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            {
+              "title": "Nombra la emoción.",
+              "text": "Puede ser tristeza, rabia, miedo, vergüenza, frustración, soledad, ansiedad o confusión. Si no sabes qué sientes, puedes decir: «No sé exactamente qué siento, pero sé que algo no está bien.»"
+            },
+            {
+              "title": "Identifica qué ocurrió.",
+              "text": "¿Qué pasó justo antes?"
+            },
+            {
+              "title": "Identifica el pensamiento.",
+              "text": "¿Qué estoy diciéndome sobre lo ocurrido?"
+            },
+            {
+              "title": "Identifica la necesidad.",
+              "text": "¿Necesito seguridad, descanso, compañía, información, espacio, ayuda o resolver algo?"
+            },
+            {
+              "title": "Decide la respuesta.",
+              "text": "Pregunta: «¿Qué puedo hacer ahora que no empeore el problema?»"
+            }
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Realiza una acción pequeña relacionada con la necesidad identificada. Ejemplo:",
+          "quote": "Estoy frustrado → necesito una pausa → me alejo 10 minutos → vuelvo cuando pueda pensar con más claridad."
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Convierte una emoción difícil de interpretar en información que puede orientar una respuesta."
         }
       ]
     },
@@ -117,21 +439,62 @@
       "id": "resolucion-problemas",
       "icon": "🧩",
       "title": "Resolución de problemas",
-      "shortDescription": "Pasos para abordar un problema concreto.",
-      "description": "Sirve para problemas concretos: ayuda a dividirlos y a elegir una acción posible.",
+      "shortDescription": "Convertir una preocupación en acciones posibles.",
+      "description": [
+        "Es una estrategia estructurada para abordar problemas concretos en lugar de quedarse únicamente en la preocupación."
+      ],
       "sections": [
         {
-          "title": "Pasos",
-          "icon": "🧭",
-          "steps": [
-            "Define el problema.",
-            "Divide el problema en partes.",
-            "Piensa en varias alternativas.",
-            "Evalúa las consecuencias.",
-            "Elige una opción.",
-            "Comprueba qué ocurrió.",
-            "Ajusta si es necesario."
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Es especialmente útil cuando:",
+          "items": [
+            "tienes una situación específica que resolver;",
+            "estás acumulando problemas;",
+            "no sabes por dónde empezar;",
+            "estás pensando demasiado pero no avanzas."
           ]
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "text": "Cuando el problema tiene al menos una parte que puedes modificar."
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            {
+              "title": "Define el problema en una frase.",
+              "text": "No: «Mi vida es un desastre». Sí: «Tengo tres trabajos pendientes y no sé cuál debo hacer primero»."
+            },
+            "Separa lo que puedes controlar de lo que no.",
+            {
+              "title": "Piensa en varias soluciones.",
+              "text": "No necesitas que sean perfectas."
+            },
+            {
+              "title": "Evalúa cada opción.",
+              "text": "Pregunta: ¿es posible?, ¿qué consecuencias tendría?, ¿qué necesito para hacerlo?"
+            },
+            "Elige una opción.",
+            "Realiza el primer paso.",
+            {
+              "title": "Revisa el resultado.",
+              "text": "Si no funcionó, modifica la estrategia."
+            }
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "No evalúes solamente «¿funcionó o fracasé?». Pregunta:",
+          "quote": "¿Qué aprendí que puedo cambiar en el siguiente intento?"
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Transforma una preocupación general en un problema concreto con acciones posibles."
         }
       ]
     },
@@ -139,20 +502,58 @@
       "id": "activacion-conductual",
       "icon": "🌅",
       "title": "Activación conductual",
-      "shortDescription": "Recuperar poco a poco actividades pequeñas y realistas.",
-      "description": "Cuando una persona se encuentra triste o desmotivada, puede comenzar a abandonar actividades que antes le aportaban estructura o bienestar. Una estrategia consiste en recuperar gradualmente actividades pequeñas y realistas.",
+      "shortDescription": "Recuperar poco a poco actividades pequeñas y significativas.",
+      "description": [
+        "Es una estrategia que busca recuperar gradualmente actividades importantes, agradables o significativas cuando la tristeza, desmotivación o evitación han reducido la actividad cotidiana.",
+        "No significa obligarte a estar feliz."
+      ],
       "sections": [
         {
-          "title": "Ejemplos",
-          "icon": "🧭",
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Puede ser útil cuando empiezas a:",
           "items": [
-            "Ducharse.",
-            "Salir unos minutos.",
-            "Ordenar un espacio.",
-            "Hablar con alguien.",
-            "Realizar una actividad que antes disfrutabas."
-          ],
-          "note": "No significa obligarse a estar feliz."
+            "aislarte;",
+            "abandonar actividades;",
+            "posponer todo;",
+            "perder estructura diaria;",
+            "pasar largos períodos sin hacer nada que te aporte bienestar."
+          ]
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "lead": "Cuando notes:",
+          "quote": "Estoy esperando sentirme mejor para volver a hacer cosas, pero cada vez hago menos."
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            {
+              "title": "Elige una actividad pequeña.",
+              "text": "Ejemplos: ducharte, ordenar una superficie, salir a caminar, dibujar, hablar con alguien o estudiar durante un período pequeño."
+            },
+            {
+              "title": "Hazla pequeña deliberadamente.",
+              "text": "No necesitas recuperar toda tu rutina de una vez."
+            },
+            "Programa cuándo hacerla.",
+            "Hazla aunque la motivación no sea perfecta.",
+            "Registra cómo te sentiste después."
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Pregúntate:",
+          "quote": "¿Qué actividad pequeña podría repetir mañana?",
+          "text": "Aumenta gradualmente, no de golpe."
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Puede ayudar a recuperar estructura y contacto con actividades significativas cuando la evitación está ocupando cada vez más espacio."
         }
       ]
     },
@@ -160,14 +561,59 @@
       "id": "rutinas",
       "icon": "🗓️",
       "title": "Rutinas y estructura",
-      "shortDescription": "Reducir la cantidad de decisiones con una estructura flexible.",
-      "description": "Las rutinas pueden reducir la cantidad de decisiones que una persona debe tomar.",
+      "shortDescription": "Un orden predecible, pero flexible, para tus días.",
+      "description": [
+        "Es organizar determinadas actividades en un orden relativamente predecible.",
+        "Una rutina no tiene que ser rígida."
+      ],
       "sections": [
         {
-          "title": "Una rutina básica puede incluir",
-          "icon": "🧭",
-          "text": "Dormir → despertar → higiene → alimentación → responsabilidades → descanso → conexión social → preparación para dormir.",
-          "note": "Debe ser flexible. Una rutina que se convierte en una fuente adicional de culpa deja de cumplir su función."
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Puede reducir:",
+          "items": [
+            "decisiones innecesarias;",
+            "olvidos;",
+            "sensación de caos;",
+            "acumulación de tareas."
+          ],
+          "text": "También puede facilitar la incorporación de sueño, alimentación, estudio, descanso y actividades agradables."
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "lead": "Especialmente cuando:",
+          "items": [
+            "sientes que cada día comienza sin saber qué hacer;",
+            "olvidas responsabilidades;",
+            "acumulas tareas;",
+            "tus horarios cambian constantemente."
+          ]
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            "Elige solamente las actividades esenciales.",
+            {
+              "title": "Ordénalas.",
+              "text": "Ejemplo: despertar → higiene → desayuno → colegio → descanso → tarea → ocio → preparación para dormir."
+            },
+            "Añade pocas actividades al principio.",
+            "Deja espacios libres.",
+            "Revisa semanalmente qué está funcionando."
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "No te castigues si un día no cumples la rutina. Pregúntate:",
+          "quote": "¿Qué parte de la rutina necesito simplificar?"
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Proporciona estructura sin exigir que cada día sea idéntico."
         }
       ]
     },
@@ -175,19 +621,69 @@
       "id": "escritura-expresiva",
       "icon": "✍️",
       "title": "Escritura expresiva",
-      "shortDescription": "Escribir unos minutos para organizar pensamientos y emociones.",
-      "description": "Escribir durante unos minutos sobre lo que se siente o sobre una experiencia puede ayudar a organizar pensamientos y emociones. No es necesario escribir bien ni mostrar el texto a otra persona.",
+      "shortDescription": "Escribir unos minutos para ordenar lo que vives.",
+      "description": [
+        "Es escribir libremente sobre una experiencia, pensamiento o emoción para organizar lo que estás viviendo.",
+        "No es necesario escribir correctamente ni compartirlo."
+      ],
       "sections": [
         {
-          "title": "Una estructura sencilla",
-          "icon": "🧭",
-          "steps": [
-            "Qué pasó.",
-            "Qué sentí.",
-            "Qué pensé.",
-            "Qué necesitaba.",
-            "Qué puedo hacer ahora."
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Puede servir para:",
+          "items": [
+            "ordenar pensamientos;",
+            "identificar emociones;",
+            "reconocer patrones;",
+            "expresar algo difícil de decir verbalmente."
           ]
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "lead": "Puede utilizarse:",
+          "items": [
+            "después de una experiencia intensa;",
+            "cuando tienes pensamientos repetitivos;",
+            "cuando no sabes cómo explicar lo que sientes;",
+            "como reflexión personal."
+          ]
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "lead": "Durante unos minutos escribe:",
+          "steps": [
+            "¿Qué ocurrió?",
+            "¿Qué sentí?",
+            "¿Qué pensé?",
+            "¿Qué necesitaba?",
+            "¿Qué puedo hacer ahora?"
+          ],
+          "text": "No corrijas la redacción mientras escribes."
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Puedes:",
+          "items": [
+            "cerrar el documento;",
+            "releerlo inmediatamente;",
+            "subrayar una idea importante;",
+            "identificar una acción;",
+            "guardarlo para observar patrones posteriormente."
+          ],
+          "text": "No estás obligado a releerlo."
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Puede transformar una experiencia difusa en información más concreta sobre pensamientos, emociones y necesidades."
+        },
+        {
+          "title": "Importante",
+          "icon": "⚠️",
+          "text": "Si escribir sobre una experiencia aumenta considerablemente tu angustia, detente y busca otra estrategia o apoyo."
         }
       ]
     },
@@ -195,20 +691,51 @@
       "id": "red-apoyo",
       "icon": "🤝",
       "title": "Red de apoyo",
-      "shortDescription": "Identificar personas con las que puedes hablar cuando algo es difícil.",
-      "description": "Consiste en identificar personas con las que se pueda hablar cuando una situación resulta difícil.",
+      "shortDescription": "Saber a quién acudir antes de necesitarlo.",
+      "description": [
+        "Es identificar personas y recursos a los que puedes acudir cuando necesitas apoyo.",
+        "Una red no tiene que estar formada por muchas personas."
+      ],
       "sections": [
         {
-          "title": "Puede incluir",
-          "icon": "🧭",
-          "items": [
-            "Un familiar.",
-            "Un amigo.",
-            "Un docente.",
-            "Un orientador escolar.",
-            "Un profesional de salud.",
-            "Un adulto de confianza."
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "text": "Puede evitar que tengas que resolver todo solo."
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "text": "Lo ideal es construirla antes de estar en una crisis."
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "lead": "Haz tres categorías:",
+          "steps": [
+            {
+              "title": "Persona con quien puedo hablar:",
+              "text": "puede ser un amigo, familiar o adulto de confianza."
+            },
+            {
+              "title": "Persona que puede ayudarme a tomar decisiones:",
+              "text": "puede ser un adulto responsable, orientador o profesional."
+            },
+            {
+              "title": "Persona o servicio al que puedo acudir si estoy en peligro:",
+              "text": "debe ser un recurso capaz de intervenir en una situación urgente."
+            }
           ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Guarda los contactos en un lugar accesible. También puedes preparar una frase:",
+          "quote": "No estoy pasando por un buen momento. ¿Puedes hablar conmigo?"
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Reduce la barrera de tener que pensar «¿a quién le digo?» cuando ya estás muy afectado."
         }
       ]
     },
@@ -216,17 +743,372 @@
       "id": "arte",
       "icon": "🎨",
       "title": "Arte y expresión creativa",
-      "shortDescription": "Dibujar, pintar, escribir o hacer música como forma de expresión.",
-      "description": "Dibujar, pintar, escribir, hacer música o realizar manualidades puede utilizarse como forma de expresión y regulación.",
+      "shortDescription": "Expresarte sin depender de las palabras.",
+      "description": [
+        "Es utilizar actividades como dibujo, pintura, música, escritura, tejido u otras formas creativas para expresarse o realizar una actividad significativa."
+      ],
       "sections": [
         {
-          "title": "Importante",
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Puede proporcionar:",
+          "items": [
+            "expresión no verbal;",
+            "concentración;",
+            "actividad agradable;",
+            "una pausa;",
+            "sensación de realización."
+          ]
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "lead": "Cuando:",
+          "items": [
+            "necesitas una actividad que no dependa de hablar;",
+            "quieres desconectarte temporalmente de una preocupación;",
+            "necesitas expresar algo que todavía no sabes explicar."
+          ]
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            "Elige un medio.",
+            {
+              "title": "Define una intención sencilla.",
+              "text": "Por ejemplo: «Voy a representar cómo se siente mi día.»"
+            },
+            "No busques hacerlo perfecto.",
+            "Trabaja durante un tiempo razonable.",
+            "Al terminar, observa el resultado."
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Puedes preguntarte:",
+          "quote": "¿Hay algo en lo que hice que me ayude a entender cómo me siento?",
+          "text": "No es necesario interpretar cada dibujo como si fuera una prueba psicológica."
+        },
+        {
+          "title": "¿En qué ayuda?",
           "icon": "💡",
-          "note": "No es necesario que el resultado sea «bonito»."
+          "text": "Puede funcionar como medio de expresión y actividad de regulación, pero no diagnostica ni reemplaza una intervención terapéutica."
+        }
+      ]
+    },
+    {
+      "id": "registro-emociones",
+      "icon": "📊",
+      "title": "Registro de emociones",
+      "shortDescription": "Descubrir patrones entre lo que pasa, lo que piensas y lo que sientes.",
+      "description": [
+        "Es una herramienta para identificar patrones entre situaciones, pensamientos, emociones y respuestas."
+      ],
+      "sections": [
+        {
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Puede ser útil cuando dices:",
+          "quote": "No sé por qué me siento así."
+        },
+        {
+          "title": "¿Cuándo hacerla?",
+          "icon": "🕒",
+          "text": "Después de una emoción significativa o una vez al día si quieres observar patrones."
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "lead": "Registra:",
+          "steps": [
+            {
+              "title": "Situación:",
+              "text": "¿qué ocurrió?"
+            },
+            {
+              "title": "Emoción:",
+              "text": "¿qué sentí?"
+            },
+            {
+              "title": "Intensidad:",
+              "text": "¿qué tan fuerte fue?"
+            },
+            {
+              "title": "Pensamiento:",
+              "text": "¿qué pasó por mi mente?"
+            },
+            {
+              "title": "Respuesta:",
+              "text": "¿qué hice?"
+            },
+            {
+              "title": "Necesidad:",
+              "text": "¿qué necesitaba?"
+            },
+            {
+              "title": "Resultado:",
+              "text": "¿qué pasó después?"
+            }
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "lead": "Después de varios registros, busca patrones. Por ejemplo:",
+          "quote": "Cuando duermo poco → me irrito más → discuto → después me siento peor.",
+          "text": "Eso puede señalar un aspecto sobre el que vale la pena intervenir."
+        }
+      ]
+    },
+    {
+      "id": "plan-alterado",
+      "icon": "🧰",
+      "title": "Plan «Cuando estoy muy alterado/a»",
+      "shortDescription": "Una secuencia preparada para cuando las emociones suben demasiado.",
+      "description": [
+        "Es una pequeña secuencia preparada para utilizar cuando las emociones suben demasiado y resulta difícil decidir qué hacer."
+      ],
+      "sections": [
+        {
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "text": "Evita tener que crear una estrategia desde cero cuando estás sobrecargado."
+        },
+        {
+          "title": "Prepararlo",
+          "icon": "🪜",
+          "lead": "Escribe:",
+          "steps": [
+            {
+              "title": "Mis señales de alerta:",
+              "text": "¿cómo sé que estoy llegando a mi límite?"
+            },
+            {
+              "title": "Primero hago:",
+              "text": "una herramienta sencilla, como grounding, caminar, respiración o retirarme de una discusión."
+            },
+            {
+              "title": "Después contacto:",
+              "text": "¿a quién puedo llamar o escribir?"
+            },
+            {
+              "title": "Si empeora:",
+              "text": "¿qué adulto, profesional o servicio puede intervenir?"
+            }
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "text": "Cuando estés tranquilo, revisa si el plan funcionó y modifica lo necesario."
+        },
+        {
+          "title": "Importante",
+          "icon": "⚠️",
+          "text": "Para autolesión o riesgo suicida, este plan no sustituye atención profesional ni de emergencia. En esas situaciones la prioridad es la seguridad y el contacto con ayuda humana."
+        }
+      ]
+    },
+    {
+      "id": "pausa-pantalla",
+      "icon": "📵",
+      "title": "Pausa de pantalla consciente",
+      "shortDescription": "Pasar del uso automático a una decisión consciente.",
+      "description": [
+        "Es una pausa deliberada de contenido digital cuando notas que estás utilizando la pantalla de forma automática o que el contenido está empeorando tu estado."
+      ],
+      "sections": [
+        {
+          "title": "¿Para qué puede ayudar?",
+          "icon": "🎯",
+          "lead": "Puede ser útil cuando:",
+          "items": [
+            "llevas mucho tiempo desplazándote por contenido;",
+            "estás evitando una emoción o tarea;",
+            "el contenido te está generando comparación, ansiedad o saturación;",
+            "estás sacrificando sueño u otras actividades."
+          ]
+        },
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "steps": [
+            {
+              "title": "Detecta el patrón.",
+              "text": "«Abrí la aplicación sin decidir realmente hacerlo.»"
+            },
+            "Detente antes de continuar.",
+            {
+              "title": "Pregúntate:",
+              "text": "«¿Qué necesito ahora: descanso, entretenimiento, conexión, información o evitar algo?»"
+            },
+            {
+              "title": "Decide conscientemente.",
+              "text": "Puedes continuar usando la aplicación, pero de forma intencional, o cambiar de actividad."
+            },
+            "Realiza una actividad alternativa breve."
+          ]
+        },
+        {
+          "title": "¿Qué hago después?",
+          "icon": "➡️",
+          "text": "Observa si la nueva actividad realmente respondió a la necesidad."
+        },
+        {
+          "title": "¿En qué ayuda?",
+          "icon": "💡",
+          "text": "Busca convertir el uso automático en una decisión consciente."
+        }
+      ]
+    },
+    {
+      "id": "que-necesito-ahora",
+      "icon": "🔍",
+      "title": "¿Qué necesito ahora?",
+      "shortDescription": "Una pregunta que sirve en cualquier momento.",
+      "description": [
+        "Una herramienta transversal: puedes usarla en cualquier momento, con cualquier emoción."
+      ],
+      "sections": [
+        {
+          "title": "Paso a paso",
+          "icon": "🪜",
+          "lead": "Detente y pregunta:",
+          "steps": [
+            "¿Qué siento?",
+            "¿Qué ocurrió?",
+            {
+              "title": "¿Qué necesito?",
+              "text": "Puede ser descanso, seguridad, compañía, información, espacio, alimento, movimiento, resolver un problema o pedir ayuda."
+            },
+            "¿Qué puedo hacer durante los próximos 10 minutos?",
+            "¿Necesito involucrar a otra persona?"
+          ]
+        },
+        {
+          "title": "¿Para qué sirve?",
+          "icon": "💡",
+          "text": "Ayuda a evitar respuestas automáticas y a transformar una sensación general de «estoy mal» en una necesidad concreta."
         }
       ]
     }
   ],
+  "chooser": [
+    {
+      "when": "Si estoy muy activado/a",
+      "options": [
+        {
+          "label": "Respiración",
+          "tool": "respiracion"
+        },
+        {
+          "label": "Grounding",
+          "tool": "grounding"
+        },
+        {
+          "label": "Movimiento suave",
+          "tool": "actividad-fisica"
+        },
+        {
+          "label": "Alejarme temporalmente del estímulo"
+        }
+      ]
+    },
+    {
+      "when": "Si estoy atrapado/a en pensamientos",
+      "options": [
+        {
+          "label": "Grounding",
+          "tool": "grounding"
+        },
+        {
+          "label": "Escritura",
+          "tool": "escritura-expresiva"
+        },
+        {
+          "label": "Resolución de problemas",
+          "tool": "resolucion-problemas"
+        }
+      ]
+    },
+    {
+      "when": "Si estoy desorganizado/a",
+      "options": [
+        {
+          "label": "Rutina",
+          "tool": "rutinas"
+        },
+        {
+          "label": "Descomposición de tareas"
+        },
+        {
+          "label": "Resolución de problemas",
+          "tool": "resolucion-problemas"
+        }
+      ]
+    },
+    {
+      "when": "Si estoy aislándome",
+      "options": [
+        {
+          "label": "Red de apoyo",
+          "tool": "red-apoyo"
+        },
+        {
+          "label": "Activación conductual",
+          "tool": "activacion-conductual"
+        },
+        {
+          "label": "Conexión social pequeña"
+        }
+      ]
+    },
+    {
+      "when": "Si estoy agotado/a",
+      "options": [
+        {
+          "label": "Descanso"
+        },
+        {
+          "label": "Sueño saludable",
+          "tool": "sueno-saludable"
+        },
+        {
+          "label": "Reducir exigencias"
+        }
+      ]
+    },
+    {
+      "when": "Si no sé qué siento",
+      "options": [
+        {
+          "label": "Registro emocional",
+          "tool": "registro-emociones"
+        },
+        {
+          "label": "Escritura expresiva",
+          "tool": "escritura-expresiva"
+        },
+        {
+          "label": "¿Qué necesito ahora?",
+          "tool": "que-necesito-ahora"
+        }
+      ]
+    },
+    {
+      "when": "Si estoy ante una situación de riesgo",
+      "risk": true,
+      "text": "No dependas solamente de una herramienta de autocuidado: busca una persona segura, pide ayuda profesional y acude a urgencias cuando exista peligro inmediato."
+    }
+  ],
+  "afterPrinciple": {
+    "title": "Después de usar una herramienta",
+    "lead": "Después de utilizar cualquier herramienta, no preguntes solamente «¿me quitó la emoción?». Pregunta:",
+    "quote": "¿Estoy un poco más capaz de decidir qué hacer ahora?",
+    "text": "Una herramienta no tiene que hacer desaparecer una emoción para ser útil. Su objetivo puede ser simplemente ayudarte a pasar de «no puedo manejar esto ahora» a «puedo dar el siguiente paso»."
+  },
   "sources": [
     {
       "institution": "OMS",
@@ -239,6 +1121,58 @@
     {
       "institution": "MedlinePlus",
       "title": "Cómo ayudar a un adolescente a lidiar con el estrés"
+    }
+  ],
+  "generalSources": [
+    {
+      "institution": "American Psychiatric Association (2022)",
+      "title": "Manual diagnóstico y estadístico de los trastornos mentales, 5.ª ed., texto revisado (DSM-5-TR)"
+    },
+    {
+      "institution": "Organización Mundial de la Salud (2019)",
+      "title": "Clasificación Internacional de Enfermedades, 11.ª revisión (CIE-11)"
+    },
+    {
+      "institution": "NIMH",
+      "title": "Publicaciones sobre salud mental (en español)",
+      "url": "https://www.nimh.nih.gov/health/publications/espanol"
+    },
+    {
+      "institution": "Organización Mundial de la Salud (2023)",
+      "title": "Salud mental del adolescente",
+      "url": "https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
+    },
+    {
+      "institution": "NICE",
+      "title": "Depression in children and young people: identification and management (NG134)"
+    },
+    {
+      "institution": "NICE",
+      "title": "Eating disorders: recognition and treatment (NG69)"
+    },
+    {
+      "institution": "NICE",
+      "title": "Generalised anxiety disorder and panic disorder (CG113)"
+    },
+    {
+      "institution": "Linehan, M. M. (2015)",
+      "title": "DBT Skills Training Manual, 2.ª ed. Guilford Press"
+    },
+    {
+      "institution": "Beck, J. S. (2011)",
+      "title": "Cognitive Behavior Therapy: Basics and Beyond, 2.ª ed. Guilford Press"
+    },
+    {
+      "institution": "Hayes, S. C., Strosahl, K. D. y Wilson, K. G. (2011)",
+      "title": "Acceptance and Commitment Therapy: The Process and Practice of Mindful Change, 2.ª ed. Guilford Press"
+    },
+    {
+      "institution": "Fairburn, C. G. (2008)",
+      "title": "Cognitive Behavior Therapy and Eating Disorders. Guilford Press"
+    },
+    {
+      "institution": "OMS y OPS (2012)",
+      "title": "Primera ayuda psicológica: guía para trabajadores de campo"
     }
   ]
 }

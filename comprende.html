@@ -30,7 +30,7 @@
     <div class="container">
 
         <!-- HERO -->
-        <section class="comprende-hero" id="comprende-hero">
+        <section class="comprende-hero" id="comprende-hero" data-separador="">
             <div class="comprende-hero__texto">
                 <h1>Comprende</h1>
                 <p class="comprende-hero__subtitulo">Comprender lo que sentimos también es una forma de cuidarnos.</p>
@@ -51,7 +51,7 @@
         </p>
 
         <!-- CONTENEDOR PRINCIPAL: se alterna entre "home" y "detalle" -->
-        <div id="comprende-home">
+        <div id="comprende-home" data-separador="">
 
             <div class="rutas-grid" role="navigation" aria-label="Secciones de Comprende">
                 <a class="ruta-card" href="#comprende-condiciones">
@@ -62,10 +62,6 @@
                     <h3>Situaciones y experiencias</h3>
                     <p>Experiencias y contextos que pueden influir en nuestro bienestar.</p>
                 </a>
-                <a class="ruta-card" href="#comprende-delicados">
-                    <h3>Temas delicados</h3>
-                    <p>Autolesiones y pensamientos suicidas: información y rutas para pedir ayuda.</p>
-                </a>
                 <a class="ruta-card" href="#comprende-herramientas">
                     <h3>Herramientas</h3>
                     <p>Recursos y estrategias para comprender, regular y buscar apoyo.</p>
@@ -73,7 +69,7 @@
             </div>
 
             <!-- CONDICIONES -->
-            <section id="comprende-condiciones" class="comprende-seccion">
+            <section id="comprende-condiciones" class="comprende-seccion" data-separador="">
                 <h2>Condiciones</h2>
                 <p class="comprende-seccion__intro">Explora para entender qué puede estar pasando y cómo se manifiesta.</p>
 
@@ -91,28 +87,26 @@
             </section>
 
             <!-- SITUACIONES -->
-            <section id="comprende-situaciones" class="comprende-seccion">
+            <section id="comprende-situaciones" class="comprende-seccion" data-separador="">
                 <h2>Situaciones y experiencias</h2>
                 <p class="comprende-seccion__intro">Experiencias del día a día que también pueden afectar tu bienestar.</p>
                 <div id="grid-situaciones" class="grid-tarjetas"></div>
             </section>
 
-            <!-- ========================================================
-                 TEMAS DELICADOS
-            ========================================================= -->
-            <section id="comprende-delicados" class="comprende-seccion">
-                <h2>Temas delicados</h2>
-                <p class="comprende-seccion__intro">Estos temas requieren especial cuidado. Aquí encontrarás información clara y rutas para pedir ayuda. Si estás en peligro ahora mismo, usa el botón de ayuda.</p>
-                <div id="grid-delicados" class="grid-tarjetas"></div>
-            </section>
-
             <!-- HERRAMIENTAS -->
-            <section id="comprende-herramientas" class="comprende-seccion">
-                <h2 id="herramienta">Herramientas</h2>
+            <section id="comprende-herramientas" class="comprende-seccion" data-separador="">
+                <h2>Herramientas</h2>
                 <p class="comprende-seccion__intro">Ideas simples para comprenderte, regularte y saber a quién acudir.</p>
+
+                <div id="herramientas-nota"></div>
 
                 <h3 class="subtitulo-centrado" >Herramientas para sentirte mejor</h3>
                 <div id="grid-herramientas" class="grid-tarjetas"></div>
+
+                <div id="herramientas-guia" class="herramientas-guia" data-separador=""></div>
+
+                <hr class="separador-seccion">
+                <h3 class="subtitulo-centrado" data-separador="">Para comprender mejor tu mente y tu bienestar</h3>
 
                 <div class="bloque bloque--card">
                     <h3 id="ciclo-titulo"></h3>
@@ -120,13 +114,13 @@
                     <div id="ciclo-mente" class="ciclo-mente"></div>
                 </div>
 
-                <div class="bloque bloque--card">
+                <div class="bloque bloque--card" data-separador="">
                     <h3 id="pilares-titulo"></h3>
                     <p id="pilares-descripcion" style="margin:0;"></p>
                     <div id="pilares-grid" class="pilares-grid"></div>
                 </div>
 
-                <div class="bloque bloque--card">
+                <div class="bloque bloque--card" data-separador="">
                     <h3><span class="icono-seccion" aria-hidden="true">❓</span>Preguntas frecuentes</h3>
                     <div id="faq-general" class="acordeon-grupo"></div>
                 </div>
@@ -139,7 +133,9 @@
                 </div>
             </section>
 
-        </div>
+        </div><!-- /#comprende-home -->
+
+        <!-- VISTA DE DETALLE (se llena con JS) -->
         <section id="comprende-detalle" hidden></section>
 
     </div>
@@ -153,7 +149,7 @@
     </div>
 </div>
 
- <footer class="pie">
+ <footer class="pie"  data-separador="">
         <div class="pie__contenedor">
 
             <div class="pie__grid">
@@ -211,6 +207,7 @@
         </div>
     </footer>
 
+
 <!-- BOTÓN FLOTANTE DE AYUDA (abajo a la IZQUIERDA; "volver arriba" va a la derecha) -->
 <div class="ayuda-flotante" id="ayuda-flotante">
     <div class="ayuda-menu" id="ayuda-menu" role="menu" aria-label="Opciones de ayuda">
@@ -232,8 +229,10 @@
 
 <!-- Botón "volver arriba" -->
 <button id="boton-subir" class="boton-subir" aria-label="Volver arriba">↑</button>
-
+<nav class="separadores-nav" id="separadores-nav" aria-label="Navegación de secciones"></nav>
 <script src="assets/js/general.js"></script>
 <script src="assets/js/comprende.js"></script>
+
 </body>
 </html>
+

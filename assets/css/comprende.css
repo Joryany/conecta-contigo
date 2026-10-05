@@ -218,7 +218,7 @@ body {
     align-items: center;
     gap: 6px;
     justify-content: flex-start;
-    margin: var(--space-md) 0 var(--space-sm);
+    margin: var(--space-md) 0 var(--space-md);
     font-size: .85rem;
     color: #768792;
 }
@@ -236,7 +236,7 @@ body {
    6. RUTAS PRINCIPALES
    ========================================================= */
 
-.rutas-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); margin: var(--space-xl) 0 var(--space-xl); }
+.rutas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin: var(--space-xl) 0 var(--space-xl); }
 
 .ruta-card {
     position: relative;
@@ -258,15 +258,13 @@ body {
     border-radius: 50%; background: rgba(105, 178, 174, 0.10); transition: transform .3s ease;
 }
 .ruta-card:nth-child(2)::after { background: rgba(70, 142, 214, 0.10); }
-.ruta-card:nth-child(3)::after { background: rgba(245, 131, 111, 0.12); }
-.ruta-card:nth-child(4)::after { background: rgba(162, 216, 143, 0.15); }
+.ruta-card:nth-child(3)::after { background: rgba(162, 216, 143, 0.15); }
 .ruta-card:hover { transform: translateY(-5px); border-color: rgba(70,142,214,0.35); box-shadow: var(--comprende-sombra-hover); }
 .ruta-card:hover::after { transform: scale(1.25); }
 .ruta-card h3 { position: relative; z-index: 1; margin: 0 0 .5rem; color: var(--comprende-azul); font-size: 1.2rem; text-align: left; }
 .ruta-card p { position: relative; z-index: 1; margin: 0; line-height: 1.6; }
 
-@media (max-width: 992px) { .rutas-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .rutas-grid { grid-template-columns: 1fr; } }
+@media (max-width: 768px) { .rutas-grid { grid-template-columns: 1fr; } }
 
 
 /* =========================================================
@@ -350,11 +348,26 @@ body {
 .tarjeta-item h3 { margin: .3rem 0 .4rem; color: var(--comprende-azul); font-size: 1.15rem; text-align: left; }
 .tarjeta-item__etiqueta + h3 { margin-top: 0; }
 .tarjeta-item p { margin: 0 0 .8rem; line-height: 1.55; }
-.tarjeta-item__boton {
-    align-self: flex-start; margin-top: auto; background: none; border: 0; padding: 0;
-    color: var(--comprende-azul-claro); font-weight: 700; cursor: pointer; font: inherit;
+.tarjeta-item__boton,
+.boton-texto {
+    display: inline-flex; align-items: center; gap: .45rem;
+    align-self: flex-start; margin-top: auto; padding: .55rem 1.1rem;
+    border: 1px solid rgba(70,142,214,.25); border-radius: 999px;
+    background: rgba(70,142,214,.08); color: var(--comprende-azul);
+    font: inherit; font-size: .88rem; font-weight: 700; text-decoration: none;
+    cursor: pointer; box-shadow: none;
+    transition: background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
 }
-.tarjeta-item__boton:hover { color: var(--comprende-azul); text-decoration: underline; }
+.tarjeta-item__boton:hover,
+.boton-texto:hover {
+    background: var(--comprende-azul); border-color: var(--comprende-azul); color: #fff;
+    text-decoration: none; transform: translateY(-2px); box-shadow: 0 8px 16px rgba(20,67,126,.18);
+}
+.tarjeta-item__boton .flecha,
+.boton-texto .flecha { display: inline-block; transition: transform .2s ease; }
+.tarjeta-item__boton:hover .flecha,
+.boton-texto:hover .flecha { transform: translateX(4px); }
+.boton-texto { margin-top: .8rem; }
 
 
 /* =========================================================
@@ -400,10 +413,18 @@ body {
    ========================================================= */
 
 .detalle__volver {
-    display: inline-flex; align-items: center; gap: 6px; background: none; border: 0; padding: 0;
-    margin-bottom: var(--space-sm); color: var(--comprende-azul); font-weight: 700; cursor: pointer; font: inherit;
+    display: inline-flex; align-items: center; gap: .5rem;
+    margin: var(--space-sm) 0 var(--space-lg); padding: .55rem 1.15rem;
+    border: 1px solid rgba(70,142,214,.35); border-radius: 999px;
+    background: #fff; color: var(--comprende-azul);
+    font: inherit; font-size: .9rem; font-weight: 700; cursor: pointer;
+    box-shadow: 0 3px 10px rgba(20,67,126,.06);
+    transition: background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-.detalle__volver:hover { color: var(--comprende-azul-claro); }
+.detalle__volver:hover {
+    background: var(--comprende-azul); color: #fff; transform: translateX(-3px);
+    box-shadow: 0 8px 18px rgba(20,67,126,.2);
+}
 
 .detalle-header {
     position: relative;
@@ -529,7 +550,10 @@ body {
 }
 .herramienta-card__icono { font-size: 1.5rem; margin-bottom: .5rem; }
 .herramienta-card h4 { margin: 0 0 .3rem; color: var(--comprende-azul); font-size: 1rem; text-align: left; }
-.herramienta-card p { margin: 0; line-height: 1.55; flex-grow: 1; }
+.herramienta-card p {
+    margin: 0; line-height: 1.55; flex-grow: 1;
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
 
 
 /* =========================================================
@@ -941,8 +965,6 @@ body {
 
 .subtitulo-centrado { margin: var(--space-md) 0 var(--space-sm); color: var(--comprende-azul); font-size: 1.2rem; text-align: center; }
 
-.tarjeta-item--delicada::before { background: linear-gradient(90deg, var(--comprende-rosa), #f7a99b); }
-.tarjeta-item--delicada .tarjeta-item__etiqueta { background: rgba(245,131,111,.12); }
 .tarjeta-item--herramienta::before { background: linear-gradient(90deg, var(--comprende-verde-claro), var(--comprende-verde)); }
 .tarjeta-item__icono { font-size: 1.9rem; line-height: 1; margin: .4rem 0 .5rem; }
 
@@ -962,6 +984,53 @@ body {
 }
 .seccion-nota { margin: .8rem 0 0; padding: .7rem .9rem; border-radius: 12px; background: rgba(105,178,174,.12); font-size: .92rem; line-height: 1.55; }
 .accion-panel .seccion-lista { margin: 0; }
+
+
+/* =========================================================
+   25d. GUÍA DE HERRAMIENTAS Y SEPARADORES
+   ========================================================= */
+
+.herramientas-guia { margin: var(--space-xl) 0 var(--space-lg); }
+.separador-seccion { margin: var(--space-xl) auto var(--space-md); width: 60px; height: 4px; border: 0; border-radius: 99px; background: linear-gradient(90deg, var(--comprende-verde), var(--comprende-verde-claro)); }
+#grid-herramientas { margin-bottom: var(--space-md); }
+
+.guia-lista { display: grid; gap: .6rem; margin-top: var(--space-sm); }
+.guia-fila {
+    display: flex; align-items: center; flex-wrap: wrap; gap: .7rem 1rem;
+    padding: .8rem 1rem; border: 1px solid var(--comprende-borde); border-radius: 16px; background: #fff;
+}
+.guia-fila > strong { flex: 0 0 230px; color: var(--comprende-azul); }
+.guia-opciones { display: flex; flex-wrap: wrap; gap: .5rem; flex: 1 1 260px; }
+.guia-chip {
+    padding: .4rem .9rem; border: 1px solid rgba(70,142,214,.3); border-radius: 999px;
+    background: rgba(70,142,214,.08); color: var(--comprende-azul);
+    font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; box-shadow: none;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
+}
+.guia-chip:hover { background: var(--comprende-azul); color: #fff; transform: translateY(-1px); box-shadow: none; }
+.guia-chip--texto { border-style: dashed; background: transparent; color: var(--comprende-texto); font-weight: 600; cursor: default; }
+.guia-fila--riesgo { border-color: rgba(245,131,111,.5); background: rgba(245,131,111,.08); }
+.guia-fila--riesgo p { flex: 1 1 260px; margin: 0; line-height: 1.5; }
+@media (max-width: 620px) { .guia-fila > strong { flex-basis: 100%; } }
+
+.seccion-pasos { list-style: none; counter-reset: paso; padding-left: 0; }
+.seccion-pasos li { counter-increment: paso; display: flex; gap: .75rem; align-items: flex-start; }
+.seccion-pasos li::before {
+    content: counter(paso); flex-shrink: 0; display: grid; place-items: center;
+    width: 26px; height: 26px; margin-top: .1rem; border-radius: 50%;
+    background: var(--comprende-verde); color: #fff; font-weight: 700; font-size: .8rem;
+}
+
+
+/* =========================================================
+   25e. NIVEL DE EVIDENCIA EN HERRAMIENTAS
+   ========================================================= */
+
+.herramienta-card__evidencia {
+    align-self: flex-start; margin: 0 0 .5rem; padding: 3px 10px; border-radius: 999px;
+    background: rgba(105,178,174,.16); color: var(--comprende-azul); font-size: .72rem; font-weight: 700;
+}
+.herramienta-evidencia { margin: .6rem 0 0; font-size: .9rem; line-height: 1.5; color: var(--comprende-texto); }
 
 
 /* =========================================================

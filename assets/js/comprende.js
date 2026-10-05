@@ -42,8 +42,8 @@
     const estado = {
         condiciones: [],
         situaciones: [],
-        delicados: [],
         catalogo: [],
+        catalogoMeta: { generalNote: '', chooser: [], after: null },
         catalogoFuentes: [],
         herramientas: null,
         categoriaActiva: 'Todas'
@@ -140,8 +140,8 @@
 
         renderGridCondiciones(estado.condiciones);
         renderGridSituaciones(estado.situaciones);
-        renderGridDelicados(estado.delicados);
         renderGridHerramientas(estado.catalogo);
+        renderGuiaHerramientas();
         renderHerramientasGenerales();
         configurarBuscador();
         configurarModal();
@@ -161,7 +161,8 @@
         el.detalle = document.getElementById('comprende-detalle');
         el.gridCondiciones = document.getElementById('grid-condiciones');
         el.gridSituaciones = document.getElementById('grid-situaciones');
-        el.gridDelicados = document.getElementById('grid-delicados');
+        el.herramientasNota = document.getElementById('herramientas-nota');
+        el.herramientasGuia = document.getElementById('herramientas-guia');
         el.gridHerramientas = document.getElementById('grid-herramientas');
         el.condicionesVacio = document.getElementById('condiciones-vacio');
         el.buscadorInput = document.getElementById('buscador-input');
@@ -182,10 +183,26 @@
         }
     }
 
-    // Une dos listas por "id": si un id se repite, gana el de la lista nueva (conserva la posición original).
+    // Une dos listas por "id". Si un id se repite gana el de la lista nueva (conserva la posición original).
+    // Si la entrada nueva trae "merge": true, funciona como PARCHE: solo reemplaza los campos que trae
+    // y conserva el resto de la entrada original ("sourcesAdd" agrega fuentes sin borrar las existentes).
     function fusionarPorId(base, extra) {
         const mapa = new Map((base || []).map(x => [x.id, x]));
-        (extra || []).forEach(x => mapa.set(x.id, x));
+        (extra || []).forEach(x => {
+            if (x.merge) {
+                const original = mapa.get(x.id);
+                if (!original) return; // un parche sin entrada original se ignora
+                const combinado = Object.assign({}, original, x);
+                delete combinado.merge;
+                if (x.sourcesAdd) {
+                    combinado.sources = (original.sources || []).concat(x.sourcesAdd);
+                    delete combinado.sourcesAdd;
+                }
+                mapa.set(x.id, combinado);
+            } else {
+                mapa.set(x.id, x);
+            }
+        });
         return [...mapa.values()];
     }
 
@@ -204,11 +221,16 @@
             ]);
 
             const todas = fusionarPorId(dCond.conditions, xCond && xCond.conditions);
-            estado.condiciones = todas.filter(c => !c.sensitive);
-            estado.delicados = todas.filter(c => c.sensitive);
+            estado.condiciones = todas;
             estado.situaciones = fusionarPorId(dSit.situations, xSit && xSit.situations);
             estado.catalogo = (xCat && xCat.tools) || [];
             estado.catalogoFuentes = (xCat && xCat.sources) || [];
+            estado.catalogoMeta = {
+                generalNote: (xCat && xCat.generalNote) || '',
+                chooser: (xCat && xCat.chooser) || [],
+                after: (xCat && xCat.afterPrinciple) || null,
+                generalSources: (xCat && xCat.generalSources) || []
+            };
             estado.herramientas = dHer || {};
         } catch (error) {
             console.error('Comprende: no se pudieron cargar los datos.', error);
@@ -257,7 +279,7 @@
     function abrirDetalle(tipo, id) {
         let item = null;
         if (tipo === 'condicion') {
-            item = estado.condiciones.concat(estado.delicados).find(c => c.id === id);
+            item = estado.condiciones.find(c => c.id === id);
         } else if (tipo === 'situacion') {
             item = estado.situaciones.find(s => s.id === id);
         } else if (tipo === 'herramienta') {
@@ -389,12 +411,12 @@
     function crearTarjetaCondicion(cond, index) {
         const cta = CTA_CONDICIONES[index % CTA_CONDICIONES.length];
         return `
-            <article class="tarjeta-item${cond.sensitive ? ' tarjeta-item--delicada' : ''}">
+            <article class="tarjeta-item">
                 <span class="tarjeta-item__etiqueta">${escapeHtml(cond.category)}</span>
                 <h3>${escapeHtml(cond.title)}</h3>
                 <p>${escapeHtml(cond.shortDescription)}</p>
                 <button type="button" class="tarjeta-item__boton" data-action="abrir-detalle" data-tipo="condicion" data-id="${cond.id}">
-                    ${cta} →
+                    ${cta} <span class="flecha" aria-hidden="true">→</span>
                 </button>
             </article>`;
     }
@@ -406,7 +428,7 @@
                 <h3>${escapeHtml(sit.title)}</h3>
                 <p>${escapeHtml(sit.shortDescription)}</p>
                 <button type="button" class="tarjeta-item__boton" data-action="abrir-detalle" data-tipo="situacion" data-id="${sit.id}">
-                    ${cta} →
+                    ${cta} <span class="flecha" aria-hidden="true">→</span>
                 </button>
             </article>`;
     }
@@ -423,14 +445,46 @@
                 <h3>${escapeHtml(h.title)}</h3>
                 <p>${escapeHtml(h.shortDescription)}</p>
                 <button type="button" class="tarjeta-item__boton" data-action="abrir-detalle" data-tipo="herramienta" data-id="${h.id}">
-                    Ver herramienta →
+                    Ver herramienta <span class="flecha" aria-hidden="true">→</span>
                 </button>
             </article>`;
     }
 
-    function renderGridDelicados(lista) {
-        if (!el.gridDelicados) return;
-        el.gridDelicados.innerHTML = lista.map((c, i) => crearTarjetaCondicion(c, i)).join('');
+    function renderGuiaHerramientas() {
+        const meta = estado.catalogoMeta;
+        if (el.herramientasNota) {
+            el.herramientasNota.innerHTML = meta.generalNote
+                ? `<p class="aviso-general">${escapeHtml(meta.generalNote)}</p>` : '';
+        }
+        if (!el.herramientasGuia) return;
+        if (!meta.chooser.length) { el.herramientasGuia.innerHTML = ''; return; }
+
+        const filas = meta.chooser.map(f => {
+            if (f.risk) {
+                return `
+                    <div class="guia-fila guia-fila--riesgo">
+                        <strong>${escapeHtml(f.when)}</strong>
+                        <p>${escapeHtml(f.text)}</p>
+                        <button type="button" class="boton-primario boton-urgente" data-action="abrir-protocolo">Ver qué hacer ahora</button>
+                    </div>`;
+            }
+            const chips = f.options.map(o => o.tool
+                ? `<button type="button" class="guia-chip" data-action="abrir-detalle" data-tipo="herramienta" data-id="${o.tool}">${escapeHtml(o.label)}</button>`
+                : `<span class="guia-chip guia-chip--texto">${escapeHtml(o.label)}</span>`).join('');
+            return `
+                <div class="guia-fila">
+                    <strong>${escapeHtml(f.when)}</strong>
+                    <div class="guia-opciones">${chips}</div>
+                </div>`;
+        }).join('');
+
+        el.herramientasGuia.innerHTML = `
+            <div class="bloque bloque--card">
+                <h3>${tituloConIcono('🧭', '¿Cuál herramienta me sirve ahora?')}</h3>
+                <p>No tienes que hacerlas todas. Primero identifica qué necesitas:</p>
+                <div class="guia-lista">${filas}</div>
+            </div>
+            ${meta.after ? seccionHtml(Object.assign({ icon: '🌱' }, meta.after)) : ''}`;
     }
 
     function renderGridHerramientas(lista) {
@@ -508,27 +562,32 @@
     // Lista (array) o texto (string) para el panel de "¿Qué puedo hacer?"
     function accionHtml(valor) {
         if (Array.isArray(valor)) {
-            return `<ul class="seccion-lista">${valor.map(v => `<li>${escapeHtml(v)}</li>`).join('')}</ul>`;
+            return `<ul class="seccion-lista">${valor.map(v => typeof v === 'string'
+                ? `<li>${escapeHtml(v)}</li>`
+                : `<li><strong>${escapeHtml(v.title)}</strong> ${escapeHtml(v.text || '')}</li>`).join('')}</ul>`;
         }
         return escapeHtml(valor || '');
     }
 
-    // Sección libre: title, icon, lead, paragraphs[], quote, text, items[], steps[], note, noteLabel
+    // Sección libre: title, icon, lead, paragraphs[], quote, items[], steps[], text, note, noteLabel
+    // Cada paso puede ser un texto o un objeto { title, text }.
     function seccionHtml(sec) {
         const lead = sec.lead ? `<p>${escapeHtml(sec.lead)}</p>` : '';
         const parrafos = (sec.paragraphs || []).map(p => `<p>${escapeHtml(p)}</p>`).join('');
         const cita = sec.quote ? `<blockquote class="seccion-cita">${escapeHtml(sec.quote)}</blockquote>` : '';
-        const texto = sec.text ? `<p>${escapeHtml(sec.text)}</p>` : '';
         const items = (sec.items && sec.items.length)
             ? `<ul class="seccion-lista">${sec.items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>` : '';
         const pasos = (sec.steps && sec.steps.length)
-            ? `<ol class="seccion-pasos">${sec.steps.map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ol>` : '';
+            ? `<ol class="seccion-pasos">${sec.steps.map(p => typeof p === 'string'
+                ? `<li><span>${escapeHtml(p)}</span></li>`
+                : `<li><span><strong>${escapeHtml(p.title)}</strong> ${escapeHtml(p.text || '')}</span></li>`).join('')}</ol>` : '';
+        const texto = sec.text ? `<p>${escapeHtml(sec.text)}</p>` : '';
         const nota = sec.note
             ? `<p class="seccion-nota"><strong>${escapeHtml(sec.noteLabel || 'Importante')}:</strong> ${escapeHtml(sec.note)}</p>` : '';
         return `
             <div class="bloque bloque--card" data-speak>
                 <h3>${tituloConIcono(sec.icon || ICONOS.queEs, sec.title)}</h3>
-                ${lead}${parrafos}${cita}${texto}${items}${pasos}${nota}
+                ${lead}${parrafos}${cita}${items}${pasos}${texto}${nota}
             </div>`;
     }
 
@@ -622,10 +681,9 @@
             `<span class="grupo-header__numero" aria-hidden="true">${numActuar}</span>`);
         const numRecursos = (cond.tools && cond.tools.length) ? numActuar + 1 : numActuar;
 
-        let miga;
-        if (esSituacion) miga = { label: 'Situaciones', action: 'ir-situaciones' };
-        else if (cond.sensitive) miga = { label: 'Temas delicados', action: 'ir-delicados' };
-        else miga = { label: cond.category, action: 'ir-categoria', dataCategoria: cond.category };
+        const miga = esSituacion
+            ? { label: 'Situaciones', action: 'ir-situaciones' }
+            : { label: cond.category, action: 'ir-categoria', dataCategoria: cond.category };
 
         const ayudaTexto = cond.whenToSeekHelp || AYUDA_GENERAL;
         const ayudaLink = cond.helpLink || 'contacto.html#emergencia';
@@ -726,14 +784,16 @@
 
             <div class="bloque bloque--card" data-speak>
                 <h3>${tituloConIcono(ICONOS.queEs, '¿Qué es?')}</h3>
-                <p>${escapeHtml(h.description)}</p>
+                ${[].concat(h.description || []).map(p => `<p>${escapeHtml(p)}</p>`).join('')}
             </div>
 
             ${(h.sections || []).map(seccionHtml).join('')}
 
             <div class="bloque bloque--card" data-speak>
-                <p class="seccion-nota" style="margin:0;">${escapeHtml(NOTA_HERRAMIENTAS)}</p>
+                <p class="seccion-nota" style="margin:0;">${escapeHtml(estado.catalogoMeta.generalNote || NOTA_HERRAMIENTAS)}</p>
             </div>
+
+            ${estado.catalogoMeta.after ? seccionHtml(Object.assign({ icon: '🌱' }, estado.catalogoMeta.after)) : ''}
 
             <div class="bloque ayuda-bloque" data-speak>
                 <h3>${tituloConIcono(ICONOS.ayuda, '¿Cuándo pedir ayuda?')}</h3>
@@ -881,15 +941,17 @@
     function toolCard(tool, index) {
         const iconoHerr = tool.icon || TOOL_ICONOS[index % TOOL_ICONOS.length];
         const descripcion = tool.description ? `<p>${escapeHtml(tool.description)}</p>` : '';
+        const chipEvidencia = tool.evidence ? `<span class="herramienta-card__evidencia">Evidencia: ${escapeHtml(tool.evidence.split(':')[0])}</span>` : '';
         const tieneDetalle = tool.description || (tool.steps && tool.steps.length);
         const boton = tieneDetalle ? `
             <button type="button" class="boton-texto" data-action="abrir-modal-herramienta" data-index="${index}">
-                Ver herramienta →
+                Ver herramienta <span class="flecha" aria-hidden="true">→</span>
             </button>` : '';
         return `
             <div class="herramienta-card">
                 <span class="herramienta-card__icono" aria-hidden="true">${iconoHerr}</span>
                 <h4>${escapeHtml(tool.name)}</h4>
+                ${chipEvidencia}
                 ${descripcion}
                 ${boton}
             </div>`;
@@ -928,7 +990,7 @@
             .join('');
 
         // Fuentes generales
-        document.getElementById('fuentes-generales').innerHTML = listaFuentesHtml(h.generalSources);
+        document.getElementById('fuentes-generales').innerHTML = listaFuentesHtml((h.generalSources || []).concat(estado.catalogoMeta.generalSources || []));
     }
 
     /* ----------------------------------------------------------------
@@ -1227,11 +1289,17 @@
         const t = detalleActual && detalleActual.tools && detalleActual.tools[indice];
         if (!t) return;
         const descripcion = t.description ? `<p>${escapeHtml(t.description)}</p>` : '';
+        const como = t.howTo ? `<p class="herramienta-objetivo"><strong>Cómo emplearla:</strong> ${escapeHtml(t.howTo)}</p>` : '';
         const objetivo = t.goal ? `<p class="herramienta-objetivo"><strong>Para qué sirve:</strong> ${escapeHtml(t.goal)}</p>` : '';
         const pasos = (t.steps && t.steps.length)
-            ? `<ol class="herramienta-pasos">${t.steps.map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ol>` : '';
+            ? `<ol class="herramienta-pasos">${t.steps.map(p => typeof p === 'string'
+                ? `<li>${escapeHtml(p)}</li>`
+                : `<li><strong>${escapeHtml(p.title)}</strong> ${escapeHtml(p.text || '')}</li>`).join('')}</ol>` : '';
+        const evidencia = t.evidence ? `<p class="herramienta-evidencia"><strong>Nivel de evidencia:</strong> ${escapeHtml(t.evidence)}</p>` : '';
         const limite = t.notEnough ? `<p class="herramienta-limite"><strong>Cuándo no es suficiente:</strong> ${escapeHtml(t.notEnough)}</p>` : '';
-        abrirModal(`<h3 id="modal-titulo">${t.icon ? escapeHtml(t.icon) + ' ' : ''}${escapeHtml(t.name)}</h3>${descripcion}${objetivo}${pasos}${limite}`);
+        const enlace = (t.catalogId && estado.catalogo.some(h => h.id === t.catalogId))
+            ? `<p style="margin-top:1rem;"><button type="button" class="boton-secundario" data-action="abrir-detalle" data-tipo="herramienta" data-id="${escapeAttr(t.catalogId)}">Ver la ficha completa →</button></p>` : '';
+        abrirModal(`<h3 id="modal-titulo">${t.icon ? escapeHtml(t.icon) + ' ' : ''}${escapeHtml(t.name)}</h3>${descripcion}${como}${pasos}${evidencia}${objetivo}${limite}${enlace}`);
     }
 
     /* ----------------------------------------------------------------
@@ -1351,6 +1419,7 @@
 
         switch (boton.dataset.action) {
             case 'abrir-detalle':
+                if (!el.modal.hidden) cerrarModal();
                 irADetalle(boton.dataset.tipo, boton.dataset.id);
                 break;
             case 'volver':
@@ -1368,13 +1437,6 @@
                 volverAHome();
                 requestAnimationFrame(() => {
                     const seccion = document.getElementById('comprende-situaciones');
-                    if (seccion) seccion.scrollIntoView({ behavior: 'smooth' });
-                });
-                break;
-            case 'ir-delicados':
-                volverAHome();
-                requestAnimationFrame(() => {
-                    const seccion = document.getElementById('comprende-delicados');
                     if (seccion) seccion.scrollIntoView({ behavior: 'smooth' });
                 });
                 break;

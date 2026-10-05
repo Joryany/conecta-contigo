@@ -606,7 +606,7 @@
     gap: 10px;
     padding: 14px 28px;
     border-radius: 999px;
-    background: linear-gradient(135deg, #2e67d0, #4b8dea);
+    background: linear-gradient(135deg, #0949be, #7da7e0);
     color: #fff;
     font-weight: 600;
     text-decoration: none;
@@ -618,6 +618,7 @@
 
 .evaluacion-accion:hover {
     transform: translateY(-3px);
+    color: var(--fondo-suave);
 }
 
 .evaluacion-accion-icono {

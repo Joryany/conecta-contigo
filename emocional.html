@@ -36,7 +36,7 @@
     </header>
 
     <main>
-        <section id="inicio-emocional" class="hero-emocional" aria-labelledby="titulo-hero">
+        <section id="inicio-emocional" class="hero-emocional" aria-labelledby="titulo-hero" data-separador="">
             <div class="hero-emocional__contenido">
                 <h1 id="titulo-hero">¿Cómo te sientes hoy?</h1>
                 <p class="hero-emocional__texto">
@@ -60,7 +60,7 @@
         
 
         <section id="registro-emocional" class="seccion-emocional card" aria-labelledby="titulo-registro"
-            data-tema="pastel" data-borde="redondeado">
+            data-tema="pastel" data-borde="redondeado"  data-separador="">
             <h2 id="titulo-registro">Registra tu emoción</h2>
             <p class="intro-texto">
                 Elige entre una y tres emociones que representen lo que sientes ahora. 
@@ -93,11 +93,6 @@
             <div id="explorador-contenido"></div>
         </section>
 
-        <!-- El botón de Personalizar ahora vive DENTRO de la tarjeta del
-             calendario (esquina superior derecha, ícono personalizable),
-             ver más abajo junto a calendario-header. El
-             id="personalizacion" se conserva ahí para que el enlace del
-             menú "Personalizar" siga funcionando. -->
 
         <dialog id="modal-personalizacion" class="modal-personalizacion" aria-labelledby="modal-personalizacion-titulo">
             <div class="modal-personalizacion__inner">
@@ -259,7 +254,7 @@
             </div>
         </dialog>
 
-        <section id="calendario-emocional" class="seccion-emocional" aria-labelledby="titulo-calendario"
+        <section  data-separador="" id="calendario-emocional" class="seccion-emocional" aria-labelledby="titulo-calendario"
             data-tema="rosa-pastel" data-forma-dia="circulo" data-forma-numero="circulo" data-borde="redondeado">
             <span id="personalizacion" aria-hidden="true"></span>
             <h2 id="titulo-calendario">Tu calendario emocional</h2>
@@ -287,7 +282,7 @@
             </div>
         </section>
 
-        <section id="informacion-emocional" class="seccion-emocional" aria-labelledby="titulo-informacion">
+        <section  data-separador="" id="informacion-emocional" class="seccion-emocional" aria-labelledby="titulo-informacion">
             <div class="card invitacion-info">
                 <div class="invitacion-info__texto">
                     <h2 id="titulo-informacion">¿Te gustaría conocer más sobre tus emociones?</h2>
@@ -318,7 +313,7 @@
             </div>
         </dialog>
     </main>
-     <footer class="pie">
+     <footer class="pie"  data-separador="">
         <div class="pie__contenedor">
 
             <div class="pie__grid">
@@ -386,7 +381,7 @@
         </div>
     </footer>
     
-
+    <nav class="separadores-nav" id="separadores-nav" aria-label="Navegación de secciones"></nav>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
     <script src="assets/js/supabase-config.js" defer></script>
     <script src="assets/js/auth.js" defer></script>
