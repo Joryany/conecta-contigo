@@ -1,20 +1,28 @@
 {
   "meta": {
     "botName": "Soter",
-    "version": "1.1.0",
-    "description": "Archivo de contenido editable de Soter, el asistente de orientación de Conecta Contigo. Edita este archivo para cambiar textos, preguntas, opciones y enlaces sin tocar soter.js."
+    "version": "2.0.0",
+    "description": "Archivo de contenido editable de Soter, el asistente de orientación de Conecta Contigo. Edita este archivo para cambiar textos, preguntas, opciones y enlaces sin tocar soter.js. Guía de estructura al final del documento de entrega."
   },
   "config": {
     "welcomeTitle": "Hola, soy Soter 🌱",
-    "welcomeMessage": "Estoy aquí para ayudarte a encontrar información, comprender algunas experiencias y descubrir recursos.\n¿Qué quieres explorar?",
+    "welcomeMessage": "Puedo ayudarte a descubrir qué necesitas y llevarte al contenido o recurso adecuado dentro de Conecta Contigo.\n¿Qué quieres explorar?",
     "disclaimer": "Soter brinda información y orientación. No reemplaza la atención profesional ni atiende emergencias.",
     "disclaimerLinkLabel": "Ir a Contactos →",
     "emergencyLink": "contacto.html",
     "links": {
       "contactos": "contacto.html",
-      "comprende": "conoce.html",
-      "inicio": "index.html",
-      "emocional": "diario.html"
+      "emergencia": "contacto.html#emergencia",
+      "protocolo": "comprende.html#protocolo__cuerpo",
+      "comprende": "comprende.html",
+      "condiciones": "comprende.htm#comprende-condiciones",
+      "situaciones": "comprende.html#comprende-situaciones",
+      "herramientas": "comprende.html#comprende-herramientas",
+      "emocional": "emocional.html",
+      "marco": "marco-legal.html",
+      "evaluacion": "estadistica.html",
+      "consentimiento": "assets/pdf/acta.pdf",
+      "inicio": "index.html"
     },
     "inputPlaceholder": "Escribe tu pregunta...",
     "loadErrorMessage": "No pude cargar la información de Soter. Si estás probando esto en tu computador, recuerda abrir el sitio con un servidor local (por ejemplo Live Server) en vez de abrir el archivo directamente."
@@ -23,159 +31,172 @@
     "keywords": [
       "hacerme daño",
       "hacerme dano",
+      "hacerme el daño",
       "lastimarme",
       "autolesion",
       "autolesionarme",
+      "cortarme",
+      "me corto",
       "suicidio",
       "suicidarme",
+      "suicida",
       "quitarme la vida",
+      "terminar con mi vida",
       "no quiero seguir viviendo",
       "no quiero vivir",
+      "no vale la pena vivir",
+      "mejor no existir",
       "acabar con mi vida",
+      "acabar con todo",
       "matarme",
+      "me voy a matar",
       "quiero morir",
       "quiero morirme",
+      "me quiero morir",
+      "desaparecer para siempre",
       "hacerle daño a alguien",
       "hacer daño a alguien",
+      "hacerle daño a otra persona",
       "estoy en peligro",
       "corro peligro",
+      "abuso sexual",
+      "me violaron",
+      "me maltratan",
+      "me pegan",
       "ya no aguanto mas",
       "ya no aguanto más"
     ],
     "title": "Tu seguridad es lo más importante",
-    "message": "Gracias por confiar esto a Soter. Lo que describes suena muy difícil, y mereces el acompañamiento de una persona real, no solo información. Soter es una herramienta educativa y no puede intervenir en una emergencia.",
-    "secondaryMessage": "Si en este momento corres peligro o sientes que podrías hacerte daño, busca de inmediato a un adulto de confianza, acude a un servicio de salud, o comunícate con una línea de ayuda.",
-    "actionLabel": "Ir a Contactos de ayuda"
+    "message": "Gracias por contarlo. Lo que describes es importante y no es una exageración. Soter es una herramienta educativa: no puede avisar a nadie ni intervenir en una emergencia, y mereces el acompañamiento de una persona real.",
+    "steps": [
+      "Busca ahora a una persona de confianza (familiar, docente, orientador u orientadora) y dile cómo te sientes. Intenta no quedarte a solas.",
+      "Aléjate de cualquier cosa con la que podrías hacerte daño o hacerle daño a alguien.",
+      "Si hay peligro inmediato, llama a emergencias o acude a un servicio de urgencias."
+    ],
+    "secondaryMessage": "En Contactos encuentras la Línea 123 (emergencias) y líneas de apoyo en salud mental. Pedir ayuda puede implicar que otras personas se enteren, porque lo primero es protegerte. Esto también aplica si estás pensando en hacerle daño a otra persona.",
+    "actions": [
+      { "label": "Ir a Contactos de ayuda", "link": "contactos", "primary": true },
+      { "label": "Ver el protocolo de crisis", "link": "protocolo" }
+    ]
   },
   "mainMenu": {
+    "layout": "grid",
     "options": [
-      {
-        "icon": "🧠",
-        "label": "Entender lo que estoy sintiendo",
-        "next": "entender"
-      },
-      {
-        "icon": "📚",
-        "label": "Aprender sobre salud mental",
-        "next": "aprender"
-      },
-      {
-        "icon": "🛠️",
-        "label": "Encontrar una herramienta",
-        "next": "herramientas"
-      },
-      {
-        "icon": "💡",
-        "label": "Acerca de Soter y la plataforma",
-        "next": "sobre-soter"
-      },
-      {
-        "icon": "🆘",
-        "label": "Necesito ayuda",
-        "next": "ayuda"
-      }
+      { "icon": "🧠", "label": "Entender lo que siento", "next": "entender" },
+      { "icon": "🌱", "label": "Comprender lo que estoy viviendo", "next": "situaciones" },
+      { "icon": "📚", "label": "Aprender sobre salud mental", "next": "aprender" },
+      { "icon": "💭", "label": "Registro emocional", "next": "registro" },
+      { "icon": "🛠️", "label": "Encontrar una herramienta", "next": "herramientas" },
+      { "icon": "🧭", "label": "No sé qué hacer ahora", "next": "no-se-que-hacer" },
+      { "icon": "🆘", "label": "Necesito ayuda", "next": "ayuda" },
+      { "icon": "💡", "label": "Sobre Soter y Conecta Contigo", "next": "sobre-soter" }
     ]
   },
   "fallback": {
-    "botMessage": "🌱 No estoy seguro de qué información buscas, pero podemos encontrarla juntos. También puedes intentar reformular tu pregunta, por ejemplo: \"no puedo dormir\" o \"me siento muy triste\".",
+    "botMessage": "🌱 No estoy seguro de qué buscas, pero podemos encontrarlo juntos. También puedes reformular con palabras clave, por ejemplo: \"no puedo dormir\", \"me siento muy triste\" o \"dónde registro mis emociones\".",
     "options": [
-      {
-        "label": "Lo que estoy sintiendo",
-        "next": "entender"
-      },
-      {
-        "label": "Una situación que estoy viviendo",
-        "next": "situaciones"
-      },
-      {
-        "label": "Una condición de salud mental",
-        "next": "aprender"
-      },
-      {
-        "label": "Una herramienta",
-        "next": "herramientas"
-      },
-      {
-        "label": "Necesito ayuda",
-        "next": "ayuda"
-      }
+      { "label": "Lo que estoy sintiendo", "next": "entender" },
+      { "label": "Algo que estoy viviendo", "next": "situaciones" },
+      { "label": "No sé qué hacer ahora", "next": "no-se-que-hacer" },
+      { "label": "Una herramienta", "next": "herramientas" },
+      { "label": "Necesito ayuda", "next": "ayuda" }
     ]
   },
   "followUp": {
     "botMessage": "¿Qué quieres hacer ahora?",
     "options": [
-      {
-        "label": "Seguir explorando",
-        "next": "main"
-      },
-      {
-        "label": "Ver herramientas",
-        "next": "herramientas"
-      },
-      {
-        "label": "Volver",
-        "next": "PARENT"
-      },
-      {
-        "label": "Ir a Contactos",
-        "next": "link:contactos"
-      }
+      { "label": "Seguir explorando", "next": "main" },
+      { "label": "Ver herramientas", "next": "herramientas" },
+      { "label": "Volver", "next": "PARENT" },
+      { "label": "Ir a Contactos", "next": "link:contactos" }
     ]
   },
   "nodes": {
+
     "entender": {
       "type": "menu",
-      "botMessage": "Claro 💙 ¿Qué quieres explorar?",
+      "botMessage": "Claro 💙 ¿Qué quieres explorar? Elige lo que más se acerque a lo que sientes.",
       "options": [
         { "label": "Ansiedad", "next": "tema-ansiedad" },
         { "label": "Tristeza", "next": "tema-tristeza" },
         { "label": "Estrés", "next": "tema-estres" },
         { "label": "Soledad", "next": "tema-soledad" },
+        { "label": "Más opciones", "next": "entender-2" }
+      ]
+    },
+    "entender-2": {
+      "type": "menu",
+      "botMessage": "Estas son otras experiencias internas que puedes explorar:",
+      "options": [
         { "label": "Ira o rabia", "next": "tema-ira" },
         { "label": "Duelo o pérdidas", "next": "tema-duelo" },
         { "label": "Cambios en mi comportamiento", "next": "content:cambios-comportamiento" },
-        { "label": "Una situación que estoy viviendo", "next": "situaciones" },
         { "label": "No sé exactamente qué me pasa", "next": "content:no-se-que-pasa" }
       ]
     },
-    "aprender": {
-      "type": "menu",
-      "botMessage": "Estas son algunas experiencias sobre las que puedo darte información 📚",
-      "options": [
-        { "label": "Ansiedad", "next": "tema-ansiedad" },
-        { "label": "Depresión", "next": "tema-depresion" },
-        { "label": "Estrés", "next": "tema-estres" },
-        { "label": "Trastornos del sueño", "next": "tema-sueno" },
-        { "label": "Alimentación y bienestar", "next": "tema-alimentacion" },
-        { "label": "Autoestima y confianza", "next": "tema-autoestima" }
+    "content:cambios-comportamiento": {
+      "type": "content",
+      "parent": "entender-2",
+      "title": "Cambios en mi comportamiento",
+      "keywords": ["cambios en mi comportamiento", "no soy yo", "ya no soy el mismo", "ya no soy la misma", "me comporto diferente", "bajaron mis notas"],
+      "body": "A veces no se trata de una emoción puntual, sino de notar que algo cambió: te alejas de personas con las que antes compartías, tu rendimiento académico bajó, duermes o comes distinto, o sientes que 'no eres tú'. Estos cambios pueden ser una señal de que algo te está afectando, y no necesitan un nombre exacto para merecer atención.\nHablarlo con alguien de confianza puede ayudarte a entender mejor qué está pasando. Esta información no permite determinar un diagnóstico."
+    },
+    "content:no-se-que-pasa": {
+      "type": "content",
+      "parent": "entender-2",
+      "title": "No sé exactamente qué me pasa",
+      "keywords": ["no se que me pasa", "no se que siento", "no se como me siento", "algo raro", "no se explicar"],
+      "body": "No siempre es fácil ponerle nombre a lo que sientes, y está bien no saberlo con exactitud. A veces ayuda empezar por lo físico: ¿cómo duermes?, ¿cómo comes?, ¿tienes ganas de hacer las cosas que antes disfrutabas?\nEl Registro emocional puede ayudarte a identificar poco a poco qué emociones aparecen, o puedes simplemente hablarlo con alguien de confianza sin necesidad de tener claro qué es.",
+      "actions": [
+        { "label": "Ir al Registro emocional", "link": "emocional" }
       ]
     },
-    "sobre-soter": {
-      "type": "menu",
-      "botMessage": "Aquí tienes información sobre cómo funciono y qué hay detrás de este espacio 💡",
+
+    "tema-duelo": {
+      "type": "topic",
+      "title": "Duelo o pérdidas",
+      "keywords": ["duelo", "perdida", "perdi a", "murio", "fallecio", "fallecimiento", "luto", "extrano a", "se fue de mi vida"],
+      "botMessage": "Lo siento 💙 Las pérdidas pueden doler mucho. ¿Qué quieres saber sobre el duelo?",
       "options": [
-        { "label": "¿Quién soy y qué hago?", "next": "content:soter-quien-soy" },
-        { "label": "¿Cómo protege mi privacidad?", "next": "content:soter-privacidad" },
-        { "label": "¿Qué es Conecta Contigo?", "next": "content:soter-plataforma" }
+        { "label": "¿Qué es?", "next": "content:tema-duelo-que-es" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-duelo-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-duelo-cuando-ayuda" }
       ]
     },
-    "content:soter-quien-soy": {
+    "content:tema-duelo-que-es": {
       "type": "content",
-      "parent": "sobre-soter",
-      "title": "Quién es Soter",
-      "body": "Soy Soter, un asistente virtual informativo diseñado para acompañarte dentro de la plataforma Conecta Contigo. Mi objetivo es brindarte orientación educativa, herramientas de autocuidado y recursos confiables sobre salud mental y bienestar."
+      "parent": "tema-duelo",
+      "title": "Duelo o pérdidas — Qué es",
+      "body": "El duelo es la respuesta natural ante una pérdida: la muerte de alguien querido, una separación, un cambio de colegio o de ciudad, o el final de una etapa. Puede traer tristeza, rabia, culpa, confusión o incluso momentos de calma. No hay una forma 'correcta' ni un tiempo exacto para vivirlo."
     },
-    "content:soter-privacidad": {
+    "content:tema-duelo-que-hacer": {
       "type": "content",
-      "parent": "sobre-soter",
-      "title": "Privacidad y confidencialidad",
-      "body": "Tus conversaciones con Soter ocurren directamente en tu navegador y no almacenan datos personales que puedan identificarte. Es un espacio seguro para consultar información y reflexionar a tu propio ritmo."
+      "parent": "tema-duelo",
+      "title": "Duelo o pérdidas — Qué puedo hacer",
+      "body": "Permitirte sentir sin juzgarte, hablar de lo que perdiste con alguien de confianza, escribir lo que quisieras decir, mantener rutinas básicas como dormir y comer, y cuidar los espacios que te dan calma pueden acompañarte en este proceso. No tienes que atravesarlo solo o sola.",
+      "actions": [
+        { "label": "Ver Escritura expresiva", "link": "herramientas" }
+      ]
     },
-    "content:soter-plataforma": {
+    "content:tema-duelo-cuando-ayuda": {
       "type": "content",
-      "parent": "sobre-soter",
-      "title": "Sobre Conecta Contigo",
-      "body": "Conecta Contigo es una plataforma interactiva pensada para promover el bienestar emocional, ofrecer recursos prácticos y facilitar el acceso a redes de apoyo escolar y comunitario."
+      "parent": "tema-duelo",
+      "title": "Duelo o pérdidas — Cuándo debería pedir ayuda",
+      "body": "Si el dolor te impide hacer tus actividades por mucho tiempo, sientes que no puedes seguir adelante, o aparecen pensamientos de hacerte daño, es importante buscar apoyo de un adulto de confianza o de un profesional."
+    },
+
+    "tema-ansiedad": {
+      "type": "topic",
+      "title": "Ansiedad",
+      "keywords": ["ansiedad", "ansioso", "ansiosa", "preocupacion", "preocupado", "preocupada", "nervios", "nervioso", "nerviosa", "miedo", "panico", "taquicardia", "angustia"],
+      "botMessage": "Claro 💙 ¿Qué quieres saber sobre la ansiedad?",
+      "options": [
+        { "label": "¿Qué es?", "next": "content:tema-ansiedad-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-ansiedad-senales" },
+        { "label": "¿Por qué puede aparecer?", "next": "content:tema-ansiedad-por-que" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-ansiedad-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-ansiedad-cuando-ayuda" }
+      ]
     },
     "content:tema-ansiedad-que-es": {
       "type": "content",
@@ -199,7 +220,10 @@
       "type": "content",
       "parent": "tema-ansiedad",
       "title": "Ansiedad — Qué puedo hacer",
-      "body": "Algunas estrategias que pueden ayudar: practicar respiración consciente, escribir lo que sientes, hablar con alguien de confianza, moverte físicamente, y reducir por momentos el contacto con lo que te genera más tensión. En la sección de Herramientas encontrarás ejercicios guiados."
+      "body": "Algunas estrategias que pueden ayudar: practicar respiración consciente, escribir lo que sientes, hablar con alguien de confianza, moverte físicamente, y reducir por momentos el contacto con lo que te genera más tensión. En la sección de Herramientas encontrarás ejercicios guiados.",
+      "actions": [
+        { "label": "Ver Herramientas en Comprende", "link": "herramientas" }
+      ]
     },
     "content:tema-ansiedad-cuando-ayuda": {
       "type": "content",
@@ -207,32 +231,18 @@
       "title": "Ansiedad — Cuándo debería pedir ayuda",
       "body": "Vale la pena buscar apoyo profesional cuando la ansiedad es muy frecuente, te impide hacer actividades cotidianas, afecta tu sueño o tu alimentación, o sientes que no puedes manejarla solo o sola. Pedir ayuda es un acto de valentía, no una debilidad."
     },
-    "tema-ansiedad": {
+
+    "tema-tristeza": {
       "type": "topic",
-      "title": "Ansiedad",
-      "keywords": [
-        "ansiedad",
-        "ansioso",
-        "ansiosa",
-        "preocupacion",
-        "preocupado",
-        "preocupada",
-        "nervios",
-        "nervioso",
-        "nerviosa",
-        "miedo",
-        "panico",
-        "pánico",
-        "taquicardia",
-        "angustia"
-      ],
-      "botMessage": "Claro 💙 ¿Qué quieres saber sobre la ansiedad?",
+      "title": "Tristeza",
+      "keywords": ["tristeza", "triste", "desanimo", "desanimado", "desanimada", "sin ganas", "vacio", "llorar", "lloro", "apatia"],
+      "botMessage": "Claro 💙 ¿Qué quieres saber sobre la tristeza?",
       "options": [
-        { "label": "¿Qué es?", "next": "content:tema-ansiedad-que-es" },
-        { "label": "¿Cuáles son sus señales?", "next": "content:tema-ansiedad-senales" },
-        { "label": "¿Por qué puede aparecer?", "next": "content:tema-ansiedad-por-que" },
-        { "label": "¿Qué puedo hacer?", "next": "content:tema-ansiedad-que-hacer" },
-        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-ansiedad-cuando-ayuda" }
+        { "label": "¿Qué es?", "next": "content:tema-tristeza-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-tristeza-senales" },
+        { "label": "¿Por qué puede aparecer?", "next": "content:tema-tristeza-por-que" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-tristeza-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-tristeza-cuando-ayuda" }
       ]
     },
     "content:tema-tristeza-que-es": {
@@ -265,30 +275,18 @@
       "title": "Tristeza — Cuándo debería pedir ayuda",
       "body": "Si la tristeza se mantiene durante varias semanas, es muy intensa, o empieza a afectar tu energía, tu sueño o tus ganas de hacer cosas, es buen momento para buscar el apoyo de un adulto de confianza o un profesional."
     },
-    "tema-tristeza": {
+
+    "tema-estres": {
       "type": "topic",
-      "title": "Tristeza",
-      "keywords": [
-        "tristeza",
-        "triste",
-        "desanimo",
-        "desánimo",
-        "desanimado",
-        "desanimada",
-        "sin ganas",
-        "vacio",
-        "vacío",
-        "llorar",
-        "apatia",
-        "apatía"
-      ],
-      "botMessage": "Claro 💙 ¿Qué quieres saber sobre la tristeza?",
+      "title": "Estrés",
+      "keywords": ["estres", "estresado", "estresada", "presion", "agobio", "agobiado", "agobiada", "sobrecarga", "examen", "examenes"],
+      "botMessage": "Claro 💙 ¿Qué quieres saber sobre el estrés?",
       "options": [
-        { "label": "¿Qué es?", "next": "content:tema-tristeza-que-es" },
-        { "label": "¿Cuáles son sus señales?", "next": "content:tema-tristeza-senales" },
-        { "label": "¿Por qué puede aparecer?", "next": "content:tema-tristeza-por-que" },
-        { "label": "¿Qué puedo hacer?", "next": "content:tema-tristeza-que-hacer" },
-        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-tristeza-cuando-ayuda" }
+        { "label": "¿Qué es?", "next": "content:tema-estres-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-estres-senales" },
+        { "label": "¿Por qué puede aparecer?", "next": "content:tema-estres-por-que" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-estres-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-estres-cuando-ayuda" }
       ]
     },
     "content:tema-estres-que-es": {
@@ -313,7 +311,10 @@
       "type": "content",
       "parent": "tema-estres",
       "title": "Estrés — Qué puedo hacer",
-      "body": "Organizar tus pendientes por prioridad, tomar pausas cortas y reales, dormir lo suficiente, y practicar alguna técnica de relajación pueden bajar la intensidad del estrés. En Herramientas tienes ejercicios prácticos."
+      "body": "Organizar tus pendientes por prioridad, tomar pausas cortas y reales, dormir lo suficiente, y practicar alguna técnica de relajación pueden bajar la intensidad del estrés. En Herramientas tienes ejercicios prácticos.",
+      "actions": [
+        { "label": "Ver Herramientas en Comprende", "link": "herramientas" }
+      ]
     },
     "content:tema-estres-cuando-ayuda": {
       "type": "content",
@@ -321,333 +322,19 @@
       "title": "Estrés — Cuándo debería pedir ayuda",
       "body": "Si el estrés es constante, te cuesta relajarte incluso en tus tiempos libres, o empieza a afectar tu salud física o tu ánimo, considera hablarlo con un adulto de confianza o buscar apoyo profesional."
     },
-    "tema-estres": {
+
+    "tema-soledad": {
       "type": "topic",
-      "title": "Estrés",
-      "keywords": [
-        "estres",
-        "estrés",
-        "estresado",
-        "estresada",
-        "presion",
-        "presión",
-        "agobio",
-        "agobiado",
-        "agobiada",
-        "sobrecarga",
-        "examenes",
-        "exámenes"
-      ],
-      "botMessage": "Claro 💙 ¿Qué quieres saber sobre el estrés?",
+      "title": "Soledad",
+      "keywords": ["soledad", "me siento solo", "me siento sola", "estoy solo", "estoy sola", "muy solo", "muy sola", "aislado", "aislada", "aislamiento", "sin amigos", "nadie me entiende", "desconectado"],
+      "botMessage": "Claro 💙 ¿Qué quieres saber sobre la soledad?",
       "options": [
-        { "label": "¿Qué es?", "next": "content:tema-estres-que-es" },
-        { "label": "¿Cuáles son sus señales?", "next": "content:tema-estres-senales" },
-        { "label": "¿Por qué puede aparecer?", "next": "content:tema-estres-por-que" },
-        { "label": "¿Qué puedo hacer?", "next": "content:tema-estres-que-hacer" },
-        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-estres-cuando-ayuda" }
+        { "label": "¿Qué es?", "next": "content:tema-soledad-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-soledad-senales" },
+        { "label": "¿Por qué puede aparecer?", "next": "content:tema-soledad-por-que" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-soledad-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-soledad-cuando-ayuda" }
       ]
-    },
-    "content:tema-sueno-que-es": {
-      "type": "content",
-      "parent": "tema-sueno",
-      "title": "Trastornos del sueño — Qué es",
-      "body": "Dormir bien es esencial para el cuerpo y la mente: durante el sueño el cerebro procesa emociones, consolida lo aprendido y se recupera físicamente. Las dificultades para dormir son comunes en la adolescencia, entre otras razones por cambios en los horarios biológicos."
-    },
-    "content:tema-sueno-senales": {
-      "type": "content",
-      "parent": "tema-sueno",
-      "title": "Trastornos del sueño — Cuáles son sus señales",
-      "body": "Puede manifestarse como dificultad para conciliar el sueño, despertarte varias veces en la noche, pensar demasiado antes de dormir, o sentirte cansado o cansada durante el día aunque hayas dormido varias horas."
-    },
-    "content:tema-sueno-que-hacer": {
-      "type": "content",
-      "parent": "tema-sueno",
-      "title": "Trastornos del sueño — Qué puedo hacer",
-      "body": "Mantener un horario regular para dormir y despertar, reducir pantallas antes de acostarte, evitar cafeína en la tarde-noche, y escribir tus pensamientos antes de dormir si sientes que 'piensas demasiado' pueden ayudar."
-    },
-    "content:tema-sueno-cuando-ayuda": {
-      "type": "content",
-      "parent": "tema-sueno",
-      "title": "Trastornos del sueño — Cuándo debería pedir ayuda",
-      "body": "Si las dificultades para dormir se repiten varias noches por semana durante varias semanas, o afectan claramente tu concentración y tu ánimo, es buena idea comentarlo con un adulto de confianza o un profesional de salud."
-    },
-    "tema-sueno": {
-      "type": "topic",
-      "title": "Trastornos del sueño",
-      "keywords": [
-        "dormir",
-        "sueno",
-        "sueño",
-        "insomnio",
-        "no puedo dormir",
-        "pesadillas",
-        "desvelado",
-        "desvelada",
-        "trasnochar"
-      ],
-      "botMessage": "Claro 💙 ¿Qué quieres saber sobre el sueño?",
-      "options": [
-        { "label": "¿Qué es?", "next": "content:tema-sueno-que-es" },
-        { "label": "¿Cuáles son sus señales?", "next": "content:tema-sueno-senales" },
-        { "label": "¿Qué puedo hacer?", "next": "content:tema-sueno-que-hacer" },
-        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-sueno-cuando-ayuda" }
-      ]
-    },
-    "content:tema-depresion-que-es": {
-      "type": "content",
-      "parent": "tema-depresion",
-      "title": "Depresión — Qué es",
-      "body": "La depresión es una condición de salud mental que va más allá de sentir tristeza algunos días: implica un decaimiento del ánimo y la energía que se mantiene en el tiempo y afecta distintas áreas de la vida. Esta información no reemplaza una evaluación profesional."
-    },
-    "content:tema-depresion-senales": {
-      "type": "content",
-      "parent": "tema-depresion",
-      "title": "Depresión — Cuáles son sus señales",
-      "body": "Algunas señales pueden ser tristeza o vacío casi todos los días, pérdida de interés en actividades que antes disfrutabas, cambios en el sueño o el apetito, dificultad para concentrarte, cansancio constante o pensamientos muy negativos sobre ti mismo o ti misma."
-    },
-    "content:tema-depresion-que-hacer": {
-      "type": "content",
-      "parent": "tema-depresion",
-      "title": "Depresión — Qué puedo hacer",
-      "body": "Hablar con alguien de confianza sobre cómo te sientes es un primer paso importante. Mantener pequeñas rutinas, no aislarte por completo y evitar exigirte demasiado también puede ayudar mientras buscas apoyo."
-    },
-    "content:tema-depresion-cuando-ayuda": {
-      "type": "content",
-      "parent": "tema-depresion",
-      "title": "Depresión — Cuándo debería pedir ayuda",
-      "body": "Si estas señales se mantienen por más de dos semanas y afectan tu vida diaria, es momento de buscar apoyo profesional. Un psicólogo o psiquiatra puede evaluar mejor lo que estás viviendo que cualquier información en línea."
-    },
-    "tema-depresion": {
-      "type": "topic",
-      "title": "Depresión",
-      "keywords": [
-        "depresion",
-        "depresión",
-        "deprimido",
-        "deprimida",
-        "sin sentido",
-        "no siento nada"
-      ],
-      "botMessage": "Claro 💙 Esta información puede ayudarte a comprender algunas experiencias relacionadas con la depresión.",
-      "options": [
-        { "label": "¿Qué es?", "next": "content:tema-depresion-que-es" },
-        { "label": "¿Cuáles son sus señales?", "next": "content:tema-depresion-senales" },
-        { "label": "¿Qué puedo hacer?", "next": "content:tema-depresion-que-hacer" },
-        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-depresion-cuando-ayuda" }
-      ]
-    },
-    "content:tema-alimentacion-que-es": {
-      "type": "content",
-      "parent": "tema-alimentacion",
-      "title": "Alimentación y bienestar — Qué es",
-      "body": "La relación con la comida y con el propio cuerpo puede volverse una fuente de malestar importante durante la adolescencia, por presión social, comparación en redes o autoexigencia. Cuando esta relación se vuelve rígida o dolorosa, puede requerir apoyo especializado."
-    },
-    "content:tema-alimentacion-senales": {
-      "type": "content",
-      "parent": "tema-alimentacion",
-      "title": "Alimentación y bienestar — Cuáles son sus señales",
-      "body": "Algunas señales de alerta son preocupación constante por el cuerpo o la comida, cambios notorios en los hábitos alimenticios, evitar comer en público, o que el estado de ánimo dependa mucho de cómo te ves. Cada persona vive esto de forma distinta."
-    },
-    "content:tema-alimentacion-cuando-ayuda": {
-      "type": "content",
-      "parent": "tema-alimentacion",
-      "title": "Alimentación y bienestar — Cuándo debería pedir ayuda",
-      "body": "Si notas estas señales en ti o en alguien cercano, es importante buscar apoyo profesional lo antes posible; entre más pronto se acompañe esta situación, más fácil suele ser el proceso. Hablarlo con un adulto de confianza es un buen primer paso."
-    },
-    "tema-alimentacion": {
-      "type": "topic",
-      "title": "Alimentación y bienestar",
-      "keywords": [
-        "alimentacion",
-        "alimentación",
-        "comer",
-        "peso",
-        "cuerpo",
-        "comida"
-      ],
-      "botMessage": "Claro 💙 Esta información puede ayudarte a comprender algunas experiencias relacionadas con la alimentación y la imagen corporal.",
-      "options": [
-        { "label": "¿Qué es?", "next": "content:tema-alimentacion-que-es" },
-        { "label": "¿Cuáles son sus señales?", "next": "content:tema-alimentacion-senales" },
-        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-alimentacion-cuando-ayuda" }
-      ]
-    },
-    "content:tema-autoestima-que-es": {
-      "type": "content",
-      "parent": "tema-autoestima",
-      "title": "Autoestima y confianza — Qué es",
-      "body": "La autoestima es la valoración y percepción que tienes sobre ti mismo o ti misma. No se trata de sentirte perfecto todo el tiempo, sino de reconocer tu valor más allá de tus errores, tus notas o la opinión de los demás."
-    },
-    "content:tema-autoestima-que-hacer": {
-      "type": "content",
-      "parent": "tema-autoestima",
-      "title": "Autoestima y confianza — Qué puedo hacer",
-      "body": "Practica la autocompasión: háblate con la misma amabilidad con la que le hablarías a un buen amigo. Evita compararte constantemente con realidades ajenas que ves en redes sociales y reconoce tus pequeños logros diarios."
-    },
-    "tema-autoestima": {
-      "type": "topic",
-      "title": "Autoestima y confianza",
-      "keywords": [
-        "autoestima",
-        "confianza",
-        "inseguridad",
-        "inseguro",
-        "insegura",
-        "no me gusto",
-        "valor propio"
-      ],
-      "botMessage": "💙 La confianza en uno mismo es un pilar fundamental. ¿Qué te gustaría explorar?",
-      "options": [
-        { "label": "¿Qué es?", "next": "content:tema-autoestima-que-es" },
-        { "label": "¿Qué puedo hacer?", "next": "content:tema-autoestima-que-hacer" }
-      ]
-    },
-    "content:tema-ira-que-es": {
-      "type": "content",
-      "parent": "tema-ira",
-      "title": "Ira o rabia — Qué es",
-      "body": "La ira es una emoción natural que surge cuando percibes una injusticia, un límite violado o frustración. No es mala en sí misma; el reto está en aprender a expresarla y canalizarla sin lastimarte ni lastimar a otros."
-    },
-    "content:tema-ira-que-hacer": {
-      "type": "content",
-      "parent": "tema-ira",
-      "title": "Ira o rabia — Qué puedo hacer",
-      "body": "Cuando sientas que la rabia te desborda, aléjate un momento de la situación (toma una pausa), respira profundamente o realiza actividad física para liberar la tensión acumulada antes de intentar hablar o resolver el problema."
-    },
-    "tema-ira": {
-      "type": "topic",
-      "title": "Ira o rabia",
-      "keywords": [
-        "ira",
-        "rabia",
-        "enojo",
-        "enojado",
-        "enojada",
-        "frustracion",
-        "frustración",
-        "molesto",
-        "molesta"
-      ],
-      "botMessage": "💙 La rabia o la ira son emociones intensas. ¿Cómo podemos abordarlas?",
-      "options": [
-        { "label": "¿Qué es?", "next": "content:tema-ira-que-es" },
-        { "label": "¿Qué puedo hacer?", "next": "content:tema-ira-que-hacer" }
-      ]
-    },
-    "content:cambios-comportamiento": {
-      "type": "content",
-      "parent": "entender",
-      "title": "Cambios en mi comportamiento",
-      "body": "A veces no se trata de una emoción puntual, sino de notar que algo cambió: te alejas de personas con las que antes compartías, tu rendimiento académico bajó, duermes o comes distinto, o sientes que 'no eres tú'. Estos cambios pueden ser una señal de que algo te está afectando, y no necesitan un nombre exacto para merecer atención.\nHablarlo con alguien de confianza puede ayudarte a entender mejor qué está pasando."
-    },
-    "content:no-se-que-pasa": {
-      "type": "content",
-      "parent": "entender",
-      "title": "No sé exactamente qué me pasa",
-      "body": "No siempre es fácil ponerle nombre a lo que sientes, y está bien no saberlo con exactitud. A veces ayuda empezar por lo físico: ¿cómo duermes?, ¿cómo comes?, ¿tienes ganas de hacer las cosas que antes disfrutabas?\nTambién puedes explorar las categorías de Soter para ver si algo se relaciona con lo que vives, o simplemente hablarlo con alguien de confianza sin necesidad de tener claro qué es."
-    },
-    "situaciones": {
-      "type": "menu",
-      "botMessage": "Cuéntame un poco más, ¿qué tipo de situación estás viviendo?",
-      "options": [
-        { "label": "Acoso o conflictos con compañeros", "next": "content:situacion-acoso" },
-        { "label": "Conflictos o tensión en casa", "next": "content:situacion-casa" },
-        { "label": "Presión académica o de resultados", "next": "content:situacion-academica" },
-        { "label": "Comparación o presión en redes sociales", "next": "content:situacion-redes" }
-      ]
-    },
-    "content:situacion-acoso": {
-      "type": "content",
-      "parent": "situaciones",
-      "title": "Acoso o conflictos con compañeros",
-      "body": "Vivir situaciones de acoso, exclusión o conflictos constantes con compañeros puede afectar mucho tu bienestar, aunque a veces se minimicen o parezcan 'normales'. No estás exagerando si esto te afecta.\nBuscar apoyo de un adulto de confianza en el colegio o en casa es un paso importante para que la situación no se sostenga en el tiempo."
-    },
-    "content:situacion-casa": {
-      "type": "content",
-      "parent": "situaciones",
-      "title": "Conflictos o tensión en casa",
-      "body": "Los conflictos familiares, las discusiones frecuentes o la tensión en casa pueden generar mucho desgaste emocional, incluso si sientes que 'debes' manejarlo solo o sola.\nHablar con un adulto de confianza fuera de la situación, o con un profesional, puede ayudarte a encontrar formas de sobrellevarlo."
-    },
-    "content:situacion-academica": {
-      "type": "content",
-      "parent": "situaciones",
-      "title": "Presión académica o de resultados",
-      "body": "La presión por buenas calificaciones, exámenes o expectativas de otras personas puede generar mucho estrés y afectar tu autoestima. Tu valor no depende únicamente de tus resultados académicos.\nOrganizar tus tiempos y hablar con adultos sobre lo que sientes puede aliviar parte de esa carga."
-    },
-    "content:situacion-redes": {
-      "type": "content",
-      "parent": "situaciones",
-      "title": "Comparación o presión en redes sociales",
-      "body": "Pasar mucho tiempo comparándote con lo que ves en redes sociales puede afectar cómo te sientes contigo mismo o misma. Recuerda que lo que se muestra en línea suele ser una versión editada de la realidad.\nTomar pausas del uso de redes y hablar de cómo te hacen sentir puede ayudarte a cuidar tu bienestar."
-    },
-    "herramientas": {
-      "type": "menu",
-      "botMessage": "Estas son algunas herramientas prácticas que puedes probar 🛠️",
-      "options": [
-        { "label": "Respiración consciente", "next": "content:herr-respiracion" },
-        { "label": "Pausa de regulación (5-4-3-2-1)", "next": "content:herr-pausa" },
-        { "label": "Registro emocional", "next": "content:herr-registro" },
-        { "label": "Identificar lo que siento", "next": "content:herr-identificar" },
-        { "label": "Organizar mis pensamientos", "next": "content:herr-organizar" },
-        { "label": "Técnica del anclaje positivo", "next": "content:herr-anclaje" }
-      ]
-    },
-    "content:herr-respiracion": {
-      "type": "content",
-      "parent": "herramientas",
-      "title": "Respiración consciente",
-      "body": "Inhala contando hasta 4, sostén el aire contando hasta 4, y exhala lentamente contando hasta 6. Repite este ciclo entre 5 y 8 veces.\nRespirar de forma consciente ayuda a calmar la activación del cuerpo cuando sientes ansiedad o estrés."
-    },
-    "content:herr-pausa": {
-      "type": "content",
-      "parent": "herramientas",
-      "title": "Pausa de regulación (5-4-3-2-1)",
-      "body": "Cuando te sientas muy abrumado o abrumada, nombra: 5 cosas que puedes ver, 4 que puedes tocar, 3 que puedes escuchar, 2 que puedes oler y 1 que puedes saborear.\nEsta técnica ayuda a traer tu atención al presente cuando los pensamientos se sienten desbordados."
-    },
-    "content:herr-registro": {
-      "type": "content",
-      "parent": "herramientas",
-      "title": "Registro emocional",
-      "body": "Escribir lo que sientes, sin filtro y sin buscar que 'suene bien', puede ayudarte a ordenar tus pensamientos y reconocer patrones.\nPuedes usar la sección Emocional de Conecta Contigo para llevar tu propio registro."
-    },
-    "content:herr-identificar": {
-      "type": "content",
-      "parent": "herramientas",
-      "title": "Identificar lo que siento",
-      "body": "A veces sentimos 'algo raro' sin saber exactamente qué es. Preguntarte dónde sientes esa emoción en el cuerpo, cuándo empezó, y qué situación la acompaña puede ayudarte a ponerle nombre y a entenderla mejor."
-    },
-    "content:herr-organizar": {
-      "type": "content",
-      "parent": "herramientas",
-      "title": "Organizar mis pensamientos",
-      "body": "Cuando tengas muchas ideas o preocupaciones dando vueltas, escríbelas todas sin orden en un papel o nota, y luego sepáralas en tres grupos: lo que puedo resolver hoy, lo que puedo resolver después, y lo que no depende de mí.\nEsto ayuda a reducir la sensación de estar sobrepasado."
-    },
-    "content:herr-anclaje": {
-      "type": "content",
-      "parent": "herramientas",
-      "title": "Técnica del anclaje positivo",
-      "body": "Trae a tu memoria un momento en el que te hayas sentido seguro, tranquilo o orgulloso de ti mismo. Cierra los ojos por un instante y recuerda los detalles de esa escena: los sonidos, las sensaciones y el alivio que sentiste. Esto ayuda a tu cerebro a recordar que el bienestar también es posible."
-    },
-    "ayuda": {
-      "type": "menu",
-      "botMessage": "Este es un espacio para pensar en cómo pedir apoyo 🆘",
-      "options": [
-        { "label": "Hablar con alguien de confianza", "next": "content:ayuda-hablar" },
-        { "label": "Buscar apoyo profesional", "next": "content:ayuda-profesional" },
-        { "label": "Contactos de ayuda", "next": "link:contactos" }
-      ]
-    },
-    "content:ayuda-hablar": {
-      "type": "content",
-      "parent": "ayuda",
-      "title": "Hablar con alguien de confianza",
-      "body": "Elegir a una persona con la que te sientas segura o seguro -un familiar, docente, orientador u orientadora, o amigo cercano- y compartir cómo te sientes puede aliviar mucho la carga.\nNo tienes que tener todas las palabras exactas; puedes empezar simplemente diciendo que no te sientes bien."
-    },
-    "content:ayuda-profesional": {
-      "type": "content",
-      "parent": "ayuda",
-      "title": "Buscar apoyo profesional",
-      "body": "Un psicólogo o psicóloga puede ayudarte a comprender lo que estás viviendo desde un lugar preparado para acompañarte, sin juzgarte.\nPedir esta ayuda no significa que algo esté 'mal' contigo; es una forma de cuidarte."
     },
     "content:tema-soledad-que-es": {
       "type": "content",
@@ -679,27 +366,754 @@
       "title": "Soledad — Cuándo debería pedir ayuda",
       "body": "Si la soledad se mantiene por mucho tiempo, te hace sentir sin ganas de nada, o te aleja completamente de las personas que antes eran importantes para ti, hablarlo con un adulto de confianza o un profesional puede ayudarte a encontrar el camino de vuelta."
     },
-    "tema-soledad": {
+
+    "tema-ira": {
       "type": "topic",
-      "title": "Soledad",
-      "keywords": [
-        "soledad",
-        "solo",
-        "sola",
-        "aislado",
-        "aislada",
-        "aislamiento",
-        "sin amigos",
-        "nadie me entiende",
-        "desconectado"
-      ],
-      "botMessage": "Claro 💙 ¿Qué quieres saber sobre la soledad?",
+      "title": "Ira o rabia",
+      "keywords": ["ira", "rabia", "enojo", "enojado", "enojada", "frustracion", "molesto", "molesta", "furioso", "furiosa"],
+      "botMessage": "💙 La rabia o la ira son emociones intensas. ¿Cómo podemos abordarlas?",
       "options": [
-        { "label": "¿Qué es?", "next": "content:tema-soledad-que-es" },
-        { "label": "¿Cuáles son sus señales?", "next": "content:tema-soledad-senales" },
-        { "label": "¿Por qué puede aparecer?", "next": "content:tema-soledad-por-que" },
-        { "label": "¿Qué puedo hacer?", "next": "content:tema-soledad-que-hacer" },
-        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-soledad-cuando-ayuda" }
+        { "label": "¿Qué es?", "next": "content:tema-ira-que-es" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-ira-que-hacer" }
+      ]
+    },
+    "content:tema-ira-que-es": {
+      "type": "content",
+      "parent": "tema-ira",
+      "title": "Ira o rabia — Qué es",
+      "body": "La ira es una emoción natural que surge cuando percibes una injusticia, un límite violado o frustración. No es mala en sí misma; el reto está en aprender a expresarla y canalizarla sin lastimarte ni lastimar a otros."
+    },
+    "content:tema-ira-que-hacer": {
+      "type": "content",
+      "parent": "tema-ira",
+      "title": "Ira o rabia — Qué puedo hacer",
+      "body": "Cuando sientas que la rabia te desborda, aléjate un momento de la situación (toma una pausa), respira profundamente o realiza actividad física para liberar la tensión acumulada antes de intentar hablar o resolver el problema."
+    },
+
+    "aprender": {
+      "type": "menu",
+      "botMessage": "📚 En Comprende → Condiciones hay información educativa sobre diferentes condiciones de salud mental. Es para comprender, no para diagnosticar. También puedo darte información breve sobre estos temas:",
+      "options": [
+        { "label": "Qué hay en Condiciones", "next": "content:comp-condiciones" },
+        { "label": "Ansiedad", "next": "tema-ansiedad" },
+        { "label": "Depresión", "next": "tema-depresion" },
+        { "label": "Alimentación y bienestar", "next": "tema-alimentacion" },
+        { "label": "Más temas", "next": "aprender-2" }
+      ]
+    },
+    "aprender-2": {
+      "type": "menu",
+      "botMessage": "Otros temas sobre los que puedo darte información:",
+      "options": [
+        { "label": "Estrés", "next": "tema-estres" },
+        { "label": "Trastornos del sueño", "next": "tema-sueno" },
+        { "label": "Autoestima y confianza", "next": "tema-autoestima" }
+      ]
+    },
+    "content:comp-condiciones": {
+      "type": "content",
+      "parent": "aprender",
+      "title": "Comprende → Condiciones",
+      "keywords": ["condiciones", "condicion", "trastorno", "trastornos", "tdah", "autismo", "bipolar", "toc", "psicosis", "psicotico", "dismorfico", "diagnostico", "salud mental"],
+      "body": "En Comprende → Condiciones encuentras información educativa para entender diferentes condiciones relacionadas con la salud mental, por ejemplo: depresión, trastornos de ansiedad, trastornos de la conducta alimentaria, trastorno obsesivo-compulsivo, TDAH, autismo, trastorno bipolar, autolesiones o ideación y conducta suicida, entre otras.\nEs información para comprender, no para diagnosticar: no permite saber si alguien tiene o no una condición. Solo un profesional puede hacer una evaluación.",
+      "actions": [
+        { "label": "Ir a Comprende → Condiciones", "link": "condiciones" }
+      ]
+    },
+
+    "tema-depresion": {
+      "type": "topic",
+      "title": "Depresión",
+      "keywords": ["depresion", "deprimido", "deprimida", "sin sentido", "no siento nada"],
+      "botMessage": "Claro 💙 Esta información puede ayudarte a comprender algunas experiencias relacionadas con la depresión.",
+      "options": [
+        { "label": "¿Qué es?", "next": "content:tema-depresion-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-depresion-senales" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-depresion-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-depresion-cuando-ayuda" }
+      ]
+    },
+    "content:tema-depresion-que-es": {
+      "type": "content",
+      "parent": "tema-depresion",
+      "title": "Depresión — Qué es",
+      "body": "La depresión es una condición de salud mental que va más allá de sentir tristeza algunos días: implica un decaimiento del ánimo y la energía que se mantiene en el tiempo y afecta distintas áreas de la vida. Esta información no reemplaza una evaluación profesional."
+    },
+    "content:tema-depresion-senales": {
+      "type": "content",
+      "parent": "tema-depresion",
+      "title": "Depresión — Cuáles son sus señales",
+      "body": "Algunas señales pueden ser tristeza o vacío casi todos los días, pérdida de interés en actividades que antes disfrutabas, cambios en el sueño o el apetito, dificultad para concentrarte, cansancio constante o pensamientos muy negativos sobre ti mismo o ti misma. Estas señales por sí solas no permiten determinar un diagnóstico."
+    },
+    "content:tema-depresion-que-hacer": {
+      "type": "content",
+      "parent": "tema-depresion",
+      "title": "Depresión — Qué puedo hacer",
+      "body": "Hablar con alguien de confianza sobre cómo te sientes es un primer paso importante. Mantener pequeñas rutinas, no aislarte por completo y evitar exigirte demasiado también puede ayudar mientras buscas apoyo."
+    },
+    "content:tema-depresion-cuando-ayuda": {
+      "type": "content",
+      "parent": "tema-depresion",
+      "title": "Depresión — Cuándo debería pedir ayuda",
+      "body": "Si estas señales se mantienen por más de dos semanas y afectan tu vida diaria, es momento de buscar apoyo profesional. Un psicólogo o psiquiatra puede evaluar mejor lo que estás viviendo que cualquier información en línea."
+    },
+
+    "tema-sueno": {
+      "type": "topic",
+      "title": "Trastornos del sueño",
+      "keywords": ["dormir", "sueno", "insomnio", "no puedo dormir", "no duermo", "duermo mal", "pesadillas", "desvelado", "desvelada", "trasnochar"],
+      "botMessage": "Claro 💙 ¿Qué quieres saber sobre el sueño?",
+      "options": [
+        { "label": "¿Qué es?", "next": "content:tema-sueno-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-sueno-senales" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-sueno-que-hacer" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-sueno-cuando-ayuda" }
+      ]
+    },
+    "content:tema-sueno-que-es": {
+      "type": "content",
+      "parent": "tema-sueno",
+      "title": "Trastornos del sueño — Qué es",
+      "body": "Dormir bien es esencial para el cuerpo y la mente: durante el sueño el cerebro procesa emociones, consolida lo aprendido y se recupera físicamente. Las dificultades para dormir son comunes en la adolescencia, entre otras razones por cambios en los horarios biológicos."
+    },
+    "content:tema-sueno-senales": {
+      "type": "content",
+      "parent": "tema-sueno",
+      "title": "Trastornos del sueño — Cuáles son sus señales",
+      "body": "Puede manifestarse como dificultad para conciliar el sueño, despertarte varias veces en la noche, pensar demasiado antes de dormir, o sentirte cansado o cansada durante el día aunque hayas dormido varias horas."
+    },
+    "content:tema-sueno-que-hacer": {
+      "type": "content",
+      "parent": "tema-sueno",
+      "title": "Trastornos del sueño — Qué puedo hacer",
+      "body": "Mantener un horario regular para dormir y despertar, reducir pantallas antes de acostarte, evitar cafeína en la tarde-noche, y escribir tus pensamientos antes de dormir si sientes que 'piensas demasiado' pueden ayudar."
+    },
+    "content:tema-sueno-cuando-ayuda": {
+      "type": "content",
+      "parent": "tema-sueno",
+      "title": "Trastornos del sueño — Cuándo debería pedir ayuda",
+      "body": "Si las dificultades para dormir se repiten varias noches por semana durante varias semanas, o afectan claramente tu concentración y tu ánimo, es buena idea comentarlo con un adulto de confianza o un profesional de salud."
+    },
+
+    "tema-alimentacion": {
+      "type": "topic",
+      "title": "Alimentación y bienestar",
+      "keywords": ["alimentacion", "comer", "peso", "cuerpo", "comida", "no quiero comer", "me veo gorda", "me veo gordo"],
+      "botMessage": "Claro 💙 Esta información puede ayudarte a comprender algunas experiencias relacionadas con la alimentación y la imagen corporal.",
+      "options": [
+        { "label": "¿Qué es?", "next": "content:tema-alimentacion-que-es" },
+        { "label": "¿Cuáles son sus señales?", "next": "content:tema-alimentacion-senales" },
+        { "label": "¿Cuándo debería pedir ayuda?", "next": "content:tema-alimentacion-cuando-ayuda" }
+      ]
+    },
+    "content:tema-alimentacion-que-es": {
+      "type": "content",
+      "parent": "tema-alimentacion",
+      "title": "Alimentación y bienestar — Qué es",
+      "body": "La relación con la comida y con el propio cuerpo puede volverse una fuente de malestar importante durante la adolescencia, por presión social, comparación en redes o autoexigencia. Cuando esta relación se vuelve rígida o dolorosa, puede requerir apoyo especializado."
+    },
+    "content:tema-alimentacion-senales": {
+      "type": "content",
+      "parent": "tema-alimentacion",
+      "title": "Alimentación y bienestar — Cuáles son sus señales",
+      "body": "Algunas señales de alerta son preocupación constante por el cuerpo o la comida, cambios notorios en los hábitos alimenticios, evitar comer en público, o que el estado de ánimo dependa mucho de cómo te ves. Cada persona vive esto de forma distinta."
+    },
+    "content:tema-alimentacion-cuando-ayuda": {
+      "type": "content",
+      "parent": "tema-alimentacion",
+      "title": "Alimentación y bienestar — Cuándo debería pedir ayuda",
+      "body": "Si notas estas señales en ti o en alguien cercano, es importante buscar apoyo profesional lo antes posible; entre más pronto se acompañe esta situación, más fácil suele ser el proceso. Hablarlo con un adulto de confianza es un buen primer paso."
+    },
+
+    "tema-autoestima": {
+      "type": "topic",
+      "title": "Autoestima y confianza",
+      "keywords": ["autoestima", "confianza", "inseguridad", "inseguro", "insegura", "no me gusto", "valor propio"],
+      "botMessage": "💙 La confianza en uno mismo es un pilar fundamental. ¿Qué te gustaría explorar?",
+      "options": [
+        { "label": "¿Qué es?", "next": "content:tema-autoestima-que-es" },
+        { "label": "¿Qué puedo hacer?", "next": "content:tema-autoestima-que-hacer" }
+      ]
+    },
+    "content:tema-autoestima-que-es": {
+      "type": "content",
+      "parent": "tema-autoestima",
+      "title": "Autoestima y confianza — Qué es",
+      "body": "La autoestima es la valoración y percepción que tienes sobre ti mismo o ti misma. No se trata de sentirte perfecto todo el tiempo, sino de reconocer tu valor más allá de tus errores, tus notas o la opinión de los demás."
+    },
+    "content:tema-autoestima-que-hacer": {
+      "type": "content",
+      "parent": "tema-autoestima",
+      "title": "Autoestima y confianza — Qué puedo hacer",
+      "body": "Practica la autocompasión: háblate con la misma amabilidad con la que le hablarías a un buen amigo. Evita compararte constantemente con realidades ajenas que ves en redes sociales y reconoce tus pequeños logros diarios."
+    },
+
+    "situaciones": {
+      "type": "menu",
+      "botMessage": "Cuéntame un poco más, ¿qué tipo de situación estás viviendo? 🌱",
+      "options": [
+        { "label": "Acoso o conflictos con compañeros", "next": "content:situacion-acoso" },
+        { "label": "Conflictos o tensión en casa", "next": "content:situacion-casa" },
+        { "label": "Presión académica o de resultados", "next": "content:situacion-academica" },
+        { "label": "Comparación o presión en redes sociales", "next": "content:situacion-redes" },
+        { "label": "Más situaciones", "next": "situaciones-2" }
+      ]
+    },
+    "situaciones-2": {
+      "type": "menu",
+      "botMessage": "Estas son otras situaciones que puedes explorar:",
+      "options": [
+        { "label": "Relaciones y vínculos", "next": "content:situacion-relaciones" },
+        { "label": "Presión de pares", "next": "content:situacion-pares" },
+        { "label": "Aislamiento y soledad", "next": "tema-soledad" },
+        { "label": "Otras situaciones en Comprende", "next": "content:comp-situaciones" }
+      ]
+    },
+    "content:situacion-acoso": {
+      "type": "content",
+      "parent": "situaciones",
+      "title": "Acoso o conflictos con compañeros",
+      "keywords": ["acoso", "bullying", "matoneo", "se burlan", "me molestan", "me excluyen", "me hacen la ley del hielo"],
+      "body": "Vivir situaciones de acoso, exclusión o conflictos constantes con compañeros puede afectar mucho tu bienestar, aunque a veces se minimicen o parezcan 'normales'. No estás exagerando si esto te afecta.\nBuscar apoyo de un adulto de confianza en el colegio o en casa es un paso importante para que la situación no se sostenga en el tiempo."
+    },
+    "content:situacion-casa": {
+      "type": "content",
+      "parent": "situaciones",
+      "title": "Conflictos o tensión en casa",
+      "keywords": ["conflictos en casa", "tension en casa", "peleas en casa", "mis papas", "discuten", "problemas familiares", "familia"],
+      "body": "Los conflictos familiares, las discusiones frecuentes o la tensión en casa pueden generar mucho desgaste emocional, incluso si sientes que 'debes' manejarlo solo o sola.\nHablar con un adulto de confianza fuera de la situación, o con un profesional, puede ayudarte a encontrar formas de sobrellevarlo."
+    },
+    "content:situacion-academica": {
+      "type": "content",
+      "parent": "situaciones",
+      "title": "Presión académica o de resultados",
+      "keywords": ["examen", "examenes", "notas", "calificaciones", "colegio", "tareas", "estudiar", "presion academica", "estres academico"],
+      "body": "La presión por buenas calificaciones, exámenes o expectativas de otras personas puede generar mucho estrés y afectar tu autoestima. Tu valor no depende únicamente de tus resultados académicos.\nOrganizar tus tiempos y hablar con adultos sobre lo que sientes puede aliviar parte de esa carga."
+    },
+    "content:situacion-redes": {
+      "type": "content",
+      "parent": "situaciones",
+      "title": "Comparación o presión en redes sociales",
+      "keywords": ["redes sociales", "redes", "instagram", "tiktok", "me comparo", "comparacion", "celular", "likes"],
+      "body": "Pasar mucho tiempo comparándote con lo que ves en redes sociales puede afectar cómo te sientes contigo mismo o misma. Recuerda que lo que se muestra en línea suele ser una versión editada de la realidad.\nTomar pausas del uso de redes y hablar de cómo te hacen sentir puede ayudarte a cuidar tu bienestar."
+    },
+    "content:situacion-relaciones": {
+      "type": "content",
+      "parent": "situaciones-2",
+      "title": "Relaciones y vínculos",
+      "keywords": ["pareja", "novio", "novia", "terminamos", "celos", "pelee con mi amigo", "pelee con mi amiga", "amistad", "relaciones", "vinculos"],
+      "body": "Los vínculos con amigos, pareja o familia pueden ser fuente de apoyo y también de tensión. Es normal sentir confusión, celos, miedo al rechazo o ganas de alejarte cuando hay conflictos.\nUna relación que te cuida te permite expresarte con respeto y sentirte seguro o segura. Si en una relación sientes miedo, control o te hacen sentir mal de forma constante, hablarlo con un adulto de confianza es un paso importante."
+    },
+    "content:situacion-pares": {
+      "type": "content",
+      "parent": "situaciones-2",
+      "title": "Presión de pares",
+      "keywords": ["presion de pares", "presion de grupo", "presion de amigos", "encajar", "me obligan", "me presionan"],
+      "body": "La presión de pares es la influencia que ejercen personas de tu edad para que hagas algo o te comportes de cierta manera. A veces es positiva, pero puede ser difícil cuando sientes que debes hacer algo que no quieres para encajar.\nPuedes decir que no, tomar distancia o buscar apoyo de alguien de confianza. Decidir por ti no te hace menos parte del grupo."
+    },
+    "content:comp-situaciones": {
+      "type": "content",
+      "parent": "situaciones-2",
+      "title": "Comprende → Situaciones y experiencias",
+      "keywords": ["situaciones y experiencias", "violencia", "discriminacion", "entorno en riesgo", "violencia emocional"],
+      "body": "En Comprende → Situaciones y experiencias encuentras información sobre experiencias y contextos que pueden influir en el bienestar emocional: estrés, redes sociales y entorno, acoso escolar, violencia emocional, violencia sexual, discriminación, entorno en riesgo, presión de pares, aislamiento y soledad, estrés académico, y sueño y salud mental.",
+      "actions": [
+        { "label": "Ir a Comprende → Situaciones", "link": "situaciones" }
+      ]
+    },
+
+    "registro": {
+      "type": "menu",
+      "title": "Registro emocional",
+      "keywords": ["registro emocional", "registro", "registrar", "calendario emocional", "calendario", "anotar como me siento", "diario emocional", "matices"],
+      "botMessage": "💭 El Registro emocional es un espacio de autoobservación: te ayuda a identificar qué podrías estar sintiendo y a reconocer patrones con el tiempo. No diagnostica. ¿Qué quieres saber?",
+      "actions": [
+        { "label": "Ir al Registro emocional", "link": "emocional" }
+      ],
+      "options": [
+        { "label": "¿Cómo funciona?", "next": "content:registro-como" },
+        { "label": "Emociones y matices", "next": "content:registro-emociones" },
+        { "label": "Límite diario y calendario", "next": "content:registro-calendario" },
+        { "label": "Modificar o eliminar un registro", "next": "content:registro-editar" },
+        { "label": "Conocer más sobre las emociones", "next": "content:registro-conocer" }
+      ]
+    },
+    "content:registro-como": {
+      "type": "content",
+      "parent": "registro",
+      "title": "¿Cómo funciona el Registro emocional?",
+      "body": "Funciona con un formulario de preguntas rápidas. Respondes y seleccionas las emociones que identificas en ese momento.\nEs una herramienta de autoobservación, identificación emocional, reconocimiento de patrones y reflexión personal. No diagnostica enfermedades ni reemplaza la valoración de un profesional.",
+      "actions": [
+        { "label": "Ir al Registro emocional", "link": "emocional" }
+      ]
+    },
+    "content:registro-emociones": {
+      "type": "content",
+      "parent": "registro",
+      "title": "Emociones y matices",
+      "body": "En cada registro puedes seleccionar hasta 3 emociones y, por cada emoción, hasta 2 matices. Los matices sirven para precisar mejor cómo se siente esa emoción.",
+      "actions": [
+        { "label": "Ir al Registro emocional", "link": "emocional" }
+      ]
+    },
+    "content:registro-calendario": {
+      "type": "content",
+      "parent": "registro",
+      "title": "Límite diario y calendario",
+      "body": "Puedes hacer hasta 5 registros por día. Los registros quedan guardados y el calendario representa tus emociones mediante un degradado, para que puedas ver cómo han ido variando.",
+      "actions": [
+        { "label": "Ir al Registro emocional", "link": "emocional" }
+      ]
+    },
+    "content:registro-editar": {
+      "type": "content",
+      "parent": "registro",
+      "title": "Modificar o eliminar un registro",
+      "body": "Un registro puede modificarse mientras no hayan pasado 24 horas desde que se hizo. Pasadas las 24 horas, puede eliminarse, según las funciones del módulo.",
+      "actions": [
+        { "label": "Ir al Registro emocional", "link": "emocional" }
+      ]
+    },
+    "content:registro-conocer": {
+      "type": "content",
+      "parent": "registro",
+      "title": "Conocer más sobre las emociones",
+      "keywords": ["que significa cada emocion", "significado de las emociones", "conocer mis emociones", "conocer mejor mis emociones"],
+      "body": "Dentro del Registro emocional hay una sección donde puedes conocer qué significa cada emoción y sus diferentes matices. Puede servirte si te cuesta ponerle nombre a lo que sientes.",
+      "actions": [
+        { "label": "Ir al Registro emocional", "link": "emocional" }
+      ]
+    },
+
+    "herramientas": {
+      "type": "menu",
+      "title": "Encontrar una herramienta",
+      "keywords": ["herramienta", "herramientas", "tecnica", "tecnicas", "estrategia", "estrategias", "ejercicio", "ejercicios"],
+      "botMessage": "🛠️ Cuéntame qué necesitas ahora y te muestro algunas herramientas de Comprende que pueden servirte:",
+      "options": [
+        { "label": "Estoy muy activado/a", "next": "need-activado" },
+        { "label": "Estoy atrapado/a en pensamientos", "next": "need-pensamientos" },
+        { "label": "Estoy desorganizado/a", "next": "need-desorganizado" },
+        { "label": "Me estoy aislando", "next": "need-aislando" },
+        { "label": "Más opciones", "next": "herramientas-2" }
+      ]
+    },
+    "herramientas-2": {
+      "type": "menu",
+      "botMessage": "Otras necesidades:",
+      "options": [
+        { "label": "Estoy agotado/a", "next": "need-agotado" },
+        { "label": "No sé qué siento", "next": "need-no-se" },
+        { "label": "Estoy ante una situación de riesgo", "next": "riesgo" },
+        { "label": "Ver todas las herramientas", "next": "content:comp-herramientas" }
+      ]
+    },
+    "content:comp-herramientas": {
+      "type": "content",
+      "parent": "herramientas-2",
+      "title": "Comprende → Herramientas",
+      "keywords": ["que herramientas hay", "todas las herramientas"],
+      "body": "En Comprende → Herramientas hay recursos y estrategias para comprender, regularse y buscar apoyo, como: respiración consciente, grounding (conexión con el presente), actividad física, sueño saludable, naturaleza y cambio de entorno, regulación emocional, resolución de problemas, activación conductual, rutinas y estructura, escritura expresiva, red de apoyo, arte y expresión creativa, registro de emociones, el plan «Cuando estoy muy alterado/a», pausa de pantalla consciente, «¿Qué necesito ahora?» y «¿Cuál herramienta me sirve ahora?».",
+      "actions": [
+        { "label": "Ir a Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "need-activado": {
+      "type": "menu",
+      "title": "Estoy muy activado/a",
+      "keywords": ["muy activado", "muy activada", "acelerado", "acelerada", "alterado", "alterada", "agitado", "agitada", "no puedo calmarme", "no me calmo", "explotar"],
+      "botMessage": "Cuando el cuerpo va muy rápido, lo primero es bajar la intensidad. Puedes probar:",
+      "options": [
+        { "label": "Respiración consciente", "next": "content:herr-respiracion" },
+        { "label": "Grounding 5-4-3-2-1", "next": "content:herr-pausa" },
+        { "label": "Movimiento suave", "next": "content:herr-movimiento" },
+        { "label": "Alejarme un momento del estímulo", "next": "content:herr-alejarse" }
+      ]
+    },
+    "need-pensamientos": {
+      "type": "menu",
+      "title": "Estoy atrapado/a en pensamientos",
+      "keywords": ["pienso demasiado", "pienso mucho", "no paro de pensar", "pensamientos", "dando vueltas", "rumiando", "no dejo de pensar", "mente no para"],
+      "botMessage": "Cuando la mente no para, ayuda volver al presente o sacar los pensamientos de la cabeza. Puedes probar:",
+      "options": [
+        { "label": "Grounding 5-4-3-2-1", "next": "content:herr-pausa" },
+        { "label": "Escritura expresiva", "next": "content:herr-escritura" },
+        { "label": "Organizar mis pensamientos", "next": "content:herr-organizar" }
+      ]
+    },
+    "need-desorganizado": {
+      "type": "menu",
+      "title": "Estoy desorganizado/a",
+      "keywords": ["desorganizado", "desorganizada", "desorden", "no me alcanza el tiempo", "no se por donde empezar", "procrastino", "se me acumula"],
+      "botMessage": "Cuando todo se siente acumulado, ayuda poner un poco de estructura. Puedes probar:",
+      "options": [
+        { "label": "Rutinas y estructura", "next": "content:herr-rutinas" },
+        { "label": "Organizar mis pensamientos y pendientes", "next": "content:herr-organizar" },
+        { "label": "¿Qué necesito ahora?", "next": "content:herr-que-necesito" }
+      ]
+    },
+    "need-aislando": {
+      "type": "menu",
+      "title": "Me estoy aislando",
+      "keywords": ["me estoy aislando", "me aislo", "no quiero ver a nadie", "me alejo de todos", "evito a la gente"],
+      "botMessage": "Alejarse a veces se siente como alivio, pero el aislamiento prolongado puede pesar. Puedes probar con pasos pequeños:",
+      "options": [
+        { "label": "Red de apoyo", "next": "content:herr-red" },
+        { "label": "Activación conductual", "next": "content:herr-activacion" },
+        { "label": "Un pequeño paso de conexión", "next": "content:herr-conexion" },
+        { "label": "Entender la soledad", "next": "tema-soledad" }
+      ]
+    },
+    "need-agotado": {
+      "type": "menu",
+      "title": "Estoy agotado/a",
+      "keywords": ["agotado", "agotada", "cansado", "cansada", "cansancio", "sin energia", "no tengo energia", "burnout", "exhausto", "exhausta"],
+      "botMessage": "Si estás agotado o agotada, quizá lo que más necesitas es descanso. Puedes mirar:",
+      "options": [
+        { "label": "Descanso y bajar exigencias", "next": "content:herr-descanso" },
+        { "label": "Sueño saludable", "next": "content:herr-sueno-saludable" },
+        { "label": "Entender el estrés", "next": "tema-estres" }
+      ]
+    },
+    "need-no-se": {
+      "type": "menu",
+      "title": "No sé qué siento",
+      "botMessage": "Está bien no saberlo. Estas herramientas pueden ayudarte a ponerle nombre poco a poco:",
+      "options": [
+        { "label": "Registro emocional", "next": "content:herr-registro" },
+        { "label": "Escritura expresiva", "next": "content:herr-escritura" },
+        { "label": "¿Qué necesito ahora?", "next": "content:herr-que-necesito" },
+        { "label": "Identificar lo que siento", "next": "content:herr-identificar" }
+      ]
+    },
+    "riesgo": {
+      "type": "risk",
+      "title": "Situación de riesgo"
+    },
+
+    "content:herr-respiracion": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Respiración consciente",
+      "keywords": ["respiracion", "respirar"],
+      "body": "Inhala contando hasta 4, sostén el aire contando hasta 4, y exhala lentamente contando hasta 6. Repite este ciclo entre 5 y 8 veces.\nRespirar de forma consciente ayuda a calmar la activación del cuerpo cuando sientes ansiedad o estrés.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-pausa": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Grounding: pausa 5-4-3-2-1",
+      "keywords": ["grounding", "5-4-3-2-1", "conexion con el presente"],
+      "body": "Cuando te sientas muy abrumado o abrumada, nombra: 5 cosas que puedes ver, 4 que puedes tocar, 3 que puedes escuchar, 2 que puedes oler y 1 que puedes saborear.\nEsta técnica ayuda a traer tu atención al presente cuando los pensamientos se sienten desbordados.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-movimiento": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Movimiento suave",
+      "keywords": ["movimiento", "actividad fisica", "ejercicio fisico"],
+      "body": "Camina un rato, estira los hombros y el cuello, o sacude suavemente brazos y piernas. Moverte ayuda a liberar parte de la tensión del cuerpo cuando estás muy activado o activada.\nNo tiene que ser ejercicio intenso: unos minutos pueden bastar.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-alejarse": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Alejarme un momento del estímulo",
+      "body": "Si algo te sobrecarga (ruido, el celular, una discusión), tomar distancia unos minutos puede ayudarte a bajar la intensidad: cambia de lugar, sal a tomar aire o apaga las pantallas un rato.\nNo es huir: es darte una pausa para volver con más calma. Si es una discusión, puedes decir «necesito unos minutos y vuelvo».",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-escritura": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Escritura expresiva",
+      "keywords": ["escribir", "escritura", "diario"],
+      "body": "Escribe durante unos minutos lo que piensas y sientes, sin corregir ni buscar que suene bien. Puede ayudarte a sacar pensamientos que dan vueltas y a ponerle nombre a lo que pasa por dentro. Es solo para ti.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-organizar": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Organizar mis pensamientos (resolución de problemas)",
+      "keywords": ["resolver un problema", "resolucion de problemas", "organizar mis pensamientos", "necesito resolver"],
+      "body": "Cuando tengas muchas ideas o preocupaciones dando vueltas, escríbelas todas sin orden en un papel o nota, y luego sepáralas en tres grupos: lo que puedo resolver hoy, lo que puedo resolver después, y lo que no depende de mí.\nEsto ayuda a reducir la sensación de estar sobrepasado.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-rutinas": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Rutinas y estructura",
+      "keywords": ["rutina", "rutinas", "estructura", "horarios"],
+      "body": "Cuando todo se siente desordenado, ayuda tener pocos puntos fijos en el día: una hora para levantarte, otra para dormir y bloques para estudiar y descansar. Divide lo pendiente en pasos pequeños y empieza por el más fácil.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-red": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Red de apoyo",
+      "keywords": ["red de apoyo"],
+      "body": "Tu red de apoyo son las personas a las que puedes acudir: familia, amistades, docentes, orientadores u orientadoras. Pensar en dos o tres personas concretas y escribirles o buscarlas puede hacer más fácil pedir ayuda cuando la necesites.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-activacion": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Activación conductual",
+      "keywords": ["activacion conductual"],
+      "body": "Cuando el ánimo baja, a veces dejamos de hacer cosas y eso aumenta el aislamiento. La activación conductual consiste en elegir una actividad pequeña y posible (salir a caminar, ordenar tu cuarto, escuchar música) y hacerla aunque no tengas muchas ganas, para luego notar cómo te sientes.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-conexion": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Un pequeño paso de conexión",
+      "body": "No necesitas un gran plan. Escribirle a alguien un mensaje corto, sentarte cerca de otras personas o contarle a alguien cómo te fue en el día son pasos pequeños que mantienen el vínculo vivo.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-descanso": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Descanso y bajar exigencias",
+      "body": "Cuando estás agotado o agotada, el cuerpo y la mente piden pausa. Revisa qué cosas puedes posponer o simplificar hoy, haz pausas reales (sin pantallas si puedes) y permítete hacer menos sin culparte.\nSi el agotamiento dura semanas, vale la pena hablarlo con un adulto de confianza o un profesional.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-sueno-saludable": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Sueño saludable",
+      "body": "Horarios regulares para dormir y despertar, menos pantallas antes de acostarte, evitar cafeína en la tarde-noche y un ambiente oscuro y tranquilo ayudan a descansar mejor. Dormir lo suficiente también ayuda a regular las emociones.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-que-necesito": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "¿Qué necesito ahora?",
+      "keywords": ["que necesito ahora"],
+      "body": "Es una pregunta guía. Detente un momento y pregúntate: ¿necesito calmarme, descansar, moverme, hablar con alguien o resolver algo concreto? Elegir una sola cosa y hacerla ya puede aclarar el siguiente paso.",
+      "actions": [
+        { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
+      ]
+    },
+    "content:herr-registro": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Registro emocional",
+      "body": "Registrar lo que sientes puede ayudarte a ordenar tus pensamientos y reconocer patrones. En Conecta Contigo, el Registro emocional te permite seleccionar tus emociones y verlas en un calendario.",
+      "actions": [
+        { "label": "Ir al Registro emocional", "link": "emocional" }
+      ]
+    },
+    "content:herr-identificar": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Identificar lo que siento",
+      "body": "A veces sentimos 'algo raro' sin saber exactamente qué es. Preguntarte dónde sientes esa emoción en el cuerpo, cuándo empezó, y qué situación la acompaña puede ayudarte a ponerle nombre y a entenderla mejor."
+    },
+
+    "no-se-que-hacer": {
+      "type": "menu",
+      "title": "No sé qué hacer ahora",
+      "keywords": ["no se que hacer", "no se que hago", "estoy perdido", "estoy perdida", "necesito ayuda para empezar", "por donde empiezo"],
+      "botMessage": "🧭 Está bien no saberlo. Vamos paso a paso: ¿qué se parece más a lo que necesitas ahora?",
+      "options": [
+        { "label": "Estoy muy activado/a", "next": "need-activado" },
+        { "label": "No paro de pensar", "next": "need-pensamientos" },
+        { "label": "Estoy agotado/a", "next": "need-agotado" },
+        { "label": "No sé qué siento", "next": "need-no-se" },
+        { "label": "Ver más opciones", "next": "no-se-que-hacer-2" }
+      ]
+    },
+    "no-se-que-hacer-2": {
+      "type": "menu",
+      "botMessage": "Otras opciones:",
+      "options": [
+        { "label": "Me estoy aislando", "next": "need-aislando" },
+        { "label": "Necesito resolver algo", "next": "content:herr-organizar" },
+        { "label": "Necesito hablar con alguien", "next": "ayuda" },
+        { "label": "Estoy en una situación de riesgo", "next": "riesgo" }
+      ]
+    },
+
+    "ayuda": {
+      "type": "menu",
+      "title": "Necesito ayuda",
+      "keywords": ["necesito ayuda", "ayuda", "hablar con alguien", "con quien hablar", "psicologo", "psicologa", "terapia", "linea de ayuda"],
+      "botMessage": "Este es un espacio para pensar en cómo pedir apoyo 🆘 ¿Qué necesitas?",
+      "options": [
+        { "label": "Hablar con alguien de confianza", "next": "content:ayuda-hablar" },
+        { "label": "Buscar apoyo profesional", "next": "content:ayuda-profesional" },
+        { "label": "Contactos de ayuda", "next": "link:contactos" },
+        { "label": "Protocolo de crisis", "next": "link:protocolo" },
+        { "label": "Estoy en peligro o pienso hacerme daño", "next": "riesgo" }
+      ]
+    },
+    "content:ayuda-hablar": {
+      "type": "content",
+      "parent": "ayuda",
+      "title": "Hablar con alguien de confianza",
+      "body": "Elegir a una persona con la que te sientas segura o seguro -un familiar, docente, orientador u orientadora, o amigo cercano- y compartir cómo te sientes puede aliviar mucho la carga.\nNo tienes que tener todas las palabras exactas; puedes empezar simplemente diciendo que no te sientes bien."
+    },
+    "content:ayuda-profesional": {
+      "type": "content",
+      "parent": "ayuda",
+      "title": "Buscar apoyo profesional",
+      "body": "Un psicólogo o psicóloga puede ayudarte a comprender lo que estás viviendo desde un lugar preparado para acompañarte, sin juzgarte.\nPedir esta ayuda no significa que algo esté 'mal' contigo; es una forma de cuidarte.",
+      "actions": [
+        { "label": "Ver Contactos de ayuda", "link": "contactos" }
+      ]
+    },
+
+    "sobre-soter": {
+      "type": "menu",
+      "title": "Sobre Soter y Conecta Contigo",
+      "keywords": ["quien eres", "que eres", "que es soter", "como funcionas", "conecta contigo"],
+      "botMessage": "Aquí tienes información sobre cómo funciono y qué hay detrás de este espacio 💡",
+      "options": [
+        { "label": "¿Por qué mi nombre?", "next": "content:soter-nombre" },
+        { "label": "¿Cómo funciona Soter?", "next": "content:soter-como" },
+        { "label": "Privacidad", "next": "content:soter-privacidad" },
+        { "label": "¿Qué es Conecta Contigo?", "next": "content:soter-plataforma" },
+        { "label": "¿Dónde encuentro lo que necesito?", "next": "donde" }
+      ]
+    },
+    "content:soter-nombre": {
+      "type": "content",
+      "parent": "sobre-soter",
+      "title": "¿Por qué mi nombre?",
+      "body": "Mi nombre viene de la palabra griega «Soter», relacionada con la idea de protector o salvador. En este proyecto representa mi propósito de orientar, acompañar y acercarte a información y recursos que puedan ayudarte a cuidar tu bienestar emocional."
+    },
+    "content:soter-como": {
+      "type": "content",
+      "parent": "sobre-soter",
+      "title": "¿Cómo funciona Soter?",
+      "body": "Soter funciona con opciones y palabras clave. Puedes elegir un camino con los botones o escribir lo que necesitas; Soter busca palabras relacionadas y te propone pocas opciones para llevarte a la información, herramienta o recurso adecuado dentro de Conecta Contigo.\nNo es una inteligencia artificial, no te diagnostica y no reemplaza a un profesional."
+    },
+    "content:soter-privacidad": {
+      "type": "content",
+      "parent": "sobre-soter",
+      "title": "Privacidad",
+      "keywords": ["privacidad", "privado", "confidencial", "confidencialidad", "guardan lo que escribo", "mis datos"],
+      "body": "Lo que escribes en Soter se procesa en tu navegador: el código de Soter no envía tus mensajes a ningún servidor ni los guarda, y la conversación desaparece al reiniciarla o cerrar la página. Si usas un dispositivo compartido, cierra la pestaña al terminar.\nEsto aplica solo a Soter. Otros módulos, como el Registro emocional, funcionan distinto y guardan sus propios registros; puedes revisar cómo se tratan los datos en el Marco jurídico. Soter no puede garantizar confidencialidad absoluta si hay una situación de riesgo en la que otras personas deban ayudarte.",
+      "actions": [
+        { "label": "Ir al Marco jurídico", "link": "marco" }
+      ]
+    },
+    "content:soter-plataforma": {
+      "type": "content",
+      "parent": "sobre-soter",
+      "title": "¿Qué es Conecta Contigo?",
+      "keywords": ["que es conecta contigo", "para que sirve la pagina", "que hay en la pagina"],
+      "body": "Conecta Contigo es una plataforma digital educativa orientada al bienestar emocional durante la adolescencia. Reúne información, herramientas, un espacio para registrar emociones y redes de apoyo.",
+      "optionsMessage": "¿Qué parte quieres conocer?",
+      "options": [
+        { "label": "Comprende", "next": "content:comp-que-es" },
+        { "label": "Registro emocional", "next": "registro" },
+        { "label": "Contactos", "next": "content:proy-contactos" },
+        { "label": "Marco jurídico y consentimiento", "next": "content:proy-marco" },
+        { "label": "Evaluación", "next": "content:proy-evaluacion" }
+      ]
+    },
+    "content:comp-que-es": {
+      "type": "content",
+      "parent": "content:soter-plataforma",
+      "title": "¿Qué es Comprende?",
+      "keywords": ["que es comprende", "como funciona comprende"],
+      "body": "Comprende es el módulo educativo de Conecta Contigo. Tiene tres partes: Condiciones (información para comprender diferentes condiciones de salud mental), Situaciones y experiencias (contextos que pueden influir en el bienestar) y Herramientas (recursos y estrategias para comprender, regularse y buscar apoyo).",
+      "actions": [
+        { "label": "Ir a Comprende", "link": "comprende" }
+      ],
+      "optionsMessage": "¿Cuál quieres conocer?",
+      "options": [
+        { "label": "Condiciones", "next": "content:comp-condiciones" },
+        { "label": "Situaciones y experiencias", "next": "content:comp-situaciones" },
+        { "label": "Herramientas", "next": "content:comp-herramientas" },
+        { "label": "Volver", "next": "PARENT" }
+      ]
+    },
+    "content:proy-contactos": {
+      "type": "content",
+      "parent": "content:soter-plataforma",
+      "title": "¿Qué son Contactos?",
+      "keywords": ["contactos", "contacto", "lineas de ayuda", "telefonos"],
+      "body": "Contactos es un espacio con recursos y redes de apoyo a los que puedes acudir cuando necesitas hablar con alguien o buscar ayuda.",
+      "actions": [
+        { "label": "Ir a Contactos", "link": "contactos" }
+      ]
+    },
+    "content:proy-marco": {
+      "type": "content",
+      "parent": "content:soter-plataforma",
+      "title": "Marco jurídico y consentimiento",
+      "keywords": ["marco juridico", "marco legal", "derechos", "leyes", "consentimiento", "acta", "politica de datos", "terminos y condiciones"],
+      "body": "El Marco jurídico es la sección donde se explican aspectos relacionados con los derechos, la protección y la privacidad de los adolescentes y de la plataforma.\nTambién existe documentación sobre el consentimiento de padres, que puedes consultar desde el pie de página del sitio.",
+      "actions": [
+        { "label": "Ir al Marco jurídico", "link": "marco" },
+        { "label": "Ver consentimiento de padres (PDF)", "link": "consentimiento" }
+      ]
+    },
+    "content:proy-evaluacion": {
+      "type": "content",
+      "parent": "content:soter-plataforma",
+      "title": "Evaluación del proyecto",
+      "keywords": ["evaluacion", "como se evaluo", "instrumentos", "resultados del proyecto", "estadistica"],
+      "body": "Evaluación es la sección relacionada con la evaluación del proyecto y los instrumentos utilizados.",
+      "actions": [
+        { "label": "Ir a Evaluación", "link": "evaluacion" }
+      ]
+    },
+
+    "donde": {
+      "type": "menu",
+      "title": "¿Dónde encuentro lo que necesito?",
+      "keywords": ["donde encuentro", "donde esta", "donde puedo encontrar", "donde queda", "como uso la pagina", "secciones de la pagina"],
+      "botMessage": "🧭 Te ayudo a ubicar lo que necesitas dentro de Conecta Contigo. ¿Qué quieres hacer?",
+      "options": [
+        { "label": "Entender algo", "next": "donde-entender" },
+        { "label": "Registrar cómo me siento", "next": "registro" },
+        { "label": "Conocer mejor mis emociones", "next": "content:registro-conocer" },
+        { "label": "Hablar con alguien o estoy en peligro", "next": "ayuda" },
+        { "label": "Información del proyecto", "next": "donde-proyecto" }
+      ]
+    },
+    "donde-entender": {
+      "type": "menu",
+      "botMessage": "Todo eso está en Comprende. ¿Qué buscas?",
+      "options": [
+        { "label": "Entender una condición", "next": "content:comp-condiciones" },
+        { "label": "Entender algo que estoy viviendo", "next": "content:comp-situaciones" },
+        { "label": "Necesito una estrategia", "next": "content:comp-herramientas" }
+      ]
+    },
+    "donde-proyecto": {
+      "type": "menu",
+      "botMessage": "Esto es lo que puedes consultar sobre el proyecto:",
+      "options": [
+        { "label": "Derechos y protección del adolescente", "next": "content:proy-marco" },
+        { "label": "Cómo se evaluó el proyecto", "next": "content:proy-evaluacion" },
+        { "label": "¿Qué es Conecta Contigo?", "next": "content:soter-plataforma" }
       ]
     }
   }

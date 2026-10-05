@@ -2280,3 +2280,171 @@
     }
 
 }
+
+/* ================================================================
+   SOTER v2 · PARCHE ADITIVO
+   Pegar AL FINAL de soter.css. No modifica ninguna regla existente.
+   Soporta: menú principal en cuadrícula, enlaces (actions),
+   tarjeta de seguridad con pasos y acciones, foco accesible.
+   ================================================================ */
+
+
+/* ---------- 1. Menú principal en cuadrícula (mainMenu.layout = "grid") ---------- */
+
+.soter-options--grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    max-width: min(92%, 560px);
+}
+
+.soter-widget .soter-options--grid button.soter-chip {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+
+/* ---------- 2. Enlaces a otras páginas (actions) ---------- */
+
+.soter-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    max-width: 92%;
+    align-self: flex-start;
+    margin-left: 41px;
+
+    animation: aparecer .3s ease;
+}
+
+.soter-widget a.soter-action {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 40px;
+    padding: 9px 16px;
+
+    background: rgba(70, 142, 214, .08);
+    color: var(--azul-marino);
+
+    border: 1px solid rgba(70, 142, 214, .30);
+    border-radius: 13px;
+
+    font-size: .9rem;
+    font-weight: 600;
+    line-height: 1.3;
+
+    transition:
+        background var(--transicion),
+        color var(--transicion),
+        transform var(--transicion),
+        box-shadow var(--transicion);
+}
+
+.soter-widget a.soter-action:hover {
+    background: var(--azul-claro);
+    color: var(--blanco);
+
+    transform: translateY(-1px);
+    box-shadow: var(--sombra-media);
+}
+
+.soter-widget a.soter-action:focus-visible {
+    outline: 3px solid var(--verde-agua);
+    outline-offset: 2px;
+}
+
+
+/* ---------- 3. Tarjeta de seguridad: pasos y acciones ---------- */
+
+.soter-risk:focus {
+    outline: none;
+}
+
+.soter-risk:focus-visible {
+    outline: 3px solid var(--verde-agua);
+    outline-offset: 2px;
+}
+
+.soter-risk__steps {
+    margin: 0 0 12px;
+    padding-left: 1.3rem;
+
+    color: var(--azul-marino);
+    line-height: 1.55;
+}
+
+.soter-risk__steps li {
+    margin-bottom: 6px;
+}
+
+.soter-risk__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.soter-risk a.soter-risk__action:focus-visible {
+    outline: 3px solid var(--azul-marino);
+    outline-offset: 2px;
+}
+
+/* Acción secundaria (p. ej. protocolo de crisis) */
+.soter-risk a.soter-risk__action--secondary {
+    background: var(--blanco);
+    color: var(--azul-marino);
+    border: 1.5px solid var(--resalte);
+}
+
+.soter-risk a.soter-risk__action--secondary:hover {
+    color: var(--azul-marino);
+    background: rgba(245, 131, 111, .12);
+}
+
+
+/* ---------- 4. Responsive ---------- */
+
+@media (max-width: 768px) {
+
+    .soter-actions {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    .soter-options--grid {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .soter-options--grid {
+        grid-template-columns: 1fr;
+    }
+
+    .soter-widget a.soter-action {
+        min-height: 38px;
+        padding: 8px 12px;
+        font-size: .86rem;
+    }
+
+    .soter-risk__actions a.soter-risk__action {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+/* ---------- 5. Reducir animaciones ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .soter-actions {
+        animation: none;
+    }
+
+    .soter-widget a.soter-action:hover {
+        transform: none;
+    }
+}

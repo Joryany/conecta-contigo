@@ -1,18 +1,27 @@
 /* ====================================================================
-   SOTER — Motor de conversación
+   SOTER — Motor de conversación (v2)
    ----------------------------------------------------------------------
    Este archivo NO contiene contenido (preguntas, respuestas, textos).
    Todo el contenido vive en data/soter-data.json.
 
    Si quieres cambiar textos, agregar temas, preguntas, herramientas o
    palabras clave: edita ese archivo. No necesitas tocar este JS.
+
+   Tipos de nodo que entiende este motor:
+     menu     -> mensaje + opciones (+ actions opcionales)
+     topic    -> igual que menu; además participa en la búsqueda por keywords
+     content  -> título + cuerpo (+ actions, + options propias opcionales)
+     risk     -> muestra la tarjeta de seguridad (usa DATA.risk)
+   Cualquier nodo con "keywords" puede aparecer como sugerencia cuando la
+   persona escribe en el campo de texto.
 ==================================================================== */
 
 (function () {
     "use strict";
 
     const DATA_URL = "data/soter-data.json";
-    const TYPING_DELAY = 550; // ms que "piensa" Soter antes de responder
+    const TYPING_DELAY = 550;   // ms que "piensa" Soter antes de responder
+    const MAX_MATCHES = 4;      // máximo de sugerencias por texto libre
 
     /* ---------- Referencias al DOM ---------- */
     const els = {
@@ -27,6 +36,8 @@
     let DATA = null;          // contenido cargado desde el JSON
     let stack = [];           // historial de nodos para el botón "Atrás"
     let currentId = "main";   // nodo que se está mostrando actualmente
+    let kwIndex = [];         // índice de keywords normalizadas (búsqueda)
+    let riskKeywords = [];    // keywords de riesgo normalizadas
 
     init();
 
@@ -45,6 +56,9 @@
             return;
         }
 
+        buildIndexes();
+        validateData();
+
         if (els.form) els.form.addEventListener("submit", onSubmitQuestion);
         if (els.backBtn) els.backBtn.addEventListener("click", goBack);
         if (els.resetBtn) els.resetBtn.addEventListener("click", resetChat);
@@ -62,6 +76,57 @@
         if (els.log) els.log.appendChild(div);
     }
 
+    /* Prepara las keywords una sola vez (normalizadas) */
+    function buildIndexes() {
+        riskKeywords = ((DATA.risk && DATA.risk.keywords) || []).map(cleanText).filter(Boolean);
+
+        kwIndex = [];
+        Object.keys(DATA.nodes).forEach(function (id) {
+            const node = DATA.nodes[id];
+            if (!node.keywords || !node.keywords.length) return;
+            kwIndex.push({
+                id: id,
+                title: node.title || id,
+                priority: node.priority || 0,
+                kws: node.keywords.map(cleanText).filter(Boolean)
+            });
+        });
+    }
+
+    /* Ayuda al editor del JSON: avisa en consola de referencias rotas */
+    function validateData() {
+        const problems = [];
+        const links = (DATA.config && DATA.config.links) || {};
+
+        function checkNext(next, where) {
+            if (!next || next === "PARENT" || next === "main" || next === "fallback") return;
+            if (next.indexOf("link:") === 0) {
+                if (!links[next.slice(5)]) problems.push(where + " -> enlace inexistente: " + next);
+                return;
+            }
+            if (!DATA.nodes[next]) problems.push(where + " -> nodo inexistente: " + next);
+        }
+        function checkActions(actions, where) {
+            (actions || []).forEach(function (a) {
+                if (!links[a.link]) problems.push(where + " -> action con enlace inexistente: " + a.link);
+            });
+        }
+
+        (DATA.mainMenu.options || []).forEach(function (o) { checkNext(o.next, "mainMenu"); });
+        (DATA.fallback.options || []).forEach(function (o) { checkNext(o.next, "fallback"); });
+        (DATA.followUp.options || []).forEach(function (o) { checkNext(o.next, "followUp"); });
+        checkActions(DATA.risk && DATA.risk.actions, "risk");
+
+        Object.keys(DATA.nodes).forEach(function (id) {
+            const n = DATA.nodes[id];
+            (n.options || []).forEach(function (o) { checkNext(o.next, id); });
+            checkActions(n.actions, id);
+            if (n.parent && !DATA.nodes[n.parent]) problems.push(id + " -> parent inexistente: " + n.parent);
+        });
+
+        if (problems.length) console.warn("Soter: referencias a revisar en el JSON:\n" + problems.join("\n"));
+    }
+
     /* ====================================================================
         NAVEGACIÓN ENTRE NODOS
     ==================================================================== */
@@ -69,7 +134,7 @@
     function renderWelcomeContent() {
         const cfg = DATA.config;
         appendBotMessage(cfg.welcomeTitle + "\n" + cfg.welcomeMessage);
-        appendOptions(DATA.mainMenu.options);
+        appendOptions(DATA.mainMenu.options, DATA.mainMenu.layout);
     }
 
     function renderWelcome() {
@@ -89,29 +154,33 @@
         }
     }
 
+    function resolveLink(key) {
+        return DATA.config.links && DATA.config.links[key];
+    }
+
     function navigateTo(id, options) {
         options = options || {};
         const pushToStack = options.pushToStack !== false;
 
         if (id.indexOf("link:") === 0) {
-            const key = id.slice(5);
-            const url = DATA.config.links && DATA.config.links[key];
+            const url = resolveLink(id.slice(5));
             if (url) window.location.href = url;
+            else console.warn("Soter: enlace no definido ->", id);
             return;
         }
 
-        if (id === "main") {
+        if (id === "main" || id === "fallback") {
             if (pushToStack && currentId) stack.push(currentId);
-            currentId = "main";
+            currentId = id;
             updateBackButton();
-            botSay(renderWelcomeContent);
+            renderById(id);
             return;
         }
 
         const node = DATA.nodes[id];
         if (!node) {
             console.warn("Soter: nodo no encontrado ->", id);
-            renderFallback();
+            botSay(renderFallback);
             return;
         }
 
@@ -119,34 +188,70 @@
         currentId = id;
         updateBackButton();
 
-        history.replaceState(null, "", "#tema:" + id);
+        /* La tarjeta de seguridad no se deja en la URL */
+        if (node.type === "risk") {
+            history.replaceState(null, "", window.location.pathname + window.location.search);
+        } else {
+            history.replaceState(null, "", "#tema:" + id);
+        }
         renderNode(node);
     }
 
+    /* Dibuja "main", "fallback" o un nodo por su id */
+    function renderById(id) {
+        if (id === "main") {
+            history.replaceState(null, "", window.location.pathname + window.location.search);
+            botSay(renderWelcomeContent);
+        } else if (id === "fallback") {
+            botSay(renderFallback);
+        } else if (DATA.nodes[id]) {
+            history.replaceState(null, "", "#tema:" + id);
+            renderNode(DATA.nodes[id]);
+        }
+    }
+
     function renderNode(node) {
-        if (node.type === "menu" || node.type === "topic") {
+        if (node.type === "risk") {
+            botSay(function () {
+                disableAllOptions();
+                appendRiskCard();
+            });
+        } else if (node.type === "menu" || node.type === "topic") {
             botSay(function () {
                 appendBotMessage(node.botMessage);
-                appendOptions(node.options);
+                appendActions(node.actions);
+                appendOptions(node.options, node.layout);
             });
         } else if (node.type === "content") {
             botSay(function () {
                 appendContentMessage(node);
-                appendFollowUp(node.parent);
+                appendActions(node.actions);
+                if (node.options && node.options.length) {
+                    if (node.optionsMessage) appendBotMessage(node.optionsMessage);
+                    appendOptions(mapParent(node.options, node.parent));
+                } else {
+                    appendFollowUp(node.parent);
+                }
             });
+        } else {
+            console.warn("Soter: tipo de nodo no reconocido ->", node.type);
+            botSay(renderFallback);
         }
     }
 
-    function appendFollowUp(parentId) {
-        const fu = DATA.followUp;
-        appendBotMessage(fu.botMessage);
-        const options = fu.options.map(function (opt) {
+    function mapParent(options, parentId) {
+        return options.map(function (opt) {
             if (opt.next === "PARENT") {
                 return Object.assign({}, opt, { next: parentId || "main" });
             }
             return opt;
         });
-        appendOptions(options);
+    }
+
+    function appendFollowUp(parentId) {
+        const fu = DATA.followUp;
+        appendBotMessage(fu.botMessage);
+        appendOptions(mapParent(fu.options, parentId));
     }
 
     function goBack() {
@@ -154,17 +259,7 @@
         const prevId = stack.pop();
         currentId = prevId;
         updateBackButton();
-
-        if (prevId === "main") {
-            history.replaceState(null, "", window.location.pathname + window.location.search);
-            botSay(renderWelcomeContent);
-        } else {
-            const node = DATA.nodes[prevId];
-            if (node) {
-                history.replaceState(null, "", "#tema:" + prevId);
-                renderNode(node);
-            }
-        }
+        renderById(prevId);
     }
 
     function updateBackButton() {
@@ -185,35 +280,30 @@
     function onSubmitQuestion(event) {
         event.preventDefault();
         if (!els.input) return;
-        
+
         const raw = els.input.value.trim();
         if (!raw) return;
 
         appendUserMessage(raw);
         els.input.value = "";
 
-        const norm = normalize(raw);
+        const clean = cleanText(raw);
 
-        const riskHit = DATA.risk.keywords.some(function (k) {
-            return norm.indexOf(normalize(k)) !== -1;
+        /* 1. Seguridad primero: coincidencia por fragmento de frase */
+        const riskHit = riskKeywords.some(function (k) {
+            return clean.indexOf(k) !== -1;
         });
         if (riskHit) {
             stack = [];
             currentId = null;
             updateBackButton();
+            disableAllOptions();
             botSay(appendRiskCard, TYPING_DELAY);
             return;
         }
 
-        const matches = [];
-        Object.keys(DATA.nodes).forEach(function (id) {
-            const node = DATA.nodes[id];
-            if (!node.keywords) return;
-            const hit = node.keywords.some(function (k) {
-                return norm.indexOf(normalize(k)) !== -1;
-            });
-            if (hit) matches.push({ id: id, title: node.title || id });
-        });
+        /* 2. Búsqueda por keywords con puntaje */
+        const matches = findMatches(clean);
 
         if (currentId) stack.push(currentId);
         currentId = null;
@@ -221,14 +311,43 @@
 
         if (matches.length) {
             botSay(function () {
-                appendBotMessage("🌱 Encontré algunos temas que podrían estar relacionados con tu pregunta.");
-                appendOptions(matches.map(function (m) {
+                appendBotMessage("🌱 Encontré algunos temas que podrían estar relacionados con lo que cuentas. ¿Cuál se acerca más?");
+                const opts = matches.map(function (m) {
                     return { label: m.title, next: m.id };
-                }));
+                });
+                opts.push({ label: "Ninguno de estos", next: "fallback" });
+                appendOptions(opts);
             });
         } else {
             botSay(renderFallback);
         }
+    }
+
+    /* Devuelve los nodos cuyas keywords aparecen en el texto, mejor puntaje primero.
+       Regla de coincidencia (evita falsos positivos como "ira" dentro de "mirar"):
+         - frases (con espacio) y palabras cortas (< 6 letras): palabra completa
+         - palabras de 6+ letras: la palabra del texto puede empezar con la keyword
+           (así "estres" también encuentra "estresado") */
+    function findMatches(clean) {
+        const padded = " " + clean + " ";
+        const found = [];
+
+        kwIndex.forEach(function (entry) {
+            let score = 0;
+            entry.kws.forEach(function (k) {
+                const exactOnly = k.indexOf(" ") !== -1 || k.length < 6;
+                const hit = exactOnly
+                    ? padded.indexOf(" " + k + " ") !== -1
+                    : padded.indexOf(" " + k) !== -1;
+                if (hit) score += k.length;
+            });
+            if (score > 0) {
+                found.push({ id: entry.id, title: entry.title, score: score + entry.priority });
+            }
+        });
+
+        found.sort(function (a, b) { return b.score - a.score; });
+        return found.slice(0, MAX_MATCHES);
     }
 
     function renderFallback() {
@@ -236,12 +355,20 @@
         appendOptions(DATA.fallback.options);
     }
 
+    /* Minúsculas, sin tildes, sin signos, espacios simples */
     function normalize(text) {
         return (text || "")
             .toString()
             .toLowerCase()
             .normalize("NFD")
             .replace(/[\u0300-\u036f]/g, "")
+            .trim();
+    }
+
+    function cleanText(text) {
+        return normalize(text)
+            .replace(/[^a-z0-9\s-]/g, " ")
+            .replace(/\s+/g, " ")
             .trim();
     }
 
@@ -357,10 +484,11 @@
         scrollToBottom();
     }
 
-    function appendOptions(options) {
-        if (!els.log) return;
+    /* Botones de opciones. "layout": "grid" -> cuadrícula (menú principal) */
+    function appendOptions(options, layout) {
+        if (!els.log || !options || !options.length) return;
         const wrap = document.createElement("div");
-        wrap.className = "soter-options";
+        wrap.className = "soter-options" + (layout === "grid" ? " soter-options--grid" : "");
         wrap.setAttribute("role", "group");
         wrap.setAttribute("aria-label", "Opciones de respuesta");
 
@@ -387,36 +515,104 @@
         scrollToBottom();
     }
 
+    /* Enlaces directos a otras páginas de Conecta Contigo.
+       Cada acción: { "label": "...", "link": "clave-de-config.links" } */
+    function appendActions(actions) {
+        if (!els.log || !actions || !actions.length) return;
+        const wrap = document.createElement("div");
+        wrap.className = "soter-actions";
+        wrap.setAttribute("role", "group");
+        wrap.setAttribute("aria-label", "Enlaces relacionados");
+
+        actions.forEach(function (act) {
+            const url = resolveLink(act.link);
+            if (!url) {
+                console.warn("Soter: enlace no definido ->", act.link);
+                return;
+            }
+            const a = document.createElement("a");
+            a.className = "soter-action";
+            a.href = url;
+            a.textContent = act.label + " →";
+            wrap.appendChild(a);
+        });
+
+        if (wrap.children.length) {
+            els.log.appendChild(wrap);
+            scrollToBottom();
+        }
+    }
+
+    function disableAllOptions() {
+        if (!els.log) return;
+        Array.prototype.forEach.call(els.log.querySelectorAll("button.soter-chip"), function (b) {
+            b.disabled = true;
+        });
+    }
+
     function appendRiskCard() {
         if (!els.log) return;
         const risk = DATA.risk;
         const card = document.createElement("div");
         card.className = "soter-risk";
         card.setAttribute("role", "alert");
+        card.tabIndex = -1;
 
         const title = document.createElement("p");
         title.className = "soter-risk__title";
         title.textContent = risk.title;
+        card.appendChild(title);
 
         const msg = document.createElement("p");
         msg.textContent = risk.message;
-
-        const secondary = document.createElement("p");
-        secondary.className = "soter-risk__secondary";
-        secondary.textContent = risk.secondaryMessage;
-
-        const action = document.createElement("a");
-        action.className = "soter-risk__action";
-        action.href = DATA.config.emergencyLink;
-        action.textContent = risk.actionLabel + " →";
-
-        card.appendChild(title);
         card.appendChild(msg);
-        card.appendChild(secondary);
-        card.appendChild(action);
+
+        if (risk.steps && risk.steps.length) {
+            const list = document.createElement("ol");
+            list.className = "soter-risk__steps";
+            risk.steps.forEach(function (s) {
+                const li = document.createElement("li");
+                li.textContent = s;
+                list.appendChild(li);
+            });
+            card.appendChild(list);
+        }
+
+        if (risk.secondaryMessage) {
+            const secondary = document.createElement("p");
+            secondary.className = "soter-risk__secondary";
+            secondary.textContent = risk.secondaryMessage;
+            card.appendChild(secondary);
+        }
+
+        const actionsWrap = document.createElement("div");
+        actionsWrap.className = "soter-risk__actions";
+
+        if (risk.actions && risk.actions.length) {
+            risk.actions.forEach(function (act) {
+                const url = resolveLink(act.link);
+                if (!url) return;
+                const a = document.createElement("a");
+                a.className = "soter-risk__action" + (act.primary ? "" : " soter-risk__action--secondary");
+                a.href = url;
+                a.textContent = act.label + " →";
+                actionsWrap.appendChild(a);
+            });
+        }
+
+        /* Compatibilidad con el formato anterior del JSON (v1) */
+        if (!actionsWrap.children.length) {
+            const a = document.createElement("a");
+            a.className = "soter-risk__action";
+            a.href = DATA.config.emergencyLink;
+            a.textContent = (risk.actionLabel || "Ir a Contactos de ayuda") + " →";
+            actionsWrap.appendChild(a);
+        }
+        card.appendChild(actionsWrap);
 
         els.log.appendChild(card);
         scrollToBottom();
+        try { card.focus({ preventScroll: true }); } catch (e) { /* navegadores antiguos */ }
     }
 
     function scrollToBottom() {
@@ -428,7 +624,7 @@
 }());
 
 /* ====================================================================
-   NAVEGACIÓN INTERNA DE SOTER
+   NAVEGACIÓN INTERNA DE SOTER (pestañas) — sin cambios
 ==================================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {

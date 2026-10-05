@@ -6,24 +6,25 @@
 const TEMAS = [
     { id: "rosa-pastel", nombre: "Rosa pastel", iconoTitulo: "🌷", texto: "oscuro", colorFondo1: "#FFD9E8", colorFondo2: "#FFB6D1" },
     { id: "jardin-botanico", nombre: "Jardín botánico", iconoTitulo: "🌿", texto: "oscuro", colorFondo1: "#CDEBC3", colorFondo2: "#8FD694" },
-    { id: "noche-estrellada", nombre: "Noche estrellada", iconoTitulo: "✨", texto: "claro", colorFondo1: "#1B2A4A", colorFondo2: "#3E4A78" },
+    { id: "noche-estrellada", nombre: "Noche estrellada", iconoTitulo: "✨", texto: "oscuro", colorFondo1: "#1B2A4A", colorFondo2: "#3E4A78" },
     { id: "coral-romantico", nombre: "Coral romántico", iconoTitulo: "💗", texto: "oscuro", colorFondo1: "#FFD3C7", colorFondo2: "#FF8C7A" },
-    { id: "oceano", nombre: "Océano", iconoTitulo: "🌊", texto: "claro", colorFondo1: "#BFE3F0", colorFondo2: "#3E8FB0" },
+    { id: "oceano", nombre: "Océano", iconoTitulo: "🌊", texto: "oscuro", colorFondo1: "#BFE3F0", colorFondo2: "#3E8FB0" },
     { id: "atardecer", nombre: "Atardecer", iconoTitulo: "🌅", texto: "oscuro", colorFondo1: "#FFD79A", colorFondo2: "#FF8A5B" },
     { id: "lavanda", nombre: "Lavanda", iconoTitulo: "💜", texto: "oscuro", colorFondo1: "#E4D4F4", colorFondo2: "#B98CE0" },
-    { id: "montanas", nombre: "Montañas", iconoTitulo: "⛰️", texto: "claro", colorFondo1: "#4A5A72", colorFondo2: "#7C93AC" },
+    { id: "montanas", nombre: "Montañas", iconoTitulo: "⛰️", texto: "oscuro", colorFondo1: "#4A5A72", colorFondo2: "#7C93AC" },
     { id: "flores", nombre: "Flores", iconoTitulo: "🌸", texto: "oscuro", colorFondo1: "#FFDCEB", colorFondo2: "#FF9FC0" },
-    { id: "galaxia", nombre: "Galaxia", iconoTitulo: "🌌", texto: "claro", colorFondo1: "#241B4E", colorFondo2: "#4B3B8C" },
+    { id: "galaxia", nombre: "Galaxia", iconoTitulo: "🌌", texto: "oscuro", colorFondo1: "#241B4E", colorFondo2: "#4B3B8C" },
     { id: "hojas-simple", nombre: "Hojas simple", iconoTitulo: "🍃", texto: "oscuro", colorFondo1: "#DCEFD2", colorFondo2: "#A8D48E" },
     { id: "cielo", nombre: "Cielo", iconoTitulo: "☁️", texto: "oscuro", colorFondo1: "#DCEEFB", colorFondo2: "#A9D2F0" },
     { id: "dorado", nombre: "Dorado", iconoTitulo: "✨", texto: "oscuro", colorFondo1: "#FCEBB6", colorFondo2: "#E8C26A" },
-    { id: "paisaje-violeta", nombre: "Paisaje violeta", iconoTitulo: "🔮", texto: "claro", colorFondo1: "#3A2A5C", colorFondo2: "#6A4C93" },
+    { id: "paisaje-violeta", nombre: "Paisaje violeta", iconoTitulo: "🔮", texto: "oscuro", colorFondo1: "#3A2A5C", colorFondo2: "#6A4C93" },
     { id: "manchas-pastel", nombre: "Manchas pastel", iconoTitulo: "🎨", texto: "oscuro", colorFondo1: "#F6DCEA", colorFondo2: "#D7C4EE" },
-    { id: "acuarela-azul", nombre: "Acuarela azul", iconoTitulo: "🖌️", texto: "claro", colorFondo1: "#BEE0EE", colorFondo2: "#5FA8C9" },
-    { id: "olas", nombre: "Olas", iconoTitulo: "🌊", texto: "claro", colorFondo1: "#B8E0E6", colorFondo2: "#4396A6" },
+    { id: "acuarela-azul", nombre: "Acuarela azul", iconoTitulo: "🖌️", texto: "oscuro", colorFondo1: "#BEE0EE", colorFondo2: "#5FA8C9" },
+    { id: "olas", nombre: "Olas", iconoTitulo: "🌊", texto: "oscuro", colorFondo1: "#B8E0E6", colorFondo2: "#4396A6" },
     { id: "gatos", nombre: "Gatos", iconoTitulo: "🐱", texto: "oscuro", colorFondo1: "#F5E6CC", colorFondo2: "#E3B77D" },
     // ── Tema exclusivo ──────────────────────────────────────────────
-    { id: "gato", nombre: "Gato Sentado", iconoTitulo: "🍕", texto: "oscuro", colorFondo1: "#cce5f5", colorFondo2: "#7dc3e3", exclusivoPara: ["gonzalescaballerojai@conectacontigo.local"] }
+    { id: "gato", nombre: "Gato Sentado", iconoTitulo: "🍕", texto: "oscuro", colorFondo1: "#cce5f5", colorFondo2: "#7dc3e3", exclusivoPara: ["gonzalescaballerojai@conectacontigo.local"] },
+    { id: "gatito", nombre: "Gato Atorado", iconoTitulo: "🤍", texto: "oscuro", colorFondo1: "#cce5f5", colorFondo2: "#7dc3e3", exclusivoPara: ["gonzalescaballerojai@conectacontigo.local", "jor._.2104@conectacontigo.local"] },
 ];
 
 

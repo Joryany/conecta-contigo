@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soter · Conecta Contigo</title>
     <meta name="description"
-        content="Soter, el asistente de orientación de Conecta Contigo: información y recursos sobre salud mental para adolescentes.">
+        content="Soter, el asistente de orientación de Conecta Contigo: te ayuda a encontrar información, herramientas y recursos sobre bienestar emocional para adolescentes.">
 
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/soter.css">
@@ -35,16 +35,16 @@
              HERO DE SOTER
         ============================================ -->
 
-        <section class="soter-hero-card"  data-separador="">
+        <section class="soter-hero-card" data-separador="">
 
             <img class="soter-hero-card__image" src="assets/img/soter/hero.png"
                 alt="¡Hola! Soy Soter. Tu guía en salud mental. Explora, aprende y encuentra recursos de manera fácil y segura. Aquí también estás acompañado. Preguntar también es cuidarse.">
 
-    
-        <h1 class="sr-only">Soter — asistente de orientación de Conecta Contigo</h1>
+            <h1 class="sr-only">Soter — asistente de orientación de Conecta Contigo</h1>
 
-
-            <nav class="soter-tabs" role="tablist" aria-label="Secciones de Soter">
+            <!-- Cambio: era <nav role="tablist">; un <nav> con role="tablist" pierde su rol de
+                 navegación. Se usa <div>, que conserva la clase .soter-tabs y el mismo diseño. -->
+            <div class="soter-tabs" role="tablist" aria-label="Secciones de Soter">
                 <button type="button" class="soter-tab is-active" id="soter-tab-chat" role="tab" aria-selected="true"
                     aria-controls="soter-panel-chat" tabindex="0">
                     <span class="soter-tab__icon" aria-hidden="true">💬</span>
@@ -60,16 +60,16 @@
                     <span class="soter-tab__icon" aria-hidden="true">❓</span>
                     <span class="soter-tab__label">¿Cómo funciona?</span>
                 </button>
-            </nav>
+            </div>
 
         </section>
 
-        
 
         <!-- ============================================
-             VISTA 1 · HABLAR CON SOTER (chatbot sin cambios)
+             VISTA 1 · HABLAR CON SOTER
         ============================================ -->
-        <div  data-separador="" class="soter-panel" id="soter-panel-chat" role="tabpanel" aria-labelledby="soter-tab-chat">
+        <div data-separador="" class="soter-panel" id="soter-panel-chat" role="tabpanel"
+            aria-labelledby="soter-tab-chat">
 
             <p class="soter-eyebrow">SOTER · tu espacio para comprender y encontrar apoyo</p>
 
@@ -77,8 +77,8 @@
 
                 <div class="soter-widget__header">
                     <div class="soter-widget__identity">
-                        <img class="soter-avatar" aria-hidden="true" src="assets/img/soter/soter.png"
-                            alt="Soter, imagen de un robotsito sonriendo">
+                        <!-- Cambio: alt vacío (la imagen es decorativa y ya está aria-hidden) -->
+                        <img class="soter-avatar" aria-hidden="true" src="assets/img/soter/soter.png" alt="">
                         <div>
                             <p class="soter-widget__name">Soter</p>
                             <p class="soter-widget__subtitle">Asistente de orientación</p>
@@ -105,7 +105,7 @@
                 <form class="soter-widget__composer" id="soter-form" autocomplete="off">
                     <label for="soter-input" class="sr-only">Escribe tu pregunta para Soter</label>
                     <input type="text" id="soter-input" name="soter-input" placeholder="Escribe tu pregunta..."
-                        maxlength="200" aria-label="Escribe tu pregunta para Soter">
+                        maxlength="200">
                     <button type="submit" class="soter-send-btn" aria-label="Enviar pregunta">➤</button>
                 </form>
 
@@ -121,7 +121,7 @@
 
         </div>
 
-                <!-- ============================================
+        <!-- ============================================
              VISTA 2 · CONOCE A SOTER
         ============================================ -->
         <div class="soter-panel" id="soter-panel-conoce" role="tabpanel" aria-labelledby="soter-tab-conoce" hidden>
@@ -134,7 +134,7 @@
                 <article class="soter-info-card">
                     <span class="soter-info-card__icon" aria-hidden="true">🌱</span>
                     <h3>¿Qué es Soter?</h3>
-                    <p>Soter es el asistente virtual de Conecta Contigo. Está diseñado para brindar información clara y confiable sobre emociones, salud mental, situaciones difíciles y recursos de apoyo. <br>
+                    <p>Soter es el asistente de orientación de Conecta Contigo. Está diseñado para ayudarte a identificar qué necesitas y llevarte al contenido o recurso adecuado dentro de la plataforma: información sobre emociones y salud mental, herramientas, el Registro emocional y redes de apoyo. <br>
                     Su propósito es ayudarte a comprender mejor lo que estás viviendo y orientarte hacia información o ayuda adecuada.</p>
                 </article>
 
@@ -148,24 +148,24 @@
                     <span class="soter-info-card__icon" aria-hidden="true">✅</span>
                     <h3>¿Qué puede hacer?</h3>
                     <p>
-                        1. Responder preguntas generales sobre emociones y bienestar emocional. 
+                        1. Orientarte según lo que sientes, lo que estás viviendo o lo que necesitas ahora.
                         <br>
                         2. Explicar conceptos relacionados con la salud mental de forma sencilla.
                         <br>
-                        3. Brindar información sobre situaciones como ansiedad, depresión, estrés o conductas de riesgo.
+                        3. Explicarte cómo funcionan el Registro emocional y Comprende, y llevarte a esas secciones.
                         <br>
-                        4. Compartir recursos y líneas de ayuda disponibles.
+                        4. Recomendarte herramientas según lo que necesitas.
                         <br>
-                        5. Orientarte sobre dónde y con quién puedes buscar apoyo.</p>
+                        5. Compartir recursos y líneas de ayuda, y orientarte sobre dónde y con quién puedes buscar apoyo.</p>
                 </article>
 
                 <article class="soter-info-card">
                     <span class="soter-info-card__icon" aria-hidden="true">🚫</span>
                     <h3>¿Qué no puede hacer?</h3>
                     <p>1. Soter no reemplaza a un psicólogo, médico ni otro profesional de la salud.
-                    <br> 
-                    2. No realiza diagnósticos, no determina si una persona tiene un trastorno y no sustituye una evaluación profesional. Tampoco puede intervenir en una emergencia. 
-                    <br> 
+                    <br>
+                    2. No realiza diagnósticos, no determina si una persona tiene un trastorno y no sustituye una evaluación profesional. Tampoco puede intervenir en una emergencia.
+                    <br>
                     3. Si existe un riesgo inmediato o una situación de peligro, es importante acudir directamente a un adulto de confianza, a un servicio de emergencia o a una línea de ayuda.</p>
                 </article>
 
@@ -192,13 +192,18 @@
 
                 <details id="faq-pregunta-propia">
                     <summary>¿Puedo escribir mi propia pregunta?</summary>
-                    <p>Sí. Puedes escribir tu pregunta con tus propias palabras. Soter intentará comprender lo que necesitas y ofrecerte información relacionada con tu pregunta. <br>
+                    <p>Sí. Puedes escribir tu pregunta con tus propias palabras. Soter busca palabras clave y te propone algunas opciones relacionadas con lo que escribes. <br>
                     <strong>Te recomendamos el uso de palabras claves, para mejor experiencia.</strong></p>
                 </details>
 
                 <details id="faq-tipo-informacion">
                     <summary>¿Qué tipo de información puedo encontrar?</summary>
-                    <p>Puedes encontrar información general sobre emociones, bienestar emocional, situaciones difíciles y algunos temas relacionados con la salud mental. También puede orientarte hacia recursos de apoyo y lugares donde puedes buscar ayuda.</p>
+                    <p>Puedes encontrar información general sobre emociones, bienestar emocional, situaciones difíciles y algunos temas relacionados con la salud mental. También puede orientarte hacia las secciones de Conecta Contigo (Comprende, Registro emocional, Contactos) y hacia lugares donde puedes buscar ayuda.</p>
+                </details>
+
+                <details id="faq-navegacion">
+                    <summary>¿Cómo me ayuda a moverme por Conecta Contigo?</summary>
+                    <p>Soter te hace pocas preguntas para identificar qué necesitas y luego te lleva a la sección adecuada: <strong>Comprende</strong> (condiciones, situaciones y herramientas), el <strong>Registro emocional</strong>, <strong>Contactos</strong>, el <strong>Marco jurídico</strong> o la <strong>Evaluación</strong>. Si no sabes dónde está algo, puedes elegir «Sobre Soter y Conecta Contigo» y luego «¿Dónde encuentro lo que necesito?».</p>
                 </details>
 
                 <details id="faq-diagnostico">
@@ -211,18 +216,28 @@
                     <p>Si sientes que necesitas ayuda, puedes hablar con una persona de confianza y buscar el apoyo de un profesional de la salud. Soter también puede orientarte hacia recursos de apoyo. Si estás en una situación de peligro inmediato, busca ayuda de emergencia directamente.</p>
                 </details>
 
+                <details id="faq-seguridad">
+                    <summary>¿Qué pasa si escribo algo sobre hacerme daño o estar en peligro?</summary>
+                    <p>Si Soter detecta expresiones relacionadas con riesgo, deja de mostrar el menú normal y te muestra un mensaje de seguridad con pasos a seguir y enlaces a Contactos de ayuda y al protocolo de crisis. Soter no puede avisar a nadie ni intervenir en una emergencia: lo más importante es que busques a una persona de confianza o a un servicio de emergencia.</p>
+                </details>
+
+                <details id="faq-privacidad">
+                    <summary>¿Qué pasa con lo que escribo en Soter?</summary>
+                    <p>Lo que escribes se procesa en tu navegador: el código de Soter no envía tus mensajes a ningún servidor ni los guarda, y la conversación desaparece al reiniciarla o cerrar la página. Esto aplica solo a Soter; otros módulos, como el Registro emocional, guardan sus propios registros. Puedes revisar cómo se tratan los datos en el <a href="marco-legal.html">Marco jurídico</a>.</p>
+                </details>
+
                 <details id="faq-explicar-sentimientos">
                     <summary>¿Qué puedo hacer si no sé cómo explicar lo que siento?</summary>
-                    <p>No tienes que saber exactamente cómo expresarlo. Puedes comenzar contando con palabras sencillas qué estás sintiendo, qué ha ocurrido o qué te preocupa. También puedes decirle a Soter que “no sé cómo explicar lo que siento” y utilizar las opciones que te ofrece para ayudarte a identificarlo poco a poco.</p>
+                    <p>No tienes que saber exactamente cómo expresarlo. Puedes comenzar contando con palabras sencillas qué estás sintiendo, qué ha ocurrido o qué te preocupa. También puedes elegir «No sé qué hacer ahora» o decirle a Soter que “no sé cómo explicar lo que siento” y utilizar las opciones que te ofrece para ayudarte a identificarlo poco a poco.</p>
                 </details>
 
             </div>
 
         </div>
-        
+
     </main>
 
-     <footer class="pie"  data-separador="">
+    <footer class="pie" data-separador="">
         <div class="pie__contenedor">
 
             <div class="pie__grid">
