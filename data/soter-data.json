@@ -1,7 +1,7 @@
 {
   "meta": {
     "botName": "Soter",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "description": "Archivo de contenido editable de Soter, el asistente de orientación de Conecta Contigo. Edita este archivo para cambiar textos, preguntas, opciones y enlaces sin tocar soter.js. Guía de estructura al final del documento de entrega."
   },
   "config": {
