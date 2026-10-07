@@ -1,7 +1,7 @@
 {
   "meta": {
     "botName": "Soter",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Archivo de contenido editable de Soter, el asistente de orientación de Conecta Contigo. Edita este archivo para cambiar textos, preguntas, opciones y enlaces sin tocar soter.js. Guía de estructura al final del documento de entrega."
   },
   "config": {
@@ -13,22 +13,26 @@
     "links": {
       "contactos": "contacto.html",
       "emergencia": "contacto.html#emergencia",
-      "protocolo": "comprende.html#protocolo__cuerpo",
+      "protocolo": "comprende.html",
       "comprende": "comprende.html",
-      "condiciones": "comprende.htm#comprende-condiciones",
-      "situaciones": "comprende.html#comprende-situaciones",
-      "herramientas": "comprende.html#comprende-herramientas",
+      "condiciones": "comprende.html",
+      "situaciones": "comprende.html",
+      "herramientas": "comprende.html#herramienta",
       "emocional": "emocional.html",
+      "explorador": "emocional.html#explorador-emocional",
       "marco": "marco-legal.html",
       "evaluacion": "estadistica.html",
       "consentimiento": "assets/pdf/acta.pdf",
       "inicio": "index.html"
     },
+    "greetingPrefix": "¡Hola! 🌱 ",
     "inputPlaceholder": "Escribe tu pregunta...",
     "loadErrorMessage": "No pude cargar la información de Soter. Si estás probando esto en tu computador, recuerda abrir el sitio con un servidor local (por ejemplo Live Server) en vez de abrir el archivo directamente."
   },
   "risk": {
     "keywords": [
+      "suisidio", "sucidio", "suicidarse", "quiero desaparecer", "no quiero despertar", "ojala no despertar", "dormir y no despertar", "me quiero ir de este mundo", "mejor muerto", "mejor muerta", "estarian mejor sin mi", "seria mejor sin mi", "me quiero lastimar", "me quiero hacer daño", "me hago daño", "me lastimo", "me estoy cortando", "quiero lastimarme", "quiero hacerme daño", "quiero matar a alguien", "quiero lastimar a alguien", "voy a hacerle daño", "quiero hacerle daño",
+     
       "hacerme daño",
       "hacerme dano",
       "hacerme el daño",
@@ -60,6 +64,9 @@
       "estoy en peligro",
       "corro peligro",
       "abuso sexual",
+      "me abusaron",
+      "abusan de mi",
+      "abusaron de mi",
       "me violaron",
       "me maltratan",
       "me pegan",
@@ -111,10 +118,103 @@
       { "label": "Ir a Contactos", "next": "link:contactos" }
     ]
   },
+  "smallTalk": {
+    "afterMessage": "¿En qué puedo ayudarte hoy?",
+    "options": [
+      { "label": "Entender lo que siento", "next": "entender" },
+      { "label": "Comprender lo que estoy viviendo", "next": "situaciones" },
+      { "label": "Encontrar una herramienta", "next": "herramientas" },
+      { "label": "Ver todas las opciones", "next": "main" }
+    ],
+    "entries": [
+      { "group": "saludo", "atStart": true, "patterns": ["buenos dias", "buen dia", "buenas dias"], "responses": ["¡Buenos días! 🌞 Qué bueno tenerte por aquí.", "¡Buenos días! 😊 Me alegra que estés aquí."] },
+      { "group": "saludo", "atStart": true, "patterns": ["buenas tardes"], "responses": ["¡Buenas tardes! 🌤️ Qué gusto saludarte.", "¡Buenas tardes! 😊 Me alegra que estés aquí."] },
+      { "group": "saludo", "atStart": true, "patterns": ["buenas noches"], "responses": ["¡Buenas noches! 🌙 Qué bueno que pasaste por aquí.", "¡Buenas noches! 😊 Me alegra tenerte aquí."] },
+      { "group": "saludo", "atStart": true, "patterns": ["hola", "holi", "holis", "ola", "hey", "hello", "hi", "buenas", "saludos"], "responses": ["¡Hola! 😊 Qué gusto saludarte.", "¡Hola! 🌱 Me alegra que estés aquí.", "¡Hola! Bienvenido o bienvenida. 💙"] },
+      { "group": "saludo", "atStart": true, "maxWords": 3, "patterns": ["que mas", "quiubo", "que hubo", "epa", "ey"], "responses": ["¡Hola! 😊 Qué bueno verte por aquí.", "¡Hola! 🌱 Me alegra que estés aquí."] },
+      { "group": "estado", "maxWords": 8, "exclude": ["no", "mal", "nada"], "patterns": ["como estas", "como esta", "como te encuentras", "como te va", "como vas", "como andas", "como amaneciste", "que tal", "todo bien", "todo tranquilo"], "responses": ["¡Muy bien, gracias por preguntar! 😊 Y tú, ¿cómo estás hoy?", "¡Todo bien por aquí, gracias por preguntar! 🌱 ¿Y tú, cómo te sientes?"] },
+      { "group": "respuesta", "maxWords": 6, "exclude": ["no", "mal", "nada", "pero", "aunque", "tampoco"], "patterns": ["estoy bien", "muy bien", "bien gracias", "me siento bien", "estoy mejor", "me siento mejor", "estoy tranquilo", "estoy tranquila", "estoy feliz", "estoy contento", "estoy contenta"], "responses": ["¡Qué bueno saberlo! 😊 Me alegra que estés bien.", "¡Me alegra mucho! 🌱 Gracias por contármelo."] }
+    ]
+  },
+  "smallTalk": [
+    {"id": "como-estas", "maxWords": 7, "patterns": ["como estas", "como esta", "como te va", "como andas", "como vas", "como te sientes", "como te encuentras", "que tal", "que mas", "todo bien", "todo bn", "todo tranquilo", "como amaneciste", "como te ha ido", "como te fue"], "responses": ["¡Todo bien por aquí, gracias por preguntar! 💙 Estoy listo para acompañarte. ¿Y tú, cómo te sientes hoy?", "¡Muy bien, gracias! 🌱 Me alegra que estés aquí. ¿Cómo te sientes tú hoy?"], "options": [{"label": "Bien 😊", "next": "smalltalk-bien"}, {"label": "Más o menos", "next": "smalltalk-regular"}, {"label": "No muy bien", "next": "smalltalk-mal"}]},
+    {"id": "buenos-dias", "greeting": true, "maxWords": 5, "patterns": ["buenos dias", "buen dia", "feliz dia", "buenas dias"], "responses": ["¡Buenos días! ☀️ Qué bueno verte por aquí. ¿Qué quieres explorar hoy?"], "options": "main"},
+    {"id": "buenas-tardes", "greeting": true, "maxWords": 5, "patterns": ["buenas tardes", "buena tarde"], "responses": ["¡Buenas tardes! 🌤️ Me alegra que estés aquí. ¿En qué te puedo ayudar?"], "options": "main"},
+    {"id": "buenas-noches", "greeting": true, "maxWords": 5, "patterns": ["buenas noches", "buena noche"], "responses": ["¡Buenas noches! 🌙 Gracias por pasar por aquí. ¿Qué te gustaría explorar?"], "options": "main"},
+    {"id": "saludo", "greeting": true, "maxWords": 4, "patterns": ["hola", "holi", "holis", "ola", "hey", "ey", "epa", "quiubo", "quihubo", "buenas", "saludos", "hello", "hi", "buen dia soter", "hola soter"], "responses": ["¡Hola! 🌱 Qué bueno que estés aquí. ¿En qué te puedo ayudar hoy?", "¡Hola! 💙 Soy Soter. Cuéntame qué necesitas o elige una opción."], "options": "main"},
+    {"id": "gracias", "maxWords": 6, "patterns": ["gracias", "muchas gracias", "mil gracias", "te agradezco", "muy amable", "super gracias", "vale gracias", "ok gracias", "listo gracias"], "responses": ["¡Con mucho gusto! 💙 Aquí estaré cuando quieras volver."], "options": [{"label": "Seguir explorando", "next": "main"}, {"label": "Ir a Contactos", "next": "link:contactos"}]},
+    {"id": "despedida", "maxWords": 5, "patterns": ["chao", "chau", "adios", "hasta luego", "hasta pronto", "nos vemos", "bye", "hasta manana"], "responses": ["¡Cuídate mucho! 🌱 Recuerda que pedir ayuda siempre es una opción. Aquí estaré cuando quieras volver."]}
+  ],
+  "searchExtras": {
+    "tema-ansiedad": ["ataque de ansiedad", "ataque de panico", "me da ansiedad", "me falta el aire", "me sudan las manos", "corazon acelerado", "me late muy rapido", "paranoia", "nerviosismo", "inquietud", "tension", "me preocupa todo", "me preocupo mucho", "pensamientos intrusivos", "miedos", "temor", "asustado", "asustada", "fobia", "fobias"],
+    "tema-tristeza": ["bajon", "bajoneado", "bajoneada", "melancolia", "lloro mucho", "ganas de llorar", "me siento mal", "me siento fatal", "decaido", "decaida", "desmotivado", "desmotivada", "sin animo", "desilusion", "decepcionado", "decepcionada", "dolor emocional", "me duele el alma", "me siento vacio", "me siento vacia", "nada me motiva", "nada me emociona", "mal de animo", "estoy mal", "me siento triste"],
+    "tema-estres": ["estresante", "estoy al limite", "no doy abasto", "tengo mucho que hacer", "mucha tarea", "mucho trabajo", "abrumado", "abrumada", "me siento abrumado", "me siento abrumada", "saturado", "saturada", "colapsado", "colapsada", "pruebas", "evaluaciones", "parciales", "exposicion", "exposiciones", "estres"],
+    "tema-soledad": ["me siento aislado", "me siento aislada", "no tengo amigos", "no tengo con quien hablar", "nadie me escucha", "nadie me quiere", "me ignoran", "me dejan de lado", "me siento excluido", "me siento excluida", "no encajo", "no tengo a nadie", "me siento invisible", "solitario", "solitaria", "me rechazan", "sin compania"],
+    "tema-ira": ["coraje", "bravo", "brava", "me da rabia", "ganas de gritar", "me desespero", "desesperado", "desesperada", "irritable", "irritado", "irritada", "harto", "harta", "furia", "explosivo", "explosiva", "me altero", "pierdo el control", "mal genio", "enfurecido", "enfurecida", "ofendido", "ofendida", "me da piedra"],
+    "tema-duelo": ["murio mi", "se murio", "fallecio mi", "perdi a mi", "extrano a", "muerte de", "mi mascota murio", "murio mi mascota", "mi abuelo murio", "mi abuela murio", "separacion", "se separaron mis papas", "mis papas se separaron", "divorcio", "termino mi relacion", "cambio de colegio", "me mude", "mudanza", "perdida de un ser querido", "ser querido"],
+    "tema-depresion": ["depre", "estoy depre", "sin esperanza", "sin motivacion", "no tengo ganas de nada", "no le encuentro sentido", "nada tiene sentido", "vacio por dentro", "no disfruto nada", "ya nada me gusta", "no me interesa nada", "desesperanza"],
+    "tema-sueno": ["no puedo dormirme", "me cuesta dormir", "duermo poco", "duermo mucho", "duermo demasiado", "insomne", "me despierto", "despierto en la noche", "pesadilla", "sueno ligero", "somnolencia", "dormirme", "me desvelo", "desvelo", "no concilio el sueno", "me duermo en clase", "no duermo bien", "duermo muy mal"],
+    "tema-alimentacion": ["no tengo hambre", "sin apetito", "pierdo el apetito", "como mucho", "como demasiado", "atracon", "atracones", "dieta", "dietas", "me siento gorda", "me siento gordo", "adelgazar", "bajar de peso", "odio mi cuerpo", "no me gusta mi cuerpo", "imagen corporal", "vomitar", "saltarme comidas", "dejar de comer", "anorexia", "bulimia", "trastorno alimenticio", "trastornos alimenticios", "trastornos de la conducta alimentaria"],
+    "tema-autoestima": ["no soy suficiente", "no sirvo", "no valgo", "me siento inutil", "me siento feo", "me siento fea", "me siento tonto", "me siento tonta", "me odio", "no me quiero", "no me acepto", "autocritica", "complejo", "complejos", "baja autoestima", "me siento inferior", "me siento menos", "me siento poca cosa"],
+    "content:cambios-comportamiento": ["estoy diferente", "cambios de humor", "cambios de animo", "ya no disfruto", "dejaron de gustarme", "ya no hago lo que me gustaba", "me aleje de", "bajo rendimiento", "bajo mi rendimiento", "no me reconozco", "no me siento yo", "dejo de salir", "ya no salgo", "cambio de humor"],
+    "content:no-se-que-pasa": ["me siento raro", "me siento rara", "me siento extrano", "me siento extrana", "no entiendo lo que siento", "no se que tengo", "algo me pasa", "siento algo raro", "me siento mal pero no se por que", "no se por que me siento asi", "sin razon", "sin motivo", "confundido", "confundida", "confusion"],
+    "content:situacion-acoso": ["me hacen bullying", "ciberacoso", "ciberbullying", "me insultan", "me humillan", "me agreden", "me amenazan", "me amenazaron", "me persiguen", "apodos", "me ponen apodos", "me hacen burla", "burlas", "me discriminan", "me hacen a un lado", "me tratan mal", "se rien de mi", "se meten conmigo", "acoso escolar", "hostigamiento", "chismes", "rumores", "me excluyen del grupo"],
+    "content:situacion-casa": ["pelean mis papas", "peleas de mis papas", "mis padres pelean", "mis padres discuten", "mis padres", "mis papas", "gritos en casa", "me gritan", "discusiones", "conflicto familiar", "mi hermano", "mi hermana", "hermanos", "me castigan", "castigo", "mis papas no me entienden", "ambiente tenso", "tension familiar", "padrastro", "madrastra", "en mi casa", "en casa"],
+    "content:situacion-academica": ["me va mal en el colegio", "perdi el ano", "perder el ano", "perdi la materia", "reprobar", "reprobe", "bajas notas", "malas notas", "sacar buenas notas", "no entiendo la materia", "me cuesta concentrarme", "no puedo concentrarme", "me cuesta estudiar", "miedo al examen", "miedo a fallar", "fracaso", "fracasar", "exigencias", "presion por las notas", "presion del colegio", "icfes", "saber 11", "pruebas saber", "trabajos", "evaluacion", "parcial", "recuperacion", "me exigen mucho", "no rindo", "rendimiento academico", "procrastinar"],
+    "content:situacion-redes": ["red social", "facebook", "whatsapp", "snapchat", "youtube", "videojuegos", "pantallas", "adiccion al celular", "mucho tiempo en el celular", "no puedo dejar el celular", "me comparo con otros", "envidia", "influencers", "filtros", "seguidores", "vida perfecta", "estoy pegado al celular", "estoy pegada al celular", "pantalla"],
+    "content:situacion-relaciones": ["mi novio", "mi novia", "mi pareja", "mi ex", "ex novio", "ex novia", "me dejo", "me dejaron", "me termino", "me engano", "infiel", "infidelidad", "celoso", "celosa", "me controla", "me controlan", "relacion toxica", "toxica", "toxico", "amigo falso", "traicion", "me traicionaron", "se alejaron mis amigos", "pelee con mi mejor amigo", "pelee con mi mejor amiga", "me gusta alguien", "enamorado", "enamorada", "desamor", "corazon roto", "me rechazo"],
+    "content:situacion-pares": ["me presionan para", "me obligan a", "quieren que haga", "para encajar", "para que me acepten", "mis amigos me piden", "mis amigos quieren que", "alcohol", "drogas", "fumar", "vapear", "vape", "cigarrillo", "consumo", "trago", "no se decir que no", "me da pena decir que no", "presion social"],
+    "content:comp-condiciones": ["tept", "trastorno de panico", "fobia social", "ansiedad social", "trastorno bipolar", "bipolaridad", "tca", "deficit de atencion", "hiperactividad", "asperger", "espectro autista", "alucinaciones", "escucho voces", "trastorno afectivo estacional", "dismorfia", "dismorfia corporal", "desregulacion", "que condiciones hay", "que trastornos hay", "lista de trastornos", "enfermedad mental", "problemas mentales", "trastornos mentales"],
+    "content:comp-situaciones": ["violencia sexual", "abuso", "maltrato emocional", "racismo", "homofobia", "barrio peligroso", "violencia en mi barrio", "experiencias dificiles", "que situaciones hay"],
+    "registro": ["donde registro", "registrar mis emociones", "registrar como me siento", "anotar mis emociones", "emocional", "calendario de emociones", "registro diario", "llevar un registro", "seguimiento emocional", "diario de emociones", "como me he sentido", "patrones"],
+    "content:registro-como": ["como funciona el registro", "como uso el registro", "que es el registro emocional", "para que sirve el registro"],
+    "content:registro-emociones": ["cuantas emociones", "cuantos matices", "seleccionar emociones", "tres emociones", "dos matices"],
+    "content:registro-calendario": ["cuantos registros", "cuantas veces puedo registrar", "limite diario", "degradado", "colores del calendario", "5 registros", "cinco registros"],
+    "content:registro-editar": ["editar registro", "modificar registro", "borrar registro", "eliminar registro", "editar mi registro", "cambiar mi registro", "modificar un registro", "eliminar un registro", "24 horas", "me equivoque en el registro"],
+    "herramientas": ["que puedo hacer", "algo que me ayude", "que me recomiendas", "recomiendame", "consejos", "tips", "para calmarme", "calmarme", "relajarme", "relajacion", "como me calmo", "como puedo calmarme", "autocuidado", "cuidarme"],
+    "need-activado": ["no puedo parar", "me tiembla", "temblando", "hiperventilando", "hiperventilo", "no me puedo quedar quieto", "no me puedo quedar quieta", "inquieto", "inquieta", "ganas de explotar", "muy tenso", "muy tensa", "a punto de explotar", "me desbordo", "desbordado", "desbordada", "muy alterado", "muy alterada"],
+    "need-pensamientos": ["mi cabeza no para", "no puedo dejar de pensar", "pensando todo el tiempo", "sobrepensar", "sobrepienso", "overthinking", "rumiacion", "pensamientos negativos", "pensamientos repetitivos", "pensamientos intrusivos", "obsesionado", "obsesionada", "obsesion", "le doy vueltas", "bucle", "mente acelerada", "mil cosas en la cabeza", "muchas cosas en la cabeza"],
+    "need-desorganizado": ["no me organizo", "desorganizacion", "caos", "todo es un caos", "me abruma todo", "no se que hacer primero", "no logro organizarme", "pendientes", "mucho pendiente", "atrasado", "atrasada", "tareas acumuladas", "se me juntan las tareas", "olvido las cosas", "distraido", "distraida", "no tengo tiempo", "falta de tiempo", "planificar", "horario"],
+    "need-aislando": ["me encierro", "me encierro en mi cuarto", "no salgo", "no quiero salir", "no quiero hablar con nadie", "quiero estar solo", "quiero estar sola", "prefiero estar solo", "prefiero estar sola", "evito a mis amigos", "deje de hablar con", "no contesto mensajes", "no respondo mensajes", "ya no salgo con amigos", "me desconecto", "aislarme"],
+    "need-agotado": ["cansancio extremo", "muy cansado", "muy cansada", "estoy muerto", "estoy muerta", "sin fuerzas", "no tengo fuerzas", "falta de energia", "fatiga", "fatigado", "fatigada", "drenado", "drenada", "quemado", "quemada", "burn out", "agotamiento", "agotamiento mental", "cansado de todo", "cansada de todo", "necesito descansar", "necesito un descanso"],
+    "need-no-se": ["no se como me siento", "no identifico mis emociones", "no se ponerle nombre", "no puedo explicarlo", "no se explicar", "sentimientos confusos", "emociones mezcladas", "siento muchas cosas", "siento de todo", "no entiendo mis emociones", "no entiendo lo que siento", "identificar emociones"],
+    "content:herr-identificar": ["identificar lo que siento", "identificar mis emociones", "ponerle nombre a lo que siento"],
+    "no-se-que-hacer": ["que hago", "no se por donde empezar", "estoy bloqueado", "estoy bloqueada", "bloqueo", "estancado", "estancada", "me siento perdido", "me siento perdida", "necesito orientacion", "orientame", "guiame", "necesito un consejo", "necesito consejo"],
+    "ayuda": ["ayudame", "auxilio", "socorro", "necesito apoyo", "necesito hablar", "quiero hablar con alguien", "no tengo a quien contarle", "a quien le cuento", "como pido ayuda", "como pedir ayuda", "pedir ayuda", "orientador", "orientadora", "psicologia", "psiquiatra", "terapeuta", "crisis", "estoy en crisis", "protocolo", "protocolo de crisis", "emergencia", "emergencias", "urgencias", "urgente", "linea 123", "123"],
+    "sobre-soter": ["soter", "quien es soter", "eres un robot", "eres una persona", "eres una ia", "inteligencia artificial", "eres humano", "eres humana", "que puedes hacer", "para que sirves", "que haces", "como te llamas", "tu nombre", "quien te creo", "quien te hizo"],
+    "content:soter-nombre": ["por que te llamas", "por que te llamas soter", "significado de soter", "que significa soter"],
+    "content:soter-como": ["como funcionas", "como funciona soter", "eres un robot", "eres una ia", "inteligencia artificial"],
+    "content:soter-privacidad": ["me guardas", "guardas lo que escribo", "guardan mis conversaciones", "quien lee esto", "alguien lee lo que escribo", "es seguro", "es anonimo", "anonimo", "anonimato", "mis mensajes", "datos personales"],
+    "content:soter-plataforma": ["que es esta pagina", "de que trata la pagina", "para que sirve conecta contigo"],
+    "donde": ["donde queda", "donde esta", "donde puedo", "como llego a", "como encuentro", "menu", "secciones", "mapa de la pagina", "indice", "que secciones hay", "navegacion"],
+    "content:comp-que-es": ["comprende"],
+    "content:comp-herramientas": ["herramientas de comprende", "estrategias de comprende", "tecnicas de comprende"],
+    "content:proy-contactos": ["numero", "numeros", "telefono", "telefonos", "linea de ayuda", "a quien llamo", "a quien puedo llamar", "redes de apoyo", "poder de ser escuchado", "chatlemos", "linea 106", "linea 123"],
+    "content:proy-marco": ["privacidad", "terminos", "politica de privacidad", "habeas data", "ley 1581", "derechos del adolescente", "derechos de los ninos", "proteccion", "constitucion", "ley 1098", "permiso de los padres", "autorizacion", "acta de consentimiento", "consentimiento informado"],
+    "content:proy-evaluacion": ["encuesta", "formulario", "pretest", "postest", "evaluar", "evaluacion de la pagina", "graficas", "estadisticas", "resultados", "investigacion", "tesis", "monografia", "participantes"],
+    "content:herr-respiracion": ["respiracion profunda", "respirar profundo", "como respirar", "tecnica de respiracion", "ejercicio de respiracion", "falta de aire"],
+    "content:herr-pausa": ["5 4 3 2 1", "54321", "anclaje", "anclarme", "volver al presente"],
+    "content:herr-movimiento": ["caminar", "salir a caminar", "estirarme", "deporte", "correr", "bailar", "hacer ejercicio", "moverme"],
+    "content:herr-alejarse": ["alejarme", "tomar distancia", "salir de la situacion", "necesito espacio", "necesito un momento"],
+    "content:herr-escritura": ["escribir lo que siento", "escribir mis pensamientos", "carta", "journal", "desahogarme", "desahogo"],
+    "content:herr-organizar": ["organizar", "organizarme", "priorizar", "lista de pendientes", "tengo un problema", "problema que resolver", "tomar una decision", "decidir", "decision dificil", "no se que decidir"],
+    "content:herr-rutinas": ["organizar mi dia", "rutina diaria", "habitos", "horario de estudio"],
+    "content:herr-red": ["a quien acudir", "personas de confianza", "apoyo social", "amigos que me apoyen"],
+    "content:herr-activacion": ["no tengo ganas de hacer nada", "motivarme", "motivacion", "como me motivo", "pasatiempos", "hobbies"],
+    "content:herr-conexion": ["hacer amigos", "conocer gente", "socializar", "como hago amigos", "hablar con gente", "conectar con otros", "hacer amistades", "timidez", "timido", "timida", "me da pena hablar"],
+    "content:herr-descanso": ["descansar", "bajar el ritmo", "exigirme menos", "me exijo mucho", "autoexigencia", "perfeccionismo", "perfeccionista", "vacaciones"],
+    "content:herr-sueno-saludable": ["higiene del sueno", "dormir mejor", "como dormir", "mejorar mi sueno", "rutina para dormir", "antes de dormir"],
+    "content:herr-que-necesito": ["que necesito"],
+    "content:ayuda-hablar": ["como le digo a mis papas", "como le cuento a", "como empiezo a hablar", "como hablar con un adulto", "contarle a alguien", "decirle a mis papas", "hablar con mis papas", "hablar con un profesor", "hablar con el orientador"],
+    "content:ayuda-profesional": ["necesito un psicologo", "ir al psicologo", "terapia psicologica", "buscar un profesional", "cita con psicologo", "atencion profesional"]
+  },
   "nodes": {
 
     "entender": {
       "type": "menu",
+      "title": "Entender lo que siento",
+      "keywords": ["me siento mal", "estoy mal", "me siento muy mal", "no me siento bien", "no estoy bien", "me siento fatal", "me siento horrible", "sentimientos", "lo que siento", "estoy sintiendo"],
+      "priority": -6,
       "botMessage": "Claro 💙 ¿Qué quieres explorar? Elige lo que más se acerque a lo que sientes.",
       "options": [
         { "label": "Ansiedad", "next": "tema-ansiedad" },
@@ -138,7 +238,7 @@
       "type": "content",
       "parent": "entender-2",
       "title": "Cambios en mi comportamiento",
-      "keywords": ["cambios en mi comportamiento", "no soy yo", "ya no soy el mismo", "ya no soy la misma", "me comporto diferente", "bajaron mis notas"],
+      "keywords": ["cambios en mi comportamiento", "no soy yo", "ya no soy el mismo", "ya no soy la misma", "me comporto diferente", "bajaron mis notas", "cambios de humor", "estoy diferente", "no soy el mismo", "no soy la misma", "rendimiento bajo", "me alejo de mis amigos", "duermo distinto", "como distinto"],
       "body": "A veces no se trata de una emoción puntual, sino de notar que algo cambió: te alejas de personas con las que antes compartías, tu rendimiento académico bajó, duermes o comes distinto, o sientes que 'no eres tú'. Estos cambios pueden ser una señal de que algo te está afectando, y no necesitan un nombre exacto para merecer atención.\nHablarlo con alguien de confianza puede ayudarte a entender mejor qué está pasando. Esta información no permite determinar un diagnóstico."
     },
     "content:no-se-que-pasa": {
@@ -146,16 +246,16 @@
       "parent": "entender-2",
       "title": "No sé exactamente qué me pasa",
       "keywords": ["no se que me pasa", "no se que siento", "no se como me siento", "algo raro", "no se explicar"],
-      "body": "No siempre es fácil ponerle nombre a lo que sientes, y está bien no saberlo con exactitud. A veces ayuda empezar por lo físico: ¿cómo duermes?, ¿cómo comes?, ¿tienes ganas de hacer las cosas que antes disfrutabas?\nEl Registro emocional puede ayudarte a identificar poco a poco qué emociones aparecen, o puedes simplemente hablarlo con alguien de confianza sin necesidad de tener claro qué es.",
+      "body": "No siempre es fácil ponerle nombre a lo que sientes, y está bien no saberlo con exactitud. A veces ayuda empezar por lo físico: ¿cómo duermes?, ¿cómo comes?, ¿tienes ganas de hacer las cosas que antes disfrutabas?\nEl Explorador emocional del Registro emocional puede ayudarte a identificar poco a poco qué emociones aparecen, o puedes simplemente hablarlo con alguien de confianza sin necesidad de tener claro qué es.",
       "actions": [
-        { "label": "Ir al Registro emocional", "link": "emocional" }
+        { "label": "Abrir el Explorador emocional", "link": "explorador" }
       ]
     },
 
     "tema-duelo": {
       "type": "topic",
       "title": "Duelo o pérdidas",
-      "keywords": ["duelo", "perdida", "perdi a", "murio", "fallecio", "fallecimiento", "luto", "extrano a", "se fue de mi vida"],
+      "keywords": ["duelo", "perdida", "perdi a", "murio", "fallecio", "fallecimiento", "luto", "extrano a", "se fue de mi vida", "murio mi", "fallecio mi", "lo extrano", "la extrano", "separacion", "se separaron", "divorcio", "cambio de ciudad", "me mude", "despedida", "funeral", "entierro", "velorio", "perdi a mi"],
       "botMessage": "Lo siento 💙 Las pérdidas pueden doler mucho. ¿Qué quieres saber sobre el duelo?",
       "options": [
         { "label": "¿Qué es?", "next": "content:tema-duelo-que-es" },
@@ -188,7 +288,7 @@
     "tema-ansiedad": {
       "type": "topic",
       "title": "Ansiedad",
-      "keywords": ["ansiedad", "ansioso", "ansiosa", "preocupacion", "preocupado", "preocupada", "nervios", "nervioso", "nerviosa", "miedo", "panico", "taquicardia", "angustia"],
+      "keywords": ["ansiedad", "ansioso", "ansiosa", "preocupacion", "preocupado", "preocupada", "nervios", "nervioso", "nerviosa", "miedo", "panico", "taquicardia", "angustia", "me siento ansioso", "me siento ansiosa", "ataque de panico", "ataques de panico", "me falta el aire", "me late muy rapido", "corazon acelerado", "me sudan las manos", "inquieto", "inquieta", "intranquilo", "intranquila", "tension", "me tiemblan", "me preocupa", "nerviosismo", "fobia", "no puedo relajarme", "no logro relajarme"],
       "botMessage": "Claro 💙 ¿Qué quieres saber sobre la ansiedad?",
       "options": [
         { "label": "¿Qué es?", "next": "content:tema-ansiedad-que-es" },
@@ -235,7 +335,7 @@
     "tema-tristeza": {
       "type": "topic",
       "title": "Tristeza",
-      "keywords": ["tristeza", "triste", "desanimo", "desanimado", "desanimada", "sin ganas", "vacio", "llorar", "lloro", "apatia"],
+      "keywords": ["tristeza", "triste", "desanimo", "desanimado", "desanimada", "sin ganas", "vacio", "llorar", "lloro", "apatia", "me siento triste", "estoy triste", "muy triste", "desmotivado", "desmotivada", "sin animo", "sin motivacion", "melancolia", "deprimente", "llanto", "ganas de llorar", "me siento vacio", "me siento vacia", "decaido", "decaida", "bajon", "desgano", "nada me emociona"],
       "botMessage": "Claro 💙 ¿Qué quieres saber sobre la tristeza?",
       "options": [
         { "label": "¿Qué es?", "next": "content:tema-tristeza-que-es" },
@@ -279,7 +379,7 @@
     "tema-estres": {
       "type": "topic",
       "title": "Estrés",
-      "keywords": ["estres", "estresado", "estresada", "presion", "agobio", "agobiado", "agobiada", "sobrecarga", "examen", "examenes"],
+      "keywords": ["estres", "estresado", "estresada", "presion", "agobio", "agobiado", "agobiada", "sobrecarga", "examen", "examenes", "no doy abasto", "demasiadas tareas", "muchas tareas", "mucha tarea", "me abruma", "abrumado", "abrumada", "saturado", "saturada", "no me da el tiempo", "presionado", "presionada", "estoy a mil", "parciales", "evaluaciones"],
       "botMessage": "Claro 💙 ¿Qué quieres saber sobre el estrés?",
       "options": [
         { "label": "¿Qué es?", "next": "content:tema-estres-que-es" },
@@ -326,7 +426,7 @@
     "tema-soledad": {
       "type": "topic",
       "title": "Soledad",
-      "keywords": ["soledad", "me siento solo", "me siento sola", "estoy solo", "estoy sola", "muy solo", "muy sola", "aislado", "aislada", "aislamiento", "sin amigos", "nadie me entiende", "desconectado"],
+      "keywords": ["soledad", "me siento solo", "me siento sola", "estoy solo", "estoy sola", "muy solo", "muy sola", "aislado", "aislada", "aislamiento", "sin amigos", "nadie me entiende", "desconectado", "nadie me quiere", "no tengo amigos", "no tengo amigas", "me ignoran", "me siento invisible", "me siento excluido", "me siento excluida", "rechazado", "rechazada", "no encajo", "nadie me habla", "no tengo con quien hablar", "solitario", "solitaria"],
       "botMessage": "Claro 💙 ¿Qué quieres saber sobre la soledad?",
       "options": [
         { "label": "¿Qué es?", "next": "content:tema-soledad-que-es" },
@@ -370,7 +470,7 @@
     "tema-ira": {
       "type": "topic",
       "title": "Ira o rabia",
-      "keywords": ["ira", "rabia", "enojo", "enojado", "enojada", "frustracion", "molesto", "molesta", "furioso", "furiosa"],
+      "keywords": ["ira", "rabia", "enojo", "enojado", "enojada", "frustracion", "molesto", "molesta", "furioso", "furiosa", "me enoja", "me enojo", "me da rabia", "tengo rabia", "ganas de gritar", "irritable", "irritado", "irritada", "de mal genio", "explosivo", "explosiva", "me desespera", "furia", "coraje", "odio", "harto", "harta", "me molesta", "me altero"],
       "botMessage": "💙 La rabia o la ira son emociones intensas. ¿Cómo podemos abordarlas?",
       "options": [
         { "label": "¿Qué es?", "next": "content:tema-ira-que-es" },
@@ -392,6 +492,9 @@
 
     "aprender": {
       "type": "menu",
+      "title": "Aprender sobre salud mental",
+      "keywords": ["aprender", "informacion", "salud mental", "psicologia", "quiero saber"],
+      "priority": -4,
       "botMessage": "📚 En Comprende → Condiciones hay información educativa sobre diferentes condiciones de salud mental. Es para comprender, no para diagnosticar. También puedo darte información breve sobre estos temas:",
       "options": [
         { "label": "Qué hay en Condiciones", "next": "content:comp-condiciones" },
@@ -414,7 +517,7 @@
       "type": "content",
       "parent": "aprender",
       "title": "Comprende → Condiciones",
-      "keywords": ["condiciones", "condicion", "trastorno", "trastornos", "tdah", "autismo", "bipolar", "toc", "psicosis", "psicotico", "dismorfico", "diagnostico", "salud mental"],
+      "keywords": ["condiciones", "condicion", "trastorno", "trastornos", "tdah", "autismo", "bipolar", "toc", "psicosis", "psicotico", "dismorfico", "diagnostico", "salud mental", "ansiedad generalizada", "ansiedad social", "fobia social", "tca", "dismorfia", "obsesivo", "compulsivo", "estacional", "desregulacion", "autolesiones", "deficit de atencion", "hiperactividad", "espectro autista", "maniaco"],
       "body": "En Comprende → Condiciones encuentras información educativa para entender diferentes condiciones relacionadas con la salud mental, por ejemplo: depresión, trastornos de ansiedad, trastornos de la conducta alimentaria, trastorno obsesivo-compulsivo, TDAH, autismo, trastorno bipolar, autolesiones o ideación y conducta suicida, entre otras.\nEs información para comprender, no para diagnosticar: no permite saber si alguien tiene o no una condición. Solo un profesional puede hacer una evaluación.",
       "actions": [
         { "label": "Ir a Comprende → Condiciones", "link": "condiciones" }
@@ -424,7 +527,7 @@
     "tema-depresion": {
       "type": "topic",
       "title": "Depresión",
-      "keywords": ["depresion", "deprimido", "deprimida", "sin sentido", "no siento nada"],
+      "keywords": ["depresion", "deprimido", "deprimida", "sin sentido", "no siento nada", "sin ganas de nada", "nada me motiva", "todo me da igual", "no disfruto", "ya nada me gusta", "no tengo animo", "desesperanza", "sin esperanza", "me siento sin valor", "depre", "depresiva"],
       "botMessage": "Claro 💙 Esta información puede ayudarte a comprender algunas experiencias relacionadas con la depresión.",
       "options": [
         { "label": "¿Qué es?", "next": "content:tema-depresion-que-es" },
@@ -461,7 +564,7 @@
     "tema-sueno": {
       "type": "topic",
       "title": "Trastornos del sueño",
-      "keywords": ["dormir", "sueno", "insomnio", "no puedo dormir", "no duermo", "duermo mal", "pesadillas", "desvelado", "desvelada", "trasnochar"],
+      "keywords": ["dormir", "sueno", "insomnio", "no puedo dormir", "no duermo", "duermo mal", "pesadillas", "desvelado", "desvelada", "trasnochar", "no logro dormir", "me cuesta dormir", "me despierto", "duermo poco", "duermo mucho", "duermo demasiado", "no concilio el sueno", "desvelo", "madrugada", "pesadilla", "terrores nocturnos", "no descanso"],
       "botMessage": "Claro 💙 ¿Qué quieres saber sobre el sueño?",
       "options": [
         { "label": "¿Qué es?", "next": "content:tema-sueno-que-es" },
@@ -498,7 +601,7 @@
     "tema-alimentacion": {
       "type": "topic",
       "title": "Alimentación y bienestar",
-      "keywords": ["alimentacion", "comer", "peso", "cuerpo", "comida", "no quiero comer", "me veo gorda", "me veo gordo"],
+      "keywords": ["alimentacion", "comer", "peso", "cuerpo", "comida", "no quiero comer", "me veo gorda", "me veo gordo", "dieta", "no como", "dejar de comer", "atracon", "atracones", "vomito", "vomitar", "anorexia", "bulimia", "me veo gorda", "me veo gordo", "gorda", "gordo", "imagen corporal", "mi cuerpo no me gusta", "calorias", "bajar de peso", "adelgazar", "apetito", "hambre", "trastorno alimentario", "trastornos alimenticios"],
       "botMessage": "Claro 💙 Esta información puede ayudarte a comprender algunas experiencias relacionadas con la alimentación y la imagen corporal.",
       "options": [
         { "label": "¿Qué es?", "next": "content:tema-alimentacion-que-es" },
@@ -528,7 +631,7 @@
     "tema-autoestima": {
       "type": "topic",
       "title": "Autoestima y confianza",
-      "keywords": ["autoestima", "confianza", "inseguridad", "inseguro", "insegura", "no me gusto", "valor propio"],
+      "keywords": ["autoestima", "confianza", "inseguridad", "inseguro", "insegura", "no me gusto", "valor propio", "no valgo", "no sirvo", "soy inutil", "me siento inutil", "soy un fracaso", "fracaso", "me odio", "no soy suficiente", "no soy bueno", "no soy buena", "inferior", "complejos", "no me quiero"],
       "botMessage": "💙 La confianza en uno mismo es un pilar fundamental. ¿Qué te gustaría explorar?",
       "options": [
         { "label": "¿Qué es?", "next": "content:tema-autoestima-que-es" },
@@ -550,6 +653,9 @@
 
     "situaciones": {
       "type": "menu",
+      "title": "Comprender lo que estoy viviendo",
+      "keywords": ["situacion", "situaciones", "me esta pasando", "estoy viviendo", "algo que me pasa", "problema"],
+      "priority": -4,
       "botMessage": "Cuéntame un poco más, ¿qué tipo de situación estás viviendo? 🌱",
       "options": [
         { "label": "Acoso o conflictos con compañeros", "next": "content:situacion-acoso" },
@@ -573,49 +679,49 @@
       "type": "content",
       "parent": "situaciones",
       "title": "Acoso o conflictos con compañeros",
-      "keywords": ["acoso", "bullying", "matoneo", "se burlan", "me molestan", "me excluyen", "me hacen la ley del hielo"],
+      "keywords": ["acoso", "bullying", "matoneo", "se burlan", "me molestan", "me excluyen", "me hacen la ley del hielo", "burlas", "burlan", "me insultan", "me humillan", "ciberacoso", "ciberbullying", "apodos", "me agreden", "agresion", "hostigamiento"],
       "body": "Vivir situaciones de acoso, exclusión o conflictos constantes con compañeros puede afectar mucho tu bienestar, aunque a veces se minimicen o parezcan 'normales'. No estás exagerando si esto te afecta.\nBuscar apoyo de un adulto de confianza en el colegio o en casa es un paso importante para que la situación no se sostenga en el tiempo."
     },
     "content:situacion-casa": {
       "type": "content",
       "parent": "situaciones",
       "title": "Conflictos o tensión en casa",
-      "keywords": ["conflictos en casa", "tension en casa", "peleas en casa", "mis papas", "discuten", "problemas familiares", "familia"],
+      "keywords": ["conflictos en casa", "tension en casa", "peleas en casa", "mis papas", "discuten", "problemas familiares", "familia", "mis padres", "mi mama", "mi papa", "peleas", "pelean", "gritos", "en mi casa", "regano", "me castigan", "no me entienden en casa", "mi familia", "ambiente tenso"],
       "body": "Los conflictos familiares, las discusiones frecuentes o la tensión en casa pueden generar mucho desgaste emocional, incluso si sientes que 'debes' manejarlo solo o sola.\nHablar con un adulto de confianza fuera de la situación, o con un profesional, puede ayudarte a encontrar formas de sobrellevarlo."
     },
     "content:situacion-academica": {
       "type": "content",
       "parent": "situaciones",
       "title": "Presión académica o de resultados",
-      "keywords": ["examen", "examenes", "notas", "calificaciones", "colegio", "tareas", "estudiar", "presion academica", "estres academico"],
+      "keywords": ["examen", "examenes", "notas", "calificaciones", "colegio", "tareas", "estudiar", "presion academica", "estres academico", "parcial", "parciales", "quices", "evaluacion", "exposicion", "perder el ano", "perder la materia", "reprobar", "reprobe", "me va mal en el colegio", "bajo rendimiento", "icfes", "tarea", "deberes", "profesor", "profesores", "docente"],
       "body": "La presión por buenas calificaciones, exámenes o expectativas de otras personas puede generar mucho estrés y afectar tu autoestima. Tu valor no depende únicamente de tus resultados académicos.\nOrganizar tus tiempos y hablar con adultos sobre lo que sientes puede aliviar parte de esa carga."
     },
     "content:situacion-redes": {
       "type": "content",
       "parent": "situaciones",
       "title": "Comparación o presión en redes sociales",
-      "keywords": ["redes sociales", "redes", "instagram", "tiktok", "me comparo", "comparacion", "celular", "likes"],
+      "keywords": ["redes sociales", "redes", "instagram", "tiktok", "me comparo", "comparacion", "celular", "likes", "whatsapp", "facebook", "youtube", "snapchat", "seguidores", "filtros", "influencers", "adiccion al celular", "mucho celular", "pantallas", "me comparo con"],
       "body": "Pasar mucho tiempo comparándote con lo que ves en redes sociales puede afectar cómo te sientes contigo mismo o misma. Recuerda que lo que se muestra en línea suele ser una versión editada de la realidad.\nTomar pausas del uso de redes y hablar de cómo te hacen sentir puede ayudarte a cuidar tu bienestar."
     },
     "content:situacion-relaciones": {
       "type": "content",
       "parent": "situaciones-2",
       "title": "Relaciones y vínculos",
-      "keywords": ["pareja", "novio", "novia", "terminamos", "celos", "pelee con mi amigo", "pelee con mi amiga", "amistad", "relaciones", "vinculos"],
+      "keywords": ["pareja", "novio", "novia", "terminamos", "celos", "pelee con mi amigo", "pelee con mi amiga", "amistad", "relaciones", "vinculos", "mi novio", "mi novia", "mi amigo", "mi amiga", "mejor amigo", "mejor amiga", "traicion", "me traicionaron", "terminaron conmigo", "ruptura", "chisme", "chismes", "celoso", "celosa", "me ignora", "relacion toxica", "toxica", "toxico"],
       "body": "Los vínculos con amigos, pareja o familia pueden ser fuente de apoyo y también de tensión. Es normal sentir confusión, celos, miedo al rechazo o ganas de alejarte cuando hay conflictos.\nUna relación que te cuida te permite expresarte con respeto y sentirte seguro o segura. Si en una relación sientes miedo, control o te hacen sentir mal de forma constante, hablarlo con un adulto de confianza es un paso importante."
     },
     "content:situacion-pares": {
       "type": "content",
       "parent": "situaciones-2",
       "title": "Presión de pares",
-      "keywords": ["presion de pares", "presion de grupo", "presion de amigos", "encajar", "me obligan", "me presionan"],
+      "keywords": ["presion de pares", "presion de grupo", "presion de amigos", "encajar", "me obligan", "me presionan", "grupo de amigos", "vapear", "fumar", "tomar alcohol", "licor", "que diran", "aceptado", "aceptada", "me dicen que lo haga"],
       "body": "La presión de pares es la influencia que ejercen personas de tu edad para que hagas algo o te comportes de cierta manera. A veces es positiva, pero puede ser difícil cuando sientes que debes hacer algo que no quieres para encajar.\nPuedes decir que no, tomar distancia o buscar apoyo de alguien de confianza. Decidir por ti no te hace menos parte del grupo."
     },
     "content:comp-situaciones": {
       "type": "content",
       "parent": "situaciones-2",
       "title": "Comprende → Situaciones y experiencias",
-      "keywords": ["situaciones y experiencias", "violencia", "discriminacion", "entorno en riesgo", "violencia emocional"],
+      "keywords": ["situaciones y experiencias", "violencia", "discriminacion", "entorno en riesgo", "violencia emocional", "violencia sexual", "abuso", "racismo", "homofobia", "violencia en casa", "pandillas"],
       "body": "En Comprende → Situaciones y experiencias encuentras información sobre experiencias y contextos que pueden influir en el bienestar emocional: estrés, redes sociales y entorno, acoso escolar, violencia emocional, violencia sexual, discriminación, entorno en riesgo, presión de pares, aislamiento y soledad, estrés académico, y sueño y salud mental.",
       "actions": [
         { "label": "Ir a Comprende → Situaciones", "link": "situaciones" }
@@ -625,7 +731,7 @@
     "registro": {
       "type": "menu",
       "title": "Registro emocional",
-      "keywords": ["registro emocional", "registro", "registrar", "calendario emocional", "calendario", "anotar como me siento", "diario emocional", "matices"],
+      "keywords": ["registro emocional", "registro", "registrar", "calendario emocional", "calendario", "anotar como me siento", "diario emocional", "matices", "como me siento hoy", "estado de animo", "apuntar", "guardar mis emociones", "historial", "registros"],
       "botMessage": "💭 El Registro emocional es un espacio de autoobservación: te ayuda a identificar qué podrías estar sintiendo y a reconocer patrones con el tiempo. No diagnostica. ¿Qué quieres saber?",
       "actions": [
         { "label": "Ir al Registro emocional", "link": "emocional" }
@@ -640,15 +746,18 @@
     },
     "content:registro-como": {
       "type": "content",
+      "keywords": ["como funciona el registro", "como se usa el registro", "para que sirve el registro"],
       "parent": "registro",
       "title": "¿Cómo funciona el Registro emocional?",
       "body": "Funciona con un formulario de preguntas rápidas. Respondes y seleccionas las emociones que identificas en ese momento.\nEs una herramienta de autoobservación, identificación emocional, reconocimiento de patrones y reflexión personal. No diagnostica enfermedades ni reemplaza la valoración de un profesional.",
       "actions": [
+        { "label": "Abrir el Explorador emocional", "link": "explorador" },
         { "label": "Ir al Registro emocional", "link": "emocional" }
       ]
     },
     "content:registro-emociones": {
       "type": "content",
+      "keywords": ["tres emociones", "3 emociones", "matiz", "cuantas emociones"],
       "parent": "registro",
       "title": "Emociones y matices",
       "body": "En cada registro puedes seleccionar hasta 3 emociones y, por cada emoción, hasta 2 matices. Los matices sirven para precisar mejor cómo se siente esa emoción.",
@@ -658,6 +767,7 @@
     },
     "content:registro-calendario": {
       "type": "content",
+      "keywords": ["limite diario", "cuantos registros", "degradado", "colores del calendario", "5 registros"],
       "parent": "registro",
       "title": "Límite diario y calendario",
       "body": "Puedes hacer hasta 5 registros por día. Los registros quedan guardados y el calendario representa tus emociones mediante un degradado, para que puedas ver cómo han ido variando.",
@@ -667,11 +777,24 @@
     },
     "content:registro-editar": {
       "type": "content",
+      "keywords": ["editar registro", "modificar registro", "borrar registro", "eliminar registro", "cambiar un registro", "24 horas", "puedo borrar", "puedo editar"],
       "parent": "registro",
       "title": "Modificar o eliminar un registro",
       "body": "Un registro puede modificarse mientras no hayan pasado 24 horas desde que se hizo. Pasadas las 24 horas, puede eliminarse, según las funciones del módulo.",
       "actions": [
         { "label": "Ir al Registro emocional", "link": "emocional" }
+      ]
+    },
+    "content:registro-explorador": {
+      "type": "content",
+      "parent": "need-no-se",
+      "title": "Explorador emocional",
+      "direct": true,
+      "priority": 30,
+      "keywords": ["no se lo que siento", "no se que siento", "no se como me siento", "no se que estoy sintiendo", "no se que me pasa", "no se lo que me pasa", "no se identificar lo que siento", "explorador emocional", "explorador"],
+      "body": "Está bien no saber qué sientes. El Explorador emocional, dentro del Registro emocional, te hace unas preguntas rápidas para ayudarte a identificar qué emociones podrías estar sintiendo.\nEs una herramienta de autoobservación: no diagnostica ni reemplaza a un profesional. Puedes abrirlo ahora y avanzar a tu ritmo.",
+      "actions": [
+        { "label": "Abrir el Explorador emocional", "link": "explorador" }
       ]
     },
     "content:registro-conocer": {
@@ -688,7 +811,7 @@
     "herramientas": {
       "type": "menu",
       "title": "Encontrar una herramienta",
-      "keywords": ["herramienta", "herramientas", "tecnica", "tecnicas", "estrategia", "estrategias", "ejercicio", "ejercicios"],
+      "keywords": ["herramienta", "herramientas", "tecnica", "tecnicas", "estrategia", "estrategias", "ejercicio", "ejercicios", "calmarme", "calmar", "relajarme", "relajacion", "relajar", "que puedo hacer", "que hago", "recomendacion", "recomiendame", "tips", "consejos", "consejo", "autocuidado"],
       "botMessage": "🛠️ Cuéntame qué necesitas ahora y te muestro algunas herramientas de Comprende que pueden servirte:",
       "options": [
         { "label": "Estoy muy activado/a", "next": "need-activado" },
@@ -712,7 +835,7 @@
       "type": "content",
       "parent": "herramientas-2",
       "title": "Comprende → Herramientas",
-      "keywords": ["que herramientas hay", "todas las herramientas"],
+      "keywords": ["que herramientas hay", "todas las herramientas", "lista de herramientas", "recursos"],
       "body": "En Comprende → Herramientas hay recursos y estrategias para comprender, regularse y buscar apoyo, como: respiración consciente, grounding (conexión con el presente), actividad física, sueño saludable, naturaleza y cambio de entorno, regulación emocional, resolución de problemas, activación conductual, rutinas y estructura, escritura expresiva, red de apoyo, arte y expresión creativa, registro de emociones, el plan «Cuando estoy muy alterado/a», pausa de pantalla consciente, «¿Qué necesito ahora?» y «¿Cuál herramienta me sirve ahora?».",
       "actions": [
         { "label": "Ir a Comprende → Herramientas", "link": "herramientas" }
@@ -721,7 +844,7 @@
     "need-activado": {
       "type": "menu",
       "title": "Estoy muy activado/a",
-      "keywords": ["muy activado", "muy activada", "acelerado", "acelerada", "alterado", "alterada", "agitado", "agitada", "no puedo calmarme", "no me calmo", "explotar"],
+      "keywords": ["muy activado", "muy activada", "acelerado", "acelerada", "alterado", "alterada", "agitado", "agitada", "no puedo calmarme", "no me calmo", "explotar", "no me puedo quedar quieto", "ataque de nervios", "muy alterado", "muy alterada", "fuera de control", "hiperactivo", "tenso", "tensa", "me tiembla", "exploto"],
       "botMessage": "Cuando el cuerpo va muy rápido, lo primero es bajar la intensidad. Puedes probar:",
       "options": [
         { "label": "Respiración consciente", "next": "content:herr-respiracion" },
@@ -733,18 +856,19 @@
     "need-pensamientos": {
       "type": "menu",
       "title": "Estoy atrapado/a en pensamientos",
-      "keywords": ["pienso demasiado", "pienso mucho", "no paro de pensar", "pensamientos", "dando vueltas", "rumiando", "no dejo de pensar", "mente no para"],
+      "keywords": ["pienso demasiado", "pienso mucho", "no paro de pensar", "pensamientos", "dando vueltas", "rumiando", "no dejo de pensar", "mente no para", "mi mente no para", "la cabeza no para", "sobrepienso", "sobrepensar", "rumiar", "obsesionado", "obsesionada", "pensamientos repetitivos", "pienso en lo mismo", "no puedo dejar de pensar", "pienso en todo", "cabeza llena", "le doy vueltas"],
       "botMessage": "Cuando la mente no para, ayuda volver al presente o sacar los pensamientos de la cabeza. Puedes probar:",
       "options": [
         { "label": "Grounding 5-4-3-2-1", "next": "content:herr-pausa" },
         { "label": "Escritura expresiva", "next": "content:herr-escritura" },
-        { "label": "Organizar mis pensamientos", "next": "content:herr-organizar" }
+        { "label": "Organizar mis pensamientos", "next": "content:herr-organizar" },
+        { "label": "Anclaje positivo", "next": "content:herr-anclaje" }
       ]
     },
     "need-desorganizado": {
       "type": "menu",
       "title": "Estoy desorganizado/a",
-      "keywords": ["desorganizado", "desorganizada", "desorden", "no me alcanza el tiempo", "no se por donde empezar", "procrastino", "se me acumula"],
+      "keywords": ["desorganizado", "desorganizada", "desorden", "no me alcanza el tiempo", "no se por donde empezar", "procrastino", "se me acumula", "caos", "todo desordenado", "no tengo tiempo", "muchas cosas pendientes", "pendientes", "no puedo concentrarme", "no me concentro", "distraido", "distraida", "olvido todo", "desordenado", "desordenada", "atrasado", "atrasada", "me atrase"],
       "botMessage": "Cuando todo se siente acumulado, ayuda poner un poco de estructura. Puedes probar:",
       "options": [
         { "label": "Rutinas y estructura", "next": "content:herr-rutinas" },
@@ -755,7 +879,7 @@
     "need-aislando": {
       "type": "menu",
       "title": "Me estoy aislando",
-      "keywords": ["me estoy aislando", "me aislo", "no quiero ver a nadie", "me alejo de todos", "evito a la gente"],
+      "keywords": ["me estoy aislando", "me aislo", "no quiero ver a nadie", "me alejo de todos", "evito a la gente", "me encierro", "quiero estar solo", "quiero estar sola", "no salgo", "no quiero salir", "no quiero hablar con nadie", "evito a mis amigos", "me desconecto", "no contesto mensajes"],
       "botMessage": "Alejarse a veces se siente como alivio, pero el aislamiento prolongado puede pesar. Puedes probar con pasos pequeños:",
       "options": [
         { "label": "Red de apoyo", "next": "content:herr-red" },
@@ -767,7 +891,7 @@
     "need-agotado": {
       "type": "menu",
       "title": "Estoy agotado/a",
-      "keywords": ["agotado", "agotada", "cansado", "cansada", "cansancio", "sin energia", "no tengo energia", "burnout", "exhausto", "exhausta"],
+      "keywords": ["agotado", "agotada", "cansado", "cansada", "cansancio", "sin energia", "no tengo energia", "burnout", "exhausto", "exhausta", "sin fuerzas", "fatiga", "fatigado", "fatigada", "cansancio mental", "cansado de todo", "cansada de todo", "rendido", "rendida", "quemado", "quemada", "necesito descansar", "descansar"],
       "botMessage": "Si estás agotado o agotada, quizá lo que más necesitas es descanso. Puedes mirar:",
       "options": [
         { "label": "Descanso y bajar exigencias", "next": "content:herr-descanso" },
@@ -777,10 +901,11 @@
     },
     "need-no-se": {
       "type": "menu",
+      "keywords": ["no se que siento", "no se como me siento", "confundido", "confundida", "confusion", "no puedo explicar lo que siento", "mezcla de emociones", "identificar emociones", "ponerle nombre", "nombrar mis emociones"],
       "title": "No sé qué siento",
       "botMessage": "Está bien no saberlo. Estas herramientas pueden ayudarte a ponerle nombre poco a poco:",
       "options": [
-        { "label": "Registro emocional", "next": "content:herr-registro" },
+        { "label": "Explorador emocional", "next": "content:registro-explorador" },
         { "label": "Escritura expresiva", "next": "content:herr-escritura" },
         { "label": "¿Qué necesito ahora?", "next": "content:herr-que-necesito" },
         { "label": "Identificar lo que siento", "next": "content:herr-identificar" }
@@ -795,7 +920,7 @@
       "type": "content",
       "parent": "herramientas",
       "title": "Respiración consciente",
-      "keywords": ["respiracion", "respirar"],
+      "keywords": ["respiracion", "respirar", "respirar profundo", "tecnica de respiracion", "inhalar", "exhalar"],
       "body": "Inhala contando hasta 4, sostén el aire contando hasta 4, y exhala lentamente contando hasta 6. Repite este ciclo entre 5 y 8 veces.\nRespirar de forma consciente ayuda a calmar la activación del cuerpo cuando sientes ansiedad o estrés.",
       "actions": [
         { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
@@ -805,7 +930,7 @@
       "type": "content",
       "parent": "herramientas",
       "title": "Grounding: pausa 5-4-3-2-1",
-      "keywords": ["grounding", "5-4-3-2-1", "conexion con el presente"],
+      "keywords": ["grounding", "5-4-3-2-1", "conexion con el presente", "tecnica 54321", "5 cosas que veo"],
       "body": "Cuando te sientas muy abrumado o abrumada, nombra: 5 cosas que puedes ver, 4 que puedes tocar, 3 que puedes escuchar, 2 que puedes oler y 1 que puedes saborear.\nEsta técnica ayuda a traer tu atención al presente cuando los pensamientos se sienten desbordados.",
       "actions": [
         { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
@@ -815,7 +940,7 @@
       "type": "content",
       "parent": "herramientas",
       "title": "Movimiento suave",
-      "keywords": ["movimiento", "actividad fisica", "ejercicio fisico"],
+      "keywords": ["movimiento", "actividad fisica", "ejercicio fisico", "caminar", "correr", "deporte", "bailar", "estirar", "yoga"],
       "body": "Camina un rato, estira los hombros y el cuello, o sacude suavemente brazos y piernas. Moverte ayuda a liberar parte de la tensión del cuerpo cuando estás muy activado o activada.\nNo tiene que ser ejercicio intenso: unos minutos pueden bastar.",
       "actions": [
         { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
@@ -823,6 +948,7 @@
     },
     "content:herr-alejarse": {
       "type": "content",
+      "keywords": ["alejarme", "tomar distancia", "necesito espacio", "cambiar de lugar"],
       "parent": "herramientas",
       "title": "Alejarme un momento del estímulo",
       "body": "Si algo te sobrecarga (ruido, el celular, una discusión), tomar distancia unos minutos puede ayudarte a bajar la intensidad: cambia de lugar, sal a tomar aire o apaga las pantallas un rato.\nNo es huir: es darte una pausa para volver con más calma. Si es una discusión, puedes decir «necesito unos minutos y vuelvo».",
@@ -834,7 +960,7 @@
       "type": "content",
       "parent": "herramientas",
       "title": "Escritura expresiva",
-      "keywords": ["escribir", "escritura", "diario"],
+      "keywords": ["escribir", "escritura", "diario", "escribir lo que siento", "desahogarme", "desahogo", "carta", "cuaderno"],
       "body": "Escribe durante unos minutos lo que piensas y sientes, sin corregir ni buscar que suene bien. Puede ayudarte a sacar pensamientos que dan vueltas y a ponerle nombre a lo que pasa por dentro. Es solo para ti.",
       "actions": [
         { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
@@ -844,7 +970,7 @@
       "type": "content",
       "parent": "herramientas",
       "title": "Organizar mis pensamientos (resolución de problemas)",
-      "keywords": ["resolver un problema", "resolucion de problemas", "organizar mis pensamientos", "necesito resolver"],
+      "keywords": ["resolver un problema", "resolucion de problemas", "organizar mis pensamientos", "necesito resolver", "organizar", "organizarme", "priorizar", "lista de tareas"],
       "body": "Cuando tengas muchas ideas o preocupaciones dando vueltas, escríbelas todas sin orden en un papel o nota, y luego sepáralas en tres grupos: lo que puedo resolver hoy, lo que puedo resolver después, y lo que no depende de mí.\nEsto ayuda a reducir la sensación de estar sobrepasado.",
       "actions": [
         { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
@@ -854,7 +980,7 @@
       "type": "content",
       "parent": "herramientas",
       "title": "Rutinas y estructura",
-      "keywords": ["rutina", "rutinas", "estructura", "horarios"],
+      "keywords": ["rutina", "rutinas", "estructura", "horarios", "habitos", "habito", "horario", "organizar mi dia"],
       "body": "Cuando todo se siente desordenado, ayuda tener pocos puntos fijos en el día: una hora para levantarte, otra para dormir y bloques para estudiar y descansar. Divide lo pendiente en pasos pequeños y empieza por el más fácil.",
       "actions": [
         { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
@@ -864,7 +990,7 @@
       "type": "content",
       "parent": "herramientas",
       "title": "Red de apoyo",
-      "keywords": ["red de apoyo"],
+      "keywords": ["red de apoyo", "apoyo social", "a quien acudir"],
       "body": "Tu red de apoyo son las personas a las que puedes acudir: familia, amistades, docentes, orientadores u orientadoras. Pensar en dos o tres personas concretas y escribirles o buscarlas puede hacer más fácil pedir ayuda cuando la necesites.",
       "actions": [
         { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
@@ -874,7 +1000,7 @@
       "type": "content",
       "parent": "herramientas",
       "title": "Activación conductual",
-      "keywords": ["activacion conductual"],
+      "keywords": ["activacion conductual", "no tengo motivacion", "pequenos pasos", "actividad agradable"],
       "body": "Cuando el ánimo baja, a veces dejamos de hacer cosas y eso aumenta el aislamiento. La activación conductual consiste en elegir una actividad pequeña y posible (salir a caminar, ordenar tu cuarto, escuchar música) y hacerla aunque no tengas muchas ganas, para luego notar cómo te sientes.",
       "actions": [
         { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
@@ -882,6 +1008,7 @@
     },
     "content:herr-conexion": {
       "type": "content",
+      "keywords": ["hacer amigos", "conocer gente", "conectar"],
       "parent": "herramientas",
       "title": "Un pequeño paso de conexión",
       "body": "No necesitas un gran plan. Escribirle a alguien un mensaje corto, sentarte cerca de otras personas o contarle a alguien cómo te fue en el día son pasos pequeños que mantienen el vínculo vivo.",
@@ -891,6 +1018,7 @@
     },
     "content:herr-descanso": {
       "type": "content",
+      "keywords": ["agotamiento", "vacaciones"],
       "parent": "herramientas",
       "title": "Descanso y bajar exigencias",
       "body": "Cuando estás agotado o agotada, el cuerpo y la mente piden pausa. Revisa qué cosas puedes posponer o simplificar hoy, haz pausas reales (sin pantallas si puedes) y permítete hacer menos sin culparte.\nSi el agotamiento dura semanas, vale la pena hablarlo con un adulto de confianza o un profesional.",
@@ -900,6 +1028,7 @@
     },
     "content:herr-sueno-saludable": {
       "type": "content",
+      "keywords": ["higiene del sueno", "dormir mejor", "rutina de sueno"],
       "parent": "herramientas",
       "title": "Sueño saludable",
       "body": "Horarios regulares para dormir y despertar, menos pantallas antes de acostarte, evitar cafeína en la tarde-noche y un ambiente oscuro y tranquilo ayudan a descansar mejor. Dormir lo suficiente también ayuda a regular las emociones.",
@@ -917,8 +1046,16 @@
         { "label": "Ver más en Comprende → Herramientas", "link": "herramientas" }
       ]
     },
+    "content:herr-anclaje": {
+      "type": "content",
+      "parent": "herramientas",
+      "title": "Técnica del anclaje positivo",
+      "keywords": ["anclaje", "anclaje positivo", "recuerdo positivo", "momento feliz"],
+      "body": "Trae a tu memoria un momento en el que te hayas sentido seguro, tranquilo o orgulloso de ti mismo. Cierra los ojos por un instante y recuerda los detalles de esa escena: los sonidos, las sensaciones y el alivio que sentiste. Esto ayuda a tu cerebro a recordar que el bienestar también es posible."
+    },
     "content:herr-registro": {
       "type": "content",
+      "keywords": ["registro de emociones"],
       "parent": "herramientas",
       "title": "Registro emocional",
       "body": "Registrar lo que sientes puede ayudarte a ordenar tus pensamientos y reconocer patrones. En Conecta Contigo, el Registro emocional te permite seleccionar tus emociones y verlas en un calendario.",
@@ -928,6 +1065,7 @@
     },
     "content:herr-identificar": {
       "type": "content",
+      "keywords": ["identificar emociones", "que estoy sintiendo", "identificar lo que siento"],
       "parent": "herramientas",
       "title": "Identificar lo que siento",
       "body": "A veces sentimos 'algo raro' sin saber exactamente qué es. Preguntarte dónde sientes esa emoción en el cuerpo, cuándo empezó, y qué situación la acompaña puede ayudarte a ponerle nombre y a entenderla mejor."
@@ -960,7 +1098,7 @@
     "ayuda": {
       "type": "menu",
       "title": "Necesito ayuda",
-      "keywords": ["necesito ayuda", "ayuda", "hablar con alguien", "con quien hablar", "psicologo", "psicologa", "terapia", "linea de ayuda"],
+      "keywords": ["necesito ayuda", "ayuda", "hablar con alguien", "con quien hablar", "psicologo", "psicologa", "terapia", "linea de ayuda", "quiero hablar con alguien", "necesito hablar", "no tengo con quien hablar", "necesito un psicologo", "necesito terapia", "apoyo", "orientador", "orientadora", "auxilio", "socorro", "numero de ayuda", "telefono de ayuda"],
       "botMessage": "Este es un espacio para pensar en cómo pedir apoyo 🆘 ¿Qué necesitas?",
       "options": [
         { "label": "Hablar con alguien de confianza", "next": "content:ayuda-hablar" },
@@ -972,12 +1110,14 @@
     },
     "content:ayuda-hablar": {
       "type": "content",
+      "keywords": ["hablar con mis papas", "decirle a mis papas", "como le digo", "como pedir ayuda", "contar a alguien", "adulto de confianza", "no se como decirlo"],
       "parent": "ayuda",
       "title": "Hablar con alguien de confianza",
       "body": "Elegir a una persona con la que te sientas segura o seguro -un familiar, docente, orientador u orientadora, o amigo cercano- y compartir cómo te sientes puede aliviar mucho la carga.\nNo tienes que tener todas las palabras exactas; puedes empezar simplemente diciendo que no te sientes bien."
     },
     "content:ayuda-profesional": {
       "type": "content",
+      "keywords": ["psicologo", "psicologa", "psiquiatra", "terapia", "terapeuta", "medico", "consulta", "apoyo profesional"],
       "parent": "ayuda",
       "title": "Buscar apoyo profesional",
       "body": "Un psicólogo o psicóloga puede ayudarte a comprender lo que estás viviendo desde un lugar preparado para acompañarte, sin juzgarte.\nPedir esta ayuda no significa que algo esté 'mal' contigo; es una forma de cuidarte.",
@@ -989,7 +1129,7 @@
     "sobre-soter": {
       "type": "menu",
       "title": "Sobre Soter y Conecta Contigo",
-      "keywords": ["quien eres", "que eres", "que es soter", "como funcionas", "conecta contigo"],
+      "keywords": ["quien eres", "que eres", "que es soter", "como funcionas", "conecta contigo", "eres un robot", "eres una persona", "eres real", "eres humano", "para que sirves", "que haces", "que puedes hacer"],
       "botMessage": "Aquí tienes información sobre cómo funciono y qué hay detrás de este espacio 💡",
       "options": [
         { "label": "¿Por qué mi nombre?", "next": "content:soter-nombre" },
@@ -1001,12 +1141,14 @@
     },
     "content:soter-nombre": {
       "type": "content",
+      "keywords": ["como te llamas", "cual es tu nombre", "por que te llamas soter", "tu nombre", "significado de soter"],
       "parent": "sobre-soter",
       "title": "¿Por qué mi nombre?",
       "body": "Mi nombre viene de la palabra griega «Soter», relacionada con la idea de protector o salvador. En este proyecto representa mi propósito de orientar, acompañar y acercarte a información y recursos que puedan ayudarte a cuidar tu bienestar emocional."
     },
     "content:soter-como": {
       "type": "content",
+      "keywords": ["como funcionas", "como funciona soter", "eres una ia", "inteligencia artificial", "eres un robot", "eres humano", "que puedes hacer", "para que sirves"],
       "parent": "sobre-soter",
       "title": "¿Cómo funciona Soter?",
       "body": "Soter funciona con opciones y palabras clave. Puedes elegir un camino con los botones o escribir lo que necesitas; Soter busca palabras relacionadas y te propone pocas opciones para llevarte a la información, herramienta o recurso adecuado dentro de Conecta Contigo.\nNo es una inteligencia artificial, no te diagnostica y no reemplaza a un profesional."
@@ -1015,7 +1157,7 @@
       "type": "content",
       "parent": "sobre-soter",
       "title": "Privacidad",
-      "keywords": ["privacidad", "privado", "confidencial", "confidencialidad", "guardan lo que escribo", "mis datos"],
+      "keywords": ["privacidad", "privado", "confidencial", "confidencialidad", "guardan lo que escribo", "mis datos", "anonimo", "anonima", "alguien puede ver", "lo que escribo", "guardan mis mensajes", "mis mensajes"],
       "body": "Lo que escribes en Soter se procesa en tu navegador: el código de Soter no envía tus mensajes a ningún servidor ni los guarda, y la conversación desaparece al reiniciarla o cerrar la página. Si usas un dispositivo compartido, cierra la pestaña al terminar.\nEsto aplica solo a Soter. Otros módulos, como el Registro emocional, funcionan distinto y guardan sus propios registros; puedes revisar cómo se tratan los datos en el Marco jurídico. Soter no puede garantizar confidencialidad absoluta si hay una situación de riesgo en la que otras personas deban ayudarte.",
       "actions": [
         { "label": "Ir al Marco jurídico", "link": "marco" }
@@ -1057,7 +1199,7 @@
       "type": "content",
       "parent": "content:soter-plataforma",
       "title": "¿Qué son Contactos?",
-      "keywords": ["contactos", "contacto", "lineas de ayuda", "telefonos"],
+      "keywords": ["contactos", "contacto", "lineas de ayuda", "telefonos", "llamar", "chatlemos", "emergencia", "urgencias", "ambulancia", "telefono", "linea 123", "linea 106"],
       "body": "Contactos es un espacio con recursos y redes de apoyo a los que puedes acudir cuando necesitas hablar con alguien o buscar ayuda.",
       "actions": [
         { "label": "Ir a Contactos", "link": "contactos" }
@@ -1085,10 +1227,38 @@
       ]
     },
 
+    "smalltalk-bien": {
+      "type": "menu",
+      "botMessage": "¡Me alegra mucho! 🌟 Si quieres, puedo ayudarte a explorar algo o mostrarte una herramienta.",
+      "options": [
+        { "label": "Entender lo que siento", "next": "entender" },
+        { "label": "Registro emocional", "next": "registro" },
+        { "label": "Encontrar una herramienta", "next": "herramientas" },
+        { "label": "Sobre Soter y Conecta Contigo", "next": "sobre-soter" }
+      ]
+    },
+    "smalltalk-regular": {
+      "type": "menu",
+      "botMessage": "Gracias por contármelo 💙 Un día «más o menos» también merece atención. ¿Quieres explorar qué está pasando?",
+      "options": [
+        { "label": "Entender lo que siento", "next": "entender" },
+        { "label": "No sé qué hacer ahora", "next": "no-se-que-hacer" },
+        { "label": "Registro emocional", "next": "registro" }
+      ]
+    },
+    "smalltalk-mal": {
+      "type": "menu",
+      "botMessage": "Gracias por decírmelo 💙 Lamento que no sea un buen momento. No tienes que atravesarlo solo o sola. ¿Qué te sirve más ahora?",
+      "options": [
+        { "label": "Entender lo que siento", "next": "entender" },
+        { "label": "No sé qué hacer ahora", "next": "no-se-que-hacer" },
+        { "label": "Necesito ayuda", "next": "ayuda" }
+      ]
+    },
     "donde": {
       "type": "menu",
       "title": "¿Dónde encuentro lo que necesito?",
-      "keywords": ["donde encuentro", "donde esta", "donde puedo encontrar", "donde queda", "como uso la pagina", "secciones de la pagina"],
+      "keywords": ["donde encuentro", "donde esta", "donde puedo encontrar", "donde queda", "como uso la pagina", "secciones de la pagina", "no encuentro", "donde veo", "que secciones hay", "menu", "mapa del sitio", "ayudame a encontrar", "navegar"],
       "botMessage": "🧭 Te ayudo a ubicar lo que necesitas dentro de Conecta Contigo. ¿Qué quieres hacer?",
       "options": [
         { "label": "Entender algo", "next": "donde-entender" },

@@ -13,7 +13,7 @@
         "concentración"
       ],
       "shortDescription": "Dificultades persistentes con la atención, la organización, los impulsos o la actividad, que empiezan en la infancia.",
-      "description": "El trastorno por déficit de atención e hiperactividad (TDAH) es una condición del neurodesarrollo cuyos síntomas comienzan durante la infancia y pueden continuar durante la adolescencia y la adultez. Puede involucrar dificultades persistentes relacionadas con la atención, la organización, el control de impulsos y/o la actividad. No todas las personas experimentan los mismos síntomas ni con la misma intensidad. Puede influir en el rendimiento escolar, la organización, las relaciones sociales y las tareas cotidianas, y también puede presentarse junto con ansiedad, depresión, problemas de sueño u otras dificultades, por lo que una dificultad de concentración por sí sola no significa que una persona tenga TDAH. Tener problemas ocasionales para concentrarse, olvidar algo o procrastinar no significa automáticamente tener TDAH: el diagnóstico requiere una evaluación profesional.",
+      "description": "El trastorno por déficit de atención e hiperactividad (TDAH) es una condición del neurodesarrollo cuyos síntomas comienzan durante la infancia y pueden continuar durante la adolescencia y la adultez.\n\nPuede involucrar dificultades persistentes relacionadas con la atención, la organización, el control de impulsos y/o la actividad. No todas las personas experimentan los mismos síntomas ni con la misma intensidad.\n\nPuede influir en el rendimiento escolar, la organización, las relaciones sociales y las tareas cotidianas, y también puede presentarse junto con ansiedad, depresión, problemas de sueño u otras dificultades, por lo que una dificultad de concentración por sí sola no significa que una persona tenga TDAH.\n\nTener problemas ocasionales para concentrarse, olvidar algo o procrastinar no significa automáticamente tener TDAH: el diagnóstico requiere una evaluación profesional.",
       "experience": {
         "columns": [
           {
@@ -53,22 +53,27 @@
       ],
       "actions": {
         "self": [
-          "Divide las tareas grandes en pasos pequeños y visibles.",
-          "Usa recordatorios externos en lugar de depender solo de la memoria.",
-          "Mantén los materiales necesarios en lugares definidos.",
-          "Trabaja con una lista breve de prioridades y reduce las distracciones durante una tarea.",
-          "Usa temporizadores para ver el tiempo disponible.",
-          "Registra qué situaciones dificultan más tu atención.",
-          "Habla con un adulto de confianza y pide una evaluación si las dificultades afectan de forma importante tu vida diaria."
+          "Divide las tareas en unidades pequeñas.",
+          "Usa instrucciones escritas.",
+          "Elimina las distracciones visibles.",
+          "Usa temporizadores o recordatorios externos.",
+          "Haz pausas de movimiento.",
+          "Prepara los materiales antes de empezar.",
+          "Usa listas de «siguiente acción», no solo listas enormes.",
+          "Solicita adaptaciones académicas cuando sean necesarias.",
+          "Si sospechas TDAH, busca evaluación; no basta con reconocerse en una lista de síntomas."
         ],
         "other": [
-          "Evita llamarlo «perezoso», «irresponsable» o «distraído» como explicación automática.",
-          "Pregunta qué dificultad concreta está teniendo.",
-          "Ayúdalo a dividir una tarea sin hacerla por él.",
-          "Recuérdale las cosas de forma clara y concreta.",
-          "Reconoce sus esfuerzos y fortalezas.",
-          "Sugiere apoyo profesional si las dificultades interfieren de forma importante con su vida."
-        ]
+          "No confundas dificultades ejecutivas con pereza.",
+          "Da una instrucción a la vez.",
+          "Escribe lo importante.",
+          "Ayuda a estructurar el entorno.",
+          "Divide las tareas grandes.",
+          "Reconoce el progreso.",
+          "Sugiere una evaluación si las dificultades son persistentes y afectan varias áreas."
+        ],
+        "note": "NICE recomienda modificaciones ambientales como reducir distracciones, ajustar el ruido y la luz, usar instrucciones escritas y permitir períodos de concentración más cortos con pausas de movimiento.",
+        "noteSource": "NICE"
       },
       "faq": [
         {
@@ -97,7 +102,7 @@
         },
         {
           "question": "¿Se puede tener TDAH sin ser una persona hiperactiva o inquieta?",
-          "answer": "Sí. Existe la presentación predominantemente inatenta (lo que antes se llamaba solo TDA). La hiperactividad puede ser mental: por fuera la persona se ve tranquila y callada, pero por dentro su mente salta de un pensamiento a otro, sueña despierta o pierde el hilo de las conversaciones. Como no interrumpe la clase, muchas veces nadie lo nota y la persona cree, equivocadamente, que es «perezosa» o «despistada»."
+          "answer": "Sí. Existe la presentación predominantemente inatenta (lo que antes se llamaba solo TDA). La hiperactividad puede ser mental: por fuera la persona se ve tranquila y callada, pero por dentro su mente salta de un pensamiento a otro, sueña despierta o pierde el hilo de las conversaciones.\n\nComo no interrumpe la clase, muchas veces nadie lo nota y la persona cree, equivocadamente, que es «perezosa» o «despistada»."
         }
       ],
       "tools": [
@@ -152,7 +157,12 @@
           "title": "TDAH",
           "url": "https://www.nimh.nih.gov"
         }
-      ]
+      ],
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      }
     },
     {
       "id": "tea",
@@ -167,7 +177,7 @@
         "neurodesarrollo"
       ],
       "shortDescription": "Una forma distinta de comunicarse, aprender y procesar experiencias. No existe una sola manera de ser autista.",
-      "description": "El trastorno del espectro autista (TEA) es una condición del neurodesarrollo que puede influir en la manera en que una persona se comunica, interactúa, aprende y procesa determinadas experiencias. El autismo es un espectro: las características, necesidades, dificultades y fortalezas pueden ser muy diferentes entre personas. Algunas personas pueden presentar dificultades para interpretar ciertas formas de comunicación social, comprender el lenguaje no literal, establecer relaciones o adaptarse a determinados cambios. También pueden existir intereses intensos, comportamientos repetitivos o diferencias en la forma de procesar estímulos sensoriales. El autismo no se puede identificar simplemente porque alguien sea tímido, prefiera estar solo, tenga intereses particulares o dificultades sociales.",
+      "description": "El trastorno del espectro autista (TEA) es una condición del neurodesarrollo que puede influir en la manera en que una persona se comunica, interactúa, aprende y procesa determinadas experiencias.\n\nEl autismo es un espectro: las características, necesidades, dificultades y fortalezas pueden ser muy diferentes entre personas. Algunas personas pueden presentar dificultades para interpretar ciertas formas de comunicación social, comprender el lenguaje no literal, establecer relaciones o adaptarse a determinados cambios.\n\nTambién pueden existir intereses intensos, comportamientos repetitivos o diferencias en la forma de procesar estímulos sensoriales. El autismo no se puede identificar simplemente porque alguien sea tímido, prefiera estar solo, tenga intereses particulares o dificultades sociales.",
       "experience": {
         "columns": [
           {
@@ -208,19 +218,27 @@
       "warningNote": "Estas características no son suficientes por sí mismas para diagnosticar autismo. Una evaluación profesional considera la historia del desarrollo y el funcionamiento de la persona.",
       "actions": {
         "self": [
-          "Identifica las situaciones que producen sobrecarga y registra qué estímulos o cambios resultan especialmente difíciles.",
-          "Prepara con anticipación las situaciones nuevas cuando sea posible.",
-          "Usa instrucciones escritas cuando ayuden a comprender mejor una actividad y pide explicaciones claras cuando una indicación sea ambigua.",
-          "Identifica personas con quienes sea seguro pedir ayuda.",
-          "Solicita una evaluación profesional si las dificultades afectan de forma importante tu vida cotidiana."
+          "Identifica qué ambientes te sobrecargan.",
+          "Reduce los estímulos cuando sea posible.",
+          "Utiliza descansos sensoriales.",
+          "Mantén rutinas previsibles.",
+          "Anticipa los cambios.",
+          "Comunica necesidades concretas.",
+          "Utiliza apoyos visuales si te ayudan.",
+          "Busca apoyo profesional para dificultades específicas, no para eliminar tu forma de ser."
         ],
         "other": [
-          "No asumas que la persona «no quiere socializar».",
-          "Da instrucciones claras cuando sea necesario y avisa con anticipación sobre cambios importantes, cuando sea posible.",
-          "Respeta sus necesidades sensoriales.",
-          "Pregunta qué tipo de apoyo le resulta útil.",
-          "No uses el diagnóstico para invalidar sus opiniones o decisiones."
-        ]
+          "No fuerces el contacto visual.",
+          "No castigues movimientos repetitivos que no sean peligrosos.",
+          "Pregunta qué necesita.",
+          "Reduce el ruido y la luz si está sobrecargado.",
+          "Anticipa los cambios.",
+          "Da instrucciones claras.",
+          "No trates el autismo como un defecto que debe eliminarse."
+        ],
+        "note": "NICE recomienda adaptar el entorno, considerar el ruido, la luz, los cambios de rutina y las necesidades individuales; también recomienda intervenir sobre problemas coexistentes como ansiedad o depresión.",
+        "noteSource": "NICE",
+        "intro": "El autismo no es algo que haya que «curar»: se trata de adaptar el entorno y los apoyos, no de eliminar tu forma de ser."
       },
       "faq": [
         {
@@ -291,7 +309,12 @@
           "title": "Trastorno del espectro autista",
           "url": "https://medlineplus.gov/spanish/ency/article/001526.htm"
         }
-      ]
+      ],
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      }
     },
     {
       "id": "autolesiones",
@@ -306,7 +329,7 @@
         "autolesiones"
       ],
       "shortDescription": "Provocarse daño físico de forma deliberada, a menudo para afrontar emociones muy intensas. Se toma en serio y hay ayuda.",
-      "description": "La autolesión es una conducta en la que una persona se provoca daño físico deliberadamente. No es una enfermedad mental por sí misma: puede funcionar como una forma dañina de afrontar emociones o experiencias difíciles. Aunque muchas personas que se autolesionan no tienen intención de morir, la autolesión está asociada con un mayor riesgo de conducta suicida y requiere atención.",
+      "description": "La autolesión es una conducta en la que una persona se provoca daño físico deliberadamente. No es una enfermedad mental por sí misma: puede funcionar como una forma dañina de afrontar emociones o experiencias difíciles.\n\nAunque muchas personas que se autolesionan no tienen intención de morir, la autolesión está asociada con un mayor riesgo de conducta suicida y requiere atención.",
       "extraSections": [
         {
           "title": "¿Por qué puede ocurrir?",
@@ -365,21 +388,27 @@
       "warningNote": "Una señal aislada no confirma por sí sola que exista autolesión. Si algo te preocupa, habla con alguien de confianza.",
       "actions": {
         "self": [
-          "No tienes que manejarlo solo.",
-          "Aléjate de la situación o del lugar en el que sientas mayor impulso y busca estar acompañado por una persona segura.",
-          "Dilo directamente: «Estoy teniendo ganas de hacerme daño y necesito que te quedes conmigo».",
-          "Registra qué ocurrió antes del impulso y qué emoción apareció.",
-          "Busca apoyo de un adulto de confianza y atención profesional.",
-          "Si existe riesgo de suicidio, intención de morir, un plan o una situación que no puedes mantener segura, no te quedes solo y busca atención de urgencia de inmediato."
+          "Aléjate temporalmente de aquello con lo que podrías hacerte daño.",
+          "Ve a donde haya otra persona.",
+          "Di directamente: «Tengo ganas de hacerme daño y necesito que estés conmigo».",
+          "Usa una alternativa de regulación que no produzca daño físico.",
+          "Identifica qué ocurrió justo antes del impulso.",
+          "Cuéntaselo a un adulto o profesional aunque el episodio ya haya pasado.",
+          "Si la lesión es grave o existe riesgo de repetirla, busca atención urgente.",
+          "Construye con un profesional un plan de seguridad."
         ],
         "other": [
-          "Escucha sin juzgar y sin amenazar ni avergonzar.",
-          "No minimices diciendo «solo busca llamar la atención».",
-          "Pregunta cómo se encuentra y si está a salvo.",
-          "Anímala a hablar con un adulto de confianza o con un profesional.",
-          "Si es menor de edad y existe riesgo, busca ayuda adulta aunque la persona pida mantenerlo en secreto.",
-          "Si existe riesgo inmediato de suicidio, busca atención de emergencia."
-        ]
+          "Mantén la calma.",
+          "No castigues ni avergüences.",
+          "Pregunta: «¿Estás pensando en hacerte daño otra vez?».",
+          "Si hay riesgo inmediato, no le dejes solo/a.",
+          "Busca un adulto responsable y atención profesional.",
+          "Si hay una lesión importante, prioriza la atención médica.",
+          "No prometas mantenerlo en secreto si su seguridad está en riesgo.",
+          "Ayuda a elaborar un plan de seguridad."
+        ],
+        "note": "NICE recomienda identificar desencadenantes y señales de alerta, estrategias de afrontamiento, personas de apoyo y formas de hacer más seguro el entorno. Para adolescentes con desregulación emocional y autolesiones frecuentes puede considerarse la terapia dialéctico conductual (DBT) adaptada.",
+        "noteSource": "NICE"
       },
       "faq": [
         {
@@ -456,7 +485,13 @@
           "title": "Child and Adolescent Mental Health",
           "url": "https://www.nimh.nih.gov/health/topics/child-and-adolescent-mental-health"
         }
-      ]
+      ],
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      },
+      "helpNow": true
     },
     {
       "id": "suicidio",
@@ -473,7 +508,7 @@
         "código dorado"
       ],
       "shortDescription": "Pensamientos sobre morir o quitarse la vida: se toman en serio, y existe ayuda inmediata.",
-      "description": "La ideación suicida se refiere a pensamientos relacionados con morir o quitarse la vida. Puede variar desde pensamientos pasivos, como desear no despertar, hasta pensamientos suicidas más concretos. La conducta suicida incluye acciones relacionadas con intentar quitarse la vida. Tener pensamientos suicidas no significa que una persona necesariamente vaya a intentar suicidarse, pero si aparecen deben tomarse en serio. En Colombia, el Ministerio de Salud establece el Código Dorado (Resolución 0347 de 2026) como estrategia de respuesta para la detección, la atención inmediata y el seguimiento de personas en riesgo de conducta suicida.",
+      "description": "La ideación suicida se refiere a pensamientos relacionados con morir o quitarse la vida. Puede variar desde pensamientos pasivos, como desear no despertar, hasta pensamientos suicidas más concretos.\n\nLa conducta suicida incluye acciones relacionadas con intentar quitarse la vida. Tener pensamientos suicidas no significa que una persona necesariamente vaya a intentar suicidarse, pero si aparecen deben tomarse en serio.\n\nEn Colombia, el Ministerio de Salud establece el Código Dorado (Resolución 0347 de 2026) como estrategia de respuesta para la detección, la atención inmediata y el seguimiento de personas en riesgo de conducta suicida.",
       "experience": {
         "columns": [
           {
@@ -520,18 +555,26 @@
       "warningNote": "Si reconoces varias de estas señales en ti o en alguien cercano, no esperes: pide ayuda ahora.",
       "actions": {
         "self": [
-          "Si existe riesgo inmediato: no te quedes solo y díselo directamente a una persona segura.",
-          "Aléjate de cualquier elemento o situación con la que puedas hacerte daño.",
-          "Busca atención de urgencias de inmediato. Si no puedes mantenerte seguro, pide a otra persona que haga la llamada o te acompañe.",
-          "Puedes decir simplemente: «Estoy pensando en hacerme daño o en quitarme la vida y necesito ayuda ahora». No necesitas explicar perfectamente lo que sientes para pedir ayuda."
+          "No te quedes solo/a.",
+          "Dile a alguien directamente: «Estoy pensando en suicidarme» o «No me siento seguro/a conmigo mismo/a».",
+          "Aléjate de medios con los que podrías hacerte daño.",
+          "Busca de inmediato a un adulto responsable.",
+          "Contacta a un servicio de crisis o acude a urgencias.",
+          "No intentes resolver toda tu vida durante la crisis.",
+          "Permanece acompañado/a hasta recibir ayuda."
         ],
         "other": [
-          "Pregunta directamente si está pensando en quitarse la vida. Preguntar no provoca que una persona se suicide; puede abrir una conversación necesaria.",
-          "Escucha sin juzgar y no prometas mantenerlo en secreto si existe riesgo.",
-          "Quédate con la persona y ayúdala a alejarse de situaciones o elementos con los que pueda hacerse daño.",
-          "Contacta a un adulto responsable o a un profesional.",
-          "Si existe riesgo inmediato, busca atención de urgencias."
-        ]
+          "Pregunta directamente si está pensando en suicidarse.",
+          "Escucha sin juzgar.",
+          "No prometas secreto.",
+          "No lo dejes solo si existe riesgo inmediato.",
+          "Reduce el acceso a medios peligrosos cuando pueda hacerse de forma segura.",
+          "Contacta a un adulto responsable.",
+          "Busca atención profesional o urgente.",
+          "Continúa acompañando después de la crisis."
+        ],
+        "note": "En Colombia, la Línea 106 ofrece orientación y apoyo en crisis las 24 horas; para situaciones que amenacen la integridad de niños, niñas y adolescentes también está la Línea 141 del ICBF, gratuita y disponible las 24 horas.",
+        "noteSource": "Ministerio de Salud"
       },
       "faq": [
         {
@@ -581,7 +624,7 @@
           "notEnough": "No sustituye la atención profesional. Si el malestar aumenta o hay riesgo para tu seguridad, busca ayuda de inmediato."
         }
       ],
-      "whenToSeekHelp": "Ahora mismo, sin esperar una cita: si piensas en morir o en quitarte la vida, o alguien cercano lo hace, pide ayuda hoy. Si hay peligro inmediato, ve a urgencias o llama al 123. En Colombia, la ideación o el intento de suicidio se atiende como una urgencia (Código Dorado, Resolución 0347 de 2026).",
+      "whenToSeekHelp": "Ahora mismo, sin esperar una cita: si piensas en morir o en quitarte la vida, o alguien cercano lo hace, pide ayuda hoy. Si hay peligro inmediato, ve a urgencias o llama al 123.\n\nEn Colombia, la ideación o el intento de suicidio se atiende como una urgencia (Código Dorado, Resolución 0347 de 2026).",
       "helpLink": "contacto.html#emergencia",
       "resources": [],
       "sources": [
@@ -610,7 +653,13 @@
           "title": "Gobierno Nacional activa el Código Dorado",
           "url": "https://www.minsalud.gov.co/Comunicaciones/noticias/2026/Paginas/gobierno-activa-el-codigo-dorado.aspx"
         }
-      ]
+      ],
+      "actionsTitle": "¿Qué puedo hacer?",
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      },
+      "helpNow": "top"
     },
     {
       "id": "depresion",
@@ -630,7 +679,7 @@
         },
         {
           "question": "¿Es posible tener depresión aunque sonría, salga con mis amigos y tenga buenas notas?",
-          "answer": "Sí. Muchas personas viven lo que a veces se llama «depresión de alto funcionamiento»: se esfuerzan enormemente por ocultar su dolor detrás de una máscara de normalidad, para no preocupar a sus padres, para no sentirse una carga o por miedo a ser juzgadas. Que alguien ría en el colegio o cumpla con sus tareas no significa que no esté luchando por dentro."
+          "answer": "Sí. Muchas personas viven lo que a veces se llama «depresión de alto funcionamiento»: se esfuerzan enormemente por ocultar su dolor detrás de una máscara de normalidad, para no preocupar a sus padres, para no sentirse una carga o por miedo a ser juzgadas.\n\nQue alguien ría en el colegio o cumpla con sus tareas no significa que no esté luchando por dentro."
         }
       ],
       "tools": [
@@ -644,41 +693,49 @@
           "catalogId": "activacion-conductual"
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
-        "self": [
-          {
-            "title": "Acepta el estado actual:",
-            "text": "Reconoce que estás pasando por un episodio depresivo sin culparte."
-          },
-          {
-            "title": "Mantén rutinas básicas:",
-            "text": "Enfócate en mantener hábitos mínimos de higiene, alimentación y sueño a la misma hora."
-          },
-          {
-            "title": "Comunícalo:",
-            "text": "Cuéntale a un profesor de confianza, al orientador escolar o a tus padres cómo te has sentido."
-          }
-        ],
+        "self": {
+          "groups": [
+            {
+              "title": "Ahora",
+              "items": [
+                "No te obligues a «animarte». Reconoce lo que estás sintiendo.",
+                "Haz una actividad básica: levantarte, bañarte, comer algo o salir unos minutos.",
+                "Contacta a una persona de confianza y dile claramente: «No me estoy sintiendo bien y necesito compañía».",
+                "Evita aislarte completamente.",
+                "Si aparecen pensamientos de morir o de hacerte daño, díselo de inmediato a un adulto o persona de confianza y busca ayuda urgente."
+              ]
+            },
+            {
+              "title": "Para ir mejorando",
+              "items": [
+                "Mantén horarios relativamente regulares para dormir y comer.",
+                "Recupera poco a poco actividades que antes disfrutabas, aunque al principio no tengas ganas.",
+                "Incorpora movimiento físico adaptado a tus posibilidades.",
+                "Mantén contacto social.",
+                "Busca evaluación profesional si los síntomas persisten, interfieren con el estudio o la vida diaria, o empeoran."
+              ]
+            }
+          ]
+        },
         "other": [
-          {
-            "title": "Escucha activa:",
-            "text": "Bríndale un espacio sin juzgar. Evita frases como «échale ganas» o «no tienes motivos para estar triste»."
-          },
-          {
-            "title": "Acompañamiento práctico:",
-            "text": "Invítalo a realizar actividades sencillas sin presionarlo."
-          },
-          {
-            "title": "Avisa a un adulto:",
-            "text": "Si menciona ideas de autolesión o desesperanza profunda, informa de inmediato al colegio o a sus acudientes."
-          }
-        ]
-      }
+          "Acércate sin juzgar.",
+          "Pregunta directamente: «¿Cómo te has estado sintiendo?».",
+          "Escucha más de lo que hablas.",
+          "No respondas con «anímate», «tienes que ser fuerte» o «hay personas peor».",
+          "Pregunta si está comiendo, durmiendo, asistiendo a clases y pudiendo realizar sus actividades.",
+          "Ayúdale a contactar a un adulto o a un profesional.",
+          "Si menciona suicidio o autolesiones, no lo dejes solo y busca ayuda inmediata."
+        ],
+        "note": "La OMS señala como intervenciones eficaces la activación conductual, la terapia cognitivo-conductual, la psicoterapia interpersonal y la resolución de problemas; en adolescentes, los medicamentos requieren especial supervisión profesional.",
+        "noteSource": "Organización Mundial de la Salud"
+      },
+      "helpNow": true
     },
     {
       "id": "ansiedad",
@@ -686,11 +743,11 @@
       "faq": [
         {
           "question": "¿Por qué durante un momento de mucha ansiedad siento que me voy a morir o a perder el control?",
-          "answer": "Es una falsa alarma de tu cerebro. Tu sistema nervioso activa el modo de supervivencia y llena tu cuerpo de adrenalina de golpe, lo que produce ahogo, taquicardia o terror intenso. Es una sensación aterradora, pero es tu cuerpo reaccionando a un peligro que no está ahí. La sensación de muerte inminente es temporal: alcanza un pico máximo y luego baja. Si es la primera vez, o tienes dudas, consúltalo con un médico para descartar otras causas."
+          "answer": "Es una falsa alarma de tu cerebro. Tu sistema nervioso activa el modo de supervivencia y llena tu cuerpo de adrenalina de golpe, lo que produce ahogo, taquicardia o terror intenso.\n\nEs una sensación aterradora, pero es tu cuerpo reaccionando a un peligro que no está ahí. La sensación de muerte inminente es temporal: alcanza un pico máximo y luego baja.\n\nSi es la primera vez, o tienes dudas, consúltalo con un médico para descartar otras causas."
         },
         {
           "question": "¿Por qué la ansiedad me causa malestares físicos en todo el cuerpo, como temblores, mareos o tensión?",
-          "answer": "Tu mente y tu cuerpo están conectados. Cuando tu cerebro percibe una amenaza (aunque sea imaginaria, como reprobar un examen o el futuro), activa un sistema de emergencia que tensa los músculos, acelera el corazón y cambia el flujo de la sangre para «prepararte para pelear o huir». Eso provoca malestares muy reales, como dolor de estómago, mareos o dolores de cabeza."
+          "answer": "Tu mente y tu cuerpo están conectados. Cuando tu cerebro percibe una amenaza (aunque sea imaginaria, como reprobar un examen o el futuro), activa un sistema de emergencia que tensa los músculos, acelera el corazón y cambia el flujo de la sangre para «prepararte para pelear o huir».\n\nEso provoca malestares muy reales, como dolor de estómago, mareos o dolores de cabeza."
         },
         {
           "question": "¿Pensar mucho las cosas (sobrepensar) significa que tengo un trastorno?",
@@ -715,32 +772,29 @@
           "catalogId": "grounding"
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
         "self": [
-          {
-            "title": "Aplica el 5-4-3-2-1:",
-            "text": "Hazlo apenas notes que los pensamientos te abruman."
-          },
-          {
-            "title": "Escribe tus pensamientos:",
-            "text": "Pon en un cuaderno qué te preocupa y califica del 1 al 10 qué tan probable es que eso ocurra en la realidad."
-          }
+          "Identifica la preocupación: ¿qué estoy imaginando que podría pasar?",
+          "Pregúntate: «¿Puedo hacer algo sobre esto ahora?». Si sí, escribe una acción pequeña y concreta. Si no, aplaza deliberadamente la preocupación y vuelve a la actividad presente.",
+          "Reduce la cafeína y otros estimulantes si empeoran los síntomas.",
+          "Practica respiración lenta o relajación durante unos minutos.",
+          "Mantén sueño, alimentación, movimiento y contacto social regulares.",
+          "Si la preocupación empieza a controlar tus actividades, busca ayuda profesional."
         ],
         "other": [
-          {
-            "title": "Ayúdale a concentrarse en el presente:",
-            "text": "Pídele que te mire a los ojos o que sienta sus pies apoyados firmemente en el suelo."
-          },
-          {
-            "title": "Valida su emoción:",
-            "text": "Dile: «Entiendo que esto da miedo, pero estás a salvo aquí conmigo»."
-          }
-        ]
+          "No le digas «no tienes nada de qué preocuparte».",
+          "Pregunta qué necesita: escuchar, compañía o ayuda para resolver algo.",
+          "Ayúdale a separar el problema real de la preocupación anticipada.",
+          "Si la ansiedad está afectando el colegio, las relaciones, el sueño o la alimentación, anímale a buscar ayuda.",
+          "Acompáñale a pedirla si le cuesta hacerlo."
+        ],
+        "note": "La OMS reconoce las técnicas de manejo del estrés, la resolución de problemas y el fortalecimiento del apoyo social como componentes de intervenciones psicológicas eficaces para la ansiedad.",
+        "noteSource": "Organización Mundial de la Salud"
       }
     },
     {
@@ -753,7 +807,7 @@
         },
         {
           "question": "¿Es verdad que las personas con ansiedad social no quieren tener amigos y prefieren estar solas?",
-          "answer": "No, es un mito. La mayoría de los adolescentes con ansiedad social desean profundamente encajar, hacer amigos y participar en actividades grupales. El problema es que el miedo a ser juzgados, rechazados o a hacer el ridículo actúa como un muro. Esa «preferencia» por estar solos no es falta de interés en los demás, sino una forma de protegerse de la angustia que les genera la interacción."
+          "answer": "No, es un mito. La mayoría de los adolescentes con ansiedad social desean profundamente encajar, hacer amigos y participar en actividades grupales. El problema es que el miedo a ser juzgados, rechazados o a hacer el ridículo actúa como un muro.\n\nEsa «preferencia» por estar solos no es falta de interés en los demás, sino una forma de protegerse de la angustia que les genera la interacción."
         },
         {
           "question": "¿Es mi culpa sentir este miedo tan irracional al intentar hablar con mis compañeros?",
@@ -780,32 +834,32 @@
           ]
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
         "self": [
-          {
-            "title": "Centra la atención hacia afuera:",
-            "text": "En lugar de pensar en cómo te ves o si estás sudando, enfócate en el mensaje que vas a decir o en la persona con la que hablas."
-          },
-          {
-            "title": "Recuerda:",
-            "text": "La mayoría de las personas están concentradas en sus propios asuntos y no en juzgarte."
-          }
+          "Identifica qué situación estás evitando.",
+          "Divide el reto en niveles: fácil → intermedio → difícil.",
+          "Empieza por una exposición pequeña.",
+          "Permanece en la situación el tiempo suficiente para comprobar que puedes tolerar la ansiedad.",
+          "Repite regularmente.",
+          "Evita depender de conductas de seguridad que mantengan la evitación.",
+          "Practica habilidades sociales, no perfección.",
+          "Busca terapia cognitivo-conductual profesional si la ansiedad limita significativamente tu vida."
         ],
         "other": [
-          {
-            "title": "No lo expongas bruscamente:",
-            "text": "No lo obligues a hablar en público por sorpresa."
-          },
-          {
-            "title": "Refuerza sus pequeños logros:",
-            "text": "Reconoce cuando participe o interactúe con el grupo."
-          }
-        ]
+          "No lo obligues públicamente a participar.",
+          "Pregunta qué situaciones le resultan difíciles.",
+          "Acompaña los pequeños pasos, sin hacerlo todo por él o ella.",
+          "No ridiculices sus respuestas, silencios o nervios.",
+          "Refuerza el esfuerzo, no únicamente el resultado.",
+          "Si evita sistemáticamente el colegio, las amistades o las actividades, busca apoyo profesional."
+        ],
+        "note": "La guía NICE para jóvenes recomienda psicoeducación, exposición progresiva a las situaciones temidas y entrenamiento de habilidades sociales.",
+        "noteSource": "NICE"
       }
     },
     {
@@ -839,33 +893,33 @@
           "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud."
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
         "self": [
-          {
-            "title": "Pide ayuda a un adulto:",
-            "text": "Habla con tus padres, el médico o el psicólogo escolar sobre lo que sientes al comer."
-          },
-          {
-            "title": "Evita pesarte constantemente:",
-            "text": "Guarda o retira la báscula de tu habitación."
-          }
+          "No intentes solucionarlo haciendo una dieta extrema.",
+          "Cuéntaselo a un adulto de confianza.",
+          "Solicita evaluación médica y psicológica especializada.",
+          "Mantén una alimentación regular según las indicaciones profesionales.",
+          "Evita pesarte o revisar constantemente tu cuerpo si eso alimenta la preocupación.",
+          "No compenses una comida con ayuno, vómitos o ejercicio excesivo.",
+          "Si tienes desmayos, debilidad importante, vómitos repetidos, dolor físico, deshidratación o pensamientos suicidas, busca atención urgente."
         ],
         "other": [
-          {
-            "title": "Evita hacer comentarios sobre su físico:",
-            "text": "No elogies ni critiques su peso o apariencia."
-          },
-          {
-            "title": "Ofrece un acompañamiento enfocado en las emociones:",
-            "text": "Pregúntale «¿cómo te sientes?» en lugar de hablar de comida."
-          }
-        ]
-      }
+          "No hagas comentarios sobre su peso.",
+          "No vigiles obsesivamente cuánto come.",
+          "Evita frases como «solo come».",
+          "Dile que estás preocupado/a por cómo se está sintiendo.",
+          "Anímale a hablar con un adulto y con un profesional.",
+          "Si hay signos de compromiso físico grave, busca atención médica urgente."
+        ],
+        "note": "NICE recomienda la derivación inmediata a servicios apropiados cuando se sospecha un TCA y la evaluación tanto de la salud física como de la mental.",
+        "noteSource": "NICE"
+      },
+      "helpNow": true
     },
     {
       "id": "tdc",
@@ -881,7 +935,7 @@
         },
         {
           "question": "¿Por qué le pregunto a mis amigos y familiares constantemente si me veo bien, pero sus respuestas nunca me convencen?",
-          "answer": "Esa necesidad de preguntar (la búsqueda de reaseguro) es una compulsión que haces para intentar apagar la ansiedad. En el TDC existe una distorsión en cómo percibes tu imagen: te ves distinto a como te ven los demás. Por eso, cuando alguien te dice «te ves bien, no se nota», el alivio dura solo un par de minutos y luego la duda y la angustia regresan."
+          "answer": "Esa necesidad de preguntar (la búsqueda de reaseguro) es una compulsión que haces para intentar apagar la ansiedad. En el TDC existe una distorsión en cómo percibes tu imagen: te ves distinto a como te ven los demás.\n\nPor eso, cuando alguien te dice «te ves bien, no se nota», el alivio dura solo un par de minutos y luego la duda y la angustia regresan."
         },
         {
           "question": "¿De qué manera las redes sociales (como TikTok o Instagram) empeoran el rechazo hacia mi propio cuerpo?",
@@ -898,32 +952,29 @@
           "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud."
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
         "self": [
-          {
-            "title": "Reconoce la distorsión:",
-            "text": "Recuerda que tu cerebro está amplificando ese detalle y que las demás personas no lo perciben con la misma intensidad."
-          },
-          {
-            "title": "Cubre los espejos de revisión:",
-            "text": "Limita los espejos en los que sueles hacer inspecciones detalladas."
-          }
+          "Identifica cuándo empiezas a revisar, comparar u ocultar tu apariencia.",
+          "Reduce gradualmente esas conductas repetitivas.",
+          "Evita buscar constantemente confirmación de otras personas.",
+          "Limita el contenido que intensifique las comparaciones.",
+          "Habla con alguien de confianza.",
+          "Busca evaluación profesional, especialmente si afecta el estudio, las relaciones o salir de casa."
         ],
         "other": [
-          {
-            "title": "No entres en debates:",
-            "text": "Evita discutir sobre si el defecto existe o no."
-          },
-          {
-            "title": "Valida su dolor:",
-            "text": "Dile: «Veo que estás sufriendo mucho por esto, apoyémonos en un profesional»."
-          }
-        ]
+          "No confirmes repetidamente que «sí se ve bien» como única respuesta.",
+          "No discutas sobre si el defecto existe o no.",
+          "Valida el sufrimiento: «Sé que esto te está afectando mucho».",
+          "Ayúdale a buscar atención profesional.",
+          "Si empieza a aislarse, evitar el colegio o presentar autolesiones, busca ayuda con más urgencia."
+        ],
+        "note": "El TDC comparte con el TOC mecanismos relacionados con pensamientos intrusivos y conductas repetitivas; NICE recomienda tratamiento psicológico especializado.",
+        "noteSource": "NICE"
       }
     },
     {
@@ -957,28 +1008,29 @@
           "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud."
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
         "self": [
-          {
-            "title": "Identifica la obsesión:",
-            "text": "Etiquétala: «Esto es solo mi TOC molestando, no es una amenaza real»."
-          },
-          {
-            "title": "Resiste el ritual:",
-            "text": "Intenta retrasar la compulsión unos minutos."
-          }
+          "Identifica el ciclo: obsesión → ansiedad → compulsión.",
+          "Reconoce que el pensamiento no es una orden ni una predicción.",
+          "Evita realizar compulsiones para obtener certeza absoluta.",
+          "No intentes resolver mentalmente la duda infinitamente.",
+          "Busca tratamiento especializado: la terapia cognitivo-conductual con exposición y prevención de respuesta (EPR) es una intervención central.",
+          "No suspendas ni modifiques la medicación sin el profesional que la indicó."
         ],
         "other": [
-          {
-            "title": "No participes en los rituales:",
-            "text": "Si te pide que le asegures que todo está limpio o seguro, responde con amabilidad: «Sabes que mi respuesta alimenta la duda del TOC; prefiero acompañarte a respirar»."
-          }
-        ]
+          "No participes automáticamente en sus rituales.",
+          "No le asegures una y otra vez que «todo está bien».",
+          "Pregunta cómo puedes apoyarle sin reforzar la compulsión.",
+          "Anímale a recibir tratamiento.",
+          "Ten paciencia: resistir una compulsión puede producir ansiedad al principio."
+        ],
+        "note": "NICE reconoce la TCC con exposición y prevención de respuesta como tratamiento fundamental para el TOC y el TDC.",
+        "noteSource": "NICE"
       }
     },
     {
@@ -987,11 +1039,11 @@
       "faq": [
         {
           "question": "¿Por qué la mente adolescente a veces confunde lo que es real con lo que no lo es?",
-          "answer": "Durante la adolescencia el cerebro atraviesa una etapa de reestructuración muy intensa. En algunas personas, por su genética o por situaciones de estrés extremo, el equilibrio de los químicos del cerebro (como la dopamina) se altera. Esto hace que el cerebro procese pensamientos, miedos internos o recuerdos como si fueran imágenes o voces reales que vienen de afuera."
+          "answer": "Durante la adolescencia el cerebro atraviesa una etapa de reestructuración muy intensa. En algunas personas, por su genética o por situaciones de estrés extremo, el equilibrio de los químicos del cerebro (como la dopamina) se altera.\n\nEsto hace que el cerebro procese pensamientos, miedos internos o recuerdos como si fueran imágenes o voces reales que vienen de afuera."
         },
         {
           "question": "¿Las personas con trastornos psicóticos son agresivas, como muestran las películas o series?",
-          "answer": "No: es uno de los mitos más dañinos. Las películas exageran los síntomas para crear terror. Las personas con experiencias psicóticas tienen muchas más probabilidades de ser víctimas de violencia que de ejercerla. Durante un episodio, la persona suele estar aterrada y confundida, y tiende a esconderse o aislarse, no a atacar a otros."
+          "answer": "No: es uno de los mitos más dañinos. Las películas exageran los síntomas para crear terror. Las personas con experiencias psicóticas tienen muchas más probabilidades de ser víctimas de violencia que de ejercerla.\n\nDurante un episodio, la persona suele estar aterrada y confundida, y tiende a esconderse o aislarse, no a atacar a otros."
         },
         {
           "question": "¿Se puede tratar un episodio psicótico?",
@@ -1012,31 +1064,34 @@
           "notEnough": "Esta herramienta no sustituye la atención médica. Si hay confusión, miedo intenso o riesgo, busca ayuda de un adulto o de urgencias de inmediato."
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
         "self": [
-          {
-            "title": "Busca a un adulto de forma inmediata:",
-            "text": "Di: «Me siento muy confundido con lo que estoy sintiendo o escuchando, necesito ayuda»."
-          },
-          "Evita estar a solas."
+          "No intentes comprobar solo si lo que percibes es real.",
+          "Busca de inmediato a un adulto o persona de confianza.",
+          "Dile exactamente qué estás experimentando.",
+          "Aléjate del alcohol y las drogas.",
+          "Quédate en un entorno tranquilo y seguro.",
+          "Busca evaluación profesional cuanto antes.",
+          "Si existe riesgo de hacerte daño, de hacer daño a alguien, desorientación intensa o incapacidad para cuidarte, acude a urgencias."
         ],
         "other": [
-          {
-            "title": "No debatas sobre sus alucinaciones o ideas:",
-            "text": "No le digas que está «loco» ni intentes convencerlo de que lo que ve no es real."
-          },
-          {
-            "title": "Muestra empatía por su emoción:",
-            "text": "Dile: «Entiendo que sientas miedo por eso que escuchas. Yo no lo escucho, pero estoy aquí para cuidarte»."
-          },
-          "Llama a emergencias (en Colombia, el 123) o contacta a un adulto de inmediato."
-        ]
-      }
+          "Mantén la calma.",
+          "No te burles ni discutas agresivamente sobre sus percepciones.",
+          "Puedes decir: «Entiendo que esto se siente muy real para ti; estoy aquí contigo».",
+          "Reduce el ruido y los estímulos.",
+          "No lo dejes solo si existe riesgo.",
+          "Contacta a un adulto responsable y busca atención profesional.",
+          "Si hay peligro inmediato, llama a emergencias."
+        ],
+        "note": "La psicosis requiere evaluación profesional; NICE recomienda atención especializada y apoyo para mantener la educación y el funcionamiento social.",
+        "noteSource": "NICE"
+      },
+      "helpNow": true
     },
     {
       "id": "tae",
@@ -1069,26 +1124,28 @@
           "notEnough": "Esta herramienta acompaña, pero no sustituye una evaluación ni el tratamiento de un profesional de la salud."
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
         "self": [
-          {
-            "title": "Haz actividad física matutina:",
-            "text": "Mueve tu cuerpo al aire libre por la mañana para estimular la activación cerebral."
-          },
-          {
-            "title": "No te aísles en la oscuridad:",
-            "text": "Mantén iluminados los espacios de estudio y descanso."
-          }
+          "Observa si los síntomas aparecen siguiendo un patrón estacional.",
+          "Mantén horarios regulares de sueño.",
+          "Busca exposición a luz natural durante el día.",
+          "Mantén actividad física y contacto social.",
+          "Registra cambios de ánimo, sueño, energía y apetito.",
+          "Consulta a un profesional antes de utilizar tratamientos específicos como la fototerapia."
         ],
         "other": [
-          "Motívalo a realizar salidas breves durante el día.",
-          "Acompáñalo en actividades al aire libre."
-        ]
+          "Pregunta si ha notado un patrón.",
+          "Invítale a mantener actividades y contacto social.",
+          "No lo reduzcas a «falta de sol».",
+          "Sugiere una evaluación si el patrón es repetitivo o afecta su funcionamiento."
+        ],
+        "note": "El trastorno afectivo estacional tiene tratamiento y puede estar asociado a depresión o bipolaridad; su manejo debe individualizarse.",
+        "noteSource": "Instituto Nacional de la Salud Mental (NIMH)"
       }
     },
     {
@@ -1136,27 +1193,27 @@
           ]
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
         "self": [
-          {
-            "title": "Usa la «pausa táctica»:",
-            "text": "Al sentir rabia, di «Necesito un momento» y retírate a un lugar tranquilo hasta calmarte."
-          }
+          "Aprende a reconocer las señales previas al estallido.",
+          "Identifica los desencadenantes.",
+          "Cuando aumente la intensidad, aléjate temporalmente del conflicto si es seguro.",
+          "Usa una estrategia de regulación previamente practicada.",
+          "Después del episodio, analiza: qué ocurrió antes → qué sentí → qué hice → qué podría cambiar.",
+          "Busca evaluación profesional; en menores no debe autodiagnosticarse."
         ],
         "other": [
-          {
-            "title": "Mantén la calma y el espacio seguro:",
-            "text": "No le grites ni intentes razonar en medio de la crisis de rabia."
-          },
-          {
-            "title": "Espera a que pase la ola:",
-            "text": "Habla con la persona únicamente cuando su cuerpo se haya relajado."
-          }
+          "No discutas durante el punto máximo de la explosión.",
+          "Mantén límites claros sin humillar.",
+          "Reduce los estímulos.",
+          "Prioriza la seguridad.",
+          "Habla del episodio cuando haya recuperado la calma.",
+          "Ayuda a identificar patrones y a buscar evaluación profesional."
         ]
       }
     },
@@ -1191,31 +1248,41 @@
           "notEnough": "No uses agua helada. Si tienes algún problema del corazón u otra condición médica, consulta antes con un profesional. Esta herramienta no sustituye una evaluación."
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
-        "self": [
-          {
-            "title": "No luches contra el ataque:",
-            "text": "Repítete mentalmente: «Esto es adrenalina. Es desagradable, pero no es peligroso. Va a pasar». Pelear contra el ataque genera más tensión."
-          },
-          {
-            "title": "Respiración en caja (square breathing):",
-            "text": "Inhala contando hasta 4, sostén el aire contando hasta 4, exhala contando hasta 4 y mantén los pulmones vacíos contando hasta 4. Si respirar así aumenta la sensación de ahogo, mejor usa el grounding."
-          }
-        ],
+        "self": {
+          "groups": [
+            {
+              "title": "Durante el episodio",
+              "items": [
+                "Recuérdate: «Esto es una respuesta intensa de alarma; puedo atravesarla».",
+                "Quédate en un lugar seguro.",
+                "Respira lentamente, sin intentar hacer respiraciones enormes.",
+                "Observa el entorno y concentra la atención en estímulos presentes.",
+                "Evita escapar automáticamente de todas las situaciones, porque la evitación puede mantener el miedo."
+              ]
+            },
+            {
+              "title": "Después",
+              "items": [
+                "Registra qué ocurrió y qué síntomas aparecieron.",
+                "Busca evaluación si los ataques se repiten o empiezas a evitar lugares por miedo a otro ataque."
+              ]
+            }
+          ]
+        },
         "other": [
-          {
-            "title": "Transmite seguridad:",
-            "text": "No digas «cálmate». Di con voz suave y firme: «Estás teniendo un ataque de pánico, tu cerebro te está engañando, pero yo estoy aquí y estás a salvo»."
-          },
-          {
-            "title": "Guíalo en la respiración:",
-            "text": "Respira despacio y de forma visible frente a la persona y pídele que iguale tu ritmo."
-          }
+          "Quédate con la persona.",
+          "Habla lentamente.",
+          "No digas «cálmate».",
+          "Pregunta qué necesita.",
+          "Ayúdale a respirar de forma tranquila.",
+          "No la obligues a enfrentarse de inmediato al desencadenante.",
+          "Si es el primer episodio, hay síntomas físicos nuevos o intensos, o existe duda de una emergencia médica, busca atención médica."
         ]
       }
     },
@@ -1229,7 +1296,7 @@
         },
         {
           "question": "¿Ser bipolar significa que cambio de humor cada cinco minutos?",
-          "answer": "No, es un mito común. En este trastorno los cambios de ánimo no ocurren de un minuto a otro ni en un mismo día. La persona puede pasar semanas o incluso meses con una tristeza profunda y luego varias semanas con una energía extrema y descontrolada. Los cambios rápidos de humor a lo largo de un día son normales en la adolescencia."
+          "answer": "No, es un mito común. En este trastorno los cambios de ánimo no ocurren de un minuto a otro ni en un mismo día. La persona puede pasar semanas o incluso meses con una tristeza profunda y luego varias semanas con una energía extrema y descontrolada.\n\nLos cambios rápidos de humor a lo largo de un día son normales en la adolescencia."
         },
         {
           "question": "¿El lado de «mucha energía» en este trastorno es simplemente estar muy feliz?",
@@ -1251,33 +1318,32 @@
           "catalogId": "rutinas"
         }
       ],
-      "actionsTitle": "Qué hacer en el momento (paso a paso)",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "Si te pasa a ti",
-        "other": "Si le pasa a alguien cercano"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
         "self": [
-          {
-            "title": "Regla de las 24 horas:",
-            "text": "Si estás en una fase de demasiada energía, ideas brillantes de golpe o ganas de gastar dinero, pospón cualquier decisión importante al menos 24 horas."
-          },
-          {
-            "title": "Contacta a tu red de apoyo:",
-            "text": "Avisa a tus padres o a tu médico si llevas dos días durmiendo menos de 4 horas sin sentir fatiga."
-          }
+          "Aprende a reconocer cambios importantes en sueño, energía, impulsividad y ánimo.",
+          "Mantén horarios regulares.",
+          "Evita privarte deliberadamente de sueño.",
+          "Evita el alcohol y las drogas.",
+          "Registra cambios de ánimo y de sueño para comentarlos con profesionales.",
+          "No cambies ni suspendas medicamentos por tu cuenta.",
+          "Busca atención rápidamente ante síntomas de manía intensa, psicosis, autolesión o suicidio."
         ],
         "other": [
-          {
-            "title": "En fase depresiva:",
-            "text": "Acompáñalo con activación conductual suave y escucha empática, como en la depresión."
-          },
-          {
-            "title": "En fase de manía:",
-            "text": "Si la persona habla rápido, con ideas irreales y comportamientos de riesgo, no intentes debatir. Avisa de inmediato a un adulto responsable o a su profesional de la salud, ya que en ese estado su cerebro no evalúa bien el peligro."
-          }
-        ]
-      }
+          "No interpretes una conducta extrema simplemente como «emocionarse mucho».",
+          "Ayuda a mantener un ambiente tranquilo.",
+          "Evita discutir durante una posible crisis.",
+          "Contacta a su familia o a su profesional si ya existe tratamiento.",
+          "Si existe riesgo de daño, busca atención urgente."
+        ],
+        "note": "En jóvenes, NICE recomienda considerar especialmente el desarrollo, el funcionamiento educativo y social, y el riesgo de suicidio o autolesión.",
+        "noteSource": "NICE"
+      },
+      "helpNow": true
     }
   ]
 }

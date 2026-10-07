@@ -1,6 +1,6 @@
 {
   "title": "Herramientas para sentirte mejor",
-  "generalNote": "Estas herramientas son estrategias de autocuidado y afrontamiento. Pueden ayudar a manejar determinadas emociones, pensamientos o situaciones, pero no diagnostican ni sustituyen atención psicológica o médica. No todas funcionan igual para todas las personas. Si una herramienta aumenta tu malestar, puedes detenerla y probar otra.",
+  "generalNote": "Estas herramientas son estrategias de autocuidado y afrontamiento. Pueden ayudar a manejar determinadas emociones, pensamientos o situaciones, pero no diagnostican ni sustituyen atención psicológica o médica.\n\nNo todas funcionan igual para todas las personas. Si una herramienta aumenta tu malestar, puedes detenerla y probar otra.",
   "tools": [
     {
       "id": "respiracion",
@@ -433,7 +433,12 @@
           "icon": "💡",
           "text": "Convierte una emoción difícil de interpretar en información que puede orientar una respuesta."
         }
-      ]
+      ],
+      "cta": {
+        "label": "Ir al explorador emocional",
+        "href": "emocional.html#explorador-emocional",
+        "text": "¿No sabes qué sientes? Puedes explorarlo paso a paso en el registro emocional."
+      }
     },
     {
       "id": "resolucion-problemas",
@@ -860,7 +865,12 @@
           "quote": "Cuando duermo poco → me irrito más → discuto → después me siento peor.",
           "text": "Eso puede señalar un aspecto sobre el que vale la pena intervenir."
         }
-      ]
+      ],
+      "cta": {
+        "label": "Ir al explorador emocional",
+        "href": "emocional.html#explorador-emocional",
+        "text": "¿No sabes qué sientes? Puedes explorarlo paso a paso en el registro emocional."
+      }
     },
     {
       "id": "plan-alterado",
@@ -992,7 +1002,12 @@
           "icon": "💡",
           "text": "Ayuda a evitar respuestas automáticas y a transformar una sensación general de «estoy mal» en una necesidad concreta."
         }
-      ]
+      ],
+      "cta": {
+        "label": "Ir al explorador emocional",
+        "href": "emocional.html#explorador-emocional",
+        "text": "¿No sabes qué sientes? Puedes explorarlo paso a paso en el registro emocional."
+      }
     }
   ],
   "chooser": [
@@ -1084,7 +1099,11 @@
       "when": "Si no sé qué siento",
       "options": [
         {
-          "label": "Registro emocional",
+          "label": "Explorar lo que siento",
+          "href": "emocional.html#explorador-emocional"
+        },
+        {
+          "label": "Registro de emociones",
           "tool": "registro-emociones"
         },
         {
@@ -1095,7 +1114,8 @@
           "label": "¿Qué necesito ahora?",
           "tool": "que-necesito-ahora"
         }
-      ]
+      ],
+      "href": "emocional.html#explorador-emocional"
     },
     {
       "when": "Si estoy ante una situación de riesgo",

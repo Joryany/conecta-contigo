@@ -38,6 +38,9 @@
     let currentId = "main";   // nodo que se está mostrando actualmente
     let kwIndex = [];         // índice de keywords normalizadas (búsqueda)
     let riskKeywords = [];    // keywords de riesgo normalizadas
+    let holdScroll = false;   // true mientras se dibuja una respuesta de Soter
+    let talkIndex = [];       // saludos y charla breve (smallTalk)
+    let talkMeta = { options: null, greeting: false }; // datos de la última coincidencia
 
     init();
 
@@ -80,17 +83,43 @@
     function buildIndexes() {
         riskKeywords = ((DATA.risk && DATA.risk.keywords) || []).map(cleanText).filter(Boolean);
 
+        /* smallTalk admite dos formatos: lista de entradas (cada una con sus
+           "options") o el objeto { entries, options, afterMessage } */
+        const talkEntries = Array.isArray(DATA.smallTalk)
+            ? DATA.smallTalk
+            : ((DATA.smallTalk && DATA.smallTalk.entries) || []);
+        talkIndex = talkEntries.map(function (e) {
+            return {
+                group: e.group || (Array.isArray(DATA.smallTalk) ? "talk" : "general"),   // lista: gana la primera coincidencia
+                options: e.options,
+                greeting: !!e.greeting,
+                atStart: !!e.atStart,
+                maxWords: e.maxWords || 0,
+                patterns: (e.patterns || []).map(cleanText).filter(Boolean),
+                exclude: (e.exclude || []).map(cleanText).filter(Boolean),
+                responses: e.responses || []
+            };
+        });
+
+        /* Sinónimos y expresiones coloquiales viven en DATA.searchExtras[idDelNodo] */
+        const extras = DATA.searchExtras || {};
         kwIndex = [];
         Object.keys(DATA.nodes).forEach(function (id) {
             const node = DATA.nodes[id];
-            if (!node.keywords || !node.keywords.length) return;
+            if (!(node.keywords && node.keywords.length) && !(extras[id] && extras[id].length)) return;
+            node.keywords = node.keywords || [];
             kwIndex.push({
                 id: id,
                 title: node.title || id,
                 priority: node.priority || 0,
-                kws: node.keywords.map(cleanText).filter(Boolean)
+                kws: uniq(node.keywords.concat(extras[id] || []).map(cleanText).filter(Boolean))
             });
         });
+    }
+
+    function uniq(list) {
+        const seen = {};
+        return list.filter(function (k) { return seen[k] ? false : (seen[k] = true); });
     }
 
     /* Ayuda al editor del JSON: avisa en consola de referencias rotas */
@@ -116,6 +145,13 @@
         (DATA.fallback.options || []).forEach(function (o) { checkNext(o.next, "fallback"); });
         (DATA.followUp.options || []).forEach(function (o) { checkNext(o.next, "followUp"); });
         checkActions(DATA.risk && DATA.risk.actions, "risk");
+        ((DATA.smallTalk && DATA.smallTalk.options) || []).forEach(function (o) { checkNext(o.next, "smallTalk"); });
+        (Array.isArray(DATA.smallTalk) ? DATA.smallTalk : []).forEach(function (e) {
+            if (Array.isArray(e.options)) e.options.forEach(function (o) { checkNext(o.next, "smallTalk:" + e.id); });
+        });
+        Object.keys(DATA.searchExtras || {}).forEach(function (id) {
+            if (!DATA.nodes[id]) problems.push("searchExtras -> nodo inexistente: " + id);
+        });
 
         Object.keys(DATA.nodes).forEach(function (id) {
             const n = DATA.nodes[id];
@@ -302,7 +338,8 @@
             return;
         }
 
-        /* 2. Búsqueda por keywords con puntaje */
+        /* 2. Saludos / charla breve y búsqueda por keywords con puntaje */
+        const talk = findSmallTalk(clean);
         const matches = findMatches(clean);
 
         if (currentId) stack.push(currentId);
@@ -311,35 +348,94 @@
 
         if (matches.length) {
             botSay(function () {
-                appendBotMessage("🌱 Encontré algunos temas que podrían estar relacionados con lo que cuentas. ¿Cuál se acerca más?");
+                /* Con un tema de por medio solo se conserva el saludo; "¿cómo estás?" se omite */
+                const hello = talk && talkMeta.greeting ? (DATA.config.greetingPrefix || "") : "";
+                appendBotMessage(hello +
+                    "🌱 Encontré algunos temas que podrían estar relacionados con lo que cuentas. ¿Cuál se acerca más?");
                 const opts = matches.map(function (m) {
                     return { label: m.title, next: m.id };
                 });
                 opts.push({ label: "Ninguno de estos", next: "fallback" });
                 appendOptions(opts);
             });
+        } else if (talk) {
+            botSay(function () {
+                appendBotMessage(talk);
+                const own = talkMeta.options;
+                if (own === "main") {
+                    appendOptions(DATA.mainMenu.options, DATA.mainMenu.layout);
+                } else if (Array.isArray(own)) {
+                    appendOptions(own);
+                } else if (!Array.isArray(DATA.smallTalk) && DATA.smallTalk) {
+                    if (DATA.smallTalk.afterMessage) appendBotMessage(DATA.smallTalk.afterMessage);
+                    appendOptions(DATA.smallTalk.options);
+                }
+            });
         } else {
             botSay(renderFallback);
         }
+    }
+
+    /* Saludos y preguntas como "¿cómo estás?". Por cada "group" responde una sola
+       vez (la primera entrada que coincida). Devuelve texto o null. */
+    function findSmallTalk(clean) {
+        talkMeta = { options: null, greeting: false };
+        if (!talkIndex.length || !clean) return null;
+        clean = clean.replace(/(.)\1{2,}/g, "$1");   // "holaaaa" -> "hola"
+        const padded = " " + clean + " ";
+        const words = clean.split(" ").length;
+        const used = {};
+        const out = [];
+
+        talkIndex.forEach(function (e) {
+            if (used[e.group] || !e.responses.length) return;
+            if (e.maxWords && words > e.maxWords) return;
+            if (e.exclude.some(function (x) { return padded.indexOf(" " + x + " ") !== -1; })) return;
+
+            const hit = e.patterns.some(function (p) {
+                const pos = padded.indexOf(" " + p + " ");
+                return e.atStart ? pos === 0 : pos !== -1;
+            });
+            if (hit) {
+                used[e.group] = true;
+                if (!out.length) talkMeta = { options: e.options, greeting: e.greeting };
+                out.push(e.responses[Math.floor(Math.random() * e.responses.length)]);
+            }
+        });
+
+        return out.length ? out.join("\n") : null;
     }
 
     /* Devuelve los nodos cuyas keywords aparecen en el texto, mejor puntaje primero.
        Regla de coincidencia (evita falsos positivos como "ira" dentro de "mirar"):
          - frases (con espacio) y palabras cortas (< 6 letras): palabra completa
          - palabras de 6+ letras: la palabra del texto puede empezar con la keyword
-           (así "estres" también encuentra "estresado") */
+           (así "estres" también encuentra "estresado")
+         - tolerancia a errores: una palabra de 6+ letras también coincide si el texto
+           tiene una palabra casi igual (1 letra de más, de menos, distinta o
+           intercambiada), p. ej. "ansiedd" o "tristesa" */
     function findMatches(clean) {
         const padded = " " + clean + " ";
+        const tokens = clean ? clean.split(" ") : [];
         const found = [];
 
         kwIndex.forEach(function (entry) {
             let score = 0;
             entry.kws.forEach(function (k) {
-                const exactOnly = k.indexOf(" ") !== -1 || k.length < 6;
-                const hit = exactOnly
+                const single = k.indexOf(" ") === -1;
+                const exactOnly = !single || k.length < 6;
+                let hit = exactOnly
                     ? padded.indexOf(" " + k + " ") !== -1
                     : padded.indexOf(" " + k) !== -1;
-                if (hit) score += k.length;
+
+                if (hit) {
+                    score += k.length;
+                } else if (single && k.length >= 6) {
+                    const near = tokens.some(function (t) {
+                        return t.length >= 5 && t.charAt(0) === k.charAt(0) && withinOneEdit(t, k);
+                    });
+                    if (near) score += k.length - 2;
+                }
             });
             if (score > 0) {
                 found.push({ id: entry.id, title: entry.title, score: score + entry.priority });
@@ -348,6 +444,25 @@
 
         found.sort(function (a, b) { return b.score - a.score; });
         return found.slice(0, MAX_MATCHES);
+    }
+
+    /* ¿Las dos palabras difieren como máximo en 1 edición (o 1 intercambio)? */
+    function withinOneEdit(a, b) {
+        if (a === b) return true;
+        const la = a.length, lb = b.length;
+        if (Math.abs(la - lb) > 1) return false;
+        let i = 0, j = 0, edits = 0;
+        while (i < la && j < lb) {
+            if (a[i] === b[j]) { i++; j++; continue; }
+            if (++edits > 1) return false;
+            if (la === lb) {
+                if (a[i] === b[j + 1] && a[i + 1] === b[j]) { i += 2; j += 2; }
+                else { i++; j++; }
+            } else if (la > lb) i++;
+            else j++;
+        }
+        if (i < la || j < lb) edits++;
+        return edits <= 1;
     }
 
     function renderFallback() {
@@ -367,6 +482,7 @@
 
     function cleanText(text) {
         return normalize(text)
+            .replace(/(.)\1{2,}/g, "$1")      // "holaaa" -> "hola"
             .replace(/[^a-z0-9\s-]/g, " ")
             .replace(/\s+/g, " ")
             .trim();
@@ -397,8 +513,18 @@
         const typingEl = appendTyping();
         window.setTimeout(function () {
             if (typingEl) typingEl.remove();
-            renderFn();
-            scrollToBottom();
+
+            /* Se dibuja toda la respuesta sin mover el scroll y luego se
+               muestra DESDE EL INICIO de lo nuevo (si es larga, el usuario
+               lee el mensaje y baja a las opciones; no al revés). */
+            const firstNewIndex = els.log ? els.log.children.length : 0;
+            holdScroll = true;
+            try {
+                renderFn();
+            } finally {
+                holdScroll = false;
+            }
+            scrollToNewContent(firstNewIndex);
         }, delay || TYPING_DELAY);
     }
 
@@ -616,9 +742,19 @@
     }
 
     function scrollToBottom() {
-        if (els.log) {
+        if (els.log && !holdScroll) {
             els.log.scrollTop = els.log.scrollHeight;
         }
+    }
+
+    /* Alinea el scroll con el inicio del primer elemento nuevo del chat.
+       Si lo nuevo cabe en pantalla, queda al fondo como siempre. */
+    function scrollToNewContent(firstNewIndex) {
+        if (!els.log) return;
+        const first = els.log.children[firstNewIndex];
+        if (!first) { scrollToBottom(); return; }
+        const top = first.getBoundingClientRect().top - els.log.getBoundingClientRect().top + els.log.scrollTop;
+        els.log.scrollTop = Math.max(0, top - 12);
     }
 
 }());

@@ -1034,6 +1034,59 @@ body {
 
 
 /* =========================================================
+   25e. QUÉ PUEDO HACER: grupos y bloque "Necesito ayuda ahora"
+   ========================================================= */
+
+.accion-intro { margin: 0 0 var(--space-sm); padding: .7rem 1rem; border-radius: 12px; background: rgba(105,178,174,.12); color: var(--comprende-azul); font-weight: 600; line-height: 1.55; }
+.accion-grupo { margin-bottom: var(--space-md); padding: .8rem 1rem; border-radius: 14px; border-left: 5px solid var(--comprende-verde); background: #fff; }
+.accion-grupo:last-child { margin-bottom: 0; }
+.accion-grupo--0 { border-left-color: var(--comprende-verde); }
+.accion-grupo--1 { border-left-color: var(--comprende-azul-claro); }
+.accion-grupo--2 { border-left-color: var(--comprende-rosa); }
+.accion-grupo__titulo { margin: 0 0 .3rem; color: var(--comprende-azul); font-size: 1rem; text-align: left; }
+.accion-grupo .seccion-lista { margin-bottom: 0; }
+
+.ayuda-ahora {
+    padding: clamp(1.1rem, 3vw, 1.6rem); border: 1px solid rgba(245,131,111,.3); border-radius: var(--comprende-radio);
+    background: linear-gradient(135deg, rgba(245,131,111,.10), rgba(255,255,255,.95));
+}
+.ayuda-ahora p { margin: 0 0 var(--space-sm); line-height: 1.55; }
+.ayuda-ahora .linea-grid { margin-top: var(--space-sm); }
+
+
+/* Enlace hacia el explorador emocional */
+.guia-fila > .guia-fila__enlace { flex: 0 0 230px; color: var(--comprende-azul); font-weight: 700; text-decoration: none; }
+.guia-fila > .guia-fila__enlace:hover { color: var(--comprende-azul-claro); text-decoration: underline; }
+a.guia-chip { display: inline-block; text-decoration: none; }
+.guia-chip--enlace { background: var(--comprende-azul); border-color: var(--comprende-azul); color: #fff; }
+.guia-chip--enlace:hover { background: #0f3566; color: #fff; }
+.cta-explorador { display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-md); }
+.cta-explorador p { margin: 0; flex: 1 1 260px; line-height: 1.55; }
+@media (max-width: 620px) { .guia-fila > .guia-fila__enlace { flex-basis: 100%; } }
+
+
+/* =========================================================
+   25f. PÁRRAFOS DENTRO DE LOS BLOQUES
+   ========================================================= */
+
+.bloque--card p,
+.acordeon-item__contenido p,
+.accion-intro p,
+.aviso-seguridad__texto p,
+.aviso-general p,
+.ayuda-bloque p,
+.modal-panel p { margin: 0 0 .85rem; line-height: 1.7; }
+.bloque--card p:last-child,
+.acordeon-item__contenido p:last-child,
+.accion-intro p:last-child,
+.aviso-seguridad__texto p:last-child,
+.aviso-general p:last-child,
+.ayuda-bloque p:last-child,
+.modal-panel p:last-child { margin-bottom: 0; }
+.acordeon-item__contenido { padding-top: .2rem; }
+
+
+/* =========================================================
    26. ACCESIBILIDAD / UTILIDADES
    ========================================================= */
 

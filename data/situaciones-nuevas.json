@@ -11,7 +11,7 @@
         "exclusión"
       ],
       "shortDescription": "Agresión repetida entre estudiantes, física, verbal, social o digital. No es una broma y nunca es culpa de quien la recibe.",
-      "description": "El acoso escolar es una forma de agresión o comportamiento dañino que ocurre entre estudiantes y puede ser físico, verbal, social o realizarse mediante tecnologías digitales. No es simplemente «una broma» cuando produce daño y existe una dinámica persistente de agresión o desequilibrio de poder.",
+      "description": "El acoso escolar es una forma de agresión o comportamiento dañino que ocurre entre estudiantes y puede ser físico, verbal, social o realizarse mediante tecnologías digitales.\n\nNo es simplemente «una broma» cuando produce daño y existe una dinámica persistente de agresión o desequilibrio de poder.",
       "extraSections": [
         {
           "title": "¿Por qué puede ocurrir?",
@@ -33,27 +33,31 @@
         "Cambios en el rendimiento, las relaciones o el comportamiento."
       ],
       "warningNote": "Estas señales sirven para observar y pedir orientación cuando haga falta; no son pruebas diagnósticas.",
-      "actionsTitle": "Cómo actuar",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actionLabels": {
-        "self": "¿Qué puedo hacer?",
-        "other": "¿Cómo apoyar a alguien?"
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
       },
       "actions": {
         "self": [
-          "No respondas con violencia.",
-          "Guarda evidencias cuando sea acoso digital.",
-          "Cuéntaselo a un adulto de confianza e informa a la institución educativa.",
-          "Evita enfrentarlo completamente solo.",
-          "Identifica espacios y personas seguras.",
-          "Si existe peligro físico inmediato, busca ayuda de emergencia."
+          "Aléjate de la situación cuando sea posible.",
+          "Cuéntaselo a un adulto de confianza.",
+          "Registra fechas, lugares y qué ocurrió, especialmente en casos digitales.",
+          "Guarda mensajes y evidencia.",
+          "No intentes enfrentarte solo/a al agresor.",
+          "Informa al colegio.",
+          "Si hay amenazas o violencia física o sexual, busca ayuda inmediata."
         ],
         "other": [
           "Créele y escúchalo.",
-          "No lo culpes.",
-          "No digas «ignóralos» como única solución.",
-          "Acompáñalo a informar la situación.",
-          "Ayúdalo a mantenerse conectado con personas seguras."
-        ]
+          "No digas «ignóralos».",
+          "No difundas el contenido.",
+          "Acompáñalo a informar.",
+          "Si presencias el acoso, busca ayuda adulta.",
+          "Si existe peligro físico, prioriza sacarlo de la situación."
+        ],
+        "note": "El ICBF incluye el acoso y el ciberacoso dentro de las situaciones para las que existen rutas de protección y orientación; la Línea 141 funciona las 24 horas.",
+        "noteSource": "ICBF"
       },
       "tools": [
         {
@@ -95,7 +99,8 @@
       ],
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
-      "resources": []
+      "resources": [],
+      "helpNow": true
     },
     {
       "id": "violencia-emocional",
@@ -122,12 +127,24 @@
       "actionsTitle": "¿Qué puedo hacer?",
       "actions": {
         "self": [
-          "Reconoce que el maltrato no es culpa de quien lo recibe.",
-          "Habla con una persona segura.",
-          "Registra las situaciones si hacerlo es seguro.",
-          "Busca apoyo institucional o profesional.",
-          "Si existe peligro, prioriza tu seguridad y busca ayuda inmediata."
-        ]
+          "Reconoce patrones: humillación, amenazas, control, intimidación o desvalorización.",
+          "No asumas que debes soportarlo para mantener una relación.",
+          "Cuéntaselo a una persona segura.",
+          "Guarda evidencia cuando sea seguro hacerlo.",
+          "Diseña una red de apoyo.",
+          "Si existe peligro, prioriza salir a un lugar seguro.",
+          "Busca apoyo psicológico y/o protección."
+        ],
+        "other": [
+          "Cree lo que te cuenta.",
+          "No culpes a la víctima.",
+          "No confrontes al agresor si puede aumentar el riesgo.",
+          "Pregunta qué necesita.",
+          "Ayuda a contactar a un adulto o servicio de protección.",
+          "Si es menor y existe riesgo, activa la ruta de protección."
+        ],
+        "note": "El ICBF contempla específicamente el maltrato emocional dentro de las situaciones atendidas por la Línea 141.",
+        "noteSource": "ICBF"
       },
       "tools": [
         {
@@ -151,7 +168,12 @@
       ],
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
-      "resources": []
+      "resources": [],
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      },
+      "helpNow": true
     },
     {
       "id": "violencia-sexual",
@@ -179,13 +201,26 @@
       "actionsTitle": "¿Qué puedo hacer?",
       "actions": {
         "self": [
-          "Aléjate de la situación si puedes hacerlo de forma segura.",
-          "Cuéntaselo a un adulto o a una persona de confianza.",
-          "Busca atención médica o psicológica cuando sea necesario.",
-          "Si existe peligro inmediato, acude a servicios de emergencia.",
-          "No te culpes por lo ocurrido.",
-          "Si eres menor de edad, es especialmente importante involucrar a un adulto seguro o a las autoridades o profesionales correspondientes cuando exista violencia."
-        ]
+          "Aléjate del agresor si puedes hacerlo de forma segura.",
+          "Ve a un lugar seguro.",
+          "Díselo a un adulto o persona de confianza.",
+          "Busca atención médica lo antes posible.",
+          "Puedes pedir apoyo aunque no tengas claro cómo llamar a lo ocurrido.",
+          "No es tu culpa.",
+          "Si eres menor, busca protección institucional.",
+          "En Colombia puedes acudir a la Línea 141 del ICBF."
+        ],
+        "other": [
+          "Créele.",
+          "Dile: «No fue tu culpa».",
+          "No interrogues ni presiones para obtener detalles.",
+          "Prioriza la seguridad.",
+          "Busca atención médica y protección.",
+          "No confrontes al presunto agresor poniendo en riesgo a la víctima.",
+          "Si es menor, activa las rutas de protección correspondientes."
+        ],
+        "note": "Las instituciones de salud colombianas deben brindar atención prioritaria a las víctimas de violencia sexual; el ICBF dispone además de rutas especializadas y de la Línea 141.",
+        "noteSource": "ICBF"
       },
       "tools": [
         {
@@ -203,7 +238,12 @@
       ],
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
-      "resources": []
+      "resources": [],
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      },
+      "helpNow": true
     },
     {
       "id": "discriminacion",
@@ -228,12 +268,23 @@
       "actionsTitle": "¿Qué puedo hacer?",
       "actions": {
         "self": [
-          "Identifica que el problema está en la conducta discriminatoria, no en tu valor como persona.",
-          "Busca personas seguras.",
-          "Informa cuando sea posible.",
-          "Registra los incidentes.",
-          "Evita enfrentamientos que puedan poner en riesgo tu seguridad."
-        ]
+          "Reconoce que el trato injusto no define tu valor.",
+          "Aléjate si existe peligro.",
+          "Busca personas que sí sean seguras.",
+          "Documenta las situaciones repetidas.",
+          "Informa a la institución correspondiente.",
+          "Busca apoyo psicológico si comienza a afectar tu autoestima, seguridad o funcionamiento."
+        ],
+        "other": [
+          "No normalices el comentario.",
+          "Intervén de forma segura.",
+          "Apoya a la persona afectada.",
+          "Evita convertirla en el centro de atención sin preguntarle.",
+          "Reporta situaciones graves o repetidas.",
+          "Ayuda a construir un entorno inclusivo."
+        ],
+        "note": "La OMS reconoce la discriminación, la exclusión y el estigma como factores que pueden aumentar la vulnerabilidad de los adolescentes a problemas de salud mental.",
+        "noteSource": "Organización Mundial de la Salud"
       },
       "tools": [
         {
@@ -257,7 +308,11 @@
       ],
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
-      "resources": []
+      "resources": [],
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      }
     },
     {
       "id": "entorno-en-riesgo",
@@ -286,9 +341,24 @@
       "actionsTitle": "¿Qué puedo hacer?",
       "actions": {
         "self": [
-          "Cuando el entorno es peligroso, calmarte o regularte no resuelve el problema de fondo.",
-          "La prioridad es identificar a una persona o institución segura y buscar protección."
-        ]
+          "Pregúntate primero: «¿Estoy seguro/a ahora?».",
+          "Si no, ve a un lugar seguro.",
+          "Contacta a un adulto o persona de confianza.",
+          "No confrontes solo/a a una persona peligrosa.",
+          "Si existe una amenaza inmediata, llama a los servicios de emergencia.",
+          "Si eres menor y hay violencia, abuso o negligencia, llama a la Línea 141.",
+          "Cuando estés seguro/a, busca apoyo psicológico y social."
+        ],
+        "other": [
+          "No pongas tu propia seguridad en riesgo.",
+          "Ayuda a la persona a llegar a un lugar seguro.",
+          "Contacta a un adulto responsable.",
+          "Si es menor, activa la protección.",
+          "Ante peligro inmediato, llama a emergencias."
+        ],
+        "note": "La violencia durante la adolescencia puede tener consecuencias psicológicas, sociales y educativas importantes.",
+        "noteSource": "Organización Mundial de la Salud",
+        "intro": "Cuando el entorno es peligroso, calmarte o regularte no resuelve el problema de fondo: la prioridad es la seguridad y la protección."
       },
       "tools": [
         {
@@ -313,7 +383,12 @@
       ],
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
-      "resources": []
+      "resources": [],
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      },
+      "helpNow": true
     },
     {
       "id": "pares",
@@ -347,15 +422,25 @@
           "text": "Si la respuesta es no y la principal razón para hacerlo es evitar el rechazo, puede existir presión de grupo."
         }
       ],
-      "actionsTitle": "¿Cómo afrontarla?",
+      "actionsTitle": "¿Qué puedo hacer?",
       "actions": {
         "self": [
-          "Prepara frases para decir no.",
-          "Pide tiempo para decidir.",
-          "Aléjate de la situación.",
-          "Busca amigos que respeten tus límites.",
-          "Recuerda que pertenecer a un grupo no exige aceptar todo lo que haga."
-        ]
+          "Identifica qué te están pidiendo hacer.",
+          "Pregúntate: «¿Lo haría si nadie estuviera mirándome?».",
+          "Ten preparada una respuesta corta: «No quiero».",
+          "No necesitas justificar un límite.",
+          "Cambia de grupo o de situación si es necesario.",
+          "Busca personas que respeten tus decisiones.",
+          "Si la presión implica violencia, drogas, sexualidad, delitos o peligro, busca ayuda adulta."
+        ],
+        "other": [
+          "No te burles por no querer participar.",
+          "Apoya su derecho a decir no.",
+          "Ayúdale a salir de la situación.",
+          "Si existe peligro, involucra a un adulto."
+        ],
+        "note": "La OMS identifica la presión social y la necesidad de pertenencia como factores relevantes durante la adolescencia.",
+        "noteSource": "Organización Mundial de la Salud"
       },
       "tools": [
         {
@@ -386,7 +471,11 @@
       ],
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
-      "resources": []
+      "resources": [],
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      }
     },
     {
       "id": "aislamiento-soledad",
@@ -411,12 +500,23 @@
       "actionsTitle": "¿Qué puedo hacer?",
       "actions": {
         "self": [
-          "Contacta a una persona segura.",
-          "Empieza con interacciones pequeñas.",
-          "Participa en actividades relacionadas con tus intereses.",
-          "Mantén rutinas básicas.",
-          "Pide ayuda si la soledad persiste o se acompaña de tristeza intensa, desesperanza o pensamientos de hacerte daño."
-        ]
+          "Diferencia «quiero estar solo un rato» de «me estoy desconectando de todos».",
+          "Contacta a una persona.",
+          "Empieza por una interacción pequeña.",
+          "Recupera una actividad compartida.",
+          "Sal del aislamiento progresivamente.",
+          "Si la soledad se acompaña de depresión, ansiedad o pensamientos suicidas, busca ayuda profesional."
+        ],
+        "other": [
+          "Invítalo sin presionarlo.",
+          "Mantén contacto aunque rechace al principio.",
+          "No interpretes su aislamiento como un rechazo personal.",
+          "Propón actividades concretas.",
+          "Pregunta cómo se encuentra.",
+          "Si notas un deterioro importante, busca apoyo adulto o profesional."
+        ],
+        "note": "La OMS señala que la conexión social protege la salud mental y que la soledad puede relacionarse con depresión, ansiedad y pensamientos de autolesión.",
+        "noteSource": "Organización Mundial de la Salud"
       },
       "tools": [
         {
@@ -434,7 +534,12 @@
       ],
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
-      "resources": []
+      "resources": [],
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      },
+      "helpNow": true
     },
     {
       "id": "estres-academico",
@@ -447,7 +552,7 @@
         "presión escolar"
       ],
       "shortDescription": "Estrés por tareas, exámenes, calificaciones y expectativas, que se vuelve intenso o persistente.",
-      "description": "Es el estrés relacionado con las exigencias académicas, como tareas, exámenes, calificaciones, carga de trabajo, expectativas o dificultades para equilibrar estudio y vida personal. Un cierto nivel de estrés puede aparecer ante desafíos, pero cuando se vuelve intenso, persistente o interfiere con el funcionamiento, merece atención.",
+      "description": "Es el estrés relacionado con las exigencias académicas, como tareas, exámenes, calificaciones, carga de trabajo, expectativas o dificultades para equilibrar estudio y vida personal.\n\nUn cierto nivel de estrés puede aparecer ante desafíos, pero cuando se vuelve intenso, persistente o interfiere con el funcionamiento, merece atención.",
       "experience": {
         "columns": [
           {
@@ -483,13 +588,26 @@
       "actionsTitle": "¿Qué puedo hacer?",
       "actions": {
         "self": [
-          "Identifica qué tareas son realmente urgentes y divide los trabajos grandes.",
-          "Prioriza.",
-          "Incluye pausas y descanso.",
-          "Mantén horarios de sueño.",
-          "Pide ayuda académica cuando la carga sea excesiva.",
-          "Habla con un adulto o profesional si el estrés empieza a afectar seriamente tu funcionamiento."
-        ]
+          "Escribe todo lo pendiente.",
+          "Divide por fecha, importancia y esfuerzo.",
+          "Elige solamente la siguiente acción.",
+          "Trabaja en bloques razonables.",
+          "Programa descansos.",
+          "No sacrifiques sistemáticamente el sueño para estudiar.",
+          "Habla con tus profesores si la carga supera lo razonable.",
+          "Mantén al menos una actividad de descanso real.",
+          "Si el estrés empieza a afectar el sueño, la alimentación, el ánimo o el funcionamiento diario, pide ayuda."
+        ],
+        "other": [
+          "No compares calificaciones.",
+          "Pregunta qué tarea está generando más presión.",
+          "Ayuda a priorizar.",
+          "No conviertas el apoyo en hacerle el trabajo.",
+          "Recuérdale que dormir también forma parte del rendimiento.",
+          "Si está desbordado durante semanas, anímale a hablar con la familia, el colegio o un profesional."
+        ],
+        "note": "El estrés académico puede formar parte de una respuesta normal, pero el estrés excesivo o persistente puede afectar la concentración, el sueño, el apetito y la salud mental.",
+        "noteSource": "Organización Mundial de la Salud"
       },
       "tools": [
         {
@@ -519,7 +637,11 @@
       ],
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
-      "resources": []
+      "resources": [],
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      }
     },
     {
       "id": "sueno",
@@ -532,7 +654,7 @@
         "somnolencia"
       ],
       "shortDescription": "Dormir lo suficiente influye en la atención, el ánimo y el funcionamiento diario.",
-      "description": "El sueño forma parte de los hábitos relacionados con el bienestar durante la adolescencia. Dormir de forma insuficiente puede afectar la atención, el estado de ánimo y el funcionamiento diario. Los adolescentes necesitan, en general, alrededor de 9 horas de sueño cada noche.",
+      "description": "El sueño forma parte de los hábitos relacionados con el bienestar durante la adolescencia. Dormir de forma insuficiente puede afectar la atención, el estado de ánimo y el funcionamiento diario.\n\nLos adolescentes necesitan, en general, entre 8 y 10 horas de sueño cada noche.",
       "warningTitle": "Señales de que el sueño puede estar afectando el bienestar",
       "warningSigns": [
         "Somnolencia durante el día.",
@@ -546,13 +668,24 @@
       "actionsTitle": "¿Qué puedo hacer?",
       "actions": {
         "self": [
-          "Mantén horarios relativamente regulares.",
-          "Crea una rutina previa al sueño.",
-          "Reduce las actividades estimulantes antes de dormir.",
-          "Mantén el dormitorio adecuado para descansar.",
-          "Evita sacrificar sistemáticamente el sueño para estudiar.",
-          "Consulta si los problemas son persistentes o afectan de forma importante tu vida diaria."
-        ]
+          "Mantén una hora de levantarte relativamente estable.",
+          "Intenta dormir lo suficiente.",
+          "Reduce las pantallas cerca de la hora de dormir.",
+          "Evita estudiar o usar redes hasta el último minuto si activan demasiado tu mente.",
+          "Usa la cama principalmente para dormir.",
+          "Mantén actividad física durante el día.",
+          "Si los problemas de sueño son persistentes, consulta.",
+          "Si duermes muy poco durante varios días junto con energía anormalmente elevada, impulsividad o cambios extremos de ánimo, busca evaluación."
+        ],
+        "other": [
+          "No lo ridiculices por dormir mucho o poco.",
+          "Pregunta qué está interfiriendo.",
+          "Ayuda a proteger los horarios de descanso.",
+          "Reduce la presión nocturna innecesaria.",
+          "Si hay insomnio persistente, somnolencia extrema o cambios marcados asociados al ánimo, recomienda una evaluación."
+        ],
+        "note": "Para adolescentes, la recomendación general es de 8 a 10 horas de sueño por noche; dormir lo suficiente favorece la atención, la salud mental y el aprendizaje.",
+        "noteSource": "CDC"
       },
       "tools": [
         {
@@ -576,7 +709,11 @@
       ],
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
-      "resources": []
+      "resources": [],
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      }
     },
     {
       "id": "redes-sociales",
@@ -589,7 +726,7 @@
         "pantallas"
       ],
       "shortDescription": "El mundo digital ofrece conexión, pero también riesgos para la autoestima.",
-      "description": "Las plataformas digitales pueden influir en las experiencias sociales, la exposición a información, las relaciones y la percepción que una persona tiene de sí misma. No todas las personas reaccionan igual ni todo uso de redes sociales es perjudicial. El uso pasivo (ver sin interactuar) fomenta la comparación social negativa, lo que daña la autoestima. En Colombia, el 52.2% de los jóvenes ya presenta síntomas de ansiedad, cifra que se agrava ante el ciberacoso.",
+      "description": "Las plataformas digitales pueden influir en las experiencias sociales, la exposición a información, las relaciones y la percepción que una persona tiene de sí misma. No todas las personas reaccionan igual ni todo uso de redes sociales es perjudicial.\n\nEl uso pasivo (ver sin interactuar) fomenta la comparación social negativa, lo que daña la autoestima. En Colombia, el 52.2% de los jóvenes ya presenta síntomas de ansiedad, cifra que se agrava ante el ciberacoso.",
       "warningTitle": "Señales de que el uso puede estar afectando el bienestar",
       "warningSigns": [
         "Interferencia con el sueño o el estudio.",
@@ -603,12 +740,23 @@
       "actionsTitle": "¿Qué puedo hacer?",
       "actions": {
         "self": [
-          "Observa qué contenido empeora o mejora tu estado.",
-          "Deja de seguir o silencia el contenido que genera malestar.",
-          "Establece momentos sin redes.",
-          "Evita usarlas como única estrategia para manejar emociones.",
-          "Mantén actividades presenciales y relaciones fuera de internet."
-        ]
+          "Identifica qué contenido empeora cómo te sientes.",
+          "Deja de seguir, silencia o bloquea cuentas dañinas.",
+          "No uses las redes como única forma de regular emociones.",
+          "Evita que interfieran constantemente con el sueño.",
+          "Haz pausas deliberadas.",
+          "Recupera actividades fuera de pantalla.",
+          "Si hay acoso, amenazas o explotación, guarda evidencia y busca ayuda."
+        ],
+        "other": [
+          "Pregunta qué está ocurriendo online.",
+          "No le digas simplemente «borra las redes».",
+          "Ayúdale a bloquear y reportar.",
+          "Guarda evidencia si hay acoso o amenazas.",
+          "Si existe explotación, abuso o peligro, involucra a un adulto y a los servicios de protección."
+        ],
+        "note": "La evidencia actual no permite decir simplemente que «las redes sociales son malas»: sus efectos son bidireccionales y dependen del tipo de uso, el contexto y la vulnerabilidad. Sí existen asociaciones entre el uso problemático y problemas de sueño, ánimo y concentración.",
+        "noteSource": "CDC"
       },
       "flow": {
         "title": "Pasos de apoyo para alguien en crisis ambiental",
@@ -653,7 +801,11 @@
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
       "resources": [],
-      "sources": []
+      "sources": [],
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      }
     },
     {
       "id": "estres",
@@ -665,7 +817,7 @@
         "examenes"
       ],
       "shortDescription": "Por qué la persistencia es el factor que convierte al estrés en un riesgo.",
-      "description": "El estrés es una respuesta ante situaciones que una persona percibe como exigentes, amenazantes o difíciles de manejar. No todo estrés es perjudicial: puede ayudarnos a responder ante desafíos. El problema aparece cuando es demasiado intenso, persistente o interfiere con la vida cotidiana. Su persistencia es lo que lo convierte en un riesgo para la salud mental.",
+      "description": "El estrés es una respuesta ante situaciones que una persona percibe como exigentes, amenazantes o difíciles de manejar. No todo estrés es perjudicial: puede ayudarnos a responder ante desafíos.\n\nEl problema aparece cuando es demasiado intenso, persistente o interfiere con la vida cotidiana. Su persistencia es lo que lo convierte en un riesgo para la salud mental.",
       "experience": {
         "columns": [
           {
@@ -737,19 +889,33 @@
       "actionsTitle": "¿Qué puedo hacer?",
       "actions": {
         "self": [
+          "Detente unos minutos.",
           "Identifica qué está generando el estrés.",
-          "Separa lo que puedes controlar de lo que no.",
-          "Resuelve primero el problema más concreto.",
-          "Descansa.",
-          "Mantén sueño, alimentación y movimiento adecuados.",
-          "Habla con alguien de confianza.",
-          "Busca ayuda profesional cuando el estrés persiste o interfiere de forma importante."
-        ]
+          "Separa lo urgente, lo importante y lo que puede esperar.",
+          "Escoge una sola acción.",
+          "Respira lentamente o utiliza otra técnica de regulación.",
+          "Mantén alimentación, sueño y movimiento.",
+          "Habla con alguien.",
+          "Si el estrés persiste y empieza a afectar tu funcionamiento, busca ayuda."
+        ],
+        "other": [
+          "Pregunta qué está sobrecargando a la persona.",
+          "Ayúdala a reducir el problema a una acción concreta.",
+          "No agregues presión innecesaria.",
+          "Ofrécele compañía.",
+          "Si lleva mucho tiempo desbordada, sugiere apoyo profesional."
+        ],
+        "note": "La OMS recomienda rutinas, sueño suficiente, actividad física, alimentación regular, conexión social y habilidades prácticas de manejo del estrés.",
+        "noteSource": "Organización Mundial de la Salud"
       },
       "type": "guide",
       "helpLink": "contacto.html#emergencia",
       "resources": [],
-      "sources": []
+      "sources": [],
+      "actionLabels": {
+        "self": "Si me pasa a mí",
+        "other": "Si le pasa a alguien más"
+      }
     }
   ]
 }

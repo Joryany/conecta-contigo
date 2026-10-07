@@ -454,7 +454,7 @@
         const meta = estado.catalogoMeta;
         if (el.herramientasNota) {
             el.herramientasNota.innerHTML = meta.generalNote
-                ? `<p class="aviso-general">${escapeHtml(meta.generalNote)}</p>` : '';
+                ? `<div class="aviso-general">${parrafosHtml(meta.generalNote)}</div>` : '';
         }
         if (!el.herramientasGuia) return;
         if (!meta.chooser.length) { el.herramientasGuia.innerHTML = ''; return; }
@@ -470,10 +470,15 @@
             }
             const chips = f.options.map(o => o.tool
                 ? `<button type="button" class="guia-chip" data-action="abrir-detalle" data-tipo="herramienta" data-id="${o.tool}">${escapeHtml(o.label)}</button>`
-                : `<span class="guia-chip guia-chip--texto">${escapeHtml(o.label)}</span>`).join('');
+                : o.href
+                    ? `<a class="guia-chip guia-chip--enlace" href="${escapeAttr(o.href)}">${escapeHtml(o.label)} →</a>`
+                    : `<span class="guia-chip guia-chip--texto">${escapeHtml(o.label)}</span>`).join('');
+            const titulo = f.href
+                ? `<a class="guia-fila__enlace" href="${escapeAttr(f.href)}">${escapeHtml(f.when)} →</a>`
+                : `<strong>${escapeHtml(f.when)}</strong>`;
             return `
                 <div class="guia-fila">
-                    <strong>${escapeHtml(f.when)}</strong>
+                    ${titulo}
                     <div class="guia-opciones">${chips}</div>
                 </div>`;
         }).join('');
@@ -560,20 +565,42 @@
     const NOTA_SENALES = 'Reconocer una señal no significa automáticamente tener un trastorno. Esta información es para comprender, no para autodiagnosticarte.';
 
     // Lista (array) o texto (string) para el panel de "¿Qué puedo hacer?"
+    function listaAccionHtml(lista) {
+        return `<ul class="seccion-lista">${lista.map(v => typeof v === 'string'
+            ? `<li>${textoBr(v)}</li>`
+            : `<li><strong>${escapeHtml(v.title)}</strong> ${textoBr(v.text || '')}</li>`).join('')}</ul>`;
+    }
+
+    // Admite: texto, lista, o { groups: [{ title, items[] }] } (ej. "Ahora" / "Para ir mejorando")
     function accionHtml(valor) {
-        if (Array.isArray(valor)) {
-            return `<ul class="seccion-lista">${valor.map(v => typeof v === 'string'
-                ? `<li>${escapeHtml(v)}</li>`
-                : `<li><strong>${escapeHtml(v.title)}</strong> ${escapeHtml(v.text || '')}</li>`).join('')}</ul>`;
+        if (Array.isArray(valor)) return listaAccionHtml(valor);
+        if (valor && Array.isArray(valor.groups)) {
+            return valor.groups.map((g, i) => `
+                <div class="accion-grupo accion-grupo--${i % 3}">
+                    <h4 class="accion-grupo__titulo">${escapeHtml(g.title)}</h4>
+                    ${listaAccionHtml(g.items || [])}
+                </div>`).join('');
         }
-        return escapeHtml(valor || '');
+        return parrafosHtml(valor);
+    }
+
+    // Bloque fijo "Necesito ayuda ahora": Línea 106, Línea 141 y emergencias
+    function ayudaAhoraHtml() {
+        const lineas = ['106', '141', '123'].map(n => LINEAS_AYUDA.find(l => l.numero === n)).filter(Boolean);
+        if (!lineas.length) return '';
+        return `
+            <div class="bloque ayuda-ahora" data-speak>
+                <h3>${tituloConIcono('📞', 'Necesito ayuda ahora')}</h3>
+                <p>Si estás en peligro o necesitas hablar con alguien ya, estas líneas atienden todos los días.</p>
+                <div class="linea-grid">${lineas.map(lineaHtml).join('')}</div>
+            </div>`;
     }
 
     // Sección libre: title, icon, lead, paragraphs[], quote, items[], steps[], text, note, noteLabel
     // Cada paso puede ser un texto o un objeto { title, text }.
     function seccionHtml(sec) {
         const lead = sec.lead ? `<p>${escapeHtml(sec.lead)}</p>` : '';
-        const parrafos = (sec.paragraphs || []).map(p => `<p>${escapeHtml(p)}</p>`).join('');
+        const parrafos = (sec.paragraphs || []).map(p => parrafosHtml(p)).join('');
         const cita = sec.quote ? `<blockquote class="seccion-cita">${escapeHtml(sec.quote)}</blockquote>` : '';
         const items = (sec.items && sec.items.length)
             ? `<ul class="seccion-lista">${sec.items.map(i => `<li>${escapeHtml(i)}</li>`).join('')}</ul>` : '';
@@ -581,7 +608,7 @@
             ? `<ol class="seccion-pasos">${sec.steps.map(p => typeof p === 'string'
                 ? `<li><span>${escapeHtml(p)}</span></li>`
                 : `<li><span><strong>${escapeHtml(p.title)}</strong> ${escapeHtml(p.text || '')}</span></li>`).join('')}</ol>` : '';
-        const texto = sec.text ? `<p>${escapeHtml(sec.text)}</p>` : '';
+        const texto = sec.text ? parrafosHtml(sec.text) : '';
         const nota = sec.note
             ? `<p class="seccion-nota"><strong>${escapeHtml(sec.noteLabel || 'Importante')}:</strong> ${escapeHtml(sec.note)}</p>` : '';
         return `
@@ -598,7 +625,7 @@
                 <span class="aviso-seguridad__icono" aria-hidden="true">${icono('alerta')}</span>
                 <div class="aviso-seguridad__texto">
                     <strong>Antes de leer</strong>
-                    <p>${escapeHtml(item.safetyNotice)}</p>
+                    ${parrafosHtml(item.safetyNotice)}
                 </div>
                 <button type="button" class="boton-primario boton-urgente" data-action="abrir-protocolo">Ver qué hacer ahora</button>
             </div>`;
@@ -668,8 +695,10 @@
         const accionesHtml = (cond.actions && cond.actions.self) ? `
             <div class="bloque bloque--card" data-speak>
                 <h3>${tituloConIcono(ICONOS.accion, cond.actionsTitle || '¿Qué puedo hacer?')}</h3>
+                ${cond.actions.intro ? `<div class="accion-intro">${parrafosHtml(cond.actions.intro)}</div>` : ''}
                 ${tabsHtml}
                 <div class="accion-panel" id="accion-panel">${accionHtml(cond.actions.self)}</div>
+                ${cond.actions.note ? `<p class="seccion-nota"><strong>Qué dice la evidencia:</strong> ${escapeHtml(cond.actions.note)}${cond.actions.noteSource ? ` <em>(${escapeHtml(cond.actions.noteSource)})</em>` : ''}</p>` : ''}
             </div>` : '';
 
         const comparacionHtml = cond.comparison ? `<div class="bloque bloque--card" data-speak>${renderComparacion(cond.comparison)}</div>` : '';
@@ -699,6 +728,7 @@
             <button type="button" class="detalle__volver" data-action="volver">← Volver a Comprende</button>
 
             ${avisoSeguridadHtml(cond)}
+            ${cond.helpNow === 'top' ? ayudaAhoraHtml() : ''}
 
             <div class="detalle-header">
                 <div class="detalle-header__texto" data-speak>
@@ -722,7 +752,7 @@
 
             <div class="bloque bloque--card" data-speak>
                 <h3>${tituloConIcono(ICONOS.queEs, '¿Qué es?')}</h3>
-                <p>${escapeHtml(cond.description)}</p>
+                ${parrafosHtml(cond.description)}
             </div>
 
             ${extraHtml}
@@ -741,9 +771,11 @@
 
             <div class="bloque ayuda-bloque" data-speak>
                 <h3>${tituloConIcono(ICONOS.ayuda, '¿Cuándo buscar ayuda?')}</h3>
-                <p>${escapeHtml(ayudaTexto)}</p>
+                ${parrafosHtml(ayudaTexto)}
                 <a class="boton-primario" href="${ayudaLink}">Buscar ayuda</a>
             </div>
+
+            ${cond.helpNow ? ayudaAhoraHtml() : ''}
 
             ${renderRecursos(cond.resources)}
             ${renderFuentes(cond.sources)}
@@ -784,8 +816,10 @@
 
             <div class="bloque bloque--card" data-speak>
                 <h3>${tituloConIcono(ICONOS.queEs, '¿Qué es?')}</h3>
-                ${[].concat(h.description || []).map(p => `<p>${escapeHtml(p)}</p>`).join('')}
+                ${[].concat(h.description || []).map(p => parrafosHtml(p)).join('')}
             </div>
+
+            ${h.cta ? `<div class="bloque bloque--card cta-explorador"><p>${escapeHtml(h.cta.text || '')}</p><a class="boton-primario" href="${escapeAttr(h.cta.href)}">${escapeHtml(h.cta.label)}</a></div>` : ''}
 
             ${(h.sections || []).map(seccionHtml).join('')}
 
@@ -797,7 +831,7 @@
 
             <div class="bloque ayuda-bloque" data-speak>
                 <h3>${tituloConIcono(ICONOS.ayuda, '¿Cuándo pedir ayuda?')}</h3>
-                <p>${escapeHtml(AYUDA_GENERAL)}</p>
+                ${parrafosHtml(AYUDA_GENERAL)}
                 <a class="boton-primario" href="contacto.html#emergencia">Buscar ayuda</a>
             </div>
 
@@ -834,7 +868,7 @@
             <div class="detalle-header">
                 <div class="detalle-header__texto" data-speak>
                     <h1>${escapeHtml(sit.title)}</h1>
-                    <p>${escapeHtml(sit.intro)}</p>
+                    ${parrafosHtml(sit.intro)}
                 </div>
                 <div class="detalle-header__imagen">
                     ${ilustracionDetalle(sit, sit.imageAlt || altGenericoPara(sit.title))}
@@ -923,7 +957,7 @@
         return `
             <details class="acordeon-item" id="${id}">
                 <summary aria-expanded="false">${escapeHtml(pregunta)}</summary>
-                <div class="acordeon-item__contenido">${escapeHtml(respuesta)}</div>
+                <div class="acordeon-item__contenido">${parrafosHtml(respuesta)}</div>
             </details>`;
     }
 
@@ -1288,7 +1322,7 @@
     function abrirModalHerramienta(indice) {
         const t = detalleActual && detalleActual.tools && detalleActual.tools[indice];
         if (!t) return;
-        const descripcion = t.description ? `<p>${escapeHtml(t.description)}</p>` : '';
+        const descripcion = t.description ? parrafosHtml(t.description) : '';
         const como = t.howTo ? `<p class="herramienta-objetivo"><strong>Cómo emplearla:</strong> ${escapeHtml(t.howTo)}</p>` : '';
         const objetivo = t.goal ? `<p class="herramienta-objetivo"><strong>Para qué sirve:</strong> ${escapeHtml(t.goal)}</p>` : '';
         const pasos = (t.steps && t.steps.length)
@@ -1503,6 +1537,42 @@
             .replace(/&/g, '&amp;')
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;');
+    }
+
+    // Texto con saltos de línea: "\n" -> <br>
+    function textoBr(str) {
+        return escapeHtml(str).replace(/\r?\n/g, '<br>');
+    }
+
+    // Divide un texto en párrafos.
+    //  - Si el texto trae saltos de línea, se respetan: una línea en blanco (\n\n) = párrafo aparte.
+    //  - Si es un texto largo SIN saltos, se parte solo por frases (grupos de ~170 caracteres).
+    function dividirParrafos(texto) {
+        const t = String(texto === null || texto === undefined ? '' : texto).trim();
+        if (!t) return [];
+        if (/\n/.test(t)) return t.split(/\r?\n\s*\r?\n/).map(p => p.trim()).filter(Boolean);
+        if (t.length <= 260) return [t];
+        let frases;
+        try {
+            frases = t.split(new RegExp('(?<=[.!?…»”])\\s+(?=[¿¡«“"A-ZÁÉÍÓÚÜÑ])'));
+        } catch (_) {
+            return [t];
+        }
+        const salida = [];
+        let actual = '';
+        frases.forEach(f => {
+            actual = actual ? actual + ' ' + f : f;
+            if (actual.length >= 170) { salida.push(actual); actual = ''; }
+        });
+        if (actual) {
+            if (salida.length && actual.length < 70) salida[salida.length - 1] += ' ' + actual;
+            else salida.push(actual);
+        }
+        return salida;
+    }
+
+    function parrafosHtml(texto) {
+        return dividirParrafos(texto).map(p => `<p>${textoBr(p)}</p>`).join('');
     }
 
     function escapeAttr(str) {
