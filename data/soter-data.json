@@ -26,6 +26,24 @@
       "inicio": "index.html"
     },
     "greetingPrefix": "¡Hola! 🌱 ",
+    "breathing": {
+      "inhale": 4,
+      "hold": 4,
+      "exhale": 6,
+      "cycles": 6,
+      "labels": {
+        "inhale": "Inhala",
+        "hold": "Sostén",
+        "exhale": "Exhala",
+        "ready": "Cuando quieras, pulsa Comenzar",
+        "done": "Muy bien. Tómate un momento para notar cómo te sientes.",
+        "hint": "Si te mareas o te incomoda sostener el aire, detente y respira con normalidad.",
+        "start": "Comenzar",
+        "stop": "Detener",
+        "again": "Repetir",
+        "cycle": "Ciclo"
+      }
+    },
     "inputPlaceholder": "Escribe tu pregunta...",
     "loadErrorMessage": "No pude cargar la información de Soter. Si estás probando esto en tu computador, recuerda abrir el sitio con un servidor local (por ejemplo Live Server) en vez de abrir el archivo directamente."
   },
@@ -137,6 +155,7 @@
     ]
   },
   "smallTalk": [
+    {"id": "mensaje-especial", "exclusive": true, "maxWords": 14, "patterns": ["jaime daniel gonzalez caballero", "jaime daniel gonzalez", "soy jaime daniel"], "responses": ["💌 Alguien dejó un mensaje especial para ti:\nHola, mi amor. Sabes... te amo demasiado. Eres el niño de mis ojos, mi negrito lindo. Estoy orgullosa de ti y, sobre todo, de la persona que eres.\nMe encanta verte crecer, verte luchar por lo que quieres y poder acompañarte en el camino. Si algún día dudas de ti, recuerda que aquí hay alguien que cree en ti, incluso cuando tú no puedes hacerlo.\nTe amo por quien eres, por quien estás construyendo ser y por todos los momentos que todavía nos quedan por vivir. ❤️"], "options": "main"},
     {"id": "como-estas", "maxWords": 7, "patterns": ["como estas", "como esta", "como te va", "como andas", "como vas", "como te sientes", "como te encuentras", "que tal", "que mas", "todo bien", "todo bn", "todo tranquilo", "como amaneciste", "como te ha ido", "como te fue"], "responses": ["¡Todo bien por aquí, gracias por preguntar! 💙 Estoy listo para acompañarte. ¿Y tú, cómo te sientes hoy?", "¡Muy bien, gracias! 🌱 Me alegra que estés aquí. ¿Cómo te sientes tú hoy?"], "options": [{"label": "Bien 😊", "next": "smalltalk-bien"}, {"label": "Más o menos", "next": "smalltalk-regular"}, {"label": "No muy bien", "next": "smalltalk-mal"}]},
     {"id": "buenos-dias", "greeting": true, "maxWords": 5, "patterns": ["buenos dias", "buen dia", "feliz dia", "buenas dias"], "responses": ["¡Buenos días! ☀️ Qué bueno verte por aquí. ¿Qué quieres explorar hoy?"], "options": "main"},
     {"id": "buenas-tardes", "greeting": true, "maxWords": 5, "patterns": ["buenas tardes", "buena tarde"], "responses": ["¡Buenas tardes! 🌤️ Me alegra que estés aquí. ¿En qué te puedo ayudar?"], "options": "main"},
@@ -918,6 +937,7 @@
 
     "content:herr-respiracion": {
       "type": "content",
+      "widget": "breathing",
       "parent": "herramientas",
       "title": "Respiración consciente",
       "keywords": ["respiracion", "respirar", "respirar profundo", "tecnica de respiracion", "inhalar", "exhalar"],

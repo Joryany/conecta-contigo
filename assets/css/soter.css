@@ -2448,3 +2448,165 @@
         transform: none;
     }
 }
+
+/* ================================================================
+   SOTER · RESPIRACIÓN GUIADA
+   Pegar AL FINAL de soter.css (después del parche anterior).
+   No modifica reglas existentes.
+   Fases (data-phase): rest · inhale · hold · exhale
+   ================================================================ */
+
+.soter-breath {
+    --breath-dur: 4s;
+
+    align-self: flex-start;
+    width: min(100%, 340px);
+    margin-left: 41px;
+    padding: 18px 18px 14px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    background: var(--blanco);
+    border: 1px solid rgba(70, 142, 214, .20);
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-media);
+
+    animation: aparecer .3s ease;
+}
+
+.soter-breath__stage {
+    width: 170px;
+    height: 170px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.soter-breath__circle {
+    width: 150px;
+    height: 150px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: var(--gradiente);
+    box-shadow: 0 0 0 10px rgba(105, 178, 174, .14);
+
+    transform: scale(.55);
+    transition:
+        transform var(--breath-dur) ease-in-out,
+        box-shadow var(--breath-dur) ease-in-out;
+}
+
+.soter-breath[data-phase="inhale"] .soter-breath__circle,
+.soter-breath[data-phase="hold"] .soter-breath__circle {
+    transform: scale(1);
+    box-shadow: 0 0 0 16px rgba(105, 178, 174, .20);
+}
+
+.soter-breath[data-phase="exhale"] .soter-breath__circle {
+    transform: scale(.55);
+    box-shadow: 0 0 0 10px rgba(105, 178, 174, .14);
+}
+
+/* Durante "sostén" el círculo no cambia de tamaño: solo un leve brillo */
+.soter-breath[data-phase="hold"] .soter-breath__circle {
+    box-shadow: 0 0 0 20px rgba(70, 142, 214, .16);
+}
+
+.soter-breath__count {
+    color: var(--blanco);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.soter-breath__phase {
+    margin: 6px 0 2px;
+    min-height: 1.6em;
+
+    color: var(--azul-marino);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.soter-breath__progress {
+    margin: 0 0 10px;
+    min-height: 1.2em;
+
+    color: var(--gris);
+    font-size: .8rem;
+}
+
+.soter-widget button.soter-breath__btn {
+    min-height: 40px;
+    padding: 9px 22px;
+
+    background: var(--azul-marino);
+    color: var(--blanco);
+
+    border-radius: var(--radio-pill);
+    font-size: .9rem;
+}
+
+.soter-widget button.soter-breath__btn:hover {
+    background: var(--azul-claro);
+}
+
+.soter-widget button.soter-breath__btn:focus-visible {
+    outline: 3px solid var(--verde-agua);
+    outline-offset: 2px;
+}
+
+.soter-breath__hint {
+    margin: 12px 0 0;
+
+    color: var(--gris);
+    font-size: .76rem;
+    line-height: 1.45;
+}
+
+@media (max-width: 768px) {
+    .soter-breath {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .soter-breath__stage {
+        width: 150px;
+        height: 150px;
+    }
+
+    .soter-breath__circle {
+        width: 132px;
+        height: 132px;
+    }
+}
+
+/* Sin movimiento: el círculo no se anima; el texto y el conteo guían,
+   y cada fase se distingue por tamaño fijo y color */
+@media (prefers-reduced-motion: reduce) {
+    .soter-breath {
+        animation: none;
+    }
+
+    .soter-breath__circle {
+        transition: none;
+    }
+
+    .soter-breath[data-phase="hold"] .soter-breath__circle {
+        background: var(--azul-claro);
+    }
+
+    .soter-breath[data-phase="exhale"] .soter-breath__circle {
+        background: var(--verde-agua);
+    }
+}

@@ -62,6 +62,14 @@
         buildIndexes();
         validateData();
 
+        /* Diagnóstico: abre la consola (F12) para ver qué versiones se cargaron */
+        const stCount = Array.isArray(DATA.smallTalk) ? DATA.smallTalk.length
+            : ((DATA.smallTalk && DATA.smallTalk.entries) || []).length;
+        console.info("Soter motor 2.2 · JSON v" + ((DATA.meta && DATA.meta.version) || "?") +
+            " · nodos: " + Object.keys(DATA.nodes).length + " · saludos: " + stCount +
+            " · explorador: " + (DATA.nodes["content:registro-explorador"] ? "sí" : "NO"));
+        if (!stCount) console.warn("Soter: el JSON cargado no tiene 'smallTalk' (saludos). Revisa que data/soter-data.json sea el de la última entrega y que el navegador no use una copia en caché.");
+
         if (els.form) els.form.addEventListener("submit", onSubmitQuestion);
         if (els.backBtn) els.backBtn.addEventListener("click", goBack);
         if (els.resetBtn) els.resetBtn.addEventListener("click", resetChat);
@@ -92,6 +100,7 @@
             return {
                 group: e.group || (Array.isArray(DATA.smallTalk) ? "talk" : "general"),   // lista: gana la primera coincidencia
                 options: e.options,
+                exclusive: !!e.exclusive,
                 greeting: !!e.greeting,
                 atStart: !!e.atStart,
                 maxWords: e.maxWords || 0,
@@ -261,6 +270,7 @@
         } else if (node.type === "content") {
             botSay(function () {
                 appendContentMessage(node);
+                if (node.widget === "breathing") appendBreathingWidget();
                 appendActions(node.actions);
                 if (node.options && node.options.length) {
                     if (node.optionsMessage) appendBotMessage(node.optionsMessage);
@@ -340,7 +350,16 @@
 
         /* 2. Saludos / charla breve y búsqueda por keywords con puntaje */
         const talk = findSmallTalk(clean);
-        const matches = findMatches(clean);
+        /* Entradas "exclusive" (mensajes especiales) se responden antes que la búsqueda */
+        const matches = (talk && talkMeta.exclusive) ? [] : findMatches(clean);
+
+        /* Nodos marcados "direct": true (p. ej. "no sé lo que siento") llevan
+           a la respuesta de inmediato, sin lista de sugerencias */
+        const top = matches[0];
+        if (top && DATA.nodes[top.id] && DATA.nodes[top.id].direct) {
+            navigateTo(top.id);
+            return;
+        }
 
         if (currentId) stack.push(currentId);
         currentId = null;
@@ -398,7 +417,7 @@
             });
             if (hit) {
                 used[e.group] = true;
-                if (!out.length) talkMeta = { options: e.options, greeting: e.greeting };
+                if (!out.length) talkMeta = { options: e.options, greeting: e.greeting, exclusive: e.exclusive };
                 out.push(e.responses[Math.floor(Math.random() * e.responses.length)]);
             }
         });
@@ -635,6 +654,110 @@
             });
 
             wrap.appendChild(btn);
+        });
+
+        els.log.appendChild(wrap);
+        scrollToBottom();
+    }
+
+    /* Respiración guiada (node.widget = "breathing"). Ritmo y textos en
+       DATA.config.breathing. No arranca sola: la persona pulsa "Comenzar".
+       Las fases se marcan con data-phase y el CSS anima el círculo. */
+    function appendBreathingWidget() {
+        if (!els.log) return;
+        const cfg = Object.assign({ inhale: 4, hold: 4, exhale: 6, cycles: 6 }, DATA.config.breathing || {});
+        const L = Object.assign({
+            inhale: "Inhala", hold: "Sostén", exhale: "Exhala",
+            ready: "Cuando quieras, pulsa Comenzar",
+            done: "Muy bien. Tómate un momento para notar cómo te sientes.",
+            hint: "Si te mareas o te incomoda sostener el aire, detente y respira con normalidad.",
+            start: "Comenzar", stop: "Detener", again: "Repetir", cycle: "Ciclo"
+        }, cfg.labels || {});
+        const steps = [["inhale", cfg.inhale], ["hold", cfg.hold], ["exhale", cfg.exhale]];
+
+        const wrap = document.createElement("div");
+        wrap.className = "soter-breath";
+        wrap.dataset.phase = "rest";
+        wrap.setAttribute("role", "group");
+        wrap.setAttribute("aria-label", "Ejercicio de respiración guiada");
+
+        const stage = document.createElement("div");
+        stage.className = "soter-breath__stage";
+        const circle = document.createElement("div");
+        circle.className = "soter-breath__circle";
+        circle.setAttribute("aria-hidden", "true");
+        const countEl = document.createElement("span");
+        countEl.className = "soter-breath__count";
+        circle.appendChild(countEl);
+        stage.appendChild(circle);
+
+        const phaseEl = document.createElement("p");
+        phaseEl.className = "soter-breath__phase";
+        phaseEl.setAttribute("aria-live", "polite");
+        phaseEl.textContent = L.ready;
+
+        const progressEl = document.createElement("p");
+        progressEl.className = "soter-breath__progress";
+        progressEl.setAttribute("aria-hidden", "true");
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "soter-breath__btn";
+        btn.textContent = L.start;
+
+        const hint = document.createElement("p");
+        hint.className = "soter-breath__hint";
+        hint.textContent = L.hint;
+
+        wrap.appendChild(stage);
+        wrap.appendChild(phaseEl);
+        wrap.appendChild(progressEl);
+        wrap.appendChild(btn);
+        wrap.appendChild(hint);
+
+        let running = false, step = 0, timer = null, tick = null;
+
+        function stop(finished) {
+            running = false;
+            window.clearTimeout(timer);
+            window.clearInterval(tick);
+            wrap.dataset.phase = "rest";
+            countEl.textContent = "";
+            progressEl.textContent = "";
+            phaseEl.textContent = finished ? L.done : L.ready;
+            btn.textContent = finished ? L.again : L.start;
+        }
+
+        function next() {
+            if (!running || !wrap.isConnected) { stop(false); return; }
+            if (step >= cfg.cycles * steps.length) { stop(true); return; }
+
+            const name = steps[step % steps.length][0];
+            const secs = steps[step % steps.length][1];
+            progressEl.textContent = L.cycle + " " + (Math.floor(step / steps.length) + 1) + " / " + cfg.cycles;
+
+            wrap.style.setProperty("--breath-dur", secs + "s");
+            wrap.dataset.phase = name;
+            phaseEl.textContent = L[name];
+
+            let left = Math.round(secs);
+            countEl.textContent = left > 0 ? left : "";
+            window.clearInterval(tick);
+            tick = window.setInterval(function () {
+                left -= 1;
+                countEl.textContent = left > 0 ? left : "";
+            }, 1000);
+
+            step += 1;
+            timer = window.setTimeout(next, secs * 1000);
+        }
+
+        btn.addEventListener("click", function () {
+            if (running) { stop(false); return; }
+            running = true;
+            step = 0;
+            btn.textContent = L.stop;
+            next();
         });
 
         els.log.appendChild(wrap);

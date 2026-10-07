@@ -1213,3 +1213,207 @@ input[type="submit"]:focus-visible {
         display: none !important;
     }
 }
+/* ================================================================
+   SOTER · ACCESO DESDE OTRAS PÁGINAS
+   Pegar AL FINAL de style.css (el CSS general, que cargan todas las páginas).
+   1) .soter-acceso : botón flotante con la carita de Soter
+   2) .soter-guia   : tarjeta "guía directa" dentro del contenido
+   ================================================================ */
+
+/* ---------- 1. Botón flotante: arriba del botón "subir" ---------- */
+
+.soter-acceso {
+    position: fixed;
+    right: var(--espacio-md);
+    bottom: calc(var(--espacio-md) + 46px + 12px);   /* 24 + alto de .boton-subir + separación */
+    z-index: 490;                                     /* por debajo de .boton-subir (500) */
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+
+    text-decoration: none;
+}
+
+.soter-acceso__avatar {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+    object-fit: cover;
+
+    background: #EAF6F5;
+    border: 2px solid var(--verde-agua);
+    box-shadow: var(--sombra-media);
+
+    transition: transform var(--transicion), box-shadow var(--transicion);
+}
+
+.soter-acceso__texto {
+    padding: 8px 14px;
+
+    background: var(--blanco);
+    color: var(--azul-marino);
+
+    border-radius: var(--radio-pill);
+    box-shadow: var(--sombra-media);
+
+    font-size: .85rem;
+    font-weight: 600;
+    white-space: nowrap;
+
+    opacity: 0;
+    transform: translateX(8px);
+    pointer-events: none;
+
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.soter-acceso:hover .soter-acceso__texto,
+.soter-acceso:focus-visible .soter-acceso__texto {
+    opacity: 1;
+    transform: none;
+}
+
+.soter-acceso:hover .soter-acceso__avatar {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-grande);
+}
+
+.soter-acceso:focus-visible {
+    outline: 3px solid var(--verde-agua);
+    outline-offset: 4px;
+    border-radius: var(--radio-pill);
+}
+
+@media (max-width: 768px) {
+    .soter-acceso {
+        right: var(--espacio-sm);
+        bottom: calc(var(--espacio-sm) + 8px + 42px + 10px);  /* sobre el botón subir móvil (42px) */
+    }
+
+    .soter-acceso__avatar {
+        width: 42px;
+        height: 42px;
+    }
+
+    .soter-acceso__texto {
+        display: none;
+    }
+}
+
+
+/* ---------- 2. Tarjeta "guía directa" en el contenido ---------- */
+
+.soter-guia {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-sm);
+
+    max-width: 760px;
+    margin: var(--espacio-md) auto;
+    padding: 14px 18px;
+
+    background: var(--blanco);
+    border: 1px solid rgba(70, 142, 214, .20);
+    border-left: 4px solid var(--verde-agua);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-media);
+}
+
+.soter-guia__avatar {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+    object-fit: cover;
+    background: #EAF6F5;
+}
+
+.soter-guia__texto {
+    flex: 1;
+    min-width: 0;
+}
+
+.soter-guia__titulo {
+    margin: 0;
+    color: var(--azul-marino);
+    font-weight: 700;
+}
+
+.soter-guia__desc {
+    margin: 2px 0 0;
+    color: var(--gris);
+    font-size: .9rem;
+}
+
+.soter-guia a.soter-guia__boton {
+    flex-shrink: 0;
+
+    padding: var(--boton-y) var(--boton-x);
+
+    background: var(--gradiente);
+    color: var(--blanco);
+
+    border-radius: var(--radio-pill);
+    font-weight: 600;
+    font-size: .92rem;
+}
+
+.soter-guia a.soter-guia__boton:hover {
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-media);
+}
+
+.soter-guia a.soter-guia__boton:focus-visible {
+    outline: 3px solid var(--verde-agua);
+    outline-offset: 2px;
+}
+
+@media (max-width: 576px) {
+    .soter-guia {
+        flex-wrap: wrap;
+    }
+
+    .soter-guia a.soter-guia__boton {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .soter-acceso__avatar,
+    .soter-acceso__texto,
+    .soter-guia a.soter-guia__boton {
+        transition: none;
+    }
+
+    .soter-guia a.soter-guia__boton:hover,
+    .soter-acceso:hover .soter-acceso__avatar {
+        transform: none;
+    }
+}
+
+
+/* ---------- 3. Posición dinámica: sube solo cuando aparece el botón "subir" ----------
+   Pegar al final (después de las secciones 1 y 2). soter-acceso.js calcula
+   --soter-bottom: en la esquina mientras "subir" está oculto, y encima de él cuando aparece.
+   Sin JS, usa el valor de respaldo. */
+
+.soter-acceso {
+    bottom: var(--soter-bottom, calc(var(--espacio-md) + 46px + 12px));
+}
+
+/* La transición se activa después de la primera colocación (evita un salto al cargar) */
+.soter-acceso--lista {
+    transition: bottom .3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .soter-acceso--lista {
+        transition: none;
+    }
+}
