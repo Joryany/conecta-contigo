@@ -120,7 +120,7 @@
           servicio: 'Salud mental en Barranquilla y su área metropolitana. 24 h.' },
         { nombre: 'Línea de Salud Mental Distrital', numero: '315 300 2003', tel: '+573153002003', icono: 'llamar',
           servicio: 'Atención en salud mental del Distrito de Barranquilla. 24 h.' },
-        { nombre: 'Línea Charlemos (WhatsApp)', numero: '318 804 4000', wa: '573188044000', icono: 'mensaje',
+        { nombre: 'Línea Chatlemos (WhatsApp)', numero: '318 804 4000', wa: '573188044000', icono: 'mensaje',
           servicio: 'Atención por mensaje de WhatsApp en Barranquilla. 24 h.' },
         { nombre: 'ICBF · Línea 141', numero: '141', tel: '141', icono: 'ninos',
           servicio: 'Protección de niñas, niños y adolescentes. Gratuita, 24 h.' },

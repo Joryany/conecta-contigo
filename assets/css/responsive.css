@@ -1,0 +1,1208 @@
+/* =====================================================================
+   CONECTA CONTIGO — RESPONSIVE (tablet + teléfono)
+   assets/css/responsive.css
+
+   ÍNDICE
+     0  Variables y base
+     1  Header y navegación
+     2  Navegaciones internas (.nav-inter, hero de conoce)
+     3  Footer
+     4  Flotantes (subir · Soter · evaluación · ayuda)
+     5  Áreas táctiles (pointer: coarse)
+     6  Inputs a 16px (evita el zoom de iOS)
+     7  Modales y <dialog>
+     8  Hover → táctil
+     9  Páginas: index · comprende · conoce · contacto · emocional/cuenta
+        · estadistica · marco-legal · soter
+    10  Teléfono en horizontal
+   ===================================================================== */
+
+
+/* =====================================================================
+   0. VARIABLES Y BASE
+   ===================================================================== */
+
+:root {
+    --tap: 44px;                 /* área táctil mínima */
+    --flotante-borde: 16px;      /* separación de los flotantes al borde */
+    --flotante-gap: 10px;        /* separación entre flotantes apilados */
+    -webkit-tap-highlight-color: rgba(70, 142, 214, .18);
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;          /* 100vh incluye la barra del navegador móvil */
+}
+
+main,
+.pie {
+    overflow-wrap: break-word;   /* correos, URLs y palabras largas no desbordan */
+}
+
+video,
+iframe {
+    max-width: 100%;
+}
+
+
+/* =====================================================================
+   1. HEADER Y NAVEGACIÓN
+   style.css deja 6–7 enlaces en 3 filas + logo = casi media pantalla.
+   Se pasa a una rejilla compacta de 3 columnas (sin scroll oculto).
+   ===================================================================== */
+
+@media (max-width: 992px) {
+    body > header {
+        padding: 14px 4%;
+    }
+
+    .top-nav-container {
+        gap: 12px;
+    }
+
+    .top-nav-container img {
+        width: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-nav-container nav {
+        width: 100%;
+        gap: 6px;
+    }
+
+    /* 3 por fila; la última (p. ej. el 7.º enlace de cuenta) ocupa su fila */
+    .top-nav-container nav a {
+        flex: 1 1 calc(33.333% - 6px);
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: var(--tap);
+        padding: 8px 6px;
+        font-size: .88rem;
+        line-height: 1.15;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    body > header {
+        padding: 10px 12px;
+    }
+
+    .top-nav-container {
+        gap: 8px;
+    }
+
+    .top-nav-container img {
+        width: 52px;
+        margin: 0 auto;
+    }
+}
+
+
+/* =====================================================================
+   2. NAVEGACIONES INTERNAS
+   ===================================================================== */
+
+/* .nav-inter (contacto, emocional) y menú interno del hero de conoce */
+@media (max-width: 576px) {
+    .nav-inter nav,
+    .hero > nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 20px;
+        margin-bottom: 32px;
+        padding: 12px;
+        border-radius: 16px;
+    }
+
+    .hero > nav {
+        margin-bottom: 0;
+    }
+
+    .nav-inter nav a,
+    .hero > nav a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: var(--tap);
+        padding: 8px 10px;
+        font-size: .88rem;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    /* cantidad impar de enlaces → el último ocupa toda la fila */
+    .nav-inter nav a:last-child:nth-child(odd),
+    .hero > nav a:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* =====================================================================
+   3. FOOTER (.pie)
+   style.css ya reordena columnas (900 / 560); aquí solo táctil y aire.
+   ===================================================================== */
+
+@media (max-width: 768px) {
+    .pie {
+        padding-top: 32px;
+    }
+
+    .pie .pie__lista a,
+    .pie__pagina,
+    .legal-flex a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: var(--tap);
+        padding-top: 4px;
+        padding-bottom: 4px;
+        text-align: center;
+    }
+
+    .pie__base {
+        gap: 4px;
+    }
+}
+
+
+/* =====================================================================
+   4. FLOTANTES
+   general.js (bloque "Botón Soter") mide .boton-subir (position, bottom,
+   offsetHeight, clase .visible) y .evaluacion-flotante, y escribe
+   --soter-bottom en línea. Por eso aquí solo se reposicionan "subir" y
+   "evaluación" en px reales y Soter se coloca solo, encima de ellos.
+
+   Pila derecha en teléfono/tablet vertical:
+     index    : Soter ▲ subir ▲ evaluación
+     el resto : Soter ▲ subir
+   comprende además tiene .ayuda-flotante abajo a la IZQUIERDA.
+   ===================================================================== */
+
+@media (max-width: 768px) {
+    .boton-subir {
+        width: var(--tap);
+        height: var(--tap);
+        right: var(--flotante-borde);
+        bottom: var(--flotante-borde);
+        font-size: 1.1rem;
+    }
+
+    /* solo index tiene botón de evaluación: "subir" va encima de él */
+    body:has(.evaluacion-flotante) .boton-subir {
+        bottom: calc(var(--flotante-borde) + 46px + var(--flotante-gap));
+    }
+
+    .evaluacion-flotante {
+        right: var(--flotante-borde);
+        bottom: var(--flotante-borde);
+    }
+
+    .evaluacion-panel {
+        max-height: calc(100vh - 96px);
+        max-height: calc(100dvh - 96px);
+        overflow-y: auto;
+    }
+
+    .soter-acceso {
+        right: var(--flotante-borde);
+    }
+
+    .soter-acceso__avatar {
+        width: var(--tap);
+        height: var(--tap);
+    }
+}
+
+
+/* =====================================================================
+   5. ÁREAS TÁCTILES (solo pantallas táctiles; escritorio no cambia)
+   El tamaño visual de los iconos no cambia: crece el área pulsable.
+   ===================================================================== */
+
+@media (pointer: coarse) {
+
+    /* cierre del panel de evaluación: 22px visibles, 44px pulsables */
+    .evaluacion-cerrar {
+        position: relative;
+    }
+
+    .evaluacion-cerrar::after {
+        content: "";
+        position: absolute;
+        inset: -11px;
+    }
+
+    /* modales y diálogos */
+    .btn-cerrar-modal,
+    .modal-panel .modal-cerrar {
+        width: var(--tap);
+        height: var(--tap);
+    }
+
+    .modal-tab,
+    .matiz-boton,
+    .personalizacion-opcion {
+        min-height: var(--tap);
+    }
+
+    .personalizacion-color-item input[type="color"] {
+        width: var(--tap);
+        height: 36px;
+    }
+
+    /* emocional */
+    .btn-personalizar-icono {
+        width: var(--tap);
+        height: var(--tap);
+        top: 4px;
+        right: 4px;
+    }
+
+    .calendario-header .btn-icono {
+        min-width: var(--tap);
+        min-height: var(--tap);
+    }
+
+    .registro-acciones button {
+        min-height: var(--tap);
+    }
+
+    /* auth */
+    .btn-mostrar-password {
+        min-width: 76px;
+        min-height: var(--tap);
+    }
+
+    /* soter */
+    .soter-icon-btn {
+        width: var(--tap);
+        height: var(--tap);
+    }
+
+    .soter-widget button.soter-chip,
+    .soter-widget a.soter-action,
+    .soter-widget button.soter-breath__btn {
+        min-height: var(--tap);
+    }
+
+    .soter-send-btn {
+        width: 46px;
+        height: 46px;
+    }
+
+    .soter-widget__composer input {
+        height: 46px;
+    }
+
+    /* marco-legal */
+    .buscador-legal .btn-limpiar {
+        width: 40px;
+        height: 40px;
+        right: 4px;
+    }
+
+    .cita-apa button,
+    .enlaces-acceso a,
+    .barra-retorno .volver {
+        min-height: var(--tap);
+    }
+
+    /* estadistica */
+    .indice a {
+        min-height: var(--tap);
+    }
+
+    /* contacto: Llamar / Chatear */
+    .botones a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: var(--tap);
+    }
+
+    /* comprende */
+    .chip,
+    .modo-toggle button,
+    .audio-controles button,
+    .audio-controles select,
+    .guia-chip,
+    .tarjeta-item__boton,
+    .boton-texto,
+    .detalle__volver,
+    .linea__btn {
+        min-height: var(--tap);
+    }
+
+    .migas a,
+    .migas button {
+        display: inline-flex;
+        align-items: center;
+        min-height: var(--tap);
+    }
+}
+
+
+/* =====================================================================
+   6. INPUTS A 16px (iOS hace zoom al enfocar cualquier campo < 16px)
+   ===================================================================== */
+
+@media (max-width: 768px), (pointer: coarse) {
+    .soter-widget__composer input,
+    .buscador-caja input,
+    .buscador-legal input,
+    .auth-form input[type="text"],
+    .auth-form input[type="password"],
+    .auth-form select,
+    .personalizacion-grupo select,
+    .personalizacion-av-fila select {
+        font-size: 16px;
+    }
+
+    .auth-form select {
+        width: 100%;
+        min-height: var(--tap);
+    }
+}
+
+
+/* =====================================================================
+   7. MODALES Y <dialog>
+   ===================================================================== */
+
+/* 90vh incluye la barra del navegador en móvil → se usa dvh */
+@media (max-width: 992px) {
+    .modal-panel,
+    .modal-panel--protocolo {
+        max-height: calc(100vh - 1.5rem);
+        max-height: calc(100dvh - 1.5rem);
+    }
+}
+
+@media (max-width: 576px) {
+    dialog.modal-personalizacion,
+    dialog.modal-emociones {
+        width: calc(100% - 16px);
+        max-width: none;
+        height: calc(100vh - 16px);
+        height: calc(100dvh - 16px);
+        max-height: calc(100vh - 16px);
+        max-height: calc(100dvh - 16px);
+    }
+
+    /* personalización: 40px laterales dejaban ~220px útiles a 320px */
+    .modal-personalizacion__header {
+        padding: 10px 14px;
+    }
+
+    .modal-personalizacion__contenido {
+        padding: 16px 14px;
+    }
+
+    .modal-personalizacion__footer {
+        padding: 10px 14px 14px;
+    }
+
+    .modal-personalizacion__footer .btn-primario {
+        width: 100%;
+        min-height: 48px;
+    }
+
+    .personalizacion-grid {
+        gap: 14px;
+        margin-bottom: 16px;
+    }
+
+    .personalizacion-grupo {
+        padding: 12px;
+    }
+
+    /* opciones en rejilla de 2: todas del mismo tamaño y fáciles de tocar */
+    .personalizacion-opciones {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .personalizacion-opcion {
+        min-width: 0;
+        border-radius: 14px;
+        text-align: left;
+        line-height: 1.2;
+    }
+
+    .personalizacion-av-fila > label {
+        min-width: 0;
+    }
+
+    /* "Conoce tus emociones": las pestañas en una sola fila deslizable
+       (8 pestañas en varias filas se comían media ventana) */
+    .modal-emociones__header {
+        padding: 8px 14px;
+    }
+
+    .modal-emociones__tabs {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 8px 14px;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .modal-emociones__tabs .modal-tab {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+    }
+
+    .modal-emociones__contenido {
+        padding: 16px 14px;
+    }
+}
+
+/* teléfono en horizontal: el diálogo usa casi toda la altura */
+@media (max-height: 500px) and (orientation: landscape) {
+    dialog.modal-personalizacion,
+    dialog.modal-emociones {
+        width: min(760px, calc(100% - 16px));
+        height: calc(100vh - 8px);
+        height: calc(100dvh - 8px);
+        max-height: calc(100vh - 8px);
+        max-height: calc(100dvh - 8px);
+    }
+}
+
+
+/* =====================================================================
+   8. HOVER → TÁCTIL
+   En pantallas sin hover, el estado :hover se queda "pegado" tras tocar
+   y los desplazamientos (p. ej. .Tarjeta se mueve 8px en X) empujan el
+   contenido. Se neutralizan solo los transform; colores y sombras igual.
+   ===================================================================== */
+
+@media (hover: none) {
+    button:hover,
+    input[type="submit"]:hover,
+    nav a:hover,
+    .card:hover,
+    .tarjeta:hover,
+    .Tarjeta:hover,
+    figure:hover,
+    figure:hover img,
+    main section:not(.hero):hover,
+    .nav-inter nav a:hover,
+    .hero nav a:hover,
+    .indice a:hover,
+    .btn-principal:hover,
+    .hero-buttons .btn:hover,
+    .evaluacion-accion:hover,
+    .grid-experiencias li:hover,
+    #objetivos ol li:hover,
+    .comparacion-col:hover,
+    .componente-card:hover,
+    .ruta-card:hover,
+    .tarjeta-item:hover,
+    .pilar-card:hover,
+    .kpi:hover,
+    .interpretacion article:hover,
+    .proceso article:hover,
+    .subseccion-evaluacion article:hover,
+    .registro-item:hover,
+    .emocion-detalle:hover,
+    .dia-celda:hover,
+    .soter-info-card:hover,
+    .soter-hero-card:hover,
+    .soter-widget:hover,
+    .card-legal:not([open]):hover,
+    h2#Información ~ article:hover {
+        transform: none;
+    }
+}
+
+
+/* =====================================================================
+   9. PÁGINAS
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   9.1  INDEX
+   --------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+    .hero:has(.hero-container) {
+        padding: 84px 30px 64px;
+        min-height: 0;
+        margin-bottom: 36px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 900px) {
+    /* tablet: 2 columnas; la 5.ª tarjeta ocupa toda la fila */
+    .tools-section .grid-tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tools-section .grid-tarjetas > .tarjeta:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .mission-vision {
+        padding: 12px 0;
+        gap: 16px;
+        margin-bottom: 36px;
+    }
+
+    .mission-vision p {
+        padding: 0;
+        text-align: left;
+    }
+
+    /* tarjeta de Soter: el botón pasa a su propia fila desde tablet */
+    .soter-guia {
+        flex-wrap: wrap;
+    }
+
+    .soter-guia a.soter-guia__boton {
+        flex: 1 1 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: var(--tap);
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .evaluacion-accion {
+        min-height: 48px;
+    }
+
+    .evaluacion-accion + .evaluacion-accion {
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero:has(.hero-container) {
+        padding: 56px 20px 44px;
+    }
+
+    .hero:has(.hero-container) h1 {
+        font-size: 2.4rem;
+    }
+
+    .hero:has(.hero-container) h2 {
+        font-size: 1.4rem;
+        margin: 12px 0 14px;
+    }
+
+    .hero:has(.hero-container) .hero-content p {
+        font-size: 1rem;
+        line-height: 1.65;
+    }
+
+    .hero:has(.hero-container) aside {
+        margin-bottom: 16px;
+        font-size: .84rem;
+    }
+
+    .hero-buttons {
+        margin-top: 24px;
+        gap: 12px;
+    }
+}
+
+
+/* ---------------------------------------------------------------------
+   9.2  COMPRENDE
+   --------------------------------------------------------------------- */
+
+/* A 320px, .container sumaba -1.2rem + 15px de padding de style.css
+   y las columnas de 260px se salían ~19px. */
+@media (max-width: 620px) {
+    main > .container:has(> .comprende-hero) {
+        width: 100%;
+        padding-inline: 0;
+    }
+}
+
+#comprende-home .grid-tarjetas {
+    grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+}
+
+/* 3 rutas en fila mientras quepan (antes saltaba a 1 columna en 768px) */
+.rutas-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+}
+
+/* tablet: el hero vuelve a mostrar la ilustración (se ocultaba bajo 900px) */
+@media (min-width: 641px) and (max-width: 900px) {
+    .comprende-hero {
+        grid-template-columns: 1.1fr .9fr;
+        text-align: left;
+        min-height: 300px;
+    }
+
+    .comprende-hero h1 {
+        text-align: left;
+    }
+
+    .comprende-hero__texto {
+        margin-inline: 0;
+    }
+
+    .comprende-hero__imagen {
+        display: block;
+        min-height: 240px;
+    }
+}
+
+@media (max-width: 576px) {
+    /* en una sola columna, grid-auto-rows:1fr igualaba todas las tarjetas
+       a la altura de la más alta */
+    #comprende-home .grid-tarjetas {
+        grid-auto-rows: auto;
+    }
+
+    .comprende-hero {
+        margin-top: 12px;
+        padding: 1.5rem 1.1rem;
+        border-radius: 24px;
+    }
+
+    .comprende-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .aviso-general {
+        font-size: .86rem;
+        padding: .7rem .9rem;
+    }
+
+    .rutas-grid {
+        gap: .75rem;
+        margin: 1.25rem 0 1.5rem;
+    }
+
+    .ruta-card {
+        min-height: 0;
+        padding: 1.1rem 1.2rem;
+    }
+}
+
+
+/* ---------------------------------------------------------------------
+   9.3  CONOCE
+   conoce.css tiene main{padding} sin media query y selectores globales
+   (article, ul, ol, table, p). Se acota por #introduccion / #marcot.
+   --------------------------------------------------------------------- */
+
+/* cuadrículas que no cabían en ~210px útiles a 320px */
+.componentes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+}
+
+.comparacion-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+
+.grid-experiencias {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+}
+
+@media (max-width: 768px) {
+    /* tablas de 2 columnas: que el texto envuelva en vez de forzar scroll */
+    #marcot table {
+        display: table;
+        width: 100%;
+        white-space: normal;
+        overflow: visible;
+        margin: 28px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    main:has(> #introduccion) {
+        padding: 18px 10px 30px;
+    }
+
+    main:has(> #introduccion) > section:not(.hero) {
+        padding: 18px 14px;
+        margin-bottom: 26px;
+        border-radius: 14px;
+    }
+
+    #marcot article {
+        padding: 16px 12px;
+        margin-top: 26px;
+        border-left-width: 4px;
+    }
+
+    #introduccion aside,
+    #marcot aside {
+        padding: 16px 14px;
+        margin: 22px 0;
+    }
+
+    /* justificado en columnas estrechas deja "ríos" de espacio */
+    main:has(> #introduccion) :is(p, article p) {
+        text-align: left;
+        hyphens: auto;
+    }
+
+    /* sangrías acumuladas (ul 30px + li 35px) → ~145px de texto a 320px */
+    :where(#introduccion, #objetivos, #marcot) ul {
+        margin: 14px 0 18px;
+    }
+
+    :where(#introduccion, #objetivos, #marcot) ul li {
+        padding-left: 28px;
+    }
+
+    :where(#introduccion, #objetivos, #marcot) ol {
+        margin-left: 0;
+        padding-left: 22px;
+    }
+
+    :where(#introduccion, #marcot) dd {
+        margin-left: 8px;
+    }
+
+    #introduccion .Tarjeta,
+    #marcot .Tarjeta {
+        padding: 14px 16px;
+    }
+
+    #marcot table thead th,
+    #marcot table tbody td,
+    #marcot table tfoot td {
+        padding: 12px 10px;
+        font-size: .9rem;
+    }
+
+    .grid-experiencias img {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero:has(> .hero-content) {
+        padding: 48px 16px 28px;
+        margin-bottom: 32px;
+    }
+
+    .hero:has(> .hero-content) h1 {
+        font-size: clamp(1.45rem, 6.4vw, 2rem);
+    }
+
+    .presentation-open-btn {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+
+/* ---------------------------------------------------------------------
+   9.4  CONTACTO
+   .hero-texto es position:absolute: con height:auto el texto no daba
+   altura y se recortaba (overflow:hidden). Pasa a flujo normal.
+   --------------------------------------------------------------------- */
+
+@media (max-width: 900px) {
+    .hero:has(> .hero-texto) {
+        height: auto;
+        min-height: 260px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hero:has(> .hero-texto) .hero-texto {
+        position: relative;
+        inset: auto;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero:has(> .hero-texto) {
+        min-height: 220px;
+        margin-top: 16px;
+        border-radius: 18px;
+    }
+
+    .hero:has(> .hero-texto) .hero-texto {
+        padding: 28px 18px;
+    }
+
+    /* main ya aporta 15px: .contacto sumaba otros 20px por lado */
+    .contacto {
+        padding: 0;
+    }
+
+    .botones a {
+        flex: 1 1 120px;
+        margin: 12px 0 0;
+        text-align: center;
+    }
+}
+
+
+/* ---------------------------------------------------------------------
+   9.5  EMOCIONAL + CUENTA (emocional.css, personalizacion.css, auth.css)
+   --------------------------------------------------------------------- */
+
+/* tablet: calendario y panel del día lado a lado (cabe desde ~700px) */
+@media (min-width: 701px) and (max-width: 900px) {
+    .calendario-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(250px, 300px);
+        gap: 20px;
+    }
+}
+
+/* tablet vertical estrecha / teléfono grande: una columna sin estirarse */
+@media (min-width: 577px) and (max-width: 700px) {
+    .calendario-layout {
+        max-width: 560px;
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-emocional {
+        padding: 36px 18px 56px;
+    }
+
+    .hero-emocional h1 {
+        font-size: 2rem;
+    }
+
+    .hero-emocional__cta {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .seccion-emocional.card {
+        padding: 26px 16px;
+    }
+
+    /* "No sé qué siento" + "Guardar registro" no caben en una fila */
+    .acciones-registro {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .acciones-registro button {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .calendario-header .btn-icono {
+        min-width: var(--tap);
+        min-height: var(--tap);
+        padding: 0 12px;
+    }
+
+    /* cuenta */
+    .auth-seccion {
+        max-width: none;
+    }
+
+    .auth-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .auth-tab {
+        min-height: var(--tap);
+        padding: 8px 10px;
+        font-size: .88rem;
+    }
+
+    .auth-tab:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+/* 7 columnas a 320px: más ancho útil para las celdas del calendario */
+@media (max-width: 400px) {
+    .calendario-card,
+    .panel-dia {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .calendario-grid {
+        gap: 4px;
+    }
+}
+
+
+/* ---------------------------------------------------------------------
+   9.6  ESTADISTICA
+   --------------------------------------------------------------------- */
+
+@media (max-width: 992px) {
+    /* dt + dd quedaban separados igual que cada par entre sí */
+    .metodologia dl {
+        gap: 6px 0;
+    }
+
+    .metodologia dd {
+        margin-bottom: 10px;
+    }
+
+    .hero__grafico svg {
+        max-width: 220px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    /* 5 KPI en 2 columnas: el último ocupa la fila completa */
+    .kpis > .kpi:last-of-type {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 576px) {
+    /* decorativo: se oculta para llegar antes a los resultados */
+    .hero__grafico {
+        display: none;
+    }
+
+    .metodologia dt,
+    .metodologia dd {
+        padding: 12px 14px;
+    }
+
+    .resultado {
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .resultado figure {
+        min-height: 0;
+        padding: 12px;
+    }
+
+    .kpi {
+        padding: 16px 14px;
+    }
+}
+
+
+/* ---------------------------------------------------------------------
+   9.7  MARCO LEGAL
+   marco-legal.css: main{padding:40px 20px} sin media query anulaba los
+   ajustes de style.css; las pestañas dejaban la 2.ª fuera de pantalla.
+   --------------------------------------------------------------------- */
+
+@media (max-width: 768px) {
+    main:has(> .hero-legal) {
+        padding: 24px 12px;
+    }
+
+    /* las 2 pestañas visibles a la vez, sin scroll oculto */
+    .tabs-legal-wrap {
+        overflow: visible;
+        padding: 8px 0;
+        margin-bottom: 28px;
+    }
+
+    .tabs-legal {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 0 12px;
+    }
+
+    .tabs-legal button {
+        white-space: normal;
+        min-height: 48px;
+        padding: 8px 10px;
+        font-size: .82rem;
+        line-height: 1.2;
+        border-radius: 14px;
+    }
+
+    /* la barra sticky tapa el inicio al saltar a un ancla */
+    html:has(.tabs-legal-wrap) {
+        scroll-padding-top: 72px;
+    }
+
+    .bloque-legal {
+        margin-bottom: 44px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-legal {
+        padding: 36px 14px 28px;
+        margin-bottom: 28px;
+    }
+
+    .hero-legal h1 {
+        font-size: clamp(1.6rem, 7vw, 2.2rem);
+    }
+
+    .hero-legal p.intro {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .hero-legal .etiqueta-eyebrow {
+        font-size: .72rem;
+        padding: 6px 14px;
+    }
+
+    .buscador-legal input {
+        padding: 14px 46px 14px 46px;
+    }
+
+    .barra-retorno {
+        margin-top: 12px;
+        padding: 6px 14px;
+    }
+
+    .categoria-legal h3.titulo-categoria {
+        font-size: 1.1rem;
+        gap: 10px;
+    }
+
+    .card-legal summary {
+        padding: 14px;
+    }
+
+    .card-legal summary .titulo-norma {
+        font-size: .98rem;
+    }
+
+    .cuerpo-norma {
+        padding: 0 14px 20px;
+    }
+
+    .ficha {
+        padding: 14px;
+    }
+
+    .tarjeta-terminos > summary {
+        padding: 18px 14px;
+    }
+
+    .tarjeta-terminos .encabezado-terminos svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .cuerpo-terminos {
+        padding: 0 14px 22px;
+    }
+
+    .cuerpo-terminos ul {
+        margin-left: 18px;
+    }
+
+    .bloque-legal > .intro-bloque {
+        padding: 18px;
+    }
+}
+
+
+/* ---------------------------------------------------------------------
+   9.8  SOTER
+   --------------------------------------------------------------------- */
+
+@media (max-width: 576px) {
+    .soter-hero-card {
+        margin-bottom: 16px;
+    }
+
+    /* 3 pestañas visibles y del mismo ancho (antes: scroll horizontal oculto) */
+    .soter-tabs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        overflow: visible;
+        padding: 6px;
+    }
+
+    .soter-tab {
+        flex-direction: column;
+        gap: 4px;
+        min-width: 0;
+        min-height: 56px;
+        padding: 8px 4px;
+        white-space: normal;
+        text-align: center;
+        font-size: .74rem;
+        line-height: 1.2;
+    }
+
+    .soter-tab__label {
+        white-space: normal;
+        font-size: .74rem;
+    }
+
+    .soter-tab__icon {
+        flex: none;
+        width: auto;
+        height: auto;
+        font-size: 1.1rem;
+        line-height: 1;
+    }
+
+    .soter-tab.is-active::after {
+        bottom: 2px;
+    }
+
+    .soter-widget__controls {
+        gap: 6px;
+    }
+}
+
+
+/* =====================================================================
+   10. TELÉFONO EN HORIZONTAL (poca altura)
+   ===================================================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    body > header {
+        padding: 8px 12px;
+    }
+
+    .top-nav-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .top-nav-container img {
+        width: 40px;
+    }
+
+    .hero:has(.hero-container) {
+        padding: 40px 28px;
+        min-height: 0;
+    }
+
+    .soter-widget {
+        height: calc(100vh - 16px);
+        height: calc(100dvh - 16px);
+        min-height: 340px;
+    }
+}
