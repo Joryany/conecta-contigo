@@ -292,47 +292,40 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     );
 
-    /* ---------------------------------------------------------------
-       Teclado
-    --------------------------------------------------------------- */
+/* ---------------------------------------------------------------
+   Teclado
+--------------------------------------------------------------- */
 
-    document.addEventListener(
-        "keydown",
-        function (evento) {
-            const etiqueta =
-                (
-                    document.activeElement.tagName ||
-                    ""
-                ).toLowerCase();
+document.addEventListener(
+    "keydown",
+    function (evento) {
+        const etiqueta = (
+            document.activeElement.tagName || ""
+        ).toLowerCase();
 
-            if (
-                etiqueta === "input" ||
-                etiqueta === "textarea"
-            ) {
-                return;
-            }
-
-            if (
-                evento.key === "ArrowRight" ||
-                evento.key === "ArrowDown"
-            ) {
-                evento.preventDefault();
-
-                irAFlat(
-                    indiceActual + 1
-                );
-            } else if (
-                evento.key === "ArrowLeft" ||
-                evento.key === "ArrowUp"
-            ) {
-                evento.preventDefault();
-
-                irAFlat(
-                    indiceActual - 1
-                );
-            }
+        if (
+            etiqueta === "input" ||
+            etiqueta === "textarea"
+        ) {
+            return;
         }
-    );
+
+        if (evento.key === "ArrowRight") {
+            evento.preventDefault();
+
+            irAFlat(
+                indiceActual + 1
+            );
+
+        } else if (evento.key === "ArrowLeft") {
+            evento.preventDefault();
+
+            irAFlat(
+                indiceActual - 1
+            );
+        }
+    }
+);
 
     /* ---------------------------------------------------------------
        Detección por posición real
