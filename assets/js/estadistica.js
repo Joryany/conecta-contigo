@@ -150,6 +150,45 @@ function promedio(lista) {
 
 }
 
+// Desviación estándar muestral (n - 1) calculada con los valores reales,
+// usando la media SIN redondear. Devuelve null si hay menos de 2 datos.
+function desviacionEstandar(lista) {
+
+    if (lista.length < 2) {
+
+        return null;
+
+    }
+
+    const media =
+        lista.reduce(
+            (total, valor) =>
+                total + valor,
+            0
+        ) / lista.length;
+
+    const sumaCuadrados =
+        lista.reduce(
+            (total, valor) =>
+                total + Math.pow(valor - media, 2),
+            0
+        );
+
+    return Math.sqrt(
+        sumaCuadrados / (lista.length - 1)
+    );
+
+}
+
+// Texto para mostrar la desviación estándar (2 decimales)
+function formatearDesviacion(valor) {
+
+    return valor === null
+        ? "—"
+        : valor.toFixed(2);
+
+}
+
 function porcentaje(parte, total) {
 
     if (total === 0) {
@@ -744,6 +783,14 @@ function procesarComparacion() {
 
                 "incTrauma"
 
+            ],
+
+            idsDesviacion: [
+
+                "dePreTrauma",
+
+                "dePostTrauma"
+
             ]
 
         },
@@ -763,6 +810,14 @@ function procesarComparacion() {
                 "postAntisociales",
 
                 "incAntisociales"
+
+            ],
+
+            idsDesviacion: [
+
+                "dePreAntisociales",
+
+                "dePostAntisociales"
 
             ]
 
@@ -784,6 +839,14 @@ function procesarComparacion() {
 
                 "incRutas"
 
+            ],
+
+            idsDesviacion: [
+
+                "dePreRutas",
+
+                "dePostRutas"
+
             ]
 
         },
@@ -803,6 +866,14 @@ function procesarComparacion() {
                 "postSaludMental",
 
                 "incSaludMental"
+
+            ],
+
+            idsDesviacion: [
+
+                "dePreSaludMental",
+
+                "dePostSaludMental"
 
             ]
 
@@ -824,6 +895,14 @@ function procesarComparacion() {
 
                 "incComprension"
 
+            ],
+
+            idsDesviacion: [
+
+                "dePreComprension",
+
+                "dePostComprension"
+
             ]
 
         },
@@ -844,6 +923,14 @@ function procesarComparacion() {
 
                 "incSenales"
 
+            ],
+
+            idsDesviacion: [
+
+                "dePreSenales",
+
+                "dePostSenales"
+
             ]
 
         },
@@ -863,6 +950,14 @@ function procesarComparacion() {
                 "postAyuda",
 
                 "incAyuda"
+
+            ],
+
+            idsDesviacion: [
+
+                "dePreAyuda",
+
+                "dePostAyuda"
 
             ]
 
@@ -914,6 +1009,15 @@ function procesarComparacion() {
             const mediaPost =
                 promedio(valoresPost);
 
+            // Desviación estándar calculada con los mismos datos
+            // individuales que alimentan las medias.
+
+            const dePre =
+                desviacionEstandar(valoresPre);
+
+            const dePost =
+                desviacionEstandar(valoresPost);
+
             actualizarResultado(
 
                 dimension.ids[0],
@@ -928,13 +1032,29 @@ function procesarComparacion() {
 
             );
 
+            actualizarDesviacion(
+
+                dimension.idsDesviacion[0],
+
+                dimension.idsDesviacion[1],
+
+                dePre,
+
+                dePost
+
+            );
+
             crearGrafica(
 
                 dimension.canvas,
 
                 mediaPre,
 
-                mediaPost
+                mediaPost,
+
+                dePre,
+
+                dePost
 
             );
 
@@ -1003,6 +1123,132 @@ function actualizarResultado(
 }
 
 /*==================================================
+=        ACTUALIZAR DESVIACIÓN ESTÁNDAR (TEXTO)    =
+==================================================*/
+
+function actualizarDesviacion(
+
+    idDePre,
+
+    idDePost,
+
+    dePre,
+
+    dePost
+
+) {
+
+    const elementoPre =
+        document.getElementById(idDePre);
+
+    const elementoPost =
+        document.getElementById(idDePost);
+
+    if (elementoPre) {
+
+        elementoPre.innerText =
+            formatearDesviacion(dePre);
+
+    }
+
+    if (elementoPost) {
+
+        elementoPost.innerText =
+            formatearDesviacion(dePost);
+
+    }
+
+}
+
+/*==================================================
+=     PLUGIN: BARRAS DE ERROR (±1 DESV. ESTÁNDAR)  =
+==================================================*/
+
+// Dibuja sobre cada barra una línea vertical con topes que va de
+// (media − DE) a (media + DE). Plugin propio: no requiere librerías extra.
+
+const pluginBarrasDesviacion = {
+
+    id: "barrasDesviacion",
+
+    afterDatasetsDraw(chart, args, opciones) {
+
+        const desviaciones =
+            (opciones && opciones.valores) || [];
+
+        const colores =
+            (opciones && opciones.colores) || [];
+
+        const eje = chart.scales.y;
+
+        const barras = chart.getDatasetMeta(0).data;
+
+        const ctx = chart.ctx;
+
+        barras.forEach((barra, i) => {
+
+            const de = desviaciones[i];
+
+            if (de === null || de === undefined) {
+
+                return;
+
+            }
+
+            const media =
+                chart.data.datasets[0].data[i];
+
+            const x = barra.x;
+
+            const yArriba =
+                eje.getPixelForValue(media + de);
+
+            const yAbajo =
+                eje.getPixelForValue(media - de);
+
+            const yMedia =
+                eje.getPixelForValue(media);
+
+            const tope = 9;
+
+            ctx.save();
+
+            ctx.strokeStyle = colores[i] || "#14437e";
+
+            ctx.fillStyle = "#ffffff";
+
+            ctx.lineWidth = 2.5;
+
+            ctx.lineCap = "round";
+
+            ctx.beginPath();
+
+            ctx.moveTo(x, yArriba);
+            ctx.lineTo(x, yAbajo);
+
+            ctx.moveTo(x - tope, yArriba);
+            ctx.lineTo(x + tope, yArriba);
+
+            ctx.moveTo(x - tope, yAbajo);
+            ctx.lineTo(x + tope, yAbajo);
+
+            ctx.stroke();
+
+            // Punto blanco sobre la media
+            ctx.beginPath();
+            ctx.arc(x, yMedia, 4, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            ctx.restore();
+
+        });
+
+    }
+
+};
+
+/*==================================================
 =              CREAR GRÁFICAS CHART.JS             =
 ==================================================*/
 
@@ -1012,7 +1258,11 @@ function crearGrafica(
 
     valorPre,
 
-    valorPost
+    valorPost,
+
+    dePre = null,
+
+    dePost = null
 
 ) {
 
@@ -1038,6 +1288,27 @@ function crearGrafica(
     const contexto =
         canvas.getContext("2d");
 
+    // El eje se amplía solo si media ± desviación sale de la escala 0-5,
+    // para que las barras de error se vean completas.
+
+    const limites = [valorPre, valorPost].map((media, i) => {
+
+        const de = [dePre, dePost][i] || 0;
+
+        return [media - de, media + de];
+
+    });
+
+    const techo = Math.max(
+        5,
+        Math.ceil(Math.max(...limites.map(l => l[1])))
+    );
+
+    const piso = Math.min(
+        0,
+        Math.floor(Math.min(...limites.map(l => l[0])))
+    );
+
     graficos[idCanvas] = new Chart(
 
         contexto,
@@ -1050,9 +1321,9 @@ function crearGrafica(
 
                 labels: [
 
-                    "Antes",
+                    ["Antes", "DE = " + formatearDesviacion(dePre)],
 
-                    "Después"
+                    ["Después", "DE = " + formatearDesviacion(dePost)]
 
                 ],
 
@@ -1094,6 +1365,28 @@ function crearGrafica(
 
                         display: false
 
+                    },
+
+                    barrasDesviacion: {
+
+                        valores: [dePre, dePost],
+
+                        colores: ["#14437e", "#2e6b2a"]
+
+                    },
+
+                    tooltip: {
+
+                        callbacks: {
+
+                            afterLabel: contextoTooltip =>
+                                "Desviación estándar: " +
+                                formatearDesviacion(
+                                    [dePre, dePost][contextoTooltip.dataIndex]
+                                )
+
+                        }
+
                     }
 
                 },
@@ -1104,7 +1397,9 @@ function crearGrafica(
 
                         beginAtZero: true,
 
-                        max: 5,
+                        min: piso,
+
+                        max: techo,
 
                         ticks: {
 
@@ -1116,7 +1411,9 @@ function crearGrafica(
 
                 }
 
-            }
+            },
+
+            plugins: [pluginBarrasDesviacion]
 
         }
 

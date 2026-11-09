@@ -68,6 +68,14 @@
     /* Elevación (z-index) de elementos flotantes */
     --z-flotante-alto: 999;
     --z-flotante-bajo: 500;
+    --z-header: 600;
+    --z-menu-movil: 900;
+
+    /* Diámetro del botón del menú principal */
+    --tam-boton-menu: 40px;
+
+    /* Altura aproximada del header fijo (compensa los enlaces ancla) */
+    --alto-header: 130px;
 }
 
 
@@ -290,6 +298,156 @@ header p {
     background: linear-gradient(135deg, var(--azul-claro), var(--azul-marino));
     color: var(--blanco);
 
+}
+
+/* Navegación principal: fija en pantallas grandes (≥ 993px).
+   En pantallas pequeñas pasa a ser un menú desplegable (sección 16). */
+
+@media (min-width: 993px) {
+    html {
+        scroll-padding-top: var(--alto-header);
+    }
+
+    body > header {
+        position: sticky;
+        top: 0;
+        z-index: var(--z-header);
+    }
+}
+
+/* Botón del menú principal: lo crea general.js dentro del header.
+   Oculto si la página no lo creó. En pantallas grandes queda en la barra
+   y colapsa/expande los enlaces; en pequeñas es flotante (sección 16). */
+
+.boton-menu {
+    display: none;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: var(--tam-boton-menu);
+    height: var(--tam-boton-menu);
+    padding: 0;                    /* anula el padding del estilo global de button */
+    border: none;
+    border-radius: 50%;
+    background: var(--azul-marino);
+    color: var(--blanco);
+    box-shadow: var(--sombra-media);
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+body.tiene-menu-movil .boton-menu {
+    display: flex;
+}
+
+.boton-menu:hover,
+.boton-menu:focus-visible {
+    background: var(--azul-claro);
+    transform: none;               /* anula el "levantar" del button global */
+    box-shadow: var(--sombra-media);
+}
+
+/* Barras del icono (centradas dentro del círculo) */
+
+.boton-menu__barras,
+.boton-menu__barras::before,
+.boton-menu__barras::after {
+    display: block;
+    width: 18px;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform .25s ease, top .25s ease, background .25s ease;
+}
+
+.boton-menu__barras {
+    position: relative;
+}
+
+.boton-menu__barras::before,
+.boton-menu__barras::after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.boton-menu__barras::before {
+    top: -6px;
+}
+
+.boton-menu__barras::after {
+    top: 6px;
+}
+
+/* Icono de chincheta (solo pantallas grandes) */
+
+.boton-menu__pin {
+    display: block;
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .25s ease;
+}
+
+/* Pantallas grandes: el botón fija / suelta el header completo.
+   Fijo (por defecto): chincheta recta. Suelto: el header se desplaza con
+   la página y la chincheta se inclina y queda flotando arriba a la derecha. */
+@media (min-width: 993px) {
+    .boton-menu__barras {
+        display: none;
+    }
+
+    body.menu-escritorio-suelto > header {
+        position: static;
+    }
+
+    html:has(body.menu-escritorio-suelto) {
+        scroll-padding-top: 0;
+    }
+
+    /* Con el header suelto, el botón queda flotando para poder volver a fijarlo */
+    body.menu-escritorio-suelto .boton-menu {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        z-index: var(--z-menu-movil);
+        background: var(--gris);
+    }
+
+    body.menu-escritorio-suelto .boton-menu:hover,
+    body.menu-escritorio-suelto .boton-menu:focus-visible {
+        background: var(--azul-claro);
+    }
+
+    body.menu-escritorio-suelto .boton-menu__pin {
+        transform: rotate(45deg);
+    }
+}
+
+/* Pantallas pequeñas: se usa el icono de barras, no la chincheta */
+@media (max-width: 992px) {
+    .boton-menu__pin {
+        display: none;
+    }
+}
+
+/* Estado abierto: las tres barras se convierten en una "X" */
+.boton-menu[aria-expanded="true"] .boton-menu__barras {
+    background: transparent;
+}
+
+.boton-menu[aria-expanded="true"] .boton-menu__barras::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.boton-menu[aria-expanded="true"] .boton-menu__barras::after {
+    top: 0;
+    transform: rotate(-45deg);
 }
 
 /* Navegación secundaria (banner de anclas) */
@@ -893,6 +1051,60 @@ input[type="submit"]:focus-visible {
 @media (max-width: 992px) {
     .top-nav-container {
         flex-direction: column;
+    }
+}
+
+/* Menú principal desplegable (pantallas pequeñas).
+   Las reglas solo actúan cuando la página creó el botón (general.js) y
+   marcó el body con .tiene-menu-movil; sin él, la navegación sigue visible
+   como antes. El estado abierto se marca con .menu-movil-abierto. */
+@media (max-width: 992px) {
+    body.tiene-menu-movil .boton-menu {
+        position: fixed;
+        top: calc(12px + env(safe-area-inset-top, 0px));
+        right: 12px;
+        z-index: var(--z-menu-movil);
+    }
+
+    body.tiene-menu-movil > header .top-nav-container nav {
+        position: fixed;
+        top: calc(12px + var(--tam-boton-menu) + 8px + env(safe-area-inset-top, 0px));
+        right: 12px;
+        z-index: var(--z-menu-movil);
+        width: min(280px, calc(100vw - 24px));
+        max-height: calc(100vh - 80px);
+        max-height: calc(100dvh - 80px);
+        overflow-y: auto;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 6px;
+        padding: 12px;
+        background: var(--blanco);
+        border: 1px solid var(--gris-claro);
+        border-radius: var(--radio-grande);
+        box-shadow: var(--sombra-grande);
+
+        /* Cerrado: no ocupa espacio ni recibe foco */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-8px) scale(.98);
+        transform-origin: top right;
+        transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+    }
+
+    body.tiene-menu-movil.menu-movil-abierto > header .top-nav-container nav {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: opacity .25s ease, transform .25s ease, visibility 0s;
+    }
+
+    /* Anula la rejilla de 3 columnas de responsive.css: en el panel, un enlace por fila */
+    body.tiene-menu-movil > header .top-nav-container nav a {
+        flex: 0 0 auto;
+        justify-content: center;
+        text-align: center;
     }
 }
 
